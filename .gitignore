@@ -10,3 +10,7 @@
 infra/supabase/volumes/db/data/
 infra/supabase/volumes/storage/
 infra/supabase/volumes/snippets/
+
+# ui
+ui/node_modules/
+ui/dist/
