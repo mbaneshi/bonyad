@@ -20,10 +20,12 @@ and reversible.
 4. **Change = proposal, then acceptance.** The UI and agents submit a *changeset*
    against an *expected revision*. Rust applies it to an in-memory copy, validates
    and computes; Postgres then atomically accepts it or reports a conflict.
-5. **Agents use the same door.** The API is the only write path. The browser has
-   no write grant on domain tables; a test client calls the same endpoints a human
-   UI does. An agent is an Auth user with `app_metadata.actor_type = "agent"`,
-   recorded on every revision.
+5. **Agents use the same door — and are part of the first slice, not a later
+   milestone** (founder amendment, 2026-10-21; see §9). The API is the only write
+   path. The browser has no write grant on domain tables. A human edit and an agent
+   tool call reach the same Rust operation and the same `accept_changeset`.
+   An agent run acts with the *initiating user's* JWT, so authorization is
+   identical; the revision records `actor_type = "agent"` and the `run_id`.
 6. **One owner per procedure** (the ownership rule, *(my call)*):
 
    | Concern | Owner |
@@ -111,6 +113,19 @@ unvalidated server data beyond the generated types).
 | CI | GitHub Actions: fmt, clippy, tsc, migrate, `prepare --check`, contract diff, tests, Playwright | Required | step 6 |
 | Revision storage | snapshot-per-revision + changeset (JSONB) | Smallest thing that supports "inspect prior state"; not event sourcing | slice part 2 |
 | Edge Functions | none yet | No integration use in the slice | later |
+| Anthropic SDK | `@anthropic-ai/sdk` (official, TypeScript) | Messages streaming, typed events, abort signal, bounded retries built in | now |
+| Agent runtime | **hand-written loop** over `messages.stream`, not the beta Tool Runner | We must persist every step, enforce step/token/time limits, cancel between tool calls and inject idempotency keys; the runner hides those turns. About 150 lines | now |
+| Agent service host | `services/agent`, Bun + strict TS + Zod at boundaries, `bun test` as the gate (no `tsc` gate, per house rule) | New backend, greenfield | now |
+| Provider adapter | `ModelProvider` interface (`stream(req) -> AsyncIterable<ProviderEvent>`); `AnthropicProvider` + scripted `FakeProvider` | Keeps Anthropic message shapes out of the app; FakeProvider makes loop tests deterministic. No second real provider | now |
+| Tool catalog | generated from Rust OpenAPI (`x-bonyad-tool` extension) → `tools.json`; CI fails on drift | One definition for UI client and agent; no handwritten schemas | now |
+| Arg validation | Zod built from the catalog's JSON Schema (agent side) + Rust parsing (authoritative) | Validate before execution; Rust never trusts the agent | now |
+| Streaming | SSE over `fetch` (POST + Bearer header), replay from DB by `?after=seq` | One-way server→client; `EventSource` cannot send headers; replay gives reload and reconnect for free. WebSockets not justified | now |
+| React stream consumer | small `fetch` + `ReadableStream` SSE parser; events folded into TanStack Query cache | No dependency needed | now |
+| Run persistence | Rust-owned tables via internal endpoints (see §9) | One DB client, one migration owner, one RLS path | now |
+| Correlation | `request_id` (per HTTP call), `run_id`, `tool_use_id` propagated as headers and log fields | Required | now |
+| Limits | per-run: steps, tool calls, output tokens, wall clock; `usage` stored per run | Required | now |
+| Idempotency | `Idempotency-Key` = Anthropic `tool_use.id`, stored inside the same transaction as the write | Required | now |
+| Real-provider test | `just agent-smoke`, opt-in, never in CI | Nondeterministic wording | now |
 
 **License recommendation (not applied).** Apache-2.0: permissive, explicit patent
 grant, friendly to commercial adoption and contributions, matches an
@@ -217,13 +232,167 @@ Minimal Persian string table now (single `fa.ts`); a real i18n library is deferr
 | 4 | `bonyad-api` + OpenAPI + auth path | DB integration tests: rejects leave state unchanged; reload equals accepted state; cross-user access denied (checks 4–6, 8) |
 | 5 | React UI + generated client | Create/list/select/edit/reload works against real stack (checks 6–7) |
 | 6 | Playwright at 360, 768, 1280 + CI | No horizontal overflow; keyboard-safe sheet; all states (check 9) |
-| 7 | Revisions | Stale edit → 409; prior snapshot inspectable (check 10) |
-| 8 | Agent script | Script performs create/edit through the same API (brief §7) |
-| 9 | README, architecture.md, ADRs | A fresh clone starts from the README alone |
+| 7 | Revisions + idempotency table | Stale edit → 409; prior snapshot inspectable; replayed `Idempotency-Key` returns the original result (check 10) |
+| 8 | Tool catalog generation | `just contract` emits `tools.json`; CI diff-checks; catalog entries match API operations |
+| 9 | Agent service + run persistence + SSE (scripted provider first) | Scenarios 1–2 pass via `FakeProvider` in `bun test` against the real API/DB; events replay after reload |
+| 10 | Agent UI | Streaming conversation, tool progress, cancel, restore on reload; works at 360 px |
+| 11 | Real-provider smoke | With a key: scenario 1 then 2 produce length 4/area 6, then 8/12 (opt-in) |
+| 12 | Playwright (human + agent paths, 3 viewports), CI, README, architecture.md | Fresh clone starts from the README alone |
 
 Each step is one issue → one PR from a worktree off `dev`.
 
-## 9. Environment notes
+## 9. Agentic automation (founder amendment, mandatory in the first slice)
+
+AI is a foundational execution interface, like data, logic and presentation. The
+slice must demonstrate both paths: *human → operation → state → UI* and
+*human → agent → the same operation → state → streamed UI*.
+
+### 9.1 Responsibilities
+
+| Layer | Owns |
+|---|---|
+| `services/agent` (Bun/TS, Anthropic SDK) | Model requests, streaming, tool-call loop, limits, cancellation, bounded retries, event emission. **Stateless**: no DB client, no JWT verification |
+| Rust | Typed tools, queries, validation, computation, **and persistence of conversations/runs/tool calls** (so there is one DB client, one RLS path, one migration owner) |
+| PostgreSQL | `conversations`, `messages`, `runs`, `run_events`, `tool_calls`, revision links |
+| React | Streaming conversation, tool progress, results, errors, cancel |
+
+```text
+browser ──POST /agent/runs (Bearer JWT, SSE reply)──▶ agent service
+                                                       │ 1. POST /v1/runs (same JWT) ─▶ Rust verifies, creates run row
+                                                       │ 2. loop: provider.stream → tool_use
+                                                       │ 3. tool call: Rust /v1/... (same JWT, X-Run-Id, Idempotency-Key = tool_use.id)
+                                                       │ 4. every event ─▶ Rust POST /v1/runs/{id}/events (append-only log)
+browser ◀── SSE events ◀───────────────────────────────┘
+browser ──GET /v1/runs/{id}/events?after=seq──▶ Rust   (reload / reconnect / history)
+```
+
+The agent service never decides who the caller is: it forwards the browser's JWT and
+Rust is the only verifier. If Rust rejects `POST /v1/runs`, the stream never starts.
+`ANTHROPIC_API_KEY` exists only in the agent service environment (a compose secret);
+neither Rust nor the browser can see it.
+
+### 9.2 Provider adapter and model settings
+
+`ModelProvider.stream()` yields normalized events: `text_delta`, `tool_input_delta`
+(internal only), `tool_call` (complete), `stop{reason, usage}`. `AnthropicProvider`
+maps SDK events to these; `FakeProvider` replays a scripted sequence. Nothing outside
+the adapter touches Anthropic message shapes — except persistence, below.
+
+Settings (from the Claude API reference; exact call shapes are checked against the
+TypeScript SDK docs when step 9 is implemented):
+
+- Model: `claude-opus-5-5` by default (reference default), overridable with
+  `BONYAD_MODEL`. Adaptive thinking; effort set explicitly (the model's default is
+  `medium`); thinking summaries are **not** requested or streamed.
+- Tools use `strict: true` and `eager_input_streaming: true`. Because eager streaming
+  disables API-side validation, the dispatcher validates every parsed input against
+  the catalog schema, treats failure like invalid JSON (returns an `is_error`
+  `tool_result`), and checks `stop_reason` (`max_tokens`, `refusal`) *before*
+  executing any tool.
+- `tool_choice` is always `auto` (forced tool use is rejected by this model).
+- The server-side refusal fallback (`fallbacks: "default"` with its beta header) is
+  enabled by default, as the reference recommends for this model; it is a single
+  config flag and can be dropped.
+- Streamed history is **append-only and stored verbatim**: assistant content blocks
+  (including any thinking blocks) are saved as returned and replayed unchanged, never
+  edited or compacted, so the provider's history checks keep passing after reload.
+- Parallel tool calls are allowed; all `tool_result` blocks go back in one user message.
+
+### 9.3 Tool catalog (one source, generated)
+
+Each agent-visible Rust operation carries an `x-bonyad-tool` OpenAPI extension:
+`name`, `version`, `description`/applicability, `kind: read | mutation`, and its
+auth requirement (always "caller JWT"). `just contract` emits `tools.json` from
+`openapi.json`; the agent service loads only that file; CI fails if it drifts. The
+error contract is the same `problem+json` the UI uses, passed to the model as the
+`tool_result` body with `is_error: true`.
+
+Initial tools: `get_project_state` (read), `measure_line` (read),
+`measure_surface` (read), `create_point`, `move_point`, `create_line`,
+`create_surface` (mutations). Points are referenced by id **or label**
+(`unique(project_id, label)`), resolved in Rust. `expected_revision` is **not** in
+the model's schema: the dispatcher injects the run's latest known revision (starting
+revision, then each accepted result), so a concurrent human edit surfaces as a
+`409` tool error and the model re-reads state.
+
+A model response alone never changes state: only a validated tool call that Rust
+accepts does.
+
+### 9.4 Execution context and policy
+
+A run carries: actor and project identity, starting revision, the user task, entity
+references the UI attaches (e.g. current selection), unit and frame, the tool list,
+and limits. Everything else is fetched through tools, not stuffed into the prompt.
+
+**Execution policy, defined once** (stored on the run, default for this lab):
+authorized edits by the project's owner execute automatically, no per-call
+confirmation, bounded by limits: 12 model steps, 30 tool calls, a per-run output
+token cap and a 120 s wall clock (all env-tunable). There is no `ask` mode in this
+slice.
+
+**Idempotency.** Mutation tools send `Idempotency-Key = tool_use.id`. Rust stores
+`(project_id, key) → result` in the same transaction as `accept_changeset`; a retry
+returns the stored result and creates nothing.
+
+### 9.5 Persistence
+
+Added to schema `bonyad` (all RLS: owner only):
+
+```sql
+conversations(id, project_id, owner_id, title, created_at)
+messages(conversation_id, seq, role, text,                 -- text: what the UI shows
+         provider_content jsonb)                            -- verbatim provider blocks, for replay
+runs(id, conversation_id, project_id, owner_id, status,     -- running|completed|failed|cancelled
+     model, task, policy jsonb, limits jsonb, usage jsonb,
+     start_revision, end_revision, error jsonb, started_at, finished_at)
+run_events(run_id, seq, type, data jsonb, created_at)       -- the streamed log, append-only
+tool_calls(run_id, tool_use_id, tool_name, tool_version, kind, input jsonb,
+           output jsonb, status, idempotency_key,
+           revision_before, revision_after, started_at, finished_at)
+```
+
+Model text is stored as claims in `messages`; tool results are stored in
+`tool_calls` and are the verified facts. The UI labels them differently.
+
+### 9.6 Streaming events
+
+`run_started`, `text_delta`, `tool_started` (only once the arguments are complete and
+validated), `tool_completed`, `tool_failed`, `run_completed`, `run_failed`,
+`run_cancelled`. Each has `run_id`, `seq`, `request_id`. Partial argument fragments
+never leave the agent service; private reasoning is never emitted.
+
+### 9.7 Cancellation and failure
+
+- **Cancel** (`POST /agent/runs/{id}/cancel` or the client aborting): abort the
+  provider stream, schedule no further tool calls. A mutation already in flight
+  finishes (it is atomic) and is recorded. Terminal event: `run_cancelled` with the
+  list of revisions the run committed.
+- **Provider failure / timeout / limit hit:** `run_failed` with the cause and the
+  same committed-revisions list. Because each accepted tool call is its own atomic
+  revision, the project is always valid; the report says what already landed.
+- **Retries:** the SDK's bounded retries for transport errors; mutation retries are
+  safe through idempotency.
+
+### 9.8 Scenarios (acceptance)
+
+1. *"Create points A(0,0), B(4,0), C(0,3), a line from A to B, and a triangular
+   surface. Tell me the length and area."* → inspect, four mutations, two
+   measurements, answer **length 4 m, area 6 m²**; entities visible in the drawing
+   and property panel without a manual refresh.
+2. *"Move B to (8,0) and recalculate."* → **8 and 12**; same after reload.
+
+### 9.9 Verification additions
+
+Deterministic (`bun test` + real Rust API + real DB, scripted `FakeProvider`):
+tool arguments rejected before execution; human and agent get the same
+authorization result (cross-user denied for both); a retried mutation creates no
+duplicate; cancel stops scheduling and records the outcome; provider failure leaves
+valid state and reports committed revisions; reload restores conversation and
+outcomes. Playwright: the streaming UI and tool progress at 360 px.
+Opt-in `just agent-smoke`: one real Anthropic stream through scenario 1 and 2.
+Routine CI never calls the provider.
+
+## 10. Environment notes
 
 - **Port isolation.** Another project's Supabase stack holds 5432, 8000, 3000, 6543.
   Bonyad uses compose project `bonyad` and the range 55xxx
