@@ -14,11 +14,12 @@ await store.ping();
 await store.failOrphanedRuns();
 
 // BONYAD_FAKE_SCRIPT=<file.json> replaces the model with a scripted one (a JSON array of
-// turns, one per model request). It exists for browser tests; never set it for real use.
+// turns, one per model request; BONYAD_FAKE_LOOP=1 replays it from the start when it runs
+// out). It exists for browser tests; never set it for real use.
 const fakeScript = process.env.BONYAD_FAKE_SCRIPT;
 if (fakeScript) log("WARNING: running with a scripted FakeProvider, not a real model", { script: fakeScript });
 const provider = fakeScript
-  ? new FakeProvider(JSON.parse(await Bun.file(fakeScript).text()))
+  ? new FakeProvider(JSON.parse(await Bun.file(fakeScript).text()), { loop: process.env.BONYAD_FAKE_LOOP === "1" })
   : new AnthropicProvider({
       model: config.model,
       effort: config.effort,

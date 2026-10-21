@@ -1,0 +1,161 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  # A plain PostgreSQL is enough: the schema needs nothing from the Supabase stack.
+  DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/postgres
+
+jobs:
+  logic:
+    name: logic (fmt, clippy, tests)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the pinned Rust toolchain (logic/rust-toolchain.toml)
+        run: rustup toolchain install
+        working-directory: logic
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: logic
+      - run: cargo fmt --check
+        working-directory: logic
+      - run: cargo clippy --all-targets -- -D warnings
+        working-directory: logic
+      - run: cargo test
+        working-directory: logic
+
+  ui:
+    name: ui (typecheck, tests, generated client, build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: ui/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+        working-directory: ui
+      - run: pnpm typecheck
+        working-directory: ui
+      - run: pnpm test
+        working-directory: ui
+      - name: The generated API client matches contracts/openapi.json
+        run: pnpm gen:api:check
+        working-directory: ui
+      - run: pnpm build
+        working-directory: ui
+
+  agent:
+    name: agent (bun test, real API, scripted model)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup toolchain install
+        working-directory: logic
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: logic
+      - name: Build the API the tests start
+        run: cargo build -p bonyad-server --bin bonyad-server
+        working-directory: logic
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+        working-directory: agent
+      - run: bun test
+        working-directory: agent
+
+  e2e:
+    name: e2e (Playwright, 360 / 768 / 1280 px)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup toolchain install
+        working-directory: logic
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: logic
+      - run: cargo build -p bonyad-server --bin bonyad-server
+        working-directory: logic
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+        working-directory: agent
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: pnpm install --frozen-lockfile
+        working-directory: ui
+      - run: pnpm install --frozen-lockfile
+        working-directory: tests/e2e
+      - run: pnpm exec playwright install --with-deps chromium
+        working-directory: tests/e2e
+      - run: pnpm test
+        working-directory: tests/e2e
+      - name: Keep the report when a test fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            tests/e2e/playwright-report
+            tests/e2e/test-results
+          retention-days: 7

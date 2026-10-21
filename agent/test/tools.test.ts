@@ -31,3 +31,21 @@ describe("tool input validation", () => {
     expect(ok("update_geometry", { entity_id: crypto.randomUUID(), geometry: { kind: "circle", r: 1 } })).toBe(false);
   });
 });
+
+describe("FakeProvider loop mode", () => {
+  test("replays the script from the start when asked, and fails loudly otherwise", async () => {
+    const { FakeProvider } = await import("../src/fake-provider");
+    const run = async (p: InstanceType<typeof FakeProvider>) => {
+      const out: string[] = [];
+      for await (const e of p.stream({ system: "", messages: [], tools: [] }, new AbortController().signal)) {
+        if (e.type === "final") out.push(String(e.content[0]?.text));
+      }
+      return out[0];
+    };
+    const looping = new FakeProvider([{ text: "a" }, { text: "b" }], { loop: true });
+    expect([await run(looping), await run(looping), await run(looping)]).toEqual(["a", "b", "a"]);
+    const strict = new FakeProvider([{ text: "a" }]);
+    await run(strict);
+    await expect(run(strict)).rejects.toThrow("exhausted");
+  });
+});
