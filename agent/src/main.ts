@@ -25,6 +25,7 @@ const provider = fakeScript
       effort: config.effort,
       maxTokens: config.maxTokens,
       refusalFallback: config.refusalFallback,
+      workspaceId: config.workspaceId,
     });
 const handler = createHandler({ store, provider, api: new HttpApi(config.apiBase), limits: config.limits });
 

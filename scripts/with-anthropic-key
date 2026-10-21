@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Run a command with ANTHROPIC_API_KEY taken from the MAIN checkout's .env (gitignored,
+# Run a command with ANTHROPIC_API_KEY (and ANTHROPIC_WORKSPACE_ID, for keys not scoped to a
+# workspace) taken from the MAIN checkout's .env (gitignored,
 # mode 600) when it is set there. If the variable is already exported, or .env has no value,
 # nothing is changed (so an `ant auth login` profile still works). Never prints the key.
 #   scripts/with-anthropic-key bun src/main.ts
@@ -9,6 +10,13 @@ if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
   if [ -f "$env_file" ]; then
     key="$(grep -E '^ANTHROPIC_API_KEY=' "$env_file" | tail -1 | cut -d= -f2- | tr -d '"' || true)"
     [ -n "$key" ] && export ANTHROPIC_API_KEY="$key"
+  fi
+fi
+if [ -z "${ANTHROPIC_WORKSPACE_ID:-}" ]; then
+  env_file="$(dirname "$(git rev-parse --git-common-dir)")/.env"
+  if [ -f "$env_file" ]; then
+    ws="$(grep -E '^ANTHROPIC_WORKSPACE_ID=' "$env_file" | tail -1 | cut -d= -f2- | tr -d '"' || true)"
+    [ -n "$ws" ] && export ANTHROPIC_WORKSPACE_ID="$ws"
   fi
 fi
 exec "$@"
