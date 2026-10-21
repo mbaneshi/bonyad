@@ -94,3 +94,11 @@ agent-smoke: needs-db
 # Agent service with a SCRIPTED model (agent/demo): watch the agent path without an API key.
 agent-demo: needs-db
     cd agent && bun install --frozen-lockfile && BONYAD_FAKE_SCRIPT=demo/scenarios.json bun src/main.ts
+
+# End-to-end: a real browser against the real stack (throwaway database, Rust API, UI, and the
+# agent with a scripted model) at 360, 768 and 1280 px. Uses the machine's Chrome locally.
+e2e: needs-db
+    cd logic && cargo build -p bonyad-server --bin bonyad-server
+    cd ui && pnpm install --frozen-lockfile
+    cd agent && bun install --frozen-lockfile
+    cd tests/e2e && pnpm install --frozen-lockfile && pnpm test

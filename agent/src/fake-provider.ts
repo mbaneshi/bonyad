@@ -19,12 +19,19 @@ export class FakeProvider implements ModelProvider {
   readonly requests: ProviderRequest[] = [];
   private n = 0;
 
-  constructor(private readonly script: Turn[] | ((req: ProviderRequest, index: number) => Turn)) {}
+  /** `loop` replays an array script from the start when it runs out (for repeatable browser runs). */
+  constructor(
+    private readonly script: Turn[] | ((req: ProviderRequest, index: number) => Turn),
+    private readonly options: { loop?: boolean } = {},
+  ) {}
 
   async *stream(req: ProviderRequest, signal: AbortSignal): AsyncIterable<ProviderEvent> {
     const index = this.n++;
     this.requests.push(structuredClone(req));
-    const turn = typeof this.script === "function" ? this.script(req, index) : this.script[index];
+    const turn =
+      typeof this.script === "function"
+        ? this.script(req, index)
+        : this.script[this.options.loop && this.script.length > 0 ? index % this.script.length : index];
     if (!turn) throw new Error(`FakeProvider script exhausted at request ${index}`);
     if (signal.aborted) throw abortError();
 

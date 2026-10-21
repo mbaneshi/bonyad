@@ -12,7 +12,7 @@
     "exactOptionalPropertyTypes": false,
     "isolatedModules": true,
     "skipLibCheck": true,
-    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
+    "types": ["node", "vite/client", "vitest/globals", "@testing-library/jest-dom"],
     "noEmit": true
   },
   "include": ["src", "vite.config.ts", "scripts"]
