@@ -29,7 +29,7 @@ const check = (name: string, ok: boolean, extra = "") => results.push(`${ok ? "P
 
 try {
   await clearProject(env.apiBase);
-  const provider = new AnthropicProvider({ model: cfg.model, effort: cfg.effort, maxTokens: cfg.maxTokens, refusalFallback: cfg.refusalFallback });
+  const provider = new AnthropicProvider({ model: cfg.model, effort: cfg.effort, maxTokens: cfg.maxTokens, refusalFallback: cfg.refusalFallback, workspaceId: cfg.workspaceId });
   const deps = { store: env.store, provider, api: env.api, limits: cfg.limits };
 
   const go = async (message: string, conversationId?: string) => {

@@ -78,8 +78,11 @@ Section 9 of the first-slice design describes the target. This milestone is the 
 `end_revision`), no idempotency-key table (ids are derived instead), no separate `tool_calls`
 table (the event log carries them), no label references, and no `ask` approval mode.
 
-## Not tested against the real provider here
+## Against the real provider
 
 The routine tests drive the loop with a scripted `FakeProvider` and the request shape with a
 stubbed SDK client. Whether the live model chooses sensible calls is what `just agent-smoke`
-checks, and it needs a credential.
+checks. It passed on 2026-10-21 with `claude-opus-5-5` (both scenarios; about 23k input and 1.4k
+output tokens in total). It needs a credential: `ANTHROPIC_API_KEY` in the environment or in the
+main checkout's `.env`; a key that is not scoped to a workspace also needs
+`ANTHROPIC_WORKSPACE_ID` (sent as the `anthropic-workspace-id` header).

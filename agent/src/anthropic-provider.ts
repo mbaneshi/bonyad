@@ -7,6 +7,8 @@ export type AnthropicOptions = {
   maxTokens: number;
   /** Server-side refusal fallback (`fallbacks: "default"`); one flag, can be dropped. */
   refusalFallback: boolean;
+  /** For API keys that are not scoped to a workspace: sent as `anthropic-workspace-id`. */
+  workspaceId?: string | undefined;
   client?: Anthropic;
 };
 
@@ -24,7 +26,10 @@ export class AnthropicProvider implements ModelProvider {
 
   constructor(private readonly opts: AnthropicOptions) {
     this.model = opts.model;
-    this.client = opts.client ?? new Anthropic(); // ANTHROPIC_API_KEY, or an `ant auth login` profile
+    // ANTHROPIC_API_KEY, or an `ant auth login` profile
+    this.client =
+      opts.client ??
+      new Anthropic(opts.workspaceId ? { defaultHeaders: { "anthropic-workspace-id": opts.workspaceId } } : {});
   }
 
   async *stream(req: ProviderRequest, signal: AbortSignal): AsyncIterable<ProviderEvent> {

@@ -123,3 +123,35 @@ describe("AnthropicProvider stream", () => {
     expect(params).toHaveLength(1);
   });
 });
+
+describe("AnthropicProvider workspace header", () => {
+  async function headersSent(workspaceId?: string) {
+    let seen: Headers | undefined;
+    const client = new Anthropic({
+      apiKey: "test-key",
+      maxRetries: 0,
+      fetch: (async (_url: unknown, init?: RequestInit) => {
+        seen = new Headers(init?.headers);
+        return new Response("{}", { status: 400 }); // enough: only the request headers matter
+      }) as unknown as typeof fetch,
+    });
+    // The provider builds its own client when none is injected; exercise that path via a fetch override.
+    const provider = new AnthropicProvider({ ...opts, workspaceId });
+    const inner = (provider as any).client as Anthropic;
+    (inner as any).fetch = (client as any).fetch;
+    try {
+      for await (const _ of provider.stream(request, new AbortController().signal)) void _;
+    } catch {
+      /* the stub answers 400 */
+    }
+    return seen;
+  }
+
+  test("is sent when configured and absent otherwise", async () => {
+    process.env.ANTHROPIC_API_KEY = "test-key";
+    const withId = await headersSent("wrkspc_test");
+    expect(withId?.get("anthropic-workspace-id")).toBe("wrkspc_test");
+    const without = await headersSent(undefined);
+    expect(without?.get("anthropic-workspace-id")).toBeNull();
+  });
+});
