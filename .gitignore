@@ -14,3 +14,6 @@ infra/supabase/volumes/snippets/
 # ui
 ui/node_modules/
 ui/dist/
+
+# agent
+agent/node_modules/

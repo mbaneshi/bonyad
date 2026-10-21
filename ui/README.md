@@ -22,6 +22,9 @@ column on wide screens, a bottom sheet on narrow ones). Lengths and areas come f
   separator. They are displayed Latin and left-to-right (`<bdi dir="ltr">`).
 - **Retries.** Each "new" form carries one client-chosen id, so a repeated submit cannot
   create a duplicate.
+- **Assistant.** A chat tab in the side panel streams the agent service's events (text, tool
+  progress, verified results, failures) and re-reads the drawing as each change lands; the last
+  conversation is restored on reload. See `../agent/README.md`.
 - **Strings.** One table, `src/fa.ts`. A real i18n library is deferred.
 
 ## The client is generated

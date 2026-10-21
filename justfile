@@ -76,3 +76,16 @@ ui-check:
 # UI dev server on 127.0.0.1:55173 (proxies /v1 to the API; start `just serve` first).
 ui:
     cd ui && pnpm install --frozen-lockfile && pnpm dev
+
+# Agent: its tests run against a throwaway database and the real Rust API (never the provider).
+agent-check: needs-db
+    cd logic && cargo build -p bonyad-server --bin bonyad-server
+    cd agent && bun install --frozen-lockfile && bun test
+
+# Agent service on 127.0.0.1:58090 (needs `just serve` and ANTHROPIC_API_KEY for real runs).
+agent: needs-db
+    cd agent && bun install --frozen-lockfile && bun src/main.ts
+
+# Opt-in: one REAL Anthropic stream through both scenarios. Spends a little money.
+agent-smoke: needs-db
+    cd agent && bun install --frozen-lockfile && bun test/smoke.ts

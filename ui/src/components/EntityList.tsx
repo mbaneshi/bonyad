@@ -37,7 +37,7 @@ export function EntityList({ entities, selectedId, onSelect }: Props) {
 
 const p = (x: number, y: number) => `(${formatNumber(x)}, ${formatNumber(y)})`;
 
-function summary(g: Geometry): string {
+export function summary(g: Geometry): string {
   switch (g.kind) {
     case "point":
       return p(g.x, g.y);
