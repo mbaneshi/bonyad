@@ -68,3 +68,11 @@ serve: needs-db
 # Regenerate contracts/openapi.json after an intentional API change, then commit it.
 openapi:
     cd logic && UPDATE_CONTRACT=1 cargo test -p bonyad-server --test contract
+
+# UI: typecheck, tests, the generated client is current, and a production build.
+ui-check:
+    cd ui && pnpm install --frozen-lockfile && pnpm typecheck && pnpm test && pnpm gen:api:check && pnpm build
+
+# UI dev server on 127.0.0.1:55173 (proxies /v1 to the API; start `just serve` first).
+ui:
+    cd ui && pnpm install --frozen-lockfile && pnpm dev
