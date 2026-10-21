@@ -111,7 +111,7 @@ points(entity_id uuid pk, kind text check (kind = 'point'),
        foreign key (entity_id, kind) references entities (id, kind) on delete cascade)
 
 lines(entity_id uuid pk, kind text check (kind = 'line'),
-      ax, ay, bx, by double precision,                    -- finite; the line owns its endpoints
+      x1, y1, x2, y2 double precision,                    -- finite; the line owns its endpoints
       foreign key (entity_id, kind) references entities (id, kind) on delete cascade)
 
 surfaces(entity_id uuid pk, kind text check (kind = 'surface'), foreign key ... )
