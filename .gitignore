@@ -1,0 +1,5 @@
+.sid-identity
+.envrc
+
+# branch-rules: per-issue worktrees
+.worktrees/
