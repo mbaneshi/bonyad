@@ -1,0 +1,41 @@
+---
+title: Bonyad
+description: An open-source lab for a shared computational foundation under engineering software.
+template: splash
+hero:
+  tagline: An open-source lab for a shared computational foundation under engineering software.
+  actions:
+    - text: Read the manifesto
+      link: /bonyad/manifesto/
+      icon: right-arrow
+    - text: See the design
+      link: /bonyad/specs/first-slice-design/
+      variant: minimal
+    - text: Roadmap
+      link: /bonyad/roadmap/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+  <Card title="One core, many disciplines" icon="puzzle">
+    Entities, typed values, relationships, constraints, procedures and revisions,
+    defined once. Surveying comes first; civil, architecture, MEP, traffic and
+    urbanism build on the same core instead of growing parallel models.
+  </Card>
+  <Card title="The first slice" icon="rocket">
+    Point, line and surface, proven end to end: database, Rust, React, edit,
+    persist, reload. A person and an AI agent drive the same validated operations.
+    Length 4 and area 6; move B and get 8 and 12.
+  </Card>
+  <Card title="The stack" icon="setting">
+    PostgreSQL through a full self-hosted Supabase, Rust for logic and
+    computation, React and TypeScript for a Persian-first, RTL, mobile-ready
+    interface, and an Anthropic-powered agent service.
+  </Card>
+  <Card title="Status: design stage" icon="information">
+    The design is written and proposed. Nothing is built or runnable yet, and the
+    specifications and decisions here are labelled draft or proposed accordingly.
+  </Card>
+</CardGrid>

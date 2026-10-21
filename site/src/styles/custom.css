@@ -1,0 +1,27 @@
+:root {
+  --sl-font: 'Vazirmatn Variable', system-ui, sans-serif;
+}
+
+/* Wide tables (decision tables, API tables) scroll inside themselves on a phone
+   instead of widening the page. */
+.sl-markdown-content table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Code, paths and coordinates stay left-to-right inside right-to-left pages. */
+[dir='rtl'] code,
+[dir='rtl'] pre,
+[dir='rtl'] kbd {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+[dir='rtl'] pre {
+  text-align: left;
+}
+
+.sl-markdown-content img,
+.sl-markdown-content pre {
+  max-width: 100%;
+}

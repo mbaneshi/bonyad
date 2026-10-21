@@ -1,0 +1,41 @@
+---
+title: بنیاد
+description: یک آزمایشگاه متن‌باز برای ساخت بنیان محاسباتیِ مشترک زیر نرم‌افزارهای مهندسی.
+template: splash
+hero:
+  tagline: یک آزمایشگاه متن‌باز برای ساخت بنیان محاسباتیِ مشترک زیر نرم‌افزارهای مهندسی.
+  actions:
+    - text: منشور را بخوانید (به انگلیسی)
+      link: /bonyad/manifesto/
+      icon: left-arrow
+    - text: طراحی (به انگلیسی)
+      link: /bonyad/specs/first-slice-design/
+      variant: minimal
+    - text: نقشهٔ راه
+      link: /bonyad/fa/roadmap/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+  <Card title="یک هسته، چند رشته" icon="puzzle">
+    موجودیت، مقدار تایپ‌دار، رابطه، قید، رویه و بازنگری را یک بار تعریف می‌کنیم.
+    نقشه‌برداری اول می‌آید؛ عمران، معماری، تأسیسات، ترافیک و شهرسازی روی همان
+    هسته ساخته می‌شوند، نه روی مدل‌های موازی.
+  </Card>
+  <Card title="برش اول" icon="rocket">
+    نقطه، خط و سطح، از ابتدا تا انتها: پایگاه‌داده، Rust، React، ویرایش، ذخیره و
+    بارگذاری دوباره. هم انسان و هم عامل هوش مصنوعی از همان عملیات اعتبارسنجی‌شده
+    استفاده می‌کنند. طول <bdi dir="ltr">4</bdi> و مساحت <bdi dir="ltr">6</bdi>؛ با جابه‌جایی B می‌شود <bdi dir="ltr">8</bdi> و <bdi dir="ltr">12</bdi>.
+  </Card>
+  <Card title="فناوری‌ها" icon="setting">
+    PostgreSQL از طریق Supabase کامل و خودمیزبان، Rust برای منطق و محاسبه،
+    React و TypeScript برای رابطی فارسی، راست‌به‌چپ و سازگار با موبایل، و یک
+    سرویس عامل مبتنی بر Anthropic.
+  </Card>
+  <Card title="وضعیت: مرحلهٔ طراحی" icon="information">
+    طراحی نوشته و پیشنهاد شده است. هنوز چیزی ساخته یا اجرا نشده و مشخصات و
+    تصمیم‌های این سایت با برچسب «پیش‌نویس» یا «پیشنهادی» مشخص شده‌اند.
+  </Card>
+</CardGrid>
