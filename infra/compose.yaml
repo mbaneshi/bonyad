@@ -1,0 +1,61 @@
+# Bonyad overrides for the vendored Supabase compose (infra/supabase/, untouched).
+# Always run through the justfile, which passes `-p bonyad`, `--env-file .env`
+# and `--project-directory infra/supabase`.
+#
+# Why each override exists:
+#  * Upstream hard-codes `container_name: supabase-*` and the project name
+#    `supabase`. Another Supabase stack may already be running on this machine, so
+#    every container is renamed `bonyad-*` and the project is `bonyad`.
+#  * Realtime is reached by the gateway at `realtime-dev.supabase-realtime` (see
+#    infra/supabase/volumes/api/envoy/cds.yaml). Renaming the container would break
+#    that DNS name, so it is kept as a network alias.
+#  * This is a single-user lab with no authentication: every published port is bound
+#    to 127.0.0.1 and uses the shifted 55xxx/58xxx range.
+name: bonyad
+
+services:
+  studio:
+    container_name: bonyad-studio
+
+  api-gw:
+    container_name: bonyad-envoy
+    ports: !override
+      - 127.0.0.1:${API_GW_HTTP_PORT}:8000/tcp
+
+  auth:
+    container_name: bonyad-auth
+
+  rest:
+    container_name: bonyad-rest
+
+  realtime:
+    container_name: bonyad-realtime
+    networks:
+      default:
+        aliases:
+          - realtime-dev.supabase-realtime
+
+  storage:
+    container_name: bonyad-storage
+
+  imgproxy:
+    container_name: bonyad-imgproxy
+
+  meta:
+    container_name: bonyad-meta
+
+  functions:
+    container_name: bonyad-edge-functions
+
+  db:
+    container_name: bonyad-db
+    # Direct Postgres for the Rust server and migrations (the upstream stack only
+    # publishes the pooler).
+    ports:
+      - 127.0.0.1:${BONYAD_DB_PORT}:5432
+
+  supavisor:
+    container_name: bonyad-pooler
+    ports: !override
+      - 127.0.0.1:${BONYAD_POOLER_SESSION_PORT}:5432
+      - 127.0.0.1:${BONYAD_POOLER_TXN_PORT}:6543
