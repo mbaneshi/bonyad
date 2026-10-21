@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import { ApiError } from "./api/problem";
 import { useProject } from "./api/hooks";
+import { useAgent } from "./agent/useAgent";
 import { Canvas } from "./components/Canvas";
+import { ChatPanel } from "./components/ChatPanel";
 import { EntityForm, describeError } from "./components/EntityForm";
 import { EntityList } from "./components/EntityList";
 import { Measures } from "./components/Measures";
@@ -19,14 +21,24 @@ export function App() {
   useKeyboardInset();
   const project = useProject();
   const [mode, setMode] = useState<Mode | null>(null);
+  const [view, setView] = useState<"props" | "chat">("props");
+  const agent = useAgent();
 
   const entities = project.data?.entities ?? [];
   const selected = mode?.type === "edit" ? entities.find((e) => e.id === mode.id) : undefined;
-  const open = mode?.type === "create" || selected !== undefined;
+  const propsOpen = mode?.type === "create" || selected !== undefined;
+  const chat = view === "chat";
+  const open = chat || propsOpen;
   const panelRef = useRef<HTMLElement>(null);
   useSheetHeight(panelRef, open);
-  const select = (id: string) => setMode({ type: "edit", id });
-  const close = () => setMode(null);
+  const select = (id: string) => {
+    setView("props");
+    setMode({ type: "edit", id });
+  };
+  const close = () => {
+    setMode(null);
+    setView("props");
+  };
 
   return (
     <div className="app">
@@ -40,11 +52,23 @@ export function App() {
               key={k}
               type="button"
               data-add={k}
-              onClick={() => setMode({ type: "create", kind: k, clientId: newId() })}
+              onClick={() => {
+                setView("props");
+                setMode({ type: "create", kind: k, clientId: newId() });
+              }}
             >
               <span aria-hidden="true">+</span> {fa.kind[k]}
             </button>
           ))}
+          <button
+            type="button"
+            className="secondary"
+            data-open-chat
+            aria-pressed={chat}
+            onClick={() => setView(chat ? "props" : "chat")}
+          >
+            {fa.agent.title}
+          </button>
         </div>
       </header>
 
@@ -78,16 +102,25 @@ export function App() {
           {open && (
             <>
               <div className="panel-head">
-                <h2>
-                  {mode?.type === "create"
-                    ? fa.newTitle(fa.kind[mode.kind])
-                    : fa.kind[selected!.geometry.kind]}
-                </h2>
+                {propsOpen ? (
+                  <div className="tabs" role="group">
+                    <button type="button" className="tab" aria-pressed={!chat} onClick={() => setView("props")}>
+                      {mode?.type === "create" ? fa.newTitle(fa.kind[mode.kind]) : fa.kind[selected!.geometry.kind]}
+                    </button>
+                    <button type="button" className="tab" aria-pressed={chat} onClick={() => setView("chat")}>
+                      {fa.agent.title}
+                    </button>
+                  </div>
+                ) : (
+                  <h2>{fa.agent.title}</h2>
+                )}
                 <button type="button" className="icon" onClick={close} aria-label={fa.close}>
                   ×
                 </button>
               </div>
-              {mode?.type === "create" ? (
+              {chat ? (
+                <ChatPanel agent={agent} selection={selected ? [selected.id] : []} />
+              ) : mode?.type === "create" ? (
                 <EntityForm
                   key={mode.clientId}
                   draft={emptyDraft(mode.kind)}
