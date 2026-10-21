@@ -31,8 +31,8 @@ infrastructure must earn its place in the working example.
 ## Consequences
 
 - Milestone order is current state → revision → relationships and constraints →
-  composition → a surveying capability. Each is introduced when an implemented case
-  needs it, and none leaves empty tables or frameworks behind.
+  composition → surveying workflows → further disciplines. Each is introduced when an
+  implemented case needs it, and none leaves empty tables or frameworks behind.
 - Adding login and row-level security later is a deliberate step with its own RFC.
 - Independent geometry means moving a shared coordinate does not move other entities.
   Relationships arrive in milestone 3, as explicit dependencies.

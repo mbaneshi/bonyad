@@ -315,7 +315,8 @@ deliberate later step, not an oversight.
 | 2 | Revision | Record changes and recover earlier accepted states |
 | 3 | Relationships and constraints | Express intentional dependencies between entities |
 | 4 | Composition | Reuse a concrete group or definition with parameters |
-| 5 | Domain extension | Add a surveying capability on the existing foundation |
+| 5 | Surveying workflows | Add observations, coordinate systems, accuracy and calculations on the existing foundation |
+| 6 | Further disciplines | Extend into civil, architecture, MEP, traffic and urban planning using the accumulated foundation |
 
 Milestone 1 build order, one issue and one pull request each: (1) `infra/` stack and
 `db/` migrations with the seed; (2) `logic/geometry`; (3) `logic/persistence` and
