@@ -63,7 +63,7 @@ logic-check: needs-db
 
 # Run the API on 127.0.0.1:58080 (set BONYAD_BIND to change; non-loopback is refused).
 serve: needs-db
-    cd logic && cargo run -p bonyad-server
+    cd logic && cargo run -p bonyad-server --bin bonyad-server
 
 # Regenerate contracts/openapi.json after an intentional API change, then commit it.
 openapi:
