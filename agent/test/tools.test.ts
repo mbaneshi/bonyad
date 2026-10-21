@@ -18,7 +18,7 @@ describe("tool input validation", () => {
   test("accepts well-formed input", () => {
     expect(ok("create_point", { x: 1, y: 1 })).toBe(true);
     expect(ok("create_surface", { vertices: [{ x: 0, y: 0 }, { x: 4, y: 0 }, { x: 0, y: 3 }] })).toBe(true);
-    expect(ok("update_geometry", { entity_id: crypto.randomUUID(), geometry: { kind: "point", x: 1, y: 2 } })).toBe(true);
+    expect(ok("update_geometry", { entity_id: crypto.randomUUID(), expected_revision: 0, geometry: { kind: "point", x: 1, y: 2 } })).toBe(true);
   });
   test("rejects wrong types, missing fields, extra fields and non-finite numbers", () => {
     expect(ok("create_point", { x: "1", y: 1 })).toBe(false);

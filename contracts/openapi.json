@@ -100,7 +100,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Geometry"
+                "$ref": "#/components/schemas/UpdateGeometryRequest"
               }
             }
           },
@@ -730,11 +730,25 @@
           "code": {
             "type": "string"
           },
+          "current_revision": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64"
+          },
           "detail": {
             "type": [
               "string",
               "null"
             ]
+          },
+          "expected_revision": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64"
           },
           "status": {
             "type": "integer",
@@ -780,7 +794,8 @@
           "id",
           "name",
           "unit",
-          "frame"
+          "frame",
+          "revision"
         ],
         "properties": {
           "frame": {
@@ -793,6 +808,11 @@
           },
           "name": {
             "type": "string"
+          },
+          "revision": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Monotonically increasing accepted project revision."
           },
           "unit": {
             "type": "string",
@@ -814,6 +834,24 @@
             }
           }
         }
+      },
+      "UpdateGeometryRequest": {
+        "type": "object",
+        "description": "A geometry replacement is accepted only against the caller's observed project revision.",
+        "required": [
+          "expected_revision",
+          "geometry"
+        ],
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "geometry": {
+            "$ref": "#/components/schemas/Geometry"
+          }
+        },
+        "additionalProperties": false
       },
       "Violation": {
         "type": "object",

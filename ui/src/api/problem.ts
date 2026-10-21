@@ -8,6 +8,7 @@ export class ApiError extends Error {
     readonly status: number,
     readonly code: string,
     readonly violations: Violation[] = [],
+    readonly currentRevision?: number,
   ) {
     super(code);
     this.name = "ApiError";
@@ -19,5 +20,6 @@ export function fromProblem(status: number, body: unknown): ApiError {
   const b = (typeof body === "object" && body !== null ? body : {}) as Record<string, unknown>;
   const code = typeof b.code === "string" ? b.code : status >= 500 ? "internal_error" : "unknown";
   const violations = Array.isArray(b.violations) ? (b.violations as Violation[]) : [];
-  return new ApiError(status, code, violations);
+  const currentRevision = typeof b.current_revision === "number" ? b.current_revision : undefined;
+  return new ApiError(status, code, violations, currentRevision);
 }

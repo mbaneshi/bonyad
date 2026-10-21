@@ -17,11 +17,12 @@ type Props = {
   /** Create when `existingId` is absent. `clientId` makes a retried create harmless. */
   clientId: string;
   existingId?: string;
+  expectedRevision?: number;
   onSaved: (id: string) => void;
   onDeleted: () => void;
 };
 
-export function EntityForm({ draft: initial, clientId, existingId, onSaved, onDeleted }: Props) {
+export function EntityForm({ draft: initial, clientId, existingId, expectedRevision, onSaved, onDeleted }: Props) {
   const qc = useQueryClient();
   const [draft, setDraft] = useState<Draft>(initial);
   const [local, setLocal] = useState<Record<string, true>>({});
@@ -58,7 +59,7 @@ export function EntityForm({ draft: initial, clientId, existingId, onSaved, onDe
     setLocal({});
     setProblem(null);
     if (existingId) {
-      update.mutate({ id: existingId, geometry: r.geometry }, { onSuccess: () => onSaved(existingId), onError: fail });
+      update.mutate({ id: existingId, geometry: r.geometry, expectedRevision: expectedRevision ?? 0 }, { onSuccess: () => onSaved(existingId), onError: fail });
     } else {
       create.mutate({ id: clientId, geometry: r.geometry }, { onSuccess: (e) => onSaved(e.id), onError: fail });
     }

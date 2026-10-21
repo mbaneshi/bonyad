@@ -22,6 +22,10 @@ pub struct Problem {
     pub detail: Option<String>,
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub violations: Vec<Violation>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expected_revision: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub current_revision: Option<i64>,
 }
 
 #[derive(Debug)]
@@ -34,6 +38,8 @@ pub enum ApiError {
     NotFound,
     /// The id is already used by a different entity (409, `id_in_use`).
     IdInUse,
+    /// The caller observed an older accepted project revision (409, `revision_conflict`).
+    RevisionConflict { expected: i64, current: i64 },
     /// A point has nothing to measure (422, `not_measurable`).
     NotMeasurable,
     /// The database has no project; run the seed (503, `project_not_seeded`).
@@ -45,12 +51,23 @@ pub enum ApiError {
 }
 
 impl ApiError {
-    fn parts(&self) -> (StatusCode, &'static str, &'static str, Option<String>) {
+    fn parts(
+        &self,
+    ) -> (
+        StatusCode,
+        &'static str,
+        &'static str,
+        Option<String>,
+        Option<i64>,
+        Option<i64>,
+    ) {
         match self {
             Self::InvalidGeometry(_) => (
                 StatusCode::UNPROCESSABLE_ENTITY,
                 "invalid_geometry",
                 "Invalid geometry",
+                None,
+                None,
                 None,
             ),
             Self::BadRequest(detail) => (
@@ -58,18 +75,41 @@ impl ApiError {
                 "invalid_request",
                 "The request could not be read",
                 Some(detail.clone()),
+                None,
+                None,
             ),
-            Self::NotFound => (StatusCode::NOT_FOUND, "not_found", "Not found", None),
+            Self::NotFound => (
+                StatusCode::NOT_FOUND,
+                "not_found",
+                "Not found",
+                None,
+                None,
+                None,
+            ),
             Self::IdInUse => (
                 StatusCode::CONFLICT,
                 "id_in_use",
                 "The id is already in use by a different entity",
                 None,
+                None,
+                None,
+            ),
+            Self::RevisionConflict { expected, current } => (
+                StatusCode::CONFLICT,
+                "revision_conflict",
+                "The project changed since it was read",
+                Some(format!(
+                    "expected revision {expected}, current revision is {current}"
+                )),
+                Some(*expected),
+                Some(*current),
             ),
             Self::NotMeasurable => (
                 StatusCode::UNPROCESSABLE_ENTITY,
                 "not_measurable",
                 "This entity has nothing to measure",
+                None,
+                None,
                 None,
             ),
             Self::ProjectNotSeeded => (
@@ -77,17 +117,23 @@ impl ApiError {
                 "project_not_seeded",
                 "No project exists",
                 Some("run `just seed`".into()),
+                None,
+                None,
             ),
             Self::DatabaseUnavailable => (
                 StatusCode::SERVICE_UNAVAILABLE,
                 "database_unavailable",
                 "The database is unavailable",
                 None,
+                None,
+                None,
             ),
             Self::Internal => (
                 StatusCode::INTERNAL_SERVER_ERROR,
                 "internal_error",
                 "Something went wrong",
+                None,
+                None,
                 None,
             ),
         }
@@ -96,7 +142,7 @@ impl ApiError {
 
 impl IntoResponse for ApiError {
     fn into_response(self) -> Response {
-        let (status, code, title, detail) = self.parts();
+        let (status, code, title, detail, expected_revision, current_revision) = self.parts();
         let violations = match self {
             Self::InvalidGeometry(v) => v,
             _ => Vec::new(),
@@ -108,6 +154,8 @@ impl IntoResponse for ApiError {
             code: code.into(),
             detail,
             violations,
+            expected_revision,
+            current_revision,
         };
         let bytes = serde_json::to_vec(&body).unwrap_or_else(|_| b"{}".to_vec());
         (
@@ -124,6 +172,9 @@ impl From<StoreError> for ApiError {
         match error {
             StoreError::NotFound => Self::NotFound,
             StoreError::IdInUse => Self::IdInUse,
+            StoreError::RevisionConflict { expected, current } => {
+                Self::RevisionConflict { expected, current }
+            }
             StoreError::NoProject => Self::ProjectNotSeeded,
             StoreError::KindMismatch { existing, got } => Self::InvalidGeometry(vec![Violation {
                 code: ViolationCode::KindMismatch,

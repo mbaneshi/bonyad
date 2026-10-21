@@ -140,7 +140,7 @@ async fn the_acceptance_example_over_http(pool: PgPool) {
         &app,
         Method::PUT,
         &format!("/v1/entities/{surface_id}/geometry"),
-        Some(edit.clone()),
+        Some(json!({"expected_revision": 0, "geometry": edit.clone()})),
     )
     .await;
     assert_eq!(s, StatusCode::OK);
@@ -153,6 +153,35 @@ async fn the_acceptance_example_over_http(pool: PgPool) {
     )
     .await;
     assert_eq!(m["area"], 12.0);
+
+    let (s, _, project_after_edit) = call(&app, Method::GET, "/v1/project", None).await;
+    assert_eq!(s, StatusCode::OK);
+    assert_eq!(project_after_edit["project"]["revision"], 1);
+
+    // A second writer using the old observation cannot overwrite the accepted edit.
+    let stale = json!({
+        "expected_revision": 0,
+        "geometry": {"kind": "surface", "vertices": [{"x": 0.0, "y": 0.0}, {"x": 6.0, "y": 0.0}, {"x": 0.0, "y": 3.0}]}
+    });
+    let (s, h, b) = call(
+        &app,
+        Method::PUT,
+        &format!("/v1/entities/{surface_id}/geometry"),
+        Some(stale),
+    )
+    .await;
+    assert_problem(s, &h, &b, StatusCode::CONFLICT, "revision_conflict");
+    assert_eq!(b["expected_revision"], 0);
+    assert_eq!(b["current_revision"], 1);
+
+    let snapshots: i64 = sqlx::query_scalar(
+        "select count(*) from bonyad.revision_entities where project_id = $1::uuid and revision = 1",
+    )
+    .bind(PROJECT)
+    .fetch_one(&pool)
+    .await
+    .unwrap();
+    assert_eq!(snapshots, 3);
 
     // "Reload": a brand-new router on the same database recovers the accepted state.
     let reloaded = bonyad_server::router(Store::new(pool.clone()));
@@ -237,7 +266,7 @@ async fn an_invalid_edit_leaves_the_entity_as_it_was(pool: PgPool) {
         &app,
         Method::PUT,
         &format!("/v1/entities/{id}/geometry"),
-        Some(collapsed),
+        Some(json!({"expected_revision": 0, "geometry": collapsed})),
     )
     .await;
     assert_problem(
@@ -268,7 +297,7 @@ async fn an_edit_must_keep_the_kind(pool: PgPool) {
         &app,
         Method::PUT,
         &format!("/v1/entities/{id}/geometry"),
-        Some(json!({"kind": "line", "a": {"x": 0, "y": 0}, "b": {"x": 1, "y": 1}})),
+        Some(json!({"expected_revision": 0, "geometry": {"kind": "line", "a": {"x": 0, "y": 0}, "b": {"x": 1, "y": 1}}})),
     )
     .await;
     assert_problem(
@@ -293,7 +322,7 @@ async fn unknown_things_are_not_found_in_the_same_shape(pool: PgPool) {
         (
             Method::PUT,
             format!("/v1/entities/{ghost}/geometry"),
-            Some(json!({"kind": "point", "x": 0, "y": 0})),
+            Some(json!({"expected_revision": 0, "geometry": {"kind": "point", "x": 0, "y": 0}})),
         ),
         (Method::GET, "/v1/nope".to_owned(), None),
     ] {

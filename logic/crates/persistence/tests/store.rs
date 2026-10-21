@@ -88,7 +88,10 @@ async fn moving_a_surface_vertex_persists_and_survives_a_reload(pool: PgPool) {
         .id;
 
     let edited = surface(&[(0.0, 0.0), (8.0, 0.0), (0.0, 3.0)]);
-    let updated = store.replace_geometry(id, &edited).await.unwrap();
+    let updated = store
+        .replace_geometry(id, &edited, store.project().await.unwrap().revision)
+        .await
+        .unwrap();
     assert_eq!(updated.geometry, edited);
     assert!(updated.updated_at >= updated.created_at);
 
@@ -154,7 +157,11 @@ async fn a_replacement_must_keep_the_kind(pool: PgPool) {
     let (store, _) = seeded(pool).await;
     let id = store.create(new(point(1.0, 1.0))).await.unwrap().entity.id;
     let err = store
-        .replace_geometry(id, &line(0.0, 0.0, 1.0, 1.0))
+        .replace_geometry(
+            id,
+            &line(0.0, 0.0, 1.0, 1.0),
+            store.project().await.unwrap().revision,
+        )
         .await
         .unwrap_err();
     assert!(matches!(
@@ -177,7 +184,11 @@ async fn unknown_ids_are_not_found(pool: PgPool) {
     ));
     assert!(matches!(
         store
-            .replace_geometry(ghost, &point(0.0, 0.0))
+            .replace_geometry(
+                ghost,
+                &point(0.0, 0.0),
+                store.project().await.unwrap().revision
+            )
             .await
             .unwrap_err(),
         StoreError::NotFound

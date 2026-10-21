@@ -13,6 +13,9 @@ pub enum StoreError {
     /// The id is already used by an entity with different content.
     #[error("id is already in use by a different entity")]
     IdInUse,
+    /// The command was based on an older project revision.
+    #[error("expected project revision {expected}, but current revision is {current}")]
+    RevisionConflict { expected: i64, current: i64 },
     /// A replacement geometry has a different kind from the entity it replaces.
     #[error("expected a {} geometry, got a {}", .existing.as_str(), .got.as_str())]
     KindMismatch { existing: Kind, got: Kind },

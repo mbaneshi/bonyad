@@ -29,6 +29,7 @@ struct ProjectRow {
     name: String,
     unit: String,
     frame: String,
+    current_revision: i64,
 }
 
 #[derive(FromRow)]
@@ -80,7 +81,7 @@ impl Store {
     /// The single project of this lab.
     pub async fn project(&self) -> Result<Project, StoreError> {
         let row = sqlx::query_as::<_, ProjectRow>(
-            "select id, name, unit, frame from bonyad.projects order by created_at, id limit 1",
+            "select id, name, unit, frame, current_revision from bonyad.projects order by created_at, id limit 1",
         )
         .fetch_optional(&self.pool)
         .await?
@@ -90,6 +91,7 @@ impl Store {
             name: row.name,
             unit: row.unit,
             frame: row.frame,
+            revision: row.current_revision,
         })
     }
 
@@ -180,12 +182,22 @@ impl Store {
         &self,
         id: Uuid,
         geometry: &Geometry,
+        expected_revision: i64,
     ) -> Result<Entity, StoreError> {
         let mut tx = self.pool.begin().await?;
-        let project_id = sqlx::query_scalar::<_, Uuid>(FIRST_PROJECT_ID)
-            .fetch_optional(&mut *tx)
-            .await?
-            .ok_or(StoreError::NoProject)?;
+        let project = sqlx::query_as::<_, (Uuid, i64)>(
+            "select id, current_revision from bonyad.projects order by created_at, id limit 1 for update",
+        )
+        .fetch_optional(&mut *tx)
+        .await?
+        .ok_or(StoreError::NoProject)?;
+        let project_id = project.0;
+        if project.1 != expected_revision {
+            return Err(StoreError::RevisionConflict {
+                expected: expected_revision,
+                current: project.1,
+            });
+        }
 
         let kind = sqlx::query_scalar::<_, String>(
             "select kind from bonyad.entities where id = $1 for update",
@@ -208,6 +220,14 @@ impl Store {
             .execute(&mut *tx)
             .await?;
 
+        let revision = project.1 + 1;
+        sqlx::query("update bonyad.projects set current_revision = $2 where id = $1")
+            .bind(project_id)
+            .bind(revision)
+            .execute(&mut *tx)
+            .await?;
+        record_snapshot(&mut tx, project_id, revision, "update_geometry", id).await?;
+
         let entity = load(&mut tx, project_id, Some(id))
             .await?
             .pop()
@@ -228,6 +248,28 @@ impl Store {
             Ok(())
         }
     }
+}
+
+async fn record_snapshot(
+    tx: &mut sqlx::Transaction<'_, sqlx::Postgres>,
+    project_id: Uuid,
+    revision: i64,
+    operation: &str,
+    entity_id: Uuid,
+) -> Result<(), StoreError> {
+    sqlx::query("insert into bonyad.revisions (project_id, revision, operation, entity_id) values ($1, $2, $3, $4)")
+        .bind(project_id).bind(revision).bind(operation).bind(entity_id).execute(&mut **tx).await?;
+    sqlx::query("insert into bonyad.revision_entities (project_id, revision, entity_id, kind, label, created_at, updated_at) select project_id, $2, id, kind, label, created_at, updated_at from bonyad.entities where project_id = $1")
+        .bind(project_id).bind(revision).execute(&mut **tx).await?;
+    sqlx::query("insert into bonyad.revision_points (project_id, revision, entity_id, x, y) select e.project_id, $2, p.entity_id, p.x, p.y from bonyad.points p join bonyad.entities e on e.id = p.entity_id where e.project_id = $1")
+        .bind(project_id).bind(revision).execute(&mut **tx).await?;
+    sqlx::query("insert into bonyad.revision_lines (project_id, revision, entity_id, x1, y1, x2, y2) select e.project_id, $2, l.entity_id, l.x1, l.y1, l.x2, l.y2 from bonyad.lines l join bonyad.entities e on e.id = l.entity_id where e.project_id = $1")
+        .bind(project_id).bind(revision).execute(&mut **tx).await?;
+    sqlx::query("insert into bonyad.revision_surfaces (project_id, revision, entity_id) select e.project_id, $2, s.entity_id from bonyad.surfaces s join bonyad.entities e on e.id = s.entity_id where e.project_id = $1")
+        .bind(project_id).bind(revision).execute(&mut **tx).await?;
+    sqlx::query("insert into bonyad.revision_surface_vertices (project_id, revision, entity_id, position, x, y) select e.project_id, $2, v.entity_id, v.position, v.x, v.y from bonyad.surface_vertices v join bonyad.entities e on e.id = v.entity_id where e.project_id = $1")
+        .bind(project_id).bind(revision).execute(&mut **tx).await?;
+    Ok(())
 }
 
 fn kind_from_str(kind: &str) -> Result<Kind, StoreError> {

@@ -23,6 +23,8 @@ pub struct ProjectView {
     pub unit: String,
     /// The coordinate frame (`local-cartesian`).
     pub frame: String,
+    /// Monotonically increasing accepted project revision.
+    pub revision: i64,
 }
 
 #[derive(Debug, Serialize, ToSchema)]
@@ -73,6 +75,14 @@ pub struct CreateSurfaceRequest {
     pub vertices: Vec<Point2>,
 }
 
+/// A geometry replacement is accepted only against the caller's observed project revision.
+#[derive(Debug, Deserialize, ToSchema)]
+#[serde(deny_unknown_fields)]
+pub struct UpdateGeometryRequest {
+    pub expected_revision: i64,
+    pub geometry: Geometry,
+}
+
 /// What a measurement returns, tagged by `kind`. Units come from the project.
 #[derive(Debug, Serialize, ToSchema)]
 #[serde(tag = "kind", rename_all = "snake_case")]
@@ -98,6 +108,7 @@ impl From<Project> for ProjectView {
             name: p.name,
             unit: p.unit,
             frame: p.frame,
+            revision: p.revision,
         }
     }
 }

@@ -74,11 +74,11 @@ export const TOOLS: ToolSpec[] = [
   tool({
     name: "update_geometry",
     description:
-      "Replace an existing entity's geometry, for example to move a point or a vertex. The kind must match the entity's kind. Send the complete new geometry.",
+      "Replace an existing entity's geometry, for example to move a point or a vertex. First call get_project_state and send its project revision. The kind must match the entity's kind. Send the complete new geometry.",
     kind: "mutation",
-    schema: z.strictObject({ entity_id: entityId, geometry }),
+    schema: z.strictObject({ entity_id: entityId, expected_revision: z.number().int().nonnegative(), geometry }),
     route: { method: "PUT", template: "/v1/entities/{id}/geometry" },
-    build: (i) => ({ params: { id: i.entity_id }, body: i.geometry }),
+    build: (i) => ({ params: { id: i.entity_id }, body: { expected_revision: i.expected_revision, geometry: i.geometry } }),
   }),
   tool({
     name: "delete_entity",

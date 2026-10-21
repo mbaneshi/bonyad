@@ -136,6 +136,7 @@ export function App() {
                       draft={draftFromGeometry(selected.geometry)}
                       clientId={selected.id}
                       existingId={selected.id}
+                      expectedRevision={project.data?.project.revision}
                       onSaved={select}
                       onDeleted={close}
                     />

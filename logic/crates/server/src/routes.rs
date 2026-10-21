@@ -10,7 +10,7 @@ use uuid::Uuid;
 
 use crate::api::{
     CreateLineRequest, CreatePointRequest, CreateSurfaceRequest, EntityView, Health,
-    MeasureResponse, ProjectResponse,
+    MeasureResponse, ProjectResponse, UpdateGeometryRequest,
 };
 use crate::error::{ApiError, Problem};
 
@@ -179,7 +179,7 @@ pub async fn create_surface(
     path = "/v1/entities/{id}/geometry",
     tag = "entities",
     params(("id" = Uuid, Path, description = "Entity id")),
-    request_body = Geometry,
+    request_body = UpdateGeometryRequest,
     responses(
         (status = 200, body = EntityView),
         (status = 404, description = "not_found", body = Problem, content_type = "application/problem+json"),
@@ -189,11 +189,16 @@ pub async fn create_surface(
 pub async fn update_geometry(
     State(store): State<Store>,
     ApiPath(id): ApiPath<Uuid>,
-    ApiJson(geometry): ApiJson<Geometry>,
+    ApiJson(request): ApiJson<UpdateGeometryRequest>,
 ) -> Result<Json<EntityView>> {
     let existing = store.entity(id).await?;
-    validate_replacement(existing.kind(), &geometry).map_err(ApiError::InvalidGeometry)?;
-    Ok(Json(store.replace_geometry(id, &geometry).await?.into()))
+    validate_replacement(existing.kind(), &request.geometry).map_err(ApiError::InvalidGeometry)?;
+    Ok(Json(
+        store
+            .replace_geometry(id, &request.geometry, request.expected_revision)
+            .await?
+            .into(),
+    ))
 }
 
 /// `DeleteEntity`.

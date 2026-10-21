@@ -47,7 +47,7 @@ export function useUpdateGeometry() {
   const api = useApi();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (v: { id: string; geometry: Geometry }) => api.updateGeometry(v.id, v.geometry),
+    mutationFn: (v: { id: string; geometry: Geometry; expectedRevision: number }) => api.updateGeometry(v.id, v.geometry, v.expectedRevision),
     onSuccess: () => qc.invalidateQueries({ queryKey: projectKey }),
   });
 }

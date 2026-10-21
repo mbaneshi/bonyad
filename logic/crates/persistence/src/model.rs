@@ -9,6 +9,7 @@ pub struct Project {
     pub name: String,
     pub unit: String,
     pub frame: String,
+    pub revision: i64,
 }
 
 /// A stored entity with its geometry.
