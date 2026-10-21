@@ -5,14 +5,18 @@ name: site
 on:
   pull_request:
     branches: [dev]
-    paths: &paths
+    paths:
       - 'site/**'
       - 'docs/**'
       - 'CONTRIBUTING.md'
       - '.github/workflows/site.yml'
   push:
     branches: [dev]
-    paths: *paths
+    paths:
+      - 'site/**'
+      - 'docs/**'
+      - 'CONTRIBUTING.md'
+      - '.github/workflows/site.yml'
   workflow_dispatch:
 
 permissions:
