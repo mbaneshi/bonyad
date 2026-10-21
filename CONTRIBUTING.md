@@ -7,6 +7,10 @@ discussions, and hold off on non-trivial code contributions.
 ## The flow
 
 1. **Issue first.** Every change starts as a GitHub issue; the issue body is the brief.
+   Include the **reuse check**, Bonyad's guiding question: *which existing concepts does
+   this use, and what new concept does it add and why?* The issue and pull request
+   templates have a section for it (issues filed from the command line should add the
+   same section by hand).
 2. **One issue = one worktree branch off `dev`.** `scripts/new-issue <number> <slug>`
    creates `.worktrees/feat/<number>-<slug>/` from the freshest `origin/dev`. A
    short-lived `docs/<slug>` or `chore/<slug>` branch is fine for non-feature work.
