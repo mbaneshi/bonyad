@@ -26,7 +26,7 @@ const pages = [
     title: 'Architecture: first-slice design',
     description: 'Draft architecture, schema, API, agent design and build sequence for the first slice.',
     badge: { text: 'Draft', variant: 'caution' },
-    banner: 'Draft specification. It is proposed and awaiting review, and nothing it describes is built yet.',
+    banner: 'Draft specification. It describes the implemented first slice; its draft label records review status, not implementation status. A real-provider smoke run remains the final acceptance gap.',
     order: 1,
   },
   {

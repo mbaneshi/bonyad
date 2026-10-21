@@ -41,11 +41,15 @@ Full text: [manifesto](https://github.com/mbaneshi/bonyad/blob/dev/docs/manifest
 
 ## Status
 
-**Design stage. Nothing is runnable yet.** The design is written and *proposed*:
-the [first-slice design](https://github.com/mbaneshi/bonyad/blob/dev/docs/superpowers/specs/2026-10-21-first-slice-design.md)
-is a draft and the [decision records](https://github.com/mbaneshi/bonyad/blob/dev/docs/decisions/0001-first-slice-decisions.md)
-are proposed, not accepted. There is deliberately no quick-start; this section changes
-when the first slice runs.
+**Milestone 1 is implemented.** The infrastructure/database, Rust geometry and API,
+React UI, Bun agent service, browser end-to-end tests, and CI paths are present on
+`dev`. The automated tests use a scripted provider; the remaining acceptance gap is
+one opt-in smoke run against a real Anthropic model.
+
+The [first-slice design](https://github.com/mbaneshi/bonyad/blob/dev/docs/superpowers/specs/2026-10-21-first-slice-design.md)
+and [decision records](https://github.com/mbaneshi/bonyad/blob/dev/docs/decisions/0001-first-slice-decisions.md)
+remain design-history documents. Their draft/proposed labels describe their review
+status, not the implementation status of the milestone.
 
 The first slice is point, line and surface, end to end (database → Rust → React →
 edit → persist → reload), driven both by a person and by an AI agent through the same
@@ -111,11 +115,15 @@ is granted.
 
 ### وضعیت
 
-**مرحلهٔ طراحی؛ هنوز چیزی قابل اجرا نیست.** طراحی نوشته و *پیشنهاد* شده است:
+**برش اول پیاده‌سازی شده است.** زیرساخت و پایگاه‌داده، هندسه و API راست، رابط React،
+سرویس عامل Bun، آزمون‌های مرورگر و CI در شاخهٔ `dev` قرار دارند. آزمون‌های خودکار عامل
+از ارائه‌دهندهٔ اسکریپت‌شده استفاده می‌کنند و تنها شکاف پذیرش، اجرای آزمایشی اختیاری
+با یک مدل واقعی Anthropic است.
+
 [طراحی برش اول](https://github.com/mbaneshi/bonyad/blob/dev/docs/superpowers/specs/2026-10-21-first-slice-design.md)
-پیش‌نویس است و [سوابق تصمیم](https://github.com/mbaneshi/bonyad/blob/dev/docs/decisions/0001-first-slice-decisions.md)
-پیشنهادی‌اند، نه پذیرفته‌شده. عمداً راهنمای شروع سریع نداریم؛ این بخش وقتی عوض می‌شود
-که برش اول اجرا شود.
+و [سوابق تصمیم](https://github.com/mbaneshi/bonyad/blob/dev/docs/decisions/0001-first-slice-decisions.md)
+همچنان اسناد تاریخچهٔ طراحی‌اند؛ برچسب «پیش‌نویس» یا «پیشنهادی» وضعیت بررسی سند را
+نشان می‌دهد، نه وضعیت پیاده‌سازی برش اول.
 
 برش اول نقطه، خط و سطح است، از ابتدا تا انتها (پایگاه‌داده ← Rust ← React ← ویرایش ←
 ذخیره ← بارگذاری دوباره)، که هم انسان و هم عامل هوش مصنوعی با همان عملیات آن را

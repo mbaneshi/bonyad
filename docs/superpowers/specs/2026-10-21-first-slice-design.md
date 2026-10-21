@@ -1,7 +1,9 @@
 # First slice — a small working drawing workspace (design)
 
-Status: **draft**, aligned on 2026-10-21 with the owner's reduced scope. Nothing
-below is built yet. Choices marked *(working assumption)* follow the drafter's
+Status: **draft**, aligned on 2026-10-21 with the owner's reduced scope. The design
+describes Milestone 1, which is now implemented through the database, Rust API,
+React UI, Bun agent, browser tests and CI. The automated agent path uses a scripted
+provider; a real-provider smoke run remains the final acceptance gap. Choices marked *(working assumption)* follow the drafter's
 recommendations in [RFC #5](https://github.com/mbaneshi/bonyad/discussions/5) and
 stay reversible until the owner resolves them there.
 
