@@ -67,3 +67,4 @@ Decisions needed from the founder: none for this batch. Section 6 of
 | [`prior-art/inventory.md`](prior-art/inventory.md) | Cross-discipline inventory of formats and implementations |
 | [`mappings/point-line-surface.md`](mappings/point-line-surface.md) | Mapping to the current slice |
 | [`proposals/next-batch.md`](proposals/next-batch.md) | Adoption recommendations, experiments, next batch |
+| [`landscape/engineering-landscape-and-primitives.md`](landscape/engineering-landscape-and-primitives.md) | Batch 2: cross-discipline landscape, shared concepts, evidence-backed primitive candidates, boundary mappings, experiments |
