@@ -1,0 +1,36 @@
+#!/bin/sh
+# Create the untracked `.env` for the local stack. Refuses to overwrite an existing one.
+#   scripts/gen-env
+set -eu
+
+root=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
+cd "$root"
+
+if [ -e .env ]; then
+  echo "✗ .env already exists; leaving it alone. Delete it first to regenerate." >&2
+  exit 1
+fi
+
+cp infra/supabase/.env.example .env
+# The upstream generator prints every secret to stdout; keep them out of terminal history.
+sh infra/supabase/utils/generate-keys.sh --update-env >/dev/null
+rm -f .env.old
+
+# Point the public URLs at our shifted gateway port.
+sed -i.bak \
+  -e 's|^SUPABASE_PUBLIC_URL=.*|SUPABASE_PUBLIC_URL=http://localhost:58000|' \
+  -e 's|^API_EXTERNAL_URL=.*|API_EXTERNAL_URL=http://localhost:58000/auth/v1|' \
+  .env
+rm -f .env.bak
+
+# Bonyad-specific values. A trailing newline first, then drop the port from the
+# upstream value so ours (below) is the only one.
+sed -i.bak -e '/^API_GW_HTTP_PORT=/d' .env && rm -f .env.bak
+printf '\n' >> .env
+cat .env.example >> .env
+# Upstream leaves values with spaces unquoted. Docker accepts that; stricter dotenv
+# parsers (sqlx-cli, the Rust server) do not. Quote them; the values do not change.
+awk '/^[A-Za-z_][A-Za-z0-9_]*=[^"'"'"'].* / && !/#/ { i = index($0, "="); print substr($0, 1, i) "\"" substr($0, i + 1) "\""; next } { print }' .env > .env.tmp && mv .env.tmp .env
+chmod 600 .env
+
+echo "✓ wrote .env (mode 600). Studio login: user and password are in .env (DASHBOARD_*)."

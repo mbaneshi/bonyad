@@ -3,3 +3,10 @@
 
 # branch-rules: per-issue worktrees
 .worktrees/
+
+# local stack: secrets and runtime data (never commit)
+.env
+.env.old
+infra/supabase/volumes/db/data/
+infra/supabase/volumes/storage/
+infra/supabase/volumes/snippets/
