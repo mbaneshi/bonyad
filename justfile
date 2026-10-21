@@ -89,3 +89,7 @@ agent: needs-db
 # Opt-in: one REAL Anthropic stream through both scenarios. Spends a little money.
 agent-smoke: needs-db
     cd agent && bun install --frozen-lockfile && bun test/smoke.ts
+
+# Agent service with a SCRIPTED model (agent/demo): watch the agent path without an API key.
+agent-demo: needs-db
+    cd agent && bun install --frozen-lockfile && BONYAD_FAKE_SCRIPT=demo/scenarios.json bun src/main.ts
