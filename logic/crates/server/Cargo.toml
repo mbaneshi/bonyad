@@ -1,0 +1,38 @@
+[package]
+name = "bonyad-server"
+version = "0.0.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "The Bonyad HTTP API: the seven operations over validated geometry."
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "bonyad-server"
+path = "src/main.rs"
+
+# Prints the OpenAPI document; `just openapi` writes it to contracts/openapi.json.
+[[bin]]
+name = "bonyad-openapi"
+path = "src/bin/openapi.rs"
+
+[dependencies]
+bonyad-geometry = { workspace = true, features = ["openapi"] }
+bonyad-persistence.workspace = true
+axum.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+time.workspace = true
+tokio.workspace = true
+tower-http.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+utoipa.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+http-body-util.workspace = true
+sqlx.workspace = true
+tower.workspace = true

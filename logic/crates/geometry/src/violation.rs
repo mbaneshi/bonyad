@@ -7,6 +7,7 @@ use serde::{Deserialize, Serialize};
 /// Stable codes. The server maps these to the `violations[].code` field of its
 /// problem+json errors, and the UI maps them to localized messages. Do not rename.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 #[serde(rename_all = "snake_case")]
 pub enum ViolationCode {
     /// A coordinate is NaN or infinite.
@@ -41,6 +42,7 @@ impl ViolationCode {
 /// `path` locates the offending part inside the geometry, for example `x`, `b`,
 /// `vertices[2].y` or `vertices`. It is empty when the whole value is at fault.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[cfg_attr(feature = "openapi", derive(utoipa::ToSchema))]
 pub struct Violation {
     pub code: ViolationCode,
     pub path: String,

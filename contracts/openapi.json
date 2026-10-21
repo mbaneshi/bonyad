@@ -1,0 +1,852 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bonyad API",
+    "description": "Point, line and surface: the first slice.",
+    "license": {
+      "name": "LicenseRef-Undecided",
+      "identifier": "LicenseRef-Undecided"
+    },
+    "version": "0.0.0"
+  },
+  "paths": {
+    "/healthz": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Liveness plus a database check.",
+        "operationId": "healthz",
+        "responses": {
+          "200": {
+            "description": "Running, database reachable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Database unavailable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/entities/{id}": {
+      "delete": {
+        "tags": [
+          "entities"
+        ],
+        "summary": "`DeleteEntity`.",
+        "operationId": "delete_entity",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Entity id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/entities/{id}/geometry": {
+      "put": {
+        "tags": [
+          "entities"
+        ],
+        "summary": "`UpdateGeometry`: replace the geometry of an entity with one of the same kind.",
+        "operationId": "update_geometry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Entity id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Geometry"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityView"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_geometry (including kind_mismatch)",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/entities/{id}/measure": {
+      "get": {
+        "tags": [
+          "entities"
+        ],
+        "summary": "`MeasureEntity`: a line's length, or a surface's area and perimeter, in project units.",
+        "operationId": "measure_entity",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Entity id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeasureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "not_measurable (a point)",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/lines": {
+      "post": {
+        "tags": [
+          "entities"
+        ],
+        "summary": "`CreateLine`.",
+        "operationId": "create_line",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLineRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The same id and content already existed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityView"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityView"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "id_in_use",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_geometry",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/points": {
+      "post": {
+        "tags": [
+          "entities"
+        ],
+        "summary": "`CreatePoint`.",
+        "operationId": "create_point",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePointRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The same id and content already existed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityView"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityView"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "id_in_use",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_geometry",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/project": {
+      "get": {
+        "tags": [
+          "project"
+        ],
+        "summary": "`GetProject`: the project and every entity with its geometry.",
+        "operationId": "get_project",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "No project seeded",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/surfaces": {
+      "post": {
+        "tags": [
+          "entities"
+        ],
+        "summary": "`CreateSurface`.",
+        "operationId": "create_surface",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSurfaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The same id and content already existed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityView"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityView"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "id_in_use",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_geometry",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateLineRequest": {
+        "type": "object",
+        "required": [
+          "a",
+          "b"
+        ],
+        "properties": {
+          "a": {
+            "$ref": "#/components/schemas/Point2"
+          },
+          "b": {
+            "$ref": "#/components/schemas/Point2"
+          },
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePointRequest": {
+        "type": "object",
+        "description": "`id` is optional. Supplying it makes a retried request harmless: the same id with the same\ncontent returns the existing entity (200), and the same id with different content is\n`id_in_use` (409).",
+        "required": [
+          "x",
+          "y"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x": {
+            "type": "number",
+            "format": "double"
+          },
+          "y": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSurfaceRequest": {
+        "type": "object",
+        "description": "The ring is open (`A, B, C`); the closing edge is implied.",
+        "required": [
+          "vertices"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vertices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Point2"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "EntityView": {
+        "type": "object",
+        "required": [
+          "id",
+          "geometry",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "description": "RFC 3339."
+          },
+          "geometry": {
+            "$ref": "#/components/schemas/Geometry",
+            "description": "Tagged by `kind`: `point`, `line` or `surface`."
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "RFC 3339."
+          }
+        }
+      },
+      "Geometry": {
+        "oneOf": [
+          {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Point2"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "kind"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "point"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LineGeometry"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "kind"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "line"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SurfaceGeometry"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "kind"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "surface"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "description": "A geometry of any kind. Serializes with a `kind` tag, for example\n`{\"kind\":\"point\",\"x\":1.0,\"y\":1.0}`."
+      },
+      "Health": {
+        "type": "object",
+        "required": [
+          "status",
+          "database"
+        ],
+        "properties": {
+          "database": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "LineGeometry": {
+        "type": "object",
+        "description": "A straight segment that owns its two endpoints.",
+        "required": [
+          "a",
+          "b"
+        ],
+        "properties": {
+          "a": {
+            "$ref": "#/components/schemas/Point2"
+          },
+          "b": {
+            "$ref": "#/components/schemas/Point2"
+          }
+        }
+      },
+      "MeasureResponse": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "entity_id",
+              "length",
+              "unit",
+              "kind"
+            ],
+            "properties": {
+              "entity_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "line"
+                ]
+              },
+              "length": {
+                "type": "number",
+                "format": "double"
+              },
+              "unit": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "entity_id",
+              "area",
+              "area_unit",
+              "perimeter",
+              "unit",
+              "kind"
+            ],
+            "properties": {
+              "area": {
+                "type": "number",
+                "format": "double"
+              },
+              "area_unit": {
+                "type": "string"
+              },
+              "entity_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "surface"
+                ]
+              },
+              "perimeter": {
+                "type": "number",
+                "format": "double"
+              },
+              "unit": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "description": "What a measurement returns, tagged by `kind`. Units come from the project."
+      },
+      "Point2": {
+        "type": "object",
+        "description": "A 2D point in the project's local Cartesian frame.",
+        "required": [
+          "x",
+          "y"
+        ],
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double"
+          },
+          "y": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "Problem": {
+        "type": "object",
+        "description": "The error body. `code` is the stable string to branch on; `title` and `detail` are for\npeople. Geometry failures list every violation with a path, so they can be fixed in one pass.",
+        "required": [
+          "type",
+          "title",
+          "status",
+          "code"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "detail": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "description": "Always `about:blank`: the `code` carries the meaning."
+          },
+          "violations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Violation"
+            }
+          }
+        }
+      },
+      "ProjectResponse": {
+        "type": "object",
+        "required": [
+          "project",
+          "entities"
+        ],
+        "properties": {
+          "entities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntityView"
+            }
+          },
+          "project": {
+            "$ref": "#/components/schemas/ProjectView"
+          }
+        }
+      },
+      "ProjectView": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "unit",
+          "frame"
+        ],
+        "properties": {
+          "frame": {
+            "type": "string",
+            "description": "The coordinate frame (`local-cartesian`)."
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string",
+            "description": "The length unit of every coordinate (`m`)."
+          }
+        }
+      },
+      "SurfaceGeometry": {
+        "type": "object",
+        "description": "A planar polygon that owns its ordered boundary.\n\nThe ring is **open**: it lists `A, B, C`, not `A, B, C, A`. The closing edge from the\nlast vertex back to the first is implied. No holes, no curves.",
+        "required": [
+          "vertices"
+        ],
+        "properties": {
+          "vertices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Point2"
+            }
+          }
+        }
+      },
+      "Violation": {
+        "type": "object",
+        "description": "One rule that a geometry breaks.\n\n`path` locates the offending part inside the geometry, for example `x`, `b`,\n`vertices[2].y` or `vertices`. It is empty when the whole value is at fault.",
+        "required": [
+          "code",
+          "path",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ViolationCode"
+          },
+          "message": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        }
+      },
+      "ViolationCode": {
+        "type": "string",
+        "description": "Stable codes. The server maps these to the `violations[].code` field of its\nproblem+json errors, and the UI maps them to localized messages. Do not rename.",
+        "enum": [
+          "non_finite_coordinate",
+          "zero_length_line",
+          "too_few_vertices",
+          "degenerate_surface",
+          "self_intersecting_surface",
+          "kind_mismatch"
+        ]
+      }
+    }
+  }
+}

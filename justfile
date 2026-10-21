@@ -1,8 +1,14 @@
 set shell := ["bash", "-euo", "pipefail", "-c"]
 set dotenv-load := false
 
+# The stack (up/down/reset) runs from the MAIN checkout only: its .env holds the generated
+# secrets and its volumes/ holds the database. Worktrees are disposable (merging a pull
+# request with --delete-branch removes them, untracked files included), so they must never
+# hold either. The Rust recipes work from any worktree: they find the main checkout's .env.
 compose := "docker compose -p bonyad --env-file .env --project-directory infra/supabase -f infra/supabase/docker-compose.yml -f infra/compose.yaml"
-dburl   := "postgres://postgres:$(grep ^POSTGRES_PASSWORD= .env | cut -d= -f2-)@127.0.0.1:$(grep ^BONYAD_DB_PORT= .env | cut -d= -f2-)/postgres"
+
+# Connection string for the local database, built from .env (empty if there is none yet).
+export DATABASE_URL := `f="$(if [ -f .env ]; then echo .env; else echo "$(dirname "$(git rev-parse --git-common-dir)")/.env"; fi)"; [ -f "$f" ] || exit 0; pw="$(grep '^POSTGRES_PASSWORD=' "$f" | cut -d= -f2- | tr -d '"')"; port="$(grep '^BONYAD_DB_PORT=' "$f" | cut -d= -f2- | tr -d '"')"; printf 'postgres://postgres:%s@127.0.0.1:%s/postgres' "$pw" "$port"`
 
 default:
     @just --list
@@ -27,9 +33,13 @@ down:
 ps:
     {{compose}} ps
 
+[private]
+needs-db:
+    @[ -n "$DATABASE_URL" ] || { echo "no .env found. In the main checkout run: just env && just up" >&2; exit 1; }
+
 # Apply db/migrations to the database (the only schema history).
-migrate:
-    sqlx migrate run --source db/migrations --database-url "{{dburl}}"
+migrate: needs-db
+    sqlx migrate run --source db/migrations
 
 # Load db/seeds (the single project row). Safe to repeat.
 seed:
@@ -46,3 +56,15 @@ reset:
     just up
     just migrate
     just seed
+
+# Rust: formatting, lints, and every test (the tests run against the real local database).
+logic-check: needs-db
+    cd logic && cargo fmt --check && cargo clippy --all-targets -- -D warnings && cargo test
+
+# Run the API on 127.0.0.1:58080 (set BONYAD_BIND to change; non-loopback is refused).
+serve: needs-db
+    cd logic && cargo run -p bonyad-server
+
+# Regenerate contracts/openapi.json after an intentional API change, then commit it.
+openapi:
+    cd logic && UPDATE_CONTRACT=1 cargo test -p bonyad-server --test contract
