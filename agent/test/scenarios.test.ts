@@ -107,7 +107,7 @@ describe("scenario 1: create, measure, answer", () => {
     const p1 = new FakeProvider(scenario1);
     const first = await run(p1, "scenario 1");
     const p2 = new FakeProvider([
-      { tools: [{ name: "update_geometry", input: { entity_id: surfaceId, geometry: { kind: "surface", vertices: [A, { x: 8, y: 0 }, C] } }, id: "toolu_move" }] },
+      { tools: [{ name: "update_geometry", input: { entity_id: surfaceId, expected_revision: 0, geometry: { kind: "surface", vertices: [A, { x: 8, y: 0 }, C] } }, id: "toolu_move" }] },
       { tools: [{ name: "measure_entity", input: { entity_id: surfaceId }, id: "toolu_m3" }] },
       { text: "The area is now 12 m²." },
     ]);

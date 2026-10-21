@@ -37,8 +37,8 @@ export function createApi(fetchImpl?: typeof fetch) {
       }
     },
 
-    updateGeometry: (id: string, g: Geometry) =>
-      call(() => client.PUT("/v1/entities/{id}/geometry", { params: { path: { id } }, body: g })),
+    updateGeometry: (id: string, g: Geometry, expectedRevision: number) =>
+      call(() => client.PUT("/v1/entities/{id}/geometry", { params: { path: { id } }, body: { expected_revision: expectedRevision, geometry: g } })),
 
     deleteEntity: (id: string) =>
       call(() => client.DELETE("/v1/entities/{id}", { params: { path: { id } } })),

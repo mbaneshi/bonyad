@@ -240,7 +240,11 @@ export interface components {
          */
         Problem: {
             code: string;
+            /** Format: int64 */
+            current_revision?: number | null;
             detail?: string | null;
+            /** Format: int64 */
+            expected_revision?: number | null;
             /** Format: int32 */
             status: number;
             title: string;
@@ -258,6 +262,11 @@ export interface components {
             /** Format: uuid */
             id: string;
             name: string;
+            /**
+             * Format: int64
+             * @description Monotonically increasing accepted project revision.
+             */
+            revision: number;
             /** @description The length unit of every coordinate (`m`). */
             unit: string;
         };
@@ -269,6 +278,12 @@ export interface components {
          */
         SurfaceGeometry: {
             vertices: components["schemas"]["Point2"][];
+        };
+        /** @description A geometry replacement is accepted only against the caller's observed project revision. */
+        UpdateGeometryRequest: {
+            /** Format: int64 */
+            expected_revision: number;
+            geometry: components["schemas"]["Geometry"];
         };
         /**
          * @description One rule that a geometry breaks.
@@ -367,7 +382,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["Geometry"];
+                "application/json": components["schemas"]["UpdateGeometryRequest"];
             };
         };
         responses: {

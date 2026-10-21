@@ -44,7 +44,8 @@ describe("tools vs contracts/openapi.json", () => {
   });
 
   test("update_geometry accepts exactly the kinds the API's Geometry accepts", () => {
-    const api = resolveRef(spec.paths["/v1/entities/{id}/geometry"].put.requestBody.content["application/json"].schema);
+    const request = resolveRef(spec.paths["/v1/entities/{id}/geometry"].put.requestBody.content["application/json"].schema);
+    const api = resolveRef(request.properties.geometry);
     const apiKinds = api.oneOf.map((o: any) => o.allOf.find((p: any) => p.properties?.kind).properties.kind.enum[0]).sort();
     const def = toolDefinitions().find((t) => t.name === "update_geometry")!;
     const toolKinds = (def.input_schema as any).properties.geometry.anyOf.map((o: any) => o.properties.kind.const).sort();

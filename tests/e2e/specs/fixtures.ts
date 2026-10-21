@@ -10,6 +10,11 @@ export const test = base.extend<{ clean: void }>({
     async ({}, use) => {
       const sql = postgres(e2eDatabaseUrl(), { max: 1 });
       await sql`delete from bonyad.entities`;
+      await sql`delete from bonyad.revisions`;
+      await sql`update bonyad.projects set current_revision = 0`;
+      await sql`insert into bonyad.revisions (project_id, revision, operation)
+        select id, 0, 'initial' from bonyad.projects
+        on conflict do nothing`;
       await sql`delete from agent.conversations`;
       await sql.end();
       await use();
