@@ -37,7 +37,7 @@ Full text: [manifesto](https://github.com/mbaneshi/bonyad/blob/dev/docs/manifest
 | Data | PostgreSQL through a full self-hosted Supabase (Auth, Storage, Realtime, Studio, Edge Functions), Dockerized |
 | Logic | Rust: API and engineering computation |
 | UI | React + TypeScript, Persian/RTL and mobile-first |
-| Agent | TypeScript service on the Anthropic SDK, with tools generated from the Rust API contract |
+| Agent | TypeScript (Bun) service on the Anthropic SDK; its tools call the same API operations as the UI, checked by a contract test |
 
 ## Status
 
@@ -49,7 +49,9 @@ when the first slice runs.
 
 The first slice is point, line and surface, end to end (database → Rust → React →
 edit → persist → reload), driven both by a person and by an AI agent through the same
-operations. Expected: length 4 and area 6; move B to (8, 0) and get 8 and 12.
+operations. Expected: a line from (0, 0) to (4, 0) has length 4 and a surface with
+vertices (0, 0), (4, 0), (0, 3) has area 6; moving the vertex (4, 0) to (8, 0) gives
+area 12, and the state survives a reload.
 
 ## Contributing
 
@@ -105,7 +107,7 @@ is granted.
 | داده | PostgreSQL از طریق Supabase کامل و خودمیزبان (Auth، Storage، Realtime، Studio، Edge Functions) در Docker |
 | منطق | Rust: API و هستهٔ محاسبات مهندسی |
 | رابط | React و TypeScript، فارسی، راست‌به‌چپ و موبایل‌محور |
-| عامل | سرویس TypeScript روی SDK رسمی Anthropic، با ابزارهایی که از قرارداد API در Rust تولید می‌شوند |
+| عامل | سرویس TypeScript (با Bun) روی SDK رسمی Anthropic؛ ابزارهایش همان عملیات API رابط کاربری را فرا می‌خوانند و با یک آزمون قرارداد بررسی می‌شوند |
 
 ### وضعیت
 
@@ -117,8 +119,9 @@ is granted.
 
 برش اول نقطه، خط و سطح است، از ابتدا تا انتها (پایگاه‌داده ← Rust ← React ← ویرایش ←
 ذخیره ← بارگذاری دوباره)، که هم انسان و هم عامل هوش مصنوعی با همان عملیات آن را
-می‌رانند. نتیجهٔ مورد انتظار: طول <bdi>4</bdi> و مساحت <bdi>6</bdi>؛ با جابه‌جایی B به
-<bdi>(8, 0)</bdi> می‌شود <bdi>8</bdi> و <bdi>12</bdi>.
+می‌رانند. نتیجهٔ مورد انتظار: خطی از <bdi>(0, 0)</bdi> تا <bdi>(4, 0)</bdi> طول <bdi>4</bdi> دارد و
+سطحی با رأس‌های <bdi>(0, 0)</bdi>، <bdi>(4, 0)</bdi>، <bdi>(0, 3)</bdi> مساحت <bdi>6</bdi>؛ با جابه‌جایی
+رأس <bdi>(4, 0)</bdi> به <bdi>(8, 0)</bdi> مساحت <bdi>12</bdi> می‌شود و وضعیت پس از بارگذاری دوباره حفظ می‌شود.
 
 ### مشارکت
 

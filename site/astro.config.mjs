@@ -36,7 +36,10 @@ export default defineConfig({
         {
           label: 'Decisions',
           translations: { fa: 'تصمیم‌ها' },
-          items: [{ slug: 'decisions/0001-first-slice-decisions' }],
+          items: [
+            { slug: 'decisions/0001-first-slice-decisions' },
+            { slug: 'decisions/0002-reduced-first-slice' },
+          ],
         },
         {
           label: 'Project',

@@ -43,7 +43,7 @@ function mustContain(path, needle, why) {
 mustContain('index.html', 'lang="en"', 'English landing must be lang="en"');
 mustContain('fa/index.html', 'dir="rtl"', 'Persian landing must be dir="rtl"');
 mustContain('fa/index.html', 'lang="fa"', 'Persian landing must be lang="fa"');
-for (const p of ['manifesto', 'specs/first-slice-design', 'decisions/0001-first-slice-decisions', 'contributing', 'roadmap']) {
+for (const p of ['manifesto', 'specs/first-slice-design', 'decisions/0001-first-slice-decisions', 'decisions/0002-reduced-first-slice', 'contributing', 'roadmap']) {
   mustContain(`${p}/index.html`, '<title>', 'page not built');
 }
 

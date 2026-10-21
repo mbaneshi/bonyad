@@ -39,6 +39,15 @@ const pages = [
     order: 1,
   },
   {
+    src: 'docs/decisions/0002-reduced-first-slice.md',
+    dest: 'decisions/0002-reduced-first-slice.md',
+    title: 'ADR 0002: reduced first slice and layout',
+    description: 'The owner-directed reduction of the first milestone, and the agreed repository layout.',
+    badge: { text: 'Proposed', variant: 'caution' },
+    banner: 'This decision is proposed. It has not been accepted yet.',
+    order: 2,
+  },
+  {
     src: 'CONTRIBUTING.md',
     dest: 'contributing.md',
     description: 'How work is organised: issues, worktrees, pull requests into dev, and releases.',
@@ -47,11 +56,23 @@ const pages = [
   },
 ];
 
+// Relative links between synced documents become site URLs; anything else is left
+// untouched (the link validator then flags a genuinely broken link at build time).
+const siteUrl = (dest) => `/bonyad/${dest.replace(/\.md$/, '')}/`;
+const bySource = new Map(pages.map((p) => [resolve(repo, p.src), siteUrl(p.dest)]));
+function rewriteLinks(markdown, srcPath) {
+  return markdown.replace(/\]\(([^)#\s]+\.md)(#[^)\s]*)?\)/g, (whole, target, hash = '') => {
+    if (/^[a-z]+:/i.test(target)) return whole;
+    const resolved = resolve(dirname(resolve(repo, srcPath)), target);
+    return bySource.has(resolved) ? `](${bySource.get(resolved)}${hash})` : whole;
+  });
+}
+
 for (const p of pages) {
   const raw = readFileSync(resolve(repo, p.src), 'utf8');
   const h1 = raw.match(/^# (.+)\n/);
   if (!h1) throw new Error(`${p.src}: expected a top-level "# Title" on the first line`);
-  const body = raw.slice(h1[0].length).replace(/^\n+/, '');
+  const body = rewriteLinks(raw.slice(h1[0].length).replace(/^\n+/, ''), p.src);
 
   const fm = [
     '---',

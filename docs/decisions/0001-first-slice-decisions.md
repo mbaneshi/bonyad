@@ -1,6 +1,9 @@
 # ADR 0001 — First-slice decisions
 
-Date: 2026-10-21 · Status: proposed (founder review pending)
+Date: 2026-10-21 · Status: proposed (founder review pending) ·
+**Partly superseded by [ADR 0002](0002-reduced-first-slice.md)**: rows 2, 3, 6, 11,
+13 and 14 (and the token-forwarding part of row 10) are deferred or replaced by the
+reduced single-user, current-state scope. The remaining rows stand.
 
 Context: see `docs/superpowers/specs/2026-10-21-first-slice-design.md`.
 
