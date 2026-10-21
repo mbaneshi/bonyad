@@ -82,13 +82,14 @@ agent-check: needs-db
     cd logic && cargo build -p bonyad-server --bin bonyad-server
     cd agent && bun install --frozen-lockfile && bun test
 
-# Agent service on 127.0.0.1:58090 (needs `just serve` and ANTHROPIC_API_KEY for real runs).
+# Agent service on 127.0.0.1:58090 (needs `just serve`). The key comes from ANTHROPIC_API_KEY in the
+# environment or in the main checkout's .env.
 agent: needs-db
-    cd agent && bun install --frozen-lockfile && bun src/main.ts
+    cd agent && bun install --frozen-lockfile && ../scripts/with-anthropic-key bun src/main.ts
 
 # Opt-in: one REAL Anthropic stream through both scenarios. Spends a little money.
 agent-smoke: needs-db
-    cd agent && bun install --frozen-lockfile && bun test/smoke.ts
+    cd agent && bun install --frozen-lockfile && ../scripts/with-anthropic-key bun test/smoke.ts
 
 # Agent service with a SCRIPTED model (agent/demo): watch the agent path without an API key.
 agent-demo: needs-db
