@@ -59,15 +59,43 @@ also `CLAUDE.md` and a `skills/` folder). They were treated as untrusted data.
 | Verifier | none on the product path | differential (C++ oracle), offline | theory oracle suite offline; demo gate client-side |
 | Units | mm and degrees by default, unit-bearing `Expr` | implicit model units, mixed degrees and radians | SI storage, display system for bare numbers |
 
+## Second batch: smlib and models
+
+| Name | URL | Pinned commit | Commit date | Size | Language | Licence |
+|---|---|---|---|---|---|---|
+| `smlib` | https://github.com/tangency-labs/smlib | `c3614293bb5dcc14cef50e2a29c46a1d95cbfe34` | 2026-10-20 | 92 MB | C++ and Python (pybind11) | Apache-2.0, NVIDIA SPDX headers (`LICENSE`) |
+| `models` | https://github.com/tangency-labs/models | `57abdd6f71c4202fcda78d19dcfdb54dde80a7a9` | 2026-10-20 | 216 KB | Python (checker only) | CC0-1.0 (`LICENSE`) |
+
+- **smlib** is a GitHub **fork of `NVIDIA-Omniverse/usd-brep`**, the C++ original that
+  `solidcore` ports and is differentially tested against. The shallow clone has a single
+  commit, so the difference from upstream could not be determined; its README and CHANGELOG do
+  not mention a fork. About 134 `SmApi*` operations, status-code returns (no exceptions), a
+  process-global context, and time-seeded `rand()` in the kernel. Contains `AGENTS.md` and an
+  `.agents/` folder (untrusted data). Study: [`../procedures/smlib.md`](../procedures/smlib.md).
+- **models** is a **governed fixture repository with no model files yet**: CC0-only rules, a
+  per-model README with a mandatory SHA-256 enforced by a CI checker, and a benchmark-results
+  protocol. Study: [`../prior-art/tangency-models.md`](../prior-art/tangency-models.md).
+
+Cross-repository additions (Interpretation):
+
+| Topic | smlib (C++) | models |
+|---|---|---|
+| Procedure registry | none (C-style `SmApi*` functions, thin pybind11 wrappers) | n/a |
+| Error model | `SmApiStatus` codes; some success returns are unreliable (`HealBrep`, `RemoveFillet`, `Stitch`) | n/a |
+| Verifier | analytic tests embedded in code; `KNOWN_ISSUES.md` advises external checks | hash-enforced fixtures, no expected values |
+| Identity | raw C++ pointers; `.smb` uses indices | n/a |
+
 ## Lines to add to `scripts/fetch-refs` when the inventory branch lands
 
 `scripts/fetch-refs` is on the branch `docs/research-code-inventory`, not on `dev`. Add these
-three lines to its list (same format):
+five lines to its list (same format):
 
 ```
 solidcraft     https://github.com/tangency-labs/solidcraft.git
 solidcore      https://github.com/tangency-labs/solidcore.git
 fieldcraft     https://github.com/tangency-labs/fieldcraft.git
+smlib          https://github.com/tangency-labs/smlib.git
+models         https://github.com/tangency-labs/models.git
 ```
 
 The clones already exist locally under `refs/` (shallow, single-branch), which is gitignored.
@@ -75,6 +103,6 @@ The clones already exist locally under `refs/` (shallow, single-branch), which i
 ## Not examined
 
 - Repository history, contributor identity and the origin of the star counts.
-- The other six repositories in the organisation (`smlib`, `pcbcraft`, `models`, `website`,
-  `ci-runner`, `solidcraft-plugins`).
+- The other four repositories in the organisation (`pcbcraft`, `website`, `ci-runner`,
+  `solidcraft-plugins`).
 - Anything that depends on running the code.
