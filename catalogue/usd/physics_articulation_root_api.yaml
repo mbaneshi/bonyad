@@ -1,0 +1,15 @@
+code: usd.physics_articulation_root_api
+name: PhysicsArticulationRootAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsArticulationRootAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: PhysicsArticulationRootAPI can be applied to a scene graph node, and marks the subtree rooted here for inclusion in one or more reduced coordinate articulations. For floating articulations, this should be on the root body.
+fields: []
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

@@ -1,0 +1,115 @@
+code: usd.camera
+name: Camera
+kind: entity
+base: usd.xformable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Camera
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Transformable camera. Describes optical properties of a camera via a common set of attributes that provide control over the camera's frustum as well as its depth of field.
+fields:
+  - name: projection
+    type: enum
+    default: perspective
+    meaning: "Property projection (no description in schema.usda). Varying: may carry time samples (animatable)."
+    source_ref: token projection
+    values:
+      - value: perspective
+        meaning: The token "perspective" (the schema gives no per-value description).
+      - value: orthographic
+        meaning: The token "orthographic" (the schema gives no per-value description).
+  - name: horizontal_aperture
+    type: float
+    default: 20.955
+    meaning: "Horizontal aperture in tenths of a scene unit; see UsdGeom_CameraUnits . Varying: may carry time samples (animatable)."
+    source_ref: float horizontalAperture
+  - name: vertical_aperture
+    type: float
+    default: 15.2908
+    meaning: "Vertical aperture in tenths of a scene unit; see UsdGeom_CameraUnits . Varying: may carry time samples (animatable)."
+    source_ref: float verticalAperture
+  - name: horizontal_aperture_offset
+    type: float
+    default: 0
+    meaning: "Horizontal aperture offset in the same units as horizontalAperture. Varying: may carry time samples (animatable)."
+    source_ref: float horizontalApertureOffset
+  - name: vertical_aperture_offset
+    type: float
+    default: 0
+    meaning: "Vertical aperture offset in the same units as verticalAperture. Varying: may carry time samples (animatable)."
+    source_ref: float verticalApertureOffset
+  - name: focal_length
+    type: float
+    default: 50
+    meaning: "Perspective focal length in tenths of a scene unit; see UsdGeom_CameraUnits . Varying: may carry time samples (animatable)."
+    source_ref: float focalLength
+  - name: clipping_range
+    type: point2
+    default:
+      - 1
+      - 1000000
+    meaning: "Near and far clipping distances in scene units; see UsdGeom_CameraUnits . Varying: may carry time samples (animatable)."
+    source_ref: float2 clippingRange
+  - name: f_stop
+    type: float
+    default: 0
+    meaning: "Lens aperture. Varying: may carry time samples (animatable)."
+    source_ref: float fStop
+  - name: focus_distance
+    type: float
+    default: 0
+    meaning: "Distance from the camera to the focus plane in scene units; see UsdGeom_CameraUnits . Varying: may carry time samples (animatable)."
+    source_ref: float focusDistance
+  - name: stereo_role
+    type: enum
+    default: mono
+    meaning: "If different from mono, the camera is intended to be the left or right camera of a stereo setup. Uniform: one value, not time-sampled."
+    source_ref: uniform token stereoRole
+    values:
+      - value: mono
+        meaning: The token "mono" (the schema gives no per-value description).
+      - value: left
+        meaning: The token "left" (the schema gives no per-value description).
+      - value: right
+        meaning: The token "right" (the schema gives no per-value description).
+  - name: shutter_open
+    type: float
+    default: 0
+    meaning: "Frame relative shutter open time in UsdTimeCode units (negative value indicates that the shutter opens before the current frame time). Varying: may carry time samples (animatable)."
+    source_ref: double shutter:open
+  - name: shutter_close
+    type: float
+    default: 0
+    meaning: "Frame relative shutter close time, analogous comments from shutter:open apply. Varying: may carry time samples (animatable)."
+    source_ref: double shutter:close
+  - name: exposure
+    type: float
+    default: 0
+    meaning: "Exposure compensation, as a log base-2 value. Varying: may carry time samples (animatable)."
+    source_ref: float exposure
+  - name: exposure_iso
+    type: float
+    default: 100
+    meaning: "The speed rating of the sensor or film when calculating exposure. Varying: may carry time samples (animatable)."
+    source_ref: float exposure:iso
+  - name: exposure_time
+    type: float
+    default: 1
+    meaning: "Time in seconds that the sensor is exposed to light when calculating exposure. Varying: may carry time samples (animatable)."
+    source_ref: float exposure:time
+  - name: exposure_f_stop
+    type: float
+    default: 1
+    meaning: "f-stop of the aperture when calculating exposure. Varying: may carry time samples (animatable)."
+    source_ref: float exposure:fStop
+  - name: exposure_responsivity
+    type: float
+    default: 1
+    meaning: "Scalar multiplier representing overall responsivity of the sensor system to light when calculating exposure. Varying: may carry time samples (animatable)."
+    source_ref: float exposure:responsivity
+needs_review: true
+notes: "Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). Review: property projection has no doc."

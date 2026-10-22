@@ -1,0 +1,25 @@
+code: usd.scene_graph_prim_api
+name: SceneGraphPrimAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdUI/schema.usda
+  section: class SceneGraphPrimAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdUI/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Utility schema for display properties of a prim
+fields:
+  - name: ui_display_name
+    type: text
+    nullable: true
+    meaning: "When publishing a nodegraph or a material, it can be useful to provide an optional display name, for readability. Uniform: one value, not time-sampled."
+    source_ref: uniform token ui:displayName
+  - name: ui_display_group
+    type: text
+    nullable: true
+    meaning: "When publishing a nodegraph or a material, it can be useful to provide an optional display group, for organizational purposes and readability. Uniform: one value, not time-sampled."
+    source_ref: uniform token ui:displayGroup
+notes: "Defined in pxr/usd/usdUI/schema.usda (module usdUI). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

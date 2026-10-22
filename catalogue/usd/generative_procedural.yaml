@@ -1,0 +1,20 @@
+code: usd.generative_procedural
+name: GenerativeProcedural
+kind: entity
+base: usd.boundable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdProc/schema.usda
+  section: class GenerativeProcedural
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdProc/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Represents an abstract generative procedural prim which delivers its input parameters via properties (including relationships) within the "primvars:" namespace. It does not itself have any awareness or participation in the execution of the procedural but rather serves as a means of delivering a procedural's definition and input parameters.
+fields:
+  - name: procedural_system
+    type: text
+    nullable: true
+    meaning: "The name or convention of the system responsible for evaluating the procedural. Varying: may carry time samples (animatable)."
+    source_ref: token proceduralSystem
+notes: Defined in pxr/usd/usdProc/schema.usda (module usdProc).

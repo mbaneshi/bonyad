@@ -1,0 +1,49 @@
+code: usd.physics_mass_api
+name: PhysicsMassAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsMassAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: ). MassAPI can be applied to any object that has a PhysicsCollisionAPI or a PhysicsRigidBodyAPI, and takes effect only while that collider or rigid body is enabled.
+fields:
+  - name: physics_mass
+    type: float
+    default: 0
+    meaning: "If non-zero, directly specifies the mass of the object. Varying: may carry time samples (animatable)."
+    source_ref: float physics:mass
+  - name: physics_density
+    type: float
+    default: 0
+    meaning: "If non-zero, specifies the density of the object. Varying: may carry time samples (animatable)."
+    source_ref: float physics:density
+  - name: physics_center_of_mass
+    type: point3
+    nullable: true
+    meaning: "Center of mass in the prim's local space. Varying: may carry time samples (animatable)."
+    source_ref: point3f physics:centerOfMass
+  - name: physics_diagonal_inertia
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "If non-zero, specifies diagonalized inertia tensor along the principal axes. Varying: may carry time samples (animatable)."
+    source_ref: float3 physics:diagonalInertia
+  - name: physics_principal_axes
+    type: array
+    default:
+      - 0
+      - 0
+      - 0
+      - 0
+    meaning: "Orientation of the inertia tensor's principal axes in the prim's local space. (quaternion, four floats) Varying: may carry time samples (animatable)."
+    source_ref: quatf physics:principalAxes
+    of: float
+needs_review: true
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own. Review: physics:principalAxes: component order of the quaternion is not stated in schema.usda."

@@ -1,0 +1,52 @@
+code: usd.physics_rigid_body_api
+name: PhysicsRigidBodyAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsRigidBodyAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Applies physics body attributes to any UsdGeomXformable prim and marks that prim to be driven by a simulation. If a simulation is running it will update this prim's pose.
+fields:
+  - name: physics_rigid_body_enabled
+    type: bool
+    default: true
+    meaning: "Determines if this PhysicsRigidBodyAPI is enabled. Varying: may carry time samples (animatable)."
+    source_ref: bool physics:rigidBodyEnabled
+  - name: physics_kinematic_enabled
+    type: bool
+    default: false
+    meaning: "Determines whether the body is kinematic or not. Varying: may carry time samples (animatable)."
+    source_ref: bool physics:kinematicEnabled
+  - name: physics_simulation_owner
+    type: ref
+    nullable: true
+    meaning: "Single PhysicsScene that will simulate this body. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel physics:simulationOwner
+    ref_to: any
+  - name: physics_starts_asleep
+    type: bool
+    default: false
+    meaning: "Determines if the body is asleep when the simulation starts. Uniform: one value, not time-sampled."
+    source_ref: uniform bool physics:startsAsleep
+  - name: physics_velocity
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "Linear velocity in the same space as the node's xform. Varying: may carry time samples (animatable)."
+    source_ref: vector3f physics:velocity
+  - name: physics_angular_velocity
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "Angular velocity in the same space as the node's xform. Varying: may carry time samples (animatable)."
+    source_ref: vector3f physics:angularVelocity
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

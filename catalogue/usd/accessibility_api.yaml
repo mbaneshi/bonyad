@@ -1,0 +1,37 @@
+code: usd.accessibility_api
+name: AccessibilityAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdUI/schema.usda
+  section: class AccessibilityAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdUI/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: This API describes Accessibility information on a Prim that may be surfaced to a given runtime's accessibility frameworks. This information may be used by assistive tooling such as voice controls or screen readers.
+fields:
+  - name: label
+    type: text
+    nullable: true
+    meaning: "A short label to concisely describe the prim. Varying: may carry time samples (animatable)."
+    source_ref: string accessibility:<instanceName>:label
+  - name: description
+    type: text
+    nullable: true
+    meaning: "An extended description of the prim to provide more details. Varying: may carry time samples (animatable)."
+    source_ref: string accessibility:<instanceName>:description
+  - name: priority
+    type: enum
+    default: standard
+    meaning: "A hint to the accessibility runtime of how to prioritize this instance's label and description, relative to others. Varying: may carry time samples (animatable)."
+    source_ref: token accessibility:<instanceName>:priority
+    values:
+      - value: low
+        meaning: The token "low" (the schema gives no per-value description).
+      - value: standard
+        meaning: The token "standard" (the schema gives no per-value description).
+      - value: high
+        meaning: The token "high" (the schema gives no per-value description).
+notes: 'Defined in pxr/usd/usdUI/schema.usda (module usdUI). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "accessibility:" namespace, followed by an instance name.'

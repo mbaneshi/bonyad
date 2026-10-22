@@ -1,0 +1,49 @@
+code: usd.basis_curves
+name: BasisCurves
+kind: entity
+base: usd.curves
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class BasisCurves
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: BasisCurves are a batched curve representation analogous to the classic RIB definition via Basis and Curves statements. BasisCurves are often used to render dense aggregate geometry like hair or grass.
+fields:
+  - name: type
+    type: enum
+    default: cubic
+    meaning: "Linear curves interpolate linearly between two vertices. Uniform: one value, not time-sampled."
+    source_ref: uniform token type
+    values:
+      - value: linear
+        meaning: The token "linear" (the schema gives no per-value description).
+      - value: cubic
+        meaning: The token "cubic" (the schema gives no per-value description).
+  - name: basis
+    type: enum
+    default: bezier
+    meaning: "The basis specifies the vstep and matrix used for cubic interpolation. Uniform: one value, not time-sampled."
+    source_ref: uniform token basis
+    values:
+      - value: bezier
+        meaning: The token "bezier" (the schema gives no per-value description).
+      - value: bspline
+        meaning: The token "bspline" (the schema gives no per-value description).
+      - value: catmullRom
+        meaning: The token "catmullRom" (the schema gives no per-value description).
+  - name: wrap
+    type: enum
+    default: nonperiodic
+    meaning: "If wrap is set to periodic, the curve when rendered will repeat the initial vertices (dependent on the vstep) to close the curve. Uniform: one value, not time-sampled."
+    source_ref: uniform token wrap
+    values:
+      - value: nonperiodic
+        meaning: The token "nonperiodic" (the schema gives no per-value description).
+      - value: periodic
+        meaning: The token "periodic" (the schema gives no per-value description).
+      - value: pinned
+        meaning: The token "pinned" (the schema gives no per-value description).
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

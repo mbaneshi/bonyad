@@ -1,0 +1,25 @@
+code: usd.hydra_generative_procedural_api
+name: HydraGenerativeProceduralAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdHydra/schema.usda
+  section: class HydraGenerativeProceduralAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdHydra/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: This API extends and configures the core UsdProcGenerativeProcedural schema defined within usdProc for use with hydra generative procedurals as defined within hdGp.
+fields:
+  - name: primvars_hd_gp_procedural_type
+    type: text
+    nullable: true
+    meaning: "The registered name of a HdGpGenerativeProceduralPlugin to be executed. Varying: may carry time samples (animatable)."
+    source_ref: token primvars:hdGp:proceduralType
+  - name: procedural_system
+    type: text
+    default: hydraGenerativeProcedural
+    meaning: "This value should correspond to a configured instance of HdGpGenerativeProceduralResolvingSceneIndex which will evaluate the procedural. Varying: may carry time samples (animatable)."
+    source_ref: token proceduralSystem
+notes: "Defined in pxr/usd/usdHydra/schema.usda (module usdHydra). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own. Can only be applied to: GenerativeProcedural."

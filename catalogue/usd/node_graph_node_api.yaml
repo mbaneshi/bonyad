@@ -1,0 +1,57 @@
+code: usd.node_graph_node_api
+name: NodeGraphNodeAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdUI/schema.usda
+  section: class NodeGraphNodeAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdUI/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: This api helps storing information about nodes in node graphs.
+fields:
+  - name: ui_nodegraph_node_pos
+    type: point2
+    nullable: true
+    meaning: "Declared relative position to the parent in a node graph. Uniform: one value, not time-sampled."
+    source_ref: uniform float2 ui:nodegraph:node:pos
+  - name: ui_nodegraph_node_stacking_order
+    type: int
+    nullable: true
+    meaning: "This optional value is a useful hint when an application cares about the visibility of a node and whether each node overlaps another. Uniform: one value, not time-sampled."
+    source_ref: uniform int ui:nodegraph:node:stackingOrder
+  - name: ui_nodegraph_node_display_color
+    type: vector3
+    nullable: true
+    meaning: "This hint defines what tint the node should have in the node graph. (RGB colour stored as x=r, y=g, z=b) Uniform: one value, not time-sampled."
+    source_ref: uniform color3f ui:nodegraph:node:displayColor
+  - name: ui_nodegraph_node_icon
+    type: text
+    nullable: true
+    meaning: "This points to an image that should be displayed on the node. Uniform: one value, not time-sampled. Holds an asset path."
+    source_ref: uniform asset ui:nodegraph:node:icon
+  - name: ui_nodegraph_node_expansion_state
+    type: enum
+    nullable: true
+    meaning: "The current expansionState of the node in the ui. Uniform: one value, not time-sampled."
+    source_ref: uniform token ui:nodegraph:node:expansionState
+    values:
+      - value: open
+        meaning: The token "open" (the schema gives no per-value description).
+      - value: closed
+        meaning: The token "closed" (the schema gives no per-value description).
+      - value: minimized
+        meaning: The token "minimized" (the schema gives no per-value description).
+  - name: ui_nodegraph_node_size
+    type: point2
+    nullable: true
+    meaning: "Optional size hint for a node in a node graph. Uniform: one value, not time-sampled."
+    source_ref: uniform float2 ui:nodegraph:node:size
+  - name: ui_nodegraph_node_doc_uri
+    type: text
+    nullable: true
+    meaning: "A URI pointing to additional detailed documentation for this node or node type. Uniform: one value, not time-sampled."
+    source_ref: uniform string ui:nodegraph:node:docURI
+notes: "Defined in pxr/usd/usdUI/schema.usda (module usdUI). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

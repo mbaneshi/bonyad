@@ -1,0 +1,37 @@
+code: usd.particle_field3d_gaussian_splat
+name: ParticleField3DGaussianSplat
+kind: entity
+base: usd.particle_field
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdVol/schema.usda
+  section: class ParticleField3DGaussianSplat
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdVol/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: 04079). It inherits from the ParticleField base prim, and has a set of applied schema automatically applied to provide the required attributes to define the necessary data from the original 3DGS paper.
+fields:
+  - name: projection_mode_hint
+    type: enum
+    default: perspective
+    meaning: "A hint for the renderer on how to project the gaussian to achieve a perspective correct view. Uniform: one value, not time-sampled."
+    source_ref: uniform token projectionModeHint
+    values:
+      - value: perspective
+        meaning: The token "perspective" (the schema gives no per-value description).
+      - value: tangential
+        meaning: The token "tangential" (the schema gives no per-value description).
+  - name: sorting_mode_hint
+    type: enum
+    default: zDepth
+    meaning: "A hint for the renderer on how to sort the gaussians while drawing. Uniform: one value, not time-sampled."
+    source_ref: uniform token sortingModeHint
+    values:
+      - value: zDepth
+        meaning: The token "zDepth" (the schema gives no per-value description).
+      - value: cameraDistance
+        meaning: The token "cameraDistance" (the schema gives no per-value description).
+      - value: rayHitDistance
+        meaning: The token "rayHitDistance" (the schema gives no per-value description).
+notes: "Defined in pxr/usd/usdVol/schema.usda (module usdVol). Applies built-in API schemas: ParticleFieldPositionAttributeAPI, ParticleFieldOrientationAttributeAPI, ParticleFieldScaleAttributeAPI, ParticleFieldOpacityAttributeAPI, ParticleFieldKernelGaussianEllipsoidAPI, ParticleFieldSphericalHarmonicsAttributeAPI."

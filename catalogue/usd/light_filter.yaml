@@ -1,0 +1,26 @@
+code: usd.light_filter
+name: LightFilter
+kind: entity
+base: usd.xformable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLux/schema.usda
+  section: class LightFilter
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLux/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A light filter modifies the effect of a light. Lights refer to filters via relationships so that filters may be shared.
+fields:
+  - name: collection_filter_link_include_root
+    type: bool
+    default: true
+    meaning: "Property collection:filterLink:includeRoot (no description in schema.usda). Uniform: one value, not time-sampled."
+    source_ref: uniform bool collection:filterLink:includeRoot
+  - name: light_filter_shader_id
+    type: text
+    default: ""
+    meaning: "Default ID for the light filter's shader. Uniform: one value, not time-sampled."
+    source_ref: uniform token lightFilter:shaderId
+needs_review: true
+notes: "Defined in pxr/usd/usdLux/schema.usda (module usdLux). Applies built-in API schemas: CollectionAPI:filterLink. Review: property collection:filterLink:includeRoot has no doc."

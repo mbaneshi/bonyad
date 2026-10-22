@@ -1,0 +1,43 @@
+code: usd.cylinder_1
+name: Cylinder_1
+kind: entity
+base: usd.gprim
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Cylinder_1
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Defines a primitive cylinder with closed ends, centered at the origin, whose spine is along the specified axis, with a pair of radii describing the size of the end points. The fallback values for Cube, Sphere, Cone, and Cylinder are set so that they all pack into the same volume/bounds.
+fields:
+  - name: height
+    type: float
+    default: 2
+    meaning: "The length of the cylinder's spine along the specified axis. Varying: may carry time samples (animatable)."
+    source_ref: double height
+  - name: radius_top
+    type: float
+    default: 1
+    meaning: "e. Varying: may carry time samples (animatable)."
+    source_ref: double radiusTop
+  - name: radius_bottom
+    type: float
+    default: 1
+    meaning: "e. Varying: may carry time samples (animatable)."
+    source_ref: double radiusBottom
+  - name: axis
+    type: enum
+    default: Z
+    meaning: "The axis along which the spine of the cylinder is aligned Uniform: one value, not time-sampled."
+    source_ref: uniform token axis
+    values:
+      - value: X
+        meaning: The token "X" (the schema gives no per-value description).
+      - value: Y
+        meaning: The token "Y" (the schema gives no per-value description).
+      - value: Z
+        meaning: The token "Z" (the schema gives no per-value description).
+needs_review: true
+notes: "Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). Review: class name ends in _N; it looks like a versioned variant of another schema but the file does not say so."

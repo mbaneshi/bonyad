@@ -1,0 +1,41 @@
+code: usd.lod_distance_heuristic
+name: LODDistanceHeuristic
+kind: entity
+base: usd.lod_heuristic
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLod/schema.usda
+  section: class LODDistanceHeuristic
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLod/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: This LOD heuristic selects LOD children on the basis of distance from the view point to the LOD root. The LOD child selected is determined by the comparing the computed distance with the values in thresholds and blendThresholds.
+fields:
+  - name: center
+    type: point3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "The center point of this LOD Root in local coordinates. Varying: may carry time samples (animatable)."
+    source_ref: point3f center
+  - name: bounding_volume
+    type: ref
+    nullable: true
+    meaning: "Optional relationship to a Boundable prim that defines the bounding volume for this LOD Root, the prim's extent will be used for distance calculation if it is valid (not empty). Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel boundingVolume
+    ref_to: any
+  - name: thresholds
+    type: array
+    default: []
+    meaning: "This defines the distance thresholds for LOD transitions in ascending order. Uniform: one value, not time-sampled."
+    source_ref: uniform float[] thresholds
+    of: float
+  - name: blend_thresholds
+    type: array
+    default: []
+    meaning: "This defines distance thresholds for LOD transitions in ascending order. Uniform: one value, not time-sampled."
+    source_ref: uniform float[] blendThresholds
+    of: float
+notes: Defined in pxr/usd/usdLod/schema.usda (module usdLod).

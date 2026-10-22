@@ -1,0 +1,74 @@
+code: usd.authorship_api
+name: AuthorshipAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdMedia/schema.usda
+  section: class AuthorshipAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdMedia/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Records who or what authored a prim. Each record describes one authoring step, such as a generative AI run, an export from a DCC, or a manual cleanup session.
+fields:
+  - name: software_package
+    type: text
+    nullable: true
+    meaning: "The tool or system that most directly wrote the USD data for this prim. Uniform: one value, not time-sampled."
+    source_ref: uniform string authorship:<instanceName>:softwarePackage
+  - name: software_version
+    type: text
+    nullable: true
+    meaning: "The version of the softwarePackage that created this record, not of the asset. Uniform: one value, not time-sampled."
+    source_ref: uniform string authorship:<instanceName>:softwareVersion
+  - name: digital_source_type
+    type: text
+    nullable: true
+    meaning: "A URI describing the nature of the creative process, such as whether the content is human-made or AI-generated. Uniform: one value, not time-sampled."
+    source_ref: uniform string authorship:<instanceName>:digitalSourceType
+  - name: creator
+    type: array
+    nullable: true
+    meaning: "Human-readable names of the artists, studios, or services that contributed to this authoring step. Uniform: one value, not time-sampled."
+    source_ref: uniform string[] authorship:<instanceName>:creator
+    of: text
+  - name: description
+    type: text
+    nullable: true
+    meaning: "Free-form description of how the prim was created. Uniform: one value, not time-sampled."
+    source_ref: uniform string authorship:<instanceName>:description
+  - name: inputs
+    type: array
+    nullable: true
+    meaning: "The inputs that shaped this authoring step, as flattened (name, value) pairs. Uniform: one value, not time-sampled."
+    source_ref: uniform string[] authorship:<instanceName>:inputs
+    of: text
+  - name: created
+    type: text
+    nullable: true
+    meaning: ", 2025-02-16T12:03:17+01:00), which may differ from the original creation time of the asset. Uniform: one value, not time-sampled."
+    source_ref: uniform string authorship:<instanceName>:created
+  - name: instance_id
+    type: text
+    nullable: true
+    meaning: "A unique identifier for this run's output, such as a single generative AI result. Uniform: one value, not time-sampled."
+    source_ref: uniform string authorship:<instanceName>:instanceID
+  - name: usage_terms
+    type: text
+    nullable: true
+    meaning: "The license or usage terms for this asset. Uniform: one value, not time-sampled."
+    source_ref: uniform string authorship:<instanceName>:usageTerms
+  - name: copyright_owner
+    type: array
+    nullable: true
+    meaning: ", a studio owning an artist's work). Uniform: one value, not time-sampled."
+    source_ref: uniform string[] authorship:<instanceName>:copyrightOwner
+    of: text
+  - name: contact
+    type: array
+    nullable: true
+    meaning: "Contact information for inquiries about this asset, such as an email address, support URL, or licensing page. Uniform: one value, not time-sampled."
+    source_ref: uniform string[] authorship:<instanceName>:contact
+    of: text
+notes: 'Defined in pxr/usd/usdMedia/schema.usda (module usdMedia). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "authorship:" namespace, followed by an instance name.'

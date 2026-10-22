@@ -1,0 +1,35 @@
+code: usd.physics_material_api
+name: PhysicsMaterialAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsMaterialAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Adds simulation material properties to a Material. All collisions that have a relationship to this material will have their collision response defined through this material.
+fields:
+  - name: physics_dynamic_friction
+    type: float
+    default: 0
+    meaning: "Dynamic friction coefficient. Varying: may carry time samples (animatable)."
+    source_ref: float physics:dynamicFriction
+  - name: physics_static_friction
+    type: float
+    default: 0
+    meaning: "Static friction coefficient. Varying: may carry time samples (animatable)."
+    source_ref: float physics:staticFriction
+  - name: physics_restitution
+    type: float
+    default: 0
+    meaning: "Restitution coefficient. Varying: may carry time samples (animatable)."
+    source_ref: float physics:restitution
+  - name: physics_density
+    type: float
+    default: 0
+    meaning: "If non-zero, defines the density of the material. Varying: may carry time samples (animatable)."
+    source_ref: float physics:density
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

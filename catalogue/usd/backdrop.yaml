@@ -1,0 +1,20 @@
+code: usd.backdrop
+name: Backdrop
+kind: entity
+base: usd.typed
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdUI/schema.usda
+  section: class Backdrop
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdUI/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Provides a 'group-box' for the purpose of node graph organization. Unlike containers, backdrops do not store the Shader nodes inside of them.
+fields:
+  - name: ui_description
+    type: text
+    nullable: true
+    meaning: "The text label that is displayed on the backdrop in the node graph. Uniform: one value, not time-sampled."
+    source_ref: uniform token ui:description
+notes: Defined in pxr/usd/usdUI/schema.usda (module usdUI).

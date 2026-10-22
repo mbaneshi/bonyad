@@ -1,0 +1,53 @@
+code: usd.shaping_api
+name: ShapingAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLux/schema.usda
+  section: class ShapingAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLux/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Controls for shaping a light's emission.
+fields:
+  - name: inputs_shaping_focus
+    type: float
+    default: 0
+    meaning: "A control to shape the spread of light. Varying: may carry time samples (animatable)."
+    source_ref: float inputs:shaping:focus
+  - name: inputs_shaping_focus_tint
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "Off-axis color tint. (RGB colour stored as x=r, y=g, z=b) Varying: may carry time samples (animatable)."
+    source_ref: color3f inputs:shaping:focusTint
+  - name: inputs_shaping_cone_angle
+    type: float
+    default: 90
+    meaning: "Angular limit off the primary axis to restrict the light spread, in degrees. Varying: may carry time samples (animatable)."
+    source_ref: float inputs:shaping:cone:angle
+  - name: inputs_shaping_cone_softness
+    type: float
+    default: 0
+    meaning: "Controls the cutoff softness for cone angle. Varying: may carry time samples (animatable)."
+    source_ref: float inputs:shaping:cone:softness
+  - name: inputs_shaping_ies_file
+    type: text
+    nullable: true
+    meaning: "An IES (Illumination Engineering Society) light profile describing the angular distribution of light. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset inputs:shaping:ies:file
+  - name: inputs_shaping_ies_angle_scale
+    type: float
+    default: 0
+    meaning: "Rescales the angular distribution of the IES profile. Varying: may carry time samples (animatable)."
+    source_ref: float inputs:shaping:ies:angleScale
+  - name: inputs_shaping_ies_normalize
+    type: bool
+    default: false
+    meaning: "Normalizes the IES profile so that it affects the shaping of the light while preserving the overall energy output. Varying: may carry time samples (animatable)."
+    source_ref: bool inputs:shaping:ies:normalize
+notes: "Defined in pxr/usd/usdLux/schema.usda (module usdLux). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

@@ -1,0 +1,21 @@
+code: usd.coord_sys_api
+name: CoordSysAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdShade/schema.usda
+  section: class CoordSysAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdShade/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: UsdShadeCoordSysAPI provides a way to designate, name, and discover coordinate systems. Coordinate systems are implicitly established by UsdGeomXformable prims, using their local space.
+fields:
+  - name: binding
+    type: ref
+    nullable: true
+    meaning: "Prim binding expressing the appropriate coordinate systems. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel coordSys:<instanceName>:binding
+    ref_to: any
+notes: 'Defined in pxr/usd/usdShade/schema.usda (module usdShade). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "coordSys:" namespace, followed by an instance name.'

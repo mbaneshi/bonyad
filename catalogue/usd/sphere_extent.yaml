@@ -1,0 +1,20 @@
+code: usd.sphere_extent
+name: Sphere.extent
+kind: child
+parent: usd.sphere
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Sphere, property extent
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: One element of the ordered float3[] array extent of Sphere. Extent is re-defined on Sphere only to provide a fallback value.
+fields:
+  - name: value
+    type: vector3
+    meaning: "Element value (float3). Varying: may carry time samples (animatable)."
+    source_ref: float3[] extent
+needs_review: true
+notes: "Array attribute modelled as ordered child rows (format rule 5); element order is the array order. Review: extent is a cached bounding box derivable from the geometry (format rule 2); kept because the schema defines it as authored data."

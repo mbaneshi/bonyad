@@ -1,0 +1,20 @@
+code: usd.color_space_api
+name: ColorSpaceAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usd/schema.usda
+  section: class ColorSpaceAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usd/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: UsdColorSpaceAPI is an API schema that introduces a colorSpace property for authoring scene referred color space opinions. It also provides a mechanism to determine the applicable color space within a scope through inheritance.
+fields:
+  - name: color_space_name
+    type: text
+    nullable: true
+    meaning: "The color space that applies to attributes with unauthored color spaces on this prim and its descendents. Uniform: one value, not time-sampled."
+    source_ref: uniform token colorSpace:name
+notes: "Defined in pxr/usd/usd/schema.usda (module usd). API schema (singleApply): it adds properties to an existing prim and is not a prim type of its own."

@@ -1,0 +1,20 @@
+code: usd.particle_field_spherical_harmonics_attribute_api
+name: ParticleFieldSphericalHarmonicsAttributeAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdVol/schema.usda
+  section: class ParticleFieldSphericalHarmonicsAttributeAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdVol/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A ParticleField related applied schema that provides spherical harmonics attributes to define the radiance of the particles. The spherical harmonics degree is constant across all the particles in the ParticleField.
+fields:
+  - name: radiance_spherical_harmonics_degree
+    type: int
+    default: 3
+    meaning: "The highest degree of the spherical harmonics. Uniform: one value, not time-sampled."
+    source_ref: uniform int radiance:sphericalHarmonicsDegree
+notes: "Defined in pxr/usd/usdVol/schema.usda (module usdVol). API schema (singleApply): it adds properties to an existing prim and is not a prim type of its own. Can only be applied to: ParticleField. Applies built-in API schemas: ParticleFieldRadianceBaseAPI."

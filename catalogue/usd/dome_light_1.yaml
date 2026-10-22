@@ -1,0 +1,65 @@
+code: usd.dome_light_1
+name: DomeLight_1
+kind: entity
+base: usd.nonboundable_light_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLux/schema.usda
+  section: class DomeLight_1
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLux/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Light emitted inward from a distant external environment, such as a sky or IBL light probe. In this version of the dome light, the dome's default orientation is determined by its *poleAxis* property.
+fields:
+  - name: light_shader_id
+    type: text
+    default: DomeLight
+    meaning: "Property light:shaderId (no description in schema.usda). Uniform: one value, not time-sampled."
+    source_ref: uniform token light:shaderId
+  - name: inputs_texture_file
+    type: text
+    nullable: true
+    meaning: "A color texture to use on the dome, such as an HDR (high dynamic range) texture intended for IBL (image based lighting). Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset inputs:texture:file
+  - name: inputs_texture_format
+    type: enum
+    default: automatic
+    meaning: "Specifies the parameterization of the color map file. Varying: may carry time samples (animatable)."
+    source_ref: token inputs:texture:format
+    values:
+      - value: automatic
+        meaning: The token "automatic" (the schema gives no per-value description).
+      - value: latlong
+        meaning: The token "latlong" (the schema gives no per-value description).
+      - value: mirroredBall
+        meaning: The token "mirroredBall" (the schema gives no per-value description).
+      - value: angular
+        meaning: The token "angular" (the schema gives no per-value description).
+      - value: cubeMapVerticalCross
+        meaning: The token "cubeMapVerticalCross" (the schema gives no per-value description).
+  - name: portals
+    type: ref
+    nullable: true
+    meaning: "Optional portals to guide light sampling. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel portals
+    ref_to: any
+  - name: guide_radius
+    type: float
+    default: 100000
+    meaning: "The radius of guide geometry to use to visualize the dome light. Varying: may carry time samples (animatable)."
+    source_ref: float guideRadius
+  - name: pole_axis
+    type: enum
+    default: scene
+    meaning: "A token which indicates the starting alignment of the dome light's top pole. Uniform: one value, not time-sampled."
+    source_ref: uniform token poleAxis
+    values:
+      - value: scene
+        meaning: The token "scene" (the schema gives no per-value description).
+      - value: Y
+        meaning: The token "Y" (the schema gives no per-value description).
+      - value: Z
+        meaning: The token "Z" (the schema gives no per-value description).
+needs_review: true
+notes: "Defined in pxr/usd/usdLux/schema.usda (module usdLux). Review: class name ends in _N; it looks like a versioned variant of another schema but the file does not say so; property light:shaderId has no doc."

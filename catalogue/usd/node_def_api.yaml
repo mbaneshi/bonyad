@@ -1,0 +1,32 @@
+code: usd.node_def_api
+name: NodeDefAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdShade/schema.usda
+  section: class NodeDefAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdShade/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: UsdShadeNodeDefAPI is an API schema that provides attributes for a prim to select a corresponding Shader Node Definition ("Sdr Node"), as well as to look up a runtime entry for that shader node in the form of an SdrShaderNode. UsdShadeNodeDefAPI is intended to be a pre-applied API schema for any prim type that wants to refer to the SdrRegistry for further implementation ...
+fields:
+  - name: info_implementation_source
+    type: enum
+    default: id
+    meaning: "Specifies the attribute that should be consulted to get the shader's implementation or its source code. Uniform: one value, not time-sampled."
+    source_ref: uniform token info:implementationSource
+    values:
+      - value: id
+        meaning: The token "id" (the schema gives no per-value description).
+      - value: sourceAsset
+        meaning: The token "sourceAsset" (the schema gives no per-value description).
+      - value: sourceCode
+        meaning: The token "sourceCode" (the schema gives no per-value description).
+  - name: info_id
+    type: text
+    nullable: true
+    meaning: "The id is an identifier for the type or purpose of the shader. Uniform: one value, not time-sampled."
+    source_ref: uniform token info:id
+notes: "Defined in pxr/usd/usdShade/schema.usda (module usdShade). API schema (singleApply): it adds properties to an existing prim and is not a prim type of its own."

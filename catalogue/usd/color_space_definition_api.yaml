@@ -1,0 +1,58 @@
+code: usd.color_space_definition_api
+name: ColorSpaceDefinitionAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usd/schema.usda
+  section: class ColorSpaceDefinitionAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usd/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: UsdColorSpaceDefinitionAPI is an API schema for defining a custom color space. Custom color spaces become available for use on prims or for assignment to attributes via the colorSpace:name property on prims that have applied UsdColorSpaceAPI.
+fields:
+  - name: name
+    type: text
+    default: custom
+    meaning: "The name of the color space defined on this prim. Uniform: one value, not time-sampled."
+    source_ref: uniform token colorSpaceDefinition:<instanceName>:name
+  - name: red_chroma
+    type: point2
+    default:
+      - 1
+      - 0
+    meaning: "Red chromaticity coordinates Varying: may carry time samples (animatable)."
+    source_ref: float2 colorSpaceDefinition:<instanceName>:redChroma
+  - name: green_chroma
+    type: point2
+    default:
+      - 0
+      - 1
+    meaning: "Green chromaticity coordinates Varying: may carry time samples (animatable)."
+    source_ref: float2 colorSpaceDefinition:<instanceName>:greenChroma
+  - name: blue_chroma
+    type: point2
+    default:
+      - 0
+      - 0
+    meaning: "Blue chromaticity coordinates Varying: may carry time samples (animatable)."
+    source_ref: float2 colorSpaceDefinition:<instanceName>:blueChroma
+  - name: white_point
+    type: point2
+    default:
+      - 0.33333333
+      - 0.33333333
+    meaning: "Whitepoint chromaticity coordinates Varying: may carry time samples (animatable)."
+    source_ref: float2 colorSpaceDefinition:<instanceName>:whitePoint
+  - name: gamma
+    type: float
+    default: 1
+    meaning: "Gamma value of the log section Varying: may carry time samples (animatable)."
+    source_ref: float colorSpaceDefinition:<instanceName>:gamma
+  - name: linear_bias
+    type: float
+    default: 0
+    meaning: "Linear bias of the log section Varying: may carry time samples (animatable)."
+    source_ref: float colorSpaceDefinition:<instanceName>:linearBias
+notes: 'Defined in pxr/usd/usd/schema.usda (module usd). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "colorSpaceDefinition:" namespace, followed by an instance name.'

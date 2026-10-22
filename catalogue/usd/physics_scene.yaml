@@ -1,0 +1,28 @@
+code: usd.physics_scene
+name: PhysicsScene
+kind: entity
+base: usd.typed
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsScene
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: General physics simulation properties, required for simulation.
+fields:
+  - name: physics_gravity_direction
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "Gravity direction vector in simulation world space. Varying: may carry time samples (animatable)."
+    source_ref: vector3f physics:gravityDirection
+  - name: physics_gravity_magnitude
+    type: float
+    nullable: true
+    meaning: "Gravity acceleration magnitude in simulation world space. Varying: may carry time samples (animatable). Fallback value is -inf."
+    source_ref: float physics:gravityMagnitude
+notes: Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics).

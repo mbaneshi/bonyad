@@ -1,0 +1,26 @@
+code: usd.lod_root_api
+name: LODRootAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLod/schema.usda
+  section: class LODRootAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLod/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: API for configuring Level of Detail (LOD) facilities on a prim. This API schema marks a prim as the root of an LOD selection hierarchy.
+fields:
+  - name: lod_default_index
+    type: int
+    default: 0
+    meaning: "The LOD item child to use if none of the heuristics are understood by the renderer or if none return a usable LOD. Varying: may carry time samples (animatable)."
+    source_ref: int lod:default:index
+  - name: lod_heuristics
+    type: ref
+    nullable: true
+    meaning: "Relationship targeting all the heuristic prims that could be used for this particular LOD root. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel lod:heuristics
+    ref_to: any
+notes: "Defined in pxr/usd/usdLod/schema.usda (module usdLod). API schema (singleApply): it adds properties to an existing prim and is not a prim type of its own."

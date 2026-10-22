@@ -1,0 +1,42 @@
+code: usd.render_settings
+name: RenderSettings
+kind: entity
+base: usd.render_settings_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdRender/schema.usda
+  section: class RenderSettings
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdRender/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A UsdRenderSettings prim specifies global settings for a render process, including an enumeration of the RenderProducts that should result, and the UsdGeomImageable purposes that should be rendered.
+fields:
+  - name: products
+    type: ref
+    nullable: true
+    meaning: "The set of RenderProducts the render should produce. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel products
+    ref_to: any
+  - name: included_purposes
+    type: array
+    default:
+      - default
+      - render
+    meaning: "The list of UsdGeomImageable purpose values that should be included in the render. Uniform: one value, not time-sampled."
+    source_ref: uniform token[] includedPurposes
+    of: text
+  - name: material_binding_purposes
+    type: array
+    default:
+      - full
+      - ""
+    meaning: "Ordered list of material purposes to consider when resolving material bindings in the scene. Uniform: one value, not time-sampled."
+    source_ref: uniform token[] materialBindingPurposes
+    of: text
+  - name: rendering_color_space
+    type: text
+    nullable: true
+    meaning: "Describes a renderer's working (linear) colorSpace where all the renderer/shader math is expected to happen. Uniform: one value, not time-sampled."
+    source_ref: uniform token renderingColorSpace
+notes: Defined in pxr/usd/usdRender/schema.usda (module usdRender).

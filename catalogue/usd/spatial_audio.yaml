@@ -1,0 +1,66 @@
+code: usd.spatial_audio
+name: SpatialAudio
+kind: entity
+base: usd.xformable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdMedia/schema.usda
+  section: class SpatialAudio
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdMedia/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: The SpatialAudio primitive defines basic properties for encoding playback of an audio file or stream within a USD Stage. The SpatialAudio schema derives from UsdGeomXformable since it can support full spatial audio while also supporting non-spatial mono and stereo sounds.
+fields:
+  - name: file_path
+    type: text
+    nullable: true
+    meaning: "Path to the audio file. Uniform: one value, not time-sampled. Holds an asset path."
+    source_ref: uniform asset filePath
+  - name: aural_mode
+    type: enum
+    default: spatial
+    meaning: "Determines how audio should be played. Uniform: one value, not time-sampled."
+    source_ref: uniform token auralMode
+    values:
+      - value: spatial
+        meaning: The token "spatial" (the schema gives no per-value description).
+      - value: nonSpatial
+        meaning: The token "nonSpatial" (the schema gives no per-value description).
+  - name: playback_mode
+    type: enum
+    default: onceFromStart
+    meaning: "Along with startTime and endTime, determines when the audio playback should start and stop during the stage's animation playback and whether the audio should loop during its duration. Uniform: one value, not time-sampled."
+    source_ref: uniform token playbackMode
+    values:
+      - value: onceFromStart
+        meaning: The token "onceFromStart" (the schema gives no per-value description).
+      - value: onceFromStartToEnd
+        meaning: The token "onceFromStartToEnd" (the schema gives no per-value description).
+      - value: loopFromStart
+        meaning: The token "loopFromStart" (the schema gives no per-value description).
+      - value: loopFromStartToEnd
+        meaning: The token "loopFromStartToEnd" (the schema gives no per-value description).
+      - value: loopFromStage
+        meaning: The token "loopFromStage" (the schema gives no per-value description).
+  - name: start_time
+    type: float
+    default: 0
+    meaning: "Expressed in the timeCodesPerSecond of the containing stage, startTime specifies when the audio stream will start playing during animation playback. Uniform: one value, not time-sampled. Holds a time code."
+    source_ref: uniform timecode startTime
+  - name: end_time
+    type: float
+    default: 0
+    meaning: "Expressed in the timeCodesPerSecond of the containing stage, endTime specifies when the audio stream will cease playing during animation playback if the length of the referenced audio clip is longer than desired. Uniform: one value, not time-sampled. Holds a time code."
+    source_ref: uniform timecode endTime
+  - name: media_offset
+    type: float
+    default: 0
+    meaning: "Expressed in seconds, mediaOffset specifies the offset from the referenced audio file's beginning at which we should begin playback when stage playback reaches the time that prim's audio should start. Uniform: one value, not time-sampled."
+    source_ref: uniform double mediaOffset
+  - name: gain
+    type: float
+    default: 1
+    meaning: "Multiplier on the incoming audio signal. Varying: may carry time samples (animatable)."
+    source_ref: double gain
+notes: Defined in pxr/usd/usdMedia/schema.usda (module usdMedia).

@@ -1,0 +1,25 @@
+code: usd.physics_limit_api
+name: PhysicsLimitAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsLimitAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: 'The PhysicsLimitAPI can be applied to a PhysicsJoint and will restrict the movement along an axis. PhysicsLimitAPI is a multipleApply schema: The PhysicsJoint can be restricted along "transX", "transY", "transZ", "rotX", "rotY", "rotZ", "distance".'
+fields:
+  - name: physics_low
+    type: float
+    nullable: true
+    meaning: "Lower limit. Varying: may carry time samples (animatable). Fallback value is -inf."
+    source_ref: float limit:<instanceName>:physics:low
+  - name: physics_high
+    type: float
+    nullable: true
+    meaning: "Upper limit. Varying: may carry time samples (animatable). Fallback value is inf."
+    source_ref: float limit:<instanceName>:physics:high
+notes: 'Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "limit:" namespace, followed by an instance name.'

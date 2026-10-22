@@ -1,0 +1,31 @@
+code: usd.ri_material_api
+name: RiMaterialAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdRi/schema.usda
+  section: class RiMaterialAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdRi/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Materials should use UsdShadeMaterial instead. This schema will be removed in a future release.
+fields:
+  - name: outputs_ri_surface
+    type: text
+    nullable: true
+    meaning: "Property outputs:ri:surface (no description in schema.usda). Varying: may carry time samples (animatable)."
+    source_ref: token outputs:ri:surface
+  - name: outputs_ri_displacement
+    type: text
+    nullable: true
+    meaning: "Property outputs:ri:displacement (no description in schema.usda). Varying: may carry time samples (animatable)."
+    source_ref: token outputs:ri:displacement
+  - name: outputs_ri_volume
+    type: text
+    nullable: true
+    meaning: "Property outputs:ri:volume (no description in schema.usda). Varying: may carry time samples (animatable)."
+    source_ref: token outputs:ri:volume
+needs_review: true
+notes: "Defined in pxr/usd/usdRi/schema.usda (module usdRi). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own. Review: property outputs:ri:surface has no doc; property outputs:ri:displacement has no doc; property outputs:ri:volume has no doc."

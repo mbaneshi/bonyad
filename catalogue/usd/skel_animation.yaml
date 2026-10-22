@@ -1,0 +1,33 @@
+code: usd.skel_animation
+name: SkelAnimation
+kind: entity
+base: usd.typed
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdSkel/schema.usda
+  section: class SkelAnimation
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdSkel/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Describes a skel animation, where joint animation is stored in a vectorized form. See the extended Skel Animation documentation for more information.
+fields:
+  - name: joints
+    type: array
+    nullable: true
+    meaning: "Array of tokens identifying which joints this animation's data applies to. Uniform: one value, not time-sampled."
+    source_ref: uniform token[] joints
+    of: text
+  - name: blend_shapes
+    type: array
+    nullable: true
+    meaning: "Array of tokens identifying which blend shapes this animation's data applies to. Uniform: one value, not time-sampled."
+    source_ref: uniform token[] blendShapes
+    of: text
+  - name: blend_shape_weights
+    type: array
+    nullable: true
+    meaning: "Array of weight values for each blend shape. Varying: may carry time samples (animatable)."
+    source_ref: float[] blendShapeWeights
+    of: float
+notes: Defined in pxr/usd/usdSkel/schema.usda (module usdSkel).

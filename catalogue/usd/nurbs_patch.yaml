@@ -1,0 +1,111 @@
+code: usd.nurbs_patch
+name: NurbsPatch
+kind: entity
+base: usd.point_based
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class NurbsPatch
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Encodes a rational or polynomial non-uniform B-spline surface, with optional trim curves. html#rinupatch , with some minor renaming and coalescing for clarity.
+fields:
+  - name: u_vertex_count
+    type: int
+    nullable: true
+    meaning: "Number of vertices in the U direction. Varying: may carry time samples (animatable)."
+    source_ref: int uVertexCount
+  - name: v_vertex_count
+    type: int
+    nullable: true
+    meaning: "Number of vertices in the V direction. Varying: may carry time samples (animatable)."
+    source_ref: int vVertexCount
+  - name: u_order
+    type: int
+    nullable: true
+    meaning: "Order in the U direction. Varying: may carry time samples (animatable)."
+    source_ref: int uOrder
+  - name: v_order
+    type: int
+    nullable: true
+    meaning: "Order in the V direction. Varying: may carry time samples (animatable)."
+    source_ref: int vOrder
+  - name: u_knots
+    type: array
+    nullable: true
+    meaning: "Knot vector for U direction providing U parameterization. Varying: may carry time samples (animatable)."
+    source_ref: double[] uKnots
+    of: float
+  - name: v_knots
+    type: array
+    nullable: true
+    meaning: "Knot vector for V direction providing U parameterization. Varying: may carry time samples (animatable)."
+    source_ref: double[] vKnots
+    of: float
+  - name: u_form
+    type: enum
+    default: open
+    meaning: "Interpret the control grid and knot vectors as representing an open, geometrically closed, or geometrically closed and C2 continuous surface along the U dimension. Uniform: one value, not time-sampled."
+    source_ref: uniform token uForm
+    values:
+      - value: open
+        meaning: The token "open" (the schema gives no per-value description).
+      - value: closed
+        meaning: The token "closed" (the schema gives no per-value description).
+      - value: periodic
+        meaning: The token "periodic" (the schema gives no per-value description).
+  - name: v_form
+    type: enum
+    default: open
+    meaning: "Interpret the control grid and knot vectors as representing an open, geometrically closed, or geometrically closed and C2 continuous surface along the V dimension. Uniform: one value, not time-sampled."
+    source_ref: uniform token vForm
+    values:
+      - value: open
+        meaning: The token "open" (the schema gives no per-value description).
+      - value: closed
+        meaning: The token "closed" (the schema gives no per-value description).
+      - value: periodic
+        meaning: The token "periodic" (the schema gives no per-value description).
+  - name: u_range
+    type: point2
+    nullable: true
+    meaning: "Provides the minimum and maximum parametric values (as defined by uKnots) over which the surface is actually defined. Varying: may carry time samples (animatable)."
+    source_ref: double2 uRange
+  - name: v_range
+    type: point2
+    nullable: true
+    meaning: "Provides the minimum and maximum parametric values (as defined by vKnots) over which the surface is actually defined. Varying: may carry time samples (animatable)."
+    source_ref: double2 vRange
+  - name: point_weights
+    type: array
+    nullable: true
+    meaning: 'Optionally provides "w" components for each control point, thus must be the same length as the points attribute. Varying: may carry time samples (animatable).'
+    source_ref: double[] pointWeights
+    of: float
+  - name: trim_curve_counts
+    type: array
+    nullable: true
+    meaning: 'Each element specifies how many curves are present in each "loop" of the trimCurve, and the length of the array determines how many loops the trimCurve contains. Varying: may carry time samples (animatable).'
+    source_ref: int[] trimCurve:counts
+    of: int
+  - name: trim_curve_orders
+    type: array
+    nullable: true
+    meaning: "Flat list of orders for each of the nCurves curves. Varying: may carry time samples (animatable)."
+    source_ref: int[] trimCurve:orders
+    of: int
+  - name: trim_curve_vertex_counts
+    type: array
+    nullable: true
+    meaning: "Flat list of number of vertices for each of the nCurves curves. Varying: may carry time samples (animatable)."
+    source_ref: int[] trimCurve:vertexCounts
+    of: int
+  - name: trim_curve_knots
+    type: array
+    nullable: true
+    meaning: "Flat list of parametric values for each of the nCurves curves. Varying: may carry time samples (animatable)."
+    source_ref: double[] trimCurve:knots
+    of: float
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

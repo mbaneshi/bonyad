@@ -1,0 +1,20 @@
+code: usd.sphere
+name: Sphere
+kind: entity
+base: usd.gprim
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Sphere
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Defines a primitive sphere centered at the origin. The fallback values for Cube, Sphere, Cone, and Cylinder are set so that they all pack into the same volume/bounds.
+fields:
+  - name: radius
+    type: float
+    default: 1
+    meaning: "Indicates the sphere's radius. Varying: may carry time samples (animatable)."
+    source_ref: double radius
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

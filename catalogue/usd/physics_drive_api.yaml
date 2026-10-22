@@ -1,0 +1,50 @@
+code: usd.physics_drive_api
+name: PhysicsDriveAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsDriveAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: 'The PhysicsDriveAPI when applied to any joint primitive will drive the joint towards a given target. The PhysicsDriveAPI is a multipleApply schema: drive can be set per axis "transX", "transY", "transZ", "rotX", "rotY", "rotZ" or its "linear" for prismatic joint or "angular" for revolute joints.'
+fields:
+  - name: physics_type
+    type: enum
+    default: force
+    meaning: "Drive spring is for the acceleration at the joint (rather than the force). Uniform: one value, not time-sampled."
+    source_ref: uniform token drive:<instanceName>:physics:type
+    values:
+      - value: force
+        meaning: The token "force" (the schema gives no per-value description).
+      - value: acceleration
+        meaning: The token "acceleration" (the schema gives no per-value description).
+  - name: physics_max_force
+    type: float
+    nullable: true
+    meaning: "Maximum force that can be applied to drive. Varying: may carry time samples (animatable). Fallback value is inf."
+    source_ref: float drive:<instanceName>:physics:maxForce
+  - name: physics_target_position
+    type: float
+    default: 0
+    meaning: "Target value for position. Varying: may carry time samples (animatable)."
+    source_ref: float drive:<instanceName>:physics:targetPosition
+  - name: physics_target_velocity
+    type: float
+    default: 0
+    meaning: "Target value for velocity. Varying: may carry time samples (animatable)."
+    source_ref: float drive:<instanceName>:physics:targetVelocity
+  - name: physics_damping
+    type: float
+    default: 0
+    meaning: "Damping of the drive. Varying: may carry time samples (animatable)."
+    source_ref: float drive:<instanceName>:physics:damping
+  - name: physics_stiffness
+    type: float
+    default: 0
+    meaning: "Stiffness of the drive. Varying: may carry time samples (animatable)."
+    source_ref: float drive:<instanceName>:physics:stiffness
+notes: 'Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "drive:" namespace, followed by an instance name.'

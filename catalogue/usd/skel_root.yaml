@@ -1,0 +1,15 @@
+code: usd.skel_root
+name: SkelRoot
+kind: entity
+base: usd.boundable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdSkel/schema.usda
+  section: class SkelRoot
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdSkel/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Boundable prim type used to identify a scope beneath which skeletally-posed primitives are defined. A SkelRoot must be defined at or above a skinned primitive for any skinning behaviors in UsdSkel.
+fields: []
+notes: Defined in pxr/usd/usdSkel/schema.usda (module usdSkel).

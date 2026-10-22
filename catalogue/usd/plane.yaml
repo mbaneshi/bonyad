@@ -1,0 +1,37 @@
+code: usd.plane
+name: Plane
+kind: entity
+base: usd.gprim
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Plane
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Defines a primitive plane, centered at the origin, and is defined by a cardinal axis, width, and length. The plane is double-sided by default.
+fields:
+  - name: width
+    type: float
+    default: 2
+    meaning: "The width of the plane, which aligns to the x-axis when axis is 'Z' or 'Y', or to the z-axis when axis is 'X'. Varying: may carry time samples (animatable)."
+    source_ref: double width
+  - name: length
+    type: float
+    default: 2
+    meaning: "The length of the plane, which aligns to the y-axis when axis is 'Z' or 'X', or to the z-axis when axis is 'Y'. Varying: may carry time samples (animatable)."
+    source_ref: double length
+  - name: axis
+    type: enum
+    default: Z
+    meaning: "The axis along which the surface of the plane is aligned. Uniform: one value, not time-sampled."
+    source_ref: uniform token axis
+    values:
+      - value: X
+        meaning: The token "X" (the schema gives no per-value description).
+      - value: Y
+        meaning: The token "Y" (the schema gives no per-value description).
+      - value: Z
+        meaning: The token "Z" (the schema gives no per-value description).
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). Redeclares inherited property doubleSided (fallback true); no new column.

@@ -1,0 +1,45 @@
+code: usd.imageable
+name: Imageable
+kind: abstract
+base: usd.typed
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Imageable
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Base class for all prims that may require rendering or visualization of some sort. The primary attributes of Imageable are visibility and purpose, which each provide instructions for what geometry should be included for processing by rendering and other computations.
+fields:
+  - name: visibility
+    type: enum
+    default: inherited
+    meaning: 'Visibility is meant to be the simplest form of "pruning" visibility that is supported by most DCC apps. Varying: may carry time samples (animatable).'
+    source_ref: token visibility
+    values:
+      - value: inherited
+        meaning: The token "inherited" (the schema gives no per-value description).
+      - value: invisible
+        meaning: The token "invisible" (the schema gives no per-value description).
+  - name: purpose
+    type: enum
+    default: default
+    meaning: "Purpose is a classification of geometry into categories that can each be independently included or excluded from traversals of prims on a stage, such as rendering or bounding-box computation traversals. Uniform: one value, not time-sampled."
+    source_ref: uniform token purpose
+    values:
+      - value: default
+        meaning: The token "default" (the schema gives no per-value description).
+      - value: render
+        meaning: The token "render" (the schema gives no per-value description).
+      - value: proxy
+        meaning: The token "proxy" (the schema gives no per-value description).
+      - value: guide
+        meaning: The token "guide" (the schema gives no per-value description).
+  - name: proxy_prim
+    type: ref
+    nullable: true
+    meaning: 'The proxyPrim relationship allows us to link a prim whose purpose is "render" to its (single target) purpose="proxy" prim. Relationship: targets are prim or property paths and USD allows several.'
+    source_ref: rel proxyPrim
+    ref_to: any
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

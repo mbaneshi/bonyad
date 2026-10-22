@@ -1,0 +1,15 @@
+code: usd.asset_previews_api
+name: AssetPreviewsAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdMedia/schema.usda
+  section: class AssetPreviewsAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdMedia/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: AssetPreviewsAPI is the interface for authoring and accessing precomputed, lightweight previews of assets. It is an applied schema, which means that an arbitrary number of prims on a stage can have the schema applied and therefore can contain previews; however, to access a stage's "default" previews, one consults the stage's defaultPrim.
+fields: []
+notes: "Defined in pxr/usd/usdMedia/schema.usda (module usdMedia). API schema (singleApply): it adds properties to an existing prim and is not a prim type of its own."

@@ -1,0 +1,19 @@
+code: usd.skeleton_rest_transforms
+name: Skeleton.restTransforms
+kind: child
+parent: usd.skeleton
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdSkel/schema.usda
+  section: class Skeleton, property restTransforms
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdSkel/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: One element of the ordered matrix4d[] array restTransforms of Skeleton. Specifies the rest-pose transforms of each joint in local space, in the ordering imposed by *joints*.
+fields:
+  - name: value
+    type: matrix4
+    meaning: "Element value (matrix4d). Uniform: one value, not time-sampled."
+    source_ref: uniform matrix4d[] restTransforms
+notes: Array attribute modelled as ordered child rows (format rule 5); element order is the array order.

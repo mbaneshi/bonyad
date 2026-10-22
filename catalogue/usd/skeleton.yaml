@@ -1,0 +1,27 @@
+code: usd.skeleton
+name: Skeleton
+kind: entity
+base: usd.boundable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdSkel/schema.usda
+  section: class Skeleton
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdSkel/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Describes a skeleton. See the extended Skeleton Schema documentation for more information.
+fields:
+  - name: joints
+    type: array
+    nullable: true
+    meaning: "An array of path tokens identifying the set of joints that make up the skeleton, and their order. Uniform: one value, not time-sampled."
+    source_ref: uniform token[] joints
+    of: text
+  - name: joint_names
+    type: array
+    nullable: true
+    meaning: "If authored, provides a unique name per joint. Uniform: one value, not time-sampled."
+    source_ref: uniform token[] jointNames
+    of: text
+notes: Defined in pxr/usd/usdSkel/schema.usda (module usdSkel).

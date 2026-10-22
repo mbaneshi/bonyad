@@ -1,0 +1,117 @@
+code: usd.mesh
+name: Mesh
+kind: entity
+base: usd.point_based
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Mesh
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Encodes a mesh with optional subdivision properties and features. As a point-based primitive, meshes are defined in terms of points that are connected into edges and faces.
+fields:
+  - name: face_vertex_indices
+    type: array
+    nullable: true
+    meaning: "Flat list of the index (into the points attribute) of each vertex of each face in the mesh. Varying: may carry time samples (animatable)."
+    source_ref: int[] faceVertexIndices
+    of: int
+  - name: face_vertex_counts
+    type: array
+    nullable: true
+    meaning: "Provides the number of vertices in each face of the mesh, which is also the number of consecutive indices in faceVertexIndices that define the face. Varying: may carry time samples (animatable)."
+    source_ref: int[] faceVertexCounts
+    of: int
+  - name: subdivision_scheme
+    type: enum
+    default: catmullClark
+    meaning: "The subdivision scheme to be applied to the surface. Uniform: one value, not time-sampled."
+    source_ref: uniform token subdivisionScheme
+    values:
+      - value: catmullClark
+        meaning: The default, Catmull-Clark subdivision; preferred for quad-dominant meshes (generalizes B-splines); interpolation of point data is smooth (non-linear)
+      - value: loop
+        meaning: Loop subdivision; preferred for purely triangular meshes; interpolation of point data is smooth (non-linear)
+      - value: bilinear
+        meaning: Subdivision reduces all faces to quads (topologically similar to "catmullClark"); interpolation of point data is bilinear
+      - value: none
+        meaning: e.
+  - name: interpolate_boundary
+    type: enum
+    default: edgeAndCorner
+    meaning: "Specifies how subdivision is applied for faces adjacent to boundary edges and boundary points. Varying: may carry time samples (animatable)."
+    source_ref: token interpolateBoundary
+    values:
+      - value: none
+        meaning: No boundary interpolation is applied and boundary faces are effectively treated as holes
+      - value: edgeOnly
+        meaning: A sequence of boundary edges defines a smooth curve to which the edges of subdivided boundary faces converge
+      - value: edgeAndCorner
+        meaning: The default, similar to "edgeOnly" but the smooth boundary curve is made sharp at corner points
+  - name: face_varying_linear_interpolation
+    type: enum
+    default: cornersPlus1
+    meaning: 'Specifies how elements of a primvar of interpolation type "faceVarying" are interpolated for subdivision surfaces. Varying: may carry time samples (animatable).'
+    source_ref: token faceVaryingLinearInterpolation
+    values:
+      - value: none
+        meaning: No linear constraints or sharpening, smooth everywhere
+      - value: cornersOnly
+        meaning: Sharpen corners of discontinuous boundaries only, smooth everywhere else
+      - value: cornersPlus1
+        meaning: The default, same as "cornersOnly" plus additional sharpening at points where three or more distinct face-varying values occur
+      - value: cornersPlus2
+        meaning: Same as "cornersPlus1" plus additional sharpening at points with at least one discontinuous boundary corner or only one discontinuous boundary edge (a dart)
+      - value: boundaries
+        meaning: Piecewise linear along discontinuous boundaries, smooth interior
+      - value: all
+        meaning: Piecewise linear everywhere
+  - name: triangle_subdivision_rule
+    type: enum
+    default: catmullClark
+    meaning: "Specifies an option to the subdivision rules for the Catmull-Clark scheme to try and improve undesirable artifacts when subdividing triangles. Varying: may carry time samples (animatable)."
+    source_ref: token triangleSubdivisionRule
+    values:
+      - value: catmullClark
+        meaning: The token "catmullClark" (the schema gives no per-value description).
+      - value: smooth
+        meaning: The token "smooth" (the schema gives no per-value description).
+  - name: hole_indices
+    type: array
+    default: []
+    meaning: "e. Varying: may carry time samples (animatable)."
+    source_ref: int[] holeIndices
+    of: int
+  - name: corner_indices
+    type: array
+    default: []
+    meaning: "The indices of points for which a corresponding sharpness value is specified in cornerSharpnesses (so the size of this array must match that of cornerSharpnesses). Varying: may carry time samples (animatable)."
+    source_ref: int[] cornerIndices
+    of: int
+  - name: corner_sharpnesses
+    type: array
+    default: []
+    meaning: "The sharpness values associated with a corresponding set of points specified in cornerIndices (so the size of this array must match that of cornerIndices). Varying: may carry time samples (animatable)."
+    source_ref: float[] cornerSharpnesses
+    of: float
+  - name: crease_indices
+    type: array
+    default: []
+    meaning: "The indices of points grouped into sets of successive pairs that identify edges to be creased. Varying: may carry time samples (animatable)."
+    source_ref: int[] creaseIndices
+    of: int
+  - name: crease_lengths
+    type: array
+    default: []
+    meaning: "The length of this array specifies the number of creases (sets of adjacent sharpened edges) on the mesh. Varying: may carry time samples (animatable)."
+    source_ref: int[] creaseLengths
+    of: int
+  - name: crease_sharpnesses
+    type: array
+    default: []
+    meaning: "The per-crease or per-edge sharpness values for all creases. Varying: may carry time samples (animatable)."
+    source_ref: float[] creaseSharpnesses
+    of: float
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

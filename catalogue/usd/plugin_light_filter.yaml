@@ -1,0 +1,15 @@
+code: usd.plugin_light_filter
+name: PluginLightFilter
+kind: entity
+base: usd.light_filter
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLux/schema.usda
+  section: class PluginLightFilter
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLux/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Light filter that provides properties that allow it to identify an external SdrShadingNode definition, through UsdShadeNodeDefAPI, that can be provided to render delegates without the need to provide a schema definition for the light filter's type.
+fields: []
+notes: "Defined in pxr/usd/usdLux/schema.usda (module usdLux). Applies built-in API schemas: NodeDefAPI."

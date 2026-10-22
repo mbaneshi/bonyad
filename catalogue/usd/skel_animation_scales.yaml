@@ -1,0 +1,19 @@
+code: usd.skel_animation_scales
+name: SkelAnimation.scales
+kind: child
+parent: usd.skel_animation
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdSkel/schema.usda
+  section: class SkelAnimation, property scales
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdSkel/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: One element of the ordered half3[] array scales of SkelAnimation. Joint-local scales of all affected joints, in 16 bit precision.
+fields:
+  - name: value
+    type: vector3
+    meaning: "Element value (half3). Varying: may carry time samples (animatable)."
+    source_ref: half3[] scales
+notes: Array attribute modelled as ordered child rows (format rule 5); element order is the array order.

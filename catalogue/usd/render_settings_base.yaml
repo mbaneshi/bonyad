@@ -1,0 +1,75 @@
+code: usd.render_settings_base
+name: RenderSettingsBase
+kind: abstract
+base: usd.typed
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdRender/schema.usda
+  section: class RenderSettingsBase
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdRender/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Abstract base class that defines render settings that can be specified on either a RenderSettings prim or a RenderProduct prim.
+fields:
+  - name: camera
+    type: ref
+    nullable: true
+    meaning: "The camera relationship specifies the primary camera to use in a render. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel camera
+    ref_to: any
+  - name: resolution
+    type: array
+    default:
+      - 2048
+      - 1080
+    meaning: "The image pixel resolution, corresponding to the camera's screen window. (fixed length 2) Uniform: one value, not time-sampled."
+    source_ref: uniform int2 resolution
+    of: int
+  - name: pixel_aspect_ratio
+    type: float
+    default: 1
+    meaning: ". Uniform: one value, not time-sampled."
+    source_ref: uniform float pixelAspectRatio
+  - name: aspect_ratio_conform_policy
+    type: enum
+    default: expandAperture
+    meaning: "Indicates the policy to use to resolve an aspect ratio mismatch between the camera aperture and image settings. Uniform: one value, not time-sampled."
+    source_ref: uniform token aspectRatioConformPolicy
+    values:
+      - value: expandAperture
+        meaning: The token "expandAperture" (the schema gives no per-value description).
+      - value: cropAperture
+        meaning: The token "cropAperture" (the schema gives no per-value description).
+      - value: adjustApertureWidth
+        meaning: The token "adjustApertureWidth" (the schema gives no per-value description).
+      - value: adjustApertureHeight
+        meaning: The token "adjustApertureHeight" (the schema gives no per-value description).
+      - value: adjustPixelAspectRatio
+        meaning: The token "adjustPixelAspectRatio" (the schema gives no per-value description).
+  - name: data_window_ndc
+    type: array
+    default:
+      - 0
+      - 0
+      - 1
+      - 1
+    meaning: "dataWindowNDC specifies the axis-aligned rectangular region in the adjusted aperture window within which the renderer should produce data. (fixed length 4) Uniform: one value, not time-sampled."
+    source_ref: uniform float4 dataWindowNDC
+    of: float
+  - name: instantaneous_shutter
+    type: bool
+    default: false
+    meaning: "Deprecated - use disableMotionBlur instead. Uniform: one value, not time-sampled."
+    source_ref: uniform bool instantaneousShutter
+  - name: disable_motion_blur
+    type: bool
+    default: false
+    meaning: "Disable all motion blur by setting the shutter interval of the targeted camera to [0,0] - that is, take only one sample, namely at the current time code. Uniform: one value, not time-sampled."
+    source_ref: uniform bool disableMotionBlur
+  - name: disable_depth_of_field
+    type: bool
+    default: false
+    meaning: "Disable all depth of field by setting F-stop of the targeted camera to infinity. Uniform: one value, not time-sampled."
+    source_ref: uniform bool disableDepthOfField
+notes: Defined in pxr/usd/usdRender/schema.usda (module usdRender).

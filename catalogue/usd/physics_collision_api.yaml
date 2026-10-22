@@ -1,0 +1,26 @@
+code: usd.physics_collision_api
+name: PhysicsCollisionAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsCollisionAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Applies collision attributes to a UsdGeomXformable prim. If a simulation is running, this geometry will collide with other geometries that have PhysicsCollisionAPI applied.
+fields:
+  - name: physics_collision_enabled
+    type: bool
+    default: true
+    meaning: "Determines if the PhysicsCollisionAPI is enabled. Varying: may carry time samples (animatable)."
+    source_ref: bool physics:collisionEnabled
+  - name: physics_simulation_owner
+    type: ref
+    nullable: true
+    meaning: "Single PhysicsScene that will simulate this collider. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel physics:simulationOwner
+    ref_to: any
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

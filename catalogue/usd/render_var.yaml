@@ -1,0 +1,39 @@
+code: usd.render_var
+name: RenderVar
+kind: entity
+base: usd.typed
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdRender/schema.usda
+  section: class RenderVar
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdRender/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A UsdRenderVar describes a custom data variable for a render to produce. The prim describes the source of the data, which can be a shader output or an LPE (Light Path Expression), and also allows encoding of (generally renderer-specific) parameters that configure the renderer for computing the variable.
+fields:
+  - name: data_type
+    type: text
+    default: color3f
+    meaning: "The type of this channel, as a USD attribute type. Uniform: one value, not time-sampled."
+    source_ref: uniform token dataType
+  - name: source_name
+    type: text
+    default: ""
+    meaning: "The renderer should look for an output of this name as the computed value for the RenderVar. Uniform: one value, not time-sampled."
+    source_ref: uniform string sourceName
+  - name: source_type
+    type: enum
+    default: raw
+    meaning: "Indicates the type of the source. Uniform: one value, not time-sampled."
+    source_ref: uniform token sourceType
+    values:
+      - value: raw
+        meaning: The token "raw" (the schema gives no per-value description).
+      - value: primvar
+        meaning: The token "primvar" (the schema gives no per-value description).
+      - value: lpe
+        meaning: The token "lpe" (the schema gives no per-value description).
+      - value: intrinsic
+        meaning: The token "intrinsic" (the schema gives no per-value description).
+notes: Defined in pxr/usd/usdRender/schema.usda (module usdRender).
