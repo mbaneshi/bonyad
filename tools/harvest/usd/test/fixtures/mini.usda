@@ -1,0 +1,63 @@
+#usda 1.0
+(
+    "Synthetic fixture written for the harvester tests; it imitates the syntax of schema.usda files."
+)
+
+def "GLOBAL" (
+    customData = {
+        string libraryName = "usdMini"
+        dictionary libraryTokens = {
+            dictionary up = { string doc = """x""" }
+        }
+    }
+)
+{
+}
+
+class "Typed"
+(
+    doc = """Base of typed schemas."""
+)
+{
+}
+
+class "APISchemaBase" ( doc = "Base of API schemas." ) { }
+
+class "Shape" (
+    inherits = </Typed>
+    doc = """An abstract shape. Has a \\em visibility switch.
+
+    More text that must not reach the meaning."""
+) {
+    token visibility = "inherited" (
+        allowedTokens = ["inherited", "invisible"]
+        doc = """Pruning visibility.
+
+        - __inherited__: follow the parent
+        - __invisible__: hidden"""
+    )
+    uniform token purpose = "default" (allowedTokens = ["default", "render"])
+    float3[] extent (doc = "Cached bounds.")
+    rel proxyPrim (doc = "Linked proxy.")
+}
+
+class Ball "Ball" (
+    inherits = </Shape>
+    doc = "A ball."
+) {
+    double radius = 1 (doc = "Radius of the ball.")
+    point3f[] centres
+    uniform bool solid = 0
+    float limit = inf
+    uniform opaque marker
+    color3f tint = (1, 0.5, 0)
+}
+
+class "TintAPI" (
+    inherits = </APISchemaBase>
+    customData = { token[] apiSchemaCanOnlyApplyTo = ["Ball"]
+                   string apiSchemaType = "singleApply" }
+    doc = "Adds a tint."
+) {
+    color3f[] colours
+}
