@@ -1,0 +1,17 @@
+{
+  "name": "bonyad-harvest-ifc",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "harvest": "bun run src/main.ts",
+    "check": "bun run src/check.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.3"
+  }
+}
