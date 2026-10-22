@@ -48,10 +48,20 @@ jobs:
       - run: cargo clippy --all-targets -- -D warnings
         working-directory: logic
       - name: Create the roles the Supabase stack provides (migrations reference them)
-        run: >-
-          psql "$DATABASE_URL" -v ON_ERROR_STOP=1
-          -c "create role anon nologin"
-          -c "create role authenticated nologin"
+        run: |
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 <<'SQL'
+          do $$
+          declare r text;
+          begin
+            foreach r in array array['anon', 'authenticated'] loop
+              if not exists (select 1 from pg_roles where rolname = r) then
+                execute format('create role %I nologin', r);
+              end if;
+            end loop;
+          end
+          $$;
+          select rolname from pg_roles where rolname in ('anon', 'authenticated') order by 1;
+          SQL
       - run: cargo test
         working-directory: logic
 
