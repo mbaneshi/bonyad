@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Shallow-clone the read-only reference repositories into refs/ (gitignored).
+# Study material for docs/research; never vendored, never built. Re-run to skip existing.
+set -u
+cd "$(dirname "$0")/.."
+mkdir -p refs
+while read -r name url; do
+  [ -z "$name" ] && continue
+  if [ -d "refs/$name/.git" ]; then echo "skip  $name"; continue; fi
+  echo "clone $name"
+  git clone --depth 1 --single-branch --quiet "$url" "refs/$name" || echo "FAIL  $name"
+done <<'LIST'
+librecad       https://github.com/LibreCAD/LibreCAD.git
+freecad        https://github.com/FreeCAD/FreeCAD.git
+ifcopenshell   https://github.com/IfcOpenShell/IfcOpenShell.git
+xc             https://github.com/xcfem/xc.git
+opensees       https://github.com/OpenSees/OpenSees.git
+qgis           https://github.com/qgis/QGIS.git
+blender        https://projects.blender.org/blender/blender.git
+godot          https://github.com/godotengine/godot.git
+o3de           https://github.com/o3de/o3de.git
+projectlibre   https://git.code.sf.net/p/projectlibre/code
+openscad       https://github.com/openscad/openscad.git
+solvespace     https://github.com/solvespace/solvespace.git
+wings3d        https://github.com/dgud/wings.git
+meshlab        https://github.com/cnr-isti-vclab/meshlab.git
+LIST
+echo "--- pinned commits"
+for d in refs/*/; do printf '%s %s\n' "$(basename "$d")" "$(git -C "$d" rev-parse --short HEAD 2>/dev/null)"; done

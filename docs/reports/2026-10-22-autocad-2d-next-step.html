@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bonyad — AutoCAD 2D Entity Recommendation</title>
+  <style>
+    :root { color-scheme: light; --ink:#17202a; --muted:#5f6b76; --line:#d9e0e6; --accent:#176b87; --soft:#eef6f8; }
+    body { margin:0; font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink); background:#f7f9fa; }
+    main { max-width:980px; margin:0 auto; padding:48px 24px 72px; background:#fff; min-height:100vh; }
+    h1,h2 { line-height:1.2; color:#123c4b; } h1 { font-size:36px; margin:0 0 8px; } h2 { margin-top:40px; border-bottom:1px solid var(--line); padding-bottom:8px; }
+    .meta { color:var(--muted); margin-bottom:32px; } .callout { background:var(--soft); border-left:4px solid var(--accent); padding:16px 20px; margin:20px 0; }
+    table { width:100%; border-collapse:collapse; margin:16px 0 24px; } th,td { text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line); } th { color:#123c4b; background:#f3f7f8; }
+    code { background:#f1f3f5; padding:2px 5px; border-radius:4px; } pre { background:#17202a; color:#eef6f8; padding:16px; overflow:auto; border-radius:6px; }
+    li { margin:6px 0; } .small { color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>AutoCAD 2D Entity Recommendation</h1>
+  <p class="meta">Bonyad · Decision brief · 22 October 2026 · Planning only</p>
+
+  <div class="callout">
+    <strong>Recommendation:</strong> add one revisioned <code>polyline</code> entity as the next bounded vertical slice. Do not introduce a generic AutoCAD entity table or a universal CAD schema yet.
+  </div>
+
+  <h2>Repository context</h2>
+  <p>Bonyad currently has stable entity identities, independent point/line/surface geometry, pure Rust validation and measurement, PostgreSQL persistence, and project-level revisions. The current schema deliberately keeps geometry rules in Rust and storage integrity in PostgreSQL.</p>
+  <p>Research also distinguishes geometry from engineering meaning, and stable Bonyad identity from identifiers supplied by external formats such as DXF.</p>
+  <p class="small">Evidence: <code>db/migrations/20261021000001_geometry.sql</code>, <code>db/migrations/20261022000004_revisions.sql</code>, <code>logic/crates/geometry/src/types.rs</code>, <code>docs/research/mappings/point-line-surface.md</code>.</p>
+
+  <h2>Proposed model</h2>
+  <p>A polyline is ordered 2D drawing geometry. It is not automatically a surface merely because it is closed.</p>
+  <pre>polylines
+  entity_id
+  closed
+
+polyline_vertices
+  entity_id
+  position
+  x
+  y</pre>
+  <p>Use the existing stable entity identity and add a distinct geometry kind, <code>polyline</code>. Preserve the distinction between:</p>
+  <ul>
+    <li>Open polyline: an ordered chain of straight segments.</li>
+    <li>Closed polyline: a closed drawing boundary.</li>
+    <li>Surface: an accepted engineering area with its own validity and meaning.</li>
+  </ul>
+
+  <h2>AutoCAD concepts and treatment</h2>
+  <table>
+    <thead><tr><th>AutoCAD concept</th><th>Recommended Bonyad treatment</th></tr></thead>
+    <tbody>
+      <tr><td>LINE</td><td>Existing line geometry.</td></tr>
+      <tr><td>LWPOLYLINE</td><td>New typed polyline entity.</td></tr>
+      <tr><td>CIRCLE / ARC</td><td>Future typed geometry; not in this task.</td></tr>
+      <tr><td>BLOCK</td><td>Future reusable definition.</td></tr>
+      <tr><td>INSERT</td><td>Future instance referencing a block definition.</td></tr>
+      <tr><td>Layer</td><td>Separate drawing organization/presentation model.</td></tr>
+      <tr><td>Text / dimension</td><td>Separate annotation model.</td></tr>
+      <tr><td>DXF handle</td><td>External identifier mapping, never Bonyad identity.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Two-axis type direction</h2>
+  <p>Do not overload one <code>kind</code> field with both geometry and engineering meaning. The long-term direction is:</p>
+  <pre>geometry_kind: point | line | polyline | surface | circle | arc
+discipline_kind: none | cad_annotation | survey_point | wall | parcel | ...</pre>
+  <p>This is a design direction, not a reason to add all future columns now. The polyline slice should add only what the current workflow proves necessary.</p>
+
+  <h2>Implementation scope</h2>
+  <p>The issue should include:</p>
+  <ul>
+    <li>PostgreSQL tables for polylines and ordered vertices.</li>
+    <li>Rust domain type, serialization, validation, and measurement behavior.</li>
+    <li>Application/API operation using the existing revision and atomic acceptance path.</li>
+    <li>UI creation, display, selection, and vertex update.</li>
+    <li>Agent capability using the same application operation as the UI.</li>
+    <li>Revision snapshots and reload behavior.</li>
+    <li>Unit, API, contract, agent, and browser tests.</li>
+  </ul>
+
+  <h2>Acceptance criteria</h2>
+  <ol>
+    <li>Create an open polyline through the UI and agent.</li>
+    <li>Create a closed polyline without automatically creating a surface.</li>
+    <li>Preserve vertex order and stable identity after reload.</li>
+    <li>Move one vertex through the revisioned operation.</li>
+    <li>Reject non-finite or otherwise invalid geometry without partial accepted state.</li>
+    <li>Reject stale revision updates atomically with a clear conflict response.</li>
+    <li>Ensure UI and agent invoke equivalent typed application behavior.</li>
+    <li>Pass all existing checks and new end-to-end coverage at mobile, tablet, and desktop widths.</li>
+  </ol>
+
+  <h2>Explicitly outside scope</h2>
+  <ul>
+    <li>DXF import/export.</li>
+    <li>Bulge arcs and curve flattening.</li>
+    <li>AutoCAD layers, blocks, inserts, layouts, text, dimensions, and styles.</li>
+    <li>Generic JSON entities or an inheritance hierarchy.</li>
+    <li>Automatic conversion of closed polylines into surfaces.</li>
+  </ul>
+
+  <h2>Required delivery workflow</h2>
+  <ol>
+    <li>Open one issue for the bounded polyline slice.</li>
+    <li>Create one worktree and branch from synchronized <code>dev</code>.</li>
+    <li>Implement and test only that issue.</li>
+    <li>Open one pull request into <code>dev</code>.</li>
+    <li>Wait for CI and E2E checks to pass.</li>
+    <li>Merge the PR into <code>dev</code>; do not develop directly on <code>dev</code>.</li>
+  </ol>
+
+  <h2>Open decision before implementation</h2>
+  <p>Should the first polyline support DXF bulge arcs? Recommendation: <strong>no</strong>. Begin with straight segments, record curve support as a later issue, and never silently flatten curved source geometry during import.</p>
+</main>
+</body>
+</html>
