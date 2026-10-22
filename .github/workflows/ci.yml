@@ -36,6 +36,23 @@ jobs:
           --health-retries 10
     steps:
       - uses: actions/checkout@v4
+      # Migration 20261021000003 revokes privileges from the Supabase roles `anon` and
+      # `authenticated`. The real local stack has them; a plain Postgres service does not.
+      # Roles are cluster-wide, so creating them once serves every per-test database.
+      - name: Create the Supabase roles the migrations assume
+        run: |
+          psql "postgres://postgres:postgres@localhost:5432/postgres" -v ON_ERROR_STOP=1 <<'SQL'
+          do $$
+          declare r text;
+          begin
+            foreach r in array array['anon', 'authenticated'] loop
+              if not exists (select 1 from pg_roles where rolname = r) then
+                execute format('create role %I nologin', r);
+              end if;
+            end loop;
+          end
+          $$;
+          SQL
       - name: Install the pinned Rust toolchain (logic/rust-toolchain.toml)
         run: rustup toolchain install
         working-directory: logic
