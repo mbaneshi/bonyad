@@ -1,0 +1,9 @@
+code: features.element
+name: Element
+kind: abstract
+fidelity: proxy
+source: {document: "Synthetic fixture, not a real source format", accessed_on: 2026-10-23, licence: "n/a: test fixture"}
+meaning: Root of the fixture hierarchy; carries a label and an optional placement matrix shared by all elements.
+fields:
+  - {name: label, type: text, nullable: true, meaning: Free-text label}
+  - {name: placement, type: matrix4, nullable: true, meaning: "Optional placement, row-major"}

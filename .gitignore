@@ -25,3 +25,6 @@ tests/e2e/test-results/
 
 # research: shallow reference clones (scripts/fetch-refs)
 refs/
+
+# catalogue tooling
+tools/catalogue/node_modules/

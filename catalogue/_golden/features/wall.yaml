@@ -1,0 +1,20 @@
+code: features.wall
+name: Wall
+kind: entity
+base: features.building_element
+fidelity: proxy
+source: {document: "Synthetic fixture, not a real source format", accessed_on: 2026-10-23, licence: "n/a: test fixture"}
+meaning: A concrete type that also has a subtype, so its table carries a type_code discriminator. Exercises enums, nullable composites, dates, blobs and arrays.
+fields:
+  - {name: height, type: length, check: positive, meaning: Height of the wall}
+  - {name: type, type: enum, values: [{value: straight, meaning: Straight wall}, {value: curved, meaning: Curved wall}, {value: polygonal-x, meaning: Polygonal wall; the value is not a Rust identifier}, {value: 2d, meaning: Starts with a digit}], meaning: Wall form (a Rust keyword as a field name)}
+  - {name: offset, type: point2, nullable: true, meaning: Optional plan offset}
+  - {name: direction, type: vector3, nullable: true, default: [1, 0, 0], meaning: Optional direction}
+  - {name: built_on, type: date, nullable: true, meaning: Construction date}
+  - {name: recorded_at, type: timestamp, nullable: true, meaning: When it was recorded}
+  - {name: payload, type: blob, nullable: true, meaning: Opaque binary payload}
+  - {name: tolerances, type: array, of: length, meaning: "Tolerances, may be empty"}
+  - {name: angles, type: array, of: angle, nullable: true, min_items: 1, meaning: Optional list of angles}
+  - {name: host, type: ref, ref_to: any, nullable: true, meaning: Optional reference to any entity}
+  - {name: self, type: int, default: 0, meaning: A Rust keyword that cannot be a raw identifier}
+  - {name: tag, type: text, default: "it's", meaning: Text default with a quote}

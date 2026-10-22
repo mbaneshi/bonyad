@@ -1,0 +1,11 @@
+code: acad.block_record
+name: BLOCK_RECORD
+kind: symbol
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "BLOCK_RECORD", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A block definition; model space and paper space are blocks too.
+fields:
+  - {name: name, type: text, meaning: Block name, source_ref: "group code 2"}
+  - {name: is_layout, type: bool, default: false, meaning: True when the block is a layout (model or paper space)}
+  - {name: insertion_units, type: int, nullable: true, meaning: DXF INSUNITS code of this block}
+  - {name: base, type: point3, default: [0, 0, 0], meaning: Base point of the block, source_ref: "group codes 10, 20, 30"}

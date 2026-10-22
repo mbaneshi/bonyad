@@ -1,0 +1,15 @@
+code: acad.layer
+name: LAYER
+kind: symbol
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "LAYER", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A named layer that groups entities and carries default colour, linetype and visibility.
+fields:
+  - {name: name, type: text, meaning: Layer name, source_ref: "group code 2"}
+  - {name: color, type: int, nullable: true, meaning: AutoCAD colour index, source_ref: "group code 62"}
+  - {name: linetype_id, type: ref, ref_to: acad.linetype, nullable: true, meaning: Default linetype of the layer, source_ref: "group code 6"}
+  - {name: lineweight, type: int, nullable: true, meaning: Default lineweight in hundredths of a millimetre, source_ref: "group code 370"}
+  - {name: is_off, type: bool, default: false, meaning: Layer is switched off}
+  - {name: is_frozen, type: bool, default: false, meaning: Layer is frozen}
+  - {name: is_locked, type: bool, default: false, meaning: Layer is locked}
+  - {name: plot, type: bool, default: true, meaning: Layer is plotted}

@@ -1,0 +1,14 @@
+code: acad.arc
+name: ARC
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "ARC", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A circular arc, counter-clockwise from start angle to end angle.
+fields:
+  - {name: center, type: point3, meaning: Centre point, source_ref: "group codes 10, 20, 30"}
+  - {name: radius, type: length, check: positive, meaning: Radius, source_ref: "group code 40"}
+  - {name: start_angle, type: angle, meaning: Start angle (radians; DXF stores degrees), source_ref: "group code 50"}
+  - {name: end_angle, type: angle, meaning: End angle (radians; DXF stores degrees), source_ref: "group code 51"}
+  - {name: thickness, type: length, default: 0, meaning: Extrusion thickness along the normal, source_ref: "group code 39"}
+  - {name: normal, type: vector3, default: [0, 0, 1], meaning: Extrusion direction, source_ref: "group codes 210, 220, 230"}

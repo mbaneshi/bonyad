@@ -1,0 +1,8 @@
+code: features.wall_standard
+name: WallStandard
+kind: entity
+base: features.wall
+fidelity: proxy
+source: {document: "Synthetic fixture, not a real source format", accessed_on: 2026-10-23, licence: "n/a: test fixture"}
+meaning: A subtype that adds no fields; its row exists only in the base tables.
+fields: []

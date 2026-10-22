@@ -1,0 +1,12 @@
+code: acad.point
+name: POINT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "POINT", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A single point.
+fields:
+  - {name: x, type: length, meaning: X coordinate, source_ref: "group code 10"}
+  - {name: y, type: length, meaning: Y coordinate, source_ref: "group code 20"}
+  - {name: z, type: length, meaning: Z coordinate, source_ref: "group code 30"}
+  - {name: thickness, type: length, default: 0, meaning: Extrusion thickness along the normal, source_ref: "group code 39"}

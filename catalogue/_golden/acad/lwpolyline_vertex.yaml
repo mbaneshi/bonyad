@@ -1,0 +1,13 @@
+code: acad.lwpolyline_vertex
+name: LWPOLYLINE vertex
+kind: child
+parent: acad.lwpolyline
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "LWPOLYLINE", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: One ordered vertex of an LWPOLYLINE.
+fields:
+  - {name: x, type: length, meaning: X coordinate, source_ref: "group code 10"}
+  - {name: y, type: length, meaning: Y coordinate, source_ref: "group code 20"}
+  - {name: start_width, type: length, nullable: true, meaning: Width at the start of the segment, source_ref: "group code 40"}
+  - {name: end_width, type: length, nullable: true, meaning: Width at the end of the segment, source_ref: "group code 41"}
+  - {name: bulge, type: float, default: 0, meaning: Bulge of the segment to the next vertex (tan of a quarter of the arc angle; 0 is straight), source_ref: "group code 42"}

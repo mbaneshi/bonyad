@@ -1,0 +1,11 @@
+code: acad.mesh_vertex
+name: MESH vertex
+kind: child
+parent: acad.mesh
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "MESH", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: One ordered vertex of a MESH.
+fields:
+  - {name: x, type: length, meaning: X coordinate}
+  - {name: y, type: length, meaning: Y coordinate}
+  - {name: z, type: length, meaning: Z coordinate}

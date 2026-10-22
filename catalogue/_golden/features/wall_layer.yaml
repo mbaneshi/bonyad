@@ -1,0 +1,10 @@
+code: features.wall_layer
+name: WallLayer
+kind: child
+parent: features.wall
+fidelity: proxy
+source: {document: "Synthetic fixture, not a real source format", accessed_on: 2026-10-23, licence: "n/a: test fixture"}
+meaning: One ordered layer of a wall; a child of a table that has a type_code discriminator.
+fields:
+  - {name: thickness, type: length, check: positive, meaning: Layer thickness}
+  - {name: material, type: text, meaning: Material name}

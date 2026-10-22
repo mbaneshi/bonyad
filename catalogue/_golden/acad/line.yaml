@@ -1,0 +1,12 @@
+code: acad.line
+name: LINE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "LINE", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A straight segment between two 3D points.
+fields:
+  - {name: start, type: point3, meaning: Start point, source_ref: "group codes 10, 20, 30"}
+  - {name: end, type: point3, meaning: End point, source_ref: "group codes 11, 21, 31"}
+  - {name: thickness, type: length, default: 0, meaning: Extrusion thickness along the normal, source_ref: "group code 39"}
+  - {name: normal, type: vector3, default: [0, 0, 1], meaning: Extrusion direction, source_ref: "group codes 210, 220, 230"}
