@@ -173,7 +173,10 @@ export class Mapper {
 
   private describe(path: string | undefined, fallback: string, n: number, max: number): { text: string; found: boolean } {
     if (path) {
-      const t = sentences(path, n, max);
+      let t = sentences(path, n, max);
+      // a trailing sentence that introduces a list ("may include:") is dropped when an earlier sentence exists
+      if (/[:;,]$/.test(t) && t.includes(". ")) t = t.slice(0, t.lastIndexOf(". ") + 1);
+      t = t.replace(/\s*[:;,]$/, "");
       if (t) return { text: t.endsWith(".") || t.endsWith("…") ? t : t + ".", found: true };
     }
     return { text: fallback, found: false };
@@ -277,6 +280,7 @@ export class Mapper {
         const f: Field = { name: base.name, type: "array", of: elemType, meaning: base.meaning + (ordered ? "" : " Unordered set."), source_ref: sref };
         if (a.optional) f.nullable = true;
         if (elem.k === "scalar" && elem.type === "angle") f.meaning += " Radians; converted from the project plane-angle unit at the source boundary.";
+        if (elem.k === "scalar" && elem.lossy) f.source_ref += `; elements are ${elem.lossy}`;
         fields.push(f);
         return;
       }
@@ -290,6 +294,7 @@ export class Mapper {
         const inner = arrayOf(elem.elem);
         if (inner) {
           item = { name: "item", type: "array", of: inner, meaning: `Inner list (${elem.agg} [${elem.lo}:${elem.hi}]) of ${at}.`, source_ref: sref };
+          if (elem.elem.k === "scalar" && elem.elem.lossy) item.source_ref += `; elements are ${elem.elem.lossy}`;
           if (inner === "angle") item.meaning += " Radians; converted from the project plane-angle unit at the source boundary.";
         } else {
           item = this.fieldFor(elem.elem, itemBase, cReview);
