@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/geometry", "crates/persistence", "crates/server"]
+members = ["crates/geometry", "crates/persistence", "crates/server", "crates/units", "generated/*"]
 
 [workspace.package]
 edition = "2024"
@@ -17,6 +17,7 @@ all = { level = "warn", priority = -1 }
 [workspace.dependencies]
 bonyad-geometry = { path = "crates/geometry" }
 bonyad-persistence = { path = "crates/persistence" }
+bonyad-units = { path = "crates/units" }
 axum = { version = "=0.8.9", features = ["macros"] }
 http-body-util = "=0.1.5"
 serde = { version = "=1.0.229", features = ["derive"] }
