@@ -41,6 +41,10 @@ needs-db:
 migrate: needs-db
     sqlx migrate run --source db/migrations
 
+# Database constraint checks for the phase 1 spine. Rolled back, so safe to repeat.
+db-test:
+    docker exec -i bonyad-db psql -U postgres -d postgres -v ON_ERROR_STOP=1 -q < db/tests/phase1_constraints.sql
+
 # Load db/seeds (the single project row). Safe to repeat.
 seed:
     for f in db/seeds/*.sql; do docker exec -i bonyad-db psql -U postgres -d postgres -v ON_ERROR_STOP=1 -q < "$f"; done

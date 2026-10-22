@@ -1,0 +1,571 @@
+// Bonyad database, phase 1: ENTITY TABLES first, on a thin shared spine.
+// Status: DRAFT for founder review (2026-10-23). Not a migration. Not decided.
+//
+// Reading guide
+//   core   shared spine: identity, revisions, provenance, a catalogue row per entity table
+//   acad   PILOT of "faithful per software" entity tables (AutoCAD / DXF vocabulary)
+//          civil3d, revit, max, arcgis follow the same pattern, generated from an inventory later
+//   proc   procedures as data: typed contract + a pointer to compiled Rust, and every run
+//   skill  a domain problem packaged for an LLM: context, queries, workflow, tests
+//
+// Design calls (mine, reversible):
+//   1. Every entity table is a HISTORY table keyed (entity_id, revision_id). A change inserts a new
+//      version row; nothing is updated in place. "Current" = latest version at or below a revision.
+//      This replaces milestone 2's per-kind snapshot tables and scales to thousands of tables.
+//   2. core.entity_version is the only place that says "this entity exists at this revision"
+//      (and whether it is deleted). Every entity table points at it with a composite foreign key
+//      that also pins the table's own type code, so a row can never sit in the wrong table.
+//   3. DXF "common entity" fields live once in acad.graphic_entity (class-table inheritance).
+//   4. References from one entity to another store the target's stable id (core.entity.id).
+//      Whether the target has the right TYPE is a validity rule checked in Rust (the pattern with a
+//      type column in the foreign key can be added per column when it earns its place).
+//   5. Meaning for the LLM: core.entity_type (one row per entity table) and core.field_doc
+//      (one row per column), each with a source. Postgres COMMENTs mirror them.
+//   6. Append-only is enforced by trigger on core.revision, core.entity, core.entity_version and every
+//      acad history table: UPDATE is refused, a direct DELETE is refused, a cascade from a project
+//      delete is allowed (that is how a lab database is reset). Cross-entity references cascade too.
+//   7. Angles are radians. Lengths are in the project's declared unit. No silent defaults.
+
+// ---------------------------------------------------------------- core
+Table core.project {
+  id uuid [pk]
+  name text [not null]
+  unit_length text [not null, default: 'm', note: 'declared, never implied']
+  angle_unit text [not null, default: 'radian']
+  axes text [not null, default: 'x-east-y-north-z-up']
+  created_at timestamptz [not null]
+}
+
+Table core.actor {
+  id uuid [pk]
+  kind text [not null, note: 'human | agent: equal actors, same permissions']
+  name text [not null]
+}
+
+Table core.revision {
+  id bigint [pk]
+  project_id uuid [not null]
+  number int [not null, note: 'per-project, monotonic']
+  actor_id uuid [not null]
+  operation text [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (project_id, number) [unique]
+    (id, project_id) [unique]
+  }
+}
+
+Table core.source {
+  id uuid [pk]
+  software text [not null]
+  document text [not null]
+  section text
+  url text
+  version text
+  accessed_on date
+}
+
+Table core.entity_type {
+  code text [pk, note: 'e.g. acad.line']
+  software text [not null]
+  name text [not null]
+  db_table text [not null, note: 'schema.table that stores it']
+  meaning text [not null, note: 'plain-language definition for people and LLMs']
+  source_id uuid
+}
+
+Table core.field_doc {
+  type_code text [not null]
+  column_name text [not null]
+  meaning text [not null]
+  unit text
+  source_ref text [note: 'e.g. DXF group code 10']
+  indexes {
+    (type_code, column_name) [pk]
+  }
+}
+
+Table core.entity {
+  id uuid [pk, note: 'stable identity for life']
+  project_id uuid [not null]
+  type_code text [not null]
+  created_revision_id bigint [not null]
+  indexes {
+    (id, project_id, type_code) [unique]
+  }
+}
+
+Table core.entity_version {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  project_id uuid [not null, note: 'must match the entity AND the revision']
+  type_code text [not null]
+  deleted boolean [not null, default: false, note: 'tombstone; history is never removed']
+  indexes {
+    (entity_id, revision_id) [pk]
+    (entity_id, revision_id, type_code) [unique]
+  }
+}
+
+Ref: core.revision.project_id > core.project.id
+Ref: core.revision.actor_id > core.actor.id
+Ref: core.entity_type.source_id > core.source.id
+Ref: core.field_doc.type_code > core.entity_type.code
+Ref: core.entity.project_id > core.project.id
+Ref: core.entity.type_code > core.entity_type.code
+Ref: core.entity.(created_revision_id, project_id) > core.revision.(id, project_id)
+Ref: core.entity_version.(revision_id, project_id) > core.revision.(id, project_id)
+Ref: core.entity_version.(entity_id, project_id, type_code) > core.entity.(id, project_id, type_code)
+
+// ---------------------------------------------------------------- acad (pilot)
+// Fields follow the DXF vocabulary. DXF handles are file-scoped, so they are NOT our ids.
+
+Table acad.graphic_entity {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  type_code text [not null, note: 'acad.line, acad.circle, ...']
+  owner_block_id uuid [not null, note: 'the block_record (model space, paper space or block) that owns it']
+  layer_id uuid [not null]
+  linetype_id uuid [note: 'null = BYLAYER']
+  color int [note: 'AutoCAD colour index; 256 = BYLAYER']
+  true_color int
+  lineweight int
+  linetype_scale float8 [not null, default: 1]
+  visible boolean [not null, default: true]
+  transparency int
+  dxf_handle text [note: 'file-scoped id from an import; mapping only']
+  indexes {
+    (entity_id, revision_id) [pk]
+    (entity_id, revision_id, type_code) [unique]
+  }
+}
+
+Table acad.layer {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.layer']
+  name text [not null]
+  color int
+  linetype_id uuid
+  lineweight int
+  is_off boolean [not null, default: false]
+  is_frozen boolean [not null, default: false]
+  is_locked boolean [not null, default: false]
+  plot boolean [not null, default: true]
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.linetype {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.linetype']
+  name text [not null]
+  description text
+  pattern_length float8
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.block_record {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.block_record']
+  name text [not null]
+  is_layout boolean [not null, default: false, note: 'a layout is a block in DXF']
+  insertion_units int [note: 'DXF INSUNITS code of this block']
+  base_x float8
+  base_y float8
+  base_z float8
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.insert {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.insert']
+  block_id uuid [not null, note: 'the block_record it instantiates']
+  ins_x float8 [not null]
+  ins_y float8 [not null]
+  ins_z float8 [not null]
+  scale_x float8 [not null, default: 1]
+  scale_y float8 [not null, default: 1]
+  scale_z float8 [not null, default: 1]
+  rotation float8 [not null, default: 0, note: 'radians']
+  column_count int [not null, default: 1]
+  row_count int [not null, default: 1]
+  column_spacing float8
+  row_spacing float8
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.point {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.point']
+  x float8 [not null]
+  y float8 [not null]
+  z float8 [not null]
+  thickness float8 [not null, default: 0]
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.line {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.line']
+  start_x float8 [not null]
+  start_y float8 [not null]
+  start_z float8 [not null]
+  end_x float8 [not null]
+  end_y float8 [not null]
+  end_z float8 [not null]
+  thickness float8 [not null, default: 0]
+  normal_x float8 [not null, default: 0]
+  normal_y float8 [not null, default: 0]
+  normal_z float8 [not null, default: 1]
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.circle {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.circle']
+  center_x float8 [not null]
+  center_y float8 [not null]
+  center_z float8 [not null]
+  radius float8 [not null]
+  thickness float8 [not null, default: 0]
+  normal_x float8 [not null, default: 0]
+  normal_y float8 [not null, default: 0]
+  normal_z float8 [not null, default: 1]
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.arc {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.arc']
+  center_x float8 [not null]
+  center_y float8 [not null]
+  center_z float8 [not null]
+  radius float8 [not null]
+  start_angle float8 [not null, note: 'radians, counter-clockwise']
+  end_angle float8 [not null]
+  thickness float8 [not null, default: 0]
+  normal_x float8 [not null, default: 0]
+  normal_y float8 [not null, default: 0]
+  normal_z float8 [not null, default: 1]
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.lwpolyline {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.lwpolyline']
+  elevation float8 [not null, default: 0]
+  closed boolean [not null, default: false]
+  constant_width float8
+  thickness float8 [not null, default: 0]
+  normal_x float8 [not null, default: 0]
+  normal_y float8 [not null, default: 0]
+  normal_z float8 [not null, default: 1]
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.lwpolyline_vertex {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  position int [not null]
+  x float8 [not null]
+  y float8 [not null]
+  start_width float8
+  end_width float8
+  bulge float8 [not null, default: 0, note: 'tan(sweep/4); 0 = straight segment']
+  indexes {
+    (entity_id, revision_id, position) [pk]
+  }
+}
+
+Table acad.face3d {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.face3d']
+  c1_x float8 [not null]
+  c1_y float8 [not null]
+  c1_z float8 [not null]
+  c2_x float8 [not null]
+  c2_y float8 [not null]
+  c2_z float8 [not null]
+  c3_x float8 [not null]
+  c3_y float8 [not null]
+  c3_z float8 [not null]
+  c4_x float8 [not null]
+  c4_y float8 [not null]
+  c4_z float8 [not null]
+  edge_flags int [not null, default: 0, note: 'bit set: which edges are invisible']
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.mesh {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.mesh']
+  subdivision_level int [not null, default: 0]
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+Table acad.mesh_vertex {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  position int [not null]
+  x float8 [not null]
+  y float8 [not null]
+  z float8 [not null]
+  indexes {
+    (entity_id, revision_id, position) [pk]
+  }
+}
+
+Table acad.mesh_face {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  position int [not null]
+  vertex_indices "int[]" [not null, note: 'indices into mesh_vertex.position']
+  indexes {
+    (entity_id, revision_id, position) [pk]
+  }
+}
+
+Table acad.text {
+  entity_id uuid [not null]
+  revision_id bigint [not null]
+  kind text [not null, default: 'acad.text']
+  insert_x float8 [not null]
+  insert_y float8 [not null]
+  insert_z float8 [not null]
+  height float8 [not null]
+  value text [not null]
+  rotation float8 [not null, default: 0, note: 'radians']
+  width_factor float8 [not null, default: 1]
+  oblique_angle float8 [not null, default: 0]
+  style_name text
+  horizontal_alignment int [not null, default: 0]
+  vertical_alignment int [not null, default: 0]
+  indexes {
+    (entity_id, revision_id) [pk]
+  }
+}
+
+// every acad entity table is a version row AND points at the shared graphic fields
+Ref: acad.graphic_entity.(entity_id, revision_id, type_code) > core.entity_version.(entity_id, revision_id, type_code)
+Ref: acad.graphic_entity.owner_block_id > core.entity.id
+Ref: acad.graphic_entity.layer_id > core.entity.id
+Ref: acad.graphic_entity.linetype_id > core.entity.id
+
+Ref: acad.layer.(entity_id, revision_id, kind) > core.entity_version.(entity_id, revision_id, type_code)
+Ref: acad.layer.linetype_id > core.entity.id
+Ref: acad.linetype.(entity_id, revision_id, kind) > core.entity_version.(entity_id, revision_id, type_code)
+Ref: acad.block_record.(entity_id, revision_id, kind) > core.entity_version.(entity_id, revision_id, type_code)
+
+Ref: acad.insert.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+Ref: acad.insert.block_id > core.entity.id
+Ref: acad.point.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+Ref: acad.line.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+Ref: acad.circle.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+Ref: acad.arc.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+Ref: acad.lwpolyline.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+Ref: acad.face3d.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+Ref: acad.mesh.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+Ref: acad.text.(entity_id, revision_id, kind) > acad.graphic_entity.(entity_id, revision_id, type_code)
+
+Ref: acad.lwpolyline_vertex.(entity_id, revision_id) > acad.lwpolyline.(entity_id, revision_id)
+Ref: acad.mesh_vertex.(entity_id, revision_id) > acad.mesh.(entity_id, revision_id)
+Ref: acad.mesh_face.(entity_id, revision_id) > acad.mesh.(entity_id, revision_id)
+
+// ---------------------------------------------------------------- proc
+// A procedure's executable owner is the compiled Rust named by impl_key; a row alone never runs anything.
+
+Table proc.procedure {
+  id uuid [pk]
+  key text [not null, note: 'unique, e.g. acad.line.length']
+  name text [not null]
+  meaning text [not null]
+  effect text [not null, note: 'read | compute | change']
+  domain text [not null]
+  indexes {
+    key [unique]
+  }
+}
+
+Table proc.procedure_version {
+  id uuid [pk]
+  procedure_id uuid [not null]
+  version int [not null]
+  status text [not null, note: 'draft | active | retired']
+  impl_kind text [not null, note: 'rust_builtin | wasm']
+  impl_key text [not null, note: 'the registered function in the Rust host']
+  impl_hash text [note: 'content hash of the artifact']
+  created_at timestamptz [not null]
+  indexes {
+    (procedure_id, version) [unique]
+  }
+}
+
+Table proc.param {
+  id uuid [pk]
+  procedure_version_id uuid [not null]
+  position int [not null]
+  name text [not null]
+  direction text [not null, note: 'in | out']
+  value_type text [not null, note: 'number | text | boolean | entity']
+  entity_type_code text [note: 'required when value_type = entity']
+  unit text
+  required boolean [not null, default: true]
+  indexes {
+    (procedure_version_id, name, direction) [unique]
+  }
+}
+
+Table proc.run {
+  id uuid [pk]
+  procedure_version_id uuid [not null]
+  project_id uuid [not null]
+  input_revision_id bigint [not null, note: 'the revision the inputs were read at']
+  actor_id uuid [not null]
+  status text [not null, note: 'ok | failed']
+  error_code text
+  started_at timestamptz [not null]
+  finished_at timestamptz
+}
+
+Table proc.run_input {
+  run_id uuid [not null]
+  param_id uuid [not null]
+  entity_id uuid
+  value_number float8
+  value_text text
+  indexes {
+    (run_id, param_id) [pk]
+  }
+}
+
+Table proc.run_output {
+  run_id uuid [not null]
+  param_id uuid [not null]
+  entity_id uuid
+  value_number float8
+  value_text text
+  indexes {
+    (run_id, param_id) [pk]
+  }
+}
+
+Ref: proc.procedure_version.procedure_id > proc.procedure.id
+Ref: proc.param.procedure_version_id > proc.procedure_version.id
+Ref: proc.param.entity_type_code > core.entity_type.code
+Ref: proc.run.procedure_version_id > proc.procedure_version.id
+Ref: proc.run.(input_revision_id, project_id) > core.revision.(id, project_id)
+Ref: proc.run.actor_id > core.actor.id
+Ref: proc.run_input.run_id > proc.run.id
+Ref: proc.run_input.param_id > proc.param.id
+Ref: proc.run_input.entity_id > core.entity.id
+Ref: proc.run_output.run_id > proc.run.id
+Ref: proc.run_output.param_id > proc.param.id
+Ref: proc.run_output.entity_id > core.entity.id
+
+// ---------------------------------------------------------------- skill
+// A skill is one day-to-day domain problem, packaged so an LLM can pursue a goal with it.
+
+Table skill.skill {
+  id uuid [pk]
+  key text [not null]
+  name text [not null]
+  domain text [not null]
+  goal text [not null, note: 'the outcome the skill achieves']
+  when_to_use text [not null]
+  version int [not null]
+  status text [not null, note: 'draft | active | retired']
+  indexes {
+    (key, version) [unique]
+  }
+}
+
+Table skill.context {
+  id uuid [pk]
+  skill_id uuid [not null]
+  position int [not null]
+  kind text [not null, note: 'definition | rule_of_thumb | warning | example']
+  text text [not null]
+  source_id uuid
+}
+
+Table skill.query {
+  id uuid [pk]
+  skill_id uuid [not null]
+  name text [not null]
+  purpose text [not null]
+  sql_text text [not null, note: 'read-only; runs against views over entity tables']
+}
+
+Table skill.workflow_step {
+  skill_id uuid [not null]
+  position int [not null]
+  kind text [not null, note: 'query | procedure | check | ask_human']
+  query_id uuid
+  procedure_id uuid
+  expectation text [not null, note: 'what must hold after the step']
+  on_failure text [not null, note: 'stop | retry | ask_human']
+  indexes {
+    (skill_id, position) [pk]
+  }
+}
+
+Table skill.test {
+  id uuid [pk]
+  skill_id uuid [not null]
+  name text [not null]
+  setup_note text [not null, note: 'which fixture entities to load']
+}
+
+Table skill.test_check {
+  test_id uuid [not null]
+  position int [not null]
+  target text [not null, note: 'which output to compare']
+  expected_number float8
+  expected_text text
+  tolerance float8
+  unit text
+  indexes {
+    (test_id, position) [pk]
+  }
+}
+
+Ref: skill.context.skill_id > skill.skill.id
+Ref: skill.context.source_id > core.source.id
+Ref: skill.query.skill_id > skill.skill.id
+Ref: skill.workflow_step.skill_id > skill.skill.id
+Ref: skill.workflow_step.query_id > skill.query.id
+Ref: skill.workflow_step.procedure_id > proc.procedure.id
+Ref: skill.test.skill_id > skill.skill.id
+Ref: skill.test_check.test_id > skill.test.id
