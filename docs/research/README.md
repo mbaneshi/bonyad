@@ -68,3 +68,5 @@ Decisions needed from the founder: none for this batch. Section 6 of
 | [`mappings/point-line-surface.md`](mappings/point-line-surface.md) | Mapping to the current slice |
 | [`proposals/next-batch.md`](proposals/next-batch.md) | Adoption recommendations, experiments, next batch |
 | [`landscape/engineering-landscape-and-primitives.md`](landscape/engineering-landscape-and-primitives.md) | Batch 2: cross-discipline landscape, shared concepts, evidence-backed primitive candidates, boundary mappings, experiments |
+| [`code-inventory/cad-and-nexus-code-inventory.md`](code-inventory/cad-and-nexus-code-inventory.md) | Code-level inventory of CAD/Civil entities, procedures and separation in Nexus, LibreCAD, FreeCAD, IfcOpenShell, QGIS; reuse and licence verdicts |
+| [`code-inventory/3d-tools-code-inventory.md`](code-inventory/3d-tools-code-inventory.md) | Code-level inventory of how FreeCAD, SolveSpace, OpenSCAD (and lighter: Blender, IfcOpenShell/Bonsai, MeshLab, Wings3D) structure 3D models: authored vs derived, identity, constraints, separation, formats, reuse verdicts |

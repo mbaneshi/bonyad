@@ -22,6 +22,15 @@ fields or licence text were extracted. Everything else is inventory or gap, and 
 are listed in section 1 and section 6. Reading was done with `curl`, `gh api` and
 `pdftotext` against source repositories, schemas and official documentation, not blogs.
 
+**Update (software-anchored pass).** Section 8 adds a reference pass over twelve
+applications (AutoCAD, Civil 3D, Revit, ETABS, SAFE, ArcGIS, 3ds Max, Unreal Engine,
+Primavera P6, SketchUp, Twinmotion, Archicad) using vendor documentation only. It adds
+label **[V\*]** (vendor page located by search, body not read directly), per-app
+profiles, a Revit vs Archicad separation, a cross-app table for P1 to P18, four new
+candidates (P19 to P22), updated gaps (8.5), experiments X13 to X18, founder questions
+Q11 to Q14, and sources S30 to S60. Sections 1, 4, 6 and 7 carry short pointers; the
+substance is in section 8.
+
 Reused from batch 1 by link, not redone: LandXML 1.2 study
 ([`../formats/landxml-1.2.md`](../formats/landxml-1.2.md)), ISO 19111 / OGC 18-005r5
 ([`../standards/crs-iso19111-ogc.md`](../standards/crs-iso19111-ogc.md)), planar vs
@@ -63,6 +72,13 @@ exist to do (**[I]**).
 | Urban planning / GIS | inv | inv | gap (LADM ISO 19152, INSPIRE) | inv GeoPackage 1.4.0 (S21), CityGML 3.0 CM (S20), GeoJSON (batch 1) | gap | inv: PROJ, GDAL (licence heads), PostGIS GPL-2.0, UrbanSim BSD-3, pandana AGPL-3.0 (S22) |
 | Quantities / cost / scheduling | inv | gap | gap (ICMS, NRM, CESMM, Uniclass: fetch redirected, **[U]**) | **deep** IFC quantity/cost/task entities (S2); MS Project XML, P6 XER gap | inv: schedule result fields (float, critical flag) seen in IFC (S2); CPM algorithm not read | gap |
 | **Added: measurement (units, uncertainty, classification)** | inv | gap | **deep-ish** UCUM 2.2 (S26), QUDT (S27), JCGM 100/101/102 listing (S28) | **deep** units/uncertainty fields in S1, S2, S5, S8 | gap | **deep** `uom` 0.38.0 Apache-2.0 OR MIT (S29, registry only) |
+
+**Software pass update (section 8.5, 8.6):** *Structural* moves from gap to inventory+
+(ETABS object/element/results interface, SAFE concept model, Archicad analytical model;
+still no design code or mathematics). *Scheduling* moves from gap to deep for the P6 data
+map; *cost and quantities* remain a gap. *Urban planning* remains a gap. Civil 3D, Revit,
+Archicad, ArcGIS, SketchUp and others add API and identity evidence to the rows above.
+Per-application depth is in 8.6.
 
 Why "measurement" is added: every other row depends on it, and the evidence for
 quantities and uncertainty cuts across rows (section 4, P2 and P12).
@@ -631,6 +647,11 @@ critical path, cost quantity rules (scheduling and cost); thermal boundary condi
 | P16 | Time-varying definition | weak |
 | P17 | Observation | supported in surveying; weak elsewhere |
 | P18 | Lifecycle / access / revision | supported as three concepts |
+| P19 | Activity network with calendar (section 8.4) | discipline-specific, preserved (P6, IFC) |
+| P20 | Idealisation: derived analysis model (8.4) | supported; mapping needs experiment |
+| P21 | Datum / level / grid (8.4) | supported; scope needs experiment |
+| P22 | View, scene and sheet as stored data (8.4) | needs experiment |
+| P1 to P18 | Cross-app re-test (8.4) | no verdict reversed; P1, P4, P6, P12, P13 sharpened |
 
 ---
 
@@ -750,6 +771,9 @@ from batch 1 (E1 to E5). Thresholds are proposals for the founder to adjust.
 | X11 | LandXML angle conventions: `angle` 0 = east, `direction` 0 = north (found in XSD) match a real file | Extends E4: read `dir` in a real file and plot | One convention confirmed |
 | X12 | AGS depth-along-hole is linear referencing | Compare with deviated-hole data if a legitimate sample exists | Pass if the same mapping rules apply |
 
+Experiments X13 to X18 and questions Q11 to Q14 from the software-anchored pass are in
+section 8.7.
+
 ### Unresolved questions
 
 - **Q1 (founder).** Which discipline follows surveying: road/alignment (LandXML,
@@ -819,6 +843,9 @@ advice.
 | S28 | JCGM 100:2008, 101:2008, 102:2011 publication listing | https://www.bipm.org/en/committees/jc/jcgm/publications | listing only; documents not read | Free PDF; © BIPM, terms not shown |
 | S29 | crates.io registry: `uom` 0.38.0 (Apache-2.0 OR MIT), `nalgebra` 0.35.0 (Apache-2.0), `geo` 0.33.1 (MIT OR Apache-2.0), `petgraph` 0.8.3 (MIT OR Apache-2.0), `i_overlay` 9.1.0, `truck-modeling` 0.6.0 (Apache-2.0), `proj` 0.31.0, `geographiclib-rs` 0.2.7, `dxf` 0.6.2 | https://crates.io/api/v1/crates/ | as listed, fetched 2026-10-22 | as listed |
 
+Sources S30 to S60 (the twelve-application pass) are logged in section 8.8, with the
+pages tried and discarded.
+
 ### Sources tried and not used (so the absence is visible)
 
 | Source | Result |
@@ -838,3 +865,434 @@ advice.
 - LandXML defines two angle types: `angle` ("assume 0 degrees = east") and `direction`
   ("assume 0 degrees = north"); this refines H3 (S1).
 - OpenSees licence is now read (S11): restrictive; batch 1 listed it as Unknown.
+
+---
+
+## 8. Software-anchored reference pass (12 applications)
+
+Added at the founder's request. The twelve applications are **research subjects**, not
+proposed Bonyad modules. Their overlap is the useful part: where two products solve the
+same problem differently, the shared part is evidence for a foundation concept and the
+difference is a product choice.
+
+**Method and limits.** Only vendor developer documentation, API references, file-format
+references and licence texts were used. These products are proprietary; no binary, file
+format or behaviour was reverse engineered, no application was run (no licences held),
+and no restricted text is reproduced (short identifiers and paraphrase only). Evidence
+labels as in the rest of the file, plus one new label:
+
+- **[V\*]** a vendor page that was located and summarised by a search tool, but whose
+  body the fetch tool did not return directly. Treat as **[V]** minus one level of
+  confidence; re-read before relying on it. Community forum posts were **not** used as
+  evidence (they are not primary sources); where only a forum answered, the item is
+  **[U]**.
+
+Some vendor pages returned navigation or echoed the question instead of content
+(Unreal Datasmith overview and Material Instances pages, Civil 3D developer-guide root,
+Revit "Parameters" and "Project Location" guessed URLs). Those pages were discarded, not
+cited. Versions are old for some sources (ETABS API 2015/2016 help, Civil 3D API
+Developer's Guide 2013, DXF reference 2014); the **current** edition was not located and
+is flagged per row.
+
+### 8.1 Per-application profiles
+
+For each application: core object/data model; identity; units; coordinates/frames;
+relationships; definition vs occurrence; formats and interchange; extension API and
+reuse terms. Cell text is Verified unless tagged.
+
+#### 8.1.1 AutoCAD (2D drafting, geometry, documentation)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | A drawing database of symbol tables (`BLOCK_RECORD`, `LAYER`, `LTYPE`, `STYLE`, `UCS`, `VIEW`, `VPORT`, `DIMSTYLE`) and entities (`INSERT`, lines, polylines, ...); the DXF reference documents the group-code form of this database | **[V]** S30 |
+| Identity | Entity **handle**: group code 5, "a text string of up to 16 hexadecimal digits"; `$HANDSEED` records the next available handle; `DIMSTYLE` alone uses code 105. Drawing-level `$FINGERPRINTGUID` ("set at creation time, uniquely identifies a particular drawing") and `$VERSIONGUID` ("updated when the drawing is modified") | **[V]** S30. Session-scope `ObjectId` vs persistent handle: only forum posts found, **[U]** |
+| Units | `$INSUNITS` (code 70): default units for inserted blocks, 0 = unitless, 1 = inches, 2 = feet, 4 = mm, 6 = m ... 20 = parsecs; `$MEASUREMENT` 0 English / 1 metric. A drawing may legitimately be **unitless** | **[V]** S30 |
+| Frames | User coordinate system (UCS) is a stored table entry with origin and axes; views and viewports are stored table entries | **[V]** S30 |
+| Relationships | Hard-pointer ids (for example visual-style references via codes 345/346); block record <- `INSERT` reference | **[V]** S30 (semantics of INSERT as a reference: **[I]**) |
+| Definition vs occurrence | `BLOCK_RECORD` (definition) and `INSERT` (occurrence) | **[V]** table names, **[I]** semantics |
+| Formats | DXF (documented text/group-code form); native DWG: no public specification found, **[U]** | **[V]** / **[U]** |
+| API and terms | ObjectARX / .NET API: official reference pages were not reachable by the fetch tool (404 or empty). DXF reference: "may not be reproduced in any form" | **[V]** S30; API **[U]** |
+
+#### 8.1.2 Civil 3D (survey, terrain, alignments, infrastructure)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | Layered on the AutoCAD database: Surfaces (`TinSurface`, grid, and volume surfaces), Alignments, Profiles, Corridors, Points, Pipe Networks; Sites contain parcels and alignments (COM chapter). Guide chapter list in the 2013 edition | **[V]** S31 (2013 edition) |
+| Identity | Collections return AutoCAD `ObjectId`s that must be opened within a `Transaction` and cast to the intended type | **[V]** S31 |
+| Units | Settings apply at three levels: drawing (units, zone), feature, and command; "ambient settings also define which units are used" | **[V]** S31 |
+| Frames | Drawing-level coordinate zone; stations along alignments | **[V]** S31 |
+| Linear referencing | Station = distance along an alignment from its start, **renumbered by station equations** (location, new station basis, increase/decrease flag). Some calls require a **raw** station "without regard to modifications made by station equations" | **[V]** S31 |
+| Relationships | Alignment owns its profiles (`GetProfileIds`); design speeds attach to raw stations | **[V]** S31 / S32 |
+| Formats | Native DWG; exchange via LandXML (S1 shows the neutral form of the same concepts) | **[I]** |
+| API and terms | .NET API (`AeccDbMgd` etc.); the guide says the .NET API exposes less than COM (at that time: sites, parcels, sections, corridor creation). Guide copyright Autodesk, no reuse licence | **[V]** S31 |
+
+#### 8.1.3 Revit (BIM: architecture, structure, MEP)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | Everything is an **Element**, classified into model, host, view, annotation and datum groups. **Category** (walls, doors, dimensions...) > **Family** (system or loadable) > **Type** (`FamilySymbol`) > **Instance** | **[V]** S33 |
+| Identity | `ElementId`: "unique in the current project", and "subject to change during a Revit session"; the 64-bit `Value` is read-only. `UniqueId` "functions like a GUID" and "is always unique across separate projects". Vendor advice for external persistence: store your own id in a shared parameter | **[V]** S33, S34 |
+| Units | Seven base quantities each with an internal unit; **length is feet**, others metric, so derived units are mixed (force "kg-ft/s2"). Setters expect internal units; `UnitUtils` converts. Newer API uses `ForgeTypeId` for "specs" (quantity kinds) and units | **[V]** S33; ForgeTypeId **[V\*]** |
+| Frames | Internal origin, **project base point**, **survey point**, `SiteLocation` (latitude, longitude, time zone), `ProjectLocation`, shared coordinates published/acquired between linked files | **[V\*]** S35 |
+| Datums | **Levels**: "finite horizontal planes that act as a reference for level-hosted or level-based elements"; a column has a **Base Level** | **[V]** S33 |
+| Relationships | Hosting (host elements "contain system family objects that can contain other model elements"); location is curve-driven (wall, beam, brace) or point-based; other elements return Location with no information | **[V]** S33 |
+| Definition vs occurrence | Family / `FamilySymbol` / `FamilyInstance`; "FamilySymbol is the API name for what the Revit interface calls a Family Type"; instances are "Components" in the UI. Parameters exist on instance and type | **[V]** S33; family code detail **[V\*]** |
+| Materials | A `Material` is an element. Some properties sit on the Material (colour, fill pattern, render), others on **attached assets**: structural ("Physical" in the UI) and thermal assets (as `PropertySetElement`), plus an appearance asset | **[V]** S36; appearance asset **[V\*]** |
+| Collaboration | Each element belongs to exactly one workset; editing requires ownership (checkout); local copy synchronises with a central model | **[V\*]** S37 |
+| Formats | RVT proprietary, no public specification found **[U]**; IFC export code is open (Autodesk `revit-ifc`, LGPL 2.0, plus one proprietary DLL), IFC import "largely internal" | **[V]** S38 |
+| API and terms | .NET API with an online developer guide and reference; unofficial mirrors exist and were not used. No reuse licence shown on the help pages | **[V]** |
+
+#### 8.1.4 ETABS (building structural analysis and design)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | `cSapModel` exposes **objects** (`PointObj`, `FrameObj`, `AreaObj`, `LinkObj`, `TendonObj`) **and separately elements** (`PointElm`, `LineElm`, `AreaElm`, `LinkElm`); definitions (`PropMaterial`, `PropFrame`, `PropArea`, `PropLink`, `PropRebar`, `PropTendon`, `PatternDef`, `Func`); loads (`LoadPatterns`, `LoadCases`, `RespCombo`, `ConstraintDef`, `Diaphragm`, `GDispl`); organisation (`Story`, `GroupDef`, `GridSys`, `PierLabel`, `SpandrelLabel`, `Tower`); `Analyze`, `Design*`, `Results` | **[V]** S39 |
+| Identity | Objects are named; `ChangeName`; points have `GetGUID`/`SetGUID`; label <-> name conversions | **[V]** S39 |
+| Units | The API sets **present units** by enumerations for force, length and temperature (`eForce`, `eLength`, `eTemperature`); method returns 0 on success | **[V]** S39 (database units: **[V\*]** from a search summary) |
+| Frames | Points have Cartesian, cylindrical and spherical coordinates, and local axes; restraints "are always set in the point local coordinate system" | **[V]** S39 |
+| Relationships | Point connectivity queries, diaphragm assignment, groups | **[V]** S39 |
+| Definition vs occurrence | Section/material/area **properties** are definitions assigned to objects | **[I]** from interface names |
+| Results | `Results` interface "gives access to API calls related to analysis results", separate from the model | **[V]** S39 |
+| Formats | Not documented in the pages read; `File` interface only | **[U]** |
+| Version | Reference pages found are ETABS **2015 and 2016** help; the current API edition was not located | **[V]** S39 |
+| API and terms | .NET `ETABS2016.dll`; CSI states OAPI is a Windows help file shipped with the install; third-party support is a subscription; terms not read | **[V\*]** |
+
+#### 8.1.5 SAFE (foundation and slab analysis and design)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | Slabs, beams, columns, braces, ramps, walls and soil springs (point, line, area, tension-only, compression-only supports); "SAPFire converts the object-based model into a finite-element mesh" | **[V]** S40 |
+| Identity, units, frames | No SAFE-specific API reference located; ETABS `cSapModel` shares the interface family (search results show `cPropArea.GetSlab` returning type, material, thickness, colour, notes and a GUID) | **[U]** for SAFE; ETABS **[V\*]** |
+| Design | Post-tensioned slab design (ACI 318-08, Eurocode 2-2004 named), automatic punching-shear checks | **[V]** S40 |
+| Formats | Imports models from SAP2000, ETABS or CAD; exports DXF/DWG; CIS not mentioned | **[V]** S40 |
+| API and terms | Not found for SAFE. **[U]** | |
+
+#### 8.1.6 ArcGIS (geographic data, spatial analysis)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | **Datastore** > Geodatabase / Database / file systems. **Table** (rows with shared columns), **FeatureClass** (a Table whose rows are features with geometry and a common schema), **FeatureDataset** (feature classes sharing a coordinate system), **RelationshipClass** (including attributed), **Subtypes**, **Domains** (coded value and range). Definition objects (`TableDefinition`...) separate metadata from data | **[V]** S41 (ArcGIS Pro 3.7 SDK concepts, 2026-04-20) |
+| Identity | `ObjectID`: "permanent identifiers of a feature or row in a geodatabase" (unlike shapefile FIDs, which are positional); `GlobalID` exists (coverage thin in the page) | **[V]** S41 |
+| Units | Coordinates use the **spatial reference's** units | **[V]** S41, S42 |
+| Frames | Spatial reference by `wkid` or WKT; `latestWkid`; vertical `vcsWkid`; "the JSON wkid will always be the value originally assigned"; spatial references are immutable in the SDK; feature dataset members share one CRS, feature classes may carry their own | **[V]** S41, S42 |
+| Geometry | Point, multipoint, polyline (`paths`, `curvePaths`), polygon (`rings`: **exterior rings clockwise**, holes counter-clockwise), envelope; Z elevation and **M "measure"** values; circular, elliptic arcs and cubic Beziers as curves | **[V]** S42 |
+| Tolerance | Simplicity depends on the spatial reference: a polyline segment is degenerate when its length is at most twice the XY resolution; polygon segments must be at least 2*sqrt(2) times the XY tolerance. Two rule sets: Esri "simple" and stricter OGC "simple" (Esri-simple implies OGC-simple, not the reverse) | **[V]** S41 |
+| Formats | Shapefile, file/mobile/enterprise geodatabase, feature services (REST JSON); CAD file systems | **[V]** S41, S42 |
+| API and terms | Pro SDK repo Apache-2.0; REST reference public; Esri docs copyright (no reuse licence shown) | **[V]** S41 |
+
+#### 8.1.7 3ds Max (3D modelling, materials, rendering, animation)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | **Scene graph of `INode`**: parent/children, node transform (`GetNodeTM`/`SetNodeTM` at a time `t`), `GetObjectRef` to the object the node displays, material assignment by node | **[V]** S43 |
+| Dependencies | **Reference system**: `ReferenceMaker` is notified when a `ReferenceTarget` changes, updates or is deleted; raw pointers are discouraged because of dangling references; one plug-in may be both | **[V]** S44 |
+| Identity | Node `GetHandle()` (`ULONG`); lifetime/assignment not explained on the page | **[V]** S43 |
+| Units | **System unit** vs **display unit** (`GetSystemUnitInfo`, `GetUnitDisplayInfo`); default system unit 1.000 inch. System unit sets true scale; display only changes viewport | **[V\*]** S45 |
+| Materials | `Mtl`: "base class for the creation of material plug-ins"; shading function `Shade()`, ambient/diffuse/specular, shininess, transparency, self-illumination, sub-materials, displacement, render elements. **Appearance and shading behaviour only** | **[V]** S46 |
+| Formats | `.max` native (no public specification found, **[U]**); FBX; Unreal Datasmith supports 3ds Max 2016-2026 | **[V]** S47 |
+| API and terms | C++ SDK, .NET and Python/MAXScript; SDK help copyright Autodesk, no reuse licence shown | **[V]** |
+
+#### 8.1.8 Unreal Engine (interactive real-time 3D)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | **Actor** = "any object that can be placed into a level"; **Components** carry behaviour. `UActorComponent` (logic, no place), `USceneComponent` (transform, attaches in a hierarchy), `UPrimitiveComponent` (visual, physics). **Actors do not store transforms**: the root scene component supplies it | **[V]** S48 |
+| Identity | Not documented on the Actors page | **[U]** |
+| Units | Default **centimetres**, kilograms, seconds, degrees, m/s, Celsius, N; changeable per project in editor settings | **[V]** S49 |
+| Frames | Left-handed, Z-up; world origin at level centre, fixed; local space relative to the attached parent scene component. Large-world / double-precision coordinates: not covered on the page read | **[V]** S50; LWC **[U]** |
+| Definition vs occurrence | Class vs spawned instance ("creating new instances of AActor classes is called spawning"); Material Instances: page not retrievable, **[U]** | **[V]** S48 |
+| Formats and interchange | **Datasmith** imports from named sources with version ranges: 3ds Max 2016-2026, Revit 2016.3-2023 (newer via Autodesk), SketchUp Pro 2019-2025, Archicad 23-28 (beta), AutoCAD (beta), Rhino up to 8, Navisworks, CATIA, SOLIDWORKS, NX, Creo, plus IFC (2x Ed 2-4 and 4x3, beta), STEP (AP203/214/242), IGES, JT, Parasolid; FBX built in | **[V]** S47 |
+| API and terms | C++ and Blueprint API. EULA page returned 403; search summaries say royalties (5% above a revenue threshold) and limits on public redistribution of engine source | **[V\*]** S51 |
+
+#### 8.1.9 Primavera P6 (scheduling, dependencies, resources, progress)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | XER/Data-map tables include `TASK` (activities), `TASKPRED` (relationships), `TASKRSRC` (assignments), `RSRC`, `CALENDAR`, `ACCOUNT`, `COSTTYPE`, `CURRTYPE`, `OBS`, project and activity codes, documents, financial periods | **[V]** S52 (Version 20, Nov 2020) |
+| Identity | Three layers: numeric `task_id`, user-visible `task_code` ("Activity ID"), and `guid` ("Global Unique ID"); relationships have `task_pred_id`; predecessors can be in **another project** (`pred_proj_id`) | **[V]** S52 |
+| Relationship | `TASKPRED`: `pred_task_id`, `task_id`, `pred_type` (Relationship Type), `lag_hr_cnt` (Lag), `comments`. A relationship is a row with attributes | **[V]** S52 (type values not in the page read) |
+| Time and units | Durations and floats in **hours** (`*_hr_cnt`); planned (`target_*`), early, late, remaining, actual, expected dates and durations all live in `TASK`; `cstr_type`/`cstr_date` primary and secondary **date constraints**; `free_float_hr_cnt`, `driving_path_flag`, `float_path` | **[V]** S52 |
+| Calendars | `CALENDAR` has `clndr_type`, `base_clndr_id` (parent calendar), hours per day/week/month/year, default flag, project and personal flags; `TASK.clndr_id` selects one. DB admin guide partitions calendars by type base/project/resource | **[V]** S52; partition **[V\*]** |
+| Frames | None (time axis only) | |
+| Definition vs occurrence | Activity codes (types and values), calendars, resource curves referenced by assignments | **[V]** S52 |
+| Formats | XER (proprietary text export), MS Project XML mapping guide, XLSX mapping guide | **[V\*]** S52 (guides exist; only the XER map read) |
+| API and terms | EPPM Web Services / Integration API: pages not read, **[U]**. Oracle docs © Oracle, no reuse licence | **[V]** S52 |
+
+#### 8.1.10 SketchUp (fast 3D modelling, concept design)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | `Entity` base; `Drawingelement` (Edge, Face, Group, ComponentInstance...), `Curve`, `Loop`, `Layer`, `Material`, `Page` (scenes), `Style`, `Vertex`, `Texture`. `Model#entities` is top-level only | **[V]** S53 |
+| Identity | `entityID`: "not persistent between sessions"; `persistent_id` added per class from 2017 (ComponentDefinition 2020.1); definition `guid` "changes after the component definition is modified and the component edit is exited"; the **model** `guid` changes after modification and save | **[V]** S53, S54, S55 |
+| Units | "All lengths are stored in **inches**"; display unit and format (decimal, architectural, engineering, fractional) are model options; `Length#to_s` is for humans, serialise with `to_f`; comparisons use a default **length tolerance** (1.0 == 1.000001) | **[V]** S56 |
+| Frames | `Geom::Transformation` 4x4; model georeference via `shadow_info`, `point_to_utm`, optional `crs_location` (setting it does not geolocate) | **[V]** S54, S55 |
+| Definition vs occurrence | `ComponentDefinition` vs `ComponentInstance`; edits "propagate across all of its instances"; instances found by `instances`; procedural components (2027.0) have control entities and procedure-managed output entities | **[V]** S54 |
+| Attributes | Named attribute dictionaries on entities with key/value pairs (untyped) | **[V]** S53 |
+| Materials | **Appearance only**: colour, alpha, texture, PBR maps (2025+), section hatch pattern; no physical properties documented | **[V]** S57 |
+| Formats | `.skp`; Ruby API for in-app extensions; Desktop SDK for read/write of SKP is **by access request**, terms not shown; file version selectable on save (VERSION_3 ... VERSION_2021) | **[V]** S55, S58 |
+| API and terms | Ruby API stubs MIT; Ruby API documentation online | **[V]** S58 |
+
+#### 8.1.11 Twinmotion (architectural visualisation)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | Imported scene content with design-app hierarchy, components, objects and materials preserved; local edits (transforms, materials) can be reset per selection | **[V]** S59 |
+| Interchange | Datasmith exporters / **Direct Link** (live sync, multiple links per project) and `.udatasmith` file import; Revit exporter built in from Revit 2024 / Twinmotion 2023.1; Archicad 23-29, SketchUp Pro 2019-2026 per plugin pages | **[V]** S59; versions **[V\*]** |
+| Identity, units, frames | How Direct Link matches objects between syncs is not stated; units and frame handling not covered; material model not covered | **[U]** |
+| API and terms | Not an authoring API; scene edited in application. Epic EULA applies (403, see Unreal) | **[V\*]** |
+
+#### 8.1.12 Archicad (BIM architecture and building documentation)
+
+| Aspect | Finding | Evidence |
+|---|---|---|
+| Data model | Fixed enumeration of element types (`API_ElemTypeID`: wall, column, beam, window, door, object, lamp, slab, roof, mesh, zone, curtain wall with segment/frame/panel/junction/accessory, shell, skylight, morph, stair with riser/tread/structure, railing with nine sub-element types, plus dimension, text, hatch, camera, section, elevation, drawing, worksheet, detail, hotlink, group...). **Drafting, view and documentation items are element types in the same list** | **[V]** S60 (Archicad 30 C++ API) |
+| Identity | `API_Guid` on elements; **attributes** (layers, materials, composites...) are referenced by **index**, with a separate `guid`, name and `modiTime`; the "server application automatically tracks changes in the GUIDs" for custom Element Links | **[V]** S60 |
+| Stories | `floorInd` identifies the story an element belongs to (not applicable to all types) | **[V]** S60 |
+| Units | Display preferences for altitude (metre or decimal foot), north (decimal degree or DMS), longitude/latitude; internal unit not stated in the pages read | **[V]** S60 |
+| Frames | Project **Geo Location** holds Coordinate Reference System and **Map Conversion** parameters (same pair of concepts as IFC `IfcProjectedCRS` + `IfcMapConversion`) plus sun/place info | **[V]** S60 |
+| Relationships | Custom **Element Links** (GUID to GUID with flags), **Hotlink** modules (type module or xref, source local file or Teamwork server, status, single or all stories), grouping, composites | **[V]** S60 |
+| Derived models | Archicad "generates an Analytical Model for the cores of all load-bearing elements" from the 3D model using customisable generation rules saved in the plan database (shared in Teamwork) | **[V]** S60 |
+| Definition vs occurrence | **Library Parts** in library folders (GDL objects); legacy library API deprecated since Archicad 28 in favour of Library Management; element type `object` places a library part | **[V]** S60 (instance semantics **[I]**) |
+| Formats | IFC supported; the API gives access to IFC data created on import but "creation and changing of them is something we don't support anymore"; DXF/DWG I/O is itself an add-on; Datasmith exporter | **[V]** S60, S47 |
+| API and terms | C++ Development Kit (DevKit version must match Archicad; developers register and obtain an MDID); also GDL. **Graphisoft Software License Agreement v2 (Nov 2023)**: no sale, distribution or commercialisation of the Software Product, no reverse engineering, documentation copies for personal purposes only and not republished | **[V]** S60 |
+
+### 8.2 Revit vs Archicad: foundation vs product choice
+
+Both are object-based BIM authoring tools. Where they agree, the concept is evidence for
+a foundation; where they differ, it is a product choice. Hypotheses about Bonyad are
+**[I]**.
+
+| Concept | Revit | Archicad | Reading |
+|---|---|---|---|
+| Persistent element identity | `UniqueId` (GUID-like), plus project-scoped `ElementId` | `API_Guid` | **Common foundation.** Both also keep a second, cheaper, unstable key: Revit `ElementId`; Archicad attribute **index** beside attribute GUID |
+| Element classification | Open: Category > Family (system or loadable) > Type > Instance | Closed enumeration `API_ElemTypeID`, with GDL library parts for extension | **Common:** a kind per element. **Product choice:** open families vs closed kinds + library objects |
+| Definition vs occurrence | `FamilySymbol` / `FamilyInstance` (type parameters vs instance parameters) | Library part vs placed object (instance semantics **[I]**) | **Common** (P9). Parameter layering differs |
+| Vertical organisation | `Level` is a datum **element**; level-hosted elements | Story index `floorInd` on the element | **Common:** a named reference elevation that elements bind to. **Product choice:** element vs index/setting |
+| Hosting / composition | Host elements contain other elements; curve- or point-located | Compound elements: curtain wall > segment > frame > panel; stair > riser/tread; railing > nine part types | **Common** (P8). Archicad exposes parts as typed sub-elements |
+| Georeference | Base point, survey point, site location, shared coordinates, true north | Geo Location: CRS + map conversion | **Common foundation** and matches IFC (`IfcProjectedCRS`, `IfcMapConversion`) |
+| Linking other models | Linked files; coordinates acquired/published between links | Hotlink modules and xrefs with source status | **Common need;** different mechanism |
+| Multi-user | Worksets; element in exactly one workset; checkout; synchronise with central | Teamwork (mentioned for shared rules and hotlink sources; mechanism not read) | **Common need;** Revit mechanism verified, Archicad **[U]** |
+| Materials | `Material` element with attached structural/thermal/appearance assets | Attributes (materials, composites, layers) by index and GUID; composites with layer connection class ids | **Product choice:** aspect-assets vs attribute system. **Common:** material is referenced, not embedded |
+| Views in the model | View elements are Elements | Section, elevation, drawing, worksheet, detail, camera are element types | **Common:** view definitions are model data |
+| Analytical vs physical | Not verified in this pass | Analytical model generated from physical cores by saved rules | Only Archicad evidence; IFC separates `IfcStructuralItem` from `IfcElement` (S2) |
+| Interchange | IFC exporter open (LGPL 2.0); import mostly closed | IFC data read-only after import; export translator options | **Common:** IFC is the shared language. **Fidelity is product-specific** |
+| Extension | .NET API, transactions (not read), shared parameters | C++ add-ons tied to DevKit version; GDL | **Product choice** |
+
+Taken together: persistent identity, kind, definition/occurrence, datum levels, hosting
+and part-of structure, georeference as CRS + map conversion, links to other models, and
+views as stored data are shared. Open versus closed kinds, ownership and checkout
+mechanics, material asset model, and extension technology are product choices.
+
+### 8.3 Licence and reuse constraints (summary)
+
+| Source | Terms found | Consequence |
+|---|---|---|
+| Graphisoft DevKit | Software License Agreement v2: no distribution or commercialisation, no reverse engineering, personal documentation copies, API developer registration | Study and cite; do not redistribute or vendor |
+| Autodesk DXF reference, Civil 3D guide, Revit/3ds Max help | Copyright Autodesk; no reuse licence on the pages | Cite and paraphrase; do not copy |
+| Autodesk `revit-ifc` | LGPL 2.0 plus a proprietary DLL under Autodesk terms | Read-only study; reuse is a separate legal question |
+| Oracle P6 mapping guides | © Oracle | Cite field names only |
+| CSI ETABS/SAFE docs | Copyright CSI; no licence shown; support subscription | Cite and paraphrase |
+| Esri Pro SDK | Apache-2.0 repository; docs copyright Esri | SDK samples reusable; docs paraphrase |
+| SketchUp Ruby API stubs | MIT | Reusable |
+| Unreal EULA | Page 403; search summaries: royalty and source-distribution limits | **[U]**; read the actual EULA before any dependency |
+| Twinmotion | Epic documentation; EULA as above | **[U]** |
+
+### 8.4 Cross-app evidence for the candidate primitives
+
+Legend: **+** supports, **-** counter-evidence or weakens, **0** no evidence found.
+Apps: AC = AutoCAD, C3 = Civil 3D, RV = Revit, ET = ETABS, SF = SAFE, AG = ArcGIS,
+MX = 3ds Max, UE = Unreal, P6, SU = SketchUp, TM = Twinmotion, AR = Archicad.
+
+| Cand. | Supporting evidence | Counter-evidence / new findings | Effect on verdict |
+|---|---|---|---|
+| P1 Identity | RV `UniqueId`; AR `API_Guid`; AC handle + drawing GUIDs; AG `ObjectID` (permanent) + `GlobalID`; P6 `guid`; ET point GUID; SU `persistent_id` | **-** Identity itself is unstable: RV `ElementId` changes in session; SU `entityID` per session and definition `guid` changes on modification; AR tracks GUID changes; MX handle lifetime unknown. **New:** *entity* identity vs *content-version* identity (SU/AC `VERSIONGUID` change on edit); P6 has three layers (number, user code, GUID) | Supported; add **stability levels** (session / document / global) and separate version-stamp from identity |
+| P2 Quantity | RV feet internal; SU inches; UE cm; MX system unit 1 inch; ET present units; AC `$INSUNITS`; P6 hours; AG units from CRS | **-** AC may be unitless; MX/UE/RV store a unit unrelated to display; RV mixes feet with metric (derived units non-coherent) | Supported; **storage unit != display unit** is universal (RV, SU, MX, ET, AR) |
+| P3 Frame | RV base/survey point; AR CRS + map conversion; SU georeference; AG spatial reference; AC UCS; UE world/local; ET local axes | **-** UE is left-handed Z-up (handedness is part of the frame); AG: spatial reference is *immutable* and carries tolerance; SU `crs_location` does not geolocate. Frame vs transform hierarchy: MX/UE use parent transforms | Supported; frame includes handedness, up axis and (per AG) model tolerance |
+| P4 Linear ref. | C3 station + station equations (raw vs equated station); AG **M measure** values on polylines; (S1, S9, S2, S5 from earlier) | **-** C3 has two station notions at once (raw and equated) | **Strengthened** to six systems; add "raw vs displayed" position |
+| P5 Geometry representation | AG feature = row + geometry; MX node -> object ref; UE actor without own transform; RV location kinds; ET object vs element | **-** UE: the *transform* is not on the entity but on a component; SU definition owns entities | Supported; geometry and placement are separate from entity |
+| P6 Reference | P6 `TASKPRED` row with type + lag; AG attributed relationship classes; MX reference system with change notification; AR element links tracking GUIDs; ET connectivity; RV hosting; C3 alignment owns profiles | **-** MX and AR add *notification/maintenance* semantics (references that update on change); P6 relation crosses project boundaries | **Strengthened:** relations that carry attributes (P6, AG, IFC) and relations that are maintained (MX, AR) are two further properties |
+| P7 Kind | AR closed enum; RV Category; AG feature classes and subtypes; ET object types; C3 surface types | **-** AG subtypes are per table, "cannot be shared"; RV open families | Supported |
+| P8 Composition | RV host; SU groups/components; AR curtain wall/stair/railing parts; MX node tree; UE component attach tree; C3 sites; AG feature dataset | **-** UE: the entity (Actor) is a container of components rather than a member of a tree | Supported; tree of transforms and tree of parts are separable |
+| P9 Def./occurrence | RV Family/Symbol/Instance; SU definition/instance with propagation; AC block/insert; UE class/spawn; AR library parts; ET properties | **-** SU definition guid changes on edit; UE Material Instances **[U]** | Supported; propagation on edit is explicit (SU) |
+| P10 Rules | RV rejects an inactive symbol with an exception (usage rule, **[V\*]**); ET nonzero return codes; AG simplicity rules | **New:** AG has two *named* rule sets (Esri vs OGC) where geometry valid under one is invalid under the other; rules depend on tolerance | Supported; rule **sets** need names and versions |
+| P11 Field schema | AG fields with domains (coded value, range), nullable, editable; RV parameters (instance/type, shared parameters) | **-** SU attribute dictionaries are untyped key/values (EAV shape) | Needs experiment unchanged; AG domains are the best governed example |
+| P12 Tolerance | AG XY tolerance/resolution tied to spatial reference; SU length tolerance in comparison; AR project tolerances setting | **New:** model tolerance **belongs to the coordinate space** (AG) | Still rejected as one primitive; class 2 (model tolerance) attaches to the frame (P3) |
+| P13 Constraint | P6 `cstr_type` date constraints | **-** "Constraint" also means a schedule date constraint (P6), not geometry. ET constraint definitions (`ConstraintDef`) are rigid kinematic links | Name collision: at least three meanings (geometric, kinematic, schedule date) |
+| P14 Results | ET `Results` separate from model; AR analytical model derived | **-** P6 `TASK` mixes planned, early/late and actual in one row (like IFC `TaskTime`); SU none | Supported; ET is the clean precedent, P6 a conflation |
+| P15 Material | RV material = element + structural/thermal/appearance assets; MX material = shading; SU material = appearance; ET `PropMaterial` structural; AR attribute | **-** One word, four roles confirmed by 12 apps | Rejected as a record (confirmed); candidate **anchor + aspects** (H) |
+| P16 Time-varying | P6 calendars (typed, hierarchical, hours/day, week, month, year) | **-** MX/UE animation not verified | Weak -> add **calendar** as a distinct time definition |
+| P17 Observation | none of the 12 | | Unchanged: surveying only |
+| P18 State/access/revision | RV worksets/ownership; SU/AC version GUIDs; AR modiTime, Teamwork; AG versioning/archiving (listed, not read); P6 status | **-** None stores per-entity history verified | Supported as three concepts; access state confirmed (RV) |
+
+#### New candidates from this pass
+
+Added only where at least three applications give evidence.
+
+**P19. Activity network with calendar (scheduling).**
+- *Meaning.* Activities (work with duration), relationships between them (type, lag),
+  calendars that convert durations to dates, constraints on dates, resource
+  assignments, progress and computed float.
+- *Evidence.* P6 `TASK`/`TASKPRED`/`CALENDAR`/`TASKRSRC` (S52); IFC `IfcTask`,
+  `IfcRelSequence`, `IfcTaskTime` (S2). A third system (MS Project XML) has a mapping
+  guide listed by Oracle (S52), not read.
+- *Identity.* `task_id`, `task_code`, `guid`; relationship rows have their own id.
+- *Units.* Hours; dates; percentages.
+- *Relationships.* Predecessor/successor with type and lag; cross-project predecessors.
+- *Validity.* IFC forbids a process sequenced to itself; P6 distinguishes `driving_path_flag`
+  and float path.
+- *Counterexamples.* P6 stores planned, early, late, remaining and actual in one row;
+  calendars are hierarchical (`base_clndr_id`) and typed.
+- *Must not swallow.* The CPM algorithm and resource levelling (procedures), cost
+  accounts, work breakdown structure.
+- *Verdict:* **discipline-specific, preserved.** It reuses P2 (duration), P6 (relation
+  with attributes), P14 (computed dates) and the calendar idea in P16. Not a general
+  primitive.
+
+**P20. Idealisation: a derived analysis model of a physical model.**
+- *Meaning.* The model that is analysed is not the model that is built; it is generated
+  from it by rules, has its own identity, and must stay linked.
+- *Evidence.* ETABS objects vs elements (S39); SAFE object model converted to an FE mesh
+  by SAPFire (S40); Archicad analytical model generated from physical cores by rules
+  stored in the plan (S60); IFC structural items vs physical elements (S2). Four systems.
+- *Counterexamples.* Revit analytical model not verified here; Archicad's rules are
+  shared project data, ETABS's mesh is an engine detail.
+- *Must not swallow.* Meshing algorithms; element formulations; section properties.
+- *Verdict:* **supported.** It is a P14-style derived result with identity. Its exact
+  relation to the physical entity (one-to-many) is **needs experiment** (X15).
+
+**P21. Datum / level / grid (named reference plane or line used to place things).**
+- *Meaning.* A non-physical reference that other elements bind to.
+- *Evidence.* Revit `Level` datum elements and level-hosted elements (S33); Archicad
+  story `floorInd` (S60); ETABS `Story` and `GridSys` (S39). IFC spatial elements are
+  `IfcProduct` subtypes (S2).
+- *Differences.* Element (Revit) vs index (Archicad) vs model organisation (ETABS).
+- *Verdict:* **supported; scope needs experiment.** It may be a specialisation of P3
+  (one-axis frame) or of P6 (binding to a datum entity). X16.
+
+**P22. View, scene and sheet as stored data.**
+- *Meaning.* Saved views are model data, not only presentation.
+- *Evidence.* Revit view elements (S33); Archicad elevation, section, drawing,
+  worksheet, camera element types (S60); AutoCAD `VIEW`, `VPORT` and `UCS` table entries
+  (S30); SketchUp `Page` (scene) entities (S53). Four systems.
+- *Counterexamples.* Unreal and 3ds Max keep cameras as scene objects too, but that is
+  not a documented "saved view".
+- *Verdict:* **needs experiment.** It refines the manifesto's Presentation: *rendering*
+  is presentation; a *view definition* is data with identity (X14).
+
+**Folded, not new.**
+- *Scene graph / actor / component (MX, UE, SU):* evidence for placement relative to a
+  parent (P3) and for part-of trees (P8). The surprise is UE: **the entity has no
+  transform; a component does**. This is a counterexample to "an entity owns its
+  geometry/placement" and is recorded under P5.
+- *Spatial feature / layer / CRS (AG):* feature class + schema (P7, P11), geometry (P5),
+  spatial reference (P3), tolerance on the reference (P12), relationship classes (P6),
+  domains/subtypes (P11, P7). No new primitive; AG is the best single example of P11.
+- *Materials as appearance vs structural vs thermal:* confirmed (P15), see above.
+
+### 8.5 Effect on coverage and gaps
+
+| Row of the coverage matrix | Before | After this pass | Still open |
+|---|---|---|---|
+| Structural | inventory (IFC entities, OpenSees) | **inventory+**: ETABS object/element/definition/load/results interface names, SAFE conceptual model, Archicad analytical model; ETABS API is a **2015/2016** edition | Design codes; analysis mathematics; section properties; SAFE API; ETABS file format; load-combination semantics beyond interface names |
+| Quantities / cost / scheduling | gap (only IFC entity names) | **scheduling: deep for P6 data map fields** (activities, relationships, calendars, constraints, assignments, IDs); cost accounts and expense categories confirmed to exist | Cost model and quantity take-off rules (P6 cost tables, Revit material quantities page not retrieved); CPM algorithm; MS Project XML; calendar encoding (`clndr_data` format) |
+| Urban planning | gap | **still a gap.** ArcGIS gives GIS data structure, not planning content (zoning, land use, regulation, scenario) | LADM, CityGML modules, planning rules, UrbanSim data model |
+| Civil / transport | deep (formats) | + Civil 3D object model and station equations (2013 guide) | Current Civil 3D API; corridor/assembly model; survey figure database |
+| Architecture / BIM | deep (IFC) | + Revit and Archicad object models and identity | Archicad properties, Revit parameters beyond classification; Revit analytical; file formats RVT/PLN (no public specs) |
+| Mechanical / visual | inventory | + SketchUp, 3ds Max, Unreal, Twinmotion (appearance, scene graph, interchange) | CAD kernels' feature trees; Twinmotion material model |
+
+### 8.6 Per-application depth (for the coverage matrix)
+
+| App | Problems | Software/features | Standards | Formats | Math/procedures | API/SDK (licence) |
+|---|---|---|---|---|---|---|
+| AutoCAD | inv | inv | gap | **deep** DXF 2014 | gap | gap (ObjectARX **[U]**) |
+| Civil 3D | inv | inv | gap | inv (via LandXML) | inv (station equations) | **deep-ish** .NET guide 2013 |
+| Revit | inv | inv | gap | inv (IFC export code) | gap | **deep** developer guide pages |
+| ETABS | inv | inv | gap | gap | gap | **deep-ish** API 2015/2016 |
+| SAFE | inv | inv (wiki) | inv (code names) | inv (import/export list) | gap | gap |
+| ArcGIS | inv | inv | inv (OGC simple rules) | **deep** REST geometry, Pro SDK | inv (simplify/tolerance) | **deep** Pro SDK concepts (Apache-2.0) |
+| 3ds Max | inv | inv | gap | gap | gap | **deep-ish** SDK classes |
+| Unreal | inv | inv | gap | inv Datasmith list | gap | inv (docs; EULA **[U]**) |
+| P6 | inv | inv | gap | **deep** XER field map | gap (CPM) | gap |
+| SketchUp | inv | inv | gap | inv | gap | **deep** Ruby API |
+| Twinmotion | inv | inv | gap | inv | gap | gap |
+| Archicad | inv | inv | gap | inv | gap | **deep** DevKit docs (restricted licence) |
+
+### 8.7 Questions and experiments added or changed
+
+Experiments continue the numbering from section 6.
+
+| ID | Hypothesis | Method | Pass / fail |
+|---|---|---|---|
+| X13 | A schedule can be recomputed from activities, relationships and calendars | Take a founder-supplied (or legitimately public) P6 XER or IFC task set; run a forward and backward pass with the stored calendars; compare with stored early/late dates and float | Match within one calendar unit or document the extra rule (needs a sample, **founder input**) |
+| X14 | A saved view is a data entity independent of rendering | Compare view definitions in Revit/Archicad exports to IFC (if any) and to SketchUp scenes; list the fields | Pass if the common field set is small (frame, extents, visibility rules) |
+| X15 | An analysis model is a derived entity of the physical model with a stable mapping | Export one small model with IFC structural items (IfcOpenShell) and map physical to analytical members | Pass if the mapping is expressible without per-product rules |
+| X16 | Levels are a one-axis specialisation of frames | Place the same wall hosted on a level in IFC and in the Archicad/Revit descriptions; compare the information needed | Pass if the level reduces to an elevation in a frame |
+| X17 | Storage unit and display unit can be separated without loss | Read a value in a SketchUp or Revit-documented internal unit, display it in another, serialise, reload | Pass if round-trip error stays within the product's own tolerance |
+| X18 | Raw vs equated station is needed in addition to distance | Use LandXML with a `StaEquation` and compute positions both ways | Pass if the two disagree beyond equation points |
+
+**Changes to earlier items.** Q1 is more informed: scheduling (P6, IFC) and structural
+(ETABS, Archicad analytical, IFC) are now each documented enough to estimate effort
+(structural needs mathematics; scheduling is closer to graph algorithms plus calendars).
+New founder questions:
+
+- **Q11 (founder).** Which of the twelve do you hold licences for, so that sample files
+  and exports can be produced legitimately (P6 XER, ETABS text export, Revit/Archicad
+  IFC, SketchUp)?
+- **Q12 (founder).** Is a saved view (P22) acceptable as model data under the
+  Presentation concept, or should presentation never persist?
+- **Q13 (founder).** Is deriving an analysis model from a physical model (P20) in
+  scope for the first structural proof, or is analysis input authored directly?
+- **Q14.** Read the Unreal EULA text and the Twinmotion terms directly (both 403/unread
+  here) before any dependency on them, even for import tooling.
+
+### 8.8 Source log additions
+
+All accessed 2026-10-22. Direct reads are **[V]**, search-located vendor pages **[V\*]**.
+
+| ID | Source | URL | Version | Terms |
+|---|---|---|---|---|
+| S30 | Autodesk AutoCAD 2014 DXF Reference (PDF, 286 pages, via `pdftotext`) | https://images.autodesk.com/adsk/files/autocad_2014_pdf_dxf_reference_enu.pdf | AutoCAD 2014, March 2013 (old edition; newer help pages exist at help.autodesk.com/cloudhelp/2023/ENU/AutoCAD-DXF) | © Autodesk; not to be reproduced |
+| S31 | AutoCAD Civil 3D 2013 API Developer's Guide (PDF) | https://images.autodesk.com/adsk/files/AutoCAD_Civil_3D_API_Developer_s_Guide.pdf | Civil 3D 2013, April 2012 | © Autodesk |
+| S32 | Civil 3D API reference index (2013/2014) | http://docs.autodesk.com/CIV3D/2014/ENU/API_Reference_Guide/index.html | 2014 | [V\*] |
+| S33 | Revit API Developers Guide: General Properties, Other Classifications, Element Classification (cloudhelp 2021/2024) | https://help.autodesk.com/cloudhelp/2021/ENU/Revit-API/files/Revit_API_Developers_Guide/Introduction/Elements_Essentials/Revit_API_Revit_API_Developers_Guide_Introduction_Elements_Essentials_General_Properties_html.html ; .../2024/ENU/... Other_Classifications_html.html ; Units page (2021) | Revit 2021 and 2024 help | © Autodesk |
+| S34 | Revit API reference: `ElementId` Class | https://help.autodesk.com/cloudhelp/2026/ENU/Revit-API-MainReference/files/html/44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm | Revit 2026 | © Autodesk |
+| S35 | Revit API guide: place and locations, shared coordinates (search-located) | https://help.autodesk.com/view/RVT/2024/ENU/?guid=Revit_API_Revit_API_Developers_Guide_Advanced_Topics_Place_and_Locations_Place_html | Revit 2024 | [V\*] |
+| S36 | Revit API guide: Material section | https://help.autodesk.com/cloudhelp/2024/ENU/Revit-API/files/Revit_API_Developers_Guide/Revit_Geometric_Elements/Revit_API_Revit_API_Developers_Guide_Revit_Geometric_Elements_Material_html.html | Revit 2024 | © Autodesk |
+| S37 | Revit API guide: Worksharing (search-located) | https://help.autodesk.com/view/RVT/2024/ENU/?guid=Revit_API_Revit_API_Developers_Guide_Advanced_Topics_Worksharing_html | Revit 2024 | [V\*] |
+| S38 | Autodesk `revit-ifc` | https://github.com/Autodesk/revit-ifc | HEAD 2026-09-23 | LGPL 2.0 per README (GitHub licence field empty) + proprietary DLL |
+| S39 | CSI ETABS API (CSi API ETABS 2015/2016 help): `cSapModel`, `cPointObj`, SetPresentUnits, namespace index | https://docs.csiamerica.com/help-files/etabs-api-2016/html/15293a27-a035-e64b-a4b4-78356479aa98.htm ; .../9146996a-b33f-ee29-d662-b9364f6c6dc7.htm ; .../6a9c8a48-232d-761c-5421-1ff5ae019a4c.htm ; etabs-api-2015/.../c633cf2e-c0a0-873b-4fca-d54d939620f9.htm | ETABS 2015 and 2016 (older editions) | © CSI; no licence shown |
+| S40 | CSI Knowledge Base: SAFE home | https://web.wiki.csiamerica.com/wiki/spaces/safe | undated | © CSI |
+| S41 | ArcGIS Pro SDK ProConcepts: Geodatabase, Geometry; Pro SDK repo | https://github.com/Esri/arcgis-pro-sdk/wiki/ProConcepts-Geodatabase ; .../ProConcepts-Geometry ; https://github.com/Esri/arcgis-pro-sdk | Pro 3.7 (doc dated 2026-04-20); repo commit `e2faf732a9`, release 3.7.0.1901 | Apache-2.0 (repo) |
+| S42 | ArcGIS REST API: Geometry objects; Feature Layer | https://developers.arcgis.com/rest/services-reference/enterprise/geometry-objects/ ; .../feature-layer/ | Enterprise REST ("New at 12.0" notes) | © Esri |
+| S43 | 3ds Max SDK: `INode` class | https://help.autodesk.com/cloudhelp/2017/ENU/Max-SDK/cpp_ref/class_i_node.html | 3ds Max 2017 SDK (old) | © Autodesk |
+| S44 | 3ds Max SDK: reference system lesson | https://help.autodesk.com/cloudhelp/2017/ENU/Max-SDK/files/GUID-5F19208A-B95E-41A8-A788-3108F747AF0E.htm | 2017 | © Autodesk |
+| S45 | 3ds Max SDK: Units of Measurement (search-located) | https://help.autodesk.com/cloudhelp/2017/ENU/Max-SDK/files/GUID-688177EC-210E-4547-8873-000BBCFDA613.htm | 2017 | [V\*] |
+| S46 | 3ds Max SDK: `Mtl` class | https://help.autodesk.com/cloudhelp/2017/ENU/Max-SDK/cpp_ref/class_mtl.html | 2017 (first 100,000 of 135,273 characters read) | © Autodesk |
+| S47 | Unreal Engine docs: Datasmith supported software and file types | https://dev.epicgames.com/documentation/en-us/unreal-engine/datasmith-supported-software-and-file-types | version ranges as listed | © Epic |
+| S48 | Unreal Engine docs: Actors | https://dev.epicgames.com/documentation/en-us/unreal-engine/actors-in-unreal-engine | current at access | © Epic |
+| S49 | Unreal Engine docs: Units of Measurement | https://dev.epicgames.com/documentation/en-us/unreal-engine/units-of-measurement-in-unreal-engine | current | © Epic |
+| S50 | Unreal Engine docs: Coordinate System and Spaces | https://dev.epicgames.com/documentation/en-us/unreal-engine/coordinate-system-and-spaces-in-unreal-engine | current | © Epic |
+| S51 | Unreal Engine EULA (search summary; direct fetch 403) | https://www.unrealengine.com/eula/unreal | v12.1 and v14 PDFs seen; current text unread | **[U]** |
+| S52 | Oracle Primavera P6 EPPM XER Import/Export Data Map Guide (Project), Version 20 (PDF) ; DB Admin guide and MS Project XML map (search-located) | https://docs.oracle.com/cd/F25599_01/English/Mapping_and_Schema/xer_import_export_data_map_project/xer_import_export_data_map_project.pdf | Version 20, November 2020 (an old edition; later user guides are V24/V25) | © Oracle |
+| S53 | SketchUp Ruby API: Entity | https://ruby.sketchup.com/Sketchup/Entity.html | current at access | docs |
+| S54 | SketchUp Ruby API: ComponentDefinition; Transformation | https://ruby.sketchup.com/Sketchup/ComponentDefinition.html ; .../Geom/Transformation.html | current (mentions 2027.0) | docs |
+| S55 | SketchUp Ruby API: Model | https://ruby.sketchup.com/Sketchup/Model.html | current | docs |
+| S56 | SketchUp Ruby API: Length | https://ruby.sketchup.com/Length.html | current | docs |
+| S57 | SketchUp Ruby API: Material | https://ruby.sketchup.com/Sketchup/Material.html | current | docs |
+| S58 | SketchUp developer site; Ruby API stubs repo | https://developer.sketchup.com/ ; https://github.com/SketchUp/ruby-api-stubs | stubs HEAD 2026-10-12 | MIT (stubs); SDK terms not shown |
+| S59 | Twinmotion docs: Getting content in; Datasmith Direct Link workflow; Supported design applications (search-located) | https://dev.epicgames.com/documentation/en-us/twinmotion/datasmith-direct-link-workflow-in-twinmotion ; https://dev.epicgames.com/documentation/en-us/twinmotion/getting-your-content-into-twinmotion | current | © Epic |
+| S60 | Graphisoft Archicad API Development Kit (repo docs, Archicad 30 C++ API) and LICENSE | https://github.com/GRAPHISOFT/archicad-api-devkit ; https://graphisoft.github.io/archicad-api-devkit/ | commit `7a94688e30` (2026-10-07), release 30.3000 | Graphisoft Software License Agreement v2 (Nov 3, 2023) |
+
+#### Pages tried and discarded in this pass
+
+| Source | Reason |
+|---|---|
+| Unreal Datasmith overview, Creating Materials, Material Instances | Fetch returned a table of contents only or echoed the question; no content cited |
+| Revit "Parameters" and "Project Location" guessed URLs | 404; used search-located pages as **[V\*]** |
+| Revit ElementId help URL (2025 `view` URL) | Page Not Found |
+| Civil 3D developer guide root | Returned the word "Help" only |
+| ETABS OAPI FAQ | Navigation only |
+| Unreal EULA, licence overview | HTTP 403 |
+| AutoCAD ObjectARX / .NET `ObjectId` reference | Page not found; only community forum posts answered, excluded |
+| Archicad Python/JSON API | Not located |
+| Twinmotion material and units pages | Not located |
