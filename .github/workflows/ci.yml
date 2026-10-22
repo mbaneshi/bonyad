@@ -16,7 +16,8 @@ permissions:
 
 env:
   CARGO_TERM_COLOR: always
-  # A plain PostgreSQL is enough: the schema needs nothing from the Supabase stack.
+  # A plain PostgreSQL plus the two roles the Supabase stack provides (the `logic` job
+  # creates them; migration 20261021000003 revokes from them).
   DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/postgres
 
 jobs:
@@ -46,6 +47,11 @@ jobs:
         working-directory: logic
       - run: cargo clippy --all-targets -- -D warnings
         working-directory: logic
+      - name: Create the roles the Supabase stack provides (migrations reference them)
+        run: >-
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1
+          -c "create role anon nologin"
+          -c "create role authenticated nologin"
       - run: cargo test
         working-directory: logic
 
