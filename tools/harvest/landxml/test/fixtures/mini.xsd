@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hand-written fixture in the style of LandXML; not derived from the LandXML schema text. -->
+<xs:schema xmlns="urn:mini" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:mini" version="9">
+	<xs:element name="LandXML">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="Units"/>
+				<xs:element ref="Pts" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Road" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="version" type="xs:string" use="required"/>
+			<xs:attribute name="date" type="xs:date" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="direction"><xs:restriction base="xs:double"/></xs:simpleType>
+	<xs:simpleType name="angle"><xs:restriction base="xs:double"/></xs:simpleType>
+	<xs:simpleType name="station"><xs:restriction base="xs:double"/></xs:simpleType>
+	<xs:simpleType name="Point"><xs:list itemType="xs:double"/></xs:simpleType>
+	<xs:simpleType name="Point3dOpt"><xs:restriction base="Point"><xs:maxLength value="3"/></xs:restriction></xs:simpleType>
+	<xs:simpleType name="colour">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="red"/>
+			<xs:enumeration value="blue"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ptNameRef"><xs:restriction base="xs:string"/></xs:simpleType>
+	<xs:complexType name="PointType" mixed="true">
+		<xs:simpleContent>
+			<xs:extension base="Point3dOpt">
+				<xs:attribute name="name" type="xs:string"/>
+				<xs:attribute name="colour" type="colour"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="Start" type="PointType"/>
+	<xs:element name="End" type="PointType"/>
+	<xs:element name="Units">
+		<xs:complexType>
+			<xs:choice><xs:element ref="Metric"/><xs:element ref="Imperial"/></xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Metric">
+		<xs:complexType>
+			<xs:attribute name="linearUnit" type="xs:string" use="required"/>
+			<xs:attribute name="angularUnit" type="xs:string" default="radians"/>
+			<xs:attribute name="a" type="xs:string"/>
+			<xs:attribute name="b" type="xs:string"/>
+			<xs:attribute name="c" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Imperial">
+		<xs:complexType>
+			<xs:attribute name="linearUnit" type="xs:string" use="required"/>
+			<xs:attribute name="a" type="xs:string"/>
+			<xs:attribute name="b" type="xs:string"/>
+			<xs:attribute name="c" type="xs:string"/>
+			<xs:attribute name="d" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pts">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Pt" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pt">
+		<xs:complexType mixed="true">
+			<xs:simpleContent>
+				<xs:extension base="PointType">
+					<xs:attribute name="ord" type="xs:positiveInteger" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Road">
+		<xs:annotation><xs:documentation>A road. Second sentence. Third sentence.</xs:documentation></xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Start"/>
+				<xs:element ref="End"/>
+				<xs:element ref="Legs" minOccurs="0"/>
+				<xs:element ref="Spirals"/>
+				<xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="dir" type="direction"/>
+			<xs:attribute name="rot" type="angle"/>
+			<xs:attribute name="sta" type="station"/>
+			<xs:attribute name="partner" type="ptNameRef"/>
+			<xs:attribute name="length" type="xs:double"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Legs">
+		<xs:complexType>
+			<xs:sequence><xs:element ref="Leg" maxOccurs="unbounded"/></xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- stray annotation that documents the next element -->
+	<xs:annotation><xs:documentation>One leg.</xs:documentation></xs:annotation>
+	<xs:element name="Leg">
+		<xs:complexType>
+			<xs:attribute name="n" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Spirals">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="InSpiral"/>
+				<xs:element ref="OutSpiral"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="InSpiral"><xs:complexType><xs:all><xs:element ref="Spiral"/></xs:all></xs:complexType></xs:element>
+	<xs:element name="OutSpiral"><xs:complexType><xs:all><xs:element ref="Spiral"/></xs:all></xs:complexType></xs:element>
+	<xs:element name="Spiral">
+		<xs:complexType>
+			<xs:sequence><xs:element ref="Leg" minOccurs="0" maxOccurs="unbounded"/></xs:sequence>
+			<xs:attribute name="theta" type="angle"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Feature">
+		<xs:complexType>
+			<xs:sequence><xs:element ref="Property" minOccurs="0" maxOccurs="unbounded"/></xs:sequence>
+			<xs:attribute name="code" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Property">
+		<xs:complexType>
+			<xs:attribute name="label" type="xs:string" use="required"/>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

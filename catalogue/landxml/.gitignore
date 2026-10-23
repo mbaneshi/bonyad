@@ -1,0 +1,5 @@
+# LICENCE GATE (issue #41): the LandXML 1.2 XSD carries no licence statement of its own, so the
+# catalogue YAML derived from it is NOT committed. See SOURCES.md for the decision and how to
+# regenerate (tools/harvest/landxml/README.md). To publish later: settle the question in
+# SOURCES.md, delete the next line, regenerate and commit.
+*.yaml
