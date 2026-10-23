@@ -1,0 +1,11 @@
+code: acad.hatch_gradient_color_color
+name: HatchGradientPattern.Colors
+kind: child
+parent: acad.hatch
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: GradientColor, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/GradientColor.cs#L5, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Colors in the gradient (one row per entry, ordered).
+notes: "Source: count in group code 453."
+fields:
+  - { name: value, type: float, meaning: Gradient value, source_ref: group code 463 }
+  - { name: color, type: int, nullable: true, meaning: "Color for this gradient as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 421 }

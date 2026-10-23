@@ -1,0 +1,13 @@
+code: acad.block2pt_parameter
+name: Block2PtParameter
+kind: abstract
+base: acad.block_parameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Block2PtParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/Block2PtParameter.cs#L11, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents the dynamic block 2 point parameter.
+notes: DXF subclass marker AcDbBlock2PtParameter.
+fields:
+  - { name: base_location, type: enum, values: [ { value: StartPoint, meaning: "DXF value 0: The base point is the start point of the parameter." }, { value: MiddlePoint, meaning: "DXF value 1: The base point is the middle point of the parameter." } ], meaning: Base point the distance is measured from (start point or middle point)., source_ref: group code 177 }
+  - { name: first_point, type: point3, meaning: Gets or sets the first point., source_ref: "group codes 1010, 1020, 1030" }
+  - { name: grip_ids, type: array, of: bigint, meaning: Gets or sets the grip ids., source_ref: count in group code 170; repeated group code 91 }
+  - { name: second_point, type: point3, meaning: Gets or sets the second point., source_ref: "group codes 1011, 1021, 1031" }

@@ -1,0 +1,13 @@
+code: acad.dimassoc
+name: DIMASSOC
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DimensionAssociation, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/DimensionAssociation.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A DimensionAssociation object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbDimAssoc.
+fields:
+  - { name: associativity_flags, type: enum, values: [ { value: None, meaning: DXF value 0 }, { value: FirstPointReference, meaning: DXF value 1 }, { value: SecondPointReference, meaning: DXF value 2 }, { value: ThirdPointReference, meaning: DXF value 4 }, { value: FourthPointReference, meaning: DXF value 8 } ], meaning: Gets or sets the associativity flags that define the reference points for an entity., source_ref: group code 90 }
+  - { name: dimension_id, type: ref, nullable: true, ref_to: acad.dimension, meaning: Gets or sets the associated dimension object. Reference; DXF stores the handle., source_ref: group code 330 (stored as a handle) }
+  - { name: is_trans_space, type: bool, meaning: Gets or sets a value indicating whether the entity is in trans-space., source_ref: group code 70 }
+  - { name: rotated_dimension_type, type: enum, default: Unknown, values: [ { value: Unknown, meaning: DXF value 0 }, { value: Parallel, meaning: DXF value 1 }, { value: Perpendicular, meaning: DXF value 2 } ], meaning: "Gets or sets the type of the rotated dimension, indicating whether it is parallel or perpendicular.", source_ref: group code 71 }

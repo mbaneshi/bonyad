@@ -1,0 +1,11 @@
+code: acad.blockvisibilityparameter_state
+name: BlockVisibilityParameter.States
+kind: child
+parent: acad.blockvisibilityparameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockVisibilityParameter.State, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockVisibilityParameter.State.cs#L14, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a named state containing Entity objects. The state controls the visibility of the entities assigned to it (one row per entry, ordered).
+notes: "Source: count in group code 92."
+fields:
+  - { name: key, type: text, meaning: Dictionary key of the entry., source_ref: count in group code 92 }
+  - { name: name, type: text, meaning: Gets the name of the state., source_ref: group code 303 }

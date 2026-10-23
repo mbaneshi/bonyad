@@ -1,0 +1,14 @@
+code: acad.lwpolyline
+name: LWPOLYLINE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: LwPolyline, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/LwPolyLine.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A lightweight 2D polyline in a plane at one elevation; vertices may carry a bulge for arc segments (DXF LWPOLYLINE).
+notes: Hand-curated to equal the pilot table. The Plinegen flag (bit 128 of group 70) is not carried; see GAPS.md.
+fields:
+  - { name: elevation, type: length, default: 0, meaning: Elevation (Z) of the polyline plane in the OCS., source_ref: group code 38 }
+  - { name: closed, type: bool, default: false, meaning: True when the polyline is closed (bit 1 of group 70)., source_ref: "group code 70, bit 1 (LwPolylineFlags.Closed)" }
+  - { name: constant_width, type: length, nullable: true, meaning: Constant width of all segments; null when widths are per vertex., source_ref: group code 43 }
+  - { name: thickness, type: length, default: 0, meaning: Specifies the distance a 2D object is extruded above or below its elevation., source_ref: group code 39 }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230" }

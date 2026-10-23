@@ -1,0 +1,17 @@
+code: acad.shape
+name: SHAPE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Shape, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Shape.cs#L18, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The SHAPE entity is used like a block references, each SHAPE reference can be scaled and rotated individually.
+notes: DXF subclass marker AcDbShape.
+fields:
+  - { name: insertion_point, type: point3, meaning: Insertion point (in WCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230; no description in the sources" }
+  - { name: oblique_angle, type: angle, default: 0, meaning: Oblique angle. Radians here; DXF stores degrees., source_ref: group code 51 }
+  - { name: relative_x_scale, type: ratio, default: 1, meaning: Relative X scale factor., source_ref: group code 41 }
+  - { name: rotation, type: angle, default: 0, meaning: Rotation angle. Radians here; DXF stores degrees., source_ref: group code 50 }
+  - { name: shape_style_id, type: ref, nullable: true, ref_to: acad.style, meaning: Shape name. Reference; DXF stores the name., source_ref: group code 2 (stored as a name) }
+  - { name: size, type: float, default: 1, meaning: Size., source_ref: group code 40 }
+  - { name: thickness, type: length, default: 0, meaning: Thickness., source_ref: group code 39 }

@@ -1,0 +1,19 @@
+code: acad.helix
+name: HELIX
+kind: entity
+base: acad.spline
+fidelity: faithful
+source: { document: ezdxf attribute tables (DXFAttr) and reference docs, section: Helix (DXF HELIX), url: https://github.com/mozman/ezdxf/blob/7b202613e0d689955b8932a22bcbcf68bdd684f0/src/ezdxf/entities/helix.py, version: DXF R2018 (AC1032); required DXF version R2000, accessed_on: 2026-10-23, licence: MIT (ezdxf) }
+meaning: The HELIX entity.
+notes: "Harvested from ezdxf only: ACadSharp does not model this DXF type."
+fields:
+  - { name: major_release_number, type: int, default: 29, meaning: Major release number., source_ref: group code 90; ezdxf attribute dxf.major_release_number; no description in the sources }
+  - { name: maintenance_release_number, type: int, default: 63, meaning: Maintenance release number., source_ref: group code 91; ezdxf attribute dxf.maintenance_release_number; no description in the sources }
+  - { name: axis_base_point, type: vector3, default: [ 0, 0, 0 ], meaning: The base point of the helix axis (Vec3)., source_ref: "group codes 10, 20, 30; ezdxf attribute dxf.axis_base_point" }
+  - { name: start_point, type: point3, meaning: The starting point of the helix curve (Vec3). This also defines the base radius as the distance from the start point to the axis base point., source_ref: "group codes 11, 21, 31; ezdxf attribute dxf.start_point" }
+  - { name: axis_vector, type: vector3, default: [ 0, 0, 1 ], meaning: Defines the direction of the helix axis (Vec3)., source_ref: "group codes 12, 22, 32; ezdxf attribute dxf.axis_vector" }
+  - { name: radius, type: length, default: 1, meaning: Defines the top radius of the helix (float)., source_ref: group code 40; ezdxf attribute dxf.radius }
+  - { name: turns, type: float, default: 1, meaning: The count of helix turns (float)., source_ref: group code 41; ezdxf attribute dxf.turns }
+  - { name: turn_height, type: length, default: 1, meaning: Defines the pitch (height if one helix turn) of the helix (float)., source_ref: group code 42; ezdxf attribute dxf.turn_height }
+  - { name: handedness, type: bool, default: true, meaning: Helix orientation (int)., source_ref: group code 290; ezdxf attribute dxf.handedness }
+  - { name: constrain, type: int, default: 1, meaning: === ========================= 0 constrain turn height (pitch) 1 constrain count of turns 2 constrain total height === =========================., source_ref: group code 280; ezdxf attribute dxf.constrain }

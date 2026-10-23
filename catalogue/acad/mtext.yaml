@@ -1,0 +1,27 @@
+code: acad.mtext
+name: MTEXT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: MText, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/MText.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The MTEXT entity fits a multiline text in a specified width but can extend vertically to an indefinite length.
+notes: DXF subclass marker AcDbMText.
+fields:
+  - { name: alignment_point, type: point3, default: [ 1, 0, 0 ], meaning: "X-axis direction vector in WCS (3D Point); default value is (1, 0, 0); if rotation and text_direction are present, text_direction wins.", source_ref: "group codes 11, 21, 31; wording from ezdxf" }
+  - { name: attachment_point, type: enum, default: TopLeft, values: [ { value: TopLeft, meaning: "DXF value 1: Top left." }, { value: TopCenter, meaning: "DXF value 2: Top center." }, { value: TopRight, meaning: "DXF value 3: Top right." }, { value: MiddleLeft, meaning: "DXF value 4: Middle left." }, { value: MiddleCenter, meaning: "DXF value 5: Middle center." }, { value: MiddleRight, meaning: "DXF value 6: Middle right." }, { value: BottomLeft, meaning: "DXF value 7: Bottom left." }, { value: BottomCenter, meaning: "DXF value 8: Bottom center." }, { value: BottomRight, meaning: "DXF value 9: Bottom right." } ], meaning: Attachment point, source_ref: group code 71 }
+  - { name: background_color, type: int, nullable: true, meaning: "Background fill color as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 63 }
+  - { name: background_color_true, type: int, nullable: true, meaning: Background fill color as a 24-bit true colour (0x00RRGGBB); null when an index colour is used., source_ref: group code 421 }
+  - { name: background_color_book, type: text, nullable: true, meaning: "Background fill color: name of the colour-book colour, when one is used.", source_ref: group code 430 }
+  - { name: background_fill_flags, type: int, default: 0, meaning: "Background fill setting. Bit-coded: 1 UseBackgroundFillColor, 2 UseDrawingWindowColor, 16 TextFrame.", source_ref: group code 90 }
+  - { name: background_scale, type: ratio, default: 1.5, meaning: Determines how much border there is around the text., source_ref: group code 45 }
+  - { name: background_transparency, type: int, nullable: true, meaning: Transparency of background fill color, source_ref: group code 441 }
+  - { name: drawing_direction, type: enum, default: LeftToRight, values: [ { value: LeftToRight, meaning: "DXF value 1: Left to right." }, { value: RightToLeft, meaning: "DXF value 2: Right to left." }, { value: TopToBottom, meaning: "DXF value 3: Top to bottom." }, { value: BottomToTop, meaning: "DXF value 4: Bottom to top." }, { value: ByStyle, meaning: "DXF value 5: By Style." } ], meaning: Drawing direction, source_ref: group code 72 }
+  - { name: height, type: length, default: 1, meaning: Initial text height (float); default=1.0., source_ref: group code 40; wording from ezdxf }
+  - { name: insert_point, type: point3, default: [ 0, 0, 0 ], meaning: A 3D WCS coordinate representing the insertion or origin point., source_ref: "group codes 10, 20, 30" }
+  - { name: line_spacing, type: length, default: 1, meaning: Mtext line spacing factor., source_ref: group code 44 }
+  - { name: line_spacing_style, type: enum, values: [ { value: None, meaning: "DXF value 0: None." }, { value: AtLeast, meaning: "DXF value 1: Taller characters will override." }, { value: Exact, meaning: "DXF value 2: Taller characters will not override." } ], meaning: Mtext line spacing style., source_ref: group code 73 }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230; no description in the sources" }
+  - { name: rectangle_height, type: length, meaning: Reference rectangle height., source_ref: group code 46 }
+  - { name: rectangle_width, type: length, meaning: Reference rectangle width., source_ref: group code 41 }
+  - { name: style_id, type: ref, nullable: true, ref_to: acad.style, meaning: Style. Reference; DXF stores the name., source_ref: group code 7 (stored as a name); wording from ezdxf }
+  - { name: value, type: text, default: "", meaning: Value., source_ref: group code 1; no description in the sources }

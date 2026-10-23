@@ -1,0 +1,12 @@
+code: acad.blocklookupparameter
+name: BLOCKLOOKUPPARAMETER
+kind: object
+base: acad.block1pt_parameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockLookupParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockLookupParameter.cs#L21, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a BLOCKLOOKUPPARAMETER object, used in AutoCAD to drive block geometry from a lookup table in the Block Properties Table (the "Lookup" rows of the Customize tab of a dynamic block).
+notes: DXF subclass marker AcDbBlockLookUpParameter.
+fields:
+  - { name: action_id, type: int, meaning: Gets or sets the action ID associated with the block lookup parameter. This ID is used to link the parameter to a specific action in the dynamic block's evaluation graph., source_ref: group code 94 }
+  - { name: description, type: text, default: "", meaning: Gets or sets the description of the block lookup parameter. This description is used to provide additional information about the parameter in the Block Properties Table and in the Customize tab of a dynamic block., source_ref: group code 304 }
+  - { name: label, type: text, default: "", meaning: Gets or sets the label of the block lookup parameter. This label is used to identify the parameter in the Block Properties Table and in the Customize tab of a dynamic block., source_ref: group code 303 }

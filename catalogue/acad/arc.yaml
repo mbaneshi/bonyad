@@ -1,0 +1,15 @@
+code: acad.arc
+name: ARC
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Arc, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Arc.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A circular arc given by centre, radius and start and end angle, counter-clockwise (DXF ARC).
+notes: Hand-curated to equal the pilot table. Angles are radians counter-clockwise; DXF stores degrees. In DXF an ARC extends CIRCLE (same centre, radius, thickness, normal); the pilot table repeats them.
+fields:
+  - { name: center, type: point3, meaning: Centre point., source_ref: "group codes 10, 20, 30" }
+  - { name: radius, type: length, check: positive, meaning: Radius., source_ref: group code 40 }
+  - { name: start_angle, type: angle, meaning: "Start angle in radians, counter-clockwise (DXF group 50 stores degrees).", source_ref: group code 50 }
+  - { name: end_angle, type: angle, meaning: "End angle in radians, counter-clockwise (DXF group 51 stores degrees).", source_ref: group code 51 }
+  - { name: thickness, type: length, default: 0, meaning: Specifies the distance a 2D object is extruded above or below its elevation., source_ref: group code 39 }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230" }

@@ -1,0 +1,26 @@
+code: acad.layout
+name: LAYOUT
+kind: object
+base: acad.plotsettings
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Layout, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Layout.cs#L21, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: LAYOUT entity is part of a modelspace or paperspace layout definitions.
+notes: DXF subclass marker AcDbLayout.
+fields:
+  - { name: associated_block_id, type: ref, nullable: true, ref_to: acad.block_record, meaning: The associated paper space block table record. Reference; DXF stores the handle., source_ref: group code 330 (stored as a handle) }
+  - { name: base_ucs_id, type: ref, nullable: true, ref_to: acad.ucs, meaning: UCSTableRecord of base UCS if UCS is orthographic (UcsOrthographicType is non-zero). Reference; DXF stores the handle., source_ref: group code 346 (stored as a handle) }
+  - { name: elevation, type: length, default: 0, meaning: Layout elevation., source_ref: group code 146 }
+  - { name: insertion_base_point, type: point3, meaning: Insertion base point for this layout(defined by INSBASE while this layout is current)., source_ref: "group codes 12, 22, 32" }
+  - { name: last_active_viewport_id, type: ref, nullable: true, ref_to: acad.viewport, meaning: Viewport that was last active in this layout when the layout was current. Reference; DXF stores the handle., source_ref: group code 331 (stored as a handle) }
+  - { name: layout_flags, type: int, default: 1, meaning: "Layout flags. Bit-coded: 1 PaperSpaceLinetypeScaling, 2 LimitsChecking.", source_ref: group code 70 }
+  - { name: max_extents, type: point3, default: [ 231.3, 175.5, 0 ], meaning: Maximum extents for this layout(defined by EXTMAX while this layout is current)., source_ref: "group codes 15, 25, 35" }
+  - { name: max_limits, type: point2, default: [ 277, 202.5 ], meaning: Maximum limits for this layout(defined by LIMMAX while this layout is current)., source_ref: "group codes 11, 21" }
+  - { name: min_extents, type: point3, default: [ 25.7, 19.5, 0 ], meaning: Minimum extents for this layout(defined by EXTMIN while this layout is current)., source_ref: "group codes 14, 24, 34" }
+  - { name: min_limits, type: point2, default: [ -20, -7.5 ], meaning: Minimum limits for this layout (defined by LIMMIN while this layout is current)., source_ref: "group codes 10, 20" }
+  - { name: name, type: text, meaning: Layout name., source_ref: group code 1 }
+  - { name: origin, type: point3, default: [ 0, 0, 0 ], meaning: UCS origin., source_ref: "group codes 13, 23, 33" }
+  - { name: tab_order, type: int, meaning: Tab order. This number is an ordinal indicating this layout's ordering in the tab control that is attached to the drawing window. Note that the “Model” tab always appears as the first tab regardless of its tab order., source_ref: group code 71 }
+  - { name: ucs_id, type: ref, nullable: true, ref_to: acad.ucs, meaning: UCS Table Record if UCS is a named UCS. Reference; DXF stores the handle., source_ref: group code 345 (stored as a handle) }
+  - { name: ucs_orthographic_type, type: enum, default: None, values: [ { value: None, meaning: "DXF value 0: None" }, { value: Top, meaning: "DXF value 1: Top" }, { value: Bottom, meaning: "DXF value 2: Bottom" }, { value: Front, meaning: "DXF value 3: Front" }, { value: Back, meaning: "DXF value 4: Back" }, { value: Left, meaning: "DXF value 5: Left" }, { value: Right, meaning: "DXF value 6: Right" } ], meaning: Orthographic type of UCS., source_ref: group code 76 }
+  - { name: x_axis, type: vector3, default: [ 1, 0, 0 ], meaning: UCS X-axis., source_ref: "group codes 16, 26, 36" }
+  - { name: y_axis, type: vector3, default: [ 0, 1, 0 ], meaning: UCS Y-axis., source_ref: "group codes 17, 27, 37" }

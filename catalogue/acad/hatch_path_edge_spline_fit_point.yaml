@@ -1,0 +1,12 @@
+code: acad.hatch_path_edge_spline_fit_point
+name: Spline.FitPoints
+kind: child
+parent: acad.hatch
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BoundaryPath.Spline, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Hatch.BoundaryPath.Spline.cs#L40, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Fit points (one row per point, ordered).
+notes: In the source this is nested inside acad.hatch_path_edge_spline; nested children are not supported (FORMAT.md rule 5), so it is a child of acad.hatch and the *_index field(s) identify the owning row(s).
+fields:
+  - { name: path_index, type: int, meaning: Position of the owning path row within its parent (0-based)., source_ref: structural key added by the harvest (not a DXF group code); keeps the original nesting recoverable }
+  - { name: edge_index, type: int, meaning: Position of the owning edge row within its parent (0-based)., source_ref: structural key added by the harvest (not a DXF group code); keeps the original nesting recoverable }
+  - { name: point, type: point2, meaning: 2D point of the list., source_ref: count in group code 97 }

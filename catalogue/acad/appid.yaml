@@ -1,0 +1,10 @@
+code: acad.appid
+name: APPID
+kind: symbol
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: AppId, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Tables/AppId.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a AppId entry.
+notes: DXF subclass marker AcDbRegAppTableRecord.
+fields:
+  - { name: flags, type: int, meaning: "Standard flags. Bit-coded: 16 XrefDependent, 32 XrefResolved, 64 Referenced.", source_ref: group code 70 }
+  - { name: name, type: text, meaning: Specifies the name of the object, source_ref: group code 2 }

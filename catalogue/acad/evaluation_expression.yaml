@@ -1,0 +1,11 @@
+code: acad.evaluation_expression
+name: EvaluationExpression
+kind: abstract
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: EvaluationExpression, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/EvaluationExpression.cs#L9, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents an evaluation expression used in AutoCAD to define dynamic block parameters and constraints.
+notes: DXF subclass marker AcDbEvalExpr.
+fields:
+  - { name: id, type: int, meaning: Gets or sets the unique identifier for the evaluation expression., source_ref: group code 90 }
+  - { name: value98, type: int, meaning: Value98., source_ref: group code 98; no description in the sources }
+  - { name: value99, type: int, meaning: Value99., source_ref: group code 99; no description in the sources }

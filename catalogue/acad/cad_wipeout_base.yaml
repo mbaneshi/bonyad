@@ -1,0 +1,21 @@
+code: acad.cad_wipeout_base
+name: CadWipeoutBase
+kind: abstract
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: CadWipeoutBase, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/CadWipeoutBase.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Common base class for RasterImage and Wipeout.
+fields:
+  - { name: brightness, type: int, meaning: Brightness, source_ref: group code 281 }
+  - { name: class_version, type: int, meaning: Class version, source_ref: group code 90 }
+  - { name: clip_mode, type: enum, values: [ { value: Outside, meaning: "DXF value 0: Clip the outside." }, { value: Inside, meaning: "DXF value 1: Clip the inside." } ], meaning: Clipping state., source_ref: group code 290 }
+  - { name: clipping_state, type: bool, meaning: Clipping state., source_ref: group code 280 }
+  - { name: clip_type, type: enum, values: [ { value: Rectangular, meaning: "DXF value 1: Rectangular" }, { value: Polygonal, meaning: "DXF value 2: Polygonal" } ], meaning: Clipping boundary type., source_ref: group code 71 }
+  - { name: contrast, type: int, meaning: Contrast, source_ref: group code 282 }
+  - { name: definition_id, type: ref, nullable: true, ref_to: acad.imagedef, meaning: Image definition. Reference; DXF stores the handle., source_ref: group code 340 (stored as a handle) }
+  - { name: fade, type: int, meaning: Fade, source_ref: group code 283 }
+  - { name: flags, type: int, meaning: "Image display properties. Bit-coded: 1 ShowImage, 2 ShowNotAlignedImage, 4 UseClippingBoundary, 8 TransparencyIsOn.", source_ref: group code 70 }
+  - { name: insert_point, type: point3, meaning: Insertion point(in WCS), source_ref: "group codes 10, 20, 30" }
+  - { name: size, type: point2, meaning: Image size in pixels., source_ref: "group codes 13, 23" }
+  - { name: u_vector, type: vector3, default: [ 1, 0, 0 ], meaning: "U-vector of a single pixel(points along the visual bottom of the image, starting at the insertion point) (in WCS)", source_ref: "group codes 11, 21, 31" }
+  - { name: v_vector, type: vector3, default: [ 0, 1, 0 ], meaning: "V-vector of a single pixel(points along the visual left side of the image, starting at the insertion point) (in WCS)", source_ref: "group codes 12, 22, 32" }

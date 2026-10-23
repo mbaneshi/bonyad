@@ -1,0 +1,15 @@
+code: acad.mline
+name: MLINE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: MLine, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/MLine.cs#L18, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The MLINE entity.
+notes: DXF subclass marker AcDbMline.
+fields:
+  - { name: flags, type: int, meaning: "Flags. Bit-coded: 1 HasVertices, 2 Closed, 4 NoStartCaps, 8 NoEndCaps.", source_ref: group code 71 }
+  - { name: justification, type: enum, values: [ { value: Top, meaning: "DXF value 0: Top" }, { value: Zero, meaning: "DXF value 1: Zero" }, { value: Bottom, meaning: "DXF value 2: Bottom" } ], meaning: Justification., source_ref: group code 70 }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230; no description in the sources" }
+  - { name: scale_factor, type: ratio, default: 1, meaning: Scale factor., source_ref: group code 40 }
+  - { name: start_point, type: point3, meaning: Start point(in WCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: style_id, type: ref, nullable: true, ref_to: acad.mlinestyle, meaning: MLine Style. Reference; DXF stores the name., source_ref: group code 340 (stored as a handle) }

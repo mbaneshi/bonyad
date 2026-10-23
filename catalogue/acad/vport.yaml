@@ -1,0 +1,49 @@
+code: acad.vport
+name: VPORT
+kind: symbol
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: VPort, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Tables/VPort.cs#L18, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a VPort table entry.
+notes: DXF subclass marker AcDbViewportTableRecord.
+fields:
+  - { name: flags, type: int, meaning: "Standard flags. Bit-coded: 16 XrefDependent, 32 XrefResolved, 64 Referenced.", source_ref: group code 70 }
+  - { name: name, type: text, meaning: Specifies the name of the object, source_ref: group code 2 }
+  - { name: bottom_left, type: point2, default: [ 0, 0 ], meaning: Lower-left corner of viewport, source_ref: "group codes 10, 20" }
+  - { name: top_right, type: point2, default: [ 1, 1 ], meaning: Upper-right corner of viewport, source_ref: "group codes 11, 21" }
+  - { name: center, type: point2, default: [ 0, 0 ], meaning: View center point(in DCS), source_ref: "group codes 12, 22" }
+  - { name: snap_base_point, type: point2, meaning: Snap base point(in DCS), source_ref: "group codes 13, 23" }
+  - { name: snap_spacing, type: point2, default: [ 0.5, 0.5 ], meaning: Snap spacing X and Y, source_ref: "group codes 14, 24" }
+  - { name: grid_spacing, type: point2, default: [ 10, 10 ], meaning: Grid spacing X and Y, source_ref: "group codes 15, 25" }
+  - { name: direction, type: vector3, meaning: View direction from target point(in WCS), source_ref: "group codes 16, 26, 36" }
+  - { name: target, type: point3, default: [ 0, 0, 0 ], meaning: View target point(in WCS), source_ref: "group codes 17, 27, 37" }
+  - { name: aspect_ratio, type: ratio, default: 1, meaning: Aspect ratio, source_ref: group code 41 }
+  - { name: lens_length, type: length, default: 50, meaning: Lens length, source_ref: group code 42 }
+  - { name: front_clipping_plane, type: float, default: 0, meaning: Front clipping plane(offset from target point), source_ref: group code 43 }
+  - { name: back_clipping_plane, type: float, meaning: Back clipping plane(offset from target point), source_ref: group code 44 }
+  - { name: snap_rotation, type: angle, meaning: Snap rotation angle. Radians here; DXF stores degrees., source_ref: group code 50 }
+  - { name: twist_angle, type: angle, meaning: View twist angle. Radians here; DXF stores degrees., source_ref: group code 51 }
+  - { name: circle_zoom_percent, type: int, default: 1000, meaning: Circle sides, source_ref: group code 72 }
+  - { name: render_mode, type: enum, default: Optimized2D, values: [ { value: Optimized2D, meaning: "DXF value 0: Classic 2D" }, { value: Wireframe, meaning: "DXF value 1: Wire frame" }, { value: HiddenLine, meaning: "DXF value 2: Hidden line" }, { value: FlatShaded, meaning: "DXF value 3: Flat shaded" }, { value: GouraudShaded, meaning: "DXF value 4: Gouraud shaded" }, { value: FlatShadedWithWireframe, meaning: "DXF value 5: Flat shaded with wire frame" }, { value: GouraudShadedWithWireframe, meaning: "DXF value 6: Gouraud shaded with wireframe" } ], meaning: Render mode, source_ref: group code 281; first in R2000 (ezdxf) }
+  - { name: view_mode, type: int, default: 16, meaning: "View mode(see VIEWMODE system variable). Bit-coded: 1 PerspectiveView, 2 FrontClipping, 4 BackClipping, 8 Follow, 16 FrontClippingZ.", source_ref: group code 71 }
+  - { name: ucs_icon_display, type: enum, default: OnOrigin, values: [ { value: Off, meaning: "DXF value 0: Off; No icon is displayed" }, { value: OnLower, meaning: "DXF value 1: On; the icon is displayed only in the lower-left corner of the current viewport or layout" }, { value: OffOrigin, meaning: "DXF value 2: Off; if the icon is turned on, it is displayed at the UCS origin, if possible" }, { value: OnOrigin, meaning: "DXF value 3: On; Displays the UCS icon at the origin, if possible." } ], meaning: UCSICON setting, source_ref: group code 74 }
+  - { name: snap_on, type: bool, meaning: Snap on/off, source_ref: group code 75 }
+  - { name: show_grid, type: bool, default: true, meaning: Grid on/off, source_ref: group code 76 }
+  - { name: isometric_snap, type: bool, meaning: Snap style, source_ref: group code 77 }
+  - { name: snap_iso_pair, type: int, meaning: Snap style, source_ref: group code 78 }
+  - { name: origin, type: point3, default: [ 0, 0, 0 ], meaning: UCS origin, source_ref: "group codes 110, 120, 130; first in R2000 (ezdxf)" }
+  - { name: x_axis, type: vector3, default: [ 1, 0, 0 ], meaning: UCS X-axis, source_ref: "group codes 111, 121, 131; first in R2000 (ezdxf)" }
+  - { name: y_axis, type: vector3, default: [ 0, 1, 0 ], meaning: UCS Y-axis, source_ref: "group codes 112, 122, 132; first in R2000 (ezdxf)" }
+  - { name: named_ucs_id, type: ref, nullable: true, ref_to: acad.ucs, meaning: Named Ucs. Reference; DXF stores the handle., source_ref: group code 345 (stored as a handle); first in R2000 (ezdxf) }
+  - { name: base_ucs_id, type: ref, nullable: true, ref_to: acad.ucs, meaning: Base Ucs. Reference; DXF stores the handle., source_ref: group code 346 (stored as a handle); first in R2000 (ezdxf) }
+  - { name: orthographic_type, type: enum, default: None, values: [ { value: None, meaning: "DXF value 0: None" }, { value: Top, meaning: "DXF value 1: Top" }, { value: Bottom, meaning: "DXF value 2: Bottom" }, { value: Front, meaning: "DXF value 3: Front" }, { value: Back, meaning: "DXF value 4: Back" }, { value: Left, meaning: "DXF value 5: Left" }, { value: Right, meaning: "DXF value 6: Right" } ], meaning: Orthographic type of UCS, source_ref: group code 79; first in R2000 (ezdxf) }
+  - { name: elevation, type: length, meaning: Elevation, source_ref: group code 146; first in R2000 (ezdxf) }
+  - { name: grid_flags, type: int, meaning: "Grid flags. Bit-coded: 1 _1, 2 _2, 4 _3, 8 _4.", source_ref: group code 60; first in R2000 (ezdxf) }
+  - { name: minor_grid_lines_per_major_grid_line, type: int, default: 5, meaning: Major grid lines, source_ref: group code 61; first in R2007 (ezdxf) }
+  - { name: visual_style_id, type: ref, nullable: true, ref_to: acad.visualstyle, meaning: Visual style object (optional). Reference; DXF stores the handle., source_ref: group code 348 (stored as a handle); first in R2007 (ezdxf) }
+  - { name: use_default_lighting, type: bool, default: true, meaning: Default Lighting On flag, source_ref: group code 292; first in R2007 (ezdxf) }
+  - { name: default_lighting, type: enum, default: TwoDistantLights, values: [ { value: OneDistantLight, meaning: "DXF value 0: One distant light" }, { value: TwoDistantLights, meaning: "DXF value 1: Two distant lights" } ], meaning: Default Lighting type, source_ref: group code 282; first in R2007 (ezdxf) }
+  - { name: brightness, type: float, meaning: Brightness, source_ref: group code 141; first in R2000 (ezdxf) }
+  - { name: contrast, type: float, meaning: Contrast, source_ref: group code 142; first in R2000 (ezdxf) }
+  - { name: ambient_color, type: int, nullable: true, meaning: "Ambient color(only output when non-black) as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 63; first in R2000 (ezdxf) }
+  - { name: ambient_color_true, type: int, nullable: true, meaning: Ambient color(only output when non-black) as a 24-bit true colour (0x00RRGGBB); null when an index colour is used., source_ref: group code 421; first in R2000 (ezdxf) }
+  - { name: ambient_color_book, type: text, nullable: true, meaning: "Ambient color(only output when non-black): name of the colour-book colour, when one is used.", source_ref: group code 431; first in R2000 (ezdxf) }

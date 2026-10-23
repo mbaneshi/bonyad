@@ -1,0 +1,11 @@
+code: acad.blockpolarstretchaction
+name: BLOCKPOLARSTRETCHACTION
+kind: object
+base: acad.block_action
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockPolarStretchAction, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockPolarStretchAction.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a BLOCKPOLARSTRETCHACTION object, used in AutoCAD to control a polar stretch action in a dynamic block.
+notes: DXF subclass marker AcDbBlockPolarStretchAction.
+fields:
+  - { name: angle_offset, type: length, meaning: Gets or sets the angle offset for the stretch action., source_ref: group code 140 }
+  - { name: distance_multiplier, type: length, meaning: Gets or sets the distance multiplier for the stretch action., source_ref: group code 141 }

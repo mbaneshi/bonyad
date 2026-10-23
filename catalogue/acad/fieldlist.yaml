@@ -1,0 +1,10 @@
+code: acad.fieldlist
+name: FIELDLIST
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf; fields from ezdxf entities/idbuffer.py", section: FieldList, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/FieldList.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A FieldList object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbFieldList. ACadSharp has no group codes for this class; the fields come from ezdxf's attribute table.
+fields:
+  - { name: flags, type: int, default: 0, meaning: Not documented by Autodesk., source_ref: group code 90; ezdxf attribute dxf.flags }

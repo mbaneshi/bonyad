@@ -1,0 +1,14 @@
+code: acad.blockflipparameter
+name: BLOCKFLIPPARAMETER
+kind: object
+base: acad.block2pt_parameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockFlipParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockFlipParameter.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a BLOCKFLIPPARAMETER object, used in AutoCAD to control a flip in a dynamic block.
+notes: DXF subclass marker AcDbBlockFlipParameter.
+fields:
+  - { name: base_state_name, type: text, nullable: true, meaning: Gets or sets the base state name., source_ref: group code 307 }
+  - { name: description, type: text, nullable: true, meaning: Gets or sets the description., source_ref: group code 306 }
+  - { name: flipped_state_name, type: text, nullable: true, meaning: Gets or sets the flipped state name., source_ref: group code 308 }
+  - { name: label, type: text, nullable: true, meaning: Gets or sets the label., source_ref: group code 305 }
+  - { name: label_position, type: point3, meaning: Gets or sets the label position., source_ref: "group codes 1012, 1022, 1032" }

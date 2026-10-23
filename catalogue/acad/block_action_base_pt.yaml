@@ -1,0 +1,13 @@
+code: acad.block_action_base_pt
+name: BlockActionBasePt
+kind: abstract
+base: acad.block_action
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockActionBasePt, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockActionBasePt.cs#L7, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Block action base pt (no DXF name).
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbBlockActionWithBasePt.
+fields:
+  - { name: base_point, type: point3, meaning: Gets or sets the base point of the action., source_ref: "group codes 1011, 1021, 1031" }
+  - { name: value1012, type: point3, meaning: Value1012., source_ref: "group codes 1012, 1022, 1032; no description in the sources" }
+  - { name: value280, type: bool, meaning: Value280., source_ref: group code 280; no description in the sources }

@@ -1,0 +1,16 @@
+code: acad.block
+name: BLOCK
+kind: symbol
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Block, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Blocks/Block.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A Block entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbBlockBegin.
+fields:
+  - { name: base_point, type: point3, default: [ 0, 0, 0 ], meaning: Specifies the insert point of the block., source_ref: "group codes 10, 20, 30" }
+  - { name: comments, type: text, nullable: true, meaning: Specifies the comments for the block or drawing., source_ref: group code 4; first in R2000 (ezdxf) }
+  - { name: flags, type: int, meaning: "Block active flags. Bit-coded: 1 Anonymous, 2 NonConstantAttributeDefinitions, 4 XRef, 8 XRefOverlay, 16 XRefDependent, 32 XRefResolved, 64 Referenced.", source_ref: group code 70 }
+  - { name: is_unloaded, type: bool, default: false, meaning: Gets or sets a value indicating whether the XRef is unloaded., source_ref: group code 71 }
+  - { name: name, type: text, meaning: Specifies the name of the object., source_ref: "group codes 2, 3" }
+  - { name: x_ref_path, type: text, nullable: true, meaning: "Gets the path of the block, document, application, or external reference.", source_ref: group code 1 }

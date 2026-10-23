@@ -1,0 +1,11 @@
+code: acad.attdef
+name: ATTDEF
+kind: entity
+base: acad.attribute_base
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: AttributeDefinition, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/AttributeDefinition.cs#L14, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A AttributeDefinition entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbAttributeDefinition.
+fields:
+  - { name: prompt, type: text, default: "", meaning: Prompt text for this attribute., source_ref: group code 3 }

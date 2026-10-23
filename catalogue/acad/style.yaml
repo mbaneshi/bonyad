@@ -1,0 +1,18 @@
+code: acad.style
+name: STYLE
+kind: symbol
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: TextStyle, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Tables/TextStyle.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a TextStyle entry.
+notes: DXF subclass marker AcDbTextStyleTableRecord.
+fields:
+  - { name: flags, type: int, meaning: "Standard flags. Bit-coded: 16 XrefDependent, 32 XrefResolved, 64 Referenced.", source_ref: group code 70 }
+  - { name: name, type: text, meaning: Specifies the name of the object, source_ref: group code 2 }
+  - { name: big_font_filename, type: text, nullable: true, meaning: "Big-font file name, blank if none.", source_ref: group code 4 }
+  - { name: filename, type: text, default: "", meaning: Primary font file name., source_ref: group code 3 }
+  - { name: height, type: length, meaning: Fixed text height; 0 if not fixed, source_ref: group code 40 }
+  - { name: last_height, type: length, meaning: Last height used, source_ref: group code 42 }
+  - { name: mirror_flag, type: int, default: 0, meaning: "Mirror flags. Bit-coded: 2 Backward, 4 UpsideDown.", source_ref: group code 71 }
+  - { name: oblique_angle, type: angle, default: 0, meaning: Specifies the oblique angle of the object. Radians here; DXF stores degrees., source_ref: group code 50 }
+  - { name: true_type, type: int, nullable: true, default: 0, meaning: "A long value which contains a true-type font’s pitch and family, character set, and italic and bold flags. Bit-coded: 1 Italic, 2 Bold.", source_ref: group code 1071 }
+  - { name: width, type: length, default: 1, meaning: Width factor, source_ref: group code 41 }

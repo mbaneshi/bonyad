@@ -1,0 +1,14 @@
+code: acad.blockflipgrip
+name: BLOCKFLIPGRIP
+kind: object
+base: acad.block_grip
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockFlipGrip, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockFlipGrip.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A BLOCKFLIPGRIP object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbBlockFlipGrip.
+fields:
+  - { name: direction_x, type: float, meaning: Gets or sets the X component of the direction vector., source_ref: group code 140 }
+  - { name: direction_y, type: float, meaning: Gets or sets the Y component of the direction vector., source_ref: group code 141 }
+  - { name: direction_z, type: float, meaning: Gets or sets the Z component of the direction vector., source_ref: group code 142 }
+  - { name: flip_expression_id, type: int, meaning: Gets or sets the expression id., source_ref: group code 93 }

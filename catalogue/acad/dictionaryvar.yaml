@@ -1,0 +1,11 @@
+code: acad.dictionaryvar
+name: DICTIONARYVAR
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DictionaryVariable, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/DictionaryVariable.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A DictionaryVariable object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker DictionaryVariables.
+fields:
+  - { name: object_schema_number, type: int, meaning: Object schema number (currently set to 0), source_ref: group code 280 }
+  - { name: value, type: text, nullable: true, meaning: Value of variable, source_ref: group code 1 }

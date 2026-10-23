@@ -1,0 +1,9 @@
+code: acad.field_children
+name: Field.Children
+kind: child
+parent: acad.field
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Field, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Field.cs#L31, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Gets the collection of child fields associated with this object (one row per reference, ordered).
+fields:
+  - { name: children_id, type: ref, ref_to: acad.field, meaning: Reference to one member of the list (Field)., source_ref: count in group code 90; repeated group code 360 }

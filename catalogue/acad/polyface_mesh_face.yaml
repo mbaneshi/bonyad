@@ -1,0 +1,10 @@
+code: acad.polyface_mesh_face
+name: PolyfaceMesh.Faces
+kind: child
+parent: acad.polyface_mesh
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: PolyfaceMesh, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/PolyfaceMesh.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Face records with the triangle indexes (one row per reference, ordered).
+notes: Field `face_id` points at acad.vertex_face_record in the source; that type is not an addressable table here, so ref_to is `any`.
+fields:
+  - { name: face_id, type: ref, ref_to: any, meaning: Reference to one member of the list (VertexFaceRecord)., source_ref: count in group code 72 }

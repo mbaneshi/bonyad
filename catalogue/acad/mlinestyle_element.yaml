@@ -1,0 +1,12 @@
+code: acad.mlinestyle_element
+name: MLineStyle.Elements
+kind: child
+parent: acad.mlinestyle
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: MLineStyle.Element, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/MLineStyle.Element.cs#L9, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Elements in the style (one row per entry, ordered).
+notes: "Source: count in group code 71."
+fields:
+  - { name: color, type: int, nullable: true, meaning: "Element color. as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 62 }
+  - { name: line_type_id, type: ref, nullable: true, ref_to: acad.linetype, meaning: Element linetype. Reference; DXF stores the handle., source_ref: group code 6 }
+  - { name: offset, type: length, meaning: Element offset., source_ref: group code 49 }

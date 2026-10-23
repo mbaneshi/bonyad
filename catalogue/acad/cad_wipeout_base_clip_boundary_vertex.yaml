@@ -1,0 +1,9 @@
+code: acad.cad_wipeout_base_clip_boundary_vertex
+name: CadWipeoutBase.ClipBoundaryVertices
+kind: child
+parent: acad.cad_wipeout_base
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: CadWipeoutBase, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/CadWipeoutBase.cs#L53, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Clip boundary vertices (one row per point, ordered).
+fields:
+  - { name: point, type: point2, meaning: 2D point of the list., source_ref: "count in group code 91; repeated group codes 14, 24" }

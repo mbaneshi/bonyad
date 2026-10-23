@@ -1,0 +1,11 @@
+code: acad.table_entity_row_item
+name: TableEntity.Rows
+kind: child
+parent: acad.table_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: TableEntity.Row, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/TableEntity.Row.cs#L12, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a table row with a collection of cells, height, custom data, and style information (one row per entry, ordered).
+notes: "Source: count in group code 91. Renamed from acad.table_entity_row: the generated Rust row type of acad.table_entity is already called acad.table_entity_row."
+fields:
+  - { name: custom_data, type: int, meaning: Flag for table value (unsigned integer):., source_ref: group code 90; wording from ezdxf }
+  - { name: height, type: length, default: 1, meaning: Row height., source_ref: group code 141 }

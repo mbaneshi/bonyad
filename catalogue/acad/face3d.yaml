@@ -1,0 +1,14 @@
+code: acad.face3d
+name: 3DFACE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Face3D, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Face3D.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A planar three- or four-sided 3D face (DXF 3DFACE) with per-edge visibility.
+notes: Hand-curated to equal the pilot table. edge_flags is 0..15 (four invisible-edge bits); the range check is a table constraint the catalogue cannot express.
+fields:
+  - { name: c1, type: point3, meaning: First corner (WCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: c2, type: point3, meaning: Second corner (WCS)., source_ref: "group codes 11, 21, 31" }
+  - { name: c3, type: point3, meaning: Third corner (WCS)., source_ref: "group codes 12, 22, 32" }
+  - { name: c4, type: point3, meaning: Fourth corner (WCS); equal to the third corner for a triangle., source_ref: "group codes 13, 23, 33" }
+  - { name: edge_flags, type: int, default: 0, meaning: "Invisible-edge bit flags: 1 first, 2 second, 4 third, 8 fourth edge invisible; 0 to 15.", source_ref: group code 70 }

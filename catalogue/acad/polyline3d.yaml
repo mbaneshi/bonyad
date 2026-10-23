@@ -1,0 +1,9 @@
+code: acad.polyline3d
+name: POLYLINE (Polyline3D)
+kind: entity
+base: acad.polyline
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Polyline3D, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/PolyLine3D.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Polyline3d: a variant of the DXF POLYLINE entity, marked by subclass AcDb3dPolyline."
+notes: DXF subclass marker AcDb3dPolyline.
+fields: []

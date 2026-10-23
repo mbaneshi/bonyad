@@ -1,0 +1,13 @@
+code: acad.blockalignmentgrip
+name: BLOCKALIGNMENTGRIP
+kind: object
+base: acad.block_grip
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockAlignmentGrip, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockAlignmentGrip.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A BLOCKALIGNMENTGRIP object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbBlockAlignmentGrip.
+fields:
+  - { name: alignment_x, type: float, meaning: Gets or sets the alignment in the X direction., source_ref: group code 140 }
+  - { name: alignment_y, type: float, meaning: Gets or sets the alignment in the Y direction., source_ref: group code 141 }
+  - { name: alignment_z, type: float, meaning: Gets or sets the alignment in the Z direction., source_ref: group code 142 }

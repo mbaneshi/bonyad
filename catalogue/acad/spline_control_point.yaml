@@ -1,0 +1,9 @@
+code: acad.spline_control_point
+name: Spline.ControlPoints
+kind: child
+parent: acad.spline
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Spline, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Spline.cs#L27, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Number of control points (in WCS) (one row per point, ordered).
+fields:
+  - { name: point, type: point3, meaning: 3D point of the list., source_ref: "count in group code 73; repeated group codes 10, 20, 30" }

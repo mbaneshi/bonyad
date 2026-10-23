@@ -1,0 +1,10 @@
+code: acad.hatch_path
+name: Hatch.Paths
+kind: child
+parent: acad.hatch
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Hatch.BoundaryPath, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Hatch.BoundaryPath.Polyline.cs#L13, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Defines a hatch boundary (one row per entry, ordered).
+notes: "Source: count in group code 91."
+fields:
+  - { name: flags, type: int, meaning: "Boundary path type flag. Bit-coded: 1 External, 2 Polyline, 4 Derived, 8 Textbox, 16 Outermost, 32 NotClosed, 64 SelfIntersecting, 128 TextIsland, 256 Duplicate, 512 IsAnnotative, 1024 DoesNotSupportScale, 2048 ForceAnnoAllVisible, 4096 OrientToPaper, 8192 IsAnnotativeBlock.", source_ref: group code 92 }

@@ -1,0 +1,17 @@
+code: acad.polyline
+name: POLYLINE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Polyline, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/PolyLine.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The POLYLINE entity is very complex, it's used to build 2D/3D polylines, 3D meshes and 3D polyfaces.
+notes: "Not repeated here (already defined on a base type): layer_id."
+fields:
+  - { name: elevation, type: length, default: 0, meaning: Elevation., source_ref: group code 30; no description in the sources }
+  - { name: end_width, type: length, default: 0, meaning: End width., source_ref: group code 41 }
+  - { name: flags, type: int, meaning: "Polyline flags. Bit-coded: 1 ClosedPolylineOrClosedPolygonMeshInM, 2 CurveFit, 4 SplineFit, 8 Polyline3D, 16 PolygonMesh, 32 ClosedPolygonMeshInN, 64 PolyfaceMesh, 128 ContinuousLinetypePattern.", source_ref: group code 70 }
+  - { name: line_type_id, type: ref, nullable: true, ref_to: acad.linetype, meaning: Line type. Reference; DXF stores the name., source_ref: group code 6 (stored as a name); no description in the sources }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230; no description in the sources" }
+  - { name: smooth_surface, type: enum, values: [ { value: NoSmooth, meaning: "DXF value 0: No smooth surface fitted." }, { value: Quadratic, meaning: "DXF value 5: Quadratic B-spline curve." }, { value: Cubic, meaning: "DXF value 6: Cubic B-spline curve." }, { value: BezierSurface, meaning: "DXF value 8: Bezier surface." } ], meaning: Curves and smooth surface type., source_ref: group code 75 }
+  - { name: start_width, type: length, default: 0, meaning: Start width., source_ref: group code 40 }
+  - { name: thickness, type: length, default: 0, meaning: Thickness., source_ref: group code 39; no description in the sources }

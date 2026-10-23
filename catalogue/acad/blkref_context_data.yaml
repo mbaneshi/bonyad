@@ -1,0 +1,14 @@
+code: acad.blkref_context_data
+name: ACDB_BLKREFOBJECTCONTEXTDATA_CLASS
+kind: object
+base: acad.object_context_data
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockReferenceObjectContextData, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/BlockReferenceObjectContextData.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents object context data for a block reference entity, including insertion point, rotation, and scale factors in world coordinates.
+notes: DXF subclass marker AcDbAnnotScaleObjectContextData.
+fields:
+  - { name: insertion_point, type: point3, meaning: Gets or sets the insertion point of the entity in world coordinates., source_ref: "group codes 10, 20, 30" }
+  - { name: rotation, type: angle, meaning: "Gets or sets the rotation angle of the entity, in degrees. Radians here; DXF stores degrees.", source_ref: group code 50 }
+  - { name: x_scale, type: ratio, meaning: X scale factor., source_ref: group code 41 }
+  - { name: y_scale, type: ratio, meaning: Y scale factor., source_ref: group code 42 }
+  - { name: z_scale, type: ratio, meaning: Z scale factor., source_ref: group code 43 }

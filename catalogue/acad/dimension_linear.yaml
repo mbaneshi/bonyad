@@ -1,0 +1,10 @@
+code: acad.dimension_linear
+name: DIMENSION (DimensionLinear)
+kind: entity
+base: acad.dimension_aligned
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DimensionLinear, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/DimensionLinear.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Dimension linear: a variant of the DXF DIMENSION entity, marked by subclass AcDbRotatedDimension."
+notes: DXF subclass marker AcDbRotatedDimension.
+fields:
+  - { name: rotation, type: angle, meaning: "Angle of rotated, horizontal, or vertical dimensions. Radians here; DXF stores degrees.", source_ref: group code 50 }

@@ -1,0 +1,11 @@
+code: acad.geodata_point
+name: GeoData.Points
+kind: child
+parent: acad.geodata
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: GeoData.GeoMeshPoint, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/GeoData.GeoMeshPoint.cs#L9, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Geo-Mesh points (one row per entry, ordered).
+notes: "Source: count in group code 93."
+fields:
+  - { name: source, type: point2, meaning: Coordinate of source mesh point., source_ref: "group codes 13, 23" }
+  - { name: destination, type: point2, meaning: Coordinate of destination mesh point, source_ref: "group codes 14, 24" }

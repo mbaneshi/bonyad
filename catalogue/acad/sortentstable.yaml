@@ -1,0 +1,10 @@
+code: acad.sortentstable
+name: SORTENTSTABLE
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: SortEntitiesTable, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/SortEntitiesTable.cs#L21, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A SortEntitiesTable object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbSortentsTable.
+fields:
+  - { name: block_owner_id, type: ref, nullable: true, ref_to: acad.block_record, meaning: Block owner where the table is applied. Reference; DXF stores the handle., source_ref: group code 330 }

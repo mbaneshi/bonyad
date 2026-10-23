@@ -1,0 +1,15 @@
+code: acad.mlinestyle
+name: MLINESTYLE
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: MLineStyle, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/MLineStyle.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A MLineStyle object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbMlineStyle.
+fields:
+  - { name: description, type: text, nullable: true, meaning: Style description, source_ref: group code 3 }
+  - { name: end_angle, type: angle, meaning: End angle. Radians here; DXF stores degrees., source_ref: group code 52 }
+  - { name: fill_color, type: int, nullable: true, meaning: "Fill color as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 62 }
+  - { name: flags, type: int, meaning: "Multi line style flags. Bit-coded: 1 FillOn, 2 DisplayJoints, 16 StartSquareCap, 32 StartInnerArcsCap, 64 StartRoundCap, 256 EndSquareCap, 512 EndInnerArcsCap, 1024 EndRoundCap.", source_ref: group code 70 }
+  - { name: name, type: text, meaning: Mline style name, source_ref: group code 2 }
+  - { name: start_angle, type: angle, meaning: Start angle. Radians here; DXF stores degrees., source_ref: group code 51 }

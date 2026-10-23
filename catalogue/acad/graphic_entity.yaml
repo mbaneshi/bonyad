@@ -1,0 +1,18 @@
+code: acad.graphic_entity
+name: Common entity data
+kind: entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Entity, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Entity.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The fields every AutoCAD graphic entity shares (DXF common entity group codes), stored once; each entity table points at it.
+notes: Hand-curated to equal the pilot table acad.graphic_entity. Common entity group codes DXF defines that the pilot table does not carry (material 347, colour-book name 430, paper-space flag 67, shadow mode 284, visual style 348, plot style 380/390) are listed in GAPS.md. transparency is stored as a percent 0..90 (the migration's check); DXF group 440 holds a 32-bit value, converted at the source boundary. color/true_color/lineweight are the raw DXF group 62/420/370 integers.
+fields:
+  - { name: owner_block_id, type: ref, ref_to: acad.block_record, meaning: "The block definition (model space, paper space or a block) that contains this entity.", source_ref: group code 330 (owner handle) of the entity }
+  - { name: layer_id, type: ref, ref_to: acad.layer, meaning: The layer the entity is drawn on; DXF stores the layer name., source_ref: group code 8 }
+  - { name: linetype_id, type: ref, nullable: true, ref_to: acad.linetype, meaning: Explicit linetype of the entity; null means ByLayer. DXF stores the linetype name., source_ref: group code 6 }
+  - { name: color, type: int, nullable: true, meaning: "AutoCAD Color Index (group 62): 0 ByBlock, 256 ByLayer, 1..255 an index; null means unset.", source_ref: group code 62 }
+  - { name: true_color, type: int, nullable: true, meaning: 24-bit true colour 0x00RRGGBB (group 420); null when the entity uses an index colour., source_ref: group code 420 (not in ACadSharp for this class; wording from the pilot migration) }
+  - { name: lineweight, type: int, nullable: true, meaning: "Lineweight in 1/100 mm (group 370); negative values are the special ByLayer (-1), ByBlock (-2) and Default (-3).", source_ref: group code 370 }
+  - { name: linetype_scale, type: ratio, default: 1, check: positive, meaning: Linetype scale multiplier of the entity., source_ref: group code 48 }
+  - { name: visible, type: bool, default: true, meaning: True when the entity is visible; the inverse of the DXF invisibility flag (group 60)., source_ref: "group code 60 (invisible = 1), inverted" }
+  - { name: transparency, type: int, nullable: true, meaning: "Entity transparency in percent, 0 to 90 (the migration check); DXF group 440 stores a 32-bit value that is converted at the source boundary.", source_ref: group code 440 }
+  - { name: dxf_handle, type: text, nullable: true, meaning: "The entity's handle in the DXF file it was imported from; file-scoped, a mapping column only.", source_ref: group code 5 }

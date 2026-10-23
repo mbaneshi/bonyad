@@ -1,0 +1,12 @@
+code: acad.mline_vertex_segment
+name: Vertex.Segments
+kind: child
+parent: acad.mline
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Vertex.Segment, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/MLine.Vertex.cs#L66, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Segments in MLineStyle definition (one row per entry, ordered).
+notes: "Source: count in group code 73. In the source this is nested inside acad.mline_vertex; nested children are not supported (FORMAT.md rule 5), so it is a child of acad.mline and the *_index field(s) identify the owning row(s)."
+fields:
+  - { name: vertex_index, type: int, meaning: Position of the owning vertex row within its parent (0-based)., source_ref: structural key added by the harvest (not a DXF group code); keeps the original nesting recoverable }
+  - { name: parameters, type: array, of: float, meaning: Element parameters, source_ref: count in group code 74; repeated group code 41 }
+  - { name: area_fill_parameters, type: array, of: float, meaning: Area fill parameters, source_ref: count in group code 75; repeated group code 42 }

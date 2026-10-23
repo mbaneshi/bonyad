@@ -1,0 +1,13 @@
+code: acad.blockvisibilityparameter
+name: BLOCKVISIBILITYPARAMETER
+kind: object
+base: acad.block1pt_parameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockVisibilityParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockVisibilityParameter.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a BLOCKVISIBILITYPARAMETER object, in AutoCAD used to control the visibility state of entities in a dynamic block.
+notes: DXF subclass marker AcDbBlockVisibilityParameter.
+fields:
+  - { name: description, type: text, nullable: true, meaning: Visibility parameter description., source_ref: group code 302 }
+  - { name: label, type: text, nullable: true, meaning: Visibility parameter label., source_ref: group code 301 }
+  - { name: value281, type: bool, meaning: Value281., source_ref: group code 281; no description in the sources }
+  - { name: value91, type: bool, meaning: Value91., source_ref: group code 91; no description in the sources }

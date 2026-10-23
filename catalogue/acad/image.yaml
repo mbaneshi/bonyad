@@ -1,0 +1,11 @@
+code: acad.image
+name: IMAGE
+kind: entity
+base: acad.cad_wipeout_base
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf; fields from ezdxf entities/image.py", section: RasterImage, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/RasterImage.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The IMAGE entity represents a raster image, the image file itself is not embedded into the DXF file, it is always a separated file.
+needs_review: true
+notes: DXF subclass marker AcDbRasterImage. ACadSharp has no group codes for this class; the fields come from ezdxf's attribute table.
+fields:
+  - { name: image_def_reactor_id, type: ref, nullable: true, ref_to: any, meaning: "Hard reference to image def reactor object, not required by AutoCAD.", source_ref: group code 360; ezdxf attribute dxf.image_def_reactor_handle }

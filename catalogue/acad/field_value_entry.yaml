@@ -1,0 +1,15 @@
+code: acad.field_value_entry
+name: Field.Values
+kind: child
+parent: acad.field
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: CadValue, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/CadValue.cs#L11, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a value entry used in CAD objects (one row per entry, ordered).
+notes: "Source: count in group code 93; repeated group code 6. Renamed from acad.field_value: the generated Rust enum name FieldValueUnits clashed with the enum of acad.field.value_units."
+fields:
+  - { name: key, type: text, meaning: Dictionary key of the entry., source_ref: count in group code 93; repeated group code 6 }
+  - { name: flags, type: int, meaning: Gets or sets the flags associated with this value., source_ref: group code 93 }
+  - { name: format, type: text, nullable: true, meaning: Gets or sets the format string used to display the value., source_ref: group code 300 }
+  - { name: formatted_value, type: text, nullable: true, meaning: Gets or sets the formatted string representation of the value., source_ref: group code 302 }
+  - { name: units, type: enum, values: [ { value: NoUnits, meaning: "DXF value 0: No units." }, { value: Distance, meaning: "DXF value 1: Distance." }, { value: Angle, meaning: "DXF value 2: Angle." }, { value: Area, meaning: "DXF value 4: Area." }, { value: Volume, meaning: "DXF value 8: Volumne." }, { value: Currency, meaning: "DXF value 16: Currency." }, { value: Percentage, meaning: "DXF value 32: Percentage." } ], meaning: Gets or sets the unit type for this value., source_ref: group code 94 }
+  - { name: value_type, type: enum, values: [ { value: Unknown, meaning: "DXF value 0: Unknown" }, { value: Long, meaning: "DXF value 1: 32 bit Long value" }, { value: Double, meaning: "DXF value 2: Double value" }, { value: String, meaning: "DXF value 4: String value" }, { value: Date, meaning: "DXF value 8: Date value" }, { value: Point2D, meaning: "DXF value 16: 2D point value" }, { value: Point3D, meaning: "DXF value 32: 3D point value" }, { value: Handle, meaning: "DXF value 64: Object handle value" }, { value: Buffer, meaning: "DXF value 128: Buffer value" }, { value: ResultBuffer, meaning: "DXF value 256: Result buffer value" }, { value: General, meaning: "DXF value 512: General" } ], meaning: Gets or sets the data type of Value., source_ref: group code 90 }

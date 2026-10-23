@@ -1,0 +1,18 @@
+code: acad.arc_dimension
+name: ARC_DIMENSION
+kind: entity
+base: acad.dimension
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DimensionArc, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/DimensionArc.cs#L18, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The ARC_DIMENSION entity was introduced in DXF R2004 and is not documented in the DXF reference.
+notes: DXF subclass marker AcDbArcDimension.
+fields:
+  - { name: center, type: point3, meaning: Center of the dimensioned arc (in WCS)., source_ref: "group codes 15, 25, 35" }
+  - { name: end_angle, type: float, meaning: End angle in radians., source_ref: group code 41; first in R2000 (ezdxf) }
+  - { name: first_point, type: point3, meaning: Start point of the first extension line (in WCS)., source_ref: "group codes 13, 23, 33" }
+  - { name: has_leader, type: bool, meaning: Flag indicating whether the dimension has a leader., source_ref: group code 71; first in R2000 (ezdxf) }
+  - { name: is_partial, type: bool, meaning: Flag indicating whether the dimension covers a partial section of the arc., source_ref: group code 70 }
+  - { name: leader_point1, type: point3, meaning: First leader point (in WCS)., source_ref: "group codes 16, 26, 36" }
+  - { name: leader_point2, type: point3, meaning: Second leader point (in WCS)., source_ref: "group codes 17, 27, 37" }
+  - { name: second_point, type: point3, meaning: Start point of the second extension line (in WCS)., source_ref: "group codes 14, 24, 34" }
+  - { name: start_angle, type: float, meaning: Start angle in radians., source_ref: group code 40 }

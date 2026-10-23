@@ -1,0 +1,13 @@
+code: acad.polygon_mesh
+name: POLYLINE (PolygonMesh)
+kind: entity
+base: acad.polyline
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: PolygonMesh, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/PolygonMesh.cs#L14, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Polygon mesh: a variant of the DXF POLYLINE entity, marked by subclass AcDbPolygonMesh."
+notes: DXF subclass marker AcDbPolygonMesh.
+fields:
+  - { name: m_smooth_surface_density, type: int, nullable: true, meaning: Gets or sets the number of smoothing surface density divisions for the M direction., source_ref: group code 73 }
+  - { name: m_vertex_count, type: int, nullable: true, meaning: Gets or sets the number of vertices in the M direction., source_ref: group code 71 }
+  - { name: n_smooth_surface_density, type: int, nullable: true, meaning: Gets or sets the number of smoothing surface density divisions for the N direction., source_ref: group code 74 }
+  - { name: n_vertex_count, type: int, nullable: true, meaning: Gets or sets the number of vertices in the N direction., source_ref: group code 72 }

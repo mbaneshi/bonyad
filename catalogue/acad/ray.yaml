@@ -1,0 +1,11 @@
+code: acad.ray
+name: RAY
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Ray, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Ray.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The RAY entity starts at Ray.dxf.point and continues to infinity (construction line).
+notes: DXF subclass marker AcDbRay.
+fields:
+  - { name: direction, type: vector3, default: [ 0, 0, 0 ], meaning: Unit direction vector(in WCS)., source_ref: "group codes 11, 21, 31" }
+  - { name: start_point, type: point3, default: [ 0, 0, 0 ], meaning: Start point(in WCS)., source_ref: "group codes 10, 20, 30" }

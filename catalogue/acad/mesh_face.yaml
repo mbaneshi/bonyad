@@ -1,0 +1,10 @@
+code: acad.mesh_face
+name: MESH
+kind: child
+parent: acad.mesh
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Mesh, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Mesh.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "One face of a subdivision mesh: an ordered list of vertex indices (level 0)."
+notes: Hand-curated to equal the pilot table; ordered by the implicit position column. At least three indices per face is a table constraint the catalogue cannot express. DXF stores each face as a vertex count followed by that many indices, all in group 90.
+fields:
+  - { name: vertex_indices, type: array, of: int, meaning: "Zero-based indices into the mesh's vertex list, in face order.", source_ref: "group code 90 (repeated, preceded by the count; face list of level 0, count in 93)" }

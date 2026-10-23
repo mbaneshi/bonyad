@@ -1,0 +1,9 @@
+code: acad.underlay_entity_clip_boundary_vertex
+name: UnderlayEntity.ClipBoundaryVertices
+kind: child
+parent: acad.underlay_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: UnderlayEntity, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/UnderlayEntity.cs#L26, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: 2d points in OCS/ECS (one row per point, ordered).
+fields:
+  - { name: point, type: point2, meaning: 2D point of the list., source_ref: "count in group codes 11, 21; repeated group codes 11, 21" }

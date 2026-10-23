@@ -1,0 +1,10 @@
+code: acad.dgndefinition
+name: DGNDEFINITION
+kind: object
+base: acad.underlay_definition
+fidelity: faithful
+source: { document: ezdxf attribute tables (DXFAttr) and reference docs, section: DGNDEFINITION (a PDFDEFINITION-derived class in ezdxf), url: https://github.com/mozman/ezdxf/blob/7b202613e0d689955b8932a22bcbcf68bdd684f0/src/ezdxf/entities/underlay.py, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: MIT (ezdxf) }
+meaning: "Dgndefinition: a variant of the DXF PDFDEFINITION type with the same group codes."
+needs_review: true
+notes: "Same group codes as PDFDEFINITION; ezdxf defines DGNDEFINITION as a subclass of the PDFDEFINITION class with no attribute table of its own. Harvested from ezdxf only: ACadSharp does not model this DXF type."
+fields: []

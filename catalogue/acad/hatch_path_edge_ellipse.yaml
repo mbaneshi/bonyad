@@ -1,0 +1,17 @@
+code: acad.hatch_path_edge_ellipse
+name: BoundaryPath.Edges (Ellipse)
+kind: child
+parent: acad.hatch
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BoundaryPath.Ellipse, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Hatch.BoundaryPath.Ellipse.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Edges that form the boundary.
+notes: "Fields of acad.hatch_path_edge are copied in because a child type cannot have a base (FORMAT.md rule 5); base: acad.hatch_path_edge. In the source this is nested inside acad.hatch_path; nested children are not supported (FORMAT.md rule 5), so it is a child of acad.hatch and the *_index field(s) identify the owning row(s)."
+fields:
+  - { name: path_index, type: int, meaning: Position of the owning path row within its parent (0-based)., source_ref: structural key added by the harvest (not a DXF group code); keeps the original nesting recoverable }
+  - { name: edge_index, type: int, meaning: "Index of this row in the owner's ordered list, which mixes several row types (BoundaryPath.Edges).", source_ref: structural key added by the harvest (not a DXF group code); keeps the original nesting recoverable }
+  - { name: center, type: point2, meaning: Center point (in OCS)., source_ref: "group codes 10, 20" }
+  - { name: counter_clock_wise, type: bool, meaning: Counterclockwise flag., source_ref: group code 73 }
+  - { name: end_angle, type: angle, meaning: End angle. Radians here; DXF stores degrees., source_ref: group code 51 }
+  - { name: major_axis_end_point, type: point2, meaning: Endpoint of major axis relative to center point (in OCS)., source_ref: "group codes 11, 21" }
+  - { name: radius_ratio, type: length, meaning: Length of minor axis (percentage of major axis length)., source_ref: group code 40 }
+  - { name: start_angle, type: angle, meaning: Start angle. Radians here; DXF stores degrees., source_ref: group code 50 }

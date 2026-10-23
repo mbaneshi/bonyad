@@ -1,0 +1,12 @@
+code: acad.geodata_face
+name: GeoData.Faces
+kind: child
+parent: acad.geodata
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: GeoData.GeoMeshFace, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/GeoData.GeoMeshFace.cs#L8, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Faces (one row per entry, ordered).
+notes: "Source: count in group code 96."
+fields:
+  - { name: index1, type: int, meaning: Point index for face 1., source_ref: group code 97 }
+  - { name: index2, type: int, meaning: Point index for face 2., source_ref: group code 98 }
+  - { name: index3, type: int, meaning: Point index for face 3., source_ref: group code 99 }

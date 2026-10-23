@@ -1,0 +1,9 @@
+code: acad.polyline2d
+name: POLYLINE (Polyline2D)
+kind: entity
+base: acad.polyline
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Polyline2D, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/PolyLine2D.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Polyline2d: a variant of the DXF POLYLINE entity, marked by subclass AcDb2dPolyline."
+notes: DXF subclass marker AcDb2dPolyline.
+fields: []

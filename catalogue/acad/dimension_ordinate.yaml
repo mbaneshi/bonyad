@@ -1,0 +1,11 @@
+code: acad.dimension_ordinate
+name: DIMENSION (DimensionOrdinate)
+kind: entity
+base: acad.dimension
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DimensionOrdinate, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/DimensionOrdinate.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Dimension ordinate: a variant of the DXF DIMENSION entity, marked by subclass AcDbOrdinateDimension."
+notes: DXF subclass marker AcDbOrdinateDimension.
+fields:
+  - { name: feature_location, type: point3, meaning: Definition point for linear and angular dimensions (in WCS), source_ref: "group codes 13, 23, 33" }
+  - { name: leader_endpoint, type: point3, meaning: Definition point for linear and angular dimensions (in WCS), source_ref: "group codes 14, 24, 34" }

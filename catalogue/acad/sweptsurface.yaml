@@ -1,0 +1,24 @@
+code: acad.sweptsurface
+name: SWEPTSURFACE
+kind: entity
+base: acad.surface
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf; fields from ezdxf entities/acis.py", section: SweptSurface, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/SweptSurface.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A SweptSurface entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbSweptSurface. ACadSharp has no group codes for this class; the fields come from ezdxf's attribute table.
+fields:
+  - { name: swept_entity_id, type: int, meaning: Swept entity id., source_ref: group code 90; ezdxf attribute dxf.swept_entity_id; no description in the sources }
+  - { name: path_entity_id, type: int, meaning: "90: size of binary data (lost on saving) 310: binary data  (lost on saving).", source_ref: group code 91; ezdxf attribute dxf.path_entity_id }
+  - { name: draft_angle, type: float, meaning: "90: size of binary data  (lost on saving) 310: binary data  (lost on saving) 16x group code 40: Transform matrix of sweep entity (16 floats; row major format; default = identity matrix) 16x group code 41: Transform matrix of path entity (16 floats; row major format; default = identity matrix) in radians.", source_ref: group code 42; ezdxf attribute dxf.draft_angle }
+  - { name: draft_start_distance, type: length, default: 0, meaning: Draft start distance., source_ref: group code 43; ezdxf attribute dxf.draft_start_distance; no description in the sources }
+  - { name: draft_end_distance, type: length, default: 0, meaning: Draft end distance., source_ref: group code 44; ezdxf attribute dxf.draft_end_distance; no description in the sources }
+  - { name: twist_angle, type: float, default: 0, meaning: Twist angle., source_ref: group code 45; ezdxf attribute dxf.twist_angle; no description in the sources }
+  - { name: align_angle, type: float, default: 0, meaning: Align angle., source_ref: group code 49; ezdxf attribute dxf.align_angle; no description in the sources }
+  - { name: solid, type: bool, default: false, meaning: "Don't know the meaning of this matrices 16x group code 46: Transform matrix of sweep entity (16 floats; row major format; default = identity matrix) 16x group code 47: Transform matrix of path entity (16 floats; row major format; default = identity matrix) in radians.", source_ref: group code 290; ezdxf attribute dxf.solid }
+  - { name: align_start, type: bool, default: false, meaning: "2=Translate sweep entity to path; 3=Translate path to sweep entity: bool.", source_ref: group code 292; ezdxf attribute dxf.align_start }
+  - { name: bank, type: bool, default: false, meaning: Bool., source_ref: group code 293; ezdxf attribute dxf.bank }
+  - { name: base_point_set, type: bool, default: false, meaning: Bool., source_ref: group code 294; ezdxf attribute dxf.base_point_set }
+  - { name: sweep_entity_transform_computed, type: bool, default: false, meaning: Bool., source_ref: group code 295; ezdxf attribute dxf.sweep_entity_transform_computed }
+  - { name: path_entity_transform_computed, type: bool, default: false, meaning: Bool., source_ref: group code 296; ezdxf attribute dxf.path_entity_transform_computed }
+  - { name: reference_vector_for_controlling_twist, type: vector3, meaning: Reference vector for controlling twist., source_ref: "group codes 11, 21, 31; ezdxf attribute dxf.reference_vector_for_controlling_twist; no description in the sources" }

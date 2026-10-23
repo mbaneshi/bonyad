@@ -1,0 +1,9 @@
+code: acad.polyface_mesh
+name: POLYLINE (PolyfaceMesh)
+kind: entity
+base: acad.polyline
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: PolyfaceMesh, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/PolyfaceMesh.cs#L14, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Polyface mesh: a variant of the DXF POLYLINE entity, marked by subclass AcDbPolyFaceMesh."
+notes: DXF subclass marker AcDbPolyFaceMesh.
+fields: []

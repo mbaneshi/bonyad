@@ -1,0 +1,12 @@
+code: acad.mline_vertex
+name: MLine.Vertices
+kind: child
+parent: acad.mline
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: MLine.Vertex, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/MLine.Vertex.cs#L10, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Vertices in the MLine (one row per entry, ordered).
+notes: "Source: count in group code 72. Field `position` of the source is renamed `dxf_position` because `position` is a reserved column name (FORMAT.md rule 9)."
+fields:
+  - { name: dxf_position, type: point3, meaning: Vertex coordinates, source_ref: "group codes 11, 21, 31" }
+  - { name: direction, type: vector3, meaning: Direction vector of segment starting at this vertex, source_ref: "group codes 12, 22, 32" }
+  - { name: miter, type: point3, meaning: Direction vector of miter at this vertex, source_ref: "group codes 13, 23, 33" }

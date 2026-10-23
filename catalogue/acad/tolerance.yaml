@@ -1,0 +1,15 @@
+code: acad.tolerance
+name: TOLERANCE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Tolerance, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Tolerance.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A Tolerance entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbFcf.
+fields:
+  - { name: direction, type: vector3, meaning: X-axis direction vector (in WCS), source_ref: "group codes 11, 21, 31" }
+  - { name: insertion_point, type: point3, meaning: Insertion point (in WCS), source_ref: "group codes 10, 20, 30" }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230; no description in the sources" }
+  - { name: style_id, type: ref, nullable: true, ref_to: acad.dimstyle, meaning: Dimension style. Reference; DXF stores the name., source_ref: group code 3 (stored as a name) }
+  - { name: text, type: text, nullable: true, meaning: Visual representation of the tolerance, source_ref: group code 1 }

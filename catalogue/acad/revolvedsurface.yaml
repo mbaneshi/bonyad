@@ -1,0 +1,21 @@
+code: acad.revolvedsurface
+name: REVOLVEDSURFACE
+kind: entity
+base: acad.surface
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf; fields from ezdxf entities/acis.py", section: RevolvedSurface, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/RevolvedSurface.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A RevolvedSurface entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbRevolvedSurface. ACadSharp has no group codes for this class; the fields come from ezdxf's attribute table.
+fields:
+  - { name: class_id, type: int, default: 0, meaning: Class id., source_ref: group code 90; ezdxf attribute dxf.class_id; no description in the sources }
+  - { name: axis_point, type: vector3, meaning: Axis point., source_ref: "group codes 10, 20, 30; ezdxf attribute dxf.axis_point; no description in the sources" }
+  - { name: axis_vector, type: vector3, meaning: Axis vector., source_ref: "group codes 11, 21, 31; ezdxf attribute dxf.axis_vector; no description in the sources" }
+  - { name: revolve_angle, type: float, meaning: Revolve angle., source_ref: group code 40; ezdxf attribute dxf.revolve_angle; no description in the sources }
+  - { name: start_angle, type: float, meaning: Start angle., source_ref: group code 41; ezdxf attribute dxf.start_angle; no description in the sources }
+  - { name: draft_angle, type: float, meaning: "16x group code 42: Transform matrix of revolved entity (16 floats; row major format; default = identity matrix) in radians.", source_ref: group code 43; ezdxf attribute dxf.draft_angle }
+  - { name: start_draft_distance, type: length, default: 0, meaning: Start draft distance., source_ref: group code 44; ezdxf attribute dxf.start_draft_distance; no description in the sources }
+  - { name: end_draft_distance, type: length, default: 0, meaning: End draft distance., source_ref: group code 45; ezdxf attribute dxf.end_draft_distance; no description in the sources }
+  - { name: twist_angle, type: float, default: 0, meaning: Twist angle., source_ref: group code 46; ezdxf attribute dxf.twist_angle; no description in the sources }
+  - { name: solid, type: bool, default: false, meaning: Bool., source_ref: group code 290; ezdxf attribute dxf.solid }
+  - { name: close_to_axis, type: bool, default: false, meaning: Bool., source_ref: group code 291; ezdxf attribute dxf.close_to_axis }

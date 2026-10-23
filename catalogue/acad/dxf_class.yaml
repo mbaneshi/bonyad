@@ -1,0 +1,16 @@
+code: acad.dxf_class
+name: CLASS
+kind: object
+fidelity: faithful
+source: { document: ezdxf attribute tables (DXFAttr) and reference docs, section: DXFClass (DXF CLASS), url: https://github.com/mozman/ezdxf/blob/7b202613e0d689955b8932a22bcbcf68bdd684f0/src/ezdxf/entities/dxfclass.py, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: MIT (ezdxf) }
+meaning: Class (DXF CLASS).
+needs_review: true
+notes: "Harvested from ezdxf only: ACadSharp does not model this DXF type. Type description taken from the ezdxf class docstring or generated from the name; no reference text was found."
+fields:
+  - { name: name, type: text, meaning: Class DXF record name; always unique., source_ref: group code 1; ezdxf attribute dxf.name }
+  - { name: cpp_class_name, type: text, meaning: C++ class name. Used to bind with software that defines object class behavior; always unique., source_ref: group code 2; ezdxf attribute dxf.cpp_class_name }
+  - { name: app_name, type: text, meaning: Application name. Posted in Alert box when a class definition listed in this section is not currently loaded., source_ref: group code 3; ezdxf attribute dxf.app_name }
+  - { name: flags, type: int, default: 0, meaning: "Proxy capabilities flag. Bit-coded value that indicates the capabilities of this object as a proxy: 0 = No operations allowed (0) 1 = Erase allowed (0x1) 2 = Transform allowed (0x2) 4 = Color change allowed (0x4) 8 = Layer change allowed (0x8) 16 = Linetype change allowed (0x10) 32 = Linetype scale change allowed (0x20) 64 = Visibility change allowed (0x40) 128 = Cloning allowed (0x80) 256 = Lineweight change allowed (0x100) 512 = Plot Style Name change allowed (0x200) 895 = All operations except cloning allowed (0x37F) 1023 = All operations allowed (0x3FF) 1024 = Disables proxy warning dialog (0x400) 32768 = R13 format proxy (0x8000).", source_ref: group code 90; ezdxf attribute dxf.flags }
+  - { name: instance_count, type: int, default: 0, meaning: Instance count for a custom class., source_ref: group code 91; first in R2004; ezdxf attribute dxf.instance_count }
+  - { name: was_a_proxy, type: int, default: 0, meaning: "Was-a-proxy flag. Set to 1 if class was not loaded when this DXF file was created, and 0 otherwise.", source_ref: group code 280; ezdxf attribute dxf.was_a_proxy }
+  - { name: is_an_entity, type: int, default: 0, meaning: "Is-an-entity flag. Set to 1 if class was derived from the AcDbEntity class and can reside in the BLOCKS or ENTITIES section. If 0, instances may appear only in the OBJECTS section.", source_ref: group code 281; ezdxf attribute dxf.is_an_entity }

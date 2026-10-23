@@ -1,0 +1,14 @@
+code: acad.lwpolyline_vertex
+name: Vertex
+kind: child
+parent: acad.lwpolyline
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: LwPolyline.Vertex, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/LwPolyline.Vertex.cs#L9, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: One vertex of a lightweight polyline, with optional segment widths and a bulge.
+notes: Hand-curated to equal the pilot table. Rows are ordered by the implicit position column. DXF also stores a vertex id (91) and a curve-fit tangent direction (50); the pilot table has neither (GAPS.md).
+fields:
+  - { name: x, type: length, meaning: Vertex X coordinate (OCS)., source_ref: group code 10 }
+  - { name: y, type: length, meaning: Vertex Y coordinate (OCS)., source_ref: group code 20 }
+  - { name: start_width, type: length, nullable: true, meaning: Starting width of the segment leaving this vertex., source_ref: group code 40 }
+  - { name: end_width, type: length, nullable: true, meaning: Ending width of the segment leaving this vertex., source_ref: group code 41 }
+  - { name: bulge, type: float, default: 0, meaning: "Bulge: tangent of a quarter of the included angle of the arc segment, negative for clockwise; 0 is a straight segment.", source_ref: group code 42 }

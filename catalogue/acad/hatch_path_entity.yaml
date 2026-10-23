@@ -1,0 +1,11 @@
+code: acad.hatch_path_entity
+name: BoundaryPath.Entities
+kind: child
+parent: acad.hatch
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Hatch.BoundaryPath, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Hatch.BoundaryPath.Polyline.cs#L28, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Source boundary objects (one row per reference, ordered).
+notes: In the source this is nested inside acad.hatch_path; nested children are not supported (FORMAT.md rule 5), so it is a child of acad.hatch and the *_index field(s) identify the owning row(s).
+fields:
+  - { name: path_index, type: int, meaning: Position of the owning path row within its parent (0-based)., source_ref: structural key added by the harvest (not a DXF group code); keeps the original nesting recoverable }
+  - { name: target_entity_id, type: ref, ref_to: acad.graphic_entity, meaning: Reference to one member of the list (Entity)., source_ref: count in group code 97 }

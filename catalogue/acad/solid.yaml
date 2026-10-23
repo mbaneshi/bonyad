@@ -1,0 +1,15 @@
+code: acad.solid
+name: SOLID
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Solid, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Solid.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The SOLID entity is a filled triangle or quadrilateral.
+notes: DXF subclass marker AcDbTrace.
+fields:
+  - { name: first_corner, type: point3, meaning: First corner., source_ref: "group codes 10, 20, 30" }
+  - { name: fourth_corner, type: point3, meaning: Fourth corner., source_ref: "group codes 13, 23, 33" }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230; no description in the sources" }
+  - { name: second_corner, type: point3, meaning: Second corner., source_ref: "group codes 11, 21, 31" }
+  - { name: thickness, type: length, default: 0, meaning: Specifies the distance a 2D object is extruded above or below its elevation., source_ref: group code 39 }
+  - { name: third_corner, type: point3, meaning: Third corner., source_ref: "group codes 12, 22, 32" }

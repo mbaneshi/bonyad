@@ -1,0 +1,15 @@
+code: acad.spatial_filter
+name: SPATIAL_FILTER
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: SpatialFilter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/SpatialFilter.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The SPATIAL_FILTER object stores the clipping path for external references and block references.
+notes: DXF subclass marker AcDbSpatialFilter.
+fields:
+  - { name: back_distance, type: length, meaning: Back clipping plane distance., source_ref: group code 41 }
+  - { name: clip_back_plane, type: bool, meaning: Back clipping plane flag., source_ref: group code 73 }
+  - { name: clip_front_plane, type: bool, meaning: Front clipping plane flag., source_ref: group code 72 }
+  - { name: display_boundary, type: bool, meaning: Clip boundary display enabled flag., source_ref: group code 71 }
+  - { name: front_distance, type: length, meaning: Front clipping plane distance., source_ref: group code 40 }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Defines the orientation of the OCS., source_ref: "group codes 210, 220, 230; wording from ezdxf" }
+  - { name: origin, type: point3, default: [ 0, 0, 1 ], meaning: Origin used to define the local coordinate system of the clip boundary., source_ref: "group codes 11, 21, 31" }
