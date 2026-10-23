@@ -16,11 +16,11 @@ export interface LoadedDoc {
 }
 
 /** Every *.yaml / *.yml under dir, recursively, in sorted order. */
-export function listYaml(dir: string): string[] {
+export function listYaml(dir: string, skip: string[] = []): string[] {
   const out: string[] = [];
   const walk = (d: string) => {
     for (const name of readdirSync(d).sort()) {
-      if (name === "node_modules" || name.startsWith(".")) continue;
+      if (name === "node_modules" || name.startsWith(".") || skip.includes(name)) continue;
       const p = join(d, name);
       if (statSync(p).isDirectory()) walk(p);
       else if (/\.ya?ml$/.test(name)) out.push(p);
@@ -30,10 +30,10 @@ export function listYaml(dir: string): string[] {
   return out;
 }
 
-export function loadDocs(dir: string): { docs: LoadedDoc[]; problems: FileProblem[] } {
+export function loadDocs(dir: string, skip: string[] = []): { docs: LoadedDoc[]; problems: FileProblem[] } {
   const docs: LoadedDoc[] = [];
   const problems: FileProblem[] = [];
-  for (const file of listYaml(dir)) {
+  for (const file of listYaml(dir, skip)) {
     let raw: unknown;
     try {
       raw = parseYaml(readFileSync(file, "utf8"));
@@ -373,8 +373,8 @@ export function resolve(loaded: LoadedDoc[]): ResolveResult {
   return { models, problems };
 }
 
-export function loadModels(dir: string): ResolveResult {
-  const { docs, problems } = loadDocs(dir);
+export function loadModels(dir: string, skip: string[] = []): ResolveResult {
+  const { docs, problems } = loadDocs(dir, skip);
   const r = resolve(docs);
   return { models: r.models, problems: [...problems, ...r.problems] };
 }
