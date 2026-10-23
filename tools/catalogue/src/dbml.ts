@@ -5,12 +5,7 @@ import { oneLine, pgIdent } from "./names.ts";
 const q = (s: string) => `'${s.replaceAll("\\", "\\\\").replaceAll("'", "\\'")}'`;
 
 function dbmlType(sql: string): string {
-  return sql.replace("core.finite", "float8").replace("integer", "int").replace("timestamptz", "timestamptz");
-}
-
-function dbmlDefault(sqlLiteral: string): string {
-  if (sqlLiteral.startsWith("'")) return sqlLiteral;
-  return sqlLiteral;
+  return sql.replace("core.finite", "float8").replace("integer", "int");
 }
 
 export function generateDbml(m: Model): string {
@@ -27,7 +22,7 @@ export function generateDbml(m: Model): string {
 }
 
 function table(n: TypeNode, refs: string[]): string[] {
-  const id = (c: string) => pgIdent(c).replaceAll('"', '"');
+  const id = pgIdent;
   const t = `${n.schema}.${pgIdent(n.table)}`;
   const l: string[] = [`Table ${t} {`];
   l.push("  entity_id uuid [not null]", "  revision_id bigint [not null]");
@@ -43,7 +38,7 @@ function table(n: TypeNode, refs: string[]): string[] {
   for (const c of n.columns) {
     const attrs: string[] = [];
     if (c.notNull) attrs.push("not null");
-    if (c.defaultSql !== undefined) attrs.push(`default: ${dbmlDefault(c.defaultSql)}`);
+    if (c.defaultSql !== undefined) attrs.push(`default: ${c.defaultSql}`);
     const f = c.field;
     const extra = [c.part ? `${oneLine(f.meaning)} (${c.part})` : oneLine(f.meaning)];
     if (f.type === "ref") extra.push(`ref to ${f.ref_to}`);
