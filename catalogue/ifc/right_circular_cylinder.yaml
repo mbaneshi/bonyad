@@ -1,0 +1,24 @@
+code: ifc.right_circular_cylinder
+name: IfcRightCircularCylinder
+kind: entity
+base: ifc.csg_primitive3d
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRightCircularCylinder
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcRightCircularCylinder.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcRightCircularCylinder is a Construction Solid Geometry (CSG) 3D primitive. It is a solid with a circular base and top.
+fields:
+  - name: height
+    type: length
+    meaning: The distance between the planar circular faces of the cylinder.
+    source_ref: "IfcRightCircularCylinder attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: radius
+    type: length
+    meaning: The radius of the cylinder.
+    source_ref: "IfcRightCircularCylinder attribute 2: IfcPositiveLengthMeasure"
+    check: positive

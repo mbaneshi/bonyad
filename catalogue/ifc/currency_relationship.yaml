@@ -1,0 +1,40 @@
+code: ifc.currency_relationship
+name: IfcCurrencyRelationship
+kind: object
+base: ifc.resource_level_relationship
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCurrencyRelationship
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcCostResource/Entities/IfcCurrencyRelationship.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcCurrencyRelationship defines the rate of exchange that applies between two designated currencies at a particular time and as published by a particular source.
+fields:
+  - name: relating_monetary_unit
+    type: ref
+    meaning: The monetary unit from which an exchange is derived.
+    source_ref: "IfcCurrencyRelationship attribute 1: IfcMonetaryUnit"
+    ref_to: ifc.monetary_unit
+  - name: related_monetary_unit
+    type: ref
+    meaning: The monetary unit to which an exchange results.
+    source_ref: "IfcCurrencyRelationship attribute 2: IfcMonetaryUnit"
+    ref_to: ifc.monetary_unit
+  - name: exchange_rate
+    type: ratio
+    meaning: The currently agreed ratio of the amount of a related monetary unit that is equivalent to a unit amount of the relating monetary unit in a currency relationship.
+    source_ref: "IfcCurrencyRelationship attribute 3: IfcPositiveRatioMeasure"
+    check: positive
+  - name: rate_date_time
+    type: timestamp
+    nullable: true
+    meaning: The date and time at which an exchange rate applies.
+    source_ref: "IfcCurrencyRelationship attribute 4: OPTIONAL IfcDateTime"
+  - name: rate_source
+    type: ref
+    nullable: true
+    meaning: The source from which an exchange rate is obtained.
+    source_ref: "IfcCurrencyRelationship attribute 5: OPTIONAL IfcLibraryInformation"
+    ref_to: ifc.library_information

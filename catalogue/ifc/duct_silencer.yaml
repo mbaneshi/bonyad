@@ -1,0 +1,30 @@
+code: ifc.duct_silencer
+name: IfcDuctSilencer
+kind: entity
+base: ifc.flow_treatment_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDuctSilencer
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcDuctSilencer.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A duct silencer is a device that is typically installed inside a duct distribution system for the purpose of reducing the noise levels from air movement, fan noise, etc. in the adjacent space or downstream of the duct silencer device.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcDuctSilencer (not described in the source documentation).
+    source_ref: "IfcDuctSilencer attribute 1: OPTIONAL IfcDuctSilencerTypeEnum; enumeration IfcDuctSilencerTypeEnum"
+    values:
+      - value: FLATOVAL
+        meaning: Flat-oval shaped duct silencer type.
+      - value: RECTANGULAR
+        meaning: Rectangular shaped duct silencer type.
+      - value: ROUND
+        meaning: Round duct silencer type.
+      - value: USERDEFINED
+        meaning: User-defined duct silencer type.
+      - value: NOTDEFINED
+        meaning: Undefined duct silencer type.

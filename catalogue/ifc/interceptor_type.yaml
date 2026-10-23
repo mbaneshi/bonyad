@@ -1,0 +1,31 @@
+code: ifc.interceptor_type
+name: IfcInterceptorType
+kind: symbol
+base: ifc.flow_treatment_device_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcInterceptorType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcPlumbingFireProtectionDomain/Entities/IfcInterceptorType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow treatment device type IfcInterceptorType defines commonly shared information for occurrences of interceptors.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: PredefinedType attribute of IfcInterceptorType (not described in the source documentation).
+    source_ref: "IfcInterceptorType attribute 1: IfcInterceptorTypeEnum; enumeration IfcInterceptorTypeEnum"
+    values:
+      - value: CYCLONIC
+        meaning: Removes larger liquid drops or larger solid particles.
+      - value: GREASE
+        meaning: Chamber, on the line of a drain or discharge pipe, that prevents grease passing into a drainage system.
+      - value: OIL
+        meaning: One or more chambers arranged to prevent the ingress of oil to a drain or sewer that retains the oil for later removal.
+      - value: PETROL
+        meaning: Two or more chambers with inlet and outlet pipes arranged to allow petrol/gasoline collected on the surface of water drained into them to evaporate through ventilating pipes.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

@@ -1,0 +1,36 @@
+code: ifc.boolean_result
+name: IfcBooleanResult
+kind: entity
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBooleanResult
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcBooleanResult.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcBooleanResult is the result of applying a Boolean operation to two operands being solids.
+fields:
+  - name: operator
+    type: enum
+    meaning: The Boolean operator used in the operation to create the result.
+    source_ref: "IfcBooleanResult attribute 1: IfcBooleanOperator; enumeration IfcBooleanOperator"
+    values:
+      - value: UNION
+        meaning: The operation of constructing the regularized set theoretic union of the volumes defined by two solids.
+      - value: INTERSECTION
+        meaning: The operation of constructing the regularised set theoretic intersection of the volumes defined by two solids.
+      - value: DIFFERENCE
+        meaning: The regularised set theoretic difference between the volumes defined by two solids.
+  - name: first_operand
+    type: ref
+    meaning: The first operand to be operated upon by the Boolean operation.
+    source_ref: "IfcBooleanResult attribute 2: IfcBooleanOperand; via select IfcBooleanOperand"
+    ref_to: ifc.geometric_representation_item
+  - name: second_operand
+    type: ref
+    meaning: The second operand specified for the operation.
+    source_ref: "IfcBooleanResult attribute 3: IfcBooleanOperand; via select IfcBooleanOperand"
+    ref_to: ifc.geometric_representation_item
+notes: "Derived attributes not stored: Dim. SUPERTYPE OF ONEOF ( IfcBooleanClippingResult )."

@@ -1,0 +1,44 @@
+code: ifc.action_request
+name: IfcActionRequest
+kind: object
+base: ifc.control
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcActionRequest
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedMgmtElements/Entities/IfcActionRequest.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A request is the act or instance of asking for something, such as a request for information, bid submission, or performance of work.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined type of sources through which a request can be made.
+    source_ref: "IfcActionRequest attribute 1: OPTIONAL IfcActionRequestTypeEnum; enumeration IfcActionRequestTypeEnum"
+    values:
+      - value: EMAIL
+        meaning: Request was made through email.
+      - value: FAX
+        meaning: Request was made through facsimile.
+      - value: PHONE
+        meaning: Request was made verbally over a telephone.
+      - value: POST
+        meaning: Request was made through postal mail.
+      - value: VERBAL
+        meaning: Request was made verbally in person.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.
+  - name: status
+    type: text
+    nullable: true
+    meaning: The status currently assigned to the request.
+    source_ref: "IfcActionRequest attribute 2: OPTIONAL IfcLabel"
+  - name: long_description
+    type: text
+    nullable: true
+    meaning: Detailed description of the permit.
+    source_ref: "IfcActionRequest attribute 3: OPTIONAL IfcText"

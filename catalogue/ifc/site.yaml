@@ -1,0 +1,42 @@
+code: ifc.site
+name: IfcSite
+kind: entity
+base: ifc.spatial_structure_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSite
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcSite.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A site is a defined area of land, possibly covered with water, on which the project construction is to be completed. A site may be used to erect, retrofit or turn down building(s), or for other construction related developments.
+fields:
+  - name: ref_latitude
+    type: array
+    nullable: true
+    meaning: World Latitude at reference point (most likely defined in legal description).
+    source_ref: "IfcSite attribute 1: OPTIONAL IfcCompoundPlaneAngleMeasure"
+    of: int
+  - name: ref_longitude
+    type: array
+    nullable: true
+    meaning: World Longitude at reference point (most likely defined in legal description).
+    source_ref: "IfcSite attribute 2: OPTIONAL IfcCompoundPlaneAngleMeasure"
+    of: int
+  - name: ref_elevation
+    type: length
+    nullable: true
+    meaning: Datum elevation relative to sea level.
+    source_ref: "IfcSite attribute 3: OPTIONAL IfcLengthMeasure"
+  - name: land_title_number
+    type: text
+    nullable: true
+    meaning: The land title number (designation of the site within a regional system).
+    source_ref: "IfcSite attribute 4: OPTIONAL IfcLabel"
+  - name: site_address
+    type: ref
+    nullable: true
+    meaning: Address given to the site for postal purposes.
+    source_ref: "IfcSite attribute 5: OPTIONAL IfcPostalAddress"
+    ref_to: ifc.postal_address

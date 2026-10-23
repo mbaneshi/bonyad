@@ -1,0 +1,41 @@
+code: ifc.structural_analysis_model
+name: IfcStructuralAnalysisModel
+kind: object
+base: ifc.system
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralAnalysisModel
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcStructuralAnalysisModel.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcStructuralAnalysisModel is used to assemble all information needed to represent a structural analysis model. It encompasses certain general properties (such as analysis type), references to all contained structural members, structural supports or connections, as well as loads and the respective load results.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: PredefinedType attribute of IfcStructuralAnalysisModel (not described in the source documentation).
+    source_ref: "IfcStructuralAnalysisModel attribute 1: IfcAnalysisModelTypeEnum; enumeration IfcAnalysisModelTypeEnum"
+    values:
+      - value: IN_PLANE_LOADING_2D
+        meaning: In plan loading 2D.
+      - value: OUT_PLANE_LOADING_2D
+        meaning: Out plane loading 2D.
+      - value: LOADING_3D
+        meaning: Loading 3D.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Not defined.
+  - name: orientation_of2d_plane
+    type: ref
+    nullable: true
+    meaning: OrientationOf2DPlane attribute of IfcStructuralAnalysisModel (not described in the source documentation).
+    source_ref: "IfcStructuralAnalysisModel attribute 2: OPTIONAL IfcAxis2Placement3D"
+    ref_to: ifc.axis2_placement3d
+  - name: shared_placement
+    type: ref
+    nullable: true
+    meaning: SharedPlacement attribute of IfcStructuralAnalysisModel (not described in the source documentation).
+    source_ref: "IfcStructuralAnalysisModel attribute 5: OPTIONAL IfcObjectPlacement"
+    ref_to: ifc.object_placement

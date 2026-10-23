@@ -1,0 +1,82 @@
+code: landxml.roadway
+name: Roadway
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Roadway
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Roadway`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.roadways
+    nullable: true
+    meaning: The landxml.roadways row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: Roadway name; the XSD gives no description.
+    source_ref: XSD Roadway/@name; type xs:string
+  - name: alignment_refs
+    type: array
+    meaning: name attributes. Space-delimited list of element names (name-based references).
+    source_ref: XSD Roadway/@alignmentRefs; type alignmentNameRefs
+    of: text
+  - name: surface_refs
+    type: array
+    meaning: name attributes. Space-delimited list of element names (name-based references).
+    source_ref: XSD Roadway/@surfaceRefs; type surfaceNameRefs
+    nullable: true
+    of: text
+  - name: grade_model_refs
+    type: array
+    meaning: name attributes. Space-delimited list of element names (name-based references).
+    source_ref: XSD Roadway/@gradeModelRefs; type gradeModelNameRefs
+    nullable: true
+    of: text
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Roadway/@staStart; type station
+    nullable: true
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Roadway/@staEnd; type station
+    nullable: true
+  - name: desc
+    type: text
+    meaning: Roadway desc; the XSD gives no description.
+    source_ref: XSD Roadway/@desc; type xs:string
+    nullable: true
+  - name: road_terrain
+    type: enum
+    meaning: Roadway roadTerrain; the XSD gives no description.
+    source_ref: XSD Roadway/@roadTerrain; type roadTerrainType
+    nullable: true
+    values:
+      - value: flat
+        meaning: Enumeration literal "flat"; the XSD gives no description.
+      - value: rolling
+        meaning: Enumeration literal "rolling"; the XSD gives no description.
+      - value: mountainous
+        meaning: Enumeration literal "mountainous"; the XSD gives no description.
+  - name: state
+    type: enum
+    meaning: Roadway state; the XSD gives no description.
+    source_ref: XSD Roadway/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+notes: Occurs 1..unbounded in landxml.roadways. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

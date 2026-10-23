@@ -1,0 +1,41 @@
+code: ifc.swept_disk_solid
+name: IfcSweptDiskSolid
+kind: entity
+base: ifc.solid_model
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSweptDiskSolid
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcSweptDiskSolid.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcSweptDiskSolid represents the 3D shape by a sweeping representation scheme allowing a two dimensional circularly bounded plane to sweep along a three dimensional Directrix through space.
+fields:
+  - name: directrix
+    type: ref
+    meaning: The curve used to define the sweeping operation.
+    source_ref: "IfcSweptDiskSolid attribute 1: IfcCurve"
+    ref_to: ifc.curve
+  - name: radius
+    type: length
+    meaning: The Radius of the circular disk to be swept along the directrix.
+    source_ref: "IfcSweptDiskSolid attribute 2: IfcPositiveLengthMeasure"
+    check: positive
+  - name: inner_radius
+    type: length
+    nullable: true
+    meaning: This attribute is optional, if present it defines the radius of a circular hole in the centre of the disk.
+    source_ref: "IfcSweptDiskSolid attribute 3: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: start_param
+    type: float
+    nullable: true
+    meaning: The parameter value on the Directrix at which the sweeping operation commences.
+    source_ref: "IfcSweptDiskSolid attribute 4: OPTIONAL IfcParameterValue"
+  - name: end_param
+    type: float
+    nullable: true
+    meaning: The parameter value on the Directrix at which the sweeping operation ends.
+    source_ref: "IfcSweptDiskSolid attribute 5: OPTIONAL IfcParameterValue"
+notes: SUPERTYPE OF ONEOF ( IfcSweptDiskSolidPolygonal ).

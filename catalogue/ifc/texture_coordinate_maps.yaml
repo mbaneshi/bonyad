@@ -1,0 +1,20 @@
+code: ifc.texture_coordinate_maps
+name: IfcTextureCoordinate.Maps
+kind: child
+parent: ifc.texture_coordinate
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextureCoordinate.Maps
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcTextureCoordinate.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the Maps list of IfcTextureCoordinate. Reference to the one (or many in case of multi textures with identity transformation to geometric surfaces) subtype(s) of IfcSurfaceTexture that are mapped to a geometric surface by the texture coordinate transformation.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcTextureCoordinate.Maps.
+    source_ref: "IfcTextureCoordinate attribute 1: LIST [1:?] OF IfcSurfaceTexture"
+    ref_to: ifc.surface_texture
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: LIST [1:?] OF IfcSurfaceTexture. Owned by an abstract type: rows belong to the concrete subtype."

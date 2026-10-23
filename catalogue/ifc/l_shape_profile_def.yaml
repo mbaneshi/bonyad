@@ -1,0 +1,47 @@
+code: ifc.l_shape_profile_def
+name: IfcLShapeProfileDef
+kind: symbol
+base: ifc.parameterized_profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLShapeProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcLShapeProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcLShapeProfileDef defines a section profile that provides the defining parameters of an L-shaped section (equilateral L profiles are also covered by this entity) to be used by the swept area solid. Its parameters and orientation relative to the position coordinate system are according to the following illustration.
+fields:
+  - name: depth
+    type: length
+    meaning: Leg length, see illustration above (= h).
+    source_ref: "IfcLShapeProfileDef attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: width
+    type: length
+    nullable: true
+    meaning: Leg length, see illustration above (= b).
+    source_ref: "IfcLShapeProfileDef attribute 2: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: thickness
+    type: length
+    meaning: Constant wall thickness of profile, see illustration above (= ts).
+    source_ref: "IfcLShapeProfileDef attribute 3: IfcPositiveLengthMeasure"
+    check: positive
+  - name: fillet_radius
+    type: length
+    nullable: true
+    meaning: Fillet radius according the above illustration (= r1).
+    source_ref: "IfcLShapeProfileDef attribute 4: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: edge_radius
+    type: length
+    nullable: true
+    meaning: Edge radius according the above illustration (= r2).
+    source_ref: "IfcLShapeProfileDef attribute 5: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: leg_slope
+    type: angle
+    nullable: true
+    meaning: Slope of the inner face of each leg of the profile. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcLShapeProfileDef attribute 6: OPTIONAL IfcPlaneAngleMeasure"

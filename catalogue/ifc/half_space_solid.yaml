@@ -1,0 +1,24 @@
+code: ifc.half_space_solid
+name: IfcHalfSpaceSolid
+kind: entity
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcHalfSpaceSolid
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcHalfSpaceSolid.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A half space solid divides the domain into two by a base surface. Normally, the base surface is a plane and divides the infinitive space into two and indicates the side of the half-space by agreeing or disagreeing to the normal of the plane.
+fields:
+  - name: base_surface
+    type: ref
+    meaning: Surface defining side of half space.
+    source_ref: "IfcHalfSpaceSolid attribute 1: IfcSurface"
+    ref_to: ifc.surface
+  - name: agreement_flag
+    type: bool
+    meaning: The agreement flag is TRUE if the normal to the BaseSurface points away from the material of the IfcHalfSpaceSolid.
+    source_ref: "IfcHalfSpaceSolid attribute 2: IfcBoolean"
+notes: "Derived attributes not stored: Dim. SUPERTYPE OF ONEOF ( IfcBoxedHalfSpace , IfcPolygonalBoundedHalfSpace )."

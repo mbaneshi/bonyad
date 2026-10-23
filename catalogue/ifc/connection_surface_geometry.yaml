@@ -1,0 +1,25 @@
+code: ifc.connection_surface_geometry
+name: IfcConnectionSurfaceGeometry
+kind: object
+base: ifc.connection_geometry
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcConnectionSurfaceGeometry
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricConstraintResource/Entities/IfcConnectionSurfaceGeometry.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcConnectionSurfaceGeometry is used to describe the geometric constraints that facilitate the physical connection of two objects at a surface or at a face with surface geometry associated. It is envisioned as a control that applies to the element connection relationships.
+fields:
+  - name: surface_on_relating_element
+    type: ref
+    meaning: Surface at which related object is aligned at the relating element, given in the LCS of the relating element.
+    source_ref: "IfcConnectionSurfaceGeometry attribute 1: IfcSurfaceOrFaceSurface; via select IfcSurfaceOrFaceSurface"
+    ref_to: ifc.representation_item
+  - name: surface_on_related_element
+    type: ref
+    nullable: true
+    meaning: Surface at which the relating element is aligned at the related element, given in the LCS of the related element.
+    source_ref: "IfcConnectionSurfaceGeometry attribute 2: OPTIONAL IfcSurfaceOrFaceSurface; via select IfcSurfaceOrFaceSurface"
+    ref_to: ifc.representation_item

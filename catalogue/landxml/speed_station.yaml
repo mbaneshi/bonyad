@@ -1,0 +1,23 @@
+code: landxml.speed_station
+name: SpeedStation
+kind: child
+parent: landxml.cant
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element SpeedStation
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A cant speed-only station. The “station” is a required double that is internal station value.
+fields:
+  - name: station
+    type: float
+    meaning: SpeedStation station; the XSD gives no description.
+    source_ref: XSD SpeedStation/@station; type xs:double
+  - name: speed
+    type: float
+    meaning: SpeedStation speed; the XSD gives no description.
+    source_ref: XSD SpeedStation/@speed; type xs:double
+notes: Occurs 0..unbounded in landxml.cant.

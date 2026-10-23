@@ -1,0 +1,28 @@
+code: ifc.solar_device
+name: IfcSolarDevice
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSolarDevice
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcSolarDevice.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A solar device converts solar radiation into other energy such as electric current or thermal energy.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcSolarDevice (not described in the source documentation).
+    source_ref: "IfcSolarDevice attribute 1: OPTIONAL IfcSolarDeviceTypeEnum; enumeration IfcSolarDeviceTypeEnum"
+    values:
+      - value: SOLARCOLLECTOR
+        meaning: A device that converts solar radiation into thermal energy (heating water, etc.).
+      - value: SOLARPANEL
+        meaning: A device that converts solar radiation into electric current.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

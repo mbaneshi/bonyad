@@ -1,0 +1,19 @@
+code: ifc.approval_relationship
+name: IfcApprovalRelationship
+kind: object
+base: ifc.resource_level_relationship
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcApprovalRelationship
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcApprovalResource/Entities/IfcApprovalRelationship.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcApprovalRelationship associates approvals (one relating approval and one or more related approvals), each having different status or level as the approval process or the approved objects evolve.
+fields:
+  - name: relating_approval
+    type: ref
+    meaning: The approval that other approval is related to.
+    source_ref: "IfcApprovalRelationship attribute 1: IfcApproval"
+    ref_to: ifc.approval

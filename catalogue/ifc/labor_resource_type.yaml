@@ -1,0 +1,61 @@
+code: ifc.labor_resource_type
+name: IfcLaborResourceType
+kind: symbol
+base: ifc.construction_resource_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLaborResourceType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcConstructionMgmtDomain/Entities/IfcLaborResourceType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The resource type IfcLaborResourceType defines commonly shared information for occurrences of labour resources.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Defines types of labour resources.
+    source_ref: "IfcLaborResourceType attribute 1: IfcLaborResourceTypeEnum; enumeration IfcLaborResourceTypeEnum"
+    values:
+      - value: ADMINISTRATION
+        meaning: Coordination of work.
+      - value: CARPENTRY
+        meaning: Rough carpentry including framing.
+      - value: CLEANING
+        meaning: Removal of dust and debris.
+      - value: CONCRETE
+        meaning: Concrete.
+      - value: DRYWALL
+        meaning: Gypsum wallboard placement and taping.
+      - value: ELECTRIC
+        meaning: Electrical fixtures, equipment, and cables.
+      - value: FINISHING
+        meaning: Finish carpentry including custom cabinetry.
+      - value: FLOORING
+        meaning: Flooring.
+      - value: GENERAL
+        meaning: General labour not requiring specific skill.
+      - value: HVAC
+        meaning: Heating and ventilation fixtures, equipment, and ducts.
+      - value: LANDSCAPING
+        meaning: Grass, plants, trees, or irrigation.
+      - value: MASONRY
+        meaning: Laying bricks or blocks with mortar.
+      - value: PAINTING
+        meaning: Applying decorative coatings or coverings.
+      - value: PAVING
+        meaning: Asphalt or concrete roads and walkways.
+      - value: PLUMBING
+        meaning: Plumbing fixtures, equipment, and pipes.
+      - value: ROOFING
+        meaning: Membranes, shingles, tile, or other roofing.
+      - value: SITEGRADING
+        meaning: Excavating, filling, or contouring earth.
+      - value: STEELWORK
+        meaning: Erecting and attaching steel elements.
+      - value: SURVEYING
+        meaning: Determining positions, distances, and angles.
+      - value: USERDEFINED
+        meaning: User-defined resource.
+      - value: NOTDEFINED
+        meaning: Undefined resource.

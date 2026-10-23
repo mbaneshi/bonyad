@@ -1,0 +1,26 @@
+code: ifc.property_enumerated_value
+name: IfcPropertyEnumeratedValue
+kind: object
+base: ifc.simple_property
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPropertyEnumeratedValue
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPropertyResource/Entities/IfcPropertyEnumeratedValue.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A property with an enumerated value, IfcPropertyEnumeratedValue, defines a property object which has a value assigned that is chosen from an enumeration. It defines a property - value combination for which the property Name, an optional Description, the optional EnumerationValues with measure type and optionally an Unit is given.
+fields:
+  - name: enumeration_values
+    type: array
+    nullable: true
+    meaning: Enumeration values, which shall be listed in the referenced IfcPropertyEnumeration, if such a reference is provided.
+    source_ref: "IfcPropertyEnumeratedValue attribute 1: OPTIONAL LIST [1:?] OF IfcValue; elements are SELECT IfcValue of value types, stored as text (the member type tag is not kept)"
+    of: text
+  - name: enumeration_reference
+    type: ref
+    nullable: true
+    meaning: Enumeration from which a enumeration value has been selected.
+    source_ref: "IfcPropertyEnumeratedValue attribute 2: OPTIONAL IfcPropertyEnumeration"
+    ref_to: ifc.property_enumeration

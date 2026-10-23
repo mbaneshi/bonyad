@@ -1,0 +1,42 @@
+code: ifc.space
+name: IfcSpace
+kind: entity
+base: ifc.spatial_structure_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSpace
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcSpace.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A space represents an area or volume bounded actually or theoretically. Spaces are areas or volumes that provide for certain functions within a building.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic types for a space that are specified in an enumeration.
+    source_ref: "IfcSpace attribute 1: OPTIONAL IfcSpaceTypeEnum; enumeration IfcSpaceTypeEnum"
+    values:
+      - value: SPACE
+        meaning: Any space not falling into another category.
+      - value: PARKING
+        meaning: A space dedication for use as a parking spot for vehicles, including access, such as a parking aisle.
+      - value: GFA
+        meaning: Gross Floor Area - a specific kind of space for each building story that includes all net area and construction area (also the external envelop).
+      - value: INTERNAL
+        meaning: A space inside a facility.
+      - value: EXTERNAL
+        meaning: A space outside of a facility.
+      - value: BERTH
+        meaning: A space dedicated to the berthing of vessels within a port or managed area.
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: elevation_with_flooring
+    type: length
+    nullable: true
+    meaning: Level of flooring of this space; the average shall be taken, if the space ground surface is sloping or if there are level differences within this space.
+    source_ref: "IfcSpace attribute 2: OPTIONAL IfcLengthMeasure"
+notes: "Inverse attributes not stored: HasCoverings, BoundedBy."

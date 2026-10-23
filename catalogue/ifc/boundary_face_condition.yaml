@@ -1,0 +1,29 @@
+code: ifc.boundary_face_condition
+name: IfcBoundaryFaceCondition
+kind: object
+base: ifc.boundary_condition
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBoundaryFaceCondition
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcStructuralLoadResource/Entities/IfcBoundaryFaceCondition.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Describes linearly elastic support conditions or connection conditions.
+fields:
+  - name: translational_stiffness_by_area_x
+    type: text
+    nullable: true
+    meaning: Translational stiffness value in x-direction of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryFaceCondition attribute 1: OPTIONAL IfcModulusOfSubgradeReactionSelect; SELECT IfcModulusOfSubgradeReactionSelect of value types, stored as text (the member type tag is not kept)"
+  - name: translational_stiffness_by_area_y
+    type: text
+    nullable: true
+    meaning: Translational stiffness value in y-direction of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryFaceCondition attribute 2: OPTIONAL IfcModulusOfSubgradeReactionSelect; SELECT IfcModulusOfSubgradeReactionSelect of value types, stored as text (the member type tag is not kept)"
+  - name: translational_stiffness_by_area_z
+    type: text
+    nullable: true
+    meaning: Translational stiffness value in z-direction of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryFaceCondition attribute 3: OPTIONAL IfcModulusOfSubgradeReactionSelect; SELECT IfcModulusOfSubgradeReactionSelect of value types, stored as text (the member type tag is not kept)"

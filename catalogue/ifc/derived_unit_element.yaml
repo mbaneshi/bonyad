@@ -1,0 +1,24 @@
+code: ifc.derived_unit_element
+name: IfcDerivedUnitElement
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDerivedUnitElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMeasureResource/Entities/IfcDerivedUnitElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcDerivedUnitElement: no description in the source documentation."
+fields:
+  - name: unit
+    type: ref
+    meaning: The fixed quantity which is used as the mathematical factor.
+    source_ref: "IfcDerivedUnitElement attribute 1: IfcNamedUnit"
+    ref_to: ifc.named_unit
+  - name: exponent
+    type: int
+    meaning: The power that is applied to the unit attribute.
+    source_ref: "IfcDerivedUnitElement attribute 2: INTEGER"
+needs_review: true
+notes: "Review: no description found for IfcDerivedUnitElement in the documentation at the pinned commit."

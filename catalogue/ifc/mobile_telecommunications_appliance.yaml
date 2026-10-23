@@ -1,0 +1,50 @@
+code: ifc.mobile_telecommunications_appliance
+name: IfcMobileTelecommunicationsAppliance
+kind: entity
+base: ifc.flow_terminal
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMobileTelecommunicationsAppliance
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcMobileTelecommunicationsAppliance.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A mobile telecommunications appliance is a device that transmits, converts, amplifies or receives signals used in mobile networks.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcMobileTelecommunicationsAppliance (not described in the source documentation).
+    source_ref: "IfcMobileTelecommunicationsAppliance attribute 1: OPTIONAL IfcMobileTelecommunicationsApplianceTypeEnum; enumeration IfcMobileTelecommunicationsApplianceTypeEnum"
+    values:
+      - value: E_UTRAN_NODE_B
+        meaning: An E-utran nodel B is a logical network component which serves one or more E-utran cells.
+      - value: REMOTERADIOUNIT
+        meaning: A remote radio unit is a component of a distributed base transceiver station that converts digital baseband signals into high-frequency (rf) signals and sends high-frequency (rf) signals to the antenna for radiation.
+      - value: ACCESSPOINT
+        meaning: An access point is a device that allows wireless devices to connect to a wired network.
+      - value: BASETRANSCEIVERSTATION
+        meaning: A base transceiver station (BTS) is a network component which serves one cell.
+      - value: REMOTEUNIT
+        meaning: A remote unit is a device used to amplify a base station signal.
+      - value: BASEBANDUNIT
+        meaning: A baseband unit is a component of a distributed base transceiver station for implementing baseband processing functions.
+      - value: MASTERUNIT
+        meaning: A master unit is a component of a repeater for coupling base station signals.
+      - value: GATEWAY_GPRS_SUPPORT_NODE
+        meaning: The gateway GPRS support node is a component of the GPRS core network that extends the GSM to allow packet switching functionalities.
+      - value: SUBSCRIBERSERVER
+        meaning: It is a database in charge of the management of mobile subscribers.
+      - value: MOBILESWITCHINGCENTER
+        meaning: The mobile switching centre (MSC) constitutes the interface between the radio system and the fixed networks.
+      - value: MSCSERVER
+        meaning: The MSC server mainly comprises the call control (CC) and mobility control parts of a mobile switching center (MSC).
+      - value: PACKETCONTROLUNIT
+        meaning: A packet control unit performs some of the processing tasks of the base station controller for packet data.
+      - value: SERVICE_GPRS_SUPPORT_NODE
+        meaning: The service GPRS support node (SGSN) is a component of the GPRS core network.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

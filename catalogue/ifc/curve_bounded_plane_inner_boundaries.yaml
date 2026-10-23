@@ -1,0 +1,20 @@
+code: ifc.curve_bounded_plane_inner_boundaries
+name: IfcCurveBoundedPlane.InnerBoundaries
+kind: child
+parent: ifc.curve_bounded_plane
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCurveBoundedPlane.InnerBoundaries
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcCurveBoundedPlane.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the InnerBoundaries list of IfcCurveBoundedPlane. A potentially empty set of inner boundaries.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcCurveBoundedPlane.InnerBoundaries.
+    source_ref: "IfcCurveBoundedPlane attribute 3: SET [0:?] OF IfcCurve"
+    ref_to: ifc.curve
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [0:?] OF IfcCurve."

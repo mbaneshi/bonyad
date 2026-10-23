@@ -1,0 +1,48 @@
+code: landxml.surface
+name: Surface
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Surface
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: SourceData is an optional collection of the points, contours, breaklines and boundaries that were used to create the surface. Definition is a collection of points and faces that define the surface.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.surfaces
+    nullable: true
+    meaning: The landxml.surfaces row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: Surface name; the XSD gives no description.
+    source_ref: XSD Surface/@name; type xs:string
+  - name: desc
+    type: text
+    meaning: Surface desc; the XSD gives no description.
+    source_ref: XSD Surface/@desc; type xs:string
+    nullable: true
+  - name: oid
+    type: text
+    meaning: Surface OID; the XSD gives no description.
+    source_ref: XSD Surface/@OID; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: Surface state; the XSD gives no description.
+    source_ref: XSD Surface/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+notes: Occurs 1..unbounded in landxml.surfaces. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

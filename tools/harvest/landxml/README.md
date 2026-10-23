@@ -1,8 +1,8 @@
 # LandXML 1.2 harvester
 
 Reads the LandXML 1.2 XSD and writes one catalogue YAML per element to `catalogue/landxml/`
-(format: `catalogue/FORMAT.md`, validator: `tools/catalogue`). The generated YAML is gitignored
-(licence gate, see `catalogue/landxml/SOURCES.md`); regenerate it locally.
+(format: `catalogue/FORMAT.md`, validator: `tools/catalogue`). The generated YAML is committed by the maintainer's decision
+(see `catalogue/landxml/SOURCES.md`); regenerate it with the steps below.
 
 ## Reproduce
 ```sh

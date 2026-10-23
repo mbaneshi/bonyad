@@ -1,0 +1,20 @@
+code: ifc.property_set_has_properties
+name: IfcPropertySet.HasProperties
+kind: child
+parent: ifc.property_set
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPropertySet.HasProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcPropertySet.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the HasProperties list of IfcPropertySet. Contained set of properties.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcPropertySet.HasProperties.
+    source_ref: "IfcPropertySet attribute 1: SET [1:?] OF IfcProperty"
+    ref_to: ifc.property
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [1:?] OF IfcProperty."

@@ -1,0 +1,30 @@
+code: ifc.type_process
+name: IfcTypeProcess
+kind: abstract
+base: ifc.type_object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTypeProcess
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcTypeProcess.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcTypeProcess defines a specific (or type) definition of a process or activity without being assigned to a specific schedule or a time. It is used to define a process or activity specification, that is, the information that is common to all occurrences that are defined for that process or activity type.
+fields:
+  - name: identification
+    type: text
+    nullable: true
+    meaning: An identifying designation given to a process type.
+    source_ref: "IfcTypeProcess attribute 1: OPTIONAL IfcIdentifier"
+  - name: long_description
+    type: text
+    nullable: true
+    meaning: A long description, or text, describing the activity in detail.
+    source_ref: "IfcTypeProcess attribute 2: OPTIONAL IfcText"
+  - name: process_type
+    type: text
+    nullable: true
+    meaning: The type denotes a particular type that indicates the process further.
+    source_ref: "IfcTypeProcess attribute 3: OPTIONAL IfcLabel"
+notes: "Inverse attributes not stored: OperatesOn. SUPERTYPE OF ONEOF ( IfcEventType , IfcProcedureType , IfcTaskType )."

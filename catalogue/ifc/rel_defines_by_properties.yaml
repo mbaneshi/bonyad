@@ -1,0 +1,21 @@
+code: ifc.rel_defines_by_properties
+name: IfcRelDefinesByProperties
+kind: object
+base: ifc.rel_defines
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelDefinesByProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcRelDefinesByProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The objectified relationship IfcRelDefinesByProperties defines the relationships between property set definitions and objects. Properties are aggregated in property sets.
+fields:
+  - name: relating_property_definition
+    type: ref
+    meaning: Reference to the property set definition for that object or set of objects.
+    source_ref: "IfcRelDefinesByProperties attribute 2: IfcPropertySetDefinitionSelect; via select IfcPropertySetDefinitionSelect"
+    ref_to: any
+needs_review: true
+notes: "Review: relating_property_definition: select IfcPropertySetDefinitionSelect mixes entities and value types; stored as ref to any, value members are not representable in one column."

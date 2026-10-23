@@ -1,0 +1,60 @@
+code: ifc.alignment_cant_segment
+name: IfcAlignmentCantSegment
+kind: object
+base: ifc.alignment_parameter_segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcAlignmentCantSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricConstraintResource/Entities/IfcAlignmentCantSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcAlignmentCantSegment is an individual segment along IfcAlignmentCant.
+fields:
+  - name: start_dist_along
+    type: length
+    meaning: Distance along the horizontal alignment, measured along the IfcAlignmentHorizontal given in the length unit of the global IfcUnitAssignment.
+    source_ref: "IfcAlignmentCantSegment attribute 1: IfcLengthMeasure"
+  - name: horizontal_length
+    type: length
+    meaning: Length measured as distance along the horizontal alignment of the segment.
+    source_ref: "IfcAlignmentCantSegment attribute 2: IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: start_cant_left
+    type: length
+    meaning: Length measured for the left cant at the beginning of the segment.
+    source_ref: "IfcAlignmentCantSegment attribute 3: IfcLengthMeasure"
+  - name: end_cant_left
+    type: length
+    nullable: true
+    meaning: Length measured for the left cant at the end of the segment.
+    source_ref: "IfcAlignmentCantSegment attribute 4: OPTIONAL IfcLengthMeasure"
+  - name: start_cant_right
+    type: length
+    meaning: Length measured for the right cant at the beginning of the segment.
+    source_ref: "IfcAlignmentCantSegment attribute 5: IfcLengthMeasure"
+  - name: end_cant_right
+    type: length
+    nullable: true
+    meaning: Length measured for the right cant at the end of the segment.
+    source_ref: "IfcAlignmentCantSegment attribute 6: OPTIONAL IfcLengthMeasure"
+  - name: predefined_type
+    type: enum
+    meaning: PredefinedType attribute of IfcAlignmentCantSegment (not described in the source documentation).
+    source_ref: "IfcAlignmentCantSegment attribute 7: IfcAlignmentCantSegmentTypeEnum; enumeration IfcAlignmentCantSegmentTypeEnum"
+    values:
+      - value: BLOSSCURVE
+        meaning: Non linear cant variation according to Bloss curve base formula.
+      - value: CONSTANTCANT
+        meaning: For horizontal straight lines, compensation of lateral acceleration is not required and should be avoided.
+      - value: COSINECURVE
+        meaning: Non linear cant variation according to Cosine curve base formula.
+      - value: HELMERTCURVE
+        meaning: Non linear cant variation according to Helmert curve base formula.
+      - value: LINEARTRANSITION
+        meaning: Linear cant variation.
+      - value: SINECURVE
+        meaning: Non linear cant variation according to Sine curve base formula.
+      - value: VIENNESEBEND
+        meaning: Non linear cant variation according to Viennese bend base formula.

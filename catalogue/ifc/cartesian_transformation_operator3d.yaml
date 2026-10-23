@@ -1,0 +1,21 @@
+code: ifc.cartesian_transformation_operator3d
+name: IfcCartesianTransformationOperator3D
+kind: entity
+base: ifc.cartesian_transformation_operator
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCartesianTransformationOperator3D
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcCartesianTransformationOperator3D.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcCartesianTransformationOperator defines a geometric transformation in three-dimensional space.
+fields:
+  - name: axis3
+    type: ref
+    nullable: true
+    meaning: The exact direction of U[3], the derived Z axis direction.
+    source_ref: "IfcCartesianTransformationOperator3D attribute 1: OPTIONAL IfcDirection"
+    ref_to: ifc.direction
+notes: "Derived attributes not stored: U. SUPERTYPE OF ONEOF ( IfcCartesianTransformationOperator3DnonUniform )."

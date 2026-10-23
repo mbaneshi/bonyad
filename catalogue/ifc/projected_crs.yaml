@@ -1,0 +1,30 @@
+code: ifc.projected_crs
+name: IfcProjectedCRS
+kind: object
+base: ifc.coordinate_reference_system
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcProjectedCRS
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcRepresentationResource/Entities/IfcProjectedCRS.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcProjectedCRS is a coordinate reference system (CRS) of the map to which the map translation of the local engineering coordinate system of the construction or facility engineering project relates. The projected coordinate reference system is assumed to be a 2D or 3D right-handed Cartesian coordinate system, the optional MapUnit attribute can be used to …
+fields:
+  - name: map_projection
+    type: text
+    nullable: true
+    meaning: Name by which the map projection is identified.
+    source_ref: "IfcProjectedCRS attribute 1: OPTIONAL IfcIdentifier"
+  - name: map_zone
+    type: text
+    nullable: true
+    meaning: Name by which the map zone, relating to the MapProjection, is identified.
+    source_ref: "IfcProjectedCRS attribute 2: OPTIONAL IfcIdentifier"
+  - name: map_unit
+    type: ref
+    nullable: true
+    meaning: Unit of the coordinate axes composing the map coordinate system.
+    source_ref: "IfcProjectedCRS attribute 3: OPTIONAL IfcNamedUnit"
+    ref_to: ifc.named_unit

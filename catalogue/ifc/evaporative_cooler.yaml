@@ -1,0 +1,42 @@
+code: ifc.evaporative_cooler
+name: IfcEvaporativeCooler
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcEvaporativeCooler
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcEvaporativeCooler.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An evaporative cooler is a device that cools air by saturating it with water vapor.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcEvaporativeCooler (not described in the source documentation).
+    source_ref: "IfcEvaporativeCooler attribute 1: OPTIONAL IfcEvaporativeCoolerTypeEnum; enumeration IfcEvaporativeCoolerTypeEnum"
+    values:
+      - value: DIRECTEVAPORATIVERANDOMMEDIAAIRCOOLER
+        meaning: "Direct evaporative random media air cooler: Cools the air stream by evaporating water dircectly into the air stream using coolers with evaporative pads, usually of aspen wood or plastic fiber/foam."
+      - value: DIRECTEVAPORATIVERIGIDMEDIAAIRCOOLER
+        meaning: "Direct evaporative rigid media air cooler: Cools the air stream by evaporating water dircectly into the air stream using coolers with sheets of rigid, corrugated material as the wetted surface."
+      - value: DIRECTEVAPORATIVESLINGERSPACKAGEDAIRCOOLER
+        meaning: "Direct evaporative slingers packaged air cooler: Cools the air stream by evaporating water dircectly into the air stream using coolers with a water slinger in an evaporative cooling section and a fan section."
+      - value: DIRECTEVAPORATIVEPACKAGEDROTARYAIRCOOLER
+        meaning: "Direct evaporative packaged rotary air cooler: Cools the air stream by evaporating water dircectly into the air stream using coolers that wet and wash the evaporative pad by rotating it through a water bath."
+      - value: DIRECTEVAPORATIVEAIRWASHER
+        meaning: "Direct evaporative air washer: Cools the air stream by evaporating water dircectly into the air stream using coolers with spray-type air washer consist of a chamber or casing containing spray nozzles, and tank for …"
+      - value: INDIRECTEVAPORATIVEPACKAGEAIRCOOLER
+        meaning: "Indirect evaporative package air cooler: Cools the air stream by evaporating water indirectly and without adding moisture into the air stream."
+      - value: INDIRECTEVAPORATIVEWETCOIL
+        meaning: "Indirect evaporative wet coil: Cools the air stream by evaporating water indirectly and without adding moisture into the air stream."
+      - value: INDIRECTEVAPORATIVECOOLINGTOWERORCOILCOOLER
+        meaning: "Indirect evaporative cooling tower or coil cooler: Cools the air stream by evaporating water indirectly and without adding moisture into the air stream using a combination of a cooling tower or other evaporative water …"
+      - value: INDIRECTDIRECTCOMBINATION
+        meaning: "Indirect/Direct combination: Cools the air stream by evaporating water indirectly and without adding moisture into the air stream using a two-stage cooler with a first-stage indirect evaporative cooler and second-stage …"
+      - value: USERDEFINED
+        meaning: User-defined evaporative cooler type.
+      - value: NOTDEFINED
+        meaning: Undefined evaporative cooler type.

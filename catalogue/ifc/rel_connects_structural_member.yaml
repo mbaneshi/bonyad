@@ -1,0 +1,48 @@
+code: ifc.rel_connects_structural_member
+name: IfcRelConnectsStructuralMember
+kind: object
+base: ifc.rel_connects
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelConnectsStructuralMember
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcRelConnectsStructuralMember.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The entity IfcRelConnectsStructuralMember defines all needed properties describing the connection between structural members and structural connection objects (nodes or supports).
+fields:
+  - name: relating_structural_member
+    type: ref
+    meaning: Reference to an instance of IfcStructuralMember (or its subclasses) which is connected to the specified structural connection.
+    source_ref: "IfcRelConnectsStructuralMember attribute 1: IfcStructuralMember"
+    ref_to: ifc.structural_member
+  - name: related_structural_connection
+    type: ref
+    meaning: Reference to an instance of IfcStructuralConnection (or its subclasses) which is connected to the specified structural member.
+    source_ref: "IfcRelConnectsStructuralMember attribute 2: IfcStructuralConnection"
+    ref_to: ifc.structural_connection
+  - name: applied_condition
+    type: ref
+    nullable: true
+    meaning: Conditions which define the connections properties.
+    source_ref: "IfcRelConnectsStructuralMember attribute 3: OPTIONAL IfcBoundaryCondition"
+    ref_to: ifc.boundary_condition
+  - name: additional_conditions
+    type: ref
+    nullable: true
+    meaning: Describes additional connection properties.
+    source_ref: "IfcRelConnectsStructuralMember attribute 4: OPTIONAL IfcStructuralConnectionCondition"
+    ref_to: ifc.structural_connection_condition
+  - name: supported_length
+    type: length
+    nullable: true
+    meaning: Defines the 'supported length' of this structural connection.
+    source_ref: "IfcRelConnectsStructuralMember attribute 5: OPTIONAL IfcLengthMeasure"
+  - name: condition_coordinate_system
+    type: ref
+    nullable: true
+    meaning: Defines a coordinate system used for the description of the connection properties in ConnectionCondition relative to the local coordinate system of RelatingStructuralMember.
+    source_ref: "IfcRelConnectsStructuralMember attribute 6: OPTIONAL IfcAxis2Placement3D"
+    ref_to: ifc.axis2_placement3d
+notes: SUPERTYPE OF ONEOF ( IfcRelConnectsWithEccentricity ).

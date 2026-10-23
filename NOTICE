@@ -1,0 +1,18 @@
+Third-party material in the Bonyad catalogue
+
+The files under catalogue/<schema>/ are derived from the public sources listed in each
+schema's SOURCES.md. Attributions required or courteous for the schemas below:
+
+- IFC 4.3 (catalogue/ifc): entity names, attributes, enumerations and descriptions derive from
+  the IFC 4.3 documentation and EXPRESS schema of buildingSMART International
+  (https://github.com/buildingSMART/IFC4.3.x-development, commit 2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1).
+  buildingSMART has not given written consent to this derivative; see catalogue/ifc/SOURCES.md.
+
+- LandXML 1.2 (catalogue/landxml): element, attribute and enumeration names and documentation
+  sentences derive from the LandXML 1.2 schema (http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd).
+  Copyright (c) 1999-2006 LandXML.org. The LandXML.org Open Software License (BSD-style) is
+  published with the LandXML SDK; whether it covers the schema is unconfirmed (see
+  catalogue/landxml/SOURCES.md). Its conditions and disclaimer are kept here as a precaution:
+  redistributions must retain the copyright notice, the list of conditions and the disclaimer; the
+  software and schema are provided "as is", without warranty of any kind, and LandXML.org and its
+  contributors are not liable for any damages arising from their use.

@@ -1,0 +1,29 @@
+code: landxml.feature_dictionary
+name: FeatureDictionary
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element FeatureDictionary
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: Used to describe specific Feature code / property type values. DocFileRef points to reference documentation Each Property element defines one piece of data.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.landxml
+    nullable: true
+    meaning: The landxml.landxml row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: FeatureDictionary name; the XSD gives no description.
+    source_ref: XSD FeatureDictionary/@name; type xs:string
+  - name: version
+    type: text
+    meaning: FeatureDictionary version; the XSD gives no description.
+    source_ref: XSD FeatureDictionary/@version; type xs:string
+    nullable: true
+notes: Occurs 0..unbounded in landxml.landxml. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

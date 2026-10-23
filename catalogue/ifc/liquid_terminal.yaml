@@ -1,0 +1,28 @@
+code: ifc.liquid_terminal
+name: IfcLiquidTerminal
+kind: entity
+base: ifc.flow_terminal
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLiquidTerminal
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcPortsAndWaterwaysDomain/Entities/IfcLiquidTerminal.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A liquid terminal is a terminating or origination point for the transfer of liquid between distribution system(s). this is the point where the liquid distribution system interacts with the external environment. An example of this is a loading arm for the transfer of liquid from a docked vessel.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined type of a liquid terminal.
+    source_ref: "IfcLiquidTerminal attribute 1: OPTIONAL IfcLiquidTerminalTypeEnum; enumeration IfcLiquidTerminalTypeEnum"
+    values:
+      - value: LOADINGARM
+        meaning: A loading arm permits the transfer of liquid or liquefied gas from one system to another, through the use of an articulated arm that accounts for the movement of docked vessels.
+      - value: HOSEREEL
+        meaning: A Supporting framework on which a hose may be wound whose primary purpose is to connect and interact with the external environment.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

@@ -1,0 +1,46 @@
+code: ifc.switching_device
+name: IfcSwitchingDevice
+kind: entity
+base: ifc.flow_controller
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSwitchingDevice
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcSwitchingDevice.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A switch is used in a cable distribution system (electrical circuit) to control or modulate the flow of electricity.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcSwitchingDevice (not described in the source documentation).
+    source_ref: "IfcSwitchingDevice attribute 1: OPTIONAL IfcSwitchingDeviceTypeEnum; enumeration IfcSwitchingDeviceTypeEnum"
+    values:
+      - value: CONTACTOR
+        meaning: An electrical device used to control the flow of power in a circuit on or off.
+      - value: DIMMERSWITCH
+        meaning: A dimmer switch has variable positions, and may adjust electrical power or other setting (according to the switched port type).
+      - value: EMERGENCYSTOP
+        meaning: An emergency stop device acts to remove as quickly as possible any danger that may have arisen unexpectedly.
+      - value: KEYPAD
+        meaning: A set of buttons or switches, each potentially applicable to a different device.
+      - value: MOMENTARYSWITCH
+        meaning: A momentary switch has no position, and may trigger some action to occur.
+      - value: SELECTORSWITCH
+        meaning: A selector switch has multiple positions, and may change the source or level of power or other setting (according to the switched port type).
+      - value: STARTER
+        meaning: A starter is a switch which in the closed position controls the application of power to an electrical device.
+      - value: SWITCHDISCONNECTOR
+        meaning: A switch disconnector is a switch which in the open position satisfies the isolating requirements specified for a disconnector.
+      - value: TOGGLESWITCH
+        meaning: A toggle switch has two positions, and may enable or isolate electrical power or other setting (according to the switched port type).
+      - value: RELAY
+        meaning: A device designed to produce sudden predetermined changes in one or more electric output circuits, when certain conditions are fulfilled in the electric input circuits controlling the device.
+      - value: START_AND_STOP_EQUIPMENT
+        meaning: A switch for alternatively closing and opening one or more electric circuits.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

@@ -1,0 +1,24 @@
+code: ifc.ellipse
+name: IfcEllipse
+kind: entity
+base: ifc.conic
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcEllipse
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcEllipse.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcEllipse is a curve consisting of a set of points whose distances to two fixed points add to the same constant.
+fields:
+  - name: semi_axis1
+    type: length
+    meaning: The first radius of the ellipse which shall be positive.
+    source_ref: "IfcEllipse attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: semi_axis2
+    type: length
+    meaning: The second radius of the ellipse which shall be positive.
+    source_ref: "IfcEllipse attribute 2: IfcPositiveLengthMeasure"
+    check: positive

@@ -1,0 +1,29 @@
+code: ifc.curve_style_font_and_scaling
+name: IfcCurveStyleFontAndScaling
+kind: object
+base: ifc.presentation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCurveStyleFontAndScaling
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcCurveStyleFontAndScaling.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcCurveStyleFontAndScaling allows for the reuse of the same curve style definition in several sizes. The definition of the CurveFontScale is the scaling of a base curve style pattern to be used as a new or derived curve style pattern.
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: Name that may be assigned with the scaling of a curve font.
+    source_ref: "IfcCurveStyleFontAndScaling attribute 1: OPTIONAL IfcLabel"
+  - name: curve_font
+    type: ref
+    meaning: The curve font to be scaled.
+    source_ref: "IfcCurveStyleFontAndScaling attribute 2: IfcCurveStyleFontSelect; via select IfcCurveStyleFontSelect"
+    ref_to: ifc.presentation_item
+  - name: curve_font_scaling
+    type: ratio
+    meaning: The scale factor.
+    source_ref: "IfcCurveStyleFontAndScaling attribute 3: IfcPositiveRatioMeasure"
+    check: positive

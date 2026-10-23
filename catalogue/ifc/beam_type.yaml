@@ -1,0 +1,47 @@
+code: ifc.beam_type
+name: IfcBeamType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBeamType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcBeamType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The element type IfcBeamType defines commonly shared information for occurrences of beams.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a beam element from which the type required may be set.
+    source_ref: "IfcBeamType attribute 1: IfcBeamTypeEnum; enumeration IfcBeamTypeEnum"
+    values:
+      - value: BEAM
+        meaning: A standard beam usually used horizontally.
+      - value: JOIST
+        meaning: A beam used to support a floor or ceiling.
+      - value: HOLLOWCORE
+        meaning: A wide often prestressed beam with a hollow-core profile that usually serves as a slab component.
+      - value: LINTEL
+        meaning: A beam or horizontal piece of material over an opening (e.g. door, window).
+      - value: SPANDREL
+        meaning: A tall beam placed on the facade of a building.
+      - value: T_BEAM
+        meaning: A beam that forms part of a slab construction and acts together with the slab which it carries.
+      - value: GIRDER_SEGMENT
+        meaning: A segment of a girder (e.g. each span of a continuous girder).
+      - value: DIAPHRAGM
+        meaning: End portion of a girder transmitting loads to supports and providing moment resistance to adjoining segment.
+      - value: PIERCAP
+        meaning: A transversal beam on top of a pier (on a single column or extending from one column of a pier to another column of the same pier).
+      - value: HATSTONE
+        meaning: A beam on top of a retaining wall or a wing wall, preventing earth movement.
+      - value: CORNICE
+        meaning: A non-loadbearing beam on the longitudinal edge of bridge slab, usually encasing installations.
+      - value: EDGEBEAM
+        meaning: A beam on the longitudinal edge of bridge slab, usually concrete, providing additional stiffening and protection from the elements.
+      - value: USERDEFINED
+        meaning: User-defined linear beam element.
+      - value: NOTDEFINED
+        meaning: Undefined linear beam element.

@@ -1,0 +1,129 @@
+code: landxml.point_type3d_req
+name: PointType3dReq
+kind: abstract
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: complexType PointType3dReq
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `PointType3dReq`; the XSD gives no description.
+fields:
+  - name: coordinates
+    type: point3
+    nullable: true
+    meaning: The element's coordinate text "northing easting [elevation]" stored as point3 with x = easting (second value), y = northing (first value), z = elevation (null when absent); null when only a pntRef is given. Lengths stay in the file's declared unit.
+    source_ref: text content (Point3dReq)
+  - name: name
+    type: text
+    meaning: PointType3dReq name; the XSD gives no description.
+    source_ref: XSD PointType3dReq/@name; type xs:string
+    nullable: true
+  - name: desc
+    type: text
+    meaning: PointType3dReq desc; the XSD gives no description.
+    source_ref: XSD PointType3dReq/@desc; type xs:string
+    nullable: true
+  - name: code
+    type: text
+    meaning: PointType3dReq code; the XSD gives no description.
+    source_ref: XSD PointType3dReq/@code; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: PointType3dReq state; the XSD gives no description.
+    source_ref: XSD PointType3dReq/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD PointType3dReq/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD PointType3dReq/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: point_geometry
+    type: enum
+    meaning: PointType3dReq pointGeometry; the XSD gives no description.
+    source_ref: XSD PointType3dReq/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: dtm_attribute
+    type: enum
+    meaning: PointType3dReq DTMAttribute; the XSD gives no description.
+    source_ref: XSD PointType3dReq/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: time_stamp
+    type: timestamp
+    meaning: PointType3dReq timeStamp; the XSD gives no description.
+    source_ref: XSD PointType3dReq/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: role
+    type: enum
+    meaning: PointType3dReq role; the XSD gives no description.
+    source_ref: XSD PointType3dReq/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+notes: Named complexType used as the xs:extension base of stored elements; never stored itself.

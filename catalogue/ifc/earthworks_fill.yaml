@@ -1,0 +1,38 @@
+code: ifc.earthworks_fill
+name: IfcEarthworksFill
+kind: entity
+base: ifc.earthworks_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcEarthworksFill
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedInfrastructureElements/Entities/IfcEarthworksFill.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A type of earthworks element created by earthwork activities to build subgrade or to raise the level of the ground in general.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined type of a earthworks fill elements.
+    source_ref: "IfcEarthworksFill attribute 1: OPTIONAL IfcEarthworksFillTypeEnum; enumeration IfcEarthworksFillTypeEnum"
+    values:
+      - value: BACKFILL
+        meaning: Fill behind retaining walls or other structures such as quays, behind abutments and bridges.
+      - value: COUNTERWEIGHT
+        meaning: Embankment built on the side of the main road structure to reduce the settlement of the road.
+      - value: SUBGRADE
+        meaning: Type of earthworks element forming the structure below pavement and above natural soil.
+      - value: EMBANKMENT
+        meaning: Predominantly longitudinal type of earthworks element with no other particular assigned type according to its role in Pavement or Subgrade.
+      - value: TRANSITIONSECTION
+        meaning: Section of subgrade to ensure the consistency of stiffness and prevent uneven settlement.
+      - value: SUBGRADEBED
+        meaning: Upper part of the soil, natural or constructed, that supports the loads transmitted by the overlying structure of a road, runway, or similar hard surface.
+      - value: SLOPEFILL
+        meaning: Side slope (batter) fill abutting the road structure or back slope fill.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

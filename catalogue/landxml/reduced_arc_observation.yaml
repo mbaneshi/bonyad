@@ -1,0 +1,364 @@
+code: landxml.reduced_arc_observation
+name: ReducedArcObservation
+kind: child
+parent: landxml.observation_group
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element ReducedArcObservation
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: As we discussed this element is used to provide measured information for calculating boundary arcs. The definition information required is quite different to the curve element
+fields:
+  - name: purpose
+    type: enum
+    meaning: Used by many of the Survey elements.
+    source_ref: XSD ReducedArcObservation/@purpose; type purposeType
+    nullable: true
+    values:
+      - value: normal
+        meaning: Enumeration literal "normal"; the XSD gives no description.
+      - value: check
+        meaning: Enumeration literal "check"; the XSD gives no description.
+      - value: backsight
+        meaning: Enumeration literal "backsight"; the XSD gives no description.
+      - value: foresight
+        meaning: Enumeration literal "foresight"; the XSD gives no description.
+      - value: traverse
+        meaning: Enumeration literal "traverse"; the XSD gives no description.
+      - value: sideshot
+        meaning: Enumeration literal "sideshot"; the XSD gives no description.
+      - value: resection
+        meaning: Enumeration literal "resection"; the XSD gives no description.
+      - value: levelLoop
+        meaning: Enumeration literal "levelLoop"; the XSD gives no description.
+      - value: digitalLevel
+        meaning: Enumeration literal "digitalLevel"; the XSD gives no description.
+      - value: remoteElevation
+        meaning: Enumeration literal "remoteElevation"; the XSD gives no description.
+      - value: recipricalObservation
+        meaning: Enumeration literal "recipricalObservation"; the XSD gives no description.
+      - value: topo
+        meaning: Enumeration literal "topo"; the XSD gives no description.
+      - value: cutSheets
+        meaning: Enumeration literal "cutSheets"; the XSD gives no description.
+      - value: asbuilt
+        meaning: Enumeration literal "asbuilt"; the XSD gives no description.
+  - name: setup_id
+    type: ref
+    meaning: "ReducedArcObservation setupID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD ReducedArcObservation/@setupID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: target_setup_id
+    type: ref
+    meaning: "ReducedArcObservation targetSetupID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD ReducedArcObservation/@targetSetupID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: set_id
+    type: text
+    meaning: ReducedArcObservation setID; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@setID; type xs:anySimpleType
+    nullable: true
+  - name: chord_azimuth
+    type: angle
+    meaning: Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them.
+    source_ref: XSD ReducedArcObservation/@chordAzimuth; type direction
+  - name: radius
+    type: float
+    meaning: ReducedArcObservation radius; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@radius; type xs:double
+  - name: length
+    type: float
+    meaning: ReducedArcObservation length; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@length; type xs:double
+  - name: rot
+    type: enum
+    meaning: ReducedArcObservation rot; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@rot; type clockwise
+    values:
+      - value: cw
+        meaning: Enumeration literal "cw"; the XSD gives no description.
+      - value: ccw
+        meaning: Enumeration literal "ccw"; the XSD gives no description.
+  - name: equipment_used
+    type: text
+    meaning: This gives a list of equipment used for the observation this list of equipment is used to estimate the accuracy of the observation..
+    source_ref: XSD ReducedArcObservation/@equipmentUsed; type equipmentType
+    nullable: true
+  - name: arc_azimuth_accuracy
+    type: float
+    meaning: ReducedArcObservation arcAzimuthAccuracy; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@arcAzimuthAccuracy; type xs:double
+    nullable: true
+  - name: arc_length_accuracy
+    type: float
+    meaning: ReducedArcObservation arcLengthAccuracy; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@arcLengthAccuracy; type xs:double
+    nullable: true
+  - name: date
+    type: date
+    meaning: ReducedArcObservation date; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@date; type xs:date
+    nullable: true
+  - name: arc_type
+    type: text
+    meaning: ReducedArcObservation arcType; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@arcType; type xs:string
+    nullable: true
+  - name: adopted_survey
+    type: text
+    meaning: ReducedArcObservation adoptedSurvey; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@adoptedSurvey; type xs:string
+    nullable: true
+  - name: length_acc_class
+    type: text
+    meaning: ReducedArcObservation lengthAccClass; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@lengthAccClass; type xs:string
+    nullable: true
+  - name: azimuth_acc_class
+    type: text
+    meaning: ReducedArcObservation azimuthAccClass; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@azimuthAccClass; type xs:string
+    nullable: true
+  - name: azimuth_adoption_factor
+    type: float
+    meaning: ReducedArcObservation azimuthAdoptionFactor; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@azimuthAdoptionFactor; type xs:double
+    nullable: true
+  - name: length_adoption_factor
+    type: float
+    meaning: ReducedArcObservation lengthAdoptionFactor; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@lengthAdoptionFactor; type xs:double
+    nullable: true
+  - name: name
+    type: text
+    meaning: ReducedArcObservation name; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@name; type xs:string
+    nullable: true
+  - name: desc
+    type: text
+    meaning: ReducedArcObservation desc; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@desc; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: ReducedArcObservation state; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: o_id
+    type: text
+    meaning: ReducedArcObservation oID; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@oID; type xs:string
+    nullable: true
+  - name: coord_geom_refs
+    type: array
+    meaning: name attributes. Space-delimited list of element names (name-based references).
+    source_ref: XSD ReducedArcObservation/@coordGeomRefs; type coordGeomNameRefs
+    nullable: true
+    of: text
+  - name: align_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD ReducedArcObservation/@alignRef; type alignmentNameRef
+    nullable: true
+    ref_to: landxml.alignment
+  - name: align_station_name
+    type: text
+    meaning: ReducedArcObservation alignStationName; the XSD gives no description.
+    source_ref: XSD ReducedArcObservation/@alignStationName; type xs:string
+    nullable: true
+  - name: align_offset
+    type: length
+    meaning: Represents a linear offset distance. When associated with horizontal (planametric) road or coordinate geometry, the offset is a 2D distance measured perpendicular to the road centerline or coordinate geometry used as... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD ReducedArcObservation/@alignOffset; type offsetDistance
+    nullable: true
+  - name: target_point
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D location for the target. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only target_point_pnt_ref is given).
+    source_ref: ReducedArcObservation/TargetPoint text content (Point3dOpt)
+  - name: target_point_name
+    type: text
+    meaning: TargetPoint name; the XSD gives no description.
+    source_ref: XSD TargetPoint/@name; type xs:string
+    nullable: true
+  - name: target_point_desc
+    type: text
+    meaning: TargetPoint desc; the XSD gives no description.
+    source_ref: XSD TargetPoint/@desc; type xs:string
+    nullable: true
+  - name: target_point_code
+    type: text
+    meaning: TargetPoint code; the XSD gives no description.
+    source_ref: XSD TargetPoint/@code; type xs:string
+    nullable: true
+  - name: target_point_state
+    type: enum
+    meaning: TargetPoint state; the XSD gives no description.
+    source_ref: XSD TargetPoint/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: target_point_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD TargetPoint/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: target_point_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD TargetPoint/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: target_point_point_geometry
+    type: enum
+    meaning: TargetPoint pointGeometry; the XSD gives no description.
+    source_ref: XSD TargetPoint/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: target_point_dtm_attribute
+    type: enum
+    meaning: TargetPoint DTMAttribute; the XSD gives no description.
+    source_ref: XSD TargetPoint/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: target_point_time_stamp
+    type: timestamp
+    meaning: TargetPoint timeStamp; the XSD gives no description.
+    source_ref: XSD TargetPoint/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: target_point_role
+    type: enum
+    meaning: TargetPoint role; the XSD gives no description.
+    source_ref: XSD TargetPoint/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: target_point_determined_time_stamp
+    type: timestamp
+    meaning: TargetPoint determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD TargetPoint/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: target_point_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD TargetPoint/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: target_point_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD TargetPoint/@latitude; type latLongAngle
+    nullable: true
+  - name: target_point_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD TargetPoint/@longitude; type latLongAngle
+    nullable: true
+  - name: target_point_zone
+    type: text
+    meaning: TargetPoint zone; the XSD gives no description.
+    source_ref: XSD TargetPoint/@zone; type xs:string
+    nullable: true
+  - name: target_point_northing_std_error
+    type: float
+    meaning: TargetPoint northingStdError; the XSD gives no description.
+    source_ref: XSD TargetPoint/@northingStdError; type xs:double
+    nullable: true
+  - name: target_point_easting_std_error
+    type: float
+    meaning: TargetPoint eastingStdError; the XSD gives no description.
+    source_ref: XSD TargetPoint/@eastingStdError; type xs:double
+    nullable: true
+  - name: target_point_elevation_std_error
+    type: float
+    meaning: TargetPoint elevationStdError; the XSD gives no description.
+    source_ref: XSD TargetPoint/@elevationStdError; type xs:double
+    nullable: true
+  - name: offset_vals_offset_in_out
+    type: float
+    meaning: OffsetVals offsetInOut; the XSD gives no description.
+    source_ref: XSD OffsetVals/@offsetInOut; type xs:double
+    nullable: true
+  - name: offset_vals_offset_left_right
+    type: float
+    meaning: OffsetVals offsetLeftRight; the XSD gives no description.
+    source_ref: XSD OffsetVals/@offsetLeftRight; type xs:double
+    nullable: true
+  - name: offset_vals_offset_up_down
+    type: float
+    meaning: OffsetVals offsetUpDown; the XSD gives no description.
+    source_ref: XSD OffsetVals/@offsetUpDown; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.observation_group."

@@ -1,0 +1,30 @@
+code: ifc.building
+name: IfcBuilding
+kind: entity
+base: ifc.facility
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBuilding
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcBuilding.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A building represents a structure that provides shelter for its occupants or contents and stands in one place. The building is also used to provide a basic element within the spatial structure hierarchy for the components of a building project (together with site, storey, and space).
+fields:
+  - name: elevation_of_ref_height
+    type: length
+    nullable: true
+    meaning: Elevation above sea level of the reference height used for all storey elevation measures, equals to height 0.0.
+    source_ref: "IfcBuilding attribute 1: OPTIONAL IfcLengthMeasure"
+  - name: elevation_of_terrain
+    type: length
+    nullable: true
+    meaning: Elevation above the minimal terrain level around the foot print of the building, given in elevation above sea level.
+    source_ref: "IfcBuilding attribute 2: OPTIONAL IfcLengthMeasure"
+  - name: building_address
+    type: ref
+    nullable: true
+    meaning: BuildingAddress attribute of IfcBuilding (not described in the source documentation).
+    source_ref: "IfcBuilding attribute 3: OPTIONAL IfcPostalAddress"
+    ref_to: ifc.postal_address

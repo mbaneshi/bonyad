@@ -1,0 +1,74 @@
+code: landxml.cross_sect
+name: CrossSect
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element CrossSect
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `CrossSect`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.cross_sects
+    nullable: true
+    meaning: The landxml.cross_sects row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: sta
+    type: float
+    meaning: CrossSect sta; the XSD gives no description.
+    source_ref: XSD CrossSect/@sta; type xs:double
+  - name: name
+    type: text
+    meaning: CrossSect name; the XSD gives no description.
+    source_ref: XSD CrossSect/@name; type xs:string
+    nullable: true
+  - name: desc
+    type: text
+    meaning: CrossSect desc; the XSD gives no description.
+    source_ref: XSD CrossSect/@desc; type xs:string
+    nullable: true
+  - name: angle_skew
+    type: angle
+    meaning: Represents a normalized angular value in the specified Angular units. Assume 0 degrees = east. Stored in radians. The file value is expressed in Units angularUnit (default radians) and is converted at the import boundary. The XSD defines it as measured counter-clockwise from east (0 = east).
+    source_ref: XSD CrossSect/@angleSkew; type angle
+    nullable: true
+  - name: area_cut
+    type: area
+    meaning: Represents the cross sectional surface area in numeric decimal form expressed in area units. In the file's declared area unit; kept unconverted.
+    source_ref: XSD CrossSect/@areaCut; type crossSectSurfaceArea
+    nullable: true
+  - name: area_fill
+    type: area
+    meaning: Represents the cross sectional surface area in numeric decimal form expressed in area units. In the file's declared area unit; kept unconverted.
+    source_ref: XSD CrossSect/@areaFill; type crossSectSurfaceArea
+    nullable: true
+  - name: centroid_cut
+    type: float
+    meaning: CrossSect centroidCut; the XSD gives no description.
+    source_ref: XSD CrossSect/@centroidCut; type xs:double
+    nullable: true
+  - name: centroid_fill
+    type: float
+    meaning: CrossSect centroidFill; the XSD gives no description.
+    source_ref: XSD CrossSect/@centroidFill; type xs:double
+    nullable: true
+  - name: sect_type
+    type: text
+    meaning: CrossSect sectType; the XSD gives no description.
+    source_ref: XSD CrossSect/@sectType; type xs:string
+    nullable: true
+  - name: volume_cut
+    type: volume
+    meaning: Represents the cross section surface volume from the previous station to the current station in numeric decimal form expressed in volume units. In the file's declared volume unit; kept unconverted.
+    source_ref: XSD CrossSect/@volumeCut; type crossSectSurfaceVolume
+    nullable: true
+  - name: volume_fill
+    type: volume
+    meaning: Represents the cross section surface volume from the previous station to the current station in numeric decimal form expressed in volume units. In the file's declared volume unit; kept unconverted.
+    source_ref: XSD CrossSect/@volumeFill; type crossSectSurfaceVolume
+    nullable: true
+notes: Occurs 1..unbounded in landxml.cross_sects. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

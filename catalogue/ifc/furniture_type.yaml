@@ -1,0 +1,51 @@
+code: ifc.furniture_type
+name: IfcFurnitureType
+kind: symbol
+base: ifc.furnishing_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFurnitureType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedFacilitiesElements/Entities/IfcFurnitureType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The furnishing element type IfcFurnitureType defines commonly shared information for occurrences of furnitures.
+fields:
+  - name: assembly_place
+    type: enum
+    meaning: A designation of where the assembly is intended to take place.
+    source_ref: "IfcFurnitureType attribute 1: IfcAssemblyPlaceEnum; enumeration IfcAssemblyPlaceEnum"
+    values:
+      - value: SITE
+        meaning: This assembly is assembled at site.
+      - value: FACTORY
+        meaning: This assembly is assembled in a factory.
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcFurnitureType (not described in the source documentation).
+    source_ref: "IfcFurnitureType attribute 2: OPTIONAL IfcFurnitureTypeEnum; enumeration IfcFurnitureTypeEnum"
+    values:
+      - value: CHAIR
+        meaning: Furniture for seating a single person.
+      - value: TABLE
+        meaning: Furniture with a countertop for multiple people.
+      - value: DESK
+        meaning: Furniture with a countertop and optional drawers for a single person.
+      - value: BED
+        meaning: Furniture for sleeping.
+      - value: FILECABINET
+        meaning: Furniture with sliding drawers for storing files.
+      - value: SHELF
+        meaning: Furniture for storing books or other items.
+      - value: SOFA
+        meaning: Furniture for seating multiple people.
+      - value: TECHNICALCABINET
+        meaning: A technical cabinet is a piece of furniture for holding, displaying and protecting technical appliances, usually organized in shelves, drawers or racks.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

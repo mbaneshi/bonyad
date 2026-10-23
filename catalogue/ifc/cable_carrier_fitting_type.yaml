@@ -1,0 +1,31 @@
+code: ifc.cable_carrier_fitting_type
+name: IfcCableCarrierFittingType
+kind: symbol
+base: ifc.flow_fitting_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCableCarrierFittingType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcCableCarrierFittingType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow fitting type IfcCableCarrierFittingType defines commonly shared information for occurrences of cable carrier fittings.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of cable carrier fitting from which the type required may be set.
+    source_ref: "IfcCableCarrierFittingType attribute 1: IfcCableCarrierFittingTypeEnum; enumeration IfcCableCarrierFittingTypeEnum"
+    values:
+      - value: BEND
+        meaning: A fitting that changes the route of the cable carrier.
+      - value: CROSS
+        meaning: A fitting at which two branches are taken from the main route of the cable carrier simultaneously.
+      - value: REDUCER
+        meaning: A fitting that changes the physical size of the main route of the cable carrier.
+      - value: TEE
+        meaning: A fitting at which a branch is taken from the main route of the cable carrier.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

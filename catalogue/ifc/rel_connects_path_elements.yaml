@@ -1,0 +1,50 @@
+code: ifc.rel_connects_path_elements
+name: IfcRelConnectsPathElements
+kind: object
+base: ifc.rel_connects_elements
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelConnectsPathElements
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcRelConnectsPathElements.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcRelConnectsPathElements relationship provides the connectivity information between two elements, which have path information.
+fields:
+  - name: relating_priorities
+    type: array
+    meaning: Overriding priorities at this connection.
+    source_ref: "IfcRelConnectsPathElements attribute 1: LIST [0:?] OF IfcInteger"
+    of: int
+  - name: related_priorities
+    type: array
+    meaning: Overriding priorities at this connection.
+    source_ref: "IfcRelConnectsPathElements attribute 2: LIST [0:?] OF IfcInteger"
+    of: int
+  - name: related_connection_type
+    type: enum
+    meaning: Indication of the connection type in relation to the path of the RelatedObject.
+    source_ref: "IfcRelConnectsPathElements attribute 3: IfcConnectionTypeEnum; enumeration IfcConnectionTypeEnum"
+    values:
+      - value: ATPATH
+        meaning: Connection along the path of the connected element.
+      - value: ATSTART
+        meaning: Connection at the start of the connected element.
+      - value: ATEND
+        meaning: Connection at the end of the connected element.
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: relating_connection_type
+    type: enum
+    meaning: Indication of the connection type in relation to the path of the RelatingObject.
+    source_ref: "IfcRelConnectsPathElements attribute 4: IfcConnectionTypeEnum; enumeration IfcConnectionTypeEnum"
+    values:
+      - value: ATPATH
+        meaning: Connection along the path of the connected element.
+      - value: ATSTART
+        meaning: Connection at the start of the connected element.
+      - value: ATEND
+        meaning: Connection at the end of the connected element.
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)

@@ -1,0 +1,86 @@
+code: landxml.design_cross_sect_surf
+name: DesignCrossSectSurf
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element DesignCrossSectSurf
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `DesignCrossSectSurf`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.cross_sect
+    nullable: true
+    meaning: The landxml.cross_sect row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: DesignCrossSectSurf name; the XSD gives no description.
+    source_ref: XSD DesignCrossSectSurf/@name; type xs:string
+    nullable: true
+  - name: desc
+    type: text
+    meaning: DesignCrossSectSurf desc; the XSD gives no description.
+    source_ref: XSD DesignCrossSectSurf/@desc; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: DesignCrossSectSurf state; the XSD gives no description.
+    source_ref: XSD DesignCrossSectSurf/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: side
+    type: enum
+    meaning: DesignCrossSectSurf side; the XSD gives no description.
+    source_ref: XSD DesignCrossSectSurf/@side; type sideofRoadType
+    nullable: true
+    values:
+      - value: right
+        meaning: Enumeration literal "right"; the XSD gives no description.
+      - value: left
+        meaning: Enumeration literal "left"; the XSD gives no description.
+      - value: both
+        meaning: Enumeration literal "both"; the XSD gives no description.
+  - name: material
+    type: text
+    meaning: DesignCrossSectSurf material; the XSD gives no description.
+    source_ref: XSD DesignCrossSectSurf/@material; type xs:string
+    nullable: true
+  - name: closed_area
+    type: bool
+    meaning: DesignCrossSectSurf closedArea; the XSD gives no description.
+    source_ref: XSD DesignCrossSectSurf/@closedArea; type xs:boolean
+    nullable: true
+  - name: typical_thickness
+    type: float
+    meaning: DesignCrossSectSurf typicalThickness; the XSD gives no description.
+    source_ref: XSD DesignCrossSectSurf/@typicalThickness; type xs:double
+    nullable: true
+  - name: typical_width
+    type: float
+    meaning: DesignCrossSectSurf typicalWidth; the XSD gives no description.
+    source_ref: XSD DesignCrossSectSurf/@typicalWidth; type xs:double
+    nullable: true
+  - name: area
+    type: area
+    meaning: Represents the cross sectional surface area in numeric decimal form expressed in area units. In the file's declared area unit; kept unconverted.
+    source_ref: XSD DesignCrossSectSurf/@area; type crossSectSurfaceArea
+    nullable: true
+  - name: volume
+    type: volume
+    meaning: Represents the cross section surface volume from the previous station to the current station in numeric decimal form expressed in volume units. In the file's declared volume unit; kept unconverted.
+    source_ref: XSD DesignCrossSectSurf/@volume; type crossSectSurfaceVolume
+    nullable: true
+notes: Occurs 0..unbounded in landxml.cross_sect. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

@@ -1,0 +1,20 @@
+code: ifc.composite_profile_def_profiles
+name: IfcCompositeProfileDef.Profiles
+kind: child
+parent: ifc.composite_profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCompositeProfileDef.Profiles
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcCompositeProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the Profiles list of IfcCompositeProfileDef. The profiles which are used to define the composite profile.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcCompositeProfileDef.Profiles.
+    source_ref: "IfcCompositeProfileDef attribute 1: SET [2:?] OF IfcProfileDef"
+    ref_to: ifc.profile_def
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [2:?] OF IfcProfileDef."

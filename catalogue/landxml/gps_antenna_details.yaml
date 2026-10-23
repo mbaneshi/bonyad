@@ -1,0 +1,65 @@
+code: landxml.gps_antenna_details
+name: GPSAntennaDetails
+kind: child
+parent: landxml.survey
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element GPSAntennaDetails
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `GPSAntennaDetails`; the XSD gives no description.
+fields:
+  - name: id
+    type: text
+    meaning: GPSAntennaDetails id; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@id; type xs:ID
+  - name: manufacturer
+    type: text
+    meaning: GPSAntennaDetails manufacturer; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@manufacturer; type xs:string
+    nullable: true
+  - name: model
+    type: text
+    meaning: GPSAntennaDetails model; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@model; type xs:string
+    nullable: true
+  - name: serial_number
+    type: text
+    meaning: GPSAntennaDetails serialNumber; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@serialNumber; type xs:string
+    nullable: true
+  - name: latitude
+    type: float
+    meaning: GPSAntennaDetails latitude; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@latitude; type xs:double
+    nullable: true
+  - name: longitude
+    type: float
+    meaning: GPSAntennaDetails longitude; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@longitude; type xs:double
+    nullable: true
+  - name: altitude
+    type: float
+    meaning: GPSAntennaDetails altitude; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@altitude; type xs:double
+    nullable: true
+  - name: ellipsiodal_height
+    type: float
+    meaning: GPSAntennaDetails ellipsiodalHeight; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@ellipsiodalHeight; type xs:double
+    nullable: true
+  - name: orthometric_height
+    type: float
+    meaning: GPSAntennaDetails orthometricHeight; the XSD gives no description.
+    source_ref: XSD GPSAntennaDetails/@orthometricHeight; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: Occurs 1..1 via Equipment in landxml.survey.

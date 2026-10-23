@@ -1,0 +1,44 @@
+code: ifc.project_order
+name: IfcProjectOrder
+kind: object
+base: ifc.control
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcProjectOrder
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedMgmtElements/Entities/IfcProjectOrder.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A project order is a directive to purchase products and/or perform work, such as for construction or facilities management.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a project order that is specified in an enumeration.
+    source_ref: "IfcProjectOrder attribute 1: OPTIONAL IfcProjectOrderTypeEnum; enumeration IfcProjectOrderTypeEnum"
+    values:
+      - value: CHANGEORDER
+        meaning: An instruction to make a change to a product or work being undertaken and a description of the work that is to be performed.
+      - value: MAINTENANCEWORKORDER
+        meaning: An instruction to carry out maintenance work and a description of the work that is to be performed.
+      - value: MOVEORDER
+        meaning: An instruction to move persons and artefacts and a description of the move locations, objects to be moved, etc.
+      - value: PURCHASEORDER
+        meaning: An instruction to purchase goods and/or services and a description of the goods and/or services to be purchased that is to be performed.
+      - value: WORKORDER
+        meaning: A general instruction to carry out work and a description of the work to be done.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.
+  - name: status
+    type: text
+    nullable: true
+    meaning: "The current status of a project order.Examples of status values that might be used for a project order status include: * PLANNED * REQUESTED * APPROVED * ISSUED * STARTED * DELAYED * DONE."
+    source_ref: "IfcProjectOrder attribute 2: OPTIONAL IfcLabel"
+  - name: long_description
+    type: text
+    nullable: true
+    meaning: A detailed description of the project order describing the work to be completed.
+    source_ref: "IfcProjectOrder attribute 3: OPTIONAL IfcText"

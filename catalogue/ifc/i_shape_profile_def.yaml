@@ -1,0 +1,51 @@
+code: ifc.i_shape_profile_def
+name: IfcIShapeProfileDef
+kind: symbol
+base: ifc.parameterized_profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcIShapeProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcIShapeProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcIShapeProfileDef defines a section profile that provides the defining parameters of an 'I' or 'H' section. The I-shape profile has values for its overall depth, width and its web and flange thicknesses.
+fields:
+  - name: overall_width
+    type: length
+    meaning: Total extent of the width, defined parallel to the x axis of the position coordinate system.
+    source_ref: "IfcIShapeProfileDef attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: overall_depth
+    type: length
+    meaning: Total extent of the depth, defined parallel to the y axis of the position coordinate system.
+    source_ref: "IfcIShapeProfileDef attribute 2: IfcPositiveLengthMeasure"
+    check: positive
+  - name: web_thickness
+    type: length
+    meaning: Thickness of the web of the I-shape.
+    source_ref: "IfcIShapeProfileDef attribute 3: IfcPositiveLengthMeasure"
+    check: positive
+  - name: flange_thickness
+    type: length
+    meaning: Flange thickness of the I-shape.
+    source_ref: "IfcIShapeProfileDef attribute 4: IfcPositiveLengthMeasure"
+    check: positive
+  - name: fillet_radius
+    type: length
+    nullable: true
+    meaning: The fillet between the web and the flange. 0 if sharp-edged, omitted if unknown.
+    source_ref: "IfcIShapeProfileDef attribute 5: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: flange_edge_radius
+    type: length
+    nullable: true
+    meaning: Radius of the lower edges of the top flange and the upper edges of the bottom flange. 0 if sharp-edged, omitted if unknown.
+    source_ref: "IfcIShapeProfileDef attribute 6: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: flange_slope
+    type: angle
+    nullable: true
+    meaning: Slope of the lower faces of the top flange and of the upper faces of the bottom flange. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcIShapeProfileDef attribute 7: OPTIONAL IfcPlaneAngleMeasure"

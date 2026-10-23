@@ -1,0 +1,303 @@
+code: landxml.parcel
+name: Parcel
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Parcel
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: Modified to include parcel class and an official ID
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.parcels
+    nullable: true
+    meaning: The landxml.parcels row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: Parcel name; the XSD gives no description.
+    source_ref: XSD Parcel/@name; type xs:string
+  - name: o_id
+    type: text
+    meaning: Parcel oID; the XSD gives no description.
+    source_ref: XSD Parcel/@oID; type xs:string
+    nullable: true
+  - name: area
+    type: float
+    meaning: "Parcel area; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Parcel/@area; type xs:double
+    nullable: true
+  - name: desc
+    type: text
+    meaning: Parcel desc; the XSD gives no description.
+    source_ref: XSD Parcel/@desc; type xs:string
+    nullable: true
+  - name: dir_closure
+    type: angle
+    meaning: "Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Parcel/@dirClosure; type direction
+    nullable: true
+  - name: dist_closure
+    type: float
+    meaning: "Parcel distClosure; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Parcel/@distClosure; type xs:double
+    nullable: true
+  - name: owner
+    type: text
+    meaning: Parcel owner; the XSD gives no description.
+    source_ref: XSD Parcel/@owner; type xs:string
+    nullable: true
+  - name: parcel_type
+    type: text
+    meaning: Parcel parcelType; the XSD gives no description.
+    source_ref: XSD Parcel/@parcelType; type xs:string
+    nullable: true
+  - name: setback_front
+    type: float
+    meaning: Parcel setbackFront; the XSD gives no description.
+    source_ref: XSD Parcel/@setbackFront; type xs:double
+    nullable: true
+  - name: setback_rear
+    type: float
+    meaning: Parcel setbackRear; the XSD gives no description.
+    source_ref: XSD Parcel/@setbackRear; type xs:double
+    nullable: true
+  - name: setback_side
+    type: float
+    meaning: Parcel setbackSide; the XSD gives no description.
+    source_ref: XSD Parcel/@setbackSide; type xs:double
+    nullable: true
+  - name: state
+    type: enum
+    meaning: This is an extension of the LandXML state type, but is specific to parcels.
+    source_ref: XSD Parcel/@state; type parcelStateType
+    nullable: true
+    values:
+      - value: affected
+        meaning: Enumeration literal "affected"; the XSD gives no description.
+      - value: created
+        meaning: Enumeration literal "created"; the XSD gives no description.
+      - value: encroached
+        meaning: Enumeration literal "encroached"; the XSD gives no description.
+      - value: extinguished
+        meaning: Enumeration literal "extinguished"; the XSD gives no description.
+      - value: referenced
+        meaning: Enumeration literal "referenced"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: adjoining
+        meaning: Enumeration literal "adjoining"; the XSD gives no description.
+  - name: tax_id
+    type: text
+    meaning: Parcel taxId; the XSD gives no description.
+    source_ref: XSD Parcel/@taxId; type xs:string
+    nullable: true
+  - name: class
+    type: text
+    meaning: This is a list of parcel classes which may be jurisdictionally specific defined by regulation and legislation.
+    source_ref: XSD Parcel/@class; type parcelClass
+    nullable: true
+  - name: use_of_parcel
+    type: text
+    meaning: Describes what the parcel is used for. This would be a jurisdictionally specific list.
+    source_ref: XSD Parcel/@useOfParcel; type useOfParcelType
+    nullable: true
+  - name: parcel_format
+    type: text
+    meaning: Parcel Format describes how the parcel is described , ie Standard (2D), Volumertric (3D).
+    source_ref: XSD Parcel/@parcelFormat; type parcelFormat
+    nullable: true
+  - name: building_no
+    type: text
+    meaning: Parcel buildingNo; the XSD gives no description.
+    source_ref: XSD Parcel/@buildingNo; type xs:string
+    nullable: true
+  - name: building_level_no
+    type: text
+    meaning: Parcel buildingLevelNo; the XSD gives no description.
+    source_ref: XSD Parcel/@buildingLevelNo; type xs:string
+    nullable: true
+  - name: volume
+    type: text
+    meaning: Parcel volume; the XSD gives no description.
+    source_ref: XSD Parcel/@volume; type xs:string
+    nullable: true
+  - name: pcl_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Parcel/@pclRef; type parcelNameRef
+    nullable: true
+    ref_to: landxml.parcel
+  - name: lot_entitlements
+    type: text
+    meaning: Parcel lotEntitlements; the XSD gives no description.
+    source_ref: XSD Parcel/@lotEntitlements; type xs:string
+    nullable: true
+  - name: liability_apportionment
+    type: text
+    meaning: Parcel liabilityApportionment; the XSD gives no description.
+    source_ref: XSD Parcel/@liabilityApportionment; type xs:string
+    nullable: true
+  - name: center
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D Center Point. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only center_pnt_ref is given).
+    source_ref: Parcel/Center text content (Point3dOpt)
+  - name: center_name
+    type: text
+    meaning: Center name; the XSD gives no description.
+    source_ref: XSD Center/@name; type xs:string
+    nullable: true
+  - name: center_desc
+    type: text
+    meaning: Center desc; the XSD gives no description.
+    source_ref: XSD Center/@desc; type xs:string
+    nullable: true
+  - name: center_code
+    type: text
+    meaning: Center code; the XSD gives no description.
+    source_ref: XSD Center/@code; type xs:string
+    nullable: true
+  - name: center_state
+    type: enum
+    meaning: Center state; the XSD gives no description.
+    source_ref: XSD Center/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: center_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Center/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: center_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Center/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: center_point_geometry
+    type: enum
+    meaning: Center pointGeometry; the XSD gives no description.
+    source_ref: XSD Center/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: center_dtm_attribute
+    type: enum
+    meaning: Center DTMAttribute; the XSD gives no description.
+    source_ref: XSD Center/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: center_time_stamp
+    type: timestamp
+    meaning: Center timeStamp; the XSD gives no description.
+    source_ref: XSD Center/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: center_role
+    type: enum
+    meaning: Center role; the XSD gives no description.
+    source_ref: XSD Center/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: center_determined_time_stamp
+    type: timestamp
+    meaning: Center determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD Center/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: center_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD Center/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: center_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD Center/@latitude; type latLongAngle
+    nullable: true
+  - name: center_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD Center/@longitude; type latLongAngle
+    nullable: true
+  - name: center_zone
+    type: text
+    meaning: Center zone; the XSD gives no description.
+    source_ref: XSD Center/@zone; type xs:string
+    nullable: true
+  - name: center_northing_std_error
+    type: float
+    meaning: Center northingStdError; the XSD gives no description.
+    source_ref: XSD Center/@northingStdError; type xs:double
+    nullable: true
+  - name: center_easting_std_error
+    type: float
+    meaning: Center eastingStdError; the XSD gives no description.
+    source_ref: XSD Center/@eastingStdError; type xs:double
+    nullable: true
+  - name: center_elevation_std_error
+    type: float
+    meaning: Center elevationStdError; the XSD gives no description.
+    source_ref: XSD Center/@elevationStdError; type xs:double
+    nullable: true
+notes: "Occurs 1..unbounded in landxml.parcels. Inlined elements Center sit inside an unbounded xs:choice/xs:sequence in the XSD; modelled as at most once each. Review: Occurrence of inlined elements is a modelling judgement (XSD choice is unbounded). Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."
+needs_review: true

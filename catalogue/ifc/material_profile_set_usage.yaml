@@ -1,0 +1,31 @@
+code: ifc.material_profile_set_usage
+name: IfcMaterialProfileSetUsage
+kind: object
+base: ifc.material_usage_definition
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMaterialProfileSetUsage
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMaterialResource/Entities/IfcMaterialProfileSetUsage.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcMaterialProfileSetUsage determines the usage of IfcMaterialProfileSet in terms of its location relative to the associated element geometry. The location of a material profile set shall be compatible with the building element geometry (that is, material profiles shall fit inside the element geometry).
+fields:
+  - name: for_profile_set
+    type: ref
+    meaning: The IfcMaterialProfileSet set to which the usage is applied.
+    source_ref: "IfcMaterialProfileSetUsage attribute 1: IfcMaterialProfileSet"
+    ref_to: ifc.material_profile_set
+  - name: cardinal_point
+    type: int
+    nullable: true
+    meaning: Index reference to a significant point in the section profile.
+    source_ref: "IfcMaterialProfileSetUsage attribute 2: OPTIONAL IfcCardinalPointReference"
+  - name: reference_extent
+    type: length
+    nullable: true
+    meaning: Extent of the extrusion of the elements body shape representation to which the IfcMaterialProfileSetUsage applies.
+    source_ref: "IfcMaterialProfileSetUsage attribute 3: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+notes: SUPERTYPE OF ONEOF ( IfcMaterialProfileSetUsageTapering ).

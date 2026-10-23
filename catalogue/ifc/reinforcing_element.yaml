@@ -1,0 +1,20 @@
+code: ifc.reinforcing_element
+name: IfcReinforcingElement
+kind: abstract
+base: ifc.element_component
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReinforcingElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcReinforcingElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A reinforcing element represents bars, wires, strands, meshes, tendons, and other components embedded in concrete in such a manner that the reinforcement and the concrete act together in resisting forces.
+fields:
+  - name: steel_grade
+    type: text
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingElement attribute 1: OPTIONAL IfcLabel"
+notes: SUPERTYPE OF ONEOF ( IfcReinforcingBar , IfcReinforcingMesh , IfcTendon , IfcTendonAnchor , IfcTendonConduit ).

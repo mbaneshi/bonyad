@@ -1,0 +1,40 @@
+code: landxml.gps_receiver_details
+name: GPSReceiverDetails
+kind: child
+parent: landxml.survey
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element GPSReceiverDetails
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `GPSReceiverDetails`; the XSD gives no description.
+fields:
+  - name: id
+    type: text
+    meaning: GPSReceiverDetails id; the XSD gives no description.
+    source_ref: XSD GPSReceiverDetails/@id; type xs:ID
+  - name: manufacturer
+    type: text
+    meaning: GPSReceiverDetails manufacturer; the XSD gives no description.
+    source_ref: XSD GPSReceiverDetails/@manufacturer; type xs:string
+    nullable: true
+  - name: model
+    type: text
+    meaning: GPSReceiverDetails model; the XSD gives no description.
+    source_ref: XSD GPSReceiverDetails/@model; type xs:string
+    nullable: true
+  - name: serial_number
+    type: text
+    meaning: GPSReceiverDetails serialNumber; the XSD gives no description.
+    source_ref: XSD GPSReceiverDetails/@serialNumber; type xs:string
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: Occurs 1..1 via Equipment in landxml.survey.

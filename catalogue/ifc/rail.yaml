@@ -1,0 +1,36 @@
+code: ifc.rail
+name: IfcRail
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRail
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcRailDomain/Entities/IfcRail.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A rail is a predominately linear built element that has a special section profile. Rail is distinctive from built elements with similar geometric shapes (e.g. beam, member) that its major function is to ensure guidance of moving for vehicles or other kinds of machineries.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcRail (not described in the source documentation).
+    source_ref: "IfcRail attribute 1: OPTIONAL IfcRailTypeEnum; enumeration IfcRailTypeEnum"
+    values:
+      - value: RACKRAIL
+        meaning: A rack rail is a building module for enhancing traction and break performance.
+      - value: BLADE
+        meaning: A blade is a machined rail, often of special section, but fixed and/or joined at the heel end to a rail to provide continuity of wheel support.
+      - value: GUARDRAIL
+        meaning: A guard rail is a rail that limits risk of train derailment, normally not loaded.
+      - value: STOCKRAIL
+        meaning: A stock rail is a fixed machined rail, ensuring the continuity on the main or diverging track with the switch in the open position.
+      - value: CHECKRAIL
+        meaning: A check rail is a rail laid close to the gauge face of a running rail which takes part in lateral guidance of the wheel and prevents derailment in small radius curved track and switches and crossings.
+      - value: RAIL
+        meaning: A rail is a special section bar (usually of steel) ensuring the guidance of the wheel of a rolling stock or other heavy machineries.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

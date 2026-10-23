@@ -1,0 +1,29 @@
+code: ifc.signal_type
+name: IfcSignalType
+kind: symbol
+base: ifc.flow_terminal_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSignalType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedInfrastructureElements/Entities/IfcSignalType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcSignalType provides the type information for IfcSignal occurrences.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined type of a signal.
+    source_ref: "IfcSignalType attribute 1: IfcSignalTypeEnum; enumeration IfcSignalTypeEnum"
+    values:
+      - value: VISUAL
+        meaning: A signal type formed of an active device conveying information in a visual manner such as a light, cluster of lights, or mechanical moving shapes.
+      - value: AUDIO
+        meaning: A signal type formed of an active device conveying information by emitting an audio signal such as a beep, ring, horn or explosive sound.
+      - value: MIXED
+        meaning: A signal type formed of an active device conveying information in both a visual and audio manner.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

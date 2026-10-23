@@ -1,0 +1,29 @@
+code: landxml.ret_wall_pnt
+name: RetWallPnt
+kind: object
+base: landxml.point_type3d_req
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element RetWallPnt
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A retaining wall point defined by a space delimited "northing easting elevation" text value with height and offset attributes to define the wall point The height value is positive if the northing/easting/elevation point is at the bottom of the wall, negative if the point is at the top of the wall. The offset value is negative for left and positive for right.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.ret_wall
+    nullable: true
+    meaning: The landxml.ret_wall row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it derives from a base type)"
+  - name: height
+    type: float
+    meaning: RetWallPnt height; the XSD gives no description.
+    source_ref: XSD RetWallPnt/@height; type xs:double
+  - name: offset
+    type: float
+    meaning: RetWallPnt offset; the XSD gives no description.
+    source_ref: XSD RetWallPnt/@offset; type xs:double
+notes: Occurs 2..unbounded in landxml.ret_wall. Stored as an object rather than an ordered child because it derives from a base type; the XSD container is the container reference.

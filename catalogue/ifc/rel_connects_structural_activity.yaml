@@ -1,0 +1,24 @@
+code: ifc.rel_connects_structural_activity
+name: IfcRelConnectsStructuralActivity
+kind: object
+base: ifc.rel_connects
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelConnectsStructuralActivity
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcRelConnectsStructuralActivity.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcRelConnectsStructuralActivity relationship connects a structural activity (either an action or reaction) to a structural member, structural connection, or element.
+fields:
+  - name: relating_element
+    type: ref
+    meaning: Reference to a structural item or element to which the specified activity is applied.
+    source_ref: "IfcRelConnectsStructuralActivity attribute 1: IfcStructuralActivityAssignmentSelect; via select IfcStructuralActivityAssignmentSelect"
+    ref_to: ifc.product
+  - name: related_structural_activity
+    type: ref
+    meaning: Reference to a structural activity which is acting upon the specified structural item or element.
+    source_ref: "IfcRelConnectsStructuralActivity attribute 2: IfcStructuralActivity"
+    ref_to: ifc.structural_activity

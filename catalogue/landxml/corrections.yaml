@@ -1,0 +1,41 @@
+code: landxml.corrections
+name: Corrections
+kind: child
+parent: landxml.instrument_details
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Corrections
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Corrections`; the XSD gives no description.
+fields:
+  - name: refraction_coefficient
+    type: float
+    meaning: Corrections refractionCoefficient; the XSD gives no description.
+    source_ref: XSD Corrections/@refractionCoefficient; type xs:double
+    nullable: true
+  - name: apply_refraction_coefficient
+    type: bool
+    meaning: Corrections applyRefractionCoefficient; the XSD gives no description.
+    source_ref: XSD Corrections/@applyRefractionCoefficient; type xs:boolean
+    nullable: true
+  - name: sphericity
+    type: float
+    meaning: Corrections sphericity; the XSD gives no description.
+    source_ref: XSD Corrections/@sphericity; type xs:double
+    nullable: true
+  - name: prism_eccentricity
+    type: float
+    meaning: Corrections prismEccentricity; the XSD gives no description.
+    source_ref: XSD Corrections/@prismEccentricity; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: Occurs 1..1 in landxml.instrument_details.

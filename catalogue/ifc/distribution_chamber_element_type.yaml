@@ -1,0 +1,39 @@
+code: ifc.distribution_chamber_element_type
+name: IfcDistributionChamberElementType
+kind: symbol
+base: ifc.distribution_flow_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDistributionChamberElementType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgServiceElements/Entities/IfcDistributionChamberElementType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The distribution flow element type IfcDistributionChamberElementType defines commonly shared information for occurrences of distribution chamber elements.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Predefined types of distribution chambers.
+    source_ref: "IfcDistributionChamberElementType attribute 1: IfcDistributionChamberElementTypeEnum; enumeration IfcDistributionChamberElementTypeEnum"
+    values:
+      - value: FORMEDDUCT
+        meaning: Space formed in the ground for the passage of pipes, cables, ducts.
+      - value: INSPECTIONCHAMBER
+        meaning: Chamber constructed on a drain, sewer or pipeline with a removable cover that permits visible inspection.
+      - value: INSPECTIONPIT
+        meaning: Recess or chamber formed to permit access for inspection of substructure and services.
+      - value: MANHOLE
+        meaning: Chamber constructed on a drain, sewer or pipeline with a removable cover that permits the entry of a person.
+      - value: METERCHAMBER
+        meaning: Chamber that houses a meter(s).
+      - value: SUMP
+        meaning: Recessed or small chamber into which liquid is drained to facilitate its collection for removal.
+      - value: TRENCH
+        meaning: Excavated chamber, the length of which typically exceeds the width.
+      - value: VALVECHAMBER
+        meaning: Chamber that houses a valve(s).
+      - value: USERDEFINED
+        meaning: User-defined chamber type.
+      - value: NOTDEFINED
+        meaning: Undefined chamber type.

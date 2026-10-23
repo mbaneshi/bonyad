@@ -1,0 +1,114 @@
+code: ifc.structural_load_group
+name: IfcStructuralLoadGroup
+kind: object
+base: ifc.group
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralLoadGroup
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcStructuralLoadGroup.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The entity IfcStructuralLoadGroup is used to structure the physical impacts. By using the grouping features inherited from IfcGroup, instances of IfcStructuralAction (or its subclasses) and of IfcStructuralLoadGroup can be used to define load groups, load cases and load combinations.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Selects a predefined type for the load group.
+    source_ref: "IfcStructuralLoadGroup attribute 1: IfcLoadGroupTypeEnum; enumeration IfcLoadGroupTypeEnum"
+    values:
+      - value: LOAD_GROUP
+        meaning: Groups instances of subtypes of IfcStructuralAction.
+      - value: LOAD_CASE
+        meaning: Groups LOAD_GROUPs and instances of subtypes of IfcStructuralAction.
+      - value: LOAD_COMBINATION
+        meaning: An intermediate level between LOAD_CASE and LOAD_COMBINATION. This level is obsolete and deprecated.
+      - value: USERDEFINED
+        meaning: A grouping level which does not follow the standard hierarchy of load group types.
+      - value: NOTDEFINED
+        meaning: The grouping level is not yet known.
+  - name: action_type
+    type: enum
+    meaning: Type of actions in the group.
+    source_ref: "IfcStructuralLoadGroup attribute 2: IfcActionTypeEnum; enumeration IfcActionTypeEnum"
+    values:
+      - value: PERMANENT_G
+        meaning: Permanent G.
+      - value: VARIABLE_Q
+        meaning: Variable Q.
+      - value: EXTRAORDINARY_A
+        meaning: Extraordinary A.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Not defined.
+  - name: action_source
+    type: enum
+    meaning: Source of actions in the group.
+    source_ref: "IfcStructuralLoadGroup attribute 3: IfcActionSourceTypeEnum; enumeration IfcActionSourceTypeEnum"
+    values:
+      - value: DEAD_LOAD_G
+        meaning: The structure carries the dead load, which includes its own weight, the weight of any permanent non-structural partitions, built-in cupboards, floor surfacing materials and other finishes.
+      - value: COMPLETION_G1
+        meaning: Completion.
+      - value: LIVE_LOAD_Q
+        meaning: All the movable objects in a building such as people, desks, cupboards and filing cabinets produce an imposed load on the structure.
+      - value: SNOW_S
+        meaning: The magnitude of the snow load will depend upon the latitude and altitude of the site.
+      - value: WIND_W
+        meaning: The wind acts both on the main structure and on the individual cladding units.
+      - value: PRESTRESSING_P
+        meaning: Presstressing load.
+      - value: SETTLEMENT_U
+        meaning: If one part of a building settles more than another part, then stresses are set up in the structures.
+      - value: TEMPERATURE_T
+        meaning: All building materials expand or contract with temperature change.
+      - value: EARTHQUAKE_E
+        meaning: Earthquake loads affect the design of structures in areas of great seismic activity.
+      - value: FIRE
+        meaning: Fire action on the build facility.
+      - value: IMPULSE
+        meaning: Load from impulse force.
+      - value: IMPACT
+        meaning: Impact force from an object hitting the facility.
+      - value: TRANSPORT
+        meaning: Loads from transport.
+      - value: ERECTION
+        meaning: Loads on the facility that occur during erection, but not after completion.
+      - value: PROPPING
+        meaning: Propping.
+      - value: SYSTEM_IMPERFECTION
+        meaning: Loads from imperfections in the system.
+      - value: SHRINKAGE
+        meaning: Loads from shrinkage.
+      - value: CREEP
+        meaning: Forces due to creep.
+      - value: LACK_OF_FIT
+        meaning: Lack of fit.
+      - value: BUOYANCY
+        meaning: Buoyancy.
+      - value: ICE
+        meaning: Loads from ice.
+      - value: CURRENT
+        meaning: Current.
+      - value: WAVE
+        meaning: Loads from a wave hitting the structure.
+      - value: RAIN
+        meaning: Rain and water on the structure.
+      - value: BRAKES
+        meaning: Brakes.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Not defined.
+  - name: coefficient
+    type: ratio
+    nullable: true
+    meaning: Load factor.
+    source_ref: "IfcStructuralLoadGroup attribute 4: OPTIONAL IfcRatioMeasure"
+  - name: purpose
+    type: text
+    nullable: true
+    meaning: Description of the purpose of this instance.
+    source_ref: "IfcStructuralLoadGroup attribute 5: OPTIONAL IfcLabel"
+notes: "Inverse attributes not stored: SourceOfResultGroup, LoadGroupFor. SUPERTYPE OF ONEOF ( IfcStructuralLoadCase )."

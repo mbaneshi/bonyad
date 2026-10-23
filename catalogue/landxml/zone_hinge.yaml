@@ -1,0 +1,38 @@
+code: landxml.zone_hinge
+name: ZoneHinge
+kind: child
+parent: landxml.zones
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element ZoneHinge
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `ZoneHinge`; the XSD gives no description.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD ZoneHinge/@staStart; type station
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD ZoneHinge/@staEnd; type station
+  - name: hinge_type
+    type: enum
+    meaning: ZoneHinge hingeType; the XSD gives no description.
+    source_ref: XSD ZoneHinge/@hingeType; type zoneHingeType
+    values:
+      - value: center
+        meaning: Enumeration literal "center"; the XSD gives no description.
+      - value: left edge
+        meaning: Enumeration literal "left edge"; the XSD gives no description.
+      - value: right edge
+        meaning: Enumeration literal "right edge"; the XSD gives no description.
+  - name: zone_priority_ref
+    type: int
+    meaning: ZoneHinge zonePriorityRef; the XSD gives no description.
+    source_ref: XSD ZoneHinge/@zonePriorityRef; type xs:int
+notes: Occurs 0..unbounded in landxml.zones.

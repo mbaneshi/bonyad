@@ -1,0 +1,20 @@
+code: ifc.type_product_representation_maps
+name: IfcTypeProduct.RepresentationMaps
+kind: child
+parent: ifc.type_product
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTypeProduct.RepresentationMaps
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcTypeProduct.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the RepresentationMaps list of IfcTypeProduct. List of unique representation maps.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcTypeProduct.RepresentationMaps.
+    source_ref: "IfcTypeProduct attribute 1: OPTIONAL LIST [1:?] OF UNIQUE IfcRepresentationMap"
+    ref_to: ifc.representation_map
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: OPTIONAL LIST [1:?] OF UNIQUE IfcRepresentationMap. The whole list is optional: no rows means not provided."

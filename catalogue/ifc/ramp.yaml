@@ -1,0 +1,36 @@
+code: ifc.ramp
+name: IfcRamp
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRamp
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcRamp.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A ramp is a vertical passageway which provides a human or vehicle circulation link between one floor level and another floor level at a different elevation. It may include a landing as an intermediate floor slab.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic types for a ramp that are specified in an enumeration.
+    source_ref: "IfcRamp attribute 1: OPTIONAL IfcRampTypeEnum; enumeration IfcRampTypeEnum"
+    values:
+      - value: STRAIGHT_RUN_RAMP
+        meaning: A ramp - which is a sloping floor, walk, or roadway - connecting two levels.
+      - value: TWO_STRAIGHT_RUN_RAMP
+        meaning: A straight ramp consisting of two straight flights without turns but with one landing.
+      - value: QUARTER_TURN_RAMP
+        meaning: A ramp making a 90° turn, consisting of two straight flights connected by a quarterspace landing.
+      - value: TWO_QUARTER_TURN_RAMP
+        meaning: A ramp making a 180° turn, consisting of three straight flights connected by two quarterspace landings.
+      - value: HALF_TURN_RAMP
+        meaning: A ramp making a 180° turn, consisting of two straight flights connected by a halfspace landing.
+      - value: SPIRAL_RAMP
+        meaning: A ramp constructed around a circular or elliptical well without newels and landings.
+      - value: USERDEFINED
+        meaning: Free form ramp (user defined operation type).
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)

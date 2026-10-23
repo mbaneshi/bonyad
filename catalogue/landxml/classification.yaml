@@ -1,0 +1,37 @@
+code: landxml.classification
+name: Classification
+kind: child
+parent: landxml.roadway
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Classification
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Classification`; the XSD gives no description.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Classification/@staStart; type station
+    nullable: true
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Classification/@staEnd; type station
+    nullable: true
+  - name: functional_class
+    type: enum
+    meaning: Classification functionalClass; the XSD gives no description.
+    source_ref: XSD Classification/@functionalClass; type functionalClassType
+    nullable: true
+    values:
+      - value: arterial
+        meaning: Enumeration literal "arterial"; the XSD gives no description.
+      - value: "collector "
+        meaning: Enumeration literal "collector "; the XSD gives no description.
+      - value: local
+        meaning: Enumeration literal "local"; the XSD gives no description.
+notes: Occurs 0..unbounded in landxml.roadway.

@@ -1,0 +1,75 @@
+code: ifc.actor_role
+name: IfcActorRole
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcActorRole
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcActorResource/Entities/IfcActorRole.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: This entity indicates a role which is performed by an actor, either a person, an organization or a person related to an organization.
+fields:
+  - name: role
+    type: enum
+    meaning: The name of the role played by an actor.
+    source_ref: "IfcActorRole attribute 1: IfcRoleEnum; enumeration IfcRoleEnum"
+    values:
+      - value: SUPPLIER
+        meaning: Supplier.
+      - value: MANUFACTURER
+        meaning: Manufacturer.
+      - value: CONTRACTOR
+        meaning: Contractor.
+      - value: SUBCONTRACTOR
+        meaning: Sub-contractor.
+      - value: ARCHITECT
+        meaning: Architect.
+      - value: STRUCTURALENGINEER
+        meaning: Structural engineer.
+      - value: COSTENGINEER
+        meaning: Cost engineer.
+      - value: CLIENT
+        meaning: Client.
+      - value: BUILDINGOWNER
+        meaning: Facility owner.
+      - value: BUILDINGOPERATOR
+        meaning: Facility operator.
+      - value: MECHANICALENGINEER
+        meaning: Mechanical engineer.
+      - value: ELECTRICALENGINEER
+        meaning: Electrical engineer.
+      - value: PROJECTMANAGER
+        meaning: Project manager.
+      - value: FACILITIESMANAGER
+        meaning: Facilities manager.
+      - value: CIVILENGINEER
+        meaning: Civil engineer.
+      - value: COMMISSIONINGENGINEER
+        meaning: Commissioning engineer.
+      - value: ENGINEER
+        meaning: Engineer.
+      - value: OWNER
+        meaning: Owner.
+      - value: CONSULTANT
+        meaning: Consultant.
+      - value: CONSTRUCTIONMANAGER
+        meaning: Construction manager.
+      - value: FIELDCONSTRUCTIONMANAGER
+        meaning: Field construction manager.
+      - value: RESELLER
+        meaning: Reseller.
+      - value: USERDEFINED
+        meaning: User defined value to be provided.
+  - name: user_defined_role
+    type: text
+    nullable: true
+    meaning: Allows for specification of user defined roles beyond the enumeration values provided by Role attribute of type IfcRoleEnum.
+    source_ref: "IfcActorRole attribute 2: OPTIONAL IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: A textual description relating the nature of the role played by an actor.
+    source_ref: "IfcActorRole attribute 3: OPTIONAL IfcText"
+notes: "Inverse attributes not stored: HasExternalReference."

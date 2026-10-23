@@ -1,0 +1,80 @@
+code: ifc.reinforcing_mesh_type
+name: IfcReinforcingMeshType
+kind: symbol
+base: ifc.reinforcing_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReinforcingMeshType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcReinforcingMeshType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The reinforcing element type IfcReinforcingMeshType defines commonly shared information for occurrences of reinforcing meshs.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Subtype of reinforcing mesh.
+    source_ref: "IfcReinforcingMeshType attribute 1: IfcReinforcingMeshTypeEnum; enumeration IfcReinforcingMeshTypeEnum"
+    values:
+      - value: USERDEFINED
+        meaning: The type of mesh is user defined.
+      - value: NOTDEFINED
+        meaning: The type of mesh is not defined.
+  - name: mesh_length
+    type: length
+    nullable: true
+    meaning: The overall length of the mesh measured in its longitudinal direction.
+    source_ref: "IfcReinforcingMeshType attribute 2: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: mesh_width
+    type: length
+    nullable: true
+    meaning: The overall width of the mesh measured in its transversal direction.
+    source_ref: "IfcReinforcingMeshType attribute 3: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: longitudinal_bar_nominal_diameter
+    type: length
+    nullable: true
+    meaning: The nominal diameter denoting the cross-section size of the longitudinal bars.
+    source_ref: "IfcReinforcingMeshType attribute 4: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: transverse_bar_nominal_diameter
+    type: length
+    nullable: true
+    meaning: The nominal diameter denoting the cross-section size of the transverse bars.
+    source_ref: "IfcReinforcingMeshType attribute 5: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: longitudinal_bar_cross_section_area
+    type: area
+    nullable: true
+    meaning: The effective cross-section area of the longitudinal bars of the mesh.
+    source_ref: "IfcReinforcingMeshType attribute 6: OPTIONAL IfcAreaMeasure"
+  - name: transverse_bar_cross_section_area
+    type: area
+    nullable: true
+    meaning: The effective cross-section area of the transverse bars of the mesh.
+    source_ref: "IfcReinforcingMeshType attribute 7: OPTIONAL IfcAreaMeasure"
+  - name: longitudinal_bar_spacing
+    type: length
+    nullable: true
+    meaning: The spacing between the longitudinal bars.
+    source_ref: "IfcReinforcingMeshType attribute 8: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: transverse_bar_spacing
+    type: length
+    nullable: true
+    meaning: The spacing between the transverse bars.
+    source_ref: "IfcReinforcingMeshType attribute 9: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: bending_shape_code
+    type: text
+    nullable: true
+    meaning: If this mesh type is bent rather than planar, this attribute provides a shape code per a standard like ACI 315, ISO 3766, or a similar standard.
+    source_ref: "IfcReinforcingMeshType attribute 10: OPTIONAL IfcLabel"
+  - name: bending_parameters
+    type: array
+    nullable: true
+    meaning: If this mesh type is bent rather than planar, this attribute provides bending shape parameters.
+    source_ref: "IfcReinforcingMeshType attribute 11: OPTIONAL LIST [1:?] OF IfcBendingParameterSelect; elements are SELECT IfcBendingParameterSelect of value types, stored as text (the member type tag is not kept)"
+    of: text

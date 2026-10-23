@@ -1,0 +1,28 @@
+code: ifc.point_on_surface
+name: IfcPointOnSurface
+kind: entity
+base: ifc.point
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPointOnSurface
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcPointOnSurface.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcPointOnSurface is a point defined by two parameter value of its defining surface.
+fields:
+  - name: basis_surface
+    type: ref
+    meaning: The surface to which the parameter values relate.
+    source_ref: "IfcPointOnSurface attribute 1: IfcSurface"
+    ref_to: ifc.surface
+  - name: point_parameter_u
+    type: float
+    meaning: The first parameter value of the point location.
+    source_ref: "IfcPointOnSurface attribute 2: IfcParameterValue"
+  - name: point_parameter_v
+    type: float
+    meaning: The second parameter value of the point location.
+    source_ref: "IfcPointOnSurface attribute 3: IfcParameterValue"
+notes: "Derived attributes not stored: Dim."

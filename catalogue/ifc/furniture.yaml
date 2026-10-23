@@ -1,0 +1,40 @@
+code: ifc.furniture
+name: IfcFurniture
+kind: entity
+base: ifc.furnishing_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFurniture
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedFacilitiesElements/Entities/IfcFurniture.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Furniture defines complete furnishings such as a table, desk, chair, or cabinet, which may or may not be permanently attached to a building structure.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcFurniture (not described in the source documentation).
+    source_ref: "IfcFurniture attribute 1: OPTIONAL IfcFurnitureTypeEnum; enumeration IfcFurnitureTypeEnum"
+    values:
+      - value: CHAIR
+        meaning: Furniture for seating a single person.
+      - value: TABLE
+        meaning: Furniture with a countertop for multiple people.
+      - value: DESK
+        meaning: Furniture with a countertop and optional drawers for a single person.
+      - value: BED
+        meaning: Furniture for sleeping.
+      - value: FILECABINET
+        meaning: Furniture with sliding drawers for storing files.
+      - value: SHELF
+        meaning: Furniture for storing books or other items.
+      - value: SOFA
+        meaning: Furniture for seating multiple people.
+      - value: TECHNICALCABINET
+        meaning: A technical cabinet is a piece of furniture for holding, displaying and protecting technical appliances, usually organized in shelves, drawers or racks.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

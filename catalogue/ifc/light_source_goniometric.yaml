@@ -1,0 +1,65 @@
+code: ifc.light_source_goniometric
+name: IfcLightSourceGoniometric
+kind: entity
+base: ifc.light_source
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLightSourceGoniometric
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationOrganizationResource/Entities/IfcLightSourceGoniometric.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcLightSourceGoniometric defines a light source for which exact lighting data is available. It specifies the type of a light emitter, defines the position and orientation of a light distribution curve and the data concerning lamp and photometric information.
+fields:
+  - name: position
+    type: ref
+    meaning: The position of the light source.
+    source_ref: "IfcLightSourceGoniometric attribute 1: IfcAxis2Placement3D"
+    ref_to: ifc.axis2_placement3d
+  - name: colour_appearance
+    type: ref
+    nullable: true
+    meaning: Artificial light sources are classified in terms of their color appearance.
+    source_ref: "IfcLightSourceGoniometric attribute 2: OPTIONAL IfcColourRgb"
+    ref_to: ifc.colour_rgb
+  - name: colour_temperature
+    type: float
+    meaning: The color temperature of any source of radiation is defined as the temperature (in Kelvin) of a black-body or Planckian radiator whose radiation has the same chromaticity as the source of radiation.
+    source_ref: "IfcLightSourceGoniometric attribute 3: IfcThermodynamicTemperatureMeasure"
+  - name: luminous_flux
+    type: float
+    meaning: Luminous flux is a photometric measure of radiant flux, i.e. the volume of light emitted from a light source.
+    source_ref: "IfcLightSourceGoniometric attribute 4: IfcLuminousFluxMeasure"
+  - name: light_emission_source
+    type: enum
+    meaning: Identifies the types of light emitter from which the type required may be set.
+    source_ref: "IfcLightSourceGoniometric attribute 5: IfcLightEmissionSourceEnum; enumeration IfcLightEmissionSourceEnum"
+    values:
+      - value: COMPACTFLUORESCENT
+        meaning: Compact fluorescent.
+      - value: FLUORESCENT
+        meaning: Fluorescent.
+      - value: HIGHPRESSUREMERCURY
+        meaning: High pressure mercury.
+      - value: HIGHPRESSURESODIUM
+        meaning: High pressure sodium.
+      - value: LIGHTEMITTINGDIODE
+        meaning: Light emitting diode.
+      - value: LOWPRESSURESODIUM
+        meaning: Low pressure sodium.
+      - value: LOWVOLTAGEHALOGEN
+        meaning: Low voltage halogen.
+      - value: MAINVOLTAGEHALOGEN
+        meaning: Main voltage halogen.
+      - value: METALHALIDE
+        meaning: Metal halide.
+      - value: TUNGSTENFILAMENT
+        meaning: Tungsten filament.
+      - value: NOTDEFINED
+        meaning: Not defined.
+  - name: light_distribution_data_source
+    type: ref
+    meaning: The data source from which light distribution data is obtained.
+    source_ref: "IfcLightSourceGoniometric attribute 6: IfcLightDistributionDataSourceSelect; via select IfcLightDistributionDataSourceSelect"
+    ref_to: any

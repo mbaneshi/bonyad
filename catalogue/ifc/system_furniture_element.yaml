@@ -1,0 +1,30 @@
+code: ifc.system_furniture_element
+name: IfcSystemFurnitureElement
+kind: entity
+base: ifc.furnishing_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSystemFurnitureElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedFacilitiesElements/Entities/IfcSystemFurnitureElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A system furniture element defines components of modular furniture which are not directly placed in a building structure but aggregated inside furniture.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcSystemFurnitureElement (not described in the source documentation).
+    source_ref: "IfcSystemFurnitureElement attribute 1: OPTIONAL IfcSystemFurnitureElementTypeEnum; enumeration IfcSystemFurnitureElementTypeEnum"
+    values:
+      - value: PANEL
+        meaning: Vertical panel used to divide work spaces.
+      - value: WORKSURFACE
+        meaning: Workstation countertop.
+      - value: SUBRACK
+        meaning: A subrack is a part of technical cabinet which is used to store and mount pluggable electric subunits.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

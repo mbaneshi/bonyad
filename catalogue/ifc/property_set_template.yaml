@@ -1,0 +1,42 @@
+code: ifc.property_set_template
+name: IfcPropertySetTemplate
+kind: symbol
+base: ifc.property_template_definition
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPropertySetTemplate
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcPropertySetTemplate.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcPropertySetTemplate defines the template for all dynamically extensible property sets represented by IfcPropertySet. The property set template is a container of property templates within a property tree.
+fields:
+  - name: template_type
+    type: enum
+    nullable: true
+    meaning: Property set type defining whether the property set is applicable to a type (subtypes of IfcTypeObject), to an occurrence (subtypes of IfcObject), or as a special case to a performance history.
+    source_ref: "IfcPropertySetTemplate attribute 1: OPTIONAL IfcPropertySetTemplateTypeEnum; enumeration IfcPropertySetTemplateTypeEnum"
+    values:
+      - value: PSET_TYPEDRIVENONLY
+        meaning: The property sets defined by this IfcPropertySetTemplate can only be assigned to subtypes of IfcTypeObject.
+      - value: PSET_TYPEDRIVENOVERRIDE
+        meaning: The property sets defined by this IfcPropertySetTemplate can be assigned to subtypes of IfcTypeObject and can be overridden by a property set with same name at subtypes of IfcObject.
+      - value: PSET_OCCURRENCEDRIVEN
+        meaning: The property sets defined by this IfcPropertySetTemplate can only be assigned to subtypes of IfcObject.
+      - value: PSET_PERFORMANCEDRIVEN
+        meaning: The property sets defined by this IfcPropertySetTemplate can only be assigned to IfcPerformanceHistory, which is related to the applicable object by means of IfcRelAssignsToControl.
+      - value: QTO_TYPEDRIVENONLY
+        meaning: The element quantity defined by this IfcPropertySetTemplate can only be assigned to subtypes of IfcTypeObject.
+      - value: QTO_TYPEDRIVENOVERRIDE
+        meaning: The element quantity defined by this IfcPropertySetTemplate can be assigned to subtypes of IfcTypeObject and can be overridden by an element quantity with same name at subtypes of IfcObject.
+      - value: QTO_OCCURRENCEDRIVEN
+        meaning: The element quantity defined by this IfcPropertySetTemplate can only be assigned to subtypes of IfcObject.
+      - value: NOTDEFINED
+        meaning: No restriction provided, the property sets defined by this IfcPropertySetTemplate can be assigned to any entity, if not otherwise restricted by the ApplicableEntity attribute.
+  - name: applicable_entity
+    type: text
+    nullable: true
+    meaning: The attribute optionally defines the data type of the applicable type or occurrence object, to which the assigned property set template can relate.
+    source_ref: "IfcPropertySetTemplate attribute 2: OPTIONAL IfcIdentifier"
+notes: "Inverse attributes not stored: Defines."

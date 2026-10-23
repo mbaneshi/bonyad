@@ -1,0 +1,15 @@
+code: ifc.structural_load_static
+name: IfcStructuralLoadStatic
+kind: abstract
+base: ifc.structural_load_or_result
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralLoadStatic
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcStructuralLoadResource/Entities/IfcStructuralLoadStatic.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The abstract entity IfcStructuralLoadStatic is the supertype of all static loads (actions or reactions) which can be defined. Within scope are single i.e. concentrated forces and moments, linear i.e. one-dimensionally distributed forces and moments, planar i.e. two-dimensionally distributed forces, furthermore displacements and temperature loads.
+fields: []
+notes: SUPERTYPE OF ONEOF ( IfcStructuralLoadLinearForce , IfcStructuralLoadPlanarForce , IfcStructuralLoadSingleDisplacement , IfcStructuralLoadSingleForce , IfcStructuralLoadTemperature ).

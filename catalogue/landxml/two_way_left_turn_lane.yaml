@@ -1,0 +1,62 @@
+code: landxml.two_way_left_turn_lane
+name: TwoWayLeftTurnLane
+kind: child
+parent: landxml.roadway
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element TwoWayLeftTurnLane
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `TwoWayLeftTurnLane`; the XSD gives no description.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD TwoWayLeftTurnLane/@staStart; type station
+    nullable: true
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD TwoWayLeftTurnLane/@staEnd; type station
+    nullable: true
+  - name: begin_full_width_sta
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD TwoWayLeftTurnLane/@beginFullWidthSta; type station
+    nullable: true
+  - name: end_full_width_sta
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD TwoWayLeftTurnLane/@endFullWidthSta; type station
+    nullable: true
+  - name: start_offset
+    type: length
+    meaning: Represents a linear offset distance. When associated with horizontal (planametric) road or coordinate geometry, the offset is a 2D distance measured perpendicular to the road centerline or coordinate geometry used as... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD TwoWayLeftTurnLane/@startOffset; type offsetDistance
+    nullable: true
+  - name: end_offset
+    type: length
+    meaning: Represents a linear offset distance. When associated with horizontal (planametric) road or coordinate geometry, the offset is a 2D distance measured perpendicular to the road centerline or coordinate geometry used as... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD TwoWayLeftTurnLane/@endOffset; type offsetDistance
+    nullable: true
+  - name: width
+    type: float
+    meaning: TwoWayLeftTurnLane width; the XSD gives no description.
+    source_ref: XSD TwoWayLeftTurnLane/@width; type xs:double
+    nullable: true
+  - name: sideof_road
+    type: enum
+    meaning: TwoWayLeftTurnLane sideofRoad; the XSD gives no description.
+    source_ref: XSD TwoWayLeftTurnLane/@sideofRoad; type sideofRoadType
+    nullable: true
+    values:
+      - value: right
+        meaning: Enumeration literal "right"; the XSD gives no description.
+      - value: left
+        meaning: Enumeration literal "left"; the XSD gives no description.
+      - value: both
+        meaning: Enumeration literal "both"; the XSD gives no description.
+notes: Occurs 0..unbounded via Lanes in landxml.roadway.

@@ -1,0 +1,73 @@
+code: ifc.task
+name: IfcTask
+kind: object
+base: ifc.process
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTask
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProcessExtension/Entities/IfcTask.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcTask is an identifiable unit of work to be carried out in a construction project.
+fields:
+  - name: status
+    type: text
+    nullable: true
+    meaning: Current status of the task.
+    source_ref: "IfcTask attribute 1: OPTIONAL IfcLabel"
+  - name: work_method
+    type: text
+    nullable: true
+    meaning: The method of work used in carrying out a task.
+    source_ref: "IfcTask attribute 2: OPTIONAL IfcLabel"
+  - name: is_milestone
+    type: bool
+    meaning: Identifies whether a task is a milestone task (= TRUE) or not (= FALSE).
+    source_ref: "IfcTask attribute 3: IfcBoolean"
+  - name: priority
+    type: int
+    nullable: true
+    meaning: A value that indicates the relative priority of the task (in comparison to the priorities of other tasks).
+    source_ref: "IfcTask attribute 4: OPTIONAL IfcInteger"
+  - name: task_time
+    type: ref
+    nullable: true
+    meaning: Time related information for the task.
+    source_ref: "IfcTask attribute 5: OPTIONAL IfcTaskTime"
+    ref_to: ifc.task_time
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined types of a task from which the type required may be set.
+    source_ref: "IfcTask attribute 6: OPTIONAL IfcTaskTypeEnum; enumeration IfcTaskTypeEnum"
+    values:
+      - value: ATTENDANCE
+        meaning: Attendance or waiting on other things happening.
+      - value: CONSTRUCTION
+        meaning: Constructing or building something.
+      - value: DEMOLITION
+        meaning: Demolishing or breaking down something.
+      - value: DISMANTLE
+        meaning: Taking something apart carefully so that it can be recycled or reused.
+      - value: DISPOSAL
+        meaning: Disposing or getting rid of something.
+      - value: INSTALLATION
+        meaning: Installing something (equivalent to construction but more commonly used for engineering tasks).
+      - value: LOGISTIC
+        meaning: Transportation or delivery of something.
+      - value: MAINTENANCE
+        meaning: Tasks required to keep an object in good working order.
+      - value: MOVE
+        meaning: Moving things from one place to another.
+      - value: OPERATION
+        meaning: A procedure undertaken to start up the operation an artifact.
+      - value: REMOVAL
+        meaning: Removal of an item from use and taking it from its place of use.
+      - value: RENOVATION
+        meaning: Bringing something to an 'as-new' state.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Undefined.

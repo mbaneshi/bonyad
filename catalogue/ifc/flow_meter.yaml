@@ -1,0 +1,32 @@
+code: ifc.flow_meter
+name: IfcFlowMeter
+kind: entity
+base: ifc.flow_controller
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFlowMeter
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcFlowMeter.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A flow meter is a device that is used to measure the flow rate in a system.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcFlowMeter (not described in the source documentation).
+    source_ref: "IfcFlowMeter attribute 1: OPTIONAL IfcFlowMeterTypeEnum; enumeration IfcFlowMeterTypeEnum"
+    values:
+      - value: ENERGYMETER
+        meaning: An electric meter or energy meter is a device that measures the amount of electrical energy supplied to or produced by a residence, business or machine.
+      - value: GASMETER
+        meaning: A device that measures the quantity of a gas or fuel.
+      - value: OILMETER
+        meaning: A device that measures the quantity of oil.
+      - value: WATERMETER
+        meaning: A device that measures the quantity of water.
+      - value: USERDEFINED
+        meaning: User-defined meter type.
+      - value: NOTDEFINED
+        meaning: Undefined meter type.

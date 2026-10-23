@@ -1,0 +1,28 @@
+code: ifc.profile_def
+name: IfcProfileDef
+kind: symbol
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcProfileDef is the supertype of all definitions of standard and arbitrary profiles within IFC. It is used to define a standard set of commonly used section profiles by their parameters or by their explicit curve geometry.
+fields:
+  - name: profile_type
+    type: enum
+    meaning: Defines the type of geometry into which this profile definition shall be resolved, either a curve or a surface area.
+    source_ref: "IfcProfileDef attribute 1: IfcProfileTypeEnum; enumeration IfcProfileTypeEnum"
+    values:
+      - value: CURVE
+        meaning: The resulting geometric item is of type curve and closed (with the only exception of the curve created by the IfcArbitraryOpenProfileDef which resolves into an open curve).
+      - value: AREA
+        meaning: The resulting geometric item is of type surface.
+  - name: profile_name
+    type: text
+    nullable: true
+    meaning: Human-readable name of the profile, for example according to a standard profile table.
+    source_ref: "IfcProfileDef attribute 2: OPTIONAL IfcLabel"
+notes: "Inverse attributes not stored: HasExternalReference, HasProperties. SUPERTYPE OF ONEOF ( IfcArbitraryClosedProfileDef , IfcArbitraryOpenProfileDef , IfcCompositeProfileDef , IfcDerivedProfileDef , IfcOpenCrossProfileDef , IfcParameterizedProfileDef )."

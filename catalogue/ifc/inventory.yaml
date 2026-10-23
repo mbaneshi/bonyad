@@ -1,0 +1,53 @@
+code: ifc.inventory
+name: IfcInventory
+kind: object
+base: ifc.group
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcInventory
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedFacilitiesElements/Entities/IfcInventory.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An inventory is a list of items within an enterprise.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: A list of the types of inventories from which that required may be selected.
+    source_ref: "IfcInventory attribute 1: OPTIONAL IfcInventoryTypeEnum; enumeration IfcInventoryTypeEnum"
+    values:
+      - value: ASSETINVENTORY
+        meaning: A collection of asset instances of type IfcAsset.
+      - value: SPACEINVENTORY
+        meaning: A collection of space instances of type IfcSpace.
+      - value: FURNITUREINVENTORY
+        meaning: A collection of furniture instances of type IfcFurnishingElement.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.
+  - name: jurisdiction
+    type: ref
+    nullable: true
+    meaning: The organizational unit to which the inventory is applicable.
+    source_ref: "IfcInventory attribute 2: OPTIONAL IfcActorSelect; via select IfcActorSelect"
+    ref_to: any
+  - name: last_update_date
+    type: date
+    nullable: true
+    meaning: The date on which the last update of the inventory was carried out.
+    source_ref: "IfcInventory attribute 4: OPTIONAL IfcDate"
+  - name: current_value
+    type: ref
+    nullable: true
+    meaning: An estimate of the current cost value of the inventory.
+    source_ref: "IfcInventory attribute 5: OPTIONAL IfcCostValue"
+    ref_to: ifc.cost_value
+  - name: original_value
+    type: ref
+    nullable: true
+    meaning: An estimate of the original cost value of the inventory.
+    source_ref: "IfcInventory attribute 6: OPTIONAL IfcCostValue"
+    ref_to: ifc.cost_value

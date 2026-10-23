@@ -1,0 +1,47 @@
+code: ifc.building_system
+name: IfcBuildingSystem
+kind: object
+base: ifc.system
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBuildingSystem
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcBuildingSystem.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A building system is a group by which building elements are grouped according to a common function within the facility.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined types of distribution systems.
+    source_ref: "IfcBuildingSystem attribute 1: OPTIONAL IfcBuildingSystemTypeEnum; enumeration IfcBuildingSystemTypeEnum"
+    values:
+      - value: FENESTRATION
+        meaning: System of doors, windows, and other fillings in openings in a built envelope that are designed to permit the passage of air or light.
+      - value: FOUNDATION
+        meaning: System of shallow and deep foundation elements that transmit forces to the supporting ground.
+      - value: LOADBEARING
+        meaning: System of built elements that transmit forces and stiffen the construction.
+      - value: OUTERSHELL
+        meaning: System of built elements that provide the outer skin to protect the construction (such as the facade).
+      - value: SHADING
+        meaning: System of shading elements (external or internal) that permits the limitation or control of impact of natural sun light.
+      - value: TRANSPORT
+        meaning: System of all transport elements in a building that enables the transport of people or goods.
+      - value: REINFORCING
+        meaning: REINFORCING (no description for this literal in the source documentation)
+      - value: PRESTRESSING
+        meaning: PRESTRESSING (no description for this literal in the source documentation)
+      - value: EROSIONPREVENTION
+        meaning: EROSIONPREVENTION (no description for this literal in the source documentation)
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: long_name
+    type: text
+    nullable: true
+    meaning: Long name for a building system, used for informal purposes.
+    source_ref: "IfcBuildingSystem attribute 2: OPTIONAL IfcLabel"

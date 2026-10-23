@@ -1,0 +1,20 @@
+code: ifc.material_constituent_set_material_constituents
+name: IfcMaterialConstituentSet.MaterialConstituents
+kind: child
+parent: ifc.material_constituent_set
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMaterialConstituentSet.MaterialConstituents
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMaterialResource/Entities/IfcMaterialConstituentSet.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the MaterialConstituents list of IfcMaterialConstituentSet. Identification of the constituents from which the material constituent set is composed.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcMaterialConstituentSet.MaterialConstituents.
+    source_ref: "IfcMaterialConstituentSet attribute 3: OPTIONAL SET [1:?] OF IfcMaterialConstituent"
+    ref_to: ifc.material_constituent
+notes: "Unordered set: row order carries no meaning. EXPRESS: OPTIONAL SET [1:?] OF IfcMaterialConstituent. The whole list is optional: no rows means not provided."

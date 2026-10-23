@@ -1,0 +1,35 @@
+code: landxml.annotation
+name: Annotation
+kind: child
+parent: landxml.survey_header
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Annotation
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: Annotation is a descriptive string use to describe an action on survey
+fields:
+  - name: type
+    type: text
+    meaning: An Annotation will be a specific type within a jurisdiction.
+    source_ref: XSD Annotation/@type; type annotationType
+  - name: name
+    type: text
+    meaning: Annotation name; the XSD gives no description.
+    source_ref: XSD Annotation/@name; type xs:string
+    nullable: true
+  - name: desc
+    type: text
+    meaning: Annotation desc; the XSD gives no description.
+    source_ref: XSD Annotation/@desc; type xs:string
+    nullable: true
+  - name: pcl_ref
+    type: array
+    meaning: name attributes. Space-delimited list of element names (name-based references).
+    source_ref: XSD Annotation/@pclRef; type parcelNameRefs
+    nullable: true
+    of: text
+notes: Occurs 0..unbounded in landxml.survey_header.

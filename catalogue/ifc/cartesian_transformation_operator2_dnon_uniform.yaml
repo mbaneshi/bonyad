@@ -1,0 +1,20 @@
+code: ifc.cartesian_transformation_operator2_dnon_uniform
+name: IfcCartesianTransformationOperator2DnonUniform
+kind: entity
+base: ifc.cartesian_transformation_operator2d
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCartesianTransformationOperator2DnonUniform
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcCartesianTransformationOperator2DnonUniform.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A Cartesian transformation operator 2d non uniform defines a geometric transformation in two-dimensional space composed of translation, rotation, mirroring and non uniform scaling.
+fields:
+  - name: scale2
+    type: float
+    nullable: true
+    meaning: The scaling value specified for the transformation along the axis 2.
+    source_ref: "IfcCartesianTransformationOperator2DnonUniform attribute 1: OPTIONAL IfcReal"
+notes: "Derived attributes not stored: Scl2."

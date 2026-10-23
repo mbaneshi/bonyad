@@ -1,0 +1,33 @@
+code: landxml.corner
+name: Corner
+kind: child
+parent: landxml.intersection
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Corner
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Corner`; the XSD gives no description.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Corner/@staStart; type station
+    nullable: true
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Corner/@staEnd; type station
+    nullable: true
+  - name: type
+    type: enum
+    meaning: Corner type; the XSD gives no description.
+    source_ref: XSD Corner/@type; type cornerType
+    nullable: true
+    values:
+      - value: unknown
+        meaning: Enumeration literal "unknown"; the XSD gives no description.
+notes: Occurs 0..unbounded in landxml.intersection.

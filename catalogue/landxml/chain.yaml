@@ -1,0 +1,139 @@
+code: landxml.chain
+name: Chain
+kind: child
+parent: landxml.coord_geom
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Chain
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: "A text value that is a space delimited list of CgPoint names that form a linear connected chain. example: represents a linear connection between CgPoint name 1, 23, 45 and 34."
+fields:
+  - name: value
+    type: array
+    meaning: "A text value that is a space delimited list of CgPoint names that form a linear connected chain. example: represents a linear connection between CgPoint name 1, 23, 45 and 34. Space-delimited list of names."
+    source_ref: XSD text content; type ChainType
+    of: text
+  - name: name
+    type: text
+    meaning: Chain name; the XSD gives no description.
+    source_ref: XSD Chain/@name; type xs:string
+    nullable: true
+  - name: desc
+    type: text
+    meaning: Chain desc; the XSD gives no description.
+    source_ref: XSD Chain/@desc; type xs:string
+    nullable: true
+  - name: code
+    type: text
+    meaning: Chain code; the XSD gives no description.
+    source_ref: XSD Chain/@code; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: Chain state; the XSD gives no description.
+    source_ref: XSD Chain/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: point_geometry
+    type: enum
+    meaning: Chain pointGeometry; the XSD gives no description.
+    source_ref: XSD Chain/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: dtm_attribute
+    type: enum
+    meaning: Chain DTMAttribute; the XSD gives no description.
+    source_ref: XSD Chain/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: time_stamp
+    type: timestamp
+    meaning: Chain timeStamp; the XSD gives no description.
+    source_ref: XSD Chain/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: role
+    type: enum
+    meaning: Chain role; the XSD gives no description.
+    source_ref: XSD Chain/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Chain/@station; type station
+    nullable: true
+  - name: zone
+    type: text
+    meaning: Chain zone; the XSD gives no description.
+    source_ref: XSD Chain/@zone; type xs:string
+    nullable: true
+  - name: status
+    type: enum
+    meaning: Chain status; the XSD gives no description.
+    source_ref: XSD Chain/@status; type observationStatusType
+    nullable: true
+    values:
+      - value: modified
+        meaning: Enumeration literal "modified"; the XSD gives no description.
+      - value: deleted
+        meaning: Enumeration literal "deleted"; the XSD gives no description.
+notes: "Occurs 0..unbounded in landxml.coord_geom; 0..unbounded via SourceData in landxml.surface. Review: Contained by more than one type in the XSD (also landxml.surface); the catalogue allows one parent, so the first is used."
+needs_review: true

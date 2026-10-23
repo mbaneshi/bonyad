@@ -1,0 +1,49 @@
+code: landxml.application
+name: Application
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Application
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: Optional element to identify the software that was used to create the file.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.landxml
+    nullable: true
+    meaning: The landxml.landxml row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: Application name; the XSD gives no description.
+    source_ref: XSD Application/@name; type xs:string
+  - name: desc
+    type: text
+    meaning: Application desc; the XSD gives no description.
+    source_ref: XSD Application/@desc; type xs:string
+    nullable: true
+  - name: manufacturer
+    type: text
+    meaning: Application manufacturer; the XSD gives no description.
+    source_ref: XSD Application/@manufacturer; type xs:string
+    nullable: true
+  - name: version
+    type: text
+    meaning: Application version; the XSD gives no description.
+    source_ref: XSD Application/@version; type xs:string
+    nullable: true
+  - name: manufacturer_url
+    type: text
+    meaning: Application manufacturerURL; the XSD gives no description.
+    source_ref: XSD Application/@manufacturerURL; type xs:string
+    nullable: true
+  - name: time_stamp
+    type: timestamp
+    meaning: Application timeStamp; the XSD gives no description.
+    source_ref: XSD Application/@timeStamp; type xs:dateTime
+    nullable: true
+notes: Occurs 0..unbounded in landxml.landxml. The XSD allows foreign-namespace content here (xs:any/xs:anyAttribute); not modelled. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

@@ -1,0 +1,29 @@
+code: landxml.para_curve
+name: ParaCurve
+kind: child
+parent: landxml.prof_align
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element ParaCurve
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A Point of Vertical Intersection with a space delimited "station elevation" text value and a parabolic vertical curve defined by the "length" attribute.
+fields:
+  - name: coordinates
+    type: point3
+    nullable: true
+    meaning: The element's coordinate text "northing easting [elevation]" stored as point3 with x = easting (second value), y = northing (first value), z = elevation (null when absent); null when only a pntRef is given. Lengths stay in the file's declared unit.
+    source_ref: text content (Point2dReq)
+  - name: length
+    type: float
+    meaning: ParaCurve length; the XSD gives no description.
+    source_ref: XSD ParaCurve/@length; type xs:double
+  - name: desc
+    type: text
+    meaning: ParaCurve desc; the XSD gives no description.
+    source_ref: XSD ParaCurve/@desc; type xs:string
+    nullable: true
+notes: Occurs 0..unbounded in landxml.prof_align.

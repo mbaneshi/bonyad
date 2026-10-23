@@ -1,0 +1,46 @@
+code: ifc.damper
+name: IfcDamper
+kind: entity
+base: ifc.flow_controller
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDamper
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcDamper.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A damper typically participates in an HVAC duct distribution system and is used to control or modulate the flow of air.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcDamper (not described in the source documentation).
+    source_ref: "IfcDamper attribute 1: OPTIONAL IfcDamperTypeEnum; enumeration IfcDamperTypeEnum"
+    values:
+      - value: BACKDRAFTDAMPER
+        meaning: Damper used for purposes of manually balancing pressure differences.
+      - value: BALANCINGDAMPER
+        meaning: Backdraft damper used to restrict the movement of air in one direction.
+      - value: BLASTDAMPER
+        meaning: Blast damper used to prevent protect occupants and equipment against overpressures resultant of an explosion.
+      - value: CONTROLDAMPER
+        meaning: Control damper used to modulate the flow of air by adjusting the position of the blades.
+      - value: FIREDAMPER
+        meaning: Fire damper used to prevent the spread of fire for a specified duration.
+      - value: FIRESMOKEDAMPER
+        meaning: Combination fire and smoke damper used to prevent the spread of fire and smoke.
+      - value: FUMEHOODEXHAUST
+        meaning: Fume hood exhaust damper.
+      - value: GRAVITYDAMPER
+        meaning: Gravity damper closes from the force of gravity.
+      - value: GRAVITYRELIEFDAMPER
+        meaning: Gravity-relief damper used to allow air to move upon a buildup of enough pressure to overcome the gravitational force exerted upon the damper blades.
+      - value: RELIEFDAMPER
+        meaning: Relief damper used to allow air to move upon a buildup of a specified pressure differential.
+      - value: SMOKEDAMPER
+        meaning: Smoke damper used to prevent the spread of smoke.
+      - value: USERDEFINED
+        meaning: User-defined damper.
+      - value: NOTDEFINED
+        meaning: Undefined damper.

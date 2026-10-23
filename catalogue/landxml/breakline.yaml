@@ -1,0 +1,65 @@
+code: landxml.breakline
+name: Breakline
+kind: child
+parent: landxml.surface
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Breakline
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: The breakline is defined by a 2D north/east or 3D north/east/elev list of points that define the geometry. is identified by the "name" attribute.
+fields:
+  - name: brk_type
+    type: enum
+    meaning: Breakline brkType; the XSD gives no description.
+    source_ref: XSD Breakline/@brkType; type breakLineType
+    nullable: true
+    values:
+      - value: standard
+        meaning: Enumeration literal "standard"; the XSD gives no description.
+      - value: wall
+        meaning: Enumeration literal "wall"; the XSD gives no description.
+      - value: proximity
+        meaning: Enumeration literal "proximity"; the XSD gives no description.
+      - value: nondestructive
+        meaning: Enumeration literal "nondestructive"; the XSD gives no description.
+  - name: desc
+    type: text
+    meaning: Breakline desc; the XSD gives no description.
+    source_ref: XSD Breakline/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: Breakline name; the XSD gives no description.
+    source_ref: XSD Breakline/@name; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: Breakline state; the XSD gives no description.
+    source_ref: XSD Breakline/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: pnt_list2d
+    type: array
+    meaning: A sequential space delimited list of 2D coordinates with a minimum of 2 points (4 values). Space-delimited list of doubles; consecutive values are the coordinates of successive points in the order the schema states.
+    source_ref: XSD PntList2D (element); type Point
+    nullable: true
+    of: float
+  - name: pnt_list3d
+    type: array
+    meaning: A sequential space delimited list of 3D coordinates with a minimum of 2 points (6 values). Space-delimited list of doubles; consecutive values are the coordinates of successive points in the order the schema states.
+    source_ref: XSD PntList3D (element); type Point
+    nullable: true
+    of: float
+notes: Occurs 0..unbounded via SourceData/Breaklines in landxml.surface.

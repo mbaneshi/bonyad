@@ -1,0 +1,58 @@
+code: ifc.metric
+name: IfcMetric
+kind: object
+base: ifc.constraint
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMetric
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcConstraintResource/Entities/IfcMetric.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcMetric is used to capture quantitative resultant metrics that can be applied to objectives.
+fields:
+  - name: benchmark
+    type: enum
+    meaning: Enumeration that identifies the type of benchmark data.
+    source_ref: "IfcMetric attribute 1: IfcBenchmarkEnum; enumeration IfcBenchmarkEnum"
+    values:
+      - value: GREATERTHAN
+        meaning: Identifies that a value must be greater than that set by the constraint.
+      - value: GREATERTHANOREQUALTO
+        meaning: Identifies that a value must be either greater than or equal to that set by the constraint.
+      - value: LESSTHAN
+        meaning: Identifies that a value must be less than that set by the constraint.
+      - value: LESSTHANOREQUALTO
+        meaning: Identifies that a value must be either less than or equal to that set by the constraint.
+      - value: EQUALTO
+        meaning: Identifies that a value must be equal to that set by the constraint.
+      - value: NOTEQUALTO
+        meaning: Identifies that a value must be not equal to that set by the constraint.
+      - value: INCLUDES
+        meaning: Identifies that an aggregation (set, list or table) must include the value (individual item) set by the constraint.
+      - value: NOTINCLUDES
+        meaning: Identifies that an aggregation (set, list or table) must not include the value (individual item) set by the constraint.
+      - value: INCLUDEDIN
+        meaning: Identifies that a value (individual item) must be included in the aggregation (set, list or table) set by the constraint.
+      - value: NOTINCLUDEDIN
+        meaning: Identifies that a value (individual item) must not be included in the aggregation (set, list or table) set by the constraint.
+  - name: value_source
+    type: text
+    nullable: true
+    meaning: Reference source for data values.
+    source_ref: "IfcMetric attribute 2: OPTIONAL IfcLabel"
+  - name: data_value
+    type: ref
+    nullable: true
+    meaning: The value to be compared on associated objects.
+    source_ref: "IfcMetric attribute 3: OPTIONAL IfcMetricValueSelect; via select IfcMetricValueSelect"
+    ref_to: any
+  - name: reference_path
+    type: ref
+    nullable: true
+    meaning: Optional path to an attribute to be constrained on associated objects.
+    source_ref: "IfcMetric attribute 4: OPTIONAL IfcReference"
+    ref_to: ifc.reference
+needs_review: true
+notes: "Review: data_value: select IfcMetricValueSelect mixes entities and value types; stored as ref to any, value members are not representable in one column."

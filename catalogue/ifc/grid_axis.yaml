@@ -1,0 +1,28 @@
+code: ifc.grid_axis
+name: IfcGridAxis
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcGridAxis
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricConstraintResource/Entities/IfcGridAxis.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An individual axis, IfcGridAxis, is defined in the context of a design grid. The axis definition is based on a curve of dimensionality 2.
+fields:
+  - name: axis_tag
+    type: text
+    nullable: true
+    meaning: The tag or name for this grid axis.
+    source_ref: "IfcGridAxis attribute 1: OPTIONAL IfcLabel"
+  - name: axis_curve
+    type: ref
+    meaning: Underlying curve which provides the geometry for this grid axis.
+    source_ref: "IfcGridAxis attribute 2: IfcCurve"
+    ref_to: ifc.curve
+  - name: same_sense
+    type: bool
+    meaning: Defines whether the original sense of curve is used or whether it is reversed in the context of the grid axis.
+    source_ref: "IfcGridAxis attribute 3: IfcBoolean"
+notes: "Inverse attributes not stored: PartOfW, PartOfV, PartOfU, HasIntersections."

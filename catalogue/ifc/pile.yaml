@@ -1,0 +1,54 @@
+code: ifc.pile
+name: IfcPile
+kind: entity
+base: ifc.deep_foundation
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPile
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcPile.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A pile is a slender timber, concrete, or steel structural element, driven, jetted, or otherwise embedded on end in the ground for the purpose of supporting a load. A pile is also characterized as deep foundation, where the loads are transferred to deeper subsurface layers.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: The predefined generic type of the pile according to function.
+    source_ref: "IfcPile attribute 1: OPTIONAL IfcPileTypeEnum; enumeration IfcPileTypeEnum"
+    values:
+      - value: BORED
+        meaning: A bore pile.
+      - value: DRIVEN
+        meaning: A rammed, vibrated, or otherwise driven pile.
+      - value: JETGROUTING
+        meaning: An injected pile-like construction.
+      - value: COHESION
+        meaning: A cohesion pile.
+      - value: FRICTION
+        meaning: A friction pile.
+      - value: SUPPORT
+        meaning: A support pile.
+      - value: USERDEFINED
+        meaning: The type of pile function is user defined.
+      - value: NOTDEFINED
+        meaning: The type of pile function is not defined.
+  - name: construction_type
+    type: enum
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcPile attribute 2: OPTIONAL IfcPileConstructionEnum; enumeration IfcPileConstructionEnum"
+    values:
+      - value: CAST_IN_PLACE
+        meaning: Piles and piers that are excavated and poured in place.
+      - value: COMPOSITE
+        meaning: iles that are a mix of components, such as a steel outer casing which is driven into the ground with a cast-in-place concrete core.
+      - value: PRECAST_CONCRETE
+        meaning: Piles that are entirely of precast concrete (possibly with some steel or other fixtures).
+      - value: PREFAB_STEEL
+        meaning: Prefabricated piles made entirely out of steel.
+      - value: USERDEFINED
+        meaning: Special types of pile construction which meet specific local requirements.
+      - value: NOTDEFINED
+        meaning: The type of pile construction is not defined.

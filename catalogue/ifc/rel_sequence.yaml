@@ -1,0 +1,53 @@
+code: ifc.rel_sequence
+name: IfcRelSequence
+kind: object
+base: ifc.rel_connects
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelSequence
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProcessExtension/Entities/IfcRelSequence.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcRelSequence is a sequential relationship between processes where one process must occur before the other in time and where the timing of the relationship may be described as a type of sequence. The relating process (_IfcRelSequence.RelatingProcess_) is considered to be the predecessor in the relationship (has precedence) whilst the related process …
+fields:
+  - name: relating_process
+    type: ref
+    meaning: Reference to the process, that is the predecessor.
+    source_ref: "IfcRelSequence attribute 1: IfcProcess"
+    ref_to: ifc.process
+  - name: related_process
+    type: ref
+    meaning: Reference to the process, that is the successor.
+    source_ref: "IfcRelSequence attribute 2: IfcProcess"
+    ref_to: ifc.process
+  - name: time_lag
+    type: ref
+    nullable: true
+    meaning: Time duration of the sequence, it is the time lag between the predecessor and the successor as specified by the SequenceType.
+    source_ref: "IfcRelSequence attribute 3: OPTIONAL IfcLagTime"
+    ref_to: ifc.lag_time
+  - name: sequence_type
+    type: enum
+    nullable: true
+    meaning: The way in which the time lag applies to the sequence.
+    source_ref: "IfcRelSequence attribute 4: OPTIONAL IfcSequenceEnum; enumeration IfcSequenceEnum"
+    values:
+      - value: START_START
+        meaning: The predecessor task must start before the successor task may start.
+      - value: START_FINISH
+        meaning: The predecessor task must start before the successor task may finish.
+      - value: FINISH_START
+        meaning: The predecessor task must finish before the successor task may start.
+      - value: FINISH_FINISH
+        meaning: The predecessor task must finish before the successor task may finish.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Undefined.
+  - name: user_defined_sequence_type
+    type: text
+    nullable: true
+    meaning: Allows for specification of user defined type of the sequence beyond the enumeration values (START_START, START_FINISH FINISH_START, FINISH_FINISH) provided by SequenceType attribute of type IfcSequenceEnum.
+    source_ref: "IfcRelSequence attribute 5: OPTIONAL IfcLabel"

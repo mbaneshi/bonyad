@@ -1,0 +1,34 @@
+code: ifc.pipe_segment
+name: IfcPipeSegment
+kind: entity
+base: ifc.flow_segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPipeSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcPipeSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A pipe segment is used to typically join two sections of a piping network.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcPipeSegment (not described in the source documentation).
+    source_ref: "IfcPipeSegment attribute 1: OPTIONAL IfcPipeSegmentTypeEnum; enumeration IfcPipeSegmentTypeEnum"
+    values:
+      - value: CULVERT
+        meaning: A covered channel or large pipe that forms a watercourse below ground level, usually under a road or railway.
+      - value: FLEXIBLESEGMENT
+        meaning: A flexible segment is a continuous non-linear segment of pipe that can be deformed and change the direction of flow.
+      - value: RIGIDSEGMENT
+        meaning: A rigid segment is continuous linear segment of pipe that cannot be deformed.
+      - value: GUTTER
+        meaning: A gutter segment is a continuous open-channel segment of pipe.
+      - value: SPOOL
+        meaning: A type of rigid segment that is typically shorter and used for providing connectivity within a piping network.
+      - value: USERDEFINED
+        meaning: User-defined segment.
+      - value: NOTDEFINED
+        meaning: Undefined segment.

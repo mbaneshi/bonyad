@@ -1,0 +1,87 @@
+code: ifc.sensor_type
+name: IfcSensorType
+kind: symbol
+base: ifc.distribution_control_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSensorType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcBuildingControlsDomain/Entities/IfcSensorType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The distribution control element type IfcSensorType defines commonly shared information for occurrences of sensors.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of sensor from which the type required may be set.
+    source_ref: "IfcSensorType attribute 1: IfcSensorTypeEnum; enumeration IfcSensorTypeEnum"
+    values:
+      - value: COSENSOR
+        meaning: A device that senses or detects carbon monoxide.
+      - value: CO2SENSOR
+        meaning: A device that senses or detects carbon dioxide.
+      - value: CONDUCTANCESENSOR
+        meaning: A device that senses or detects electrical conductance.
+      - value: CONTACTSENSOR
+        meaning: A device that senses or detects contact, such as for detecting if a door is closed.
+      - value: FIRESENSOR
+        meaning: A device that senses or detects fire.
+      - value: FLOWSENSOR
+        meaning: A device that senses or detects flow in a fluid.
+      - value: FROSTSENSOR
+        meaning: A device that senses or detects frost on a window.
+      - value: GASSENSOR
+        meaning: A device that senses or detects gas concentration (other than CO2).
+      - value: HEATSENSOR
+        meaning: A device that senses or detects heat.
+      - value: HUMIDITYSENSOR
+        meaning: A device that senses or detects humidity.
+      - value: IDENTIFIERSENSOR
+        meaning: A device that reads a tag, such as for gaining access to a door or elevator.
+      - value: IONCONCENTRATIONSENSOR
+        meaning: A device that senses or detects ion concentration, such as for water hardness.
+      - value: LEVELSENSOR
+        meaning: A device that senses or detects fill level, such as for a tank.
+      - value: LIGHTSENSOR
+        meaning: A device that senses or detects light.
+      - value: MOISTURESENSOR
+        meaning: A device that senses or detects moisture.
+      - value: MOVEMENTSENSOR
+        meaning: A device that senses or detects movement.
+      - value: PHSENSOR
+        meaning: A device that senses or detects acidity.
+      - value: PRESSURESENSOR
+        meaning: A device that senses or detects pressure.
+      - value: RADIATIONSENSOR
+        meaning: A device that senses or detects radiation.
+      - value: RADIOACTIVITYSENSOR
+        meaning: A device that senses or detects atomic decay.
+      - value: SMOKESENSOR
+        meaning: A device that senses or detects smoke.
+      - value: SOUNDSENSOR
+        meaning: A device that senses or detects sound.
+      - value: TEMPERATURESENSOR
+        meaning: A device that senses or detects temperature.
+      - value: WINDSENSOR
+        meaning: A device that senses or detects airflow speed and direction.
+      - value: EARTHQUAKESENSOR
+        meaning: A device that senses or detects the seismic wave and measures the seismic intensity in case of earthquake.
+      - value: FOREIGNOBJECTDETECTIONSENSOR
+        meaning: A device that senses or detects foreign objects that shock or break the power network.
+      - value: OBSTACLESENSOR
+        meaning: A device that senses or detects any obstacles.
+      - value: RAINSENSOR
+        meaning: A device that senses or collects rainfall related information.
+      - value: SNOWDEPTHSENSOR
+        meaning: A device that senses or measures the depth of snowfall.
+      - value: TRAINSENSOR
+        meaning: A device, usually attached to the rear end of the last vehicle of a train, acting on a fixed equipment to give an indication that the train is complete.
+      - value: TURNOUTCLOSURESENSOR
+        meaning: A device that senses or detects the position of a blade of a turnout.
+      - value: WHEELSENSOR
+        meaning: A device that senses or detects the passage of a wheel.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

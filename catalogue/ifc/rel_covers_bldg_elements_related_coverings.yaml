@@ -1,0 +1,20 @@
+code: ifc.rel_covers_bldg_elements_related_coverings
+name: IfcRelCoversBldgElements.RelatedCoverings
+kind: child
+parent: ifc.rel_covers_bldg_elements
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelCoversBldgElements.RelatedCoverings
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcRelCoversBldgElements.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the RelatedCoverings list of IfcRelCoversBldgElements. Relationship to the set of coverings that are assigned to this element.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcRelCoversBldgElements.RelatedCoverings.
+    source_ref: "IfcRelCoversBldgElements attribute 2: SET [1:?] OF IfcCovering"
+    ref_to: ifc.covering
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [1:?] OF IfcCovering."

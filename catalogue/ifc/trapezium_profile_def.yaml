@@ -1,0 +1,33 @@
+code: ifc.trapezium_profile_def
+name: IfcTrapeziumProfileDef
+kind: symbol
+base: ifc.parameterized_profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTrapeziumProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcTrapeziumProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcTrapeziumProfileDef defines a trapezium as the profile definition used by the swept surface geometry or the swept area solid. It is given by its Top X and Bottom X extent and its Y extent as well as by the offset of the Top X extend, and placed within the 2D position coordinate system, established by the Position attribute.
+fields:
+  - name: bottom_x_dim
+    type: length
+    meaning: The extent of the bottom line measured along the implicit x-axis.
+    source_ref: "IfcTrapeziumProfileDef attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: top_x_dim
+    type: length
+    meaning: The extent of the top line measured along the implicit x-axis.
+    source_ref: "IfcTrapeziumProfileDef attribute 2: IfcPositiveLengthMeasure"
+    check: positive
+  - name: y_dim
+    type: length
+    meaning: The extent of the distance between the parallel bottom and top lines measured along the implicit y-axis.
+    source_ref: "IfcTrapeziumProfileDef attribute 3: IfcPositiveLengthMeasure"
+    check: positive
+  - name: top_x_offset
+    type: length
+    meaning: Offset from the beginning of the top line to the bottom line, measured along the implicit x-axis.
+    source_ref: "IfcTrapeziumProfileDef attribute 4: IfcLengthMeasure"

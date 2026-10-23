@@ -1,0 +1,24 @@
+code: ifc.measure_with_unit
+name: IfcMeasureWithUnit
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMeasureWithUnit
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMeasureResource/Entities/IfcMeasureWithUnit.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcMeasureWithUnit: no description in the source documentation."
+fields:
+  - name: value_component
+    type: text
+    meaning: The value of the physical quantity when expressed in the specified units.
+    source_ref: "IfcMeasureWithUnit attribute 1: IfcValue; SELECT IfcValue of value types, stored as text (the member type tag is not kept)"
+  - name: unit_component
+    type: ref
+    meaning: The unit in which the physical quantity is expressed.
+    source_ref: "IfcMeasureWithUnit attribute 2: IfcUnit; via select IfcUnit"
+    ref_to: any
+needs_review: true
+notes: "Review: no description found for IfcMeasureWithUnit in the documentation at the pinned commit."

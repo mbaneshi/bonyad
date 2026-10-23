@@ -1,0 +1,24 @@
+code: ifc.property
+name: IfcProperty
+kind: abstract
+base: ifc.property_abstraction
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcProperty
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPropertyResource/Entities/IfcProperty.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcProperty is an abstract generalization for all types of properties that can be associated with IFC objects through the property set mechanism.
+fields:
+  - name: name
+    type: text
+    meaning: Name for this property.
+    source_ref: "IfcProperty attribute 1: IfcIdentifier"
+  - name: description
+    type: text
+    nullable: true
+    meaning: Description attribute of IfcProperty (not described in the source documentation).
+    source_ref: "IfcProperty attribute 2: OPTIONAL IfcText"
+notes: "Inverse attributes not stored: PartOfPset, PropertyForDependance, PropertyDependsOn, PartOfComplex, HasConstraints, HasApprovals. SUPERTYPE OF ONEOF ( IfcComplexProperty , IfcSimpleProperty )."

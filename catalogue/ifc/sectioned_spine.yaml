@@ -1,0 +1,20 @@
+code: ifc.sectioned_spine
+name: IfcSectionedSpine
+kind: entity
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSectionedSpine
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcSectionedSpine.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcSectionedSpine is a representation of the shape of a three dimensional object composed by a number of planar cross sections, and a spine curve. The shape is defined between the first element of cross sections and the last element of the cross sections.
+fields:
+  - name: spine_curve
+    type: ref
+    meaning: A single composite curve, that defines the spine curve.
+    source_ref: "IfcSectionedSpine attribute 1: IfcCompositeCurve"
+    ref_to: ifc.composite_curve
+notes: "Derived attributes not stored: Dim."

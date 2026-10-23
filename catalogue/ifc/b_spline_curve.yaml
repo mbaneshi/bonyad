@@ -1,0 +1,46 @@
+code: ifc.b_spline_curve
+name: IfcBSplineCurve
+kind: abstract
+base: ifc.bounded_curve
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBSplineCurve
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcBSplineCurve.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcBSplineCurve is a spline curve parameterized by spline functions.
+fields:
+  - name: degree
+    type: int
+    meaning: The algebraic degree of the basis functions.
+    source_ref: "IfcBSplineCurve attribute 1: IfcInteger"
+  - name: curve_form
+    type: enum
+    meaning: Used to identify particular types of curve; it is for information only.
+    source_ref: "IfcBSplineCurve attribute 3: IfcBSplineCurveForm; enumeration IfcBSplineCurveForm"
+    values:
+      - value: POLYLINE_FORM
+        meaning: A connected sequence of line segments represented by degree 1 B-spline basis functions.
+      - value: CIRCULAR_ARC
+        meaning: An arc of a circle, or a complete circle represented by a B-spline curve.
+      - value: ELLIPTIC_ARC
+        meaning: An arc of an ellipse, or a complete ellipse, represented by a B-spline curve.
+      - value: PARABOLIC_ARC
+        meaning: An arc of finite length of a parabola represented by a B-spline curve.
+      - value: HYPERBOLIC_ARC
+        meaning: An arc of finite length of one branch of a hyperbola represented by a B-spline curve.
+      - value: UNSPECIFIED
+        meaning: A B-spline curve for which no particular form is specified.
+  - name: closed_curve
+    type: bool
+    nullable: true
+    meaning: Indication of whether the curve is closed; it is for information only.
+    source_ref: "IfcBSplineCurve attribute 4: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+  - name: self_intersect
+    type: bool
+    nullable: true
+    meaning: Indication whether the curve self-intersects or not; it is for information only.
+    source_ref: "IfcBSplineCurve attribute 5: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+notes: "Derived attributes not stored: UpperIndexOnControlPoints, ControlPoints. SUPERTYPE OF ONEOF ( IfcBSplineCurveWithKnots )."

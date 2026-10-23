@@ -1,0 +1,20 @@
+code: ifc.rel_flow_control_elements_related_contro_56e552
+name: IfcRelFlowControlElements.RelatedControlElements
+kind: child
+parent: ifc.rel_flow_control_elements
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelFlowControlElements.RelatedControlElements
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgServiceElements/Entities/IfcRelFlowControlElements.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the RelatedControlElements list of IfcRelFlowControlElements. References control elements which may be used to impart control on the Distribution Element.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcRelFlowControlElements.RelatedControlElements.
+    source_ref: "IfcRelFlowControlElements attribute 1: SET [1:?] OF IfcDistributionControlElement"
+    ref_to: ifc.distribution_control_element
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [1:?] OF IfcDistributionControlElement. Table name abbreviated to fit the 63-byte Postgres identifier limit; full name would be ifc.rel_flow_control_elements_related_control_elements."

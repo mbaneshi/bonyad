@@ -1,0 +1,24 @@
+code: ifc.document_information_relationship
+name: IfcDocumentInformationRelationship
+kind: object
+base: ifc.resource_level_relationship
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDocumentInformationRelationship
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcDocumentInformationRelationship.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcDocumentInformationRelationship is a relationship entity that enables a document to have the ability to reference other documents. It is used to describe relationships in which one document may reference one or more other sub documents or where a document is used as a replacement for another document (but where both the original and the replacing …
+fields:
+  - name: relating_document
+    type: ref
+    meaning: The document that acts as the parent, referencing or original document in a relationship.
+    source_ref: "IfcDocumentInformationRelationship attribute 1: IfcDocumentInformation"
+    ref_to: ifc.document_information
+  - name: relationship_type
+    type: text
+    nullable: true
+    meaning: Describes the type of relationship between documents.
+    source_ref: "IfcDocumentInformationRelationship attribute 3: OPTIONAL IfcLabel"

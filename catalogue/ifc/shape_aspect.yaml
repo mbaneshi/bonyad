@@ -1,0 +1,35 @@
+code: ifc.shape_aspect
+name: IfcShapeAspect
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcShapeAspect
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcRepresentationResource/Entities/IfcShapeAspect.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcShapeAspect allows for grouping of shape representation items that represent aspects (or components) of the shape of a product. Thereby shape representations of components of the product shape represent a distinctive part to a product that can be explicitly addressed.
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: The word or group of words by which the shape aspect is known.
+    source_ref: "IfcShapeAspect attribute 2: OPTIONAL IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: The word or group of words that characterize the shape aspect.
+    source_ref: "IfcShapeAspect attribute 3: OPTIONAL IfcText"
+  - name: product_definitional
+    type: bool
+    nullable: true
+    meaning: "An indication that the shape aspect is on the physical boundary of the product definition shape. * TRUE: the shape aspect represents geometry that sits on (or forms) the physical outer boundary of the product's definition shape."
+    source_ref: "IfcShapeAspect attribute 4: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+  - name: part_of_product_definition_shape
+    type: ref
+    nullable: true
+    meaning: Reference to the IfcProductDefinitionShape or the IfcRepresentationMap of which this shape is an aspect.
+    source_ref: "IfcShapeAspect attribute 5: OPTIONAL IfcProductRepresentationSelect; via select IfcProductRepresentationSelect"
+    ref_to: any
+notes: "Inverse attributes not stored: HasExternalReferences."

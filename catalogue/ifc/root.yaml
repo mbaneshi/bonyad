@@ -1,0 +1,34 @@
+code: ifc.root
+name: IfcRoot
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRoot
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcRoot.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcRoot is the most abstract and root class for all entity definitions that are rooted in the kernel or in subsequent layers of the IFC specification. It is therefore the common supertype of all IFC entities, except for those defined in an IFC resource schema.
+fields:
+  - name: global_id
+    type: text
+    meaning: Assignment of a globally unique identifier within the entire software world.
+    source_ref: "IfcRoot attribute 1: IfcGloballyUniqueId"
+  - name: owner_history
+    type: ref
+    nullable: true
+    meaning: Assignment of the information about the current ownership of that object, including owning actor, application, local identification and information captured about the recent changes of the object.
+    source_ref: "IfcRoot attribute 2: OPTIONAL IfcOwnerHistory"
+    ref_to: ifc.owner_history
+  - name: name
+    type: text
+    nullable: true
+    meaning: An optional name for use by the participating software systems or users.
+    source_ref: "IfcRoot attribute 3: OPTIONAL IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: An optional description, provided to exchange informative comments.
+    source_ref: "IfcRoot attribute 4: OPTIONAL IfcText"
+notes: SUPERTYPE OF ONEOF ( IfcObjectDefinition , IfcPropertyDefinition , IfcRelationship ).

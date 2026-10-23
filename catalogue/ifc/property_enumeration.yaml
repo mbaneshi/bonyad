@@ -1,0 +1,29 @@
+code: ifc.property_enumeration
+name: IfcPropertyEnumeration
+kind: object
+base: ifc.property_abstraction
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPropertyEnumeration
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPropertyResource/Entities/IfcPropertyEnumeration.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcPropertyEnumeration is a collection of simple or measure values that define a prescribed set of alternatives from which 'enumeration values' are selected. This enables inclusion of enumeration values in property sets.
+fields:
+  - name: name
+    type: text
+    meaning: Name of this enumeration.
+    source_ref: "IfcPropertyEnumeration attribute 1: IfcLabel"
+  - name: enumeration_values
+    type: array
+    meaning: List of values that form the enumeration.
+    source_ref: "IfcPropertyEnumeration attribute 2: LIST [1:?] OF UNIQUE IfcValue; elements are SELECT IfcValue of value types, stored as text (the member type tag is not kept)"
+    of: text
+  - name: unit
+    type: ref
+    nullable: true
+    meaning: Unit for the enumerator values, if not given, the default value for the measure type (given by the TYPE of nominal value) is used as defined by the global unit assignment at IfcProject.
+    source_ref: "IfcPropertyEnumeration attribute 3: OPTIONAL IfcUnit; via select IfcUnit"
+    ref_to: any

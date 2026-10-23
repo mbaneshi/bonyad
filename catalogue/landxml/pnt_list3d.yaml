@@ -1,0 +1,20 @@
+code: landxml.pnt_list3d
+name: PntList3D
+kind: child
+parent: landxml.data_points
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element PntList3D
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A sequential space delimited list of 3D coordinates with a minimum of 2 points (6 values). Primarily used to store lists of northing/easting/elevation for Terrain Surface data.
+fields:
+  - name: values
+    type: array
+    meaning: A sequential space delimited list of 3D coordinates with a minimum of 2 points (6 values). Space-delimited list of doubles; consecutive values are the coordinates of successive points in the order the schema states.
+    source_ref: XSD PntList3D (element text); type Point
+    of: float
+notes: One row per occurrence of the repeated list element; a row boundary is meaningful (for example a gap in a profile), so occurrences are not concatenated. Occurs 0..unbounded in landxml.data_points.

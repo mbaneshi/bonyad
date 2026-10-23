@@ -1,0 +1,42 @@
+code: landxml.design_speed85th
+name: DesignSpeed85th
+kind: child
+parent: landxml.roadway
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element DesignSpeed85th
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `DesignSpeed85th`; the XSD gives no description.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD DesignSpeed85th/@staStart; type station
+    nullable: true
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD DesignSpeed85th/@staEnd; type station
+    nullable: true
+  - name: sideof_road
+    type: enum
+    meaning: DesignSpeed85th sideofRoad; the XSD gives no description.
+    source_ref: XSD DesignSpeed85th/@sideofRoad; type sideofRoadType
+    nullable: true
+    values:
+      - value: right
+        meaning: Enumeration literal "right"; the XSD gives no description.
+      - value: left
+        meaning: Enumeration literal "left"; the XSD gives no description.
+      - value: both
+        meaning: Enumeration literal "both"; the XSD gives no description.
+  - name: speed
+    type: float
+    meaning: This item is the speed or velocity of travel. The unit of measure for this item is kilometers/hour for Metric units and miles/hour for Imperial.
+    source_ref: XSD DesignSpeed85th/@speed; type speed
+    nullable: true
+notes: Occurs 1..unbounded via Speeds in landxml.roadway.

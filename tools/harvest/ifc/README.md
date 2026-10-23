@@ -2,7 +2,7 @@
 
 bun + strict TypeScript. Parses the buildingSMART IFC4.3 EXPRESS schema and writes one catalogue YAML per entity type (contract: catalogue format v0), plus `GAPS.md`. Zod validates every entry and the whole set (unique codes, resolvable `base`/`parent`/`ref_to`, unique field names across bases). Gate: `bun test`.
 
-Licence note: the generated YAML is **not committed** (see `catalogue/ifc/SOURCES.md`).
+Licence note: the generated YAML is committed by the maintainer's decision, without buildingSMART's written consent (see `catalogue/ifc/SOURCES.md`).
 
 ## Reproduce
 ```bash

@@ -1,0 +1,20 @@
+code: ifc.cartesian_point_list2d
+name: IfcCartesianPointList2D
+kind: entity
+base: ifc.cartesian_point_list
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCartesianPointList2D
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcCartesianPointList2D.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcCartesianPointList2D defines an ordered collection of two-dimentional Cartesian points. Each Cartesian point is provided as an two-dimensional point by a fixed list of two coordinates.
+fields:
+  - name: tag_list
+    type: array
+    nullable: true
+    meaning: List of tags corresponding to each point that may be used to identify a basis curve according to the Tag attribute at IfcOffsetCurveByDistances.
+    source_ref: "IfcCartesianPointList2D attribute 2: OPTIONAL LIST [1:?] OF IfcLabel"
+    of: text

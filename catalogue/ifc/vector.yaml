@@ -1,0 +1,24 @@
+code: ifc.vector
+name: IfcVector
+kind: entity
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcVector
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcVector.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcVector is a geometric representation item having both a magnitude and direction. The magnitude of the vector is solely defined by the Magnitude attribute and the direction is solely defined by the Orientation attribute.
+fields:
+  - name: orientation
+    type: ref
+    meaning: The direction of the vector.
+    source_ref: "IfcVector attribute 1: IfcDirection"
+    ref_to: ifc.direction
+  - name: magnitude
+    type: length
+    meaning: The magnitude of the vector.
+    source_ref: "IfcVector attribute 2: IfcLengthMeasure"
+notes: "Derived attributes not stored: Dim."

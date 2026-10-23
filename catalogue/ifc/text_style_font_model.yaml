@@ -1,0 +1,40 @@
+code: ifc.text_style_font_model
+name: IfcTextStyleFontModel
+kind: object
+base: ifc.pre_defined_text_font
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextStyleFontModel
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcTextStyleFontModel.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcTextStyleFontModel: no description in the source documentation."
+fields:
+  - name: font_family
+    type: array
+    meaning: The value is a prioritized list of font family names and/or generic family names.
+    source_ref: "IfcTextStyleFontModel attribute 1: LIST [1:?] OF IfcTextFontName"
+    of: text
+  - name: font_style
+    type: text
+    nullable: true
+    meaning: The font style property selects between normal (sometimes referred to as "roman" or "upright"), italic and oblique faces within a font family.
+    source_ref: "IfcTextStyleFontModel attribute 2: OPTIONAL IfcFontStyle"
+  - name: font_variant
+    type: text
+    nullable: true
+    meaning: The font variant property selects between normal and small-caps.
+    source_ref: "IfcTextStyleFontModel attribute 3: OPTIONAL IfcFontVariant"
+  - name: font_weight
+    type: text
+    nullable: true
+    meaning: The font weight property selects the weight of the font.
+    source_ref: "IfcTextStyleFontModel attribute 4: OPTIONAL IfcFontWeight"
+  - name: font_size
+    type: text
+    meaning: The font size provides the size or height of the text font.
+    source_ref: "IfcTextStyleFontModel attribute 5: IfcSizeSelect; SELECT IfcSizeSelect of value types, stored as text (the member type tag is not kept)"
+needs_review: true
+notes: "Review: no description found for IfcTextStyleFontModel in the documentation at the pinned commit."

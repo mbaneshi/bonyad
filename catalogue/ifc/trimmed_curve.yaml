@@ -1,0 +1,34 @@
+code: ifc.trimmed_curve
+name: IfcTrimmedCurve
+kind: entity
+base: ifc.bounded_curve
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTrimmedCurve
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcTrimmedCurve.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcTrimmedCurve is a bounded curve that is trimmed at both ends. The trimming points may be provided by a Cartesian point or by a parameter value, based on the parameterization of the BasisCurve.
+fields:
+  - name: basis_curve
+    type: ref
+    meaning: The curve to be trimmed.
+    source_ref: "IfcTrimmedCurve attribute 1: IfcCurve"
+    ref_to: ifc.curve
+  - name: sense_agreement
+    type: bool
+    meaning: Flag to indicate whether the direction of the trimmed curve agrees with or is opposed to the direction of the basis curve.
+    source_ref: "IfcTrimmedCurve attribute 4: IfcBoolean"
+  - name: master_representation
+    type: enum
+    meaning: Where both parameter and point are present at either end of the curve this indicates the preferred form.
+    source_ref: "IfcTrimmedCurve attribute 5: IfcTrimmingPreference; enumeration IfcTrimmingPreference"
+    values:
+      - value: CARTESIAN
+        meaning: Indicates that trimming by Cartesian point is preferred.
+      - value: PARAMETER
+        meaning: Indicates the preference for the parameter value.
+      - value: UNSPECIFIED
+        meaning: Indicates that no preference is communicated.

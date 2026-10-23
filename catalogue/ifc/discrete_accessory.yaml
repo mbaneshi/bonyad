@@ -1,0 +1,62 @@
+code: ifc.discrete_accessory
+name: IfcDiscreteAccessory
+kind: entity
+base: ifc.element_component
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDiscreteAccessory
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedComponentElements/Entities/IfcDiscreteAccessory.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A discrete accessory is a representation of different kinds of accessories included in or added to elements.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Subtype of discrete accessory.
+    source_ref: "IfcDiscreteAccessory attribute 1: OPTIONAL IfcDiscreteAccessoryTypeEnum; enumeration IfcDiscreteAccessoryTypeEnum"
+    values:
+      - value: ANCHORPLATE
+        meaning: An accessory consisting of a steel plate, shear stud connectors or welded-on rebar which is embedded into the surface of a concrete element so that other elements can be welded or bolted onto it later.
+      - value: BRACKET
+        meaning: An L-shaped or similarly shaped accessory attached in a corner between elements to hold them together or to carry a secondary element.
+      - value: SHOE
+        meaning: A column shoe or a beam shoe (beam hanger) used to support or secure an element.
+      - value: EXPANSION_JOINT_DEVICE
+        meaning: Assembly connection element between construction elements to allow for thermic differential expansions.
+      - value: CABLEARRANGER
+        meaning: A cable arranger is a flexible accessory or a part of a component placed around cables to arrange and minimize flexing of them at the point where it is placed.
+      - value: INSULATOR
+        meaning: A device designed to support and insulate a conductive element.
+      - value: LOCK
+        meaning: A lock is a mechanical or electronic fastening device that is released either by a physical object (e.g., key, fingerprint, RFID card, security token etc.), by supplying secret information (e.g., number permutation, …
+      - value: TENSIONINGEQUIPMENT
+        meaning: An equipment used to maintain the tension of conductors or cables.
+      - value: RAILPAD
+        meaning: A non-metallic pad placed between rail and baseplate or rail and sleeper, bearer or slab.
+      - value: SLIDINGCHAIR
+        meaning: A component which supports and retains the stock rail and a flat surface upon which the foot of the switch rail slides.
+      - value: RAIL_LUBRICATION
+        meaning: A device that prevents wearing of the rails throughout the flange of wheel to reduce noise emissions.
+      - value: PANEL_STRENGTHENING
+        meaning: A component that minimizes pump effects of the substructure.
+      - value: RAILBRACE
+        meaning: A rail component that prevents rails from tipping and twisting.
+      - value: ELASTIC_CUSHION
+        meaning: A track elastic cushion is a kind of layer set on grooved sides of a concrete base, which is used for mitigating the impact of longitudinal and lateral load on track structures.
+      - value: SOUNDABSORPTION
+        meaning: A component in the track for sound absorption and may also absorb vibrations.
+      - value: POINTMACHINEMOUNTINGDEVICE
+        meaning: Point machine mounting device.
+      - value: POINT_MACHINE_LOCKING_DEVICE
+        meaning: Point machine locking device.
+      - value: RAIL_MECHANICAL_EQUIPMENT
+        meaning: A rail mechanical equipment is a mechanical equipment installed at railside, like blocking device, speed regulator, bias loaded inspector, track scale or controllable retarder.
+      - value: BIRDPROTECTION
+        meaning: A device that prevents a sitting down of birds at electrically critical points and thus birds are protected against electrical shocks and disturbances by short circuit are avoided.
+      - value: USERDEFINED
+        meaning: User-defined accessory.
+      - value: NOTDEFINED
+        meaning: Undefined accessory.

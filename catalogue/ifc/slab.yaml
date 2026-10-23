@@ -1,0 +1,43 @@
+code: ifc.slab
+name: IfcSlab
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSlab
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcSlab.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A slab is a component of the construction that may enclose a space vertically. The slab may provide the lower support (floor) or upper construction (roof slab) in any space in a building.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a slab that is specified in an enumeration.
+    source_ref: "IfcSlab attribute 1: OPTIONAL IfcSlabTypeEnum; enumeration IfcSlabTypeEnum"
+    values:
+      - value: FLOOR
+        meaning: The slab is used to represent a floor slab or a bridge deck.
+      - value: ROOF
+        meaning: The slab is used to represent a roof slab (either flat or sloped).
+      - value: LANDING
+        meaning: The slab is used to represent a landing within a stair or ramp.
+      - value: BASESLAB
+        meaning: The slab is used to represent a floor slab against the ground (and thereby being a part of the foundation).
+      - value: APPROACH_SLAB
+        meaning: A slab used to provide a transition from embankment to the bridge.
+      - value: PAVING
+        meaning: Rigid pavement course of a road or other paved area, usually concrete.
+      - value: WEARING
+        meaning: The slab is used to represent a wearing surface.
+      - value: SIDEWALK
+        meaning: The slab is used to represent a sidewalk.
+      - value: TRACKSLAB
+        meaning: A track slab is a reinforced concrete slab or prestressed reinforced concrete slab, which is a main element of slab track.
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+notes: SUPERTYPE OF ONEOF ( IfcSlabElementedCase , IfcSlabStandardCase ).

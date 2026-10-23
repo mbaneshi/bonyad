@@ -1,0 +1,45 @@
+code: ifc.referent
+name: IfcReferent
+kind: entity
+base: ifc.positioning_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReferent
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcReferent.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcReferent defines a position at a particular offset along an alignment curve.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined types to define the particular type of the referent.
+    source_ref: "IfcReferent attribute 1: OPTIONAL IfcReferentTypeEnum; enumeration IfcReferentTypeEnum"
+    values:
+      - value: KILOPOINT
+        meaning: Kilo point.
+      - value: MILEPOINT
+        meaning: Mile point.
+      - value: STATION
+        meaning: A referent that defines the stationing (chainage) system along a linear element, either by establishing the station origin or by recording a station equation (gap or overlap discontinuity) where stationing is …
+      - value: REFERENCEMARKER
+        meaning: The reference marker is a notation referent, typically located in the right of way of the road, rail or other transportation system.
+      - value: LANDMARK
+        meaning: The referent is the location of a physical landmark visible in the field.
+      - value: BOUNDARY
+        meaning: The referent represents where an administrative or maintenance boundary crosses the linear element being measured.
+      - value: INTERSECTION
+        meaning: The referent is the location of an intersection specified by the referent name.
+      - value: POSITION
+        meaning: Used to fully describe a linearly referenced location given by the linear element being measured (the IfcAlignment into which the IfcReferent is nested), the method of measurement (Pset_LinearReferencingMethod) and a …
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Undefined.
+  - name: restart_distance
+    type: length
+    nullable: true
+    meaning: Optional value in case of broken linear referencing required to keep stationing further down the alignment unchanged.
+    source_ref: "IfcReferent attribute 2: OPTIONAL IfcLengthMeasure"

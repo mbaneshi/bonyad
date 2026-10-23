@@ -1,0 +1,19 @@
+code: ifc.rel_defines_by_object
+name: IfcRelDefinesByObject
+kind: object
+base: ifc.rel_defines
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelDefinesByObject
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcRelDefinesByObject.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The objectified relationship IfcRelDefinesByObject defines the relationship between an object that is part in an object type decomposition and an object occurrence that is part in an occurrence decomposition of that type.
+fields:
+  - name: relating_object
+    type: ref
+    meaning: Object being part of an object type decomposition, acting as the "declaring part" in the relationship.
+    source_ref: "IfcRelDefinesByObject attribute 2: IfcObject"
+    ref_to: ifc.object

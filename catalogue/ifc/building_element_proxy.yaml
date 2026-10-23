@@ -1,0 +1,34 @@
+code: ifc.building_element_proxy
+name: IfcBuildingElementProxy
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBuildingElementProxy
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcBuildingElementProxy.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcBuildingElementProxy is a proxy definition that provides the same functionality as subtypes of IfcBuiltElement, but without having a predefined meaning of the special type of building element it represents.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a building element proxy that is specified in an enumeration.
+    source_ref: "IfcBuildingElementProxy attribute 1: OPTIONAL IfcBuildingElementProxyTypeEnum; enumeration IfcBuildingElementProxyTypeEnum"
+    values:
+      - value: COMPLEX
+        meaning: Not used - kept for upward compatibility.
+      - value: ELEMENT
+        meaning: Not used - kept for upward compatibility.
+      - value: PARTIAL
+        meaning: Not used - kept for upward compatibility.
+      - value: PROVISIONFORVOID
+        meaning: The proxy denotes a provision for voids (a proposed opening not applied as void yet).
+      - value: PROVISIONFORSPACE
+        meaning: The proxy denotes a provision for space (e.g. the space allocated as a provision for mechanical equipment or furniture).
+      - value: USERDEFINED
+        meaning: User-defined building element proxy.
+      - value: NOTDEFINED
+        meaning: Undefined building element proxy.

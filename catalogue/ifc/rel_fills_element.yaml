@@ -1,0 +1,24 @@
+code: ifc.rel_fills_element
+name: IfcRelFillsElement
+kind: object
+base: ifc.rel_connects
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelFillsElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcRelFillsElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcRelFillsElement is an objectified relationship between an opening element and an element that fills (or partially fills) the opening element. It is an one-to-one relationship.
+fields:
+  - name: relating_opening_element
+    type: ref
+    meaning: Opening Element being filled by virtue of this relationship.
+    source_ref: "IfcRelFillsElement attribute 1: IfcOpeningElement"
+    ref_to: ifc.opening_element
+  - name: related_building_element
+    type: ref
+    meaning: Reference to element that occupies fully or partially the associated opening.
+    source_ref: "IfcRelFillsElement attribute 2: IfcElement"
+    ref_to: ifc.element

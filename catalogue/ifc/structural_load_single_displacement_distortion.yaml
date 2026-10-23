@@ -1,0 +1,19 @@
+code: ifc.structural_load_single_displacement_distortion
+name: IfcStructuralLoadSingleDisplacementDistortion
+kind: object
+base: ifc.structural_load_single_displacement
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralLoadSingleDisplacementDistortion
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcStructuralLoadResource/Entities/IfcStructuralLoadSingleDisplacementDistortion.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Defines a displacement with warping.
+fields:
+  - name: distortion
+    type: float
+    nullable: true
+    meaning: The distortion curvature (warping, i.e. a cross-sectional deplanation) given to the displacement load.
+    source_ref: "IfcStructuralLoadSingleDisplacementDistortion attribute 1: OPTIONAL IfcCurvatureMeasure"

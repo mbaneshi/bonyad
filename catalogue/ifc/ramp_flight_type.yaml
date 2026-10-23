@@ -1,0 +1,27 @@
+code: ifc.ramp_flight_type
+name: IfcRampFlightType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRampFlightType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcRampFlightType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The building element type IfcRampFlightType defines commonly shared information for occurrences of ramp flights.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a ramp flight element from which the type required may be set.
+    source_ref: "IfcRampFlightType attribute 1: IfcRampFlightTypeEnum; enumeration IfcRampFlightTypeEnum"
+    values:
+      - value: STRAIGHT
+        meaning: A ramp flight with a straight walking line.
+      - value: SPIRAL
+        meaning: A ramp flight with a circular or elliptic walking line.
+      - value: USERDEFINED
+        meaning: User-defined ramp flight.
+      - value: NOTDEFINED
+        meaning: Undefined ramp flight.

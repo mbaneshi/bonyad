@@ -1,0 +1,20 @@
+code: ifc.fill_area_style_fill_styles
+name: IfcFillAreaStyle.FillStyles
+kind: child
+parent: ifc.fill_area_style
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFillAreaStyle.FillStyles
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcFillAreaStyle.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the FillStyles list of IfcFillAreaStyle. The set of fill area styles to use in presenting visible curve segments, annotation fill areas or surfaces.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcFillAreaStyle.FillStyles.
+    source_ref: "IfcFillAreaStyle attribute 1: SET [1:?] OF IfcFillStyleSelect; via select IfcFillStyleSelect"
+    ref_to: any
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [1:?] OF IfcFillStyleSelect."

@@ -1,0 +1,36 @@
+code: ifc.reinforced_soil
+name: IfcReinforcedSoil
+kind: entity
+base: ifc.earthworks_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReinforcedSoil
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedInfrastructureElements/Entities/IfcReinforcedSoil.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Soil reinforced or stabilized by some mechanical or chemical method.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined type of a reinforced soil elements.
+    source_ref: "IfcReinforcedSoil attribute 1: OPTIONAL IfcReinforcedSoilTypeEnum; enumeration IfcReinforcedSoilTypeEnum"
+    values:
+      - value: SURCHARGEPRELOADED
+        meaning: A method that applies load to the foundation to discharge pore water, and the foundation is consolidated to improve the foundation strength.
+      - value: VERTICALLYDRAINED
+        meaning: A method to set vertical drainage measures in the foundation, so that pore water in the soil is discharged and the foundation strength is improved.
+      - value: DYNAMICALLYCOMPACTED
+        meaning: The method of using dynamic tamping machine usually free falling a heavy hammer from the height, compacting the soil and quickly improving the bearing capacity of the foundation.
+      - value: REPLACED
+        meaning: Dig out the soft soil in a certain range below the foundation ground and then backfill the area with high strength, low compressibility and no corrosive materials.
+      - value: ROLLERCOMPACTED
+        meaning: A kind of compacting method that adopts rolling machinery, repeated rolling and vibration compacts the foundation soil, increasing strength and decreasing compressibility.
+      - value: GROUTED
+        meaning: A method of injecting curable slurry into cracks or pores of a geotechnical foundation to improve its physical and mechanical properties.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

@@ -1,0 +1,36 @@
+code: ifc.context
+name: IfcContext
+kind: abstract
+base: ifc.object_definition
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcContext
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcContext.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcContext is the generalization of a project context in which objects, type objects, property sets, and properties are defined. The IfcProject as subtype of IfcContext provides the context for all information on a construction project, it may include one or several _IfcProjectLibrary_'s as subtype of IfcContext to register the included libraries for the …
+fields:
+  - name: object_type
+    type: text
+    nullable: true
+    meaning: The object type denotes a particular type that indicates the object further.
+    source_ref: "IfcContext attribute 1: OPTIONAL IfcLabel"
+  - name: long_name
+    type: text
+    nullable: true
+    meaning: Long name for the context as used for reference purposes.
+    source_ref: "IfcContext attribute 2: OPTIONAL IfcLabel"
+  - name: phase
+    type: text
+    nullable: true
+    meaning: Current project phase, or life-cycle phase of this project.
+    source_ref: "IfcContext attribute 3: OPTIONAL IfcLabel"
+  - name: units_in_context
+    type: ref
+    nullable: true
+    meaning: Units globally assigned to measure types used within the context.
+    source_ref: "IfcContext attribute 5: OPTIONAL IfcUnitAssignment"
+    ref_to: ifc.unit_assignment
+notes: "Inverse attributes not stored: IsDefinedBy, Declares. SUPERTYPE OF ONEOF ( IfcProject , IfcProjectLibrary )."

@@ -1,0 +1,50 @@
+code: ifc.roof
+name: IfcRoof
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRoof
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcRoof.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A roof is the covering of the top part of a building, it protects the building against the effects of weather.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic types for a roof that are specified in an enumeration.
+    source_ref: "IfcRoof attribute 1: OPTIONAL IfcRoofTypeEnum; enumeration IfcRoofTypeEnum"
+    values:
+      - value: FLAT_ROOF
+        meaning: A roof having no slope, or one with only a slight pitch so as to drain rainwater.
+      - value: SHED_ROOF
+        meaning: A roof having a single slope.
+      - value: GABLE_ROOF
+        meaning: A roof sloping downward in two parts from a central ridge, so as to form a gable at each end.
+      - value: HIP_ROOF
+        meaning: A roof having sloping ends and sides meeting at an inclined projecting angle.
+      - value: HIPPED_GABLE_ROOF
+        meaning: A roof having a hipped end truncating a gable.
+      - value: GAMBREL_ROOF
+        meaning: A roof sloping downward in two parts from a central ridge, so as to form a gable at each end.
+      - value: MANSARD_ROOF
+        meaning: A roof having on each side a steeper lower part and a shallower upper part.
+      - value: BARREL_ROOF
+        meaning: A roof or ceiling having a semicylindrical form.
+      - value: RAINBOW_ROOF
+        meaning: A gable roof in the form of a broad Gothic arch, with gently sloping convex surfaces.
+      - value: BUTTERFLY_ROOF
+        meaning: A roof having two slopes, each descending inward from the eaves.
+      - value: PAVILION_ROOF
+        meaning: A pyramidal hip roof.
+      - value: DOME_ROOF
+        meaning: A hemispherical hip roof.
+      - value: FREEFORM
+        meaning: Free form roof.
+      - value: USERDEFINED
+        meaning: No specification given.
+      - value: NOTDEFINED
+        meaning: No specification given.

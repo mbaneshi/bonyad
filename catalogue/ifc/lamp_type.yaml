@@ -1,0 +1,41 @@
+code: ifc.lamp_type
+name: IfcLampType
+kind: symbol
+base: ifc.flow_terminal_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLampType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcLampType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow terminal type IfcLampType defines commonly shared information for occurrences of lamps.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of lamp from which the type required may be set.
+    source_ref: "IfcLampType attribute 1: IfcLampTypeEnum; enumeration IfcLampTypeEnum"
+    values:
+      - value: COMPACTFLUORESCENT
+        meaning: A fluorescent lamp having a compact form factor produced by shaping the tube.
+      - value: FLUORESCENT
+        meaning: A typically tubular discharge lamp in which most of the light is emitted by one or several layers of phosphors excited by ultraviolet radiation from the discharge.
+      - value: HALOGEN
+        meaning: An incandescent lamp in which a tungsten filament is sealed into a compact transport envelope filled with an inert gas and a small amount of halogen such as iodine or bromine.
+      - value: HIGHPRESSUREMERCURY
+        meaning: A discharge lamp in which most of the light is emitted by exciting mercury at high pressure.
+      - value: HIGHPRESSURESODIUM
+        meaning: A discharge lamp in which most of the light is emitted by exciting sodium at high pressure.
+      - value: LED
+        meaning: A solid state lamp that uses light-emitting diodes as the source of light.
+      - value: METALHALIDE
+        meaning: A discharge lamp in which most of the light is emitted by exciting a metal halide.
+      - value: OLED
+        meaning: A solid state lamp that uses light-emitting diodes as the source of light whose emissive electroluminescent layer is composed of a film of organic compounds.
+      - value: TUNGSTENFILAMENT
+        meaning: A lamp that emits light by passing an electrical current through a tungsten wire filament in a near vacuum.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

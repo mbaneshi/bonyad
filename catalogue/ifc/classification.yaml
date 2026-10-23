@@ -1,0 +1,50 @@
+code: ifc.classification
+name: IfcClassification
+kind: object
+base: ifc.external_information
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcClassification
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcClassification.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcClassification is used for the arrangement of objects into a class or category according to a common purpose or their possession of common characteristics. A classification in the sense of IfcClassification is taxonomy, or taxonomic scheme, arranged in a hierarchical structure.
+fields:
+  - name: source
+    type: text
+    nullable: true
+    meaning: Source (or publisher) for this classification.
+    source_ref: "IfcClassification attribute 1: OPTIONAL IfcLabel"
+  - name: edition
+    type: text
+    nullable: true
+    meaning: The edition or version of the classification system from which the classification notation is derived.
+    source_ref: "IfcClassification attribute 2: OPTIONAL IfcLabel"
+  - name: edition_date
+    type: date
+    nullable: true
+    meaning: The date on which the edition of the classification used became valid.
+    source_ref: "IfcClassification attribute 3: OPTIONAL IfcDate"
+  - name: name
+    type: text
+    meaning: The name or label by which the classification used is normally known.
+    source_ref: "IfcClassification attribute 4: IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: Additional description provided for the classification.
+    source_ref: "IfcClassification attribute 5: OPTIONAL IfcText"
+  - name: location
+    type: text
+    nullable: true
+    meaning: Location attribute of IfcClassification (not described in the source documentation).
+    source_ref: "IfcClassification attribute 6: OPTIONAL IfcURIReference"
+  - name: reference_tokens
+    type: array
+    nullable: true
+    meaning: The delimiter tokens that are used to mark the boundaries of individual facets (substrings) in a classification reference.
+    source_ref: "IfcClassification attribute 7: OPTIONAL LIST [1:?] OF IfcIdentifier"
+    of: text
+notes: "Inverse attributes not stored: ClassificationForObjects, HasReferences."

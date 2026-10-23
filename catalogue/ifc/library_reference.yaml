@@ -1,0 +1,31 @@
+code: ifc.library_reference
+name: IfcLibraryReference
+kind: object
+base: ifc.external_reference
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLibraryReference
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcLibraryReference.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcLibraryReference is a reference into a library of information by Location (provided as a URI). It also provides an optional inherited Identification key to allow more specific references to library sections or tables.
+fields:
+  - name: description
+    type: text
+    nullable: true
+    meaning: Additional description provided for the library reference.
+    source_ref: "IfcLibraryReference attribute 1: OPTIONAL IfcText"
+  - name: language
+    type: text
+    nullable: true
+    meaning: The language in which a library reference is expressed.
+    source_ref: "IfcLibraryReference attribute 2: OPTIONAL IfcLanguageId"
+  - name: referenced_library
+    type: ref
+    nullable: true
+    meaning: The library information that is being referenced.
+    source_ref: "IfcLibraryReference attribute 3: OPTIONAL IfcLibraryInformation"
+    ref_to: ifc.library_information
+notes: "Inverse attributes not stored: LibraryRefForObjects."

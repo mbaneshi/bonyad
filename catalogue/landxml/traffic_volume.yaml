@@ -1,0 +1,63 @@
+code: landxml.traffic_volume
+name: TrafficVolume
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element TrafficVolume
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `TrafficVolume`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.roadway
+    nullable: true
+    meaning: The landxml.roadway row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: design_hour_sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD DesignHour/@staStart; type station
+    nullable: true
+  - name: design_hour_sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD DesignHour/@staEnd; type station
+    nullable: true
+  - name: design_hour_volume
+    type: float
+    meaning: DesignHour volume; the XSD gives no description.
+    source_ref: XSD DesignHour/@volume; type xs:double
+    nullable: true
+  - name: peak_hour_sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD PeakHour/@staStart; type station
+    nullable: true
+  - name: peak_hour_sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD PeakHour/@staEnd; type station
+    nullable: true
+  - name: peak_hour_sideof_road
+    type: enum
+    meaning: PeakHour sideofRoad; the XSD gives no description.
+    source_ref: XSD PeakHour/@sideofRoad; type sideofRoadType
+    nullable: true
+    values:
+      - value: right
+        meaning: Enumeration literal "right"; the XSD gives no description.
+      - value: left
+        meaning: Enumeration literal "left"; the XSD gives no description.
+      - value: both
+        meaning: Enumeration literal "both"; the XSD gives no description.
+  - name: peak_hour_volume
+    type: float
+    meaning: PeakHour volume; the XSD gives no description.
+    source_ref: XSD PeakHour/@volume; type xs:double
+    nullable: true
+notes: "Occurs 0..unbounded in landxml.roadway. Inlined elements DesignHour, PeakHour sit inside an unbounded xs:choice/xs:sequence in the XSD; modelled as at most once each. Review: Occurrence of inlined elements is a modelling judgement (XSD choice is unbounded). Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."
+needs_review: true

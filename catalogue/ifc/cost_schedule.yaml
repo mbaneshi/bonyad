@@ -1,0 +1,53 @@
+code: ifc.cost_schedule
+name: IfcCostSchedule
+kind: object
+base: ifc.control
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCostSchedule
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedMgmtElements/Entities/IfcCostSchedule.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcCostSchedule brings together instances of IfcCostItem either for the purpose of identifying purely cost information as in an estimate for constructions costs or for including cost information within another presentation form such as a work order.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a cost schedule that is specified in an enumeration.
+    source_ref: "IfcCostSchedule attribute 1: OPTIONAL IfcCostScheduleTypeEnum; enumeration IfcCostScheduleTypeEnum"
+    values:
+      - value: BUDGET
+        meaning: An allocation of money for a particular purpose.
+      - value: COSTPLAN
+        meaning: An assessment of the amount of money needing to be expended for a defined purpose based on incomplete information about the goods and services required for a construction or installation.
+      - value: ESTIMATE
+        meaning: An assessment of the amount of money needing to be expended for a defined purpose based on actual information about the goods and services required for a construction or installation.
+      - value: TENDER
+        meaning: An offer to provide goods and services.
+      - value: PRICEDBILLOFQUANTITIES
+        meaning: A complete listing of all work items forming construction or installation works in which costs have been allocated to work items.
+      - value: UNPRICEDBILLOFQUANTITIES
+        meaning: A complete listing of all work items forming construction or installation works in which costs have not yet been allocated to work items.
+      - value: SCHEDULEOFRATES
+        meaning: A listing of each type of goods forming construction or installation works with the cost of purchase, construction/installation, overheads and profit assigned so that additional items of that type can be costed.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.
+  - name: status
+    type: text
+    nullable: true
+    meaning: The current status of a cost schedule.
+    source_ref: "IfcCostSchedule attribute 2: OPTIONAL IfcLabel"
+  - name: submitted_on
+    type: timestamp
+    nullable: true
+    meaning: The date and time on which the cost schedule was submitted.
+    source_ref: "IfcCostSchedule attribute 3: OPTIONAL IfcDateTime"
+  - name: update_date
+    type: timestamp
+    nullable: true
+    meaning: The date and time that this cost schedule is updated; this allows tracking the schedule history.
+    source_ref: "IfcCostSchedule attribute 4: OPTIONAL IfcDateTime"

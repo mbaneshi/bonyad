@@ -1,0 +1,35 @@
+code: landxml.timing
+name: Timing
+kind: child
+parent: landxml.intersection
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Timing
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Timing`; the XSD gives no description.
+fields:
+  - name: station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Timing/@station; type station
+    nullable: true
+  - name: leg_number
+    type: int
+    meaning: Timing legNumber; the XSD gives no description.
+    source_ref: XSD Timing/@legNumber; type xs:int
+    nullable: true
+  - name: protected_turn_percent
+    type: float
+    meaning: Timing protectedTurnPercent; the XSD gives no description.
+    source_ref: XSD Timing/@protectedTurnPercent; type xs:double
+    nullable: true
+  - name: unprotected_turn_percent
+    type: float
+    meaning: Timing unprotectedTurnPercent; the XSD gives no description.
+    source_ref: XSD Timing/@unprotectedTurnPercent; type xs:double
+    nullable: true
+notes: Occurs 0..unbounded in landxml.intersection.

@@ -1,0 +1,41 @@
+code: landxml.turn_restriction
+name: TurnRestriction
+kind: child
+parent: landxml.intersection
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element TurnRestriction
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `TurnRestriction`; the XSD gives no description.
+fields:
+  - name: station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD TurnRestriction/@station; type station
+    nullable: true
+  - name: leg_number
+    type: int
+    meaning: TurnRestriction legNumber; the XSD gives no description.
+    source_ref: XSD TurnRestriction/@legNumber; type xs:int
+    nullable: true
+  - name: type
+    type: enum
+    meaning: TurnRestriction type; the XSD gives no description.
+    source_ref: XSD TurnRestriction/@type; type trafficTurnRestriction
+    nullable: true
+    values:
+      - value: none
+        meaning: Enumeration literal "none"; the XSD gives no description.
+      - value: no-left-turn
+        meaning: Enumeration literal "no-left-turn"; the XSD gives no description.
+      - value: no-right-turn
+        meaning: Enumeration literal "no-right-turn"; the XSD gives no description.
+      - value: "no-U-turn "
+        meaning: Enumeration literal "no-U-turn "; the XSD gives no description.
+      - value: "no-turn "
+        meaning: Enumeration literal "no-turn "; the XSD gives no description.
+notes: Occurs 0..unbounded in landxml.intersection.

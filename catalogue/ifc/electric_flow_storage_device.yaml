@@ -1,0 +1,42 @@
+code: ifc.electric_flow_storage_device
+name: IfcElectricFlowStorageDevice
+kind: entity
+base: ifc.flow_storage_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcElectricFlowStorageDevice
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcElectricFlowStorageDevice.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An electric flow storage device is a device in which electrical energy is stored and from which energy may be progressively released.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcElectricFlowStorageDevice (not described in the source documentation).
+    source_ref: "IfcElectricFlowStorageDevice attribute 1: OPTIONAL IfcElectricFlowStorageDeviceTypeEnum; enumeration IfcElectricFlowStorageDeviceTypeEnum"
+    values:
+      - value: BATTERY
+        meaning: A device for storing energy in chemical form so that it can be released as electrical energy.
+      - value: CAPACITORBANK
+        meaning: A device that stores electrical energy when an external power supply is present using the electrical property of capacitance.
+      - value: HARMONICFILTER
+        meaning: A device that constantly injects currents that precisely correspond to the harmonic components drawn by the load.
+      - value: INDUCTORBANK
+        meaning: A device that stores electrical energy in a magnetic field using electrical property of inductance.
+      - value: UPS
+        meaning: A device that provides a time limited alternative source of power supply in the event of failure of the main supply.
+      - value: CAPACITOR
+        meaning: A device that stores electric charge when an external power supply is present using the electrical property of capacitance.
+      - value: COMPENSATOR
+        meaning: A device that is used to fix or adjust the parameter of electric energy, such as voltage loss, power factor and so on.
+      - value: INDUCTOR
+        meaning: A device used in circuits or power systems due to their inductance, acting as a component of electric storage device.
+      - value: RECHARGER
+        meaning: A recharger or battery charger is a device used to put energy into a secondary cell or rechargeable battery by forcing an electric current through it.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

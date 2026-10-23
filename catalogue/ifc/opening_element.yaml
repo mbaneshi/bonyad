@@ -1,0 +1,29 @@
+code: ifc.opening_element
+name: IfcOpeningElement
+kind: entity
+base: ifc.feature_element_subtraction
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcOpeningElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcOpeningElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The opening element stands for opening, recess or chase, all reflecting voids. It represents a void within any element that has physical manifestation.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for an opening that is specified in an enumeration.
+    source_ref: "IfcOpeningElement attribute 1: OPTIONAL IfcOpeningElementTypeEnum; enumeration IfcOpeningElementTypeEnum"
+    values:
+      - value: OPENING
+        meaning: An opening as subtraction feature that cuts through the element it voids.
+      - value: RECESS
+        meaning: An opening as subtraction feature that does not cut through the element it voids.
+      - value: USERDEFINED
+        meaning: User-defined opening element.
+      - value: NOTDEFINED
+        meaning: Undefined opening element.
+notes: "Inverse attributes not stored: HasFillings. SUPERTYPE OF ONEOF ( IfcOpeningStandardCase )."

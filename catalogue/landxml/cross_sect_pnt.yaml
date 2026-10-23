@@ -1,0 +1,65 @@
+code: landxml.cross_sect_pnt
+name: CrossSectPnt
+kind: object
+base: landxml.point_type
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element CrossSectPnt
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `CrossSectPnt`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.design_cross_sect_surf
+    nullable: true
+    meaning: The landxml.design_cross_sect_surf row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it derives from a base type)"
+  - name: data_format
+    type: enum
+    meaning: CrossSectPnt dataFormat; the XSD gives no description.
+    source_ref: XSD CrossSectPnt/@dataFormat; type dataFormatType
+    nullable: true
+    values:
+      - value: Offset Elevation
+        meaning: Enumeration literal "Offset Elevation"; the XSD gives no description.
+      - value: Slope Distance
+        meaning: Enumeration literal "Slope Distance"; the XSD gives no description.
+    default: Offset Elevation
+  - name: align_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD CrossSectPnt/@alignRef; type alignmentNameRef
+    nullable: true
+    ref_to: landxml.alignment
+  - name: align_ref_station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD CrossSectPnt/@alignRefStation; type station
+    nullable: true
+  - name: plan_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD CrossSectPnt/@planFeatureRef; type planFeatureNameRef
+    nullable: true
+    ref_to: landxml.plan_feature
+  - name: plan_feature_ref_station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD CrossSectPnt/@planFeatureRefStation; type station
+    nullable: true
+  - name: parcel_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD CrossSectPnt/@parcelRef; type parcelNameRef
+    nullable: true
+    ref_to: landxml.parcel
+  - name: parcel_ref_station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD CrossSectPnt/@parcelRefStation; type station
+    nullable: true
+notes: Occurs 0..unbounded in landxml.design_cross_sect_surf. Stored as an object rather than an ordered child because it derives from a base type; the XSD container is the container reference.

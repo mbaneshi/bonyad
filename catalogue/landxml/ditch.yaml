@@ -1,0 +1,41 @@
+code: landxml.ditch
+name: Ditch
+kind: child
+parent: landxml.roadway
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Ditch
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Ditch`; the XSD gives no description.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Ditch/@staStart; type station
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Ditch/@staEnd; type station
+  - name: bottom_width
+    type: float
+    meaning: Ditch bottomWidth; the XSD gives no description.
+    source_ref: XSD Ditch/@bottomWidth; type xs:double
+  - name: bottom_shape
+    type: enum
+    meaning: Ditch bottomShape; the XSD gives no description.
+    source_ref: XSD Ditch/@bottomShape; type ditchBottomShape
+    nullable: true
+    values:
+      - value: true-V
+        meaning: Enumeration literal "true-V"; the XSD gives no description.
+      - value: rounded-V
+        meaning: Enumeration literal "rounded-V"; the XSD gives no description.
+      - value: rounded-trapezoidal
+        meaning: Enumeration literal "rounded-trapezoidal"; the XSD gives no description.
+      - value: flat-trapezoidal
+        meaning: Enumeration literal "flat-trapezoidal"; the XSD gives no description.
+notes: Occurs 0..unbounded via Roadside in landxml.roadway.

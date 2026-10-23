@@ -1,0 +1,25 @@
+code: ifc.text_style_for_defined_font
+name: IfcTextStyleForDefinedFont
+kind: object
+base: ifc.presentation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextStyleForDefinedFont
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcTextStyleForDefinedFont.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcTextStyleForDefinedFont combines the text font color with an optional background color, that fills the text box, defined by the planar extent given to the text literal.
+fields:
+  - name: colour
+    type: ref
+    meaning: This property describes the text color of an element (often referred to as the foreground color).
+    source_ref: "IfcTextStyleForDefinedFont attribute 1: IfcColour; via select IfcColour"
+    ref_to: ifc.presentation_item
+  - name: background_colour
+    type: ref
+    nullable: true
+    meaning: This property sets the background color of an element.
+    source_ref: "IfcTextStyleForDefinedFont attribute 2: OPTIONAL IfcColour; via select IfcColour"
+    ref_to: ifc.presentation_item

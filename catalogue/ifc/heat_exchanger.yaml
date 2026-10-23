@@ -1,0 +1,30 @@
+code: ifc.heat_exchanger
+name: IfcHeatExchanger
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcHeatExchanger
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcHeatExchanger.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A heat exchanger is a device used to provide heat transfer between non-mixing media such as plate and shell and tube heat exchangers.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcHeatExchanger (not described in the source documentation).
+    source_ref: "IfcHeatExchanger attribute 1: OPTIONAL IfcHeatExchangerTypeEnum; enumeration IfcHeatExchangerTypeEnum"
+    values:
+      - value: PLATE
+        meaning: Plate heat exchanger.
+      - value: SHELLANDTUBE
+        meaning: Shell and Tube heat exchanger.
+      - value: TURNOUTHEATING
+        meaning: A device used to remove snow from railways.
+      - value: USERDEFINED
+        meaning: User-defined heat exchanger type.
+      - value: NOTDEFINED
+        meaning: Undefined heat exchanger type.

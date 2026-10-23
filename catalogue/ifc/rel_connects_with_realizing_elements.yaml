@@ -1,0 +1,19 @@
+code: ifc.rel_connects_with_realizing_elements
+name: IfcRelConnectsWithRealizingElements
+kind: object
+base: ifc.rel_connects_elements
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelConnectsWithRealizingElements
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcRelConnectsWithRealizingElements.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcRelConnectsWithRealizingElements defines a generic relationship that is made between two elements that require the realization of that relationship by means of further realizing elements.
+fields:
+  - name: connection_type
+    type: text
+    nullable: true
+    meaning: The type of the connection given for informal purposes, it may include labels, like 'joint', 'rigid joint', 'flexible joint', etc.
+    source_ref: "IfcRelConnectsWithRealizingElements attribute 2: OPTIONAL IfcLabel"

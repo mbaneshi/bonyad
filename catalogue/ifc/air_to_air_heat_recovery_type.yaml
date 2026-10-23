@@ -1,0 +1,41 @@
+code: ifc.air_to_air_heat_recovery_type
+name: IfcAirToAirHeatRecoveryType
+kind: symbol
+base: ifc.energy_conversion_device_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcAirToAirHeatRecoveryType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcAirToAirHeatRecoveryType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The energy conversion device type IfcAirToAirHeatRecoveryType defines commonly shared information for occurrences of air to air heat recoverys.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Defines the type of air to air heat recovery device.
+    source_ref: "IfcAirToAirHeatRecoveryType attribute 1: IfcAirToAirHeatRecoveryTypeEnum; enumeration IfcAirToAirHeatRecoveryTypeEnum"
+    values:
+      - value: FIXEDPLATECOUNTERFLOWEXCHANGER
+        meaning: Heat exchanger with moving parts and alternate layers of plates, separated and sealed from the exhaust and supply air stream passages with primary air entering at secondary air outlet location and exiting at secondary …
+      - value: FIXEDPLATECROSSFLOWEXCHANGER
+        meaning: Heat exchanger with moving parts and alternate layers of plates, separated and sealed from the exhaust and supply air stream passages with secondary air flow in the direction perpendicular to primary air flow.
+      - value: FIXEDPLATEPARALLELFLOWEXCHANGER
+        meaning: Heat exchanger with moving parts and alternate layers of plates, separated and sealed from the exhaust and supply air stream passages with primary air entering at secondary air inlet location and exiting at secondary …
+      - value: ROTARYWHEEL
+        meaning: A heat wheel with a revolving cylinder filled with an air-permeable medium having a large internal surface area.
+      - value: RUNAROUNDCOILLOOP
+        meaning: A typical coil energy recovery loop places extended surface, finned tube water coils in the supply and exhaust airstreams of a building.
+      - value: HEATPIPE
+        meaning: A passive energy recovery device with a heat pipe divided into evaporator and condenser sections.
+      - value: TWINTOWERENTHALPYRECOVERYLOOPS
+        meaning: An air-to-liquid, liquid-to-air enthalpy recovery system with a sorbent liquid circulates continuously between supply and exhaust airstreams, alternately contacting both airstreams directly in contactor towers.
+      - value: THERMOSIPHONSEALEDTUBEHEATEXCHANGERS
+        meaning: Sealed systems that consist of an evaporator, a condenser, interconnecting piping, and an intermediate working fluid that is present in both liquid and vapor phases where the evaporator and the condenser are usually at …
+      - value: THERMOSIPHONCOILTYPEHEATEXCHANGERS
+        meaning: Sealed systems that consist of an evaporator, a condenser, interconnecting piping, and an intermediate working fluid that is present in both liquid and vapor phases where the evaporator and condensor coils are installed …
+      - value: USERDEFINED
+        meaning: User-defined air to air heat recovery type.
+      - value: NOTDEFINED
+        meaning: Undefined air to air heat recovery type.

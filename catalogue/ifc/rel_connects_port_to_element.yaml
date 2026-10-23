@@ -1,0 +1,24 @@
+code: ifc.rel_connects_port_to_element
+name: IfcRelConnectsPortToElement
+kind: object
+base: ifc.rel_connects
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelConnectsPortToElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcRelConnectsPortToElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcRelConnectsPortToElement is a relationship between a distribution element and dynamically connected ports where connections are realised to other distribution elements.
+fields:
+  - name: relating_port
+    type: ref
+    meaning: Reference to an Port that is connected by the objectified relationship.
+    source_ref: "IfcRelConnectsPortToElement attribute 1: IfcPort"
+    ref_to: ifc.port
+  - name: related_element
+    type: ref
+    meaning: Reference to an IfcDistributionElement that has ports assigned.
+    source_ref: "IfcRelConnectsPortToElement attribute 2: IfcDistributionElement"
+    ref_to: ifc.distribution_element

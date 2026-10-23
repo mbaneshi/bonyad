@@ -1,0 +1,118 @@
+code: ifc.si_unit
+name: IfcSIUnit
+kind: object
+base: ifc.named_unit
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSIUnit
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMeasureResource/Entities/IfcSIUnit.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcSIUnit covers both standard base SI units such as meter and second, and derived SI units such as Pascal, square meter and cubic meter.
+fields:
+  - name: prefix
+    type: enum
+    nullable: true
+    meaning: The SI Prefix for defining decimal multiples and submultiples of the unit.
+    source_ref: "IfcSIUnit attribute 1: OPTIONAL IfcSIPrefix; enumeration IfcSIPrefix"
+    values:
+      - value: EXA
+        meaning: 10\^18.
+      - value: PETA
+        meaning: 10\^15.
+      - value: TERA
+        meaning: 10\^12.
+      - value: GIGA
+        meaning: 10\^9.
+      - value: MEGA
+        meaning: 10\^6.
+      - value: KILO
+        meaning: 10\^3.
+      - value: HECTO
+        meaning: 10\^2.
+      - value: DECA
+        meaning: "10."
+      - value: DECI
+        meaning: 10\^-1.
+      - value: CENTI
+        meaning: 10\^-2.
+      - value: MILLI
+        meaning: 10\^-3.
+      - value: MICRO
+        meaning: 10\^-6.
+      - value: NANO
+        meaning: 10\^-9.
+      - value: PICO
+        meaning: 10\^-12.
+      - value: FEMTO
+        meaning: 10\^-15.
+      - value: ATTO
+        meaning: 10\^-18.
+  - name: name
+    type: enum
+    meaning: The word, or group of words, by which the SI unit is referred to.
+    source_ref: "IfcSIUnit attribute 2: IfcSIUnitName; enumeration IfcSIUnitName"
+    values:
+      - value: AMPERE
+        meaning: Unit for electric current.
+      - value: BECQUEREL
+        meaning: Unit for radioactivity.
+      - value: CANDELA
+        meaning: Unit for luminousintensity.
+      - value: COULOMB
+        meaning: Unit for electric charge.
+      - value: CUBIC_METRE
+        meaning: Unit for volume.
+      - value: DEGREE_CELSIUS
+        meaning: Unit for thermodynamic temperature.
+      - value: FARAD
+        meaning: Unit for electric capacitance.
+      - value: GRAM
+        meaning: Unit for mass.
+      - value: GRAY
+        meaning: Unit for absorbed radioactive dose.
+      - value: HENRY
+        meaning: Unit for inductance.
+      - value: HERTZ
+        meaning: Unit for frequency.
+      - value: JOULE
+        meaning: Unit for energy.
+      - value: KELVIN
+        meaning: Unit for thermodynamic temperature.
+      - value: LUMEN
+        meaning: Unit for luminous flux.
+      - value: LUX
+        meaning: Unit for illuminance.
+      - value: METRE
+        meaning: Unit for length.
+      - value: MOLE
+        meaning: Unit for amount of substance.
+      - value: NEWTON
+        meaning: Unit for force.
+      - value: OHM
+        meaning: Unit for electric resistance.
+      - value: PASCAL
+        meaning: Unit for pressure.
+      - value: RADIAN
+        meaning: Unit for plane angle.
+      - value: SECOND
+        meaning: Unit for time.
+      - value: SIEMENS
+        meaning: Unit for electric conductance.
+      - value: SIEVERT
+        meaning: Unit for radioactive dose equivalent.
+      - value: SQUARE_METRE
+        meaning: Unit for area.
+      - value: STERADIAN
+        meaning: Unit for solid angle.
+      - value: TESLA
+        meaning: Unit for magnetic flux density.
+      - value: VOLT
+        meaning: Unit for electric voltage.
+      - value: WATT
+        meaning: Unit for power.
+      - value: WEBER
+        meaning: Unit for magnetic flux.
+notes: "Inherited attributes redeclared as derived here (always computed, never stored for this type): Dimensions."

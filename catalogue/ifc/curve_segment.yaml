@@ -1,0 +1,33 @@
+code: ifc.curve_segment
+name: IfcCurveSegment
+kind: entity
+base: ifc.segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCurveSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcCurveSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A type of segment positioned along a curve cutting a segment from the parent curve. If the segment is placed through IfcAxis2PlacementLinear, the positioning curve (Placement.Location.BasisCurve) does not necessarily correspond with the ParentCurve.
+fields:
+  - name: placement
+    type: ref
+    meaning: Placement in the context of the curve using this segment.
+    source_ref: "IfcCurveSegment attribute 1: IfcPlacement"
+    ref_to: ifc.placement
+  - name: segment_start
+    type: text
+    meaning: First trimming point of the curve segment on the ParentCurve.
+    source_ref: "IfcCurveSegment attribute 2: IfcCurveMeasureSelect; SELECT IfcCurveMeasureSelect of value types, stored as text (the member type tag is not kept)"
+  - name: segment_length
+    type: text
+    meaning: Length of segment measured as length or parameter value from SegmentStart.
+    source_ref: "IfcCurveSegment attribute 3: IfcCurveMeasureSelect; SELECT IfcCurveMeasureSelect of value types, stored as text (the member type tag is not kept)"
+  - name: parent_curve
+    type: ref
+    meaning: Curve to be used as base for the segment definition.
+    source_ref: "IfcCurveSegment attribute 4: IfcCurve"
+    ref_to: ifc.curve
+notes: "Derived attributes not stored: Dim."

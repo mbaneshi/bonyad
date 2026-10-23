@@ -1,0 +1,47 @@
+code: landxml.surf_volume
+name: SurfVolume
+kind: child
+parent: landxml.surf_volumes
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element SurfVolume
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: volume calculation results between two surfaces
+fields:
+  - name: surf_base
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD SurfVolume/@surfBase; type surfaceNameRef
+    ref_to: landxml.surface
+  - name: surf_compare
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD SurfVolume/@surfCompare; type surfaceNameRef
+    ref_to: landxml.surface
+  - name: vol_cut
+    type: float
+    meaning: SurfVolume volCut; the XSD gives no description.
+    source_ref: XSD SurfVolume/@volCut; type xs:double
+  - name: vol_fill
+    type: float
+    meaning: SurfVolume volFill; the XSD gives no description.
+    source_ref: XSD SurfVolume/@volFill; type xs:double
+  - name: vol_total
+    type: float
+    meaning: SurfVolume volTotal; the XSD gives no description.
+    source_ref: XSD SurfVolume/@volTotal; type xs:double
+  - name: desc
+    type: text
+    meaning: SurfVolume desc; the XSD gives no description.
+    source_ref: XSD SurfVolume/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: SurfVolume name; the XSD gives no description.
+    source_ref: XSD SurfVolume/@name; type xs:string
+    nullable: true
+notes: Occurs 1..unbounded in landxml.surf_volumes.

@@ -1,0 +1,25 @@
+code: ifc.extended_properties
+name: IfcExtendedProperties
+kind: abstract
+base: ifc.property_abstraction
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcExtendedProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPropertyResource/Entities/IfcExtendedProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcExtendedProperties is an abstract supertype of all extensible property collections that are applicable to certain characterized entities. Instantiable subtypes of IfcExtendedProperties assign the property collection to a particular characterized entity.
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: The name given to the set of properties.
+    source_ref: "IfcExtendedProperties attribute 1: OPTIONAL IfcIdentifier"
+  - name: description
+    type: text
+    nullable: true
+    meaning: Description for the set of properties.
+    source_ref: "IfcExtendedProperties attribute 2: OPTIONAL IfcText"
+notes: SUPERTYPE OF ONEOF ( IfcMaterialProperties , IfcProfileProperties ).

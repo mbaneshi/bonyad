@@ -1,0 +1,24 @@
+code: ifc.curtain_wall
+name: IfcCurtainWall
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCurtainWall
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcCurtainWall.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A curtain wall is a wall of a building which is an assembly of components, hung from the edge of the floor/roof structure rather than bearing on a floor. Curtain wall is represented as a building element assembly and implemented as a subtype of IfcBuiltElement that uses an IfcRelAggregates relationship.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a curtain wall that is specified in an enumeration.
+    source_ref: "IfcCurtainWall attribute 1: OPTIONAL IfcCurtainWallTypeEnum; enumeration IfcCurtainWallTypeEnum"
+    values:
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)

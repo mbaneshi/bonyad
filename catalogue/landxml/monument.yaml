@@ -1,0 +1,143 @@
+code: landxml.monument
+name: Monument
+kind: child
+parent: landxml.monuments
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Monument
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: This is a new element that represents a physical monument placed to mark a CgPoint within a survey
+fields:
+  - name: name
+    type: text
+    meaning: Monument name; the XSD gives no description.
+    source_ref: XSD Monument/@name; type xs:string
+  - name: pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Monument/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Monument/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: desc
+    type: text
+    meaning: Monument desc; the XSD gives no description.
+    source_ref: XSD Monument/@desc; type xs:string
+    nullable: true
+  - name: state
+    type: text
+    meaning: This is a list of states for a monument each jurisdiction may haqve a list defined by regulation.
+    source_ref: XSD Monument/@state; type monumentState
+    nullable: true
+  - name: type
+    type: text
+    meaning: This is a list of allowable monument types that can be used or identified for a survey, ie peg, spike, pillar etc. Local custom will define this list.
+    source_ref: XSD Monument/@type; type monumentType
+    nullable: true
+  - name: condition
+    type: text
+    meaning: This gives a list of allowable local conditions defined by regulation can be defined by the jurisdiction.
+    source_ref: XSD Monument/@condition; type monumentCondition
+    nullable: true
+  - name: category
+    type: enum
+    meaning: This indicates the category of a geodetic Monument.
+    source_ref: XSD Monument/@category; type monumentCategory
+    nullable: true
+    values:
+      - value: benchmark
+        meaning: Enumeration literal "benchmark"; the XSD gives no description.
+      - value: central
+        meaning: Enumeration literal "central"; the XSD gives no description.
+      - value: reference
+        meaning: Enumeration literal "reference"; the XSD gives no description.
+      - value: rural
+        meaning: Enumeration literal "rural"; the XSD gives no description.
+      - value: standard traverse
+        meaning: Enumeration literal "standard traverse"; the XSD gives no description.
+      - value: urban standard traverse
+        meaning: Enumeration literal "urban standard traverse"; the XSD gives no description.
+  - name: beacon
+    type: enum
+    meaning: Indicates whether there is any physical structure for the monument - helps location, these enumerations may need expanding.
+    source_ref: XSD Monument/@beacon; type beaconType
+    nullable: true
+    values:
+      - value: cairn
+        meaning: Enumeration literal "cairn"; the XSD gives no description.
+      - value: chimney
+        meaning: Enumeration literal "chimney"; the XSD gives no description.
+      - value: large quadripod
+        meaning: Enumeration literal "large quadripod"; the XSD gives no description.
+      - value: lighthouse
+        meaning: Enumeration literal "lighthouse"; the XSD gives no description.
+      - value: marine beacon
+        meaning: Enumeration literal "marine beacon"; the XSD gives no description.
+      - value: mast
+        meaning: Enumeration literal "mast"; the XSD gives no description.
+      - value: mast with targets
+        meaning: Enumeration literal "mast with targets"; the XSD gives no description.
+      - value: no beacon
+        meaning: Enumeration literal "no beacon"; the XSD gives no description.
+      - value: other
+        meaning: Enumeration literal "other"; the XSD gives no description.
+      - value: pillar
+        meaning: Enumeration literal "pillar"; the XSD gives no description.
+      - value: post
+        meaning: Enumeration literal "post"; the XSD gives no description.
+      - value: small quadripod
+        meaning: Enumeration literal "small quadripod"; the XSD gives no description.
+      - value: tower
+        meaning: Enumeration literal "tower"; the XSD gives no description.
+      - value: tripod
+        meaning: Enumeration literal "tripod"; the XSD gives no description.
+      - value: unknown
+        meaning: Enumeration literal "unknown"; the XSD gives no description.
+  - name: beacon_protection
+    type: enum
+    meaning: Indicates any structure that protects the monument, these enumerations may need expanding.
+    source_ref: XSD Monument/@beaconProtection; type beaconProtectionType
+    nullable: true
+    values:
+      - value: cover
+        meaning: Enumeration literal "cover"; the XSD gives no description.
+      - value: cover and box
+        meaning: Enumeration literal "cover and box"; the XSD gives no description.
+      - value: fence enclosure
+        meaning: Enumeration literal "fence enclosure"; the XSD gives no description.
+      - value: marker post
+        meaning: Enumeration literal "marker post"; the XSD gives no description.
+      - value: no protection
+        meaning: Enumeration literal "no protection"; the XSD gives no description.
+      - value: other
+        meaning: Enumeration literal "other"; the XSD gives no description.
+      - value: quadripod
+        meaning: Enumeration literal "quadripod"; the XSD gives no description.
+      - value: unknown
+        meaning: Enumeration literal "unknown"; the XSD gives no description.
+  - name: o_id
+    type: text
+    meaning: Monument oID; the XSD gives no description.
+    source_ref: XSD Monument/@oID; type xs:string
+    nullable: true
+  - name: reference
+    type: text
+    meaning: Monument reference; the XSD gives no description.
+    source_ref: XSD Monument/@reference; type xs:string
+    nullable: true
+  - name: origin_survey
+    type: text
+    meaning: Monument originSurvey; the XSD gives no description.
+    source_ref: XSD Monument/@originSurvey; type xs:string
+    nullable: true
+notes: "Occurs 1..unbounded in landxml.monuments; 0..unbounded in landxml.gps_antenna_details. Review: Contained by more than one type in the XSD (also landxml.gps_antenna_details); the catalogue allows one parent, so the first is used."
+needs_review: true

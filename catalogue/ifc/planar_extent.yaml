@@ -1,0 +1,23 @@
+code: ifc.planar_extent
+name: IfcPlanarExtent
+kind: entity
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPlanarExtent
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationDefinitionResource/Entities/IfcPlanarExtent.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The planar extent defines the extent along the two axes of the two-dimensional coordinate system, independently of its position. If the planar extent is used within a three-dimensional coordinate system, it defines the extent along the x and y axes.
+fields:
+  - name: size_in_x
+    type: length
+    meaning: The extent in the direction of the x-axis.
+    source_ref: "IfcPlanarExtent attribute 1: IfcLengthMeasure"
+  - name: size_in_y
+    type: length
+    meaning: The extent in the direction of the y-axis.
+    source_ref: "IfcPlanarExtent attribute 2: IfcLengthMeasure"
+notes: SUPERTYPE OF ONEOF ( IfcPlanarBox ).

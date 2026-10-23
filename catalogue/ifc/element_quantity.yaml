@@ -1,0 +1,19 @@
+code: ifc.element_quantity
+name: IfcElementQuantity
+kind: symbol
+base: ifc.quantity_set
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcElementQuantity
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcElementQuantity.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcElementQuantity defines a set of derived measures of an element's physical property. Elements could be spatial structure elements (like buildings, storeys, or spaces) or building elements (like walls, slabs, finishes).
+fields:
+  - name: method_of_measurement
+    type: text
+    nullable: true
+    meaning: Name of the method of measurement used to calculate the element quantity.
+    source_ref: "IfcElementQuantity attribute 1: OPTIONAL IfcLabel"

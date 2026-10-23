@@ -1,0 +1,42 @@
+code: landxml.target_setup
+name: TargetSetup
+kind: child
+parent: landxml.instrument_setup
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element TargetSetup
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `TargetSetup`; the XSD gives no description.
+fields:
+  - name: id
+    type: text
+    meaning: TargetSetup id; the XSD gives no description.
+    source_ref: XSD TargetSetup/@id; type xs:ID
+    nullable: true
+  - name: target_height
+    type: float
+    meaning: TargetSetup targetHeight; the XSD gives no description.
+    source_ref: XSD TargetSetup/@targetHeight; type xs:double
+    nullable: true
+  - name: edm_target_vert_offset
+    type: float
+    meaning: TargetSetup edmTargetVertOffset; the XSD gives no description.
+    source_ref: XSD TargetSetup/@edmTargetVertOffset; type xs:double
+    nullable: true
+  - name: prism_constant
+    type: float
+    meaning: TargetSetup prismConstant; the XSD gives no description.
+    source_ref: XSD TargetSetup/@prismConstant; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs 0..unbounded in landxml.instrument_setup; 0..unbounded in landxml.laser_setup; 0..unbounded in landxml.gps_setup; at most once (XSD: unbounded choice) in landxml.survey. Review: Contained by more than one type in the XSD (also landxml.laser_setup, landxml.gps_setup, landxml.survey); the catalogue allows one parent, so the first is used."
+needs_review: true

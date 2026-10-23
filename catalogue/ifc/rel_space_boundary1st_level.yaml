@@ -1,0 +1,21 @@
+code: ifc.rel_space_boundary1st_level
+name: IfcRelSpaceBoundary1stLevel
+kind: object
+base: ifc.rel_space_boundary
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelSpaceBoundary1stLevel
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcRelSpaceBoundary1stLevel.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The 1st level space boundary defines the physical or virtual delimiter of a space by the relationship IfcRelSpaceBoundary1stLevel to the surrounding elements.
+fields:
+  - name: parent_boundary
+    type: ref
+    nullable: true
+    meaning: Reference to the host, or parent, space boundary within which this inner boundary is defined.
+    source_ref: "IfcRelSpaceBoundary1stLevel attribute 1: OPTIONAL IfcRelSpaceBoundary1stLevel"
+    ref_to: ifc.rel_space_boundary1st_level
+notes: "Inverse attributes not stored: InnerBoundaries. SUPERTYPE OF ONEOF ( IfcRelSpaceBoundary2ndLevel )."

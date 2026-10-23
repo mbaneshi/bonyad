@@ -17,10 +17,10 @@ itself. The schema file has no licence text. So the licence of the schema is **u
 catalogue YAML reproduces its element names, attribute names, enumeration values and documentation
 sentences (restructured, but plainly derived).
 
-Decision (same as #40, IFC):
-- The generated YAML in `catalogue/landxml/` is **gitignored and never committed or pushed** (`catalogue/landxml/.gitignore`).
-- Committed: the harvester, its tests, this file, `GAPS.md`, `REVIEW.md`.
-- Anyone can regenerate the 170 YAML files locally from the pinned XSD (checksum above).
-- Revisit when LandXML.org confirms in writing that the Open Software License covers the schema (or publishes it under an open licence). If the BSD-style text applies, publishing needs: keep the copyright notice "Copyright (c) 1999-2006 LandXML.org", the licence conditions and disclaimer, and add the attribution to the repository NOTICE.
+Decision (2026-10-23, issue #54):
+- The maintainer decided the generated YAML is safe to publish, and `catalogue/landxml/*.yaml` is now committed. LandXML.org has not confirmed in writing that its Open Software License covers the schema; this is the maintainer's risk decision, not a licence grant.
+- As if the BSD-style text applied, the notice "Copyright (c) 1999-2006 LandXML.org", the licence conditions and the disclaimer are kept in `NOTICE`.
+- The 170 YAML files regenerate from the pinned XSD (checksum above).
+- If LandXML.org objects, remove `catalogue/landxml/*.yaml` and restore the ignore rule.
 
 This is an engineering decision, not legal advice.

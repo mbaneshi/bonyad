@@ -1,0 +1,38 @@
+code: ifc.light_source
+name: IfcLightSource
+kind: abstract
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLightSource
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationOrganizationResource/Entities/IfcLightSource.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcLightSource: no description in the source documentation."
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: The name given to the light source in presentation.
+    source_ref: "IfcLightSource attribute 1: OPTIONAL IfcLabel"
+  - name: light_colour
+    type: ref
+    meaning: "Definition from ISO/CD 10303-46:1992: Based on the current lighting model, the colour of the light to be used for shading."
+    source_ref: "IfcLightSource attribute 2: IfcColourRgb"
+    ref_to: ifc.colour_rgb
+  - name: ambient_intensity
+    type: ratio
+    nullable: true
+    meaning: "Definition from VRML97 - ISO/IEC 14772-1:1997: The ambientIntensity specifies the intensity of the ambient emission from the light."
+    source_ref: "IfcLightSource attribute 3: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+  - name: intensity
+    type: ratio
+    nullable: true
+    meaning: "Definition from VRML97 - ISO/IEC 14772-1:1997: The intensity field specifies the brightness of the direct emission from the light."
+    source_ref: "IfcLightSource attribute 4: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+needs_review: true
+notes: "SUPERTYPE OF ONEOF ( IfcLightSourceAmbient , IfcLightSourceDirectional , IfcLightSourceGoniometric , IfcLightSourcePositional ). Review: no description found for IfcLightSource in the documentation at the pinned commit."

@@ -1,0 +1,20 @@
+code: ifc.control
+name: IfcControl
+kind: abstract
+base: ifc.object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcControl
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcControl.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcControl is the abstract generalization of all concepts that control or constrain the utilization of products, processes, or resources in general. It can be seen as a regulation, cost schedule, request or order, or other requirements applied to a product, process or resource whose requirements and provisions must be fulfilled.
+fields:
+  - name: identification
+    type: text
+    nullable: true
+    meaning: An identifying designation given to a control It is the identifier at the occurrence level.
+    source_ref: "IfcControl attribute 1: OPTIONAL IfcIdentifier"
+notes: "Inverse attributes not stored: Controls. SUPERTYPE OF ONEOF ( IfcActionRequest , IfcCostItem , IfcCostSchedule , IfcPerformanceHistory , IfcPermit , IfcProjectOrder , IfcWorkCalendar , IfcWorkControl )."

@@ -1,0 +1,42 @@
+code: ifc.structural_result_group
+name: IfcStructuralResultGroup
+kind: object
+base: ifc.group
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralResultGroup
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcStructuralResultGroup.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Instances of the entity IfcStructuralResultGroup are used to group results of structural analysis calculations and to capture the connection to the underlying basic load group. The basic functionality for grouping inherited from IfcGroup is used to collect instances from IfcStructuralReaction or its respective subclasses.
+fields:
+  - name: theory_type
+    type: enum
+    meaning: Specifies the analysis theory used to obtain the respective results.
+    source_ref: "IfcStructuralResultGroup attribute 1: IfcAnalysisTheoryTypeEnum; enumeration IfcAnalysisTheoryTypeEnum"
+    values:
+      - value: FIRST_ORDER_THEORY
+        meaning: 1st order theory.
+      - value: SECOND_ORDER_THEORY
+        meaning: 2nd order theory.
+      - value: THIRD_ORDER_THEORY
+        meaning: 3rd order theory.
+      - value: FULL_NONLINEAR_THEORY
+        meaning: Full non-linear theory.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Undefined.
+  - name: result_for_load_group
+    type: ref
+    nullable: true
+    meaning: Reference to an instance of IfcStructuralLoadGroup for which this instance represents the result.
+    source_ref: "IfcStructuralResultGroup attribute 2: OPTIONAL IfcStructuralLoadGroup"
+    ref_to: ifc.structural_load_group
+  - name: is_linear
+    type: bool
+    meaning: This value allows to easily recognize whether a linear analysis has been applied (allowing the superposition of analysis results).
+    source_ref: "IfcStructuralResultGroup attribute 3: IfcBoolean"
+notes: "Inverse attributes not stored: ResultGroupFor."

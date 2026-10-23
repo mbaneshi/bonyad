@@ -1,0 +1,29 @@
+code: ifc.block
+name: IfcBlock
+kind: entity
+base: ifc.csg_primitive3d
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBlock
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcBlock.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcBlock is a Construction Solid Geometry (CSG) 3D primitive. It is defined by a position and a positive distance along the three orthogonal axes.
+fields:
+  - name: x_length
+    type: length
+    meaning: The size of the block along the placement X axis.
+    source_ref: "IfcBlock attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: y_length
+    type: length
+    meaning: The size of the block along the placement Y axis.
+    source_ref: "IfcBlock attribute 2: IfcPositiveLengthMeasure"
+    check: positive
+  - name: z_length
+    type: length
+    meaning: The size of the block along the placement Z axis.
+    source_ref: "IfcBlock attribute 3: IfcPositiveLengthMeasure"
+    check: positive

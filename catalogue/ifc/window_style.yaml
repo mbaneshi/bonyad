@@ -1,0 +1,72 @@
+code: ifc.window_style
+name: IfcWindowStyle
+kind: symbol
+base: ifc.type_product
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcWindowStyle
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/reference_schemas/IFC4x3_RC4.exp
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcWindowStyle: no description in the source documentation."
+fields:
+  - name: construction_type
+    type: enum
+    meaning: ConstructionType attribute of IfcWindowStyle (not described in the source documentation).
+    source_ref: "IfcWindowStyle attribute 1: IfcWindowStyleConstructionEnum; enumeration IfcWindowStyleConstructionEnum"
+    values:
+      - value: ALUMINIUM
+        meaning: ALUMINIUM (no description for this literal in the source documentation)
+      - value: HIGH_GRADE_STEEL
+        meaning: HIGH_GRADE_STEEL (no description for this literal in the source documentation)
+      - value: STEEL
+        meaning: STEEL (no description for this literal in the source documentation)
+      - value: WOOD
+        meaning: WOOD (no description for this literal in the source documentation)
+      - value: ALUMINIUM_WOOD
+        meaning: ALUMINIUM_WOOD (no description for this literal in the source documentation)
+      - value: PLASTIC
+        meaning: PLASTIC (no description for this literal in the source documentation)
+      - value: OTHER_CONSTRUCTION
+        meaning: OTHER_CONSTRUCTION (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: operation_type
+    type: enum
+    meaning: OperationType attribute of IfcWindowStyle (not described in the source documentation).
+    source_ref: "IfcWindowStyle attribute 2: IfcWindowStyleOperationEnum; enumeration IfcWindowStyleOperationEnum"
+    values:
+      - value: SINGLE_PANEL
+        meaning: SINGLE_PANEL (no description for this literal in the source documentation)
+      - value: DOUBLE_PANEL_VERTICAL
+        meaning: DOUBLE_PANEL_VERTICAL (no description for this literal in the source documentation)
+      - value: DOUBLE_PANEL_HORIZONTAL
+        meaning: DOUBLE_PANEL_HORIZONTAL (no description for this literal in the source documentation)
+      - value: TRIPLE_PANEL_VERTICAL
+        meaning: TRIPLE_PANEL_VERTICAL (no description for this literal in the source documentation)
+      - value: TRIPLE_PANEL_BOTTOM
+        meaning: TRIPLE_PANEL_BOTTOM (no description for this literal in the source documentation)
+      - value: TRIPLE_PANEL_TOP
+        meaning: TRIPLE_PANEL_TOP (no description for this literal in the source documentation)
+      - value: TRIPLE_PANEL_LEFT
+        meaning: TRIPLE_PANEL_LEFT (no description for this literal in the source documentation)
+      - value: TRIPLE_PANEL_RIGHT
+        meaning: TRIPLE_PANEL_RIGHT (no description for this literal in the source documentation)
+      - value: TRIPLE_PANEL_HORIZONTAL
+        meaning: TRIPLE_PANEL_HORIZONTAL (no description for this literal in the source documentation)
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: parameter_takes_precedence
+    type: bool
+    meaning: ParameterTakesPrecedence attribute of IfcWindowStyle (not described in the source documentation).
+    source_ref: "IfcWindowStyle attribute 3: IfcBoolean"
+  - name: sizeable
+    type: bool
+    meaning: Sizeable attribute of IfcWindowStyle (not described in the source documentation).
+    source_ref: "IfcWindowStyle attribute 4: IfcBoolean"
+needs_review: true
+notes: "Review: no description found for IfcWindowStyle in the documentation at the pinned commit."

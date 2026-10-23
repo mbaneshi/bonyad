@@ -1,0 +1,28 @@
+code: ifc.second_order_polynomial_spiral
+name: IfcSecondOrderPolynomialSpiral
+kind: entity
+base: ifc.spiral
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSecondOrderPolynomialSpiral
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcSecondOrderPolynomialSpiral.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcSecondOrderPolynomialSpiral is a specialization of IfcSpiral.
+fields:
+  - name: quadratic_term
+    type: length
+    meaning: The constant that defines the quadratic term in the equation which defines the relation between curvature and arc length for the curve.
+    source_ref: "IfcSecondOrderPolynomialSpiral attribute 1: IfcLengthMeasure"
+  - name: linear_term
+    type: length
+    nullable: true
+    meaning: The constant that defines the linear term in the equation which defines the relation between curvature and arc length for the curve.
+    source_ref: "IfcSecondOrderPolynomialSpiral attribute 2: OPTIONAL IfcLengthMeasure"
+  - name: constant_term
+    type: length
+    nullable: true
+    meaning: The constant that defines the constant term in the equation which defines the relation between curvature and arc length for the curve.
+    source_ref: "IfcSecondOrderPolynomialSpiral attribute 3: OPTIONAL IfcLengthMeasure"

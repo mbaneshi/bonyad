@@ -1,0 +1,35 @@
+code: ifc.column
+name: IfcColumn
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcColumn
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcColumn.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcColumn is a vertical structural or architectural member which often is aligned with a structural grid intersection. In most cases it represents a vertical, or nearly vertical, structural member that transmits, through compression, the weight of the structure above to other structural elements below.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a column that is specified in an enumeration.
+    source_ref: "IfcColumn attribute 1: OPTIONAL IfcColumnTypeEnum; enumeration IfcColumnTypeEnum"
+    values:
+      - value: COLUMN
+        meaning: A usually vertical member that may be load bearing and requiring resistance to vertical forces by compression but also sometimes to lateral forces.
+      - value: PILASTER
+        meaning: A column element embedded within a wall that can be required to be load bearing but may also only be used for decorative purposes.
+      - value: PIERSTEM
+        meaning: An individual vertical part of a pier, may be a simple column, i.e. no breakdown into segments or separate structural parts such as flanges and web(s), or may be an aggregation of segments and/or parts.
+      - value: PIERSTEM_SEGMENT
+        meaning: A vertical segment of a pier column.
+      - value: STANDCOLUMN
+        meaning: A column transmitting vertical loads from a superstructure to an arch below it.
+      - value: USERDEFINED
+        meaning: User-defined linear element.
+      - value: NOTDEFINED
+        meaning: Undefined linear element.
+notes: SUPERTYPE OF ONEOF ( IfcColumnStandardCase ).

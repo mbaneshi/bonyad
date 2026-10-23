@@ -1,0 +1,20 @@
+code: ifc.external_reference_relationship_related_750381
+name: IfcExternalReferenceRelationship.RelatedResourceObjects
+kind: child
+parent: ifc.external_reference_relationship
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcExternalReferenceRelationship.RelatedResourceObjects
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcExternalReferenceRelationship.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the RelatedResourceObjects list of IfcExternalReferenceRelationship. Objects within the list of IfcResourceObjectSelect that can be tagged by an external reference to a dictionary, library, catalogue, classification or documentation.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcExternalReferenceRelationship.RelatedResourceObjects.
+    source_ref: "IfcExternalReferenceRelationship attribute 2: SET [1:?] OF IfcResourceObjectSelect; via select IfcResourceObjectSelect"
+    ref_to: any
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [1:?] OF IfcResourceObjectSelect. Table name abbreviated to fit the 63-byte Postgres identifier limit; full name would be ifc.external_reference_relationship_related_resource_objects."

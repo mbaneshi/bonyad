@@ -1,0 +1,53 @@
+code: ifc.stair_type
+name: IfcStairType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStairType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcStairType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The building element type IfcStairType defines commonly shared information for occurrences of stairs.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a stair element from which the type required may be set.
+    source_ref: "IfcStairType attribute 1: IfcStairTypeEnum; enumeration IfcStairTypeEnum"
+    values:
+      - value: STRAIGHT_RUN_STAIR
+        meaning: A stair extending from one level to another without turns or winders.
+      - value: TWO_STRAIGHT_RUN_STAIR
+        meaning: A straight stair consisting of two straight flights without turns but with one landing.
+      - value: QUARTER_WINDING_STAIR
+        meaning: A stair consisting of one flight with a quarter winder, which is making a 90° turn.
+      - value: QUARTER_TURN_STAIR
+        meaning: A stair making a 90° turn, consisting of two straight flights connected by a quarterspace landing.
+      - value: HALF_WINDING_STAIR
+        meaning: A stair consisting of one flight with one half winder, which makes a 180° turn.
+      - value: HALF_TURN_STAIR
+        meaning: A stair making a 180° turn, consisting of two straight flights connected.
+      - value: TWO_QUARTER_WINDING_STAIR
+        meaning: A stair consisting of one flight with two quarter winders, which make a 90° turn.
+      - value: TWO_QUARTER_TURN_STAIR
+        meaning: A stair making a 180° turn, consisting of three straight flights connected by two quarterspace landings.
+      - value: THREE_QUARTER_WINDING_STAIR
+        meaning: A stair consisting of one flight with three quarter winders, which make a 90° turn.
+      - value: THREE_QUARTER_TURN_STAIR
+        meaning: A stair making a 270° turn, consisting of four straight flights connected by three quarterspace landings.
+      - value: SPIRAL_STAIR
+        meaning: A stair constructed with winders around a circular newel often without landings.
+      - value: DOUBLE_RETURN_STAIR
+        meaning: A stair having one straight flight to a wide quarterspace landing, and two side flights from that landing into opposite directions.
+      - value: CURVED_RUN_STAIR
+        meaning: A stair extending from one level to another without turns or winders.
+      - value: TWO_CURVED_RUN_STAIR
+        meaning: A curved stair consisting of two curved flights without turns but with one landing.
+      - value: LADDER
+        meaning: a piece of equipment consisting of a series of bars or steps between two upright elements used for climbing up or down something.
+      - value: USERDEFINED
+        meaning: Free form stair (user defined operation type).
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)

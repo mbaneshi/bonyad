@@ -1,0 +1,72 @@
+code: landxml.gps_setup
+name: GPSSetup
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element GPSSetup
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `GPSSetup`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.survey
+    nullable: true
+    meaning: The landxml.survey row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: id
+    type: text
+    meaning: GPSSetup id; the XSD gives no description.
+    source_ref: XSD GPSSetup/@id; type xs:ID
+  - name: antenna_height
+    type: float
+    meaning: GPSSetup antennaHeight; the XSD gives no description.
+    source_ref: XSD GPSSetup/@antennaHeight; type xs:double
+  - name: station_name
+    type: text
+    meaning: GPSSetup stationName; the XSD gives no description.
+    source_ref: XSD GPSSetup/@stationName; type xs:anySimpleType
+  - name: gps_antenna_details_id
+    type: ref
+    meaning: "GPSSetup GPSAntennaDetailsID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD GPSSetup/@GPSAntennaDetailsID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: gps_receiver_details_id
+    type: ref
+    meaning: "GPSSetup GPSReceiverDetailsID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD GPSSetup/@GPSReceiverDetailsID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: observation_data_link
+    type: text
+    meaning: GPSSetup observationDataLink; the XSD gives no description.
+    source_ref: XSD GPSSetup/@observationDataLink; type xs:anySimpleType
+    nullable: true
+  - name: station_description
+    type: text
+    meaning: GPSSetup stationDescription; the XSD gives no description.
+    source_ref: XSD GPSSetup/@stationDescription; type xs:anySimpleType
+    nullable: true
+  - name: start_time
+    type: float
+    meaning: GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week. GPS weeks * 604800 + seconds in the GPS week.
+    source_ref: XSD GPSSetup/@startTime; type GPSTime
+    nullable: true
+    unit: second
+  - name: stop_time
+    type: float
+    meaning: GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week. GPS weeks * 604800 + seconds in the GPS week.
+    source_ref: XSD GPSSetup/@stopTime; type GPSTime
+    nullable: true
+    unit: second
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.survey. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."

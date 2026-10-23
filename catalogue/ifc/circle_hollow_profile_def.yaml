@@ -1,0 +1,19 @@
+code: ifc.circle_hollow_profile_def
+name: IfcCircleHollowProfileDef
+kind: symbol
+base: ifc.circle_profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCircleHollowProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcCircleHollowProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcCircleHollowProfileDef defines a section profile that provides the defining parameters of a circular hollow section (tube) to be used by the swept area solid. Its parameters and orientation relative to the position coordinate system are according to the following illustration.The centre of the position coordinate system is in the profile's centre of the …
+fields:
+  - name: wall_thickness
+    type: length
+    meaning: Thickness of the material, it is the difference between the outer and inner radius.
+    source_ref: "IfcCircleHollowProfileDef attribute 1: IfcPositiveLengthMeasure"
+    check: positive

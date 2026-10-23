@@ -1,0 +1,43 @@
+code: ifc.work_control
+name: IfcWorkControl
+kind: abstract
+base: ifc.control
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcWorkControl
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProcessExtension/Entities/IfcWorkControl.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcWorkControl is an abstract supertype which captures information that is common to both IfcWorkPlan and IfcWorkSchedule.
+fields:
+  - name: creation_date
+    type: timestamp
+    meaning: The date that the plan is created.
+    source_ref: "IfcWorkControl attribute 1: IfcDateTime"
+  - name: purpose
+    type: text
+    nullable: true
+    meaning: A description of the purpose of the work schedule.
+    source_ref: "IfcWorkControl attribute 3: OPTIONAL IfcLabel"
+  - name: duration
+    type: text
+    nullable: true
+    meaning: The total duration of the entire work schedule.
+    source_ref: "IfcWorkControl attribute 4: OPTIONAL IfcDuration"
+  - name: total_float
+    type: text
+    nullable: true
+    meaning: The total time float of the entire work schedule.
+    source_ref: "IfcWorkControl attribute 5: OPTIONAL IfcDuration"
+  - name: start_time
+    type: timestamp
+    meaning: The start time of the schedule.
+    source_ref: "IfcWorkControl attribute 6: IfcDateTime"
+  - name: finish_time
+    type: timestamp
+    nullable: true
+    meaning: The finish time of the schedule.
+    source_ref: "IfcWorkControl attribute 7: OPTIONAL IfcDateTime"
+notes: SUPERTYPE OF ONEOF ( IfcWorkPlan , IfcWorkSchedule ).

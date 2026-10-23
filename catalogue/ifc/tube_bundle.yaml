@@ -1,0 +1,26 @@
+code: ifc.tube_bundle
+name: IfcTubeBundle
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTubeBundle
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcTubeBundle.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A tube bundle is a device consisting of tubes and bundles of tubes used for heat transfer and contained typically within other energy conversion devices, such as a chiller or coil.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcTubeBundle (not described in the source documentation).
+    source_ref: "IfcTubeBundle attribute 1: OPTIONAL IfcTubeBundleTypeEnum; enumeration IfcTubeBundleTypeEnum"
+    values:
+      - value: FINNED
+        meaning: Finned tube bundle type.
+      - value: USERDEFINED
+        meaning: User-defined tube bundle type.
+      - value: NOTDEFINED
+        meaning: Undefined tube bundle type.

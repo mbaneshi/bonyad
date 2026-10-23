@@ -1,0 +1,36 @@
+code: ifc.light_source_spot
+name: IfcLightSourceSpot
+kind: entity
+base: ifc.light_source_positional
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLightSourceSpot
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationOrganizationResource/Entities/IfcLightSourceSpot.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcLightSourceSpot: no description in the source documentation."
+fields:
+  - name: orientation
+    type: ref
+    meaning: "Definition from ISO/CD 10303-46:1992: This is the direction of the axis of the cone of the light source specified in the coordinate space of the representation being projected.. Definition from VRML97 - ISO/IEC 14772-1:1997: The direction field specifies the …"
+    source_ref: "IfcLightSourceSpot attribute 1: IfcDirection"
+    ref_to: ifc.direction
+  - name: concentration_exponent
+    type: float
+    nullable: true
+    meaning: "Definition from ISO/CD 10303-46:1992: This real is the exponent on the cosine of the angle between the line that starts at the position of the spot light source and is in the direction of the orientation of the spot light source and a line that starts at the …"
+    source_ref: "IfcLightSourceSpot attribute 2: OPTIONAL IfcReal"
+  - name: spread_angle
+    type: angle
+    meaning: "Definition from ISO/CD 10303-46:1992: This planar angle measure is the angle between the line that starts at the position of the spot light source and is in the direction of the spot light source and any line on the boundary of the cone of influence. Radians; converted from the project plane-angle unit at the source boundary."
+    source_ref: "IfcLightSourceSpot attribute 3: IfcPositivePlaneAngleMeasure"
+    check: positive
+  - name: beam_width_angle
+    type: angle
+    meaning: "Definition from VRML97 - ISO/IEC 14772-1:1997: The beamWidth field specifies an inner solid angle in which the light source emits light at uniform full intensity. Radians; converted from the project plane-angle unit at the source boundary."
+    source_ref: "IfcLightSourceSpot attribute 4: IfcPositivePlaneAngleMeasure"
+    check: positive
+needs_review: true
+notes: "Review: no description found for IfcLightSourceSpot in the documentation at the pinned commit."

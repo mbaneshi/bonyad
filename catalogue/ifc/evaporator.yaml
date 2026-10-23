@@ -1,0 +1,36 @@
+code: ifc.evaporator
+name: IfcEvaporator
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcEvaporator
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcEvaporator.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An evaporator is a device in which a liquid refrigerent is vaporized and absorbs heat from the surrounding fluid.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcEvaporator (not described in the source documentation).
+    source_ref: "IfcEvaporator attribute 1: OPTIONAL IfcEvaporatorTypeEnum; enumeration IfcEvaporatorTypeEnum"
+    values:
+      - value: DIRECTEXPANSION
+        meaning: Direct-expansion evaporator.
+      - value: DIRECTEXPANSIONSHELLANDTUBE
+        meaning: Direct-expansion evaporator where a refrigerant evaporates inside a series of baffles that channel the fluid throughout the shell side.
+      - value: DIRECTEXPANSIONTUBEINTUBE
+        meaning: Direct-expansion evaporator where a refrigerant evaporates inside one or more pairs of coaxial tubes.
+      - value: DIRECTEXPANSIONBRAZEDPLATE
+        meaning: Direct-expansion evaporator where a refrigerant evaporates inside plates brazed or welded together to make up an assembly of separate channels.
+      - value: FLOODEDSHELLANDTUBE
+        meaning: Evaporator in which refrigerant evaporates outside tubes.
+      - value: SHELLANDCOIL
+        meaning: Evaporator in which refrigerant evaporates inside a simple coiled tube immersed in the fluid to be cooled.
+      - value: USERDEFINED
+        meaning: User-defined evaporator type.
+      - value: NOTDEFINED
+        meaning: Undefined evaporator type.

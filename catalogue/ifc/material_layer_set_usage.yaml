@@ -1,0 +1,49 @@
+code: ifc.material_layer_set_usage
+name: IfcMaterialLayerSetUsage
+kind: object
+base: ifc.material_usage_definition
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMaterialLayerSetUsage
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMaterialResource/Entities/IfcMaterialLayerSetUsage.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcMaterialLayerSetUsage determines the usage of IfcMaterialLayerSet in terms of its location and orientation relative to the associated element geometry. The location of material layer set shall be compatible with the building element geometry (that is, material layers shall fit inside the element geometry).
+fields:
+  - name: for_layer_set
+    type: ref
+    meaning: The IfcMaterialLayerSet set to which the usage is applied.
+    source_ref: "IfcMaterialLayerSetUsage attribute 1: IfcMaterialLayerSet"
+    ref_to: ifc.material_layer_set
+  - name: layer_set_direction
+    type: enum
+    meaning: Orientation of the material layer set relative to element reference geometry.
+    source_ref: "IfcMaterialLayerSetUsage attribute 2: IfcLayerSetDirectionEnum; enumeration IfcLayerSetDirectionEnum"
+    values:
+      - value: AXIS1
+        meaning: Usually x-axis.
+      - value: AXIS2
+        meaning: Usually y-axis.
+      - value: AXIS3
+        meaning: Usually z-axis.
+  - name: direction_sense
+    type: enum
+    meaning: Denotes whether the material layer set is oriented in positive or negative sense along the specified axis (defined by LayerSetDirection). "Positive" means that the consecutive layers (the IfcMaterialLayer instances in the list of …
+    source_ref: "IfcMaterialLayerSetUsage attribute 3: IfcDirectionSenseEnum; enumeration IfcDirectionSenseEnum"
+    values:
+      - value: POSITIVE
+        meaning: Direction defined to be positive.
+      - value: NEGATIVE
+        meaning: Direction defined to be negative.
+  - name: offset_from_reference_line
+    type: length
+    meaning: Offset of the material layer set base line (MlsBase) from reference geometry (line or plane) of element.
+    source_ref: "IfcMaterialLayerSetUsage attribute 4: IfcLengthMeasure"
+  - name: reference_extent
+    type: length
+    nullable: true
+    meaning: Extent of the extrusion of the elements body shape representation to which the IfcMaterialLayerSetUsage applies.
+    source_ref: "IfcMaterialLayerSetUsage attribute 5: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive

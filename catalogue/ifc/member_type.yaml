@@ -1,0 +1,61 @@
+code: ifc.member_type
+name: IfcMemberType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMemberType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcMemberType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The element type IfcMemberType defines commonly shared information for occurrences of members. Members are predominately linear building elements, often forming part of a structural system.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a linear structural member element from which the type required may be set.
+    source_ref: "IfcMemberType attribute 1: IfcMemberTypeEnum; enumeration IfcMemberTypeEnum"
+    values:
+      - value: BRACE
+        meaning: A linear element (usually sloped) often used for bracing of a girder or truss.
+      - value: CHORD
+        meaning: Upper or lower longitudinal member of a truss, used horizontally or sloped.
+      - value: COLLAR
+        meaning: A linear element (usually used horizontally) within a roof structure to connect rafters and posts.
+      - value: MEMBER
+        meaning: A linear element within a girder or truss with no further meaning.
+      - value: MULLION
+        meaning: A linear element within a curtain wall system to connect two (or more) panels.
+      - value: PLATE
+        meaning: A linear continuous horizontal element in wall framing, such as a head piece or a sole plate.
+      - value: POST
+        meaning: A linear (usually vertical) member used to support something or to mark a point.
+      - value: PURLIN
+        meaning: A linear element (usually used horizontally) within a roof structure to support rafters.
+      - value: RAFTER
+        meaning: A linear elements used to support roof slabs or roof covering, usually used with slope.
+      - value: STRINGER
+        meaning: A linear element used to support stair or ramp flights, usually used with slope.
+      - value: STRUT
+        meaning: A linear element often used within a girder or truss.
+      - value: STUD
+        meaning: Vertical element in wall framing.
+      - value: STIFFENING_RIB
+        meaning: A linear element added to a flange or a web plate of a girder for local stiffening.
+      - value: ARCH_SEGMENT
+        meaning: Individual segment of an arch structure.
+      - value: SUSPENSION_CABLE
+        meaning: A suspended element, typically comprising steel wire, sheath, etc.
+      - value: SUSPENDER
+        meaning: A vertical element suspending a structure (such as bridge deck) from a suspension cable or an arch.
+      - value: STAY_CABLE
+        meaning: A sloped element suspending a structure (such as bridge deck) from a pylon.
+      - value: STRUCTURALCABLE
+        meaning: A linear cable element used to secure or stabilise a structure by resisting lateral and longitudinal loading through tension only, but cannot resist compression. usually formed of a flexible cable or wire.
+      - value: TIEBAR
+        meaning: A linear bar element used to secure or stabilise a structure by resisting lateral and longitudinal loading through tension and or compression.
+      - value: USERDEFINED
+        meaning: User-defined linear element.
+      - value: NOTDEFINED
+        meaning: Undefined linear element.

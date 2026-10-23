@@ -1,0 +1,61 @@
+code: ifc.approval
+name: IfcApproval
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcApproval
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcApprovalResource/Entities/IfcApproval.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcApproval represents information about approval processes such as for a plan, a design, a proposal, or a change order in a construction or facilities management project. IfcApproval is referenced by IfcRelAssociatesApproval in IfcControlExtension schema, and thereby can be related to all subtypes of IfcRoot.
+fields:
+  - name: identifier
+    type: text
+    nullable: true
+    meaning: A computer interpretable identifier by which the approval is known.
+    source_ref: "IfcApproval attribute 1: OPTIONAL IfcIdentifier"
+  - name: name
+    type: text
+    nullable: true
+    meaning: A human readable name given to an approval.
+    source_ref: "IfcApproval attribute 2: OPTIONAL IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: A general textual description of a design, work task, plan, etc. that is being approved for.
+    source_ref: "IfcApproval attribute 3: OPTIONAL IfcText"
+  - name: time_of_approval
+    type: timestamp
+    nullable: true
+    meaning: Date and time when the result of the approval process is produced.
+    source_ref: "IfcApproval attribute 4: OPTIONAL IfcDateTime"
+  - name: status
+    type: text
+    nullable: true
+    meaning: The result or current status of the approval, e.g. Requested, Processed, Approved, Not Approved.
+    source_ref: "IfcApproval attribute 5: OPTIONAL IfcLabel"
+  - name: level
+    type: text
+    nullable: true
+    meaning: Level of the approval e.g. Draft v.s.
+    source_ref: "IfcApproval attribute 6: OPTIONAL IfcLabel"
+  - name: qualifier
+    type: text
+    nullable: true
+    meaning: Textual description of special constraints or conditions for the approval.
+    source_ref: "IfcApproval attribute 7: OPTIONAL IfcText"
+  - name: requesting_approval
+    type: ref
+    nullable: true
+    meaning: The actor that is acting in the role specified at IfcOrganization or individually at IfcPerson and requesting an approval.
+    source_ref: "IfcApproval attribute 8: OPTIONAL IfcActorSelect; via select IfcActorSelect"
+    ref_to: any
+  - name: giving_approval
+    type: ref
+    nullable: true
+    meaning: The actor that is acting in the role specified at IfcOrganization or individually at IfcPerson and giving an approval.
+    source_ref: "IfcApproval attribute 9: OPTIONAL IfcActorSelect; via select IfcActorSelect"
+    ref_to: any
+notes: "Inverse attributes not stored: HasExternalReferences, ApprovedObjects, ApprovedResources, IsRelatedWith, Relates."

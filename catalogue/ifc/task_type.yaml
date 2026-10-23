@@ -1,0 +1,52 @@
+code: ifc.task_type
+name: IfcTaskType
+kind: symbol
+base: ifc.type_process
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTaskType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProcessExtension/Entities/IfcTaskType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcTaskType defines a particular type of task that may be specified for use within a work control.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a task type from which the type required may be set.
+    source_ref: "IfcTaskType attribute 1: IfcTaskTypeEnum; enumeration IfcTaskTypeEnum"
+    values:
+      - value: ATTENDANCE
+        meaning: Attendance or waiting on other things happening.
+      - value: CONSTRUCTION
+        meaning: Constructing or building something.
+      - value: DEMOLITION
+        meaning: Demolishing or breaking down something.
+      - value: DISMANTLE
+        meaning: Taking something apart carefully so that it can be recycled or reused.
+      - value: DISPOSAL
+        meaning: Disposing or getting rid of something.
+      - value: INSTALLATION
+        meaning: Installing something (equivalent to construction but more commonly used for engineering tasks).
+      - value: LOGISTIC
+        meaning: Transportation or delivery of something.
+      - value: MAINTENANCE
+        meaning: Tasks required to keep an object in good working order.
+      - value: MOVE
+        meaning: Moving things from one place to another.
+      - value: OPERATION
+        meaning: A procedure undertaken to start up the operation an artifact.
+      - value: REMOVAL
+        meaning: Removal of an item from use and taking it from its place of use.
+      - value: RENOVATION
+        meaning: Bringing something to an 'as-new' state.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Undefined.
+  - name: work_method
+    type: text
+    nullable: true
+    meaning: The method of work used in carrying out a task.
+    source_ref: "IfcTaskType attribute 2: OPTIONAL IfcLabel"

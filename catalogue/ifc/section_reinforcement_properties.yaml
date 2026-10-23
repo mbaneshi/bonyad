@@ -1,0 +1,57 @@
+code: ifc.section_reinforcement_properties
+name: IfcSectionReinforcementProperties
+kind: object
+base: ifc.pre_defined_properties
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSectionReinforcementProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcSectionReinforcementProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcSectionReinforcementProperties defines the cross section properties of reinforcement for a single longitudinal piece of a cross section with a specific reinforcement usage type.
+fields:
+  - name: longitudinal_start_position
+    type: length
+    meaning: The start position in longitudinal direction for the section reinforcement properties.
+    source_ref: "IfcSectionReinforcementProperties attribute 1: IfcLengthMeasure"
+  - name: longitudinal_end_position
+    type: length
+    meaning: The end position in longitudinal direction for the section reinforcement properties.
+    source_ref: "IfcSectionReinforcementProperties attribute 2: IfcLengthMeasure"
+  - name: transverse_position
+    type: length
+    nullable: true
+    meaning: The position for the section reinforcement properties in transverse direction.
+    source_ref: "IfcSectionReinforcementProperties attribute 3: OPTIONAL IfcLengthMeasure"
+  - name: reinforcement_role
+    type: enum
+    meaning: The role, purpose or usage of the reinforcement, i.e. the kind of loads and stresses it is intended to carry, defined for the section reinforcement properties.
+    source_ref: "IfcSectionReinforcementProperties attribute 4: IfcReinforcingBarRoleEnum; enumeration IfcReinforcingBarRoleEnum"
+    values:
+      - value: MAIN
+        meaning: The reinforcing bar is a main bar.
+      - value: SHEAR
+        meaning: The reinforcing bar is a shear bar.
+      - value: LIGATURE
+        meaning: The reinforcing bar is a ligature (link, stirrup).
+      - value: STUD
+        meaning: The reinforcing bar is a stud.
+      - value: PUNCHING
+        meaning: Punching reinforcement.
+      - value: EDGE
+        meaning: Edge reinforcement.
+      - value: RING
+        meaning: Ring reinforcement.
+      - value: ANCHORING
+        meaning: Anchoring reinforcement.
+      - value: USERDEFINED
+        meaning: The type of reinforcement is user defined.
+      - value: NOTDEFINED
+        meaning: The type of reinforcement is not defined.
+  - name: section_definition
+    type: ref
+    meaning: Definition of the cross section profile and longitudinal section type.
+    source_ref: "IfcSectionReinforcementProperties attribute 5: IfcSectionProperties"
+    ref_to: ifc.section_properties

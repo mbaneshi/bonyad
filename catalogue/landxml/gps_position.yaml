@@ -1,0 +1,274 @@
+code: landxml.gps_position
+name: GPSPosition
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element GPSPosition
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `GPSPosition`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.gps_setup
+    nullable: true
+    meaning: The landxml.gps_setup row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: setup_id
+    type: ref
+    meaning: "GPSPosition setupID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD GPSPosition/@setupID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: set_id
+    type: text
+    meaning: GPSPosition setID; the XSD gives no description.
+    source_ref: XSD GPSPosition/@setID; type xs:anySimpleType
+    nullable: true
+  - name: wgs_height
+    type: float
+    meaning: GPSPosition wgsHeight; the XSD gives no description.
+    source_ref: XSD GPSPosition/@wgsHeight; type xs:double
+  - name: wgs_latitude
+    type: float
+    meaning: GPSPosition wgsLatitude; the XSD gives no description.
+    source_ref: XSD GPSPosition/@wgsLatitude; type xs:double
+  - name: wgs_longitude
+    type: float
+    meaning: GPSPosition wgsLongitude; the XSD gives no description.
+    source_ref: XSD GPSPosition/@wgsLongitude; type xs:double
+  - name: purpose
+    type: text
+    meaning: GPSPosition purpose; the XSD gives no description.
+    source_ref: XSD GPSPosition/@purpose; type xs:anySimpleType
+    nullable: true
+  - name: coord_geom_refs
+    type: array
+    meaning: name attributes. Space-delimited list of element names (name-based references).
+    source_ref: XSD GPSPosition/@coordGeomRefs; type coordGeomNameRefs
+    nullable: true
+    of: text
+  - name: pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD GPSPosition/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: target_point
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D location for the target. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only target_point_pnt_ref is given).
+    source_ref: GPSPosition/TargetPoint text content (Point3dOpt)
+  - name: target_point_name
+    type: text
+    meaning: TargetPoint name; the XSD gives no description.
+    source_ref: XSD TargetPoint/@name; type xs:string
+    nullable: true
+  - name: target_point_desc
+    type: text
+    meaning: TargetPoint desc; the XSD gives no description.
+    source_ref: XSD TargetPoint/@desc; type xs:string
+    nullable: true
+  - name: target_point_code
+    type: text
+    meaning: TargetPoint code; the XSD gives no description.
+    source_ref: XSD TargetPoint/@code; type xs:string
+    nullable: true
+  - name: target_point_state
+    type: enum
+    meaning: TargetPoint state; the XSD gives no description.
+    source_ref: XSD TargetPoint/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: target_point_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD TargetPoint/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: target_point_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD TargetPoint/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: target_point_point_geometry
+    type: enum
+    meaning: TargetPoint pointGeometry; the XSD gives no description.
+    source_ref: XSD TargetPoint/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: target_point_dtm_attribute
+    type: enum
+    meaning: TargetPoint DTMAttribute; the XSD gives no description.
+    source_ref: XSD TargetPoint/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: target_point_time_stamp
+    type: timestamp
+    meaning: TargetPoint timeStamp; the XSD gives no description.
+    source_ref: XSD TargetPoint/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: target_point_role
+    type: enum
+    meaning: TargetPoint role; the XSD gives no description.
+    source_ref: XSD TargetPoint/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: target_point_determined_time_stamp
+    type: timestamp
+    meaning: TargetPoint determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD TargetPoint/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: target_point_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD TargetPoint/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: target_point_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD TargetPoint/@latitude; type latLongAngle
+    nullable: true
+  - name: target_point_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD TargetPoint/@longitude; type latLongAngle
+    nullable: true
+  - name: target_point_zone
+    type: text
+    meaning: TargetPoint zone; the XSD gives no description.
+    source_ref: XSD TargetPoint/@zone; type xs:string
+    nullable: true
+  - name: target_point_northing_std_error
+    type: float
+    meaning: TargetPoint northingStdError; the XSD gives no description.
+    source_ref: XSD TargetPoint/@northingStdError; type xs:double
+    nullable: true
+  - name: target_point_easting_std_error
+    type: float
+    meaning: TargetPoint eastingStdError; the XSD gives no description.
+    source_ref: XSD TargetPoint/@eastingStdError; type xs:double
+    nullable: true
+  - name: target_point_elevation_std_error
+    type: float
+    meaning: TargetPoint elevationStdError; the XSD gives no description.
+    source_ref: XSD TargetPoint/@elevationStdError; type xs:double
+    nullable: true
+  - name: gpsqc_info_level1_gps_soln_type
+    type: enum
+    meaning: The GPS solution type indicates the type of computed solution for a GPS vector or position.
+    source_ref: XSD GPSQCInfoLevel1/@GPSSolnType; type GPSSolutionTypeEnum
+    nullable: true
+    values:
+      - value: Unknown
+        meaning: Enumeration literal "Unknown"; the XSD gives no description.
+      - value: Code
+        meaning: Enumeration literal "Code"; the XSD gives no description.
+      - value: Float
+        meaning: Enumeration literal "Float"; the XSD gives no description.
+      - value: Fixed
+        meaning: Enumeration literal "Fixed"; the XSD gives no description.
+      - value: Network Float
+        meaning: Enumeration literal "Network Float"; the XSD gives no description.
+      - value: Network Fixed
+        meaning: Enumeration literal "Network Fixed"; the XSD gives no description.
+      - value: WAAS Float
+        meaning: Enumeration literal "WAAS Float"; the XSD gives no description.
+      - value: WAAS Fixed
+        meaning: Enumeration literal "WAAS Fixed"; the XSD gives no description.
+  - name: gpsqc_info_level1_gps_soln_freq
+    type: enum
+    meaning: The GPS solution frequency indicates the GPS frequencies used in the computed solution for a GPS vector or position.
+    source_ref: XSD GPSQCInfoLevel1/@GPSSolnFreq; type GPSSolutionFrequencyEnum
+    nullable: true
+    values:
+      - value: Unknown
+        meaning: Enumeration literal "Unknown"; the XSD gives no description.
+      - value: L1
+        meaning: Enumeration literal "L1"; the XSD gives no description.
+      - value: L2
+        meaning: Enumeration literal "L2"; the XSD gives no description.
+      - value: L2 Squared
+        meaning: Enumeration literal "L2 Squared"; the XSD gives no description.
+      - value: Wide Lane
+        meaning: Enumeration literal "Wide Lane"; the XSD gives no description.
+      - value: Narrow Lane
+        meaning: Enumeration literal "Narrow Lane"; the XSD gives no description.
+      - value: Iono Free
+        meaning: Enumeration literal "Iono Free"; the XSD gives no description.
+  - name: gpsqc_info_level1_nbr_satellites
+    type: int
+    meaning: GPSQCInfoLevel1 nbrSatellites; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel1/@nbrSatellites; type xs:integer
+    nullable: true
+  - name: gpsqc_info_level1_rdop
+    type: float
+    meaning: GPSQCInfoLevel1 RDOP; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel1/@RDOP; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.gps_setup; at most once (XSD: unbounded choice) in landxml.survey. Review: Contained by more than one type in the XSD (also landxml.survey); the catalogue allows one parent, so the first is used. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."
+needs_review: true

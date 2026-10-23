@@ -1,0 +1,24 @@
+code: ifc.road
+name: IfcRoad
+kind: entity
+base: ifc.facility
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRoad
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcRoadDomain/Entities/IfcRoad.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A route built on land to allow travel from one location to another, including highways, streets, cycle and foot paths, but excluding railways. As a type of Facility, Road provides the basic element in the project structure hierarchy for the components of a road project (i.e. any undertaking such as design, construction or maintenance).
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcRoad (not described in the source documentation).
+    source_ref: "IfcRoad attribute 1: OPTIONAL IfcRoadTypeEnum; enumeration IfcRoadTypeEnum"
+    values:
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

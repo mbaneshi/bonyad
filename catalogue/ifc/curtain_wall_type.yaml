@@ -1,0 +1,23 @@
+code: ifc.curtain_wall_type
+name: IfcCurtainWallType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCurtainWallType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcCurtainWallType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The building element type IfcCurtainWallType defines commonly shared information for occurrences of curtain walls.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a curtain wall element from which the type required may be set.
+    source_ref: "IfcCurtainWallType attribute 1: IfcCurtainWallTypeEnum; enumeration IfcCurtainWallTypeEnum"
+    values:
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)

@@ -1,0 +1,26 @@
+code: landxml.p
+name: P
+kind: object
+base: landxml.point_type
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element P
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A surface point. it contains an id attribute and a space delimited "northing easting elevation" text value.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.definition
+    nullable: true
+    meaning: The landxml.definition row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it derives from a base type)"
+  - name: id
+    type: int
+    meaning: P id; the XSD gives no description.
+    source_ref: XSD P/@id; type xs:positiveInteger
+    check: positive
+notes: Occurs 3..unbounded via Pnts in landxml.definition. Stored as an object rather than an ordered child because it derives from a base type; the XSD container is the container reference.

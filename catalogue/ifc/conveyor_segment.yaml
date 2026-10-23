@@ -1,0 +1,32 @@
+code: ifc.conveyor_segment
+name: IfcConveyorSegment
+kind: entity
+base: ifc.flow_segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcConveyorSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcPortsAndWaterwaysDomain/Entities/IfcConveyorSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A conveyor segment defines an occurrence of a flow segment/ continuous run within a conveyor system that joins two sections of the system. these can utilise different carrying methods such as belt, rope, chain, screw etc.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined type of a conveyor segment.
+    source_ref: "IfcConveyorSegment attribute 1: OPTIONAL IfcConveyorSegmentTypeEnum; enumeration IfcConveyorSegmentTypeEnum"
+    values:
+      - value: CHUTECONVEYOR
+        meaning: Gravity-operated conveyor where media descends through a trough or chute.
+      - value: BELTCONVEYOR
+        meaning: An endless belt for carrying material without stretching.
+      - value: SCREWCONVEYOR
+        meaning: composed of a longitudinal screw in a trough or pipe that rotates to force media through the segment.
+      - value: BUCKETCONVEYOR
+        meaning: A conveyor in the form of connected buckets or segments that move in a continuous loop.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

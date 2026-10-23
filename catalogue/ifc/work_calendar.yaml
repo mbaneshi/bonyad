@@ -1,0 +1,30 @@
+code: ifc.work_calendar
+name: IfcWorkCalendar
+kind: object
+base: ifc.control
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcWorkCalendar
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProcessExtension/Entities/IfcWorkCalendar.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcWorkCalendar defines working and non-working time periods for tasks and resources. It enables to define both specific time periods, such as from 7:00 till 12:00 on 25th August 2009, as well as repetitive time periods based on frequently used recurrence patterns, such as each Monday from 7:00 till 12:00 between 1st March 2009 and 31st December 2009.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined types of a work calendar from which the type required may be set.
+    source_ref: "IfcWorkCalendar attribute 3: OPTIONAL IfcWorkCalendarTypeEnum; enumeration IfcWorkCalendarTypeEnum"
+    values:
+      - value: FIRSTSHIFT
+        meaning: Belongs to the first shift.
+      - value: SECONDSHIFT
+        meaning: Belongs to the second shift.
+      - value: THIRDSHIFT
+        meaning: Belongs to the third shift.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Undefined.

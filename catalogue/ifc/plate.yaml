@@ -1,0 +1,43 @@
+code: ifc.plate
+name: IfcPlate
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPlate
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcPlate.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcPlate is a planar and often flat part with constant thickness. A plate may carry loads between or beyond points of support, or provide stiffening.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a plate that is specified in an enumeration.
+    source_ref: "IfcPlate attribute 1: OPTIONAL IfcPlateTypeEnum; enumeration IfcPlateTypeEnum"
+    values:
+      - value: CURTAIN_PANEL
+        meaning: A planar element within a curtain wall, often consisting of a frame with fixed glazing.
+      - value: SHEET
+        meaning: A planar, flat and thin element, comes usually as metal sheet, and is often used as an additional part within an assembly.
+      - value: FLANGE_PLATE
+        meaning: A flange plate in linear members having box or I-profile (e.g. top or bottom flange plate in box-girder).
+      - value: WEB_PLATE
+        meaning: A plate connecting flange plates in linear members having box or I-profile.
+      - value: STIFFENER_PLATE
+        meaning: A transversal plate added to a flange or a web plate for local stiffening.
+      - value: GUSSET_PLATE
+        meaning: a plate or bracket for strengthening an angle in framework (as in a building or bridge).
+      - value: COVER_PLATE
+        meaning: A plate (underneath or above) a flange to provide additional load capacity.
+      - value: SPLICE_PLATE
+        meaning: A plate connecting two members joined at ends.
+      - value: BASE_PLATE
+        meaning: A plate used to spread load over a surface, such as underneath a bearing or column.
+      - value: USERDEFINED
+        meaning: User-defined linear element.
+      - value: NOTDEFINED
+        meaning: Undefined linear element.
+notes: SUPERTYPE OF ONEOF ( IfcPlateStandardCase ).

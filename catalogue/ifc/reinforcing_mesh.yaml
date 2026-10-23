@@ -1,0 +1,70 @@
+code: ifc.reinforcing_mesh
+name: IfcReinforcingMesh
+kind: entity
+base: ifc.reinforcing_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReinforcingMesh
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcReinforcingMesh.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A reinforcing mesh is a series of longitudinal and transverse wires or bars of various gauges, arranged at right angles to each other and welded at all points of intersection; usually used for concrete slab reinforcement. It is also known as welded wire fabric.
+fields:
+  - name: mesh_length
+    type: length
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingMesh attribute 1: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: mesh_width
+    type: length
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingMesh attribute 2: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: longitudinal_bar_nominal_diameter
+    type: length
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingMesh attribute 3: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: transverse_bar_nominal_diameter
+    type: length
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingMesh attribute 4: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: longitudinal_bar_cross_section_area
+    type: area
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingMesh attribute 5: OPTIONAL IfcAreaMeasure"
+  - name: transverse_bar_cross_section_area
+    type: area
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingMesh attribute 6: OPTIONAL IfcAreaMeasure"
+  - name: longitudinal_bar_spacing
+    type: length
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingMesh attribute 7: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: transverse_bar_spacing
+    type: length
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingMesh attribute 8: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Kind of mesh.
+    source_ref: "IfcReinforcingMesh attribute 9: OPTIONAL IfcReinforcingMeshTypeEnum; enumeration IfcReinforcingMeshTypeEnum"
+    values:
+      - value: USERDEFINED
+        meaning: The type of mesh is user defined.
+      - value: NOTDEFINED
+        meaning: The type of mesh is not defined.

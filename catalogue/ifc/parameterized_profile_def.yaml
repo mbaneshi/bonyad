@@ -1,0 +1,21 @@
+code: ifc.parameterized_profile_def
+name: IfcParameterizedProfileDef
+kind: abstract
+base: ifc.profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcParameterizedProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcParameterizedProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The parameterized profile definition defines a 2D position coordinate system to which the parameters of the different profiles relate to. All profiles are defined centric to the origin of the position coordinate system, or more specific, the origin [0.,0.] shall be in the center of the bounding box of the profile.
+fields:
+  - name: position
+    type: ref
+    nullable: true
+    meaning: Position coordinate system of the parameterized profile definition.
+    source_ref: "IfcParameterizedProfileDef attribute 1: OPTIONAL IfcAxis2Placement2D"
+    ref_to: ifc.axis2_placement2d
+notes: SUPERTYPE OF ONEOF ( IfcAsymmetricIShapeProfileDef , IfcCShapeProfileDef , IfcCircleProfileDef , IfcEllipseProfileDef , IfcIShapeProfileDef , IfcLShapeProfileDef , IfcRectangleProfileDef , IfcTShapeProfileDef , IfcTrapeziumProfileDef , IfcUShapeProfileDef , IfcZShapeProfileDef ).

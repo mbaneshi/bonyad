@@ -1,0 +1,37 @@
+code: ifc.duct_fitting_type
+name: IfcDuctFittingType
+kind: symbol
+base: ifc.flow_fitting_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDuctFittingType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcDuctFittingType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow fitting type IfcDuctFittingType defines commonly shared information for occurrences of duct fittings.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: The type of duct fitting.
+    source_ref: "IfcDuctFittingType attribute 1: IfcDuctFittingTypeEnum; enumeration IfcDuctFittingTypeEnum"
+    values:
+      - value: BEND
+        meaning: A fitting with typically two ports used to change the direction of flow between connected elements.
+      - value: CONNECTOR
+        meaning: Connector fitting, typically used to join two ports together within a flow distribution system (e.g., a coupling used to join two duct segments).
+      - value: ENTRY
+        meaning: Entry fitting, typically unconnected at one port and connected to a flow distribution system at the other (e.g., an outside air duct system intake opening).
+      - value: EXIT
+        meaning: Exit fitting, typically unconnected at one port and connected to a flow distribution system at the other (e.g., an exhaust air discharge opening).
+      - value: JUNCTION
+        meaning: A fitting with typically more than two ports used to redistribute flow among the ports and/or to change the direction of flow between connected elements (e.g, tee, cross, wye, etc.).
+      - value: OBSTRUCTION
+        meaning: A fitting with typically two ports used to obstruct or restrict flow between the connected elements (e.g., screen, perforated plate, etc.).
+      - value: TRANSITION
+        meaning: A fitting with typically two ports having different shapes or sizes.
+      - value: USERDEFINED
+        meaning: User-defined fitting.
+      - value: NOTDEFINED
+        meaning: Undefined fitting.

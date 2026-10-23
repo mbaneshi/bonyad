@@ -1,0 +1,40 @@
+code: ifc.table_column
+name: IfcTableColumn
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTableColumn
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcUtilityResource/Entities/IfcTableColumn.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcTableColumn is a data structure that captures column information for use in an IfcTable. Each instance defines the identifier, name, description, and units of measure that are applicable to the columnar data associated with the IfcTableRow objects.
+fields:
+  - name: identifier
+    type: text
+    nullable: true
+    meaning: The Identifier identifies the column within the table.
+    source_ref: "IfcTableColumn attribute 1: OPTIONAL IfcIdentifier"
+  - name: name
+    type: text
+    nullable: true
+    meaning: The Name is a human-readable caption for the table column.
+    source_ref: "IfcTableColumn attribute 2: OPTIONAL IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: The Description provides human-readable text describing the table column.
+    source_ref: "IfcTableColumn attribute 3: OPTIONAL IfcText"
+  - name: unit
+    type: ref
+    nullable: true
+    meaning: The Unit indicates the unit of measure to be used for this column's data.
+    source_ref: "IfcTableColumn attribute 4: OPTIONAL IfcUnit; via select IfcUnit"
+    ref_to: any
+  - name: reference_path
+    type: ref
+    nullable: true
+    meaning: The ReferencePath indicates a relative path to the object and attribute for which data within this column is to be applied.
+    source_ref: "IfcTableColumn attribute 5: OPTIONAL IfcReference"
+    ref_to: ifc.reference

@@ -1,0 +1,15 @@
+code: ifc.built_element
+name: IfcBuiltElement
+kind: entity
+base: ifc.element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBuiltElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcBuiltElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The built element comprises all elements that are primarily part of the construction of a built facility, i.e., its structural and space separating system. Built elements are all physically existent and tangible things.
+fields: []
+notes: SUPERTYPE OF ONEOF ( IfcBeam , IfcBearing , IfcBuildingElementProxy , IfcChimney , IfcColumn , IfcCourse , IfcCovering , IfcCurtainWall , IfcDeepFoundation , IfcDoor , IfcEarthworksElement , IfcFooting , IfcKerb , IfcMember , IfcMooringDevice , IfcNavigationElement , IfcPavement , IfcPlate , IfcRail , IfcRailing , IfcRamp , IfcRampFlight , IfcRoof , IfcShadingDevice , IfcSlab , IfcStair , IfcStairFlight , IfcTrackElement , IfcWall , IfcWindow ).

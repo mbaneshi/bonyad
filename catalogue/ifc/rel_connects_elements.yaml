@@ -1,0 +1,31 @@
+code: ifc.rel_connects_elements
+name: IfcRelConnectsElements
+kind: object
+base: ifc.rel_connects
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelConnectsElements
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcRelConnectsElements.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcRelConnectsElements objectified relationship provides the generalization of the connectivity between elements. It is a 1 to 1 relationship.
+fields:
+  - name: connection_geometry
+    type: ref
+    nullable: true
+    meaning: The geometric shape representation of the connection geometry that is provided in the object coordinate system of the RelatingElement (mandatory) and in the object coordinate system of the RelatedElement (optionally).
+    source_ref: "IfcRelConnectsElements attribute 1: OPTIONAL IfcConnectionGeometry"
+    ref_to: ifc.connection_geometry
+  - name: relating_element
+    type: ref
+    meaning: Reference to a subtype of IfcElement that is connected by the connection relationship in the role of RelatingElement.
+    source_ref: "IfcRelConnectsElements attribute 2: IfcElement"
+    ref_to: ifc.element
+  - name: related_element
+    type: ref
+    meaning: Reference to a subtype of IfcElement that is connected by the connection relationship in the role of RelatedElement.
+    source_ref: "IfcRelConnectsElements attribute 3: IfcElement"
+    ref_to: ifc.element
+notes: SUPERTYPE OF ONEOF ( IfcRelConnectsPathElements , IfcRelConnectsWithRealizingElements ).

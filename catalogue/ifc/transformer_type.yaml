@@ -1,0 +1,37 @@
+code: ifc.transformer_type
+name: IfcTransformerType
+kind: symbol
+base: ifc.energy_conversion_device_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTransformerType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcTransformerType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The energy conversion device type IfcTransformerType defines commonly shared information for occurrences of transformers.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of transformer from which the type required may be set.
+    source_ref: "IfcTransformerType attribute 1: IfcTransformerTypeEnum; enumeration IfcTransformerTypeEnum"
+    values:
+      - value: CURRENT
+        meaning: A transformer that changes the current between circuits.
+      - value: FREQUENCY
+        meaning: A transformer that changes the frequency between circuits.
+      - value: INVERTER
+        meaning: A transformer that converts from direct current (DC) to alternating current (AC).
+      - value: RECTIFIER
+        meaning: A transformer that converts from alternating current (AC) to direct current (DC).
+      - value: VOLTAGE
+        meaning: A transformer that changes the voltage between circuits.
+      - value: CHOPPER
+        meaning: A chopper is an electronic power DC convertor without an intermediate AC link giving a variable output voltage by varying the periods of conduction and non-conduction in an adjustable ratio.
+      - value: COMBINED
+        meaning: A transformer that changes different quantities between circuits.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

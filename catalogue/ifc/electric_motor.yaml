@@ -1,0 +1,34 @@
+code: ifc.electric_motor
+name: IfcElectricMotor
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcElectricMotor
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcElectricMotor.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An electric motor is an engine that is a machine for converting electrical energy into mechanical energy.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcElectricMotor (not described in the source documentation).
+    source_ref: "IfcElectricMotor attribute 1: OPTIONAL IfcElectricMotorTypeEnum; enumeration IfcElectricMotorTypeEnum"
+    values:
+      - value: DC
+        meaning: A motor using either generated or rectified Direct Current (DC) power.
+      - value: INDUCTION
+        meaning: An alternating current motor in which the primary winding on one member (usually the stator) is connected to the power source and a secondary winding or a squirrel-cage secondary winding on the other member (usually the …
+      - value: POLYPHASE
+        meaning: A two or three-phase induction motor in which the windings, one for each phase, are evenly divided by the same number of electrical degrees.
+      - value: RELUCTANCESYNCHRONOUS
+        meaning: A synchronous motor with a special rotor design which directly lines the rotor up with the rotating magnetic field of the stator, allowing for no slip under load.
+      - value: SYNCHRONOUS
+        meaning: A motor that operates at a constant speed up to full load.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

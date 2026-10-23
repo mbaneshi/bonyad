@@ -1,0 +1,56 @@
+code: ifc.stair_flight
+name: IfcStairFlight
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStairFlight
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcStairFlight.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A stair flight is an assembly of building components in a single "run" of stair steps (not interrupted by a landing). The stair steps and any stringers are included in the stair flight.
+fields:
+  - name: number_of_risers
+    type: int
+    nullable: true
+    meaning: Number of the risers included in the stair flight.
+    source_ref: "IfcStairFlight attribute 1: OPTIONAL IfcInteger"
+  - name: number_of_treads
+    type: int
+    nullable: true
+    meaning: Number of treads included in the stair flight.
+    source_ref: "IfcStairFlight attribute 2: OPTIONAL IfcInteger"
+  - name: riser_height
+    type: length
+    nullable: true
+    meaning: Vertical distance from tread to tread.
+    source_ref: "IfcStairFlight attribute 3: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: tread_length
+    type: length
+    nullable: true
+    meaning: Horizontal distance from the front to the back of the tread.
+    source_ref: "IfcStairFlight attribute 4: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a stair flight that is specified in an enumeration.
+    source_ref: "IfcStairFlight attribute 5: OPTIONAL IfcStairFlightTypeEnum; enumeration IfcStairFlightTypeEnum"
+    values:
+      - value: STRAIGHT
+        meaning: A stair flight with a straight walking line.
+      - value: WINDER
+        meaning: A stair flight with a walking line including straight and curved sections.
+      - value: SPIRAL
+        meaning: A stair flight with a circular or elliptic walking line.
+      - value: CURVED
+        meaning: A stair flight with a curved walking line.
+      - value: FREEFORM
+        meaning: A stair flight with a free form walking line (and outer boundaries).
+      - value: USERDEFINED
+        meaning: User-defined stair flight.
+      - value: NOTDEFINED
+        meaning: Undefined stair flight.

@@ -1,0 +1,23 @@
+code: landxml.property
+name: Property
+kind: child
+parent: landxml.feature
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Property
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: Used to include additional information that is not explicitly defined by the LandXML schema. Each Property element defines one piece of data.
+fields:
+  - name: label
+    type: text
+    meaning: Property label; the XSD gives no description.
+    source_ref: XSD Property/@label; type xs:anySimpleType
+  - name: value
+    type: text
+    meaning: Property value; the XSD gives no description.
+    source_ref: XSD Property/@value; type xs:anySimpleType
+notes: Occurs 0..unbounded in landxml.feature.

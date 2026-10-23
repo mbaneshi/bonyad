@@ -1,0 +1,30 @@
+code: ifc.vibration_isolator
+name: IfcVibrationIsolator
+kind: entity
+base: ifc.element_component
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcVibrationIsolator
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcVibrationIsolator.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A vibration isolator is a device used to minimize the effects of vibration transmissibility in a structure.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcVibrationIsolator (not described in the source documentation).
+    source_ref: "IfcVibrationIsolator attribute 1: OPTIONAL IfcVibrationIsolatorTypeEnum; enumeration IfcVibrationIsolatorTypeEnum"
+    values:
+      - value: COMPRESSION
+        meaning: Compression type vibration isolator.
+      - value: SPRING
+        meaning: Spring type vibration isolator.
+      - value: BASE
+        meaning: Base isolator preventing transfer of energy from the ground to the structure.
+      - value: USERDEFINED
+        meaning: User-defined vibration isolator type.
+      - value: NOTDEFINED
+        meaning: Undefined vibration isolator type.

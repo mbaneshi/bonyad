@@ -1,0 +1,24 @@
+code: ifc.ellipse_profile_def
+name: IfcEllipseProfileDef
+kind: symbol
+base: ifc.parameterized_profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcEllipseProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcEllipseProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcEllipseProfileDef defines an ellipse as the profile definition used by the swept surface geometry or the swept area solid. It is given by its semi axis attributes and placed within the 2D position coordinate system, established by the Position attribute.
+fields:
+  - name: semi_axis1
+    type: length
+    meaning: The first radius of the ellipse.
+    source_ref: "IfcEllipseProfileDef attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: semi_axis2
+    type: length
+    meaning: The second radius of the ellipse.
+    source_ref: "IfcEllipseProfileDef attribute 2: IfcPositiveLengthMeasure"
+    check: positive

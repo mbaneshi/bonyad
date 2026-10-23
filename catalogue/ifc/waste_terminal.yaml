@@ -1,0 +1,38 @@
+code: ifc.waste_terminal
+name: IfcWasteTerminal
+kind: entity
+base: ifc.flow_terminal
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcWasteTerminal
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcPlumbingFireProtectionDomain/Entities/IfcWasteTerminal.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A waste terminal has the purpose of collecting or intercepting waste from one or more sanitary terminals or other fluid waste generating equipment and discharging it into a single waste/drainage system.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcWasteTerminal (not described in the source documentation).
+    source_ref: "IfcWasteTerminal attribute 1: OPTIONAL IfcWasteTerminalTypeEnum; enumeration IfcWasteTerminalTypeEnum"
+    values:
+      - value: FLOORTRAP
+        meaning: Pipe fitting, set into the floor, that retains liquid to prevent the passage of foul air.
+      - value: FLOORWASTE
+        meaning: Pipe fitting, set into the floor, that collects waste water and discharges it to a separate trap.
+      - value: GULLYSUMP
+        meaning: Pipe fitting or assembly of fittings to receive surface water or waste water, fitted with a grating or sealed cover.
+      - value: GULLYTRAP
+        meaning: Pipe fitting or assembly of fittings that receives surface water or waste water; fitted with a grating or sealed cover that discharges water through a trap.
+      - value: ROOFDRAIN
+        meaning: Pipe fitting, set into the roof, that collects rainwater for discharge into the rainwater system.
+      - value: WASTEDISPOSALUNIT
+        meaning: Electrically operated device that reduces kitchen or other waste into fragments small enough to be flushed into a drainage system.
+      - value: WASTETRAP
+        meaning: Pipe fitting, set adjacent to a sanitary terminal, that retains liquid to prevent the passage of foul air.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

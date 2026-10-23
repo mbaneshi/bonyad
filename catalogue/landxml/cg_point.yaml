@@ -1,0 +1,79 @@
+code: landxml.cg_point
+name: CgPoint
+kind: object
+base: landxml.point_type
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element CgPoint
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: 'Represents a COrdinate GeOmetry Point. The Point is identified by the "name" attr and the data value will be a sequence of space delimented, two or three double numberic values: (Northing Easting) or (Northing Easting Elevation).'
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.cg_points
+    nullable: true
+    meaning: The landxml.cg_points row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it derives from a base type)"
+  - name: o_id
+    type: text
+    meaning: CgPoint oID; the XSD gives no description.
+    source_ref: XSD CgPoint/@oID; type xs:string
+    nullable: true
+  - name: survey_order
+    type: text
+    meaning: CgPoint surveyOrder; the XSD gives no description.
+    source_ref: XSD CgPoint/@surveyOrder; type xs:string
+    nullable: true
+  - name: pnt_surv
+    type: enum
+    meaning: Optional COGO Point attribute to designate the survey point type.
+    source_ref: XSD CgPoint/@pntSurv; type survPntType
+    nullable: true
+    values:
+      - value: monument
+        meaning: Enumeration literal "monument"; the XSD gives no description.
+      - value: control
+        meaning: Enumeration literal "control"; the XSD gives no description.
+      - value: sideshot
+        meaning: Enumeration literal "sideshot"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: natural boundary
+        meaning: Enumeration literal "natural boundary"; the XSD gives no description.
+      - value: traverse
+        meaning: Enumeration literal "traverse"; the XSD gives no description.
+      - value: reference
+        meaning: Enumeration literal "reference"; the XSD gives no description.
+      - value: administrative
+        meaning: Enumeration literal "administrative"; the XSD gives no description.
+  - name: zone_number
+    type: int
+    meaning: CgPoint zoneNumber; the XSD gives no description.
+    source_ref: XSD CgPoint/@zoneNumber; type zoneNumberType
+    nullable: true
+    check: positive
+  - name: survey_horizontal_order
+    type: text
+    meaning: CgPoint surveyHorizontalOrder; the XSD gives no description.
+    source_ref: XSD CgPoint/@surveyHorizontalOrder; type xs:string
+    nullable: true
+  - name: survey_vertical_order
+    type: text
+    meaning: CgPoint surveyVerticalOrder; the XSD gives no description.
+    source_ref: XSD CgPoint/@surveyVerticalOrder; type xs:string
+    nullable: true
+  - name: local_uncertainity
+    type: float
+    meaning: CgPoint localUncertainity; the XSD gives no description.
+    source_ref: XSD CgPoint/@localUncertainity; type xs:double
+    nullable: true
+  - name: positional_uncertainity
+    type: float
+    meaning: CgPoint positionalUncertainity; the XSD gives no description.
+    source_ref: XSD CgPoint/@positionalUncertainity; type xs:double
+    nullable: true
+notes: Occurs 0..unbounded in landxml.cg_points. Stored as an object rather than an ordered child because it derives from a base type; the XSD container is the container reference.

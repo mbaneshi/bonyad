@@ -1,0 +1,36 @@
+code: ifc.curve_style
+name: IfcCurveStyle
+kind: symbol
+base: ifc.presentation_style
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCurveStyle
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcCurveStyle.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcCurveStyle provides the style table for presentation information assigned to geometric curves. The style is defined by a color, a font and a width.
+fields:
+  - name: curve_font
+    type: ref
+    nullable: true
+    meaning: A curve style font which is used to present a curve.
+    source_ref: "IfcCurveStyle attribute 1: OPTIONAL IfcCurveFontOrScaledCurveFontSelect; via select IfcCurveFontOrScaledCurveFontSelect"
+    ref_to: ifc.presentation_item
+  - name: curve_width
+    type: text
+    nullable: true
+    meaning: A positive length measure in units of the presentation area for the width of a presented curve.
+    source_ref: "IfcCurveStyle attribute 2: OPTIONAL IfcSizeSelect; SELECT IfcSizeSelect of value types, stored as text (the member type tag is not kept)"
+  - name: curve_colour
+    type: ref
+    nullable: true
+    meaning: The colour of the visible part of the curve.
+    source_ref: "IfcCurveStyle attribute 3: OPTIONAL IfcColour; via select IfcColour"
+    ref_to: ifc.presentation_item
+  - name: model_or_draughting
+    type: bool
+    nullable: true
+    meaning: Indication whether the length measures provided for the presentation style are model based, or draughting based.
+    source_ref: "IfcCurveStyle attribute 4: OPTIONAL IfcBoolean"

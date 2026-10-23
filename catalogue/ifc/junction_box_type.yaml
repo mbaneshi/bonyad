@@ -1,0 +1,27 @@
+code: ifc.junction_box_type
+name: IfcJunctionBoxType
+kind: symbol
+base: ifc.flow_fitting_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcJunctionBoxType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcJunctionBoxType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow fitting type IfcJunctionBoxType defines commonly shared information for occurrences of junction boxes.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of junction boxes from which the type required may be set.
+    source_ref: "IfcJunctionBoxType attribute 1: IfcJunctionBoxTypeEnum; enumeration IfcJunctionBoxTypeEnum"
+    values:
+      - value: DATA
+        meaning: Contains cables, outlets, and/or switches for communications use.
+      - value: POWER
+        meaning: Contains cables, outlets, and/or switches for electrical power.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

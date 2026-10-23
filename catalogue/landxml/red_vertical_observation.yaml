@@ -1,0 +1,155 @@
+code: landxml.red_vertical_observation
+name: RedVerticalObservation
+kind: child
+parent: landxml.observation_group
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element RedVerticalObservation
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `RedVerticalObservation`; the XSD gives no description.
+fields:
+  - name: desc
+    type: text
+    meaning: RedVerticalObservation desc; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: RedVerticalObservation name; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@name; type xs:string
+  - name: state
+    type: text
+    meaning: RedVerticalObservation state; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@state; type xs:string
+    nullable: true
+  - name: o_id
+    type: text
+    meaning: RedVerticalObservation oID; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@oID; type xs:string
+    nullable: true
+  - name: purpose
+    type: enum
+    meaning: Used by many of the Survey elements.
+    source_ref: XSD RedVerticalObservation/@purpose; type purposeType
+    nullable: true
+    values:
+      - value: normal
+        meaning: Enumeration literal "normal"; the XSD gives no description.
+      - value: check
+        meaning: Enumeration literal "check"; the XSD gives no description.
+      - value: backsight
+        meaning: Enumeration literal "backsight"; the XSD gives no description.
+      - value: foresight
+        meaning: Enumeration literal "foresight"; the XSD gives no description.
+      - value: traverse
+        meaning: Enumeration literal "traverse"; the XSD gives no description.
+      - value: sideshot
+        meaning: Enumeration literal "sideshot"; the XSD gives no description.
+      - value: resection
+        meaning: Enumeration literal "resection"; the XSD gives no description.
+      - value: levelLoop
+        meaning: Enumeration literal "levelLoop"; the XSD gives no description.
+      - value: digitalLevel
+        meaning: Enumeration literal "digitalLevel"; the XSD gives no description.
+      - value: remoteElevation
+        meaning: Enumeration literal "remoteElevation"; the XSD gives no description.
+      - value: recipricalObservation
+        meaning: Enumeration literal "recipricalObservation"; the XSD gives no description.
+      - value: topo
+        meaning: Enumeration literal "topo"; the XSD gives no description.
+      - value: cutSheets
+        meaning: Enumeration literal "cutSheets"; the XSD gives no description.
+      - value: asbuilt
+        meaning: Enumeration literal "asbuilt"; the XSD gives no description.
+  - name: setup_id
+    type: ref
+    meaning: "RedVerticalObservation setupID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD RedVerticalObservation/@setupID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: date
+    type: date
+    meaning: RedVerticalObservation date; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@date; type xs:date
+    nullable: true
+  - name: equipment_used
+    type: text
+    meaning: This gives a list of equipment used for the observation this list of equipment is used to estimate the accuracy of the observation..
+    source_ref: XSD RedVerticalObservation/@equipmentUsed; type equipmentType
+    nullable: true
+  - name: height
+    type: float
+    meaning: RedVerticalObservation height; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@height; type xs:double
+    nullable: true
+  - name: vertical_adjustment
+    type: text
+    meaning: RedVerticalObservation verticalAdjustment; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@verticalAdjustment; type xs:string
+    nullable: true
+  - name: vertical_fix
+    type: text
+    meaning: RedVerticalObservation verticalFix; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@verticalFix; type xs:string
+    nullable: true
+  - name: geosphoid
+    type: float
+    meaning: RedVerticalObservation geosphoid; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@geosphoid; type xs:double
+    nullable: true
+  - name: gs_datum
+    type: text
+    meaning: RedVerticalObservation gsDatum; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@gsDatum; type xs:string
+    nullable: true
+  - name: gs_model
+    type: text
+    meaning: RedVerticalObservation gsModel; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@gsModel; type xs:string
+    nullable: true
+  - name: gs_method
+    type: text
+    meaning: RedVerticalObservation gsMethod; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@gsMethod; type xs:string
+    nullable: true
+  - name: origin_mark
+    type: text
+    meaning: RedVerticalObservation originMark; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@originMark; type xs:string
+    nullable: true
+  - name: vertical_datum
+    type: text
+    meaning: RedVerticalObservation verticalDatum; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@verticalDatum; type xs:string
+    nullable: true
+  - name: local_uncertainity
+    type: float
+    meaning: RedVerticalObservation localUncertainity; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@localUncertainity; type xs:double
+    nullable: true
+  - name: class
+    type: text
+    meaning: RedVerticalObservation class; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@class; type xs:string
+    nullable: true
+  - name: order
+    type: text
+    meaning: RedVerticalObservation order; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@order; type xs:string
+    nullable: true
+  - name: positional_uncertainity
+    type: float
+    meaning: RedVerticalObservation positionalUncertainity; the XSD gives no description.
+    source_ref: XSD RedVerticalObservation/@positionalUncertainity; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.observation_group."

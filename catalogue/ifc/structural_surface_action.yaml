@@ -1,0 +1,42 @@
+code: ifc.structural_surface_action
+name: IfcStructuralSurfaceAction
+kind: entity
+base: ifc.structural_action
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralSurfaceAction
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcStructuralSurfaceAction.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: This entity defines an action which is distributed over a surface. A surface action may be connected with a surface member or surface connection.
+fields:
+  - name: projected_or_true
+    type: enum
+    nullable: true
+    meaning: Defines whether load values are given per true lengths of the surface on which they act, or per lengths of the projection of the surface in load direction.
+    source_ref: "IfcStructuralSurfaceAction attribute 1: OPTIONAL IfcProjectedOrTrueLengthEnum; enumeration IfcProjectedOrTrueLengthEnum"
+    values:
+      - value: PROJECTED_LENGTH
+        meaning: Projected length.
+      - value: TRUE_LENGTH
+        meaning: True Length.
+  - name: predefined_type
+    type: enum
+    meaning: Type of action according to its distribution of load values.
+    source_ref: "IfcStructuralSurfaceAction attribute 2: IfcStructuralSurfaceActivityTypeEnum; enumeration IfcStructuralSurfaceActivityTypeEnum"
+    values:
+      - value: CONST
+        meaning: The load has a constant value over its entire extent.
+      - value: BILINEAR
+        meaning: The load value is bilinearly distributed over the load's extent.
+      - value: DISCRETE
+        meaning: The load is specified as a series of discrete load points.
+      - value: ISOCONTOUR
+        meaning: The load is specified by a series of iso-curves (level sets), i.e. curves at which the load value is constant.
+      - value: USERDEFINED
+        meaning: The load distribution is user-defined.
+      - value: NOTDEFINED
+        meaning: The load distribution is undefined.
+notes: SUPERTYPE OF ONEOF ( IfcStructuralPlanarAction ).

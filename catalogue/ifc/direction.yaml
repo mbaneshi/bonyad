@@ -1,0 +1,20 @@
+code: ifc.direction
+name: IfcDirection
+kind: entity
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDirection
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcDirection.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcDirection provides a direction in two or three dimensional space depending on the number of _DirectionRatio_'s provided. The IfcDirection does not imply a vector length, and the direction ratios does not have to be normalized.
+fields:
+  - name: direction_ratios
+    type: array
+    meaning: The components in the direction of X axis (DirectionRatios[1]), of Y axis (DirectionRatios[2]), and of Z axis (DirectionRatios[3]).
+    source_ref: "IfcDirection attribute 1: LIST [2:3] OF IfcReal"
+    of: float
+notes: "Derived attributes not stored: Dim."

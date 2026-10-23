@@ -1,0 +1,37 @@
+code: ifc.text_literal
+name: IfcTextLiteral
+kind: entity
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextLiteral
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationDefinitionResource/Entities/IfcTextLiteral.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The text literal is a geometric representation item which describes a text string using a string literal and additional position and path information. The text size and appearance is determined by the IfcTextStyle that is associated to the IfcTextLiteral through an IfcStyledItem.
+fields:
+  - name: literal
+    type: text
+    meaning: The text literal to be presented.
+    source_ref: "IfcTextLiteral attribute 1: IfcPresentableText"
+  - name: placement
+    type: ref
+    meaning: An IfcAxis2Placement that determines the placement and orientation of the presented string.
+    source_ref: "IfcTextLiteral attribute 2: IfcAxis2Placement; via select IfcAxis2Placement"
+    ref_to: ifc.placement
+  - name: path
+    type: enum
+    meaning: The writing direction of the text literal.
+    source_ref: "IfcTextLiteral attribute 3: IfcTextPath; enumeration IfcTextPath"
+    values:
+      - value: LEFT
+        meaning: Left.
+      - value: RIGHT
+        meaning: Right.
+      - value: UP
+        meaning: Up.
+      - value: DOWN
+        meaning: Down.
+notes: SUPERTYPE OF ONEOF ( IfcTextLiteralWithExtent ).

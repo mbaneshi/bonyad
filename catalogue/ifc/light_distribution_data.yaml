@@ -1,0 +1,27 @@
+code: ifc.light_distribution_data
+name: IfcLightDistributionData
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLightDistributionData
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationOrganizationResource/Entities/IfcLightDistributionData.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcLightDistributionData defines the luminous intensity of a light source given at a particular main plane angle. It is based on some standardized light distribution curves; the MainPlaneAngle is either the.
+fields:
+  - name: main_plane_angle
+    type: angle
+    meaning: The main plane angle (A, B or C angles, according to the light distribution curve chosen). Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcLightDistributionData attribute 1: IfcPlaneAngleMeasure"
+  - name: secondary_plane_angle
+    type: array
+    meaning: The list of secondary plane angles (the α, β or γ angles) according to the light distribution curve chosen. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcLightDistributionData attribute 2: LIST [1:?] OF IfcPlaneAngleMeasure"
+    of: angle
+  - name: luminous_intensity
+    type: array
+    meaning: The luminous intensity distribution measure for this pair of main and secondary plane angles according to the light distribution curve chosen.
+    source_ref: "IfcLightDistributionData attribute 3: LIST [1:?] OF IfcLuminousIntensityDistributionMeasure"
+    of: float

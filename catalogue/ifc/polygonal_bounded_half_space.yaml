@@ -1,0 +1,24 @@
+code: ifc.polygonal_bounded_half_space
+name: IfcPolygonalBoundedHalfSpace
+kind: entity
+base: ifc.half_space_solid
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPolygonalBoundedHalfSpace
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcPolygonalBoundedHalfSpace.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The polygonal bounded half space is a special subtype of a half space solid, where the material of the half space used in Boolean expressions is bounded by a two-dimensional boundary. The base surface of the half space is positioned by its normal relative to the object coordinate system (as defined at the supertype IfcHalfSpaceSolid), and its boundary (with …
+fields:
+  - name: position
+    type: ref
+    meaning: Definition of the position coordinate system for the two-dimensional boundary.
+    source_ref: "IfcPolygonalBoundedHalfSpace attribute 1: IfcAxis2Placement3D"
+    ref_to: ifc.axis2_placement3d
+  - name: polygonal_boundary
+    type: ref
+    meaning: Two-dimensional bounded curve, defined in the xy plane of the position coordinate system.
+    source_ref: "IfcPolygonalBoundedHalfSpace attribute 2: IfcBoundedCurve"
+    ref_to: ifc.bounded_curve

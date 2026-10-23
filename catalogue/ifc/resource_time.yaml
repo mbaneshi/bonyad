@@ -1,0 +1,93 @@
+code: ifc.resource_time
+name: IfcResourceTime
+kind: object
+base: ifc.scheduling_time
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcResourceTime
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcDateTimeResource/Entities/IfcResourceTime.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcResourceTime captures the time-related information about a construction resource.
+fields:
+  - name: schedule_work
+    type: text
+    nullable: true
+    meaning: Indicates the total work (e.g. person-hours) allocated to the task on behalf of the resource.
+    source_ref: "IfcResourceTime attribute 1: OPTIONAL IfcDuration"
+  - name: schedule_usage
+    type: ratio
+    nullable: true
+    meaning: Indicates the amount of the resource used concurrently.
+    source_ref: "IfcResourceTime attribute 2: OPTIONAL IfcPositiveRatioMeasure"
+    check: positive
+  - name: schedule_start
+    type: timestamp
+    nullable: true
+    meaning: Indicates the time when the resource is scheduled to start working.
+    source_ref: "IfcResourceTime attribute 3: OPTIONAL IfcDateTime"
+  - name: schedule_finish
+    type: timestamp
+    nullable: true
+    meaning: Indicates the time when the resource is scheduled to finish working.
+    source_ref: "IfcResourceTime attribute 4: OPTIONAL IfcDateTime"
+  - name: schedule_contour
+    type: text
+    nullable: true
+    meaning: Indicates how a resource should be leveled over time by adjusting the resource usage according to a specified curve.
+    source_ref: "IfcResourceTime attribute 5: OPTIONAL IfcLabel"
+  - name: leveling_delay
+    type: text
+    nullable: true
+    meaning: Indicates a delay in the ScheduleStart caused by leveling.
+    source_ref: "IfcResourceTime attribute 6: OPTIONAL IfcDuration"
+  - name: is_over_allocated
+    type: bool
+    nullable: true
+    meaning: Indicates that the resource is scheduled in excess of its capacity.
+    source_ref: "IfcResourceTime attribute 7: OPTIONAL IfcBoolean"
+  - name: status_time
+    type: timestamp
+    nullable: true
+    meaning: Indicates the date and time for which status values are applicable; particularly completion, actual, and remaining values.
+    source_ref: "IfcResourceTime attribute 8: OPTIONAL IfcDateTime"
+  - name: actual_work
+    type: text
+    nullable: true
+    meaning: Indicates the actual work performed by the resource as of the StatusTime.
+    source_ref: "IfcResourceTime attribute 9: OPTIONAL IfcDuration"
+  - name: actual_usage
+    type: ratio
+    nullable: true
+    meaning: Indicates the actual amount of the resource used concurrently.
+    source_ref: "IfcResourceTime attribute 10: OPTIONAL IfcPositiveRatioMeasure"
+    check: positive
+  - name: actual_start
+    type: timestamp
+    nullable: true
+    meaning: Indicates the time when the resource actually started working.
+    source_ref: "IfcResourceTime attribute 11: OPTIONAL IfcDateTime"
+  - name: actual_finish
+    type: timestamp
+    nullable: true
+    meaning: Indicates the time when the resource actually finished working.
+    source_ref: "IfcResourceTime attribute 12: OPTIONAL IfcDateTime"
+  - name: remaining_work
+    type: text
+    nullable: true
+    meaning: Indicates the work remaining to be completed by the resource.
+    source_ref: "IfcResourceTime attribute 13: OPTIONAL IfcDuration"
+  - name: remaining_usage
+    type: ratio
+    nullable: true
+    meaning: RemainingUsage attribute of IfcResourceTime (not described in the source documentation).
+    source_ref: "IfcResourceTime attribute 14: OPTIONAL IfcPositiveRatioMeasure"
+    check: positive
+  - name: completion
+    type: ratio
+    nullable: true
+    meaning: Indicates the percent completion of this resource.
+    source_ref: "IfcResourceTime attribute 15: OPTIONAL IfcPositiveRatioMeasure"
+    check: positive

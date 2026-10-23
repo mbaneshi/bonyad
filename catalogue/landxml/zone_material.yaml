@@ -1,0 +1,58 @@
+code: landxml.zone_material
+name: ZoneMaterial
+kind: child
+parent: landxml.zone
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element ZoneMaterial
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `ZoneMaterial`; the XSD gives no description.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD ZoneMaterial/@staStart; type station
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD ZoneMaterial/@staEnd; type station
+  - name: material
+    type: enum
+    meaning: ZoneMaterial material; the XSD gives no description.
+    source_ref: XSD ZoneMaterial/@material; type zoneMaterialType
+    values:
+      - value: pavement-high-type
+        meaning: Enumeration literal "pavement-high-type"; the XSD gives no description.
+      - value: pavement-intermediate-type
+        meaning: Enumeration literal "pavement-intermediate-type"; the XSD gives no description.
+      - value: pavement-low-type
+        meaning: Enumeration literal "pavement-low-type"; the XSD gives no description.
+      - value: soil
+        meaning: Enumeration literal "soil"; the XSD gives no description.
+      - value: concrete
+        meaning: Enumeration literal "concrete"; the XSD gives no description.
+      - value: stone
+        meaning: Enumeration literal "stone"; the XSD gives no description.
+      - value: riprap
+        meaning: Enumeration literal "riprap"; the XSD gives no description.
+      - value: turf
+        meaning: Enumeration literal "turf"; the XSD gives no description.
+      - value: gravel
+        meaning: Enumeration literal "gravel"; the XSD gives no description.
+      - value: paved
+        meaning: Enumeration literal "paved"; the XSD gives no description.
+      - value: metal
+        meaning: Enumeration literal "metal"; the XSD gives no description.
+      - value: metal grate
+        meaning: Enumeration literal "metal grate"; the XSD gives no description.
+      - value: composite
+        meaning: Enumeration literal "composite"; the XSD gives no description.
+      - value: timber
+        meaning: Enumeration literal "timber"; the XSD gives no description.
+      - value: other
+        meaning: Enumeration literal "other"; the XSD gives no description.
+notes: Occurs 0..unbounded in landxml.zone.

@@ -1,0 +1,26 @@
+code: ifc.document_reference
+name: IfcDocumentReference
+kind: object
+base: ifc.external_reference
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDocumentReference
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcDocumentReference.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcDocumentReference is a reference to the location of a document. The reference is given by a system interpretable Location attribute (a URL string) where the document can be found, and an optional inherited internal reference Identification, which refers to a system interpretable position within the document.
+fields:
+  - name: description
+    type: text
+    nullable: true
+    meaning: Description of the document reference for informational purposes.
+    source_ref: "IfcDocumentReference attribute 1: OPTIONAL IfcText"
+  - name: referenced_document
+    type: ref
+    nullable: true
+    meaning: The document that is referenced.
+    source_ref: "IfcDocumentReference attribute 2: OPTIONAL IfcDocumentInformation"
+    ref_to: ifc.document_information
+notes: "Inverse attributes not stored: DocumentRefForObjects."

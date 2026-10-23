@@ -1,0 +1,30 @@
+code: ifc.tendon_anchor
+name: IfcTendonAnchor
+kind: entity
+base: ifc.reinforcing_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTendonAnchor
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcTendonAnchor.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A tendon anchor is the end connection for tendons in prestressed or posttensioned concrete.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Kind of tendon anchor.
+    source_ref: "IfcTendonAnchor attribute 1: OPTIONAL IfcTendonAnchorTypeEnum; enumeration IfcTendonAnchorTypeEnum"
+    values:
+      - value: COUPLER
+        meaning: The anchor is an intermediate device which connects two tendons.
+      - value: FIXED_END
+        meaning: The anchor fixes the end of a tendon.
+      - value: TENSIONING_END
+        meaning: The anchor is used or can be used to prestress the tendon.
+      - value: USERDEFINED
+        meaning: The type of tendon anchor is user defined.
+      - value: NOTDEFINED
+        meaning: The type of tendon anchor is not defined.

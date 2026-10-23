@@ -1,0 +1,220 @@
+code: landxml.instrument_setup
+name: InstrumentSetup
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element InstrumentSetup
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: The Instrument setup location is defined by either a coordinate text value ("north east" or "north east elev") or a CgPoint number reference "pntRef" attribute.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.survey
+    nullable: true
+    meaning: The landxml.survey row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: id
+    type: text
+    meaning: InstrumentSetup id; the XSD gives no description.
+    source_ref: XSD InstrumentSetup/@id; type xs:ID
+  - name: instrument_details_id
+    type: ref
+    meaning: "InstrumentSetup instrumentDetailsID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD InstrumentSetup/@instrumentDetailsID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: station_name
+    type: text
+    meaning: InstrumentSetup stationName; the XSD gives no description.
+    source_ref: XSD InstrumentSetup/@stationName; type xs:string
+  - name: instrument_height
+    type: float
+    meaning: InstrumentSetup instrumentHeight; the XSD gives no description.
+    source_ref: XSD InstrumentSetup/@instrumentHeight; type xs:double
+  - name: orientation_azimuth
+    type: angle
+    meaning: Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them.
+    source_ref: XSD InstrumentSetup/@orientationAzimuth; type direction
+    nullable: true
+  - name: circle_azimuth
+    type: angle
+    meaning: Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them.
+    source_ref: XSD InstrumentSetup/@circleAzimuth; type direction
+    nullable: true
+  - name: status
+    type: enum
+    meaning: InstrumentSetup status; the XSD gives no description.
+    source_ref: XSD InstrumentSetup/@status; type observationStatusType
+    nullable: true
+    values:
+      - value: modified
+        meaning: Enumeration literal "modified"; the XSD gives no description.
+      - value: deleted
+        meaning: Enumeration literal "deleted"; the XSD gives no description.
+  - name: instrument_point
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D Point location for Survey instrument location. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only instrument_point_pnt_ref is given).
+    source_ref: InstrumentSetup/InstrumentPoint text content (Point3dOpt)
+  - name: instrument_point_name
+    type: text
+    meaning: InstrumentPoint name; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@name; type xs:string
+    nullable: true
+  - name: instrument_point_desc
+    type: text
+    meaning: InstrumentPoint desc; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@desc; type xs:string
+    nullable: true
+  - name: instrument_point_code
+    type: text
+    meaning: InstrumentPoint code; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@code; type xs:string
+    nullable: true
+  - name: instrument_point_state
+    type: enum
+    meaning: InstrumentPoint state; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: instrument_point_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD InstrumentPoint/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: instrument_point_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD InstrumentPoint/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: instrument_point_point_geometry
+    type: enum
+    meaning: InstrumentPoint pointGeometry; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: instrument_point_dtm_attribute
+    type: enum
+    meaning: InstrumentPoint DTMAttribute; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: instrument_point_time_stamp
+    type: timestamp
+    meaning: InstrumentPoint timeStamp; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: instrument_point_role
+    type: enum
+    meaning: InstrumentPoint role; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: instrument_point_determined_time_stamp
+    type: timestamp
+    meaning: InstrumentPoint determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: instrument_point_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD InstrumentPoint/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: instrument_point_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD InstrumentPoint/@latitude; type latLongAngle
+    nullable: true
+  - name: instrument_point_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD InstrumentPoint/@longitude; type latLongAngle
+    nullable: true
+  - name: instrument_point_zone
+    type: text
+    meaning: InstrumentPoint zone; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@zone; type xs:string
+    nullable: true
+  - name: instrument_point_northing_std_error
+    type: float
+    meaning: InstrumentPoint northingStdError; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@northingStdError; type xs:double
+    nullable: true
+  - name: instrument_point_easting_std_error
+    type: float
+    meaning: InstrumentPoint eastingStdError; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@eastingStdError; type xs:double
+    nullable: true
+  - name: instrument_point_elevation_std_error
+    type: float
+    meaning: InstrumentPoint elevationStdError; the XSD gives no description.
+    source_ref: XSD InstrumentPoint/@elevationStdError; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.survey. Inlined elements InstrumentPoint sit inside an unbounded xs:choice/xs:sequence in the XSD; modelled as at most once each. Review: Occurrence of inlined elements is a modelling judgement (XSD choice is unbounded). Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."
+needs_review: true

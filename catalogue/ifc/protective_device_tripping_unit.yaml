@@ -1,0 +1,32 @@
+code: ifc.protective_device_tripping_unit
+name: IfcProtectiveDeviceTrippingUnit
+kind: entity
+base: ifc.distribution_control_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcProtectiveDeviceTrippingUnit
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcProtectiveDeviceTrippingUnit.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A protective device tripping unit breaks an electrical circuit at a separate breaking unit when a stated electric current that passes through the unit is exceeded.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcProtectiveDeviceTrippingUnit (not described in the source documentation).
+    source_ref: "IfcProtectiveDeviceTrippingUnit attribute 1: OPTIONAL IfcProtectiveDeviceTrippingUnitTypeEnum; enumeration IfcProtectiveDeviceTrippingUnitTypeEnum"
+    values:
+      - value: ELECTRONIC
+        meaning: A tripping unit activated by electronic action.
+      - value: ELECTROMAGNETIC
+        meaning: A tripping unit activated by electromagnetic action.
+      - value: RESIDUALCURRENT
+        meaning: A tripping unit activated by residual current detection.
+      - value: THERMAL
+        meaning: A tripping unit activated by thermal action.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

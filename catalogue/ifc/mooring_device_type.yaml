@@ -1,0 +1,33 @@
+code: ifc.mooring_device_type
+name: IfcMooringDeviceType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMooringDeviceType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcPortsAndWaterwaysDomain/Entities/IfcMooringDeviceType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcMooringDeviceType provides the type information for IfcMooringDevice occurrences.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined type of a mooring device.
+    source_ref: "IfcMooringDeviceType attribute 1: IfcMooringDeviceTypeEnum; enumeration IfcMooringDeviceTypeEnum"
+    values:
+      - value: LINETENSIONER
+        meaning: A mechanical device used to apply a tensioning load to mooring lines to improve vessel stability for port operations.
+      - value: MAGNETICDEVICE
+        meaning: Mooring device that uses magnets as the primary method of securing the vessel.
+      - value: MOORINGHOOKS
+        meaning: Quick release mooring hooks - an active device used to secure a vessel and provide automated release of vessels.
+      - value: VACUUMDEVICE
+        meaning: Mooring device that uses vacuum suction as the primary method of securing the vessel.
+      - value: BOLLARD
+        meaning: a short, thick post on the deck of a ship or a quay side, to which ship's rope may be secured. not to be confused with traffic bollards.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

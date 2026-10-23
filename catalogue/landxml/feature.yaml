@@ -1,0 +1,41 @@
+code: landxml.feature
+name: Feature
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Feature
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: "Used to include additional information that is not explicitly defined by the LandXML schema, Feature may contain one or more Property, DocFileRef or nested Feature elements. NOTE: to allow any valid content, the explicit definitions for Property, DocFileRef and Feature have been commented out, but are still expected in common use."
+fields:
+  - name: owner
+    type: ref
+    ref_to: any
+    nullable: true
+    meaning: The element this Feature is attached to (null for a top-level or nested Feature, see parent_feature).
+    source_ref: "not in the XSD: linkage added because Feature is listed under nearly every element"
+  - name: parent_feature
+    type: ref
+    ref_to: landxml.feature
+    nullable: true
+    meaning: The Feature that contains this one when Features are nested.
+    source_ref: "not in the XSD: linkage for nested Feature elements"
+  - name: name
+    type: text
+    meaning: Feature name; the XSD gives no description.
+    source_ref: XSD Feature/@name; type xs:string
+    nullable: true
+  - name: code
+    type: text
+    meaning: Feature code; the XSD gives no description.
+    source_ref: XSD Feature/@code; type xs:string
+    nullable: true
+  - name: source
+    type: text
+    meaning: Feature source; the XSD gives no description.
+    source_ref: XSD Feature/@source; type xs:anySimpleType
+    nullable: true
+notes: "Generalised (rule R5): the XSD lists Feature as an optional repeated child of nearly every element; it is emitted once here, with owner and parent_feature added as linkage."

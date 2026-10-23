@@ -1,0 +1,71 @@
+code: landxml.landxml
+name: LandXML
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element LandXML
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `LandXML`; the XSD gives no description.
+fields:
+  - name: date
+    type: date
+    meaning: LandXML date; the XSD gives no description.
+    source_ref: XSD LandXML/@date; type xs:date
+  - name: time
+    type: text
+    meaning: LandXML time; the XSD gives no description. ISO 8601 time of day, kept as text (the catalogue has no time scalar).
+    source_ref: XSD LandXML/@time; type xs:time
+  - name: version
+    type: text
+    meaning: LandXML version; the XSD gives no description.
+    source_ref: XSD LandXML/@version; type xs:string
+  - name: language
+    type: text
+    meaning: LandXML language; the XSD gives no description.
+    source_ref: XSD LandXML/@language; type xs:string
+    nullable: true
+  - name: read_only
+    type: bool
+    meaning: LandXML readOnly; the XSD gives no description.
+    source_ref: XSD LandXML/@readOnly; type xs:boolean
+    nullable: true
+  - name: land_xml_id
+    type: int
+    meaning: LandXML LandXMLId; the XSD gives no description.
+    source_ref: XSD LandXML/@LandXMLId; type xs:int
+    nullable: true
+  - name: crc
+    type: int
+    meaning: LandXML crc; the XSD gives no description.
+    source_ref: XSD LandXML/@crc; type xs:integer
+    nullable: true
+  - name: project_name
+    type: text
+    meaning: Project name; the XSD gives no description.
+    source_ref: XSD Project/@name; type xs:string
+    nullable: true
+  - name: project_desc
+    type: text
+    meaning: Project desc; the XSD gives no description.
+    source_ref: XSD Project/@desc; type xs:string
+    nullable: true
+  - name: project_state
+    type: enum
+    meaning: Project state; the XSD gives no description.
+    source_ref: XSD Project/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+notes: "Inlined elements Project sit inside an unbounded xs:choice/xs:sequence in the XSD; modelled as at most once each. The XSD allows foreign-namespace content here (xs:any/xs:anyAttribute); not modelled. Review: Occurrence of inlined elements is a modelling judgement (XSD choice is unbounded)."
+needs_review: true

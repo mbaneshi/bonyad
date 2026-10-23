@@ -1,0 +1,38 @@
+code: landxml.cross_sect_surf
+name: CrossSectSurf
+kind: child
+parent: landxml.cross_sect
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element CrossSectSurf
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: Defined as a space delimited PntList2D of offset-distance/offset-elevations from the centerline, also known as the profile grade line. Typically represent existing ground surfaces.
+fields:
+  - name: name
+    type: text
+    meaning: CrossSectSurf name; the XSD gives no description.
+    source_ref: XSD CrossSectSurf/@name; type xs:string
+  - name: desc
+    type: text
+    meaning: CrossSectSurf desc; the XSD gives no description.
+    source_ref: XSD CrossSectSurf/@desc; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: CrossSectSurf state; the XSD gives no description.
+    source_ref: XSD CrossSectSurf/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+notes: Occurs 0..unbounded in landxml.cross_sect.

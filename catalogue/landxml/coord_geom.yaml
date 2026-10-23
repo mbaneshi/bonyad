@@ -1,0 +1,50 @@
+code: landxml.coord_geom
+name: CoordGeom
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element CoordGeom
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A sequential list of Line and/or Curve and/or Spiral elements. After the sequential list of elements an optional vertical geometry may be defined as a profile, which may be as simple as a list of PVIs (point to point 3D line string).
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.alignment
+    nullable: true
+    meaning: The landxml.alignment row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: desc
+    type: text
+    meaning: CoordGeom desc; the XSD gives no description.
+    source_ref: XSD CoordGeom/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: CoordGeom name; the XSD gives no description.
+    source_ref: XSD CoordGeom/@name; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: CoordGeom state; the XSD gives no description.
+    source_ref: XSD CoordGeom/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: o_id
+    type: text
+    meaning: CoordGeom oID; the XSD gives no description.
+    source_ref: XSD CoordGeom/@oID; type xs:string
+    nullable: true
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.alignment; at most once (XSD: unbounded choice) in landxml.parcel; at most once (XSD: unbounded choice) in landxml.volume_geom; at most once (XSD: unbounded choice) in landxml.plan_feature. Review: Contained by more than one type in the XSD (also landxml.parcel, landxml.volume_geom, landxml.plan_feature); the catalogue allows one parent, so the first is used. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."
+needs_review: true

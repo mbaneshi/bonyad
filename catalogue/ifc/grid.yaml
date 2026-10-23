@@ -1,0 +1,32 @@
+code: ifc.grid
+name: IfcGrid
+kind: entity
+base: ifc.positioning_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcGrid
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcGrid.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcGrid ia a planar design grid defined in 3D space used as an aid in locating structural and design elements. The position of the grid (ObjectPlacement) is defined by a 3D coordinate system (and thereby the design grid can be used in plan, section or in any position relative to the world coordinate system).
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined types to define the particular type of the grid.
+    source_ref: "IfcGrid attribute 4: OPTIONAL IfcGridTypeEnum; enumeration IfcGridTypeEnum"
+    values:
+      - value: RECTANGULAR
+        meaning: An IfcGrid with straight u-axes and straight v-axes being perpendicular to each other.
+      - value: RADIAL
+        meaning: An IfcGrid with straight u-axes and curved v-axes.
+      - value: TRIANGULAR
+        meaning: An IfcGrid with u-axes, v-axes, and w-axes all being co-linear axis lines with a 2D offset.
+      - value: IRREGULAR
+        meaning: An IfcGrid with u-axes, v-axes, and optionally w-axes that cannot be described by the patterns.
+      - value: USERDEFINED
+        meaning: Any other grid not conforming to any of the above restrictions.
+      - value: NOTDEFINED
+        meaning: Not known whether grid conforms to any standard type.

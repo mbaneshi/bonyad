@@ -1,0 +1,20 @@
+code: ifc.rel_associates_related_objects
+name: IfcRelAssociates.RelatedObjects
+kind: child
+parent: ifc.root
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelAssociates.RelatedObjects
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcRelAssociates.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the RelatedObjects list of IfcRelAssociates. Set of object or property definitions to which the external references or information is associated.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcRelAssociates.RelatedObjects.
+    source_ref: "IfcRelAssociates attribute 1: SET [1:?] OF IfcDefinitionSelect; via select IfcDefinitionSelect"
+    ref_to: ifc.root
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [1:?] OF IfcDefinitionSelect. Owned by an abstract type: rows belong to the concrete subtype. Declared on abstract IfcRelAssociates, which has no table; attached to the nearest ancestor with a table, IfcRoot."

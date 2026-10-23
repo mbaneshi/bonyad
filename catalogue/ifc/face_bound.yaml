@@ -1,0 +1,25 @@
+code: ifc.face_bound
+name: IfcFaceBound
+kind: entity
+base: ifc.topological_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFaceBound
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcTopologyResource/Entities/IfcFaceBound.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcFaceBound: no description in the source documentation."
+fields:
+  - name: bound
+    type: ref
+    meaning: The loop which will be used as a face boundary.
+    source_ref: "IfcFaceBound attribute 1: IfcLoop"
+    ref_to: ifc.loop
+  - name: orientation
+    type: bool
+    meaning: This indicated whether (TRUE) or not (FALSE) the loop has the same sense when used to bound the face as when first defined.
+    source_ref: "IfcFaceBound attribute 2: IfcBoolean"
+needs_review: true
+notes: "SUPERTYPE OF ONEOF ( IfcFaceOuterBound ). Review: no description found for IfcFaceBound in the documentation at the pinned commit."

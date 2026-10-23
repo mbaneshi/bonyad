@@ -1,0 +1,34 @@
+code: ifc.section_properties
+name: IfcSectionProperties
+kind: object
+base: ifc.pre_defined_properties
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSectionProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcSectionProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcSectionProperties defines the cross section properties for a single longitudinal piece of a cross section. It is a special-purpose helper class for IfcSectionReinforcementProperties.
+fields:
+  - name: section_type
+    type: enum
+    meaning: An indicator whether a specific piece of a cross section is uniform or tapered in longitudinal direction.
+    source_ref: "IfcSectionProperties attribute 1: IfcSectionTypeEnum; enumeration IfcSectionTypeEnum"
+    values:
+      - value: UNIFORM
+        meaning: The section is uniform in longitudinal direction.
+      - value: TAPERED
+        meaning: The section is tapered in longitudinal direction.
+  - name: start_profile
+    type: ref
+    meaning: The cross section profile at the start point of the longitudinal section.
+    source_ref: "IfcSectionProperties attribute 2: IfcProfileDef"
+    ref_to: ifc.profile_def
+  - name: end_profile
+    type: ref
+    nullable: true
+    meaning: The cross section profile at the end point of the longitudinal section.
+    source_ref: "IfcSectionProperties attribute 3: OPTIONAL IfcProfileDef"
+    ref_to: ifc.profile_def

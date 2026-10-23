@@ -1,0 +1,48 @@
+code: ifc.telecom_address
+name: IfcTelecomAddress
+kind: object
+base: ifc.address
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTelecomAddress
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcActorResource/Entities/IfcTelecomAddress.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: This entity represents an address to which telephone, electronic mail and other forms of telecommunications should be addressed.
+fields:
+  - name: telephone_numbers
+    type: array
+    nullable: true
+    meaning: The list of telephone numbers at which telephone messages may be received.
+    source_ref: "IfcTelecomAddress attribute 1: OPTIONAL LIST [1:?] OF IfcLabel"
+    of: text
+  - name: facsimile_numbers
+    type: array
+    nullable: true
+    meaning: The list of fax numbers at which fax messages may be received.
+    source_ref: "IfcTelecomAddress attribute 2: OPTIONAL LIST [1:?] OF IfcLabel"
+    of: text
+  - name: pager_number
+    type: text
+    nullable: true
+    meaning: The pager number at which paging messages may be received.
+    source_ref: "IfcTelecomAddress attribute 3: OPTIONAL IfcLabel"
+  - name: electronic_mail_addresses
+    type: array
+    nullable: true
+    meaning: The list of Email addresses at which Email messages may be received.
+    source_ref: "IfcTelecomAddress attribute 4: OPTIONAL LIST [1:?] OF IfcLabel"
+    of: text
+  - name: www_home_page_url
+    type: text
+    nullable: true
+    meaning: The world wide web address at which the preliminary page of information for the person or organization can be located.
+    source_ref: "IfcTelecomAddress attribute 5: OPTIONAL IfcURIReference"
+  - name: messaging_i_ds
+    type: array
+    nullable: true
+    meaning: IDs or addresses for any other means of telecommunication, for example instant messaging, voice-over-IP, or file transfer protocols.
+    source_ref: "IfcTelecomAddress attribute 6: OPTIONAL LIST [1:?] OF IfcURIReference"
+    of: text

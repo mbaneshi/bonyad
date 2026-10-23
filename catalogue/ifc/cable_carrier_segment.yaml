@@ -1,0 +1,38 @@
+code: ifc.cable_carrier_segment
+name: IfcCableCarrierSegment
+kind: entity
+base: ifc.flow_segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCableCarrierSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcCableCarrierSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A cable carrier segment is a flow segment that is specifically used to carry and support cabling.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined types of cable carrier segment from which the type required may be set.
+    source_ref: "IfcCableCarrierSegment attribute 1: OPTIONAL IfcCableCarrierSegmentTypeEnum; enumeration IfcCableCarrierSegmentTypeEnum"
+    values:
+      - value: CABLELADDERSEGMENT
+        meaning: An open carrier segment on which cables are carried on a ladder structure.
+      - value: CABLETRAYSEGMENT
+        meaning: A (typically) open carrier segment onto which cables are laid.
+      - value: CABLETRUNKINGSEGMENT
+        meaning: An enclosed carrier segment with one or more compartments into which cables are placed.
+      - value: CONDUITSEGMENT
+        meaning: An enclosed tubular carrier segment through which cables are pulled.
+      - value: CABLEBRACKET
+        meaning: A cable bracket is a horizontal cable support fixed at one end only, spaced at intervals, on which cables rest.
+      - value: CATENARYWIRE
+        meaning: A catenary wire is a longitudinal wire supporting the grooved contact wires either directly or indirectly.
+      - value: DROPPER
+        meaning: A dropper is a cable carrier used to suspend cable from another cable.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.
