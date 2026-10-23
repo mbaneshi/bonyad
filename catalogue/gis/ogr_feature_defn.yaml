@@ -1,0 +1,65 @@
+code: gis.ogr_feature_defn
+name: OGRFeatureDefn
+kind: symbol
+fidelity: proxy
+source:
+  document: GDAL/OGR source (ogr_feature.h) and documentation
+  section: class OGRFeatureDefn; vector_data_model.rst 'Feature / Feature Definition'
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_feature.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: "The schema of a feature class: its name, allowed geometry type, and (through child rows) the attribute fields and geometry fields shared by all its features."
+fields:
+  - name: feature_class_name
+    type: text
+    meaning: Feature class name, normally used as the layer name.
+    source_ref: OGRFeatureDefn::pszFeatureClassName
+  - name: geometry_type
+    type: enum
+    values:
+      - value: wkbUnknown
+        meaning: unknown type, non-standard (code 0)
+      - value: wkbPoint
+        meaning: 0-dimensional geometric object, standard WKB (code 1)
+      - value: wkbLineString
+        meaning: 1-dimensional geometric object with linear interpolation between Points, standard WKB (code 2)
+      - value: wkbPolygon
+        meaning: planar 2-dimensional geometric object defined by 1 exterior boundary and 0 or more interior boundaries, standard WKB (code 3)
+      - value: wkbMultiPoint
+        meaning: GeometryCollection of Points, standard WKB (code 4)
+      - value: wkbMultiLineString
+        meaning: GeometryCollection of LineStrings, standard WKB (code 5)
+      - value: wkbMultiPolygon
+        meaning: GeometryCollection of Polygons, standard WKB (code 6)
+      - value: wkbGeometryCollection
+        meaning: geometric object that is a collection of 1 or more geometric objects, standard WKB (code 7)
+      - value: wkbCircularString
+        meaning: one or more circular arc segments connected end to end, ISO SQL/MM Part 3 (code 8)
+      - value: wkbCompoundCurve
+        meaning: sequence of contiguous curves, ISO SQL/MM Part 3 (code 9)
+      - value: wkbCurvePolygon
+        meaning: planar surface, defined by 1 exterior boundary and zero or more interior boundaries, that are curves. ISO SQL/MM Part 3 (code 10)
+      - value: wkbMultiCurve
+        meaning: GeometryCollection of Curves, ISO SQL/MM Part 3 (code 11)
+      - value: wkbMultiSurface
+        meaning: GeometryCollection of Surfaces, ISO SQL/MM Part 3 (code 12)
+      - value: wkbCurve
+        meaning: Curve (abstract type). ISO SQL/MM Part 3 (code 13)
+      - value: wkbSurface
+        meaning: Surface (abstract type). ISO SQL/MM Part 3 (code 14)
+      - value: wkbPolyhedralSurface
+        meaning: a contiguous collection of polygons, which share common boundary segments, ISO SQL/MM Part 3 (code 15)
+      - value: wkbTIN
+        meaning: a PolyhedralSurface consisting only of Triangle patches ISO SQL/MM Part 3 (code 16)
+      - value: wkbTriangle
+        meaning: a Triangle. ISO SQL/MM Part 3 (code 17)
+      - value: wkbNone
+        meaning: non-standard, for pure attribute records (code 100)
+      - value: wkbLinearRing
+        meaning: non-standard, just for createGeometry() (code 101)
+    meaning: Geometry type allowed for the features (OGRFeatureDefn::GetGeomType); wkbUnknown means any type. The Z, M and ZM variants are this code plus 1000, 2000 or 3000 and are not separate values here.
+    source_ref: OGRFeatureDefn::GetGeomType, OGRwkbGeometryType
+    default: wkbUnknown
+needs_review: true
+notes: "Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled. Review: since GDAL 1.11 the geometry type of a definition is the type of its first geometry field; a definition can hold several geometry fields (gis.ogr_geom_field_defn), so this column is a convenience mirror of the first one. Confirm before relying on it."

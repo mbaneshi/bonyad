@@ -1,0 +1,33 @@
+code: gis.circularstring_point
+name: CircularString point
+kind: child
+parent: gis.circularstring
+fidelity: proxy
+source:
+  document: GDAL/OGR source and documentation
+  section: OGRCircularString
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_geometry.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: One ordered control point of a CircularString.
+fields:
+  - name: x
+    type: float
+    meaning: X coordinate (easting or longitude) in the units of the geometry's CRS; not converted to radians because the unit belongs to the CRS axis, not to the geometry.
+    source_ref: SFA 6.1.4 Point.X()
+  - name: y
+    type: float
+    meaning: Y coordinate (northing or latitude) in the units of the geometry's CRS.
+    source_ref: SFA 6.1.4 Point.Y()
+  - name: z
+    type: float
+    nullable: true
+    meaning: Z coordinate (typically altitude or elevation); present only when the owning geometry has_z is true.
+    source_ref: SFA 6.1.4 Point.Z(), NIL if absent
+  - name: m
+    type: float
+    nullable: true
+    meaning: M coordinate (a measurement); present only when the owning geometry has_m is true.
+    source_ref: SFA 6.1.4 Point.M(), NIL if absent
+notes: "Geometry model is HAND-AUTHORED: its hierarchy, parts-as-child decomposition and field set were authored from the cited clauses, not generated. Child rows carry no position field: the generated position column is the order (rules 5 and 9 of FORMAT.md)."

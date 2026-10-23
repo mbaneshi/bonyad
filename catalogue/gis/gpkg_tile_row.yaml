@@ -1,0 +1,37 @@
+code: gis.gpkg_tile_row
+name: tile pyramid user data table
+kind: entity
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: Tiles > Tile Pyramid User Data Tables (table 'Sample Tiles Table Definition') + Annex C DDL sample_tile_pyramid (informative)
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/2b_tiles.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: One tile image of a tile pyramid user data table, addressed by zoom level, column and row within the tile matrix of that zoom level.
+fields:
+  - name: tile_id
+    type: int
+    meaning: Autoincrement primary key. (Source column name is id; renamed to avoid clashing with a generated surrogate key.)
+    source_ref: sample_tile_pyramid.id INTEGER (primary key)
+  - name: zoom_level
+    type: int
+    meaning: min(zoom_level) <= zoom_level <= max(zoom_level) for t_table_name.
+    source_ref: sample_tile_pyramid.zoom_level INTEGER
+    check: non_negative
+  - name: tile_column
+    type: int
+    meaning: 0 to tile_matrix matrix_width – 1.
+    source_ref: sample_tile_pyramid.tile_column INTEGER
+    check: non_negative
+  - name: tile_row
+    type: int
+    meaning: 0 to tile_matrix matrix_height - 1.
+    source_ref: sample_tile_pyramid.tile_row INTEGER
+    check: non_negative
+  - name: tile_data
+    type: blob
+    meaning: Of an image MIME type specified in clauses , ,.
+    source_ref: sample_tile_pyramid.tile_data BLOB
+notes: "Columns, SQL types, nullability and foreign keys DERIVED by tools/harvest/gis/src/derive/gpkg.ts from the spec DDL; field meanings are the spec's own column descriptions (lightly cleaned). Entity meaning, enum values and checks are HAND-AUTHORED (reviewed). Convention entity: the real table has a user-chosen name (the gpkg_contents.table_name of a 'tiles' row). The five columns are normative (Requirement 54); the id column is renamed from id. Referential link to the pyramid is by that table name, so no ref column is possible here."

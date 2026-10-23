@@ -1,0 +1,15 @@
+code: gis.ogr_coded_field_domain
+name: OGRCodedFieldDomain
+kind: entity
+base: gis.ogr_field_domain
+fidelity: proxy
+source:
+  document: GDAL/OGR source (ogr_feature.h)
+  section: class OGRCodedFieldDomain
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_feature.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: A domain that constrains values to those present in an enumeration of code/value pairs.
+fields: []
+notes: Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled.

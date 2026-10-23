@@ -1,0 +1,35 @@
+code: gis.ogr_range_field_domain
+name: OGRRangeFieldDomain
+kind: entity
+base: gis.ogr_field_domain
+fidelity: proxy
+source:
+  document: GDAL/OGR source (ogr_feature.h)
+  section: class OGRRangeFieldDomain
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_feature.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: A domain that constrains numeric or date values to a range with optionally inclusive bounds.
+fields:
+  - name: min_value
+    type: text
+    nullable: true
+    meaning: Lower bound as text (the header stores it in a union typed by the field type); absent when unbounded.
+    source_ref: OGRRangeFieldDomain::m_sMin
+  - name: min_is_inclusive
+    type: bool
+    default: true
+    meaning: Whether the lower bound itself is allowed.
+    source_ref: OGRRangeFieldDomain::m_bMinIsInclusive
+  - name: max_value
+    type: text
+    nullable: true
+    meaning: Upper bound as text; absent when unbounded.
+    source_ref: OGRRangeFieldDomain::m_sMax
+  - name: max_is_inclusive
+    type: bool
+    default: true
+    meaning: Whether the upper bound itself is allowed.
+    source_ref: OGRRangeFieldDomain::m_bMaxIsInclusive
+notes: Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled. Bounds are text because the source union (OGRField) is typed by the owning field_type and the catalogue format has no variant column.

@@ -1,0 +1,24 @@
+code: gis.ogr_coded_value
+name: OGRCodedValue
+kind: child
+parent: gis.ogr_coded_field_domain
+fidelity: proxy
+source:
+  document: GDAL/OGR source (ogr_core.h, ogr_feature.h)
+  section: struct OGRCodedValue; class OGRCodedFieldDomain
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_feature.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: One allowed code of a coded domain with its optional human-readable value.
+fields:
+  - name: code
+    type: text
+    meaning: The stored code, written as text whatever the field type.
+    source_ref: OGRCodedValue::pszCode
+  - name: value
+    type: text
+    nullable: true
+    meaning: Description of the code; absent when the domain only lists codes.
+    source_ref: OGRCodedValue::pszValue
+notes: Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled.

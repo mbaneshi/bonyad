@@ -1,0 +1,15 @@
+code: gis.polygon
+name: Polygon
+kind: entity
+base: gis.curvepolygon
+fidelity: proxy
+source:
+  document: "OpenGIS Implementation Standard for Geographic information - Simple feature access - Part 1: Common architecture, OGC 06-103r4"
+  section: 6.1.11 Polygon, Triangle
+  url: https://docs.ogc.org/is/06-103r4/06-103r4.pdf
+  version: 1.2.1 (Corrigendum, 2011-05-28)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: A planar surface defined by one exterior boundary and zero or more interior boundaries, each a LinearRing (closed simple LineString).
+fields: []
+notes: "Geometry model is HAND-AUTHORED: its hierarchy, parts-as-child decomposition and field set were authored from the cited clauses, not generated. Child rows carry no position field: the generated position column is the order (rules 5 and 9 of FORMAT.md). Base is CurvePolygon because the GeoPackage geometry-types annex states 'CURVEPOLYGON subtype is POLYGON' (GDAL: OGRPolygon : OGRCurvePolygon); SFA itself places Polygon directly under Surface. Rings (gis.curvepolygon_ring) must be LineStrings."

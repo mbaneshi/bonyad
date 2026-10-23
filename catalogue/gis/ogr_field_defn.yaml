@@ -1,0 +1,135 @@
+code: gis.ogr_field_defn
+name: OGRFieldDefn
+kind: child
+parent: gis.ogr_feature_defn
+fidelity: proxy
+source:
+  document: GDAL/OGR source (ogr_feature.h) and documentation
+  section: class OGRFieldDefn
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_feature.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: "Definition of one attribute field of a feature class: type, subtype, width and precision, nullability, uniqueness, default and optional field domain. Order within the feature definition is the child position."
+fields:
+  - name: name
+    type: text
+    meaning: Field name.
+    source_ref: OGRFieldDefn::pszName
+  - name: alternative_name
+    type: text
+    nullable: true
+    meaning: Alternative name (alias) of the field, for display.
+    source_ref: OGRFieldDefn::pszAlternativeName
+  - name: field_type
+    type: enum
+    values:
+      - value: OFTInteger
+        meaning: Single signed 32bit integer (code 0)
+      - value: OFTIntegerList
+        meaning: List of signed 32bit integers (code 1)
+      - value: OFTReal
+        meaning: Double Precision floating point (code 2)
+      - value: OFTRealList
+        meaning: List of doubles (code 3)
+      - value: OFTString
+        meaning: String of ASCII chars (code 4)
+      - value: OFTStringList
+        meaning: Array of strings (code 5)
+      - value: OFTWideString
+        meaning: deprecated (code 6)
+      - value: OFTWideStringList
+        meaning: deprecated (code 7)
+      - value: OFTBinary
+        meaning: Raw Binary data (code 8)
+      - value: OFTDate
+        meaning: Date (code 9)
+      - value: OFTTime
+        meaning: Time (code 10)
+      - value: OFTDateTime
+        meaning: Date and Time (code 11)
+      - value: OFTInteger64
+        meaning: Single signed 64bit integer (code 12)
+      - value: OFTInteger64List
+        meaning: List of signed 64bit integers (code 13)
+    meaning: Field type from OGRFieldType.
+    source_ref: OGRFieldDefn::eType
+  - name: field_subtype
+    type: enum
+    values:
+      - value: OFSTNone
+        meaning: No subtype. This is the default value (code 0)
+      - value: OFSTBoolean
+        meaning: Boolean integer. Only valid for OFTInteger and OFTIntegerList (code 1)
+      - value: OFSTInt16
+        meaning: Signed 16-bit integer. Only valid for OFTInteger and OFTIntegerList (code 2)
+      - value: OFSTFloat32
+        meaning: Single precision (32 bit) floating point. Only valid for OFTReal and OFTRealList (code 3)
+      - value: OFSTJSON
+        meaning: JSON content. Only valid for OFTString (code 4)
+      - value: OFSTUUID
+        meaning: UUID string representation. Only valid for OFTString (code 5)
+    meaning: Restriction hint on the field type (for example OFTInteger with OFSTBoolean).
+    source_ref: OGRFieldDefn::eSubType
+    default: OFSTNone
+  - name: justify
+    type: enum
+    values:
+      - value: OJUndefined
+        meaning: OJUndefined (code 0)
+      - value: OJLeft
+        meaning: OJLeft (code 1)
+      - value: OJRight
+        meaning: OJRight (code 2)
+    meaning: Display justification of the field values.
+    source_ref: OGRFieldDefn::eJustify
+    default: OJUndefined
+  - name: width
+    type: int
+    default: 0
+    check: non_negative
+    meaning: Maximum width of the formatted value; zero means variable.
+    source_ref: OGRFieldDefn::nWidth ('Zero is variable')
+  - name: precision
+    type: int
+    default: 0
+    check: non_negative
+    meaning: Number of decimal digits for real fields.
+    source_ref: OGRFieldDefn::nPrecision
+  - name: default_value
+    type: text
+    nullable: true
+    meaning: Default value expression used when a value is not specified.
+    source_ref: OGRFieldDefn::pszDefault
+  - name: nullable
+    type: bool
+    default: true
+    meaning: Whether the field may be null.
+    source_ref: OGRFieldDefn::bNullable
+  - name: is_unique
+    type: bool
+    default: false
+    meaning: Whether values must be unique within the layer.
+    source_ref: OGRFieldDefn::bUnique
+  - name: is_generated
+    type: bool
+    default: false
+    meaning: Whether the field is a generated (computed) column; tracked by drivers such as GPKG.
+    source_ref: OGRFieldDefn::m_bGenerated
+  - name: domain
+    type: ref
+    ref_to: gis.ogr_field_domain
+    nullable: true
+    meaning: The single field domain constraining the values, if any; the domain belongs to the dataset.
+    source_ref: OGRFieldDefn::m_osDomainName
+  - name: comment
+    type: text
+    nullable: true
+    meaning: Free-text field comment.
+    source_ref: OGRFieldDefn::m_osComment
+  - name: tz_flag
+    type: int
+    default: 0
+    meaning: "Time-zone flag of date-time fields: 0 unknown, 1 local time, 2 mixed time zones, 100 UTC, other values encode the offset in 15-minute steps (UTC offset = (flag - 100) * 15 minutes)."
+    source_ref: OGR_TZFLAG_* in ogr_core.h; OGRFieldDefn::m_nTZFlag
+notes: Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled.

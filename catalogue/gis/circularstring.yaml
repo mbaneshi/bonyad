@@ -1,0 +1,16 @@
+code: gis.circularstring
+name: CircularString
+kind: entity
+base: gis.curve
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: "HAND-AUTHORED: Geometry Types (Normative), extension codes (8) + subtype statements"
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/annexes/geometrytypes.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: A Curve made of one or several circular arc segments connected end to end (ISO SQL/MM Part 3).
+fields: []
+needs_review: true
+notes: "Geometry model is HAND-AUTHORED: its hierarchy, parts-as-child decomposition and field set were authored from the cited clauses, not generated. Child rows carry no position field: the generated position column is the order (rules 5 and 9 of FORMAT.md). Source for the definition is GDAL ogr_geometry.h ('a curve made of one or several arc circles', Compatibility: ISO SQL/MM Part 3) and the GeoPackage geometry-type annex (code 8). The rules on the number of control points (arc = three points) are not stated in the harvested sources and are NOT asserted; the ISO SQL/MM text was not read."

@@ -1,0 +1,119 @@
+code: gis.spatial_reference
+name: OGRSpatialReference
+kind: entity
+fidelity: proxy
+source:
+  document: OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)
+  section: Clauses 8-17 (CRS types), 7.3 general rules; GDAL OGRSpatialReference (doc/source/user/vector_data_model.rst 'Spatial Reference'); PROJ tables geodetic_crs, projected_crs, vertical_crs, compound_crs
+  url: https://docs.ogc.org/is/18-010r7/18-010r7.html
+  version: "2019"
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: "A coordinate reference system: how coordinates of a geometry relate to the Earth. It names the datum, the coordinate system with axis order and units, and (for projected CRSs) the map projection."
+fields:
+  - name: name
+    type: text
+    meaning: CRS name, for example WGS 84 / UTM zone 32N.
+    source_ref: WKT2 <crs name>
+  - name: crs_type
+    type: enum
+    meaning: Kind of CRS (the WKT2 keyword).
+    values:
+      - value: geographic_2d
+        meaning: GEOGCRS with an ellipsoidal 2D coordinate system (latitude, longitude)
+      - value: geographic_3d
+        meaning: GEOGCRS with an ellipsoidal 3D coordinate system (with ellipsoidal height)
+      - value: geocentric
+        meaning: GEODCRS with an earth-centred Cartesian coordinate system
+      - value: projected
+        meaning: "PROJCRS: a geographic base CRS plus a map projection"
+      - value: vertical
+        meaning: "VERTCRS: heights or depths against a vertical datum"
+      - value: engineering
+        meaning: "ENGCRS: a local engineering coordinate system"
+      - value: compound
+        meaning: "COMPOUNDCRS: a horizontal CRS combined with a vertical one"
+      - value: derived
+        meaning: A CRS derived from another by a coordinate conversion
+    source_ref: WKT2 clauses 8-17 keywords; PROJ geodetic_crs.type
+  - name: datum
+    type: ref
+    ref_to: gis.datum
+    nullable: true
+    meaning: Datum of the CRS; absent for projected and compound CRSs, which take it from their base.
+    source_ref: WKT2 DATUM / TRF; PROJ geodetic_crs.datum_*
+  - name: coordinate_system
+    type: ref
+    ref_to: gis.coordinate_system
+    nullable: true
+    meaning: Coordinate system with axes (axis order and units).
+    source_ref: WKT2 CS[..]; PROJ *_crs.coordinate_system_*
+  - name: base_crs
+    type: ref
+    ref_to: gis.spatial_reference
+    nullable: true
+    meaning: Base CRS of a projected or derived CRS (BASEGEOGCRS).
+    source_ref: WKT2 BASEGEOGCRS (9.2); PROJ projected_crs.geodetic_crs_*
+  - name: projection
+    type: ref
+    ref_to: gis.map_projection
+    nullable: true
+    meaning: Map projection of a projected CRS.
+    source_ref: WKT2 CONVERSION (9.3); PROJ projected_crs.conversion_*
+  - name: horizontal_crs
+    type: ref
+    ref_to: gis.spatial_reference
+    nullable: true
+    meaning: Horizontal component of a compound CRS.
+    source_ref: WKT2 COMPOUNDCRS (16)
+  - name: vertical_crs
+    type: ref
+    ref_to: gis.spatial_reference
+    nullable: true
+    meaning: Vertical component of a compound CRS.
+    source_ref: WKT2 COMPOUNDCRS (16)
+  - name: coordinate_epoch
+    type: float
+    nullable: true
+    unit: decimal year
+    meaning: Epoch to which coordinates are referenced, for a dynamic CRS.
+    source_ref: WKT2 3.1.6 coordinate epoch; 9.4 / 18 COORDEPOCH
+  - name: axis_mapping_strategy
+    type: enum
+    default: authority_compliant
+    meaning: How GDAL maps the order of data axes (x,y) to the CRS axis order. Stored coordinates are x,y regardless; this says how to read the CRS.
+    values:
+      - value: traditional_gis_order
+        meaning: "OAMS_TRADITIONAL_GIS_ORDER: longitude/easting first"
+      - value: authority_compliant
+        meaning: "OAMS_AUTHORITY_COMPLIANT: the order mandated by the CRS authority (for EPSG:4326 latitude first)"
+      - value: custom
+        meaning: "OAMS_CUSTOM: a custom mapping"
+    source_ref: OSRAxisMappingStrategy in ogr_srs_api.h
+  - name: wkt
+    type: text
+    nullable: true
+    meaning: The full WKT2 text of the CRS, as stored by GeoPackage definition_12_063 or read by GDAL; a verbatim copy for exchange, not a replacement for the structured columns.
+    source_ref: WKT2 7.2; GeoPackage gpkg_spatial_ref_sys.definition_12_063
+  - name: authority_name
+    type: text
+    nullable: true
+    meaning: Authority that defines this CRS, for example EPSG.
+    source_ref: WKT2 <identifier> ID[authority, code] (7.3.4)
+  - name: authority_code
+    type: text
+    nullable: true
+    meaning: Code of this CRS within the authority; text because authorities use both numbers and strings.
+    source_ref: WKT2 <identifier> ID[authority, code]; PROJ code INTEGER_OR_TEXT
+  - name: scope
+    type: text
+    nullable: true
+    meaning: Description of the purpose for which the CRS is suitable.
+    source_ref: WKT2 7.3.3 SCOPE
+  - name: area_description
+    type: text
+    nullable: true
+    meaning: Text description of the area of use.
+    source_ref: WKT2 7.3.3 AREA
+needs_review: true
+notes: "CRS model is HAND-AUTHORED: the attribute set follows the cited WKT2 clauses and the PROJ table columns, not generated. Measures are stored in SI base units (metres, radians); the source unit and its conversion factor are kept where they cannot be recovered, so a value in feet or degrees is converted once at import. Review: wkt duplicates the structured columns (rule 2 says never store derived values). It is kept because the open exchange formats (GeoPackage, GDAL) treat WKT as the authoritative definition and the structured columns as a decoded view; decide which side wins before importers are written. Area-of-use bounding box (WKT2 BBOX) is not modelled yet (GAPS.md)."

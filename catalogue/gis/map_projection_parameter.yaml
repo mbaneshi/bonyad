@@ -1,0 +1,50 @@
+code: gis.map_projection_parameter
+name: Parameter
+kind: child
+parent: gis.map_projection
+fidelity: proxy
+source:
+  document: OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)
+  section: 9.3.3 Map projection parameter (PARAMETER, PARAMETERFILE); PROJ table conversion_param
+  url: https://docs.ogc.org/is/18-010r7/18-010r7.html
+  version: "2019"
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: One named parameter of a map projection (latitude of origin, false easting, scale factor) with its value and unit.
+fields:
+  - name: name
+    type: text
+    meaning: Parameter name, for example Latitude of natural origin.
+    source_ref: WKT2 <map projection parameter name>; PROJ conversion_param.name
+  - name: value
+    type: float
+    nullable: true
+    meaning: Parameter value in the unit given by unit_name; absent when the parameter is a file reference.
+    source_ref: WKT2 <parameter value>
+  - name: file_name
+    type: text
+    nullable: true
+    meaning: File holding the parameter value, when the value is a file.
+    source_ref: WKT2 PARAMETERFILE
+  - name: unit_name
+    type: text
+    nullable: true
+    meaning: "Unit of the value: degree, metre, or unity for scale."
+    source_ref: WKT2 <parameter unit>
+  - name: unit_to_si
+    type: float
+    nullable: true
+    check: positive
+    meaning: Conversion factor from the parameter unit to the SI base unit.
+    source_ref: WKT2 unit conversion factor
+  - name: authority_name
+    type: text
+    nullable: true
+    meaning: Authority that defines this parameter, for example EPSG.
+    source_ref: WKT2 <identifier> ID[authority, code] (7.3.4)
+  - name: authority_code
+    type: text
+    nullable: true
+    meaning: Code of this parameter within the authority; text because authorities use both numbers and strings.
+    source_ref: WKT2 <identifier> ID[authority, code]; PROJ code INTEGER_OR_TEXT
+notes: "CRS model is HAND-AUTHORED: the attribute set follows the cited WKT2 clauses and the PROJ table columns, not generated. Measures are stored in SI base units (metres, radians); the source unit and its conversion factor are kept where they cannot be recovered, so a value in feet or degrees is converted once at import. The value is kept in its source unit (with unit_to_si) because a parameter's quantity depends on the method; converting needs the method table, which is not harvested."

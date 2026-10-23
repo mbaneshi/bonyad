@@ -1,0 +1,99 @@
+code: gis.gdal_relationship
+name: GDALRelationship
+kind: entity
+fidelity: proxy
+source:
+  document: GDAL source (gdal_relationship.h, gdal.h)
+  section: class GDALRelationship; gdal.h 'Relationships'
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/gcore/gdal_relationship.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: A relationship between two tables (layers) of a dataset, for example a foreign key, optionally through a mapping table.
+fields:
+  - name: dataset
+    type: ref
+    ref_to: gis.gdal_dataset
+    meaning: The dataset that holds the relationship.
+    source_ref: "vector_data_model.rst: GDALDataset may be aware of relationships"
+  - name: name
+    type: text
+    meaning: Relationship name.
+    source_ref: GDALRelationship::m_osName
+  - name: left_table_name
+    type: text
+    meaning: Name of the left (origin) table.
+    source_ref: GDALRelationship::m_osLeftTableName
+  - name: right_table_name
+    type: text
+    meaning: Name of the right (destination) table.
+    source_ref: GDALRelationship::m_osRightTableName
+  - name: cardinality
+    type: enum
+    values:
+      - value: GRC_ONE_TO_ONE
+        meaning: One-to-one
+      - value: GRC_ONE_TO_MANY
+        meaning: One-to-many
+      - value: GRC_MANY_TO_ONE
+        meaning: Many-to-one
+      - value: GRC_MANY_TO_MANY
+        meaning: Many-to-many
+    meaning: Cardinality of the relationship.
+    source_ref: GDALRelationship::m_eCardinality
+    default: GRC_ONE_TO_MANY
+  - name: relationship_type
+    type: enum
+    values:
+      - value: GRT_COMPOSITE
+        meaning: Composite relationship
+      - value: GRT_ASSOCIATION
+        meaning: Association relationship
+      - value: GRT_AGGREGATION
+        meaning: Aggregation relationship
+    meaning: Type of the relationship.
+    source_ref: GDALRelationship::m_eType
+    default: GRT_ASSOCIATION
+  - name: mapping_table_name
+    type: text
+    nullable: true
+    meaning: Name of the mapping table for many-to-many relationships.
+    source_ref: GDALRelationship::m_osMappingTableName
+  - name: left_table_fields
+    type: array
+    of: text
+    meaning: Left-table field names that form the key.
+    source_ref: GDALRelationship::m_osListLeftTableFields
+  - name: right_table_fields
+    type: array
+    of: text
+    meaning: Right-table field names that form the key.
+    source_ref: GDALRelationship::m_osListRightTableFields
+  - name: left_mapping_table_fields
+    type: array
+    of: text
+    nullable: true
+    meaning: Mapping-table fields that point at the left table.
+    source_ref: GDALRelationship::m_osListLeftMappingTableFields
+  - name: right_mapping_table_fields
+    type: array
+    of: text
+    nullable: true
+    meaning: Mapping-table fields that point at the right table.
+    source_ref: GDALRelationship::m_osListRightMappingTableFields
+  - name: forward_path_label
+    type: text
+    nullable: true
+    meaning: Label of the relationship path from the left to the right table.
+    source_ref: GDALRelationship::m_osForwardPathLabel
+  - name: backward_path_label
+    type: text
+    nullable: true
+    meaning: Label of the relationship path from the right to the left table.
+    source_ref: GDALRelationship::m_osBackwardPathLabel
+  - name: related_table_type
+    type: text
+    nullable: true
+    meaning: Type string of the related table, for example media or features (GeoPackage related-tables extension).
+    source_ref: GDALRelationship::m_osRelatedTableType
+notes: Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled.

@@ -1,0 +1,63 @@
+code: gis.gpkg_contents
+name: gpkg_contents
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: Contents (table 'Contents Table Definition') + Annex C DDL gpkg_contents
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/1_base.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: "The table of contents of a GeoPackage: one row per feature, attribute or tile table (or extension content) with a name, type, bounding box and SRS."
+fields:
+  - name: table_name
+    type: text
+    meaning: The name of the actual content (e.g., tiles, features, or attributes) table or view.
+    source_ref: gpkg_contents.table_name TEXT (primary key)
+  - name: data_type
+    type: text
+    meaning: "Type of data stored in the table or view: 'features', 'attributes' or 'tiles', or an implementer-defined value for extension content (so kept as free text, not an enum)."
+    source_ref: gpkg_contents.data_type TEXT
+  - name: identifier
+    type: text
+    meaning: A human-readable identifier (e.g. short name) for the table_name content.
+    source_ref: gpkg_contents.identifier TEXT
+    nullable: true
+  - name: description
+    type: text
+    meaning: A human-readable description for the table_name content.
+    source_ref: gpkg_contents.description TEXT
+    nullable: true
+    default: ""
+  - name: last_change
+    type: timestamp
+    meaning: Timestamp of last change to the content, ISO 8601 (default is the current UTC time, strftime('%Y-%m-%dT%H:%M:%fZ','now')); informative only.
+    source_ref: gpkg_contents.last_change DATETIME
+  - name: min_x
+    type: float
+    meaning: Bounding box minimum easting or longitude for all content in table_name, in CRS units (informative only for tiles).
+    source_ref: gpkg_contents.min_x DOUBLE
+    nullable: true
+  - name: min_y
+    type: float
+    meaning: Bounding box minimum northing or latitude for all content in table_name, in CRS units (informative only for tiles).
+    source_ref: gpkg_contents.min_y DOUBLE
+    nullable: true
+  - name: max_x
+    type: float
+    meaning: Bounding box maximum easting or longitude for all content in table_name, in CRS units (informative only for tiles).
+    source_ref: gpkg_contents.max_x DOUBLE
+    nullable: true
+  - name: max_y
+    type: float
+    meaning: Bounding box maximum northing or latitude for all content in table_name, in CRS units (informative only for tiles).
+    source_ref: gpkg_contents.max_y DOUBLE
+    nullable: true
+  - name: srs_id
+    type: ref
+    meaning: "Spatial Reference System ID: gpkg_spatial_ref_sys.srs_id."
+    source_ref: gpkg_contents.srs_id INTEGER -> gpkg_spatial_ref_sys.srs_id
+    nullable: true
+    ref_to: gis.gpkg_spatial_ref_sys
+notes: Columns, SQL types, nullability and foreign keys DERIVED by tools/harvest/gis/src/derive/gpkg.ts from the spec DDL; field meanings are the spec's own column descriptions (lightly cleaned). Entity meaning, enum values and checks are HAND-AUTHORED (reviewed).

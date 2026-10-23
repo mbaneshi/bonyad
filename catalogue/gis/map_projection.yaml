@@ -1,0 +1,42 @@
+code: gis.map_projection
+name: Conversion
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)
+  section: 9.3 Map projection (CONVERSION / PROJECTION); PROJ tables conversion_method, conversion_table
+  url: https://docs.ogc.org/is/18-010r7/18-010r7.html
+  version: "2019"
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: The coordinate conversion with its method and parameter values that turns geographic coordinates into projected ones (the 'projection' of a projected CRS).
+fields:
+  - name: name
+    type: text
+    meaning: Conversion name, for example UTM zone 32N.
+    source_ref: WKT2 <map projection name>
+  - name: method_name
+    type: text
+    meaning: Name of the projection method, for example Transverse Mercator.
+    source_ref: WKT2 <map projection method name>; PROJ conversion_method.name
+  - name: method_authority_name
+    type: text
+    nullable: true
+    meaning: Authority of the method identifier.
+    source_ref: WKT2 method ID
+  - name: method_authority_code
+    type: text
+    nullable: true
+    meaning: Code of the method within the authority.
+    source_ref: WKT2 method ID; PROJ conversion_method.code
+  - name: authority_name
+    type: text
+    nullable: true
+    meaning: Authority that defines this conversion, for example EPSG.
+    source_ref: WKT2 <identifier> ID[authority, code] (7.3.4)
+  - name: authority_code
+    type: text
+    nullable: true
+    meaning: Code of this conversion within the authority; text because authorities use both numbers and strings.
+    source_ref: WKT2 <identifier> ID[authority, code]; PROJ code INTEGER_OR_TEXT
+notes: "CRS model is HAND-AUTHORED: the attribute set follows the cited WKT2 clauses and the PROJ table columns, not generated. Measures are stored in SI base units (metres, radians); the source unit and its conversion factor are kept where they cannot be recovered, so a value in feet or degrees is converted once at import."

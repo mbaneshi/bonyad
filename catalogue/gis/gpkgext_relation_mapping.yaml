@@ -1,0 +1,23 @@
+code: gis.gpkgext_relation_mapping
+name: User-Defined Mapping Table
+kind: child
+parent: gis.gpkgext_relations
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: OGC Related Tables Extension, clause 7 table 'User-Defined Mapping Table Definition' + Annex SQL sample_mapping_table (informative)
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/related-tables/clause_7_normative_text.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: "Related Tables extension: one row of a user-defined mapping table, pairing the primary key of a base-table row with that of a related-table row."
+fields:
+  - name: base_id
+    type: int
+    meaning: The primary key value of the base data table.
+    source_ref: sample_mapping_table.base_id INTEGER
+  - name: related_id
+    type: int
+    meaning: The primary key value of the related data table.
+    source_ref: sample_mapping_table.related_id INTEGER
+notes: Columns, SQL types, nullability and foreign keys DERIVED by tools/harvest/gis/src/derive/gpkg.ts from the spec DDL; field meanings are the spec's own column descriptions (lightly cleaned). Entity meaning are HAND-AUTHORED (reviewed). The mapping table's own name is stored in gpkgext_relations.mapping_table_name, one table per relation; the spec says it may contain other columns not listed here.
