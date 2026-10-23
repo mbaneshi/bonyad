@@ -1,0 +1,18 @@
+{
+  "name": "bonyad-harvest-landxml",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "harvest": "bun run src/cli.ts",
+    "check": "bun run src/check.ts"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.11.2",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.3"
+  }
+}
