@@ -2,8 +2,10 @@
 // bun run validate <dir>...     validate every YAML under the directories
 // bun run generate <schema-dir> [--out <root>] [--check]
 // bun run generate-all [--out <root>] [--check]
+// bun run dbml-all [catalogue-root] [--out <root>] [--check]   DBML diagrams only (no SQL or Rust)
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve as resolvePath } from "node:path";
+import { generateDbml } from "./dbml.ts";
 import { generateCoverage, type CoverageSection } from "./coverage.ts";
 import { loadModels, type FileProblem, type Model } from "./model.ts";
 import { REPO_ROOT, buildOutputs } from "./outputs.ts";
@@ -139,7 +141,29 @@ async function main(): Promise<number> {
     return 0;
   }
 
-  console.error("commands: validate <dir>... | generate <schema-dir> [--out root] [--check] | generate-all [catalogue-root] [--out root] [--check]");
+  if (cmd === "dbml-all") {
+    // Diagrams only: skips the Rust-name check, so schemas whose Rust output is still blocked can be drawn.
+    const catalogueRoot = resolvePath(positional[0] ?? join(REPO_ROOT, "catalogue"));
+    const files = new Map<string, string>();
+    const problems: FileProblem[] = [];
+    for (const { dir, golden } of schemaDirs(catalogueRoot)) {
+      const r = loadModels(dir);
+      problems.push(...r.problems);
+      if (r.problems.length > 0) continue;
+      for (const m of r.models) files.set(`docs/design/db/generated/${golden ? "_golden/" : ""}${m.schema}.dbml`, generateDbml(m));
+    }
+    if (problems.length > 0) {
+      report(problems);
+      return 1;
+    }
+    const diff = sync(out, files, check);
+    for (const d of diff) console.log(`${check ? "differs" : "wrote"}: ${d}`);
+    if (check && diff.length > 0) return 1;
+    console.log(`${check ? "OK: " : ""}${files.size} DBML file(s)${check ? " are current" : ""}`);
+    return 0;
+  }
+
+  console.error("commands: validate <dir>... | generate <schema-dir> [--out root] [--check] | generate-all [catalogue-root] [--out root] [--check] | dbml-all [catalogue-root] [--out root] [--check]");
   return 2;
 }
 

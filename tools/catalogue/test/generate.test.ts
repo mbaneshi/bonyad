@@ -150,3 +150,16 @@ describe("seed, coverage and Rust", () => {
     await expect(buildOutputs(r.models[0] as never, false)).rejects.toThrow("Rust name");
   });
 });
+
+describe("dbml-all", () => {
+  const cli = resolve(REPO_ROOT, "tools/catalogue/src/cli.ts");
+  test("writes DBML for every schema without running the Rust name check", () => {
+    // two types whose Rust names collide (TableRow): generate-all rejects this, dbml-all must not
+    const root = tempCatalogue({ "s/table.yaml": typeYaml("s.table"), "s/table_row.yaml": typeYaml("s.table_row") });
+    const out = tempCatalogue({});
+    const r = Bun.spawnSync(["bun", cli, "dbml-all", root, "--out", out]);
+    expect(r.exitCode).toBe(0);
+    expect(readFileSync(join(out, "docs/design/db/generated/s.dbml"), "utf8")).toContain("Table s.");
+    expect(Bun.spawnSync(["bun", cli, "dbml-all", root, "--out", out, "--check"]).exitCode).toBe(0);
+  });
+});
