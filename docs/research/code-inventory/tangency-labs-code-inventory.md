@@ -85,10 +85,9 @@ Cross-repository additions (Interpretation):
 | Verifier | analytic tests embedded in code; `KNOWN_ISSUES.md` advises external checks | hash-enforced fixtures, no expected values |
 | Identity | raw C++ pointers; `.smb` uses indices | n/a |
 
-## Lines to add to `scripts/fetch-refs`
+## Lines added to `scripts/fetch-refs`
 
-`scripts/fetch-refs` is on `dev` and does not list these repositories yet. Add these
-five lines to its list (same format):
+These five lines are in the list in `scripts/fetch-refs` (same format):
 
 ```
 solidcraft     https://github.com/tangency-labs/solidcraft.git

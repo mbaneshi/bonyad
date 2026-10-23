@@ -24,6 +24,11 @@ openscad       https://github.com/openscad/openscad.git
 solvespace     https://github.com/solvespace/solvespace.git
 wings3d        https://github.com/dgud/wings.git
 meshlab        https://github.com/cnr-isti-vclab/meshlab.git
+solidcraft     https://github.com/tangency-labs/solidcraft.git
+solidcore      https://github.com/tangency-labs/solidcore.git
+fieldcraft     https://github.com/tangency-labs/fieldcraft.git
+smlib          https://github.com/tangency-labs/smlib.git
+models         https://github.com/tangency-labs/models.git
 LIST
 echo "--- pinned commits"
 for d in refs/*/; do printf '%s %s\n' "$(basename "$d")" "$(git -C "$d" rev-parse --short HEAD 2>/dev/null)"; done
