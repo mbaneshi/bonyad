@@ -10,7 +10,7 @@ load-bearing ways:
 |---|---|---|
 | **ADR 0003** | `docs/decisions/0003-procedure-registry.md` (on `dev`) | Proposed |
 | **`proc.*` migration** | `db/migrations/20261023000005_phase1_entity_spine.sql` (on `dev`) | Merged |
-| **Contracts prototype** | this folder | 135 contracts, 1 implementation, 18 tests |
+| **Contracts prototype** | this folder | 135 contracts, 3 implementations, 26 tests |
 
 Evidence labels: *Verified* = read in the file named; *Interpretation* = my reading.
 
@@ -68,4 +68,13 @@ migrations build on them. Items 4 to 8 are design choices.
   `ViolationCode`) is better for the API layer. Both serialise to the same wire shape.
 - Whether the registry check described in ADR decision 4 (refuse to start on drift) is
   affordable when 135 contracts exist. Nothing here has run it.
-- Only 1 of 135 contracts has an implementation, so every field list is a hypothesis.
+- Only 3 of 135 contracts have an implementation, so almost every field list is a hypothesis.
+
+## Adjusted direction (draft)
+
+The comparison above treats procedures as rows. A further design, **ports and domain-owned
+entities**, changes how the contracts should be typed: procedures against small interfaces
+(`Region2D`, `Surface3D`, `HasQuantity`), not against one domain's entity. It also separates a
+procedure's contract from its implementations. This is written up as a draft RFC in
+[`RFC-DRAFT-ports-and-implementations.md`](RFC-DRAFT-ports-and-implementations.md). It is
+posted as [Discussion #60](https://github.com/mbaneshi/bonyad/discussions/60) and not decided.
