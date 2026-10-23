@@ -1,5 +1,10 @@
 # ADR 0004: Exchange policy, open versioned standards through declared exchange profiles
 
+> **Parked until the core model is defined.** This was written before the data model, procedures, goals, contracts and
+> rules exist in the database and in Rust. Read it as draft input, not as a plan: no work starts from it. It will be
+> reviewed and amended once the model exists. Kept and built on in the meantime: the entity inventory (`catalogue/`) and
+> the file-format research (`docs/research/formats/`).
+
 Date: 2026-10-23 · Status: **proposed**, drafted to be locked by the maintainer. Three points are marked **⚑ confirm**;
 locking means the maintainer changes this line to `locked` after settling them (the ledger rule: the AI drafts, the human locks).
 

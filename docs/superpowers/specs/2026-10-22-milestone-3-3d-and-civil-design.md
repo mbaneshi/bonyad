@@ -1,5 +1,10 @@
 # Milestone 3 — 3D geometry and civil linear/terrain entities (design)
 
+> **Parked until the core model is defined.** This was written before the data model, procedures, goals, contracts and
+> rules exist in the database and in Rust. Read it as draft input, not as a plan: no work starts from it. It will be
+> reviewed and amended once the model exists. Kept and built on in the meantime: the entity inventory (`catalogue/`) and
+> the file-format research (`docs/research/formats/`).
+
 Status: **draft for founder review.** Not decided, not built. Written 2026-10-22 on `dev`
 at `f8bd022`, after milestones 1 (current-state workspace) and 2 (revisioned
 `UpdateGeometry`) landed. Amended 2026-10-23 for ADR 0003 (procedure registry): `results` became
