@@ -20,6 +20,18 @@ export function snake(s: string): string {
 }
 export const codeOf = (entity: string) => "ifc." + snake(entity.replace(/^Ifc/, ""));
 
+/** Longest table name the catalogue validator accepts: `ifc_<table>_append_only` must fit 63 bytes. */
+export const MAX_TABLE = 47;
+/**
+ * Deterministic short name for an over-long child table: a readable prefix plus a
+ * 6-hex-digit hash of the full name (so two long names can never collide).
+ */
+export function shortTable(table: string): string {
+  if (table.length <= MAX_TABLE) return table;
+  const h = new Bun.CryptoHasher("sha1").update(table).digest("hex").slice(0, 6);
+  return `${table.slice(0, MAX_TABLE - 7).replace(/_+$/, "")}_${h}`;
+}
+
 type Scalar = { k: "scalar"; type: Field["type"]; check?: Field["check"]; via: string; lossy?: string };
 type Resolved =
   | Scalar
@@ -63,7 +75,7 @@ export interface Stats {
 export class Mapper {
   readonly entries: Entry[] = [];
   readonly stats: Stats = { valueSelectAsText: new Set(), mixedSelectAsAny: new Set(), nestedRefChildren: new Set() };
-  readonly gaps = { undocumentedAttrs: [] as string[], undocumentedLiterals: [] as string[], undocumentedEntities: [] as string[] };
+  readonly gaps = { undocumentedAttrs: [] as string[], undocumentedLiterals: [] as string[], undocumentedEntities: [] as string[], syntheticLabel: [] as string[] };
   private ancestorsCache = new Map<string, string[]>();
 
   constructor(
@@ -285,7 +297,8 @@ export class Mapper {
         return;
       }
       // child table
-      const childCode = `${code}_${snake(a.name)}`;
+      const fullTable = `${code.slice(4)}_${snake(a.name)}`;
+      const childCode = "ifc." + shortTable(fullTable);
       const itemBase = { name: "item", nullable: false, meaning: `Element of ${at}.`, source_ref: sref };
       const cReview: string[] = [];
       let item: Field | null = null;
@@ -322,6 +335,9 @@ export class Mapper {
         fields: [item],
         notes: `${childNote} EXPRESS: ${a.optional ? "OPTIONAL " : ""}${this.typeText(a.type)}.${a.optional ? " The whole list is optional: no rows means not provided." : ""}${e.abstract ? " Owned by an abstract type: rows belong to the concrete subtype." : ""}`,
       };
+      if (childCode !== `ifc.${fullTable}`) {
+        c.notes += ` Table name abbreviated to fit the 63-byte Postgres identifier limit; full name would be ifc.${fullTable}.`;
+      }
       if (cReview.length) {
         c.needs_review = true;
         c.notes += " Review: " + cReview.join("; ");
@@ -348,8 +364,43 @@ export class Mapper {
     this.entries.push(entry, ...children);
   }
 
+  /**
+   * Containers whose only data is a child list (IfcMaterialList, IfcUnitAssignment...) and abstract
+   * owners without columns have no table. Abstract: hang the child on the nearest ancestor that has
+   * a table. Otherwise (no ancestor, or a concrete type): add one synthetic nullable `synthetic_label` column.
+   */
+  private fixTablelessOwners(): void {
+    const by = new Map(this.entries.map((x) => [x.code, x]));
+    const addLabel = (o: Entry) => {
+      if (o.fields.length > 0) return;
+      o.fields.push({
+        name: "synthetic_label",
+        type: "text",
+        nullable: true,
+        meaning: "Synthetic column, not in IFC: free label for this container row. IFC identifies it only by instance identity.",
+        source_ref: "synthetic; added by the harvester so the type has a table to own its child list",
+      });
+      o.needs_review = true;
+      o.notes = `${o.notes ? o.notes + " " : ""}Review: the type has no EXPRESS attribute that maps to a column (only a child list), so a synthetic nullable synthetic_label column was added.`;
+      this.gaps.syntheticLabel.push(o.name);
+    };
+    for (const c of this.entries) {
+      if (c.kind !== "child" || !c.parent) continue;
+      const owner = by.get(c.parent)!;
+      if (owner.fields.length > 0 || (owner.kind !== "abstract" && owner.base)) continue; // has a table already
+      let anc: Entry | undefined = owner;
+      while (anc && anc.kind === "abstract" && anc.fields.length === 0) anc = anc.base ? by.get(anc.base) : undefined;
+      if (owner.kind === "abstract" && anc) {
+        c.parent = anc.code;
+        c.notes += ` Declared on abstract ${owner.name}, which has no table; attached to the nearest ancestor with a table, ${anc.name}.`;
+      } else addLabel(owner);
+    }
+    for (const x of this.entries) if (x.kind !== "abstract" && x.kind !== "child" && x.fields.length === 0 && !x.base) addLabel(x);
+  }
+
   run(): Entry[] {
     for (const e of this.schema.entities.values()) this.mapEntity(e);
+    this.fixTablelessOwners();
     return this.entries.map((x) => Entry.parse(x));
   }
 }
