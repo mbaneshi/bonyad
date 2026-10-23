@@ -1,0 +1,45 @@
+code: ifc.structural_load_single_force
+name: IfcStructuralLoadSingleForce
+kind: object
+base: ifc.structural_load_static
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralLoadSingleForce
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcStructuralLoadResource/Entities/IfcStructuralLoadSingleForce.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Instances of the entity IfcStructuralLoadSingleForce shall be used to define the forces and moments of an action operating on a single point.
+fields:
+  - name: force_x
+    type: float
+    nullable: true
+    meaning: Force value in x-direction.
+    source_ref: "IfcStructuralLoadSingleForce attribute 1: OPTIONAL IfcForceMeasure"
+  - name: force_y
+    type: float
+    nullable: true
+    meaning: Force value in y-direction.
+    source_ref: "IfcStructuralLoadSingleForce attribute 2: OPTIONAL IfcForceMeasure"
+  - name: force_z
+    type: float
+    nullable: true
+    meaning: Force value in z-direction.
+    source_ref: "IfcStructuralLoadSingleForce attribute 3: OPTIONAL IfcForceMeasure"
+  - name: moment_x
+    type: float
+    nullable: true
+    meaning: Moment about the x-axis.
+    source_ref: "IfcStructuralLoadSingleForce attribute 4: OPTIONAL IfcTorqueMeasure"
+  - name: moment_y
+    type: float
+    nullable: true
+    meaning: Moment about the y-axis.
+    source_ref: "IfcStructuralLoadSingleForce attribute 5: OPTIONAL IfcTorqueMeasure"
+  - name: moment_z
+    type: float
+    nullable: true
+    meaning: Moment about the z-axis.
+    source_ref: "IfcStructuralLoadSingleForce attribute 6: OPTIONAL IfcTorqueMeasure"
+notes: SUPERTYPE OF ONEOF ( IfcStructuralLoadSingleForceWarping ).

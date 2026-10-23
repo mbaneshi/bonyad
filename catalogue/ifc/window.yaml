@@ -1,0 +1,76 @@
+code: ifc.window
+name: IfcWindow
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcWindow
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcWindow.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The window is a building element that is predominately used to provide natural light and fresh air. It includes vertical opening but also horizontal opening such as skylights or light domes.
+fields:
+  - name: overall_height
+    type: length
+    nullable: true
+    meaning: Overall measure of the height, it reflects the Z Dimension of a bounding box, enclosing the window opening.
+    source_ref: "IfcWindow attribute 1: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: overall_width
+    type: length
+    nullable: true
+    meaning: Overall measure of the width, it reflects the X Dimension of a bounding box, enclosing the window opening.
+    source_ref: "IfcWindow attribute 2: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a window that is specified in an enumeration.
+    source_ref: "IfcWindow attribute 3: OPTIONAL IfcWindowTypeEnum; enumeration IfcWindowTypeEnum"
+    values:
+      - value: WINDOW
+        meaning: A standard window usually within a wall opening, as a window panel in a curtain wall, or as a "free standing" window.
+      - value: SKYLIGHT
+        meaning: A window within a sloped building element, usually a roof slab.
+      - value: LIGHTDOME
+        meaning: A special window that lies horizontally in a roof slab opening.
+      - value: USERDEFINED
+        meaning: User-defined window element.
+      - value: NOTDEFINED
+        meaning: Undefined window element.
+  - name: partitioning_type
+    type: enum
+    nullable: true
+    meaning: Type defining the general layout of the window in terms of the partitioning of panels.
+    source_ref: "IfcWindow attribute 4: OPTIONAL IfcWindowTypePartitioningEnum; enumeration IfcWindowTypePartitioningEnum"
+    values:
+      - value: SINGLE_PANEL
+        meaning: Window with one panel.
+      - value: DOUBLE_PANEL_VERTICAL
+        meaning: Window with two panels.
+      - value: DOUBLE_PANEL_HORIZONTAL
+        meaning: Window with two panels.
+      - value: TRIPLE_PANEL_VERTICAL
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_BOTTOM
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_TOP
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_LEFT
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_RIGHT
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_HORIZONTAL
+        meaning: Window with three panels.
+      - value: USERDEFINED
+        meaning: User defined operation type.
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: user_defined_partitioning_type
+    type: text
+    nullable: true
+    meaning: Designator for the user defined partitioning type, shall only be provided, if the value of PartitioningType is set to USERDEFINED.
+    source_ref: "IfcWindow attribute 5: OPTIONAL IfcLabel"
+notes: SUPERTYPE OF ONEOF ( IfcWindowStandardCase ).

@@ -1,0 +1,26 @@
+code: ifc.swept_area_solid
+name: IfcSweptAreaSolid
+kind: abstract
+base: ifc.solid_model
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSweptAreaSolid
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcSweptAreaSolid.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcSweptAreaSolid represents the 3D shape by a sweeping representation scheme allowing a two dimensional planar cross section to sweep through space.
+fields:
+  - name: swept_area
+    type: ref
+    meaning: The surface defining the area to be swept.
+    source_ref: "IfcSweptAreaSolid attribute 1: IfcProfileDef"
+    ref_to: ifc.profile_def
+  - name: position
+    type: ref
+    nullable: true
+    meaning: Position coordinate system for the resulting swept solid of the sweeping operation.
+    source_ref: "IfcSweptAreaSolid attribute 2: OPTIONAL IfcAxis2Placement3D"
+    ref_to: ifc.axis2_placement3d
+notes: SUPERTYPE OF ONEOF ( IfcDirectrixCurveSweptAreaSolid , IfcExtrudedAreaSolid , IfcRevolvedAreaSolid ).

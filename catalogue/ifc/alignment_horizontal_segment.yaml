@@ -1,0 +1,65 @@
+code: ifc.alignment_horizontal_segment
+name: IfcAlignmentHorizontalSegment
+kind: object
+base: ifc.alignment_parameter_segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcAlignmentHorizontalSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricConstraintResource/Entities/IfcAlignmentHorizontalSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Individual segment along the IfcAlignmentHorizontal, being defined in the x/y coordinate space. Each single horizontal alignment segment has an optional associated segment definition.
+fields:
+  - name: start_point
+    type: ref
+    meaning: The start point of the segment defined by a Cartesian point.
+    source_ref: "IfcAlignmentHorizontalSegment attribute 1: IfcCartesianPoint"
+    ref_to: ifc.cartesian_point
+  - name: start_direction
+    type: angle
+    meaning: The direction of the tangent at the start point. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcAlignmentHorizontalSegment attribute 2: IfcPlaneAngleMeasure"
+  - name: start_radius_of_curvature
+    type: length
+    meaning: For a NONLINEAR horizontal segment type the radius of the curve at the start point (Placement of the segment).
+    source_ref: "IfcAlignmentHorizontalSegment attribute 3: IfcLengthMeasure"
+  - name: end_radius_of_curvature
+    type: length
+    meaning: For a NONLINEAR horizontal segment type the radius of the curve at the end point.
+    source_ref: "IfcAlignmentHorizontalSegment attribute 4: IfcLengthMeasure"
+  - name: segment_length
+    type: length
+    meaning: The length along the curve.
+    source_ref: "IfcAlignmentHorizontalSegment attribute 5: IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: gravity_center_line_height
+    type: length
+    nullable: true
+    meaning: Optional attribute require for the exchange of Vienna bend transition segment.
+    source_ref: "IfcAlignmentHorizontalSegment attribute 6: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: predefined_type
+    type: enum
+    meaning: Predefined type of the horizontal alignmnent segment.
+    source_ref: "IfcAlignmentHorizontalSegment attribute 7: IfcAlignmentHorizontalSegmentTypeEnum; enumeration IfcAlignmentHorizontalSegmentTypeEnum"
+    values:
+      - value: LINE
+        meaning: In the geometry perspective it denotes a straight connection between two points.
+      - value: CIRCULARARC
+        meaning: In the geometric perspective, it denotes a connection between two points that follows a circular path.
+      - value: CLOTHOID
+        meaning: In the geometric perspective, a clothoid denotes a connection between two points where the radius of curvature changes along the segment at a constant rate.
+      - value: CUBIC
+        meaning: In IFC CUBIC denotes a transition segment where x and y coordinates obey a cubic formula.
+      - value: HELMERTCURVE
+        meaning: The Helmert curve or Helmert transition is an early example of a high performance transition bend.
+      - value: BLOSSCURVE
+        meaning: The Bloss transition is a more recent form of a high performance transition bend.
+      - value: COSINECURVE
+        meaning: Cosine transition.
+      - value: SINECURVE
+        meaning: Sine transition or sinusoidal transition was suggested 1937.
+      - value: VIENNESEBEND
+        meaning: The Viennese Bend (R) is an innovative track geometry transition element.

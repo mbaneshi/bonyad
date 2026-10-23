@@ -1,0 +1,35 @@
+code: ifc.indexed_colour_map
+name: IfcIndexedColourMap
+kind: object
+base: ifc.presentation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcIndexedColourMap
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcIndexedColourMap.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcIndexedColourMap provides the assignment of colour information to individual faces. It is used for colouring faces of tessellated face sets.
+fields:
+  - name: mapped_to
+    type: ref
+    meaning: Reference to the IfcTessellatedFaceSet to which it applies the colours and alpha channel.
+    source_ref: "IfcIndexedColourMap attribute 1: IfcTessellatedFaceSet"
+    ref_to: ifc.tessellated_face_set
+  - name: opacity
+    type: ratio
+    nullable: true
+    meaning: The opacity value that applies equally to all faces of the tessellated face set. 1.0 means opaque, and 0.0 completely transparent.
+    source_ref: "IfcIndexedColourMap attribute 2: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+  - name: colours
+    type: ref
+    meaning: Indexable list of lists of triples, representing RGB colours.
+    source_ref: "IfcIndexedColourMap attribute 3: IfcColourRgbList"
+    ref_to: ifc.colour_rgb_list
+  - name: colour_index
+    type: array
+    meaning: Indices into the IfcColourRgbList for each face of the IfcTriangulatedFaceSet.
+    source_ref: "IfcIndexedColourMap attribute 4: LIST [1:?] OF IfcPositiveInteger"
+    of: int

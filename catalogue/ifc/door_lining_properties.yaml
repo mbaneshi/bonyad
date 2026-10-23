@@ -1,0 +1,87 @@
+code: ifc.door_lining_properties
+name: IfcDoorLiningProperties
+kind: symbol
+base: ifc.pre_defined_property_set
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDoorLiningProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcArchitectureDomain/Entities/IfcDoorLiningProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The door lining is the frame which enables the door leaf to be fixed in position. The door lining is used to hang the door leaf.
+fields:
+  - name: lining_depth
+    type: length
+    nullable: true
+    meaning: Depth of the door lining, measured perpendicular to the plane of the door lining.
+    source_ref: "IfcDoorLiningProperties attribute 1: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: lining_thickness
+    type: length
+    nullable: true
+    meaning: Thickness of the door lining as explained in the figure above.
+    source_ref: "IfcDoorLiningProperties attribute 2: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: threshold_depth
+    type: length
+    nullable: true
+    meaning: Depth (dimension in plane perpendicular to door leaf) of the door threshold.
+    source_ref: "IfcDoorLiningProperties attribute 3: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: threshold_thickness
+    type: length
+    nullable: true
+    meaning: Thickness of the door threshold as explained in the figure above.
+    source_ref: "IfcDoorLiningProperties attribute 4: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: transom_thickness
+    type: length
+    nullable: true
+    meaning: Thickness (width in plane parallel to door leaf) of the transom (if provided - that is, if the TransomOffset attribute is set), which divides the door leaf from a glazing (or window) above.
+    source_ref: "IfcDoorLiningProperties attribute 5: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: transom_offset
+    type: length
+    nullable: true
+    meaning: Offset of the transom (if given) which divides the door leaf from a glazing (or window) above.
+    source_ref: "IfcDoorLiningProperties attribute 6: OPTIONAL IfcLengthMeasure"
+  - name: lining_offset
+    type: length
+    nullable: true
+    meaning: Offset (dimension in plane perpendicular to door leaf) of the door lining.
+    source_ref: "IfcDoorLiningProperties attribute 7: OPTIONAL IfcLengthMeasure"
+  - name: threshold_offset
+    type: length
+    nullable: true
+    meaning: Offset (dimension in plane perpendicular to door leaf) of the door threshold.
+    source_ref: "IfcDoorLiningProperties attribute 8: OPTIONAL IfcLengthMeasure"
+  - name: casing_thickness
+    type: length
+    nullable: true
+    meaning: Thickness of the casing (dimension in plane of the door leaf).
+    source_ref: "IfcDoorLiningProperties attribute 9: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: casing_depth
+    type: length
+    nullable: true
+    meaning: Depth of the casing (dimension in plane perpendicular to door leaf).
+    source_ref: "IfcDoorLiningProperties attribute 10: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: shape_aspect_style
+    type: ref
+    nullable: true
+    meaning: Pointer to the shape aspect, if given.
+    source_ref: "IfcDoorLiningProperties attribute 11: OPTIONAL IfcShapeAspect"
+    ref_to: ifc.shape_aspect
+  - name: lining_to_panel_offset_x
+    type: length
+    nullable: true
+    meaning: Offset between the lining and the window panel measured along the x-axis of the local placement.
+    source_ref: "IfcDoorLiningProperties attribute 12: OPTIONAL IfcLengthMeasure"
+  - name: lining_to_panel_offset_y
+    type: length
+    nullable: true
+    meaning: Offset between the lining and the door panel measured along the y-axis of the local placement.
+    source_ref: "IfcDoorLiningProperties attribute 13: OPTIONAL IfcLengthMeasure"

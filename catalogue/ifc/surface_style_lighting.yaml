@@ -1,0 +1,34 @@
+code: ifc.surface_style_lighting
+name: IfcSurfaceStyleLighting
+kind: object
+base: ifc.presentation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSurfaceStyleLighting
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcSurfaceStyleLighting.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcSurfaceStyleLighting is a container class for properties for calculation of physically exact illuminance related to a particular surface style.
+fields:
+  - name: diffuse_transmission_colour
+    type: ref
+    meaning: The degree of diffusion of the transmitted light.
+    source_ref: "IfcSurfaceStyleLighting attribute 1: IfcColourRgb"
+    ref_to: ifc.colour_rgb
+  - name: diffuse_reflection_colour
+    type: ref
+    meaning: The degree of diffusion of the reflected light.
+    source_ref: "IfcSurfaceStyleLighting attribute 2: IfcColourRgb"
+    ref_to: ifc.colour_rgb
+  - name: transmission_colour
+    type: ref
+    meaning: Describes how the light falling on a body is totally or partially transmitted.
+    source_ref: "IfcSurfaceStyleLighting attribute 3: IfcColourRgb"
+    ref_to: ifc.colour_rgb
+  - name: reflectance_colour
+    type: ref
+    meaning: A coefficient that determines the extent that the light falling onto a surface is fully or partially reflected.
+    source_ref: "IfcSurfaceStyleLighting attribute 4: IfcColourRgb"
+    ref_to: ifc.colour_rgb

@@ -1,0 +1,20 @@
+code: ifc.rel_nests_related_objects
+name: IfcRelNests.RelatedObjects
+kind: child
+parent: ifc.rel_nests
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelNests.RelatedObjects
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcRelNests.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the RelatedObjects list of IfcRelNests. The object definitions, either object type or object occurrence, that are being nested.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcRelNests.RelatedObjects.
+    source_ref: "IfcRelNests attribute 2: LIST [1:?] OF IfcObjectDefinition"
+    ref_to: ifc.object_definition
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: LIST [1:?] OF IfcObjectDefinition."

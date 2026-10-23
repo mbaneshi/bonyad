@@ -1,0 +1,24 @@
+code: landxml.title
+name: Title
+kind: child
+parent: landxml.parcel
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Title
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: This may be expanded, but the LandXML schema is not really aimed at providing title information so I think name is sufficient
+fields:
+  - name: name
+    type: text
+    meaning: Title name; the XSD gives no description.
+    source_ref: XSD Title/@name; type xs:string
+  - name: title_type
+    type: text
+    meaning: Title titleType; the XSD gives no description.
+    source_ref: XSD Title/@titleType; type xs:anySimpleType
+    nullable: true
+notes: Occurs 0..unbounded in landxml.parcel.

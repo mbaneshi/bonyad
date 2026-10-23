@@ -1,0 +1,61 @@
+code: landxml.zone_slope
+name: ZoneSlope
+kind: child
+parent: landxml.zone
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element ZoneSlope
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `ZoneSlope`; the XSD gives no description.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD ZoneSlope/@staStart; type station
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD ZoneSlope/@staEnd; type station
+  - name: start_vert_value
+    type: float
+    meaning: ZoneSlope startVertValue; the XSD gives no description.
+    source_ref: XSD ZoneSlope/@startVertValue; type xs:double
+    nullable: true
+  - name: start_vert_type
+    type: enum
+    meaning: ZoneSlope startVertType; the XSD gives no description.
+    source_ref: XSD ZoneSlope/@startVertType; type zoneVertType
+    nullable: true
+    values:
+      - value: slope
+        meaning: Enumeration literal "slope"; the XSD gives no description.
+      - value: vertical distance
+        meaning: Enumeration literal "vertical distance"; the XSD gives no description.
+  - name: end_vert_value
+    type: float
+    meaning: ZoneSlope endVertValue; the XSD gives no description.
+    source_ref: XSD ZoneSlope/@endVertValue; type xs:double
+  - name: end_vert_type
+    type: enum
+    meaning: ZoneSlope endVertType; the XSD gives no description.
+    source_ref: XSD ZoneSlope/@endVertType; type zoneVertType
+    values:
+      - value: slope
+        meaning: Enumeration literal "slope"; the XSD gives no description.
+      - value: vertical distance
+        meaning: Enumeration literal "vertical distance"; the XSD gives no description.
+  - name: parabolic_start_station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD ZoneSlope/@parabolicStartStation; type station
+    nullable: true
+  - name: parabolic_end_station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD ZoneSlope/@parabolicEndStation; type station
+    nullable: true
+notes: Occurs 0..unbounded in landxml.zone.

@@ -1,0 +1,23 @@
+code: ifc.text_literal_with_extent
+name: IfcTextLiteralWithExtent
+kind: entity
+base: ifc.text_literal
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextLiteralWithExtent
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationDefinitionResource/Entities/IfcTextLiteralWithExtent.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The text literal with extent is a text literal with the additional explicit information of the planar extent. An alignment attribute defines how the text box is aligned to the placement and how it may expand if additional lines of text need to be added.
+fields:
+  - name: extent
+    type: ref
+    meaning: The extent in the x and y direction of the text literal.
+    source_ref: "IfcTextLiteralWithExtent attribute 1: IfcPlanarExtent"
+    ref_to: ifc.planar_extent
+  - name: box_alignment
+    type: text
+    meaning: The alignment of the text literal relative to its position.
+    source_ref: "IfcTextLiteralWithExtent attribute 2: IfcBoxAlignment"

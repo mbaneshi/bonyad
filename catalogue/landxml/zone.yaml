@@ -1,0 +1,137 @@
+code: landxml.zone
+name: Zone
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Zone
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Zone`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.zones
+    nullable: true
+    meaning: The landxml.zones row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: desc
+    type: text
+    meaning: Zone desc; the XSD gives no description.
+    source_ref: XSD Zone/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: Zone name; the XSD gives no description.
+    source_ref: XSD Zone/@name; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: Zone state; the XSD gives no description.
+    source_ref: XSD Zone/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: priority
+    type: int
+    meaning: Zone priority; the XSD gives no description.
+    source_ref: XSD Zone/@priority; type xs:int
+  - name: category
+    type: enum
+    meaning: Zone category; the XSD gives no description.
+    source_ref: XSD Zone/@category; type zoneCategoryType
+    values:
+      - value: road surface
+        meaning: Enumeration literal "road surface"; the XSD gives no description.
+      - value: road subsurface
+        meaning: Enumeration literal "road subsurface"; the XSD gives no description.
+      - value: road shoulder
+        meaning: Enumeration literal "road shoulder"; the XSD gives no description.
+      - value: road foreSlope
+        meaning: Enumeration literal "road foreSlope"; the XSD gives no description.
+      - value: road backSlope
+        meaning: Enumeration literal "road backSlope"; the XSD gives no description.
+      - value: road curb-gutter
+        meaning: Enumeration literal "road curb-gutter"; the XSD gives no description.
+      - value: bridge surface
+        meaning: Enumeration literal "bridge surface"; the XSD gives no description.
+      - value: bridge body
+        meaning: Enumeration literal "bridge body"; the XSD gives no description.
+      - value: sidewalk
+        meaning: Enumeration literal "sidewalk"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: ditch
+        meaning: Enumeration literal "ditch"; the XSD gives no description.
+      - value: wall
+        meaning: Enumeration literal "wall"; the XSD gives no description.
+      - value: channel
+        meaning: Enumeration literal "channel"; the XSD gives no description.
+      - value: bike facilities
+        meaning: Enumeration literal "bike facilities"; the XSD gives no description.
+      - value: obstruction offset
+        meaning: Enumeration literal "obstruction offset"; the XSD gives no description.
+      - value: longitudinal barrier
+        meaning: Enumeration literal "longitudinal barrier"; the XSD gives no description.
+      - value: sound barrier
+        meaning: Enumeration literal "sound barrier"; the XSD gives no description.
+      - value: bridge abutment
+        meaning: Enumeration literal "bridge abutment"; the XSD gives no description.
+      - value: vertical pillar
+        meaning: Enumeration literal "vertical pillar"; the XSD gives no description.
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Zone/@staStart; type station
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Zone/@staEnd; type station
+    nullable: true
+  - name: start_width
+    type: float
+    meaning: Zone startWidth; the XSD gives no description.
+    source_ref: XSD Zone/@startWidth; type xs:double
+  - name: start_vert_value
+    type: float
+    meaning: Zone startVertValue; the XSD gives no description.
+    source_ref: XSD Zone/@startVertValue; type xs:double
+  - name: start_vert_type
+    type: enum
+    meaning: Zone startVertType; the XSD gives no description.
+    source_ref: XSD Zone/@startVertType; type zoneVertType
+    values:
+      - value: slope
+        meaning: Enumeration literal "slope"; the XSD gives no description.
+      - value: vertical distance
+        meaning: Enumeration literal "vertical distance"; the XSD gives no description.
+  - name: end_width
+    type: float
+    meaning: Zone endWidth; the XSD gives no description.
+    source_ref: XSD Zone/@endWidth; type xs:double
+    nullable: true
+  - name: end_vert_value
+    type: float
+    meaning: Zone endVertValue; the XSD gives no description.
+    source_ref: XSD Zone/@endVertValue; type xs:double
+    nullable: true
+  - name: end_vert_type
+    type: enum
+    meaning: Zone endVertType; the XSD gives no description.
+    source_ref: XSD Zone/@endVertType; type zoneVertType
+    nullable: true
+    values:
+      - value: slope
+        meaning: Enumeration literal "slope"; the XSD gives no description.
+      - value: vertical distance
+        meaning: Enumeration literal "vertical distance"; the XSD gives no description.
+notes: Occurs 1..unbounded in landxml.zones. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

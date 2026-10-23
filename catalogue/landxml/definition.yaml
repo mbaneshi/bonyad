@@ -1,0 +1,49 @@
+code: landxml.definition
+name: Definition
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Definition
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: The collection of faces and points that defined the surface.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.surface
+    nullable: true
+    meaning: The landxml.surface row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: surf_type
+    type: enum
+    meaning: TIN is the acronym for "triangulated irregular network", a surface comprised of 3 point faces grid is a surface comprised of 4 point faces.
+    source_ref: XSD Definition/@surfType; type surfTypeEnum
+    values:
+      - value: TIN
+        meaning: Enumeration literal "TIN"; the XSD gives no description.
+      - value: grid
+        meaning: Enumeration literal "grid"; the XSD gives no description.
+  - name: area2d_surf
+    type: float
+    meaning: "Definition area2DSurf; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Definition/@area2DSurf; type xs:double
+    nullable: true
+  - name: area3d_surf
+    type: float
+    meaning: "Definition area3DSurf; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Definition/@area3DSurf; type xs:double
+    nullable: true
+  - name: elev_max
+    type: float
+    meaning: "Definition elevMax; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Definition/@elevMax; type xs:double
+    nullable: true
+  - name: elev_min
+    type: float
+    meaning: "Definition elevMin; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Definition/@elevMin; type xs:double
+    nullable: true
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.surface. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."

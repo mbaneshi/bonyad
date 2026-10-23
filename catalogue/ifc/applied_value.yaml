@@ -1,0 +1,71 @@
+code: ifc.applied_value
+name: IfcAppliedValue
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcAppliedValue
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcCostResource/Entities/IfcAppliedValue.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: This entity captures a value driven by a formula, with additional qualifications including unit basis, valid date range, and categorization.
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: A name or additional clarification given to a cost value.
+    source_ref: "IfcAppliedValue attribute 1: OPTIONAL IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: The description that may apply additional information about a cost value.
+    source_ref: "IfcAppliedValue attribute 2: OPTIONAL IfcText"
+  - name: applied_value
+    type: ref
+    nullable: true
+    meaning: The extent or quantity or amount of an applied value.
+    source_ref: "IfcAppliedValue attribute 3: OPTIONAL IfcAppliedValueSelect; via select IfcAppliedValueSelect"
+    ref_to: any
+  - name: unit_basis
+    type: ref
+    nullable: true
+    meaning: The number and unit of measure on which the unit cost is based.
+    source_ref: "IfcAppliedValue attribute 4: OPTIONAL IfcMeasureWithUnit"
+    ref_to: ifc.measure_with_unit
+  - name: applicable_date
+    type: date
+    nullable: true
+    meaning: The date on or from which an applied value is applicable.
+    source_ref: "IfcAppliedValue attribute 5: OPTIONAL IfcDate"
+  - name: fixed_until_date
+    type: date
+    nullable: true
+    meaning: The date until which applied value is applicable.
+    source_ref: "IfcAppliedValue attribute 6: OPTIONAL IfcDate"
+  - name: category
+    type: text
+    nullable: true
+    meaning: Specification of the type of cost used.
+    source_ref: "IfcAppliedValue attribute 7: OPTIONAL IfcLabel"
+  - name: condition
+    type: text
+    nullable: true
+    meaning: The condition under which a cost value applies.
+    source_ref: "IfcAppliedValue attribute 8: OPTIONAL IfcLabel"
+  - name: arithmetic_operator
+    type: enum
+    nullable: true
+    meaning: The arithmetic operator applied to component values.
+    source_ref: "IfcAppliedValue attribute 9: OPTIONAL IfcArithmeticOperatorEnum; enumeration IfcArithmeticOperatorEnum"
+    values:
+      - value: ADD
+        meaning: Add.
+      - value: DIVIDE
+        meaning: Divide.
+      - value: MULTIPLY
+        meaning: Multiply.
+      - value: SUBTRACT
+        meaning: Subtract.
+needs_review: true
+notes: "Inverse attributes not stored: HasExternalReference. SUPERTYPE OF ONEOF ( IfcCostValue ). Review: applied_value: select IfcAppliedValueSelect mixes entities and value types; stored as ref to any, value members are not representable in one column."

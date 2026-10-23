@@ -1,0 +1,29 @@
+code: ifc.structural_activity
+name: IfcStructuralActivity
+kind: abstract
+base: ifc.product
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralActivity
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcStructuralActivity.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The abstract entity IfcStructuralActivity combines the definition of actions (such as forces, displacements, etc.) and reactions (support reactions, internal forces, deflections, etc.) which are specified by using the basic load definitions from the IfcStructuralLoadResource.
+fields:
+  - name: applied_load
+    type: ref
+    meaning: Load or result resource object which defines the load type, direction, and load values.
+    source_ref: "IfcStructuralActivity attribute 1: IfcStructuralLoad"
+    ref_to: ifc.structural_load
+  - name: global_or_local
+    type: enum
+    meaning: Indicates whether the load directions refer to the global coordinate system (global to the analysis model, i.e. as established by _IfcStructuralAnalysisModel.SharedPlacement_) or to the local coordinate system (local to the activity or connected item, as …
+    source_ref: "IfcStructuralActivity attribute 2: IfcGlobalOrLocalEnum; enumeration IfcGlobalOrLocalEnum"
+    values:
+      - value: GLOBAL_COORDS
+        meaning: The global project coordinate system is used.
+      - value: LOCAL_COORDS
+        meaning: The local object coordinate system is used.
+notes: "Inverse attributes not stored: AssignedToStructuralItem. SUPERTYPE OF ONEOF ( IfcStructuralAction , IfcStructuralReaction )."

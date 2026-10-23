@@ -1,0 +1,48 @@
+code: ifc.b_spline_surface_with_knots
+name: IfcBSplineSurfaceWithKnots
+kind: entity
+base: ifc.b_spline_surface
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBSplineSurfaceWithKnots
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcBSplineSurfaceWithKnots.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcBSplineSurfaceWithKnots is a general form of rational or polynomial parametric surface in which the knot values are explicitly given.
+fields:
+  - name: u_multiplicities
+    type: array
+    meaning: The multiplicities of the knots in the u parameter direction.
+    source_ref: "IfcBSplineSurfaceWithKnots attribute 1: LIST [2:?] OF IfcInteger"
+    of: int
+  - name: v_multiplicities
+    type: array
+    meaning: The multiplicities of the knots in the v parameter direction.
+    source_ref: "IfcBSplineSurfaceWithKnots attribute 2: LIST [2:?] OF IfcInteger"
+    of: int
+  - name: u_knots
+    type: array
+    meaning: The list of the distinct knots in the u parameter direction.
+    source_ref: "IfcBSplineSurfaceWithKnots attribute 3: LIST [2:?] OF IfcParameterValue"
+    of: float
+  - name: v_knots
+    type: array
+    meaning: The list of the distinct knots in the v parameter direction.
+    source_ref: "IfcBSplineSurfaceWithKnots attribute 4: LIST [2:?] OF IfcParameterValue"
+    of: float
+  - name: knot_spec
+    type: enum
+    meaning: The description of the knot type.
+    source_ref: "IfcBSplineSurfaceWithKnots attribute 5: IfcKnotType; enumeration IfcKnotType"
+    values:
+      - value: UNIFORM_KNOTS
+        meaning: The form of knots appropriate for a uniform B-spline curve.
+      - value: QUASI_UNIFORM_KNOTS
+        meaning: The form of knots appropriate for a quasi-uniform B-spline curve.
+      - value: PIECEWISE_BEZIER_KNOTS
+        meaning: The form of knots appropriate for a piecewise Bezier curve.
+      - value: UNSPECIFIED
+        meaning: The type of knots is not specified.
+notes: "Derived attributes not stored: KnotVUpper, KnotUUpper. SUPERTYPE OF ONEOF ( IfcRationalBSplineSurfaceWithKnots )."

@@ -1,0 +1,95 @@
+code: landxml.instrument_details
+name: InstrumentDetails
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element InstrumentDetails
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `InstrumentDetails`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.survey
+    nullable: true
+    meaning: The landxml.survey row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: id
+    type: text
+    meaning: InstrumentDetails id; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@id; type xs:ID
+  - name: edm_accuracy_constant
+    type: float
+    meaning: InstrumentDetails edmAccuracyConstant; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@edmAccuracyConstant; type xs:double
+    nullable: true
+  - name: edm_accuracyppm
+    type: float
+    meaning: InstrumentDetails edmAccuracyppm; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@edmAccuracyppm; type xs:double
+    nullable: true
+  - name: edm_vert_offset
+    type: float
+    meaning: InstrumentDetails edmVertOffset; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@edmVertOffset; type xs:double
+    nullable: true
+  - name: horiz_angle_precision
+    type: float
+    meaning: InstrumentDetails horizAnglePrecision; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@horizAnglePrecision; type xs:double
+    nullable: true
+  - name: manufacturer
+    type: text
+    meaning: InstrumentDetails manufacturer; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@manufacturer; type xs:string
+    nullable: true
+  - name: model
+    type: text
+    meaning: InstrumentDetails model; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@model; type xs:string
+    nullable: true
+  - name: serial_number
+    type: text
+    meaning: InstrumentDetails serialNumber; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@serialNumber; type xs:string
+    nullable: true
+  - name: zenith_angle_precision
+    type: float
+    meaning: InstrumentDetails zenithAnglePrecision; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@zenithAnglePrecision; type xs:double
+    nullable: true
+  - name: carrier_wavelength
+    type: float
+    meaning: InstrumentDetails carrierWavelength; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@carrierWavelength; type xs:double
+    nullable: true
+  - name: refractive_index
+    type: float
+    meaning: InstrumentDetails refractiveIndex; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@refractiveIndex; type xs:double
+    nullable: true
+  - name: horiz_collimation
+    type: float
+    meaning: InstrumentDetails horizCollimation; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@horizCollimation; type xs:double
+    nullable: true
+  - name: vert_collimation
+    type: float
+    meaning: InstrumentDetails vertCollimation; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@vertCollimation; type xs:double
+    nullable: true
+  - name: stadia_factor
+    type: float
+    meaning: InstrumentDetails stadiaFactor; the XSD gives no description.
+    source_ref: XSD InstrumentDetails/@stadiaFactor; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: Occurs 1..1 via Equipment in landxml.survey. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

@@ -1,0 +1,47 @@
+code: ifc.surface_feature
+name: IfcSurfaceFeature
+kind: entity
+base: ifc.feature_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSurfaceFeature
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcSurfaceFeature.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "# IfcSurfaceFeature."
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Indicates the kind of surface feature.
+    source_ref: "IfcSurfaceFeature attribute 1: OPTIONAL IfcSurfaceFeatureTypeEnum; enumeration IfcSurfaceFeatureTypeEnum"
+    values:
+      - value: MARK
+        meaning: A point, line, cross, or other mark, applied for example for easier adjustment of elements during assembly.
+      - value: TAG
+        meaning: A name tag, which allows to identify an element during production, delivery and assembly.
+      - value: TREATMENT
+        meaning: A subtractive surface feature, e.g. grinding, or an additive surface feature, e.g. coating, or an impregnating treatment, or a series of any of these kinds of treatments.
+      - value: DEFECT
+        meaning: Detected defect on the surface of an element, such as corroded or eroded area.
+      - value: HATCHMARKING
+        meaning: surface markings defined by enclosed 2d shape with defined hatch fillings.
+      - value: LINEMARKING
+        meaning: 2D lines painted on pavement surfaces to form boundaries, centrelines and edge markings.
+      - value: PAVEMENTSURFACEMARKING
+        meaning: Painted or chemical lines or symbols on the surface of pavements (a road or paved area).
+      - value: SYMBOLMARKING
+        meaning: Surface markings that convey information in the form of symbols and shapes such as arrows, text or pictorial symbols.
+      - value: NONSKIDSURFACING
+        meaning: Paint or surfacing to prevent sliding or skidding.
+      - value: RUMBLESTRIP
+        meaning: Raised and often textured strips on road center line or on shoulder, or across lanes to alert drivers by vibration and noise.
+      - value: TRANSVERSERUMBLESTRIP
+        meaning: Type of rumble strip running across lane(s).
+      - value: USERDEFINED
+        meaning: A user-defined type of surface feature.
+      - value: NOTDEFINED
+        meaning: An undefined type of surface feature.
+notes: "Inverse attributes not stored: AdheresToElement."

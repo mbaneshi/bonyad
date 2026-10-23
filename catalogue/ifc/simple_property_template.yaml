@@ -1,0 +1,93 @@
+code: ifc.simple_property_template
+name: IfcSimplePropertyTemplate
+kind: symbol
+base: ifc.property_template
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSimplePropertyTemplate
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcSimplePropertyTemplate.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcSimplePropertyTemplate defines the template for all dynamically extensible properties, either the subtypes of IfcSimpleProperty or the subtypes of IfcPhysicalSimpleQuantity. The individual property templates are interpreted according to their Name attribute and may have a predefined template type, property units, and property measure types.
+fields:
+  - name: template_type
+    type: enum
+    nullable: true
+    meaning: Property type defining whether the property template defines a property with a single value, a bounded value, a list value, a table value, an enumerated value, or a reference value.
+    source_ref: "IfcSimplePropertyTemplate attribute 1: OPTIONAL IfcSimplePropertyTemplateTypeEnum; enumeration IfcSimplePropertyTemplateTypeEnum"
+    values:
+      - value: P_SINGLEVALUE
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcPropertySingleValue.
+      - value: P_ENUMERATEDVALUE
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcPropertyEnumeratedValue.
+      - value: P_BOUNDEDVALUE
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcPropertyBoundedValue.
+      - value: P_LISTVALUE
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcPropertyListValue.
+      - value: P_TABLEVALUE
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcPropertyTableValue.
+      - value: P_REFERENCEVALUE
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcPropertyReferenceValue.
+      - value: Q_LENGTH
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcQuantityLength.
+      - value: Q_AREA
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcQuantityArea.
+      - value: Q_VOLUME
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcQuantityVolume.
+      - value: Q_COUNT
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcQuantityCount.
+      - value: Q_WEIGHT
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcQuantityWeight.
+      - value: Q_TIME
+        meaning: The properties defined by this IfcPropertyTemplate are of type IfcQuantityTime.
+  - name: primary_measure_type
+    type: text
+    nullable: true
+    meaning: Primary measure type assigned to the definition of the property.
+    source_ref: "IfcSimplePropertyTemplate attribute 2: OPTIONAL IfcLabel"
+  - name: secondary_measure_type
+    type: text
+    nullable: true
+    meaning: Secondary measure type assigned to the definition of the property.
+    source_ref: "IfcSimplePropertyTemplate attribute 3: OPTIONAL IfcLabel"
+  - name: enumerators
+    type: ref
+    nullable: true
+    meaning: Name of the property enumeration, and list of all valid enumerators being selectable values, assigned to the definition of the property.
+    source_ref: "IfcSimplePropertyTemplate attribute 4: OPTIONAL IfcPropertyEnumeration"
+    ref_to: ifc.property_enumeration
+  - name: primary_unit
+    type: ref
+    nullable: true
+    meaning: Primary unit assigned to the definition of the property.
+    source_ref: "IfcSimplePropertyTemplate attribute 5: OPTIONAL IfcUnit; via select IfcUnit"
+    ref_to: any
+  - name: secondary_unit
+    type: ref
+    nullable: true
+    meaning: Secondary unit assigned to the definition of the property.
+    source_ref: "IfcSimplePropertyTemplate attribute 6: OPTIONAL IfcUnit; via select IfcUnit"
+    ref_to: any
+  - name: expression
+    type: text
+    nullable: true
+    meaning: The expression used to store additional information for the property template depending on the TemplateType.
+    source_ref: "IfcSimplePropertyTemplate attribute 7: OPTIONAL IfcLabel"
+  - name: access_state
+    type: enum
+    nullable: true
+    meaning: Information about the access state of the property.
+    source_ref: "IfcSimplePropertyTemplate attribute 8: OPTIONAL IfcStateEnum; enumeration IfcStateEnum"
+    values:
+      - value: READWRITE
+        meaning: Object is in a Read-Write state.
+      - value: READONLY
+        meaning: Object is in a Read-Only state.
+      - value: LOCKED
+        meaning: Object is in a Locked state.
+      - value: READWRITELOCKED
+        meaning: Object is in a Read-Write-Locked state.
+      - value: READONLYLOCKED
+        meaning: Object is in a Read-Only-Locked state.

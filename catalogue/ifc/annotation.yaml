@@ -1,0 +1,43 @@
+code: ifc.annotation
+name: IfcAnnotation
+kind: entity
+base: ifc.product
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcAnnotation
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcAnnotation.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An annotation is an information element within the geometric (and spatial) context of a project, that adds a note or meaning to the objects which constitutes the project model. Annotations include additional points, curves, text, dimensioning, hatching and other forms of graphical notes.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcAnnotation (not described in the source documentation).
+    source_ref: "IfcAnnotation attribute 1: OPTIONAL IfcAnnotationTypeEnum; enumeration IfcAnnotationTypeEnum"
+    values:
+      - value: ASSUMEDPOINT
+        meaning: ASSUMEDPOINT (no description for this literal in the source documentation)
+      - value: ASBUILTAREA
+        meaning: ASBUILTAREA (no description for this literal in the source documentation)
+      - value: ASBUILTLINE
+        meaning: ASBUILTLINE (no description for this literal in the source documentation)
+      - value: NON_PHYSICAL_SIGNAL
+        meaning: NON_PHYSICAL_SIGNAL (no description for this literal in the source documentation)
+      - value: ASSUMEDLINE
+        meaning: ASSUMEDLINE (no description for this literal in the source documentation)
+      - value: WIDTHEVENT
+        meaning: WIDTHEVENT (no description for this literal in the source documentation)
+      - value: ASSUMEDAREA
+        meaning: ASSUMEDAREA (no description for this literal in the source documentation)
+      - value: SUPERELEVATIONEVENT
+        meaning: SUPERELEVATIONEVENT (no description for this literal in the source documentation)
+      - value: ASBUILTPOINT
+        meaning: ASBUILTPOINT (no description for this literal in the source documentation)
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.
+notes: "Inverse attributes not stored: ContainedInStructure."

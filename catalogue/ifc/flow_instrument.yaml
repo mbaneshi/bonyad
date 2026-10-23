@@ -1,0 +1,44 @@
+code: ifc.flow_instrument
+name: IfcFlowInstrument
+kind: entity
+base: ifc.distribution_control_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFlowInstrument
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcBuildingControlsDomain/Entities/IfcFlowInstrument.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A flow instrument reads and displays the value of a particular property of a system at a point, or displays the difference in the value of a property between two points.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcFlowInstrument (not described in the source documentation).
+    source_ref: "IfcFlowInstrument attribute 1: OPTIONAL IfcFlowInstrumentTypeEnum; enumeration IfcFlowInstrumentTypeEnum"
+    values:
+      - value: PRESSUREGAUGE
+        meaning: A device that reads and displays a pressure value at a point or the pressure difference between two points.
+      - value: THERMOMETER
+        meaning: A device that reads and displays a temperature value at a point.
+      - value: AMMETER
+        meaning: A device that reads and displays the current flow in a circuit.
+      - value: FREQUENCYMETER
+        meaning: A device that reads and displays the electrical frequency of an alternating current circuit.
+      - value: POWERFACTORMETER
+        meaning: A device that reads and displays the power factor of an electrical circuit.
+      - value: PHASEANGLEMETER
+        meaning: A device that reads and displays the phase angle of a phase in a polyphase electrical circuit.
+      - value: VOLTMETER_PEAK
+        meaning: A device that reads and displays the peak voltage in an electrical circuit.
+      - value: VOLTMETER_RMS
+        meaning: A device that reads and displays the RMS (mean) voltage in an electrical circuit.
+      - value: COMBINED
+        meaning: A device that reads and displays the value of multiple properties of a system at a point, or displays the difference in the value of a property between two points.
+      - value: VOLTMETER
+        meaning: A device that measures and displays the voltage in a circuit.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

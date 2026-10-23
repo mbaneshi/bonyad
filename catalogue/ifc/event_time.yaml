@@ -1,0 +1,34 @@
+code: ifc.event_time
+name: IfcEventTime
+kind: object
+base: ifc.scheduling_time
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcEventTime
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcDateTimeResource/Entities/IfcEventTime.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcEventTime captures the time-related information about an event including the different types of event dates (i.e. actual, scheduled, early, and late).
+fields:
+  - name: actual_date
+    type: timestamp
+    nullable: true
+    meaning: The date on which an event actually occurs.
+    source_ref: "IfcEventTime attribute 1: OPTIONAL IfcDateTime"
+  - name: early_date
+    type: timestamp
+    nullable: true
+    meaning: The earliest date on which an event can occur.
+    source_ref: "IfcEventTime attribute 2: OPTIONAL IfcDateTime"
+  - name: late_date
+    type: timestamp
+    nullable: true
+    meaning: The latest date on which an event can occur.
+    source_ref: "IfcEventTime attribute 3: OPTIONAL IfcDateTime"
+  - name: schedule_date
+    type: timestamp
+    nullable: true
+    meaning: The date on which an event is scheduled to occur.
+    source_ref: "IfcEventTime attribute 4: OPTIONAL IfcDateTime"

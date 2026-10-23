@@ -1,0 +1,62 @@
+code: ifc.marine_facility
+name: IfcMarineFacility
+kind: entity
+base: ifc.facility
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMarineFacility
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcPortsAndWaterwaysDomain/Entities/IfcMarineFacility.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A marine facility represents any major structure or entity that is specific to the ports and waterways domain. examples of this include quays, jetties, shipyards, breakwaters etc.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined type of a marine facility.
+    source_ref: "IfcMarineFacility attribute 1: OPTIONAL IfcMarineFacilityTypeEnum; enumeration IfcMarineFacilityTypeEnum"
+    values:
+      - value: CANAL
+        meaning: A man-made watercourse constructed usually, to join rivers, lakes or seas and often of a size suitable for navigation.
+      - value: WATERWAYSHIPLIFT
+        meaning: A facility used for raising and lowering boats, ships and other watercraft between stretches of water of different levels on river and canal waterways or between impounded basins.
+      - value: REVETMENT
+        meaning: A marine defensive structure made from earthworks, masonry or activities, built in such a way as to absorb the energy of incoming water.
+      - value: LAUNCHRECOVERY
+        meaning: Subset of facilities for the function of launching or recovering vessels.
+      - value: MARINEDEFENCE
+        meaning: A subset of facilities with the primary function of protection or defence of a coastal or flood area.
+      - value: HYDROLIFT
+        meaning: A type of vessel launch & recovery facility, also known as a hydraulic lift dock, where ships are lifted vertically by water impounding systems, then floated laterally across the land to berths which subsequently become …
+      - value: SHIPYARD
+        meaning: A coastal/waterside facility where ships are built and repaired.
+      - value: SHIPLIFT
+        meaning: A type of vessel launch & recovery facility, where ships are lifted vertically out of the water on platforms connected to winches, then transferred horizontally to land based berths on rail, wheel or track systems.
+      - value: PORT
+        meaning: A complex/facility for shipping and marine activities, this includes cargo, people and storage of vessels (marinas & harbours).
+      - value: QUAY
+        meaning: a facility for the mooring of vessels accompanied with the loading and unloading of cargo or passengers or the maintenance of vessels.
+      - value: FLOATINGDOCK
+        meaning: A spatial element that encompasses a floating dry dock and supporting quay side ancillaries.
+      - value: NAVIGATIONALCHANNEL
+        meaning: A natural navigable watercourse (such as a river) that needs to be managed or have improvements applied.
+      - value: BREAKWATER
+        meaning: A longitudinal structure that protects a shore area, harbour, basin or estuary from waves.
+      - value: DRYDOCK
+        meaning: a Dry dock is an enclosed chamber (by gate) that allows the draining of water for the construction or repair of marine vessels.
+      - value: JETTY
+        meaning: A berthing structure, that extends out into the sea usually perpendicular to the coastline, primarily for the transfer of liquid bulk materials.
+      - value: SHIPLOCK
+        meaning: A facility used for raising and lowering boats, ships and other watercraft between stretches of water of different levels on rivers and canal waterways or between impounded basins.
+      - value: BARRIERBEACH
+        meaning: a sand ridge that rises slightly above the surface of the sea and runs roughly parallel to the shore, from which it is separated by a lagoon.
+      - value: SLIPWAY
+        meaning: A facility for the dynamic launch or recovery of a vessel utilizing an inclined ramp and gravitational or mechanical hauling systems.
+      - value: WATERWAY
+        meaning: A subset of facilities that have the primary function of providing a navigable area of water.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

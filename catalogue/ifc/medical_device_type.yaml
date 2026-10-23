@@ -1,0 +1,33 @@
+code: ifc.medical_device_type
+name: IfcMedicalDeviceType
+kind: symbol
+base: ifc.flow_terminal_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMedicalDeviceType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcMedicalDeviceType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow terminal type IfcMedicalDeviceType defines commonly shared information for occurrences of medical devices.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: PredefinedType attribute of IfcMedicalDeviceType (not described in the source documentation).
+    source_ref: "IfcMedicalDeviceType attribute 1: IfcMedicalDeviceTypeEnum; enumeration IfcMedicalDeviceTypeEnum"
+    values:
+      - value: AIRSTATION
+        meaning: Device that provides purified medical air, composed of an air compressor and air treatment line.
+      - value: FEEDAIRUNIT
+        meaning: Device that feeds air to an oxygen generator, composed of an air compressor, air treatment line, and an air receiver.
+      - value: OXYGENGENERATOR
+        meaning: Device that generates oxygen from air.
+      - value: OXYGENPLANT
+        meaning: Device that combines a feed air unit, oxygen generator, and backup oxygen cylinders.
+      - value: VACUUMSTATION
+        meaning: Device that provides suction, composed of a vacuum pump and bacterial filtration line.
+      - value: USERDEFINED
+        meaning: User-defined medical device type.
+      - value: NOTDEFINED
+        meaning: Undefined medical device type.

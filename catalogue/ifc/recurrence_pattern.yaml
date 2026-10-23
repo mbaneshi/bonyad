@@ -1,0 +1,67 @@
+code: ifc.recurrence_pattern
+name: IfcRecurrencePattern
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRecurrencePattern
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcDateTimeResource/Entities/IfcRecurrencePattern.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcRecurrencePattern defines repetitive time periods on the basis of regular recurrences such as each Monday in a week, or every third Tuesday in a month. The population of the remaining attributes such as DayComponent, Position, and Interval depend on the specified recurrence type.
+fields:
+  - name: recurrence_type
+    type: enum
+    meaning: Defines the recurrence type that gives meaning to the used attributes and decides about possible attribute combinations, i.e. what attributes are needed to fully describe the pattern type.
+    source_ref: "IfcRecurrencePattern attribute 1: IfcRecurrenceTypeEnum; enumeration IfcRecurrenceTypeEnum"
+    values:
+      - value: DAILY
+        meaning: Interval, Occurrences.
+      - value: WEEKLY
+        meaning: WeekdayComponent, Interval, Occurrences.
+      - value: MONTHLY_BY_DAY_OF_MONTH
+        meaning: DayComponent, Interval, Occurrences.
+      - value: MONTHLY_BY_POSITION
+        meaning: WeekdayComponent, Position, Interval, Occurrences.
+      - value: BY_DAY_COUNT
+        meaning: Interval, Occurrences.
+      - value: BY_WEEKDAY_COUNT
+        meaning: WeekdayComponent, Interval, Occurrences.
+      - value: YEARLY_BY_DAY_OF_MONTH
+        meaning: DayComponent, MonthComponent, Interval, Occurrences.
+      - value: YEARLY_BY_POSITION
+        meaning: WeekdayComponent, MonthComponent, Position, Interval, Occurrences.
+  - name: day_component
+    type: array
+    nullable: true
+    meaning: The position of the specified day in a month. Unordered set.
+    source_ref: "IfcRecurrencePattern attribute 2: OPTIONAL SET [1:?] OF IfcDayInMonthNumber"
+    of: int
+  - name: weekday_component
+    type: array
+    nullable: true
+    meaning: The weekday name of the specified day in a week. Unordered set.
+    source_ref: "IfcRecurrencePattern attribute 3: OPTIONAL SET [1:?] OF IfcDayInWeekNumber"
+    of: int
+  - name: month_component
+    type: array
+    nullable: true
+    meaning: The position of the specified month in a year. Unordered set.
+    source_ref: "IfcRecurrencePattern attribute 4: OPTIONAL SET [1:?] OF IfcMonthInYearNumber"
+    of: int
+  - name: position
+    type: int
+    nullable: true
+    meaning: The position of the specified component, e.g. the 3rd (position=3) Tuesday (weekday component) in a month.
+    source_ref: "IfcRecurrencePattern attribute 5: OPTIONAL IfcInteger"
+  - name: interval
+    type: int
+    nullable: true
+    meaning: An interval can be given according to the pattern type.
+    source_ref: "IfcRecurrencePattern attribute 6: OPTIONAL IfcInteger"
+  - name: occurrences
+    type: int
+    nullable: true
+    meaning: Defines the number of occurrences of this pattern, e.g. a weekly event might be defined to occur 5 times before it stops.
+    source_ref: "IfcRecurrencePattern attribute 7: OPTIONAL IfcInteger"

@@ -1,0 +1,39 @@
+code: ifc.structural_curve_member
+name: IfcStructuralCurveMember
+kind: entity
+base: ifc.structural_member
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralCurveMember
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcStructuralCurveMember.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Instances of IfcStructuralCurveMember describe edge members, i.e. structural analysis idealizations of beams, columns, rods etc.. Curve members may be straight or curved.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Type of member with respect to its load carrying behaviour in this analysis idealization.
+    source_ref: "IfcStructuralCurveMember attribute 1: IfcStructuralCurveMemberTypeEnum; enumeration IfcStructuralCurveMemberTypeEnum"
+    values:
+      - value: RIGID_JOINED_MEMBER
+        meaning: A member with capacity to carry transverse and axial loads, i.e. a beam.
+      - value: PIN_JOINED_MEMBER
+        meaning: A member with capacity to carry axial loads only, i.e. a link.
+      - value: CABLE
+        meaning: A tension member which is able to carry transverse loads only under large deflection.
+      - value: TENSION_MEMBER
+        meaning: A member without compressional stiffness.
+      - value: COMPRESSION_MEMBER
+        meaning: A member without tensional stiffness.
+      - value: USERDEFINED
+        meaning: A specially defined member.
+      - value: NOTDEFINED
+        meaning: A member without further categorization.
+  - name: axis
+    type: ref
+    meaning: Direction which is used in the definition of the local z axis.
+    source_ref: "IfcStructuralCurveMember attribute 2: IfcDirection"
+    ref_to: ifc.direction
+notes: SUPERTYPE OF ONEOF ( IfcStructuralCurveMemberVarying ).

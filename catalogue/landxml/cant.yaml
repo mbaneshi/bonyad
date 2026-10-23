@@ -1,0 +1,62 @@
+code: landxml.cant
+name: Cant
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Cant
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: The "Cant" element will typically represent a proposed railway cant / superelevation alignment. It is defined by a sequential series of any combination of the cant stations and speed-only stations.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.alignment
+    nullable: true
+    meaning: The landxml.alignment row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: Cant name; the XSD gives no description.
+    source_ref: XSD Cant/@name; type xs:string
+  - name: desc
+    type: text
+    meaning: Cant desc; the XSD gives no description.
+    source_ref: XSD Cant/@desc; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: Cant state; the XSD gives no description.
+    source_ref: XSD Cant/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: equilibrium_constant
+    type: float
+    meaning: Cant equilibriumConstant; the XSD gives no description.
+    source_ref: XSD Cant/@equilibriumConstant; type xs:double
+    nullable: true
+  - name: applied_cant_constant
+    type: float
+    meaning: Cant appliedCantConstant; the XSD gives no description.
+    source_ref: XSD Cant/@appliedCantConstant; type xs:double
+    nullable: true
+  - name: gauge
+    type: float
+    meaning: Cant gauge; the XSD gives no description.
+    source_ref: XSD Cant/@gauge; type xs:double
+  - name: rotation_point
+    type: text
+    meaning: Cant rotationPoint; the XSD gives no description.
+    source_ref: XSD Cant/@rotationPoint; type xs:string
+    nullable: true
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.alignment. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."

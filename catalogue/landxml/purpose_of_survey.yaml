@@ -1,0 +1,19 @@
+code: landxml.purpose_of_survey
+name: PurposeOfSurvey
+kind: child
+parent: landxml.survey_header
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element PurposeOfSurvey
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `PurposeOfSurvey`; the XSD gives no description.
+fields:
+  - name: name
+    type: text
+    meaning: This is a jurisdictionally based list of purposes of Survey and can be jurisdictionally specific for example Subdivision, Identification (re-peg), Amalgamation (Consolidation) etc.
+    source_ref: XSD PurposeOfSurvey/@name; type purpSurvType
+notes: Occurs 0..unbounded in landxml.survey_header.

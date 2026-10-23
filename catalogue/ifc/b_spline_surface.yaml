@@ -1,0 +1,65 @@
+code: ifc.b_spline_surface
+name: IfcBSplineSurface
+kind: abstract
+base: ifc.bounded_surface
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBSplineSurface
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcBSplineSurface.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcBSplineSurface is a general form of rational or polynomial parametric surface.
+fields:
+  - name: u_degree
+    type: int
+    meaning: Algebraic degree of basis functions in u.
+    source_ref: "IfcBSplineSurface attribute 1: IfcInteger"
+  - name: v_degree
+    type: int
+    meaning: Algebraic degree of basis functions in v.
+    source_ref: "IfcBSplineSurface attribute 2: IfcInteger"
+  - name: surface_form
+    type: enum
+    meaning: Indicator of special surface types.
+    source_ref: "IfcBSplineSurface attribute 4: IfcBSplineSurfaceForm; enumeration IfcBSplineSurfaceForm"
+    values:
+      - value: PLANE_SURF
+        meaning: A bounded portion of a plane represented by a B-spline surface of degree 1 in each parameter.
+      - value: CYLINDRICAL_SURF
+        meaning: A bounded portion of a cylindrical surface.
+      - value: CONICAL_SURF
+        meaning: A bounded portion of the surface of a right circular cone.
+      - value: SPHERICAL_SURF
+        meaning: A bounded portion of a sphere, or a complete sphere, represented by a B-spline surface.
+      - value: TOROIDAL_SURF
+        meaning: A torus, or portion of a torus, represented by a B-spline surface.
+      - value: SURF_OF_REVOLUTION
+        meaning: A bounded portion of a surface of revolution.
+      - value: RULED_SURF
+        meaning: A surface constructed from two parametric curves by joining with straight lines corresponding points with the same parameter value on each of the curves.
+      - value: GENERALISED_CONE
+        meaning: A special case of a ruled surface in which the second curve degenerates to a single point; when represented by a B-spline surface all the control points along one edge will be coincident.
+      - value: QUADRIC_SURF
+        meaning: A bounded portion of one of the class of surfaces of degree 2 in the variables x, y and z.
+      - value: SURF_OF_LINEAR_EXTRUSION
+        meaning: A bounded portion of a surface of linear extrusion represented by a B-spline surface of degree 1 in one of the parameters.
+      - value: UNSPECIFIED
+        meaning: A surface for which no particular form is specified.
+  - name: u_closed
+    type: bool
+    nullable: true
+    meaning: Indication of whether the surface is closed in the u direction; this is for information only.
+    source_ref: "IfcBSplineSurface attribute 5: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+  - name: v_closed
+    type: bool
+    nullable: true
+    meaning: Indication of whether the surface is closed in the v direction; this is for information only.
+    source_ref: "IfcBSplineSurface attribute 6: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+  - name: self_intersect
+    type: bool
+    nullable: true
+    meaning: Flag to indicate whether, or not, surface is self-intersecting; this is for information only.
+    source_ref: "IfcBSplineSurface attribute 7: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+notes: "Derived attributes not stored: UUpper, VUpper, ControlPoints. SUPERTYPE OF ONEOF ( IfcBSplineSurfaceWithKnots )."

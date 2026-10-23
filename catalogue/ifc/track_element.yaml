@@ -1,0 +1,40 @@
+code: ifc.track_element
+name: IfcTrackElement
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTrackElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcRailDomain/Entities/IfcTrackElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A track element is a built element used specifically in the track domain in railway.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcTrackElement (not described in the source documentation).
+    source_ref: "IfcTrackElement attribute 1: OPTIONAL IfcTrackElementTypeEnum; enumeration IfcTrackElementTypeEnum"
+    values:
+      - value: TRACKENDOFALIGNMENT
+        meaning: A track end of alignment is a special functional installation such as axle-gauge changeover point or transporter wagon loading point.
+      - value: BLOCKINGDEVICE
+        meaning: A device composed of pneumatic, mechanic or electric components causing the braking of a train in case of emergency.
+      - value: VEHICLESTOP
+        meaning: A fixed installation at the end of the track which stops any vehicle movement (e.g., buffer stop, sand hump, etc.).
+      - value: SLEEPER
+        meaning: A sleeper is a track element that supports running rails, guard rails and check rails usually at right angles to its axis.
+      - value: HALF_SET_OF_BLADES
+        meaning: A half set of blades consists of one stock rail and its switch rail complete with small fittings.
+      - value: SPEEDREGULATOR
+        meaning: A device composed of pneumatic, mechanic or electric components causing the breaking of a train in case of emergency.
+      - value: DERAILER
+        meaning: A fixed device which, when placed on the rail, derails the wheels of a vehicle, and serves to protect a converging line.
+      - value: FROG
+        meaning: A frog is an arrangement ensuring the intersection of two opposite running edges of turnouts or diamond crossings and having one crossing vee and two wing rails.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

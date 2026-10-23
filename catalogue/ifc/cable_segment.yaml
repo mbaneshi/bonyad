@@ -1,0 +1,44 @@
+code: ifc.cable_segment
+name: IfcCableSegment
+kind: entity
+base: ifc.flow_segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCableSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcCableSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A cable segment is a flow segment used to carry electrical power, data, or telecommunications signals.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined types of cable segment from which the type required may be set.
+    source_ref: "IfcCableSegment attribute 1: OPTIONAL IfcCableSegmentTypeEnum; enumeration IfcCableSegmentTypeEnum"
+    values:
+      - value: BUSBARSEGMENT
+        meaning: Electrical conductor that makes a common connection between several electrical circuits.
+      - value: CABLESEGMENT
+        meaning: Cable with a specific purpose to lead electric current within a circuit or any other electric construction.
+      - value: CONDUCTORSEGMENT
+        meaning: A single linear element within a cable or an exposed wire (such as for grounding) with the specific purpose to lead electric current, data, or a telecommunications signal.
+      - value: CORESEGMENT
+        meaning: A self contained element of a cable that comprises one or more conductors and sheathing.The core of one lead is normally single wired or multiwired which are intertwined.
+      - value: CONTACTWIRESEGMENT
+        meaning: An electric conductor of an overhead contact line with which the current collectors make contact.
+      - value: FIBERSEGMENT
+        meaning: A fiber segment is an individual optical fiber used in telecommunication systems to transmit data by means of optical signals.
+      - value: FIBERTUBE
+        meaning: A fiber tube is semi-rigid hollow plastic tube with a very small radius that houses and protects a certain number of optical fiber segments.
+      - value: OPTICALCABLESEGMENT
+        meaning: An optical cable segment is a cable segment that contains a variable number of optical fiber segments.
+      - value: STITCHWIRE
+        meaning: A stitch wire consists of auxiliary wires and different components (clamp) used in stitched suspension.
+      - value: WIREPAIRSEGMENT
+        meaning: A pair of conductors contained in a copper cable.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

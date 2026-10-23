@@ -1,0 +1,73 @@
+code: landxml.superelevation
+name: Superelevation
+kind: child
+parent: landxml.alignment
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Superelevation
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: Superelevation - The superelevation rate should be steep enough to provide adequate drainage of the roadway surface, but not so steep as to cause vehicles to slide down the cross slope. To prevent vehicles from leaving the roadway as they travel around curve, curves are banked, or superelevated.
+fields:
+  - name: sta_start
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Superelevation/@staStart; type station
+    nullable: true
+  - name: sta_end
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Superelevation/@staEnd; type station
+    nullable: true
+  - name: begin_runout_sta
+    type: array
+    meaning: "BeginRunoutSta (NORMAL CROWN) - Entry Curve Beginning Runout Location - Unit of measure: STATION. Entry Curve Beginning Runout Location - This item is the station of entry curve beginning of runout. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations. Repeated element, stored as an ordered array."
+    source_ref: XSD BeginRunoutSta (element); type station
+    nullable: true
+    of: length
+  - name: begin_runoff_sta
+    type: array
+    meaning: "BeginRunoffSta (HALF CROWN) - Entry Curve Beginning Runoff Location - Unit of measure: STATION. Entry Curve Beginning Runoff Location - This item is the station of entry curve beginning of runoff location. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations. Repeated element, stored as an ordered array."
+    source_ref: XSD BeginRunoffSta (element); type station
+    nullable: true
+    of: length
+  - name: full_super_sta
+    type: array
+    meaning: "FullSuperSta - Full Superelevation Location - Unit of measure: STATION. Full Superelevation Location - This item is the station location at which full superelevation begins. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations. Repeated element, stored as an ordered array."
+    source_ref: XSD FullSuperSta (element); type station
+    nullable: true
+    of: length
+  - name: full_superelev
+    type: array
+    meaning: "FullSuperelev - Full Superelevation - Unit of measure: PERCENT. Full Superelevation - This item is the full superelevation rate on horizontal curve. Repeated element, stored as an ordered array."
+    source_ref: XSD FullSuperelev (element); type slope
+    nullable: true
+    of: float
+  - name: runoff_sta
+    type: array
+    meaning: "RunoffSta - Runoff Location - Exiting Curve - Unit of measure: STATION. Runoff Location - Exiting Curve - This item is the location (station) of start of curve exit runoff. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations. Repeated element, stored as an ordered array."
+    source_ref: XSD RunoffSta (element); type station
+    nullable: true
+    of: length
+  - name: startof_runout_sta
+    type: array
+    meaning: "StartofRunoutSta (HALF CROWN) - Start of Tangent Runout - Exiting Curve - Unit of measure: STATION. Start of Tangent Runout - Exiting Curve - This item is the location of start of tangent runout when exiting curve. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations. Repeated element, stored as an ordered array."
+    source_ref: XSD StartofRunoutSta (element); type station
+    nullable: true
+    of: length
+  - name: endof_runout_sta
+    type: array
+    meaning: "EndofRunoutSta (FULL CROWN) - Exiting End of Tangent Runout - Unit of measure: STATION. Exiting End of Tangent Runout - This item is the location of end of tangent runout on exiting curve. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations. Repeated element, stored as an ordered array."
+    source_ref: XSD EndofRunoutSta (element); type station
+    nullable: true
+    of: length
+  - name: adverse_se
+    type: array
+    meaning: "AdverseSE - Adverse SE - This item determines if superelevation is adverse. The enumeration values are: non-adverse and adverse. Repeated element, stored as an ordered array. Allowed values: non-adverse, adverse."
+    source_ref: XSD AdverseSE (element); type adverseSEType
+    nullable: true
+    of: text
+notes: Occurs 0..unbounded in landxml.alignment.

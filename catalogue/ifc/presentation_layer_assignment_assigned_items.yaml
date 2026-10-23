@@ -1,0 +1,20 @@
+code: ifc.presentation_layer_assignment_assigned_items
+name: IfcPresentationLayerAssignment.AssignedItems
+kind: child
+parent: ifc.presentation_layer_assignment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPresentationLayerAssignment.AssignedItems
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationOrganizationResource/Entities/IfcPresentationLayerAssignment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the AssignedItems list of IfcPresentationLayerAssignment. The set of layered items, which are assigned to this layer.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcPresentationLayerAssignment.AssignedItems.
+    source_ref: "IfcPresentationLayerAssignment attribute 3: SET [1:?] OF IfcLayeredItem; via select IfcLayeredItem"
+    ref_to: any
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [1:?] OF IfcLayeredItem."

@@ -1,0 +1,50 @@
+code: ifc.audio_visual_appliance
+name: IfcAudioVisualAppliance
+kind: entity
+base: ifc.flow_terminal
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcAudioVisualAppliance
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcAudioVisualAppliance.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An audio-visual appliance is a device that displays, captures, transmits, or receives audio or video.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcAudioVisualAppliance (not described in the source documentation).
+    source_ref: "IfcAudioVisualAppliance attribute 1: OPTIONAL IfcAudioVisualApplianceTypeEnum; enumeration IfcAudioVisualApplianceTypeEnum"
+    values:
+      - value: AMPLIFIER
+        meaning: A device that receives an audio signal and amplifies it to play through speakers.
+      - value: CAMERA
+        meaning: A device that records images, either as a still photograph or as moving images known as videos or movies.
+      - value: DISPLAY
+        meaning: An electronic device that represents information in visual form such as a flat-panel display or television.
+      - value: MICROPHONE
+        meaning: An acoustic-to-electric transducer or sensor that converts sound into an electrical signal.
+      - value: PLAYER
+        meaning: A device that plays audio and/or video content directly or to another device, having fixed or removable storage media.
+      - value: PROJECTOR
+        meaning: An apparatus for projecting a picture on a screen.
+      - value: RECEIVER
+        meaning: A device that receives audio and/or video signals, switches sources, and amplifies signals to play through speakers.
+      - value: SPEAKER
+        meaning: A loudspeaker, speaker, or speaker system is an electroacoustical transducer that converts an electrical signal to sound.
+      - value: SWITCHER
+        meaning: A device that receives audio and/or video signals, switches sources, and transmits signals to downstream devices.
+      - value: TELEPHONE
+        meaning: A telecommunications device that is used to transmit and receive sound, and optionally video.
+      - value: TUNER
+        meaning: An electronic receiver that detects, demodulates, and amplifies transmitted signals.
+      - value: COMMUNICATIONTERMINAL
+        meaning: A communication terminal is an audio communication device that is usually installed along transportation infrastructure (railways, roads, tunnels etc.) in order to be used by the general public or operation agents for …
+      - value: RECORDINGEQUIPMENT
+        meaning: A recording equipment is a device that records telephone calls or other types of audio data.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

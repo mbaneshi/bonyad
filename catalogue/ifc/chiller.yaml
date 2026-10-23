@@ -1,0 +1,30 @@
+code: ifc.chiller
+name: IfcChiller
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcChiller
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcChiller.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol. The chilled fluid is then used to cool and dehumidify air in a building.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcChiller (not described in the source documentation).
+    source_ref: "IfcChiller attribute 1: OPTIONAL IfcChillerTypeEnum; enumeration IfcChillerTypeEnum"
+    values:
+      - value: AIRCOOLED
+        meaning: Air cooled chiller.
+      - value: WATERCOOLED
+        meaning: Water cooled chiller.
+      - value: HEATRECOVERY
+        meaning: Heat recovery chiller.
+      - value: USERDEFINED
+        meaning: User-defined chiller type.
+      - value: NOTDEFINED
+        meaning: Undefined chiller type.

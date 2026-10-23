@@ -1,0 +1,58 @@
+code: landxml.struct_flow
+name: StructFlow
+kind: child
+parent: landxml.struct
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element StructFlow
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `StructFlow`; the XSD gives no description.
+fields:
+  - name: loss_in
+    type: float
+    meaning: StructFlow lossIn; the XSD gives no description.
+    source_ref: XSD StructFlow/@lossIn; type xs:double
+  - name: loss_out
+    type: float
+    meaning: StructFlow lossOut; the XSD gives no description.
+    source_ref: XSD StructFlow/@lossOut; type xs:double
+  - name: desc
+    type: text
+    meaning: StructFlow desc; the XSD gives no description.
+    source_ref: XSD StructFlow/@desc; type xs:string
+    nullable: true
+  - name: hgl_in
+    type: float
+    meaning: StructFlow hglIn; the XSD gives no description.
+    source_ref: XSD StructFlow/@hglIn; type xs:double
+    nullable: true
+  - name: hgl_out
+    type: float
+    meaning: StructFlow hglOut; the XSD gives no description.
+    source_ref: XSD StructFlow/@hglOut; type xs:double
+    nullable: true
+  - name: local_depression
+    type: float
+    meaning: StructFlow localDepression; the XSD gives no description.
+    source_ref: XSD StructFlow/@localDepression; type xs:double
+    nullable: true
+  - name: slope_surf
+    type: float
+    meaning: StructFlow slopeSurf; the XSD gives no description.
+    source_ref: XSD StructFlow/@slopeSurf; type xs:double
+    nullable: true
+  - name: slope_gutter
+    type: float
+    meaning: StructFlow slopeGutter; the XSD gives no description.
+    source_ref: XSD StructFlow/@slopeGutter; type xs:double
+    nullable: true
+  - name: width_gutter
+    type: float
+    meaning: StructFlow widthGutter; the XSD gives no description.
+    source_ref: XSD StructFlow/@widthGutter; type xs:double
+    nullable: true
+notes: Occurs 0..1 in landxml.struct.

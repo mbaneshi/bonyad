@@ -1,0 +1,35 @@
+code: ifc.geometric_representation_context
+name: IfcGeometricRepresentationContext
+kind: object
+base: ifc.representation_context
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcGeometricRepresentationContext
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcRepresentationResource/Entities/IfcGeometricRepresentationContext.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcGeometricRepresentationContext defines the context that applies to several shape representations of products within a project. It defines the type of the context in which the shape representation is defined, and the numeric precision applicable to the geometric representation items defined in this context.
+fields:
+  - name: coordinate_space_dimension
+    type: int
+    meaning: The integer dimension count of the coordinate space modeled in a geometric representation context.
+    source_ref: "IfcGeometricRepresentationContext attribute 1: IfcDimensionCount"
+  - name: precision
+    type: float
+    nullable: true
+    meaning: Value of the model precision for geometric models.
+    source_ref: "IfcGeometricRepresentationContext attribute 2: OPTIONAL IfcReal"
+  - name: world_coordinate_system
+    type: ref
+    meaning: Establishment of the engineering coordinate system (often referred to as the world coordinate system in CAD) for all representation contexts used by the project.
+    source_ref: "IfcGeometricRepresentationContext attribute 3: IfcAxis2Placement; via select IfcAxis2Placement"
+    ref_to: ifc.placement
+  - name: true_north
+    type: ref
+    nullable: true
+    meaning: Direction of the true north, or geographic northing direction, relative to the underlying project coordinate system.
+    source_ref: "IfcGeometricRepresentationContext attribute 4: OPTIONAL IfcDirection"
+    ref_to: ifc.direction
+notes: "Inverse attributes not stored: HasSubContexts, HasCoordinateOperation. SUPERTYPE OF ONEOF ( IfcGeometricRepresentationSubContext )."

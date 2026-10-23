@@ -1,0 +1,48 @@
+code: landxml.elli_pipe
+name: ElliPipe
+kind: child
+parent: landxml.pipe
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element ElliPipe
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `ElliPipe`; the XSD gives no description.
+fields:
+  - name: height
+    type: float
+    meaning: ElliPipe height; the XSD gives no description.
+    source_ref: XSD ElliPipe/@height; type xs:double
+  - name: span
+    type: float
+    meaning: ElliPipe span; the XSD gives no description.
+    source_ref: XSD ElliPipe/@span; type xs:double
+  - name: desc
+    type: text
+    meaning: ElliPipe desc; the XSD gives no description.
+    source_ref: XSD ElliPipe/@desc; type xs:string
+    nullable: true
+  - name: hazen_williams
+    type: float
+    meaning: ElliPipe hazenWilliams; the XSD gives no description.
+    source_ref: XSD ElliPipe/@hazenWilliams; type xs:double
+    nullable: true
+  - name: mannings
+    type: float
+    meaning: ElliPipe mannings; the XSD gives no description.
+    source_ref: XSD ElliPipe/@mannings; type xs:double
+    nullable: true
+  - name: material
+    type: text
+    meaning: ElliPipe material; the XSD gives no description.
+    source_ref: XSD ElliPipe/@material; type xs:anySimpleType
+    nullable: true
+  - name: thickness
+    type: float
+    meaning: ElliPipe thickness; the XSD gives no description.
+    source_ref: XSD ElliPipe/@thickness; type xs:double
+    nullable: true
+notes: Occurs 1..1 in landxml.pipe.

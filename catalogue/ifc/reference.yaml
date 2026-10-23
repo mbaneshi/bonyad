@@ -1,0 +1,40 @@
+code: ifc.reference
+name: IfcReference
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReference
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcConstraintResource/Entities/IfcReference.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: This entity is used to refer to a value of an attribute on an instance. It may refer to the value of a scalar attribute or a value within a collection-based attribute.
+fields:
+  - name: type_identifier
+    type: text
+    nullable: true
+    meaning: Optional identifier of the entity or type such as 'IfcMaterialLayerSet'.
+    source_ref: "IfcReference attribute 1: OPTIONAL IfcIdentifier"
+  - name: attribute_identifier
+    type: text
+    nullable: true
+    meaning: Optionally identifies a direct or inverse attribute within an entity such as 'MaterialLayers'.
+    source_ref: "IfcReference attribute 2: OPTIONAL IfcIdentifier"
+  - name: instance_name
+    type: text
+    nullable: true
+    meaning: Optionally identifies an instance within a collection according to name.
+    source_ref: "IfcReference attribute 3: OPTIONAL IfcLabel"
+  - name: list_positions
+    type: array
+    nullable: true
+    meaning: Optionally identifies an instance within a collection according to position starting at 1.
+    source_ref: "IfcReference attribute 4: OPTIONAL LIST [1:?] OF IfcInteger"
+    of: int
+  - name: inner_reference
+    type: ref
+    nullable: true
+    meaning: Optional reference to an inner value for ENTITY, SELECT, SET, or LIST attributes.
+    source_ref: "IfcReference attribute 5: OPTIONAL IfcReference"
+    ref_to: ifc.reference

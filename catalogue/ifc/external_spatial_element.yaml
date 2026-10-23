@@ -1,0 +1,33 @@
+code: ifc.external_spatial_element
+name: IfcExternalSpatialElement
+kind: entity
+base: ifc.external_spatial_structure_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcExternalSpatialElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcExternalSpatialElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The external spatial element defines external regions at the building site.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic types for an external spatial element that are specified in an enumeration.
+    source_ref: "IfcExternalSpatialElement attribute 1: OPTIONAL IfcExternalSpatialElementTypeEnum; enumeration IfcExternalSpatialElementTypeEnum"
+    values:
+      - value: EXTERNAL
+        meaning: External air space around the building.
+      - value: EXTERNAL_EARTH
+        meaning: External volume covered by earth around the building.
+      - value: EXTERNAL_WATER
+        meaning: External volume covered with water around the building.
+      - value: EXTERNAL_FIRE
+        meaning: Space occupied by a neighboring building.
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+notes: "Inverse attributes not stored: BoundedBy."

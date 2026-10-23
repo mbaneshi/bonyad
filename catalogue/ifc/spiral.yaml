@@ -1,0 +1,21 @@
+code: ifc.spiral
+name: IfcSpiral
+kind: abstract
+base: ifc.curve
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSpiral
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcSpiral.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Spirals are curves that revolve around a point while increasing its length.
+fields:
+  - name: position
+    type: ref
+    nullable: true
+    meaning: Position attribute of IfcSpiral (not described in the source documentation).
+    source_ref: "IfcSpiral attribute 1: OPTIONAL IfcAxis2Placement; via select IfcAxis2Placement"
+    ref_to: ifc.placement
+notes: SUPERTYPE OF ONEOF ( IfcClothoid , IfcCosine , IfcSecondOrderPolynomialSpiral , IfcSeventhOrderPolynomialSpiral , IfcSine , IfcThirdOrderPolynomialSpiral ).

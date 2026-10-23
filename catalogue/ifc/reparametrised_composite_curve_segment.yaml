@@ -1,0 +1,18 @@
+code: ifc.reparametrised_composite_curve_segment
+name: IfcReparametrisedCompositeCurveSegment
+kind: entity
+base: ifc.composite_curve_segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReparametrisedCompositeCurveSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcReparametrisedCompositeCurveSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcReparametrisedCompositeCurveSegment is geometrically identical to a IfcCompositeCurveSegment but with the additional capability of reparametrization.
+fields:
+  - name: param_length
+    type: float
+    meaning: ParamLength attribute of IfcReparametrisedCompositeCurveSegment (not described in the source documentation).
+    source_ref: "IfcReparametrisedCompositeCurveSegment attribute 1: IfcParameterValue"

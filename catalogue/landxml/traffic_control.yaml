@@ -1,0 +1,49 @@
+code: landxml.traffic_control
+name: TrafficControl
+kind: child
+parent: landxml.intersection
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element TrafficControl
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `TrafficControl`; the XSD gives no description.
+fields:
+  - name: station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD TrafficControl/@station; type station
+    nullable: true
+  - name: signal_period
+    type: float
+    meaning: TrafficControl signalPeriod; the XSD gives no description.
+    source_ref: XSD TrafficControl/@signalPeriod; type xs:double
+    nullable: true
+  - name: control_position
+    type: enum
+    meaning: TrafficControl controlPosition; the XSD gives no description.
+    source_ref: XSD TrafficControl/@controlPosition; type trafficControlPosition
+    nullable: true
+    values:
+      - value: side
+        meaning: Enumeration literal "side"; the XSD gives no description.
+      - value: overhead
+        meaning: Enumeration literal "overhead"; the XSD gives no description.
+  - name: control_type
+    type: enum
+    meaning: TrafficControl controlType; the XSD gives no description.
+    source_ref: XSD TrafficControl/@controlType; type trafficControlType
+    nullable: true
+    values:
+      - value: none
+        meaning: Enumeration literal "none"; the XSD gives no description.
+      - value: signal
+        meaning: Enumeration literal "signal"; the XSD gives no description.
+      - value: stop
+        meaning: Enumeration literal "stop"; the XSD gives no description.
+      - value: yield
+        meaning: Enumeration literal "yield"; the XSD gives no description.
+notes: Occurs 0..unbounded in landxml.intersection.

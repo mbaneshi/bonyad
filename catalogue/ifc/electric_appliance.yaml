@@ -1,0 +1,56 @@
+code: ifc.electric_appliance
+name: IfcElectricAppliance
+kind: entity
+base: ifc.flow_terminal
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcElectricAppliance
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcElectricAppliance.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An electric appliance is a device intended for consumer usage that is powered by electricity.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcElectricAppliance (not described in the source documentation).
+    source_ref: "IfcElectricAppliance attribute 1: OPTIONAL IfcElectricApplianceTypeEnum; enumeration IfcElectricApplianceTypeEnum"
+    values:
+      - value: DISHWASHER
+        meaning: An appliance that has the primary function of washing dishes.
+      - value: ELECTRICCOOKER
+        meaning: An electrical appliance that has the primary function of cooking food (including oven, hob, grill).
+      - value: FREESTANDINGELECTRICHEATER
+        meaning: An electrical appliance that is used occasionally to provide heat.
+      - value: FREESTANDINGFAN
+        meaning: An electrical appliance that is used occasionally to provide ventilation.
+      - value: FREESTANDINGWATERHEATER
+        meaning: A small, local electrical appliance for heating water.
+      - value: FREESTANDINGWATERCOOLER
+        meaning: A small, local electrical appliance for cooling water.
+      - value: FREEZER
+        meaning: An electrical appliance that has the primary function of storing food at temperatures below the freezing point of water.
+      - value: FRIDGE_FREEZER
+        meaning: An electrical appliance that combines the functions of a freezer and a refrigerator through the provision of separate compartments.
+      - value: HANDDRYER
+        meaning: An electrical appliance that has the primary function of drying hands.
+      - value: KITCHENMACHINE
+        meaning: A specialized appliance used in commercial kitchens such as a mixer.
+      - value: MICROWAVE
+        meaning: An electrical appliance that has the primary function of cooking food using microwaves.
+      - value: PHOTOCOPIER
+        meaning: A machine that has the primary function of reproduction of printed matter.
+      - value: REFRIGERATOR
+        meaning: An electrical appliance that has the primary function of storing food at low temperature but above the freezing point of water.
+      - value: TUMBLEDRYER
+        meaning: An electrical appliance that has the primary function of drying clothes.
+      - value: VENDINGMACHINE
+        meaning: An appliance that stores and vends goods including food, drink, tickets, and goods of various types.
+      - value: WASHINGMACHINE
+        meaning: An appliance that has the primary function of washing clothes.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

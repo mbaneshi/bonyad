@@ -1,0 +1,51 @@
+code: ifc.material_layer
+name: IfcMaterialLayer
+kind: symbol
+base: ifc.material_definition
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMaterialLayer
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMaterialResource/Entities/IfcMaterialLayer.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcMaterialLayer is a single and identifiable part of an element which is constructed of a number of layers (one or more). Each IfcMaterialLayer has a constant thickness and is located relative to the referencing IfcMaterialLayerSet along the material layer set base (MlsBase).
+fields:
+  - name: material
+    type: ref
+    nullable: true
+    meaning: Optional reference to the material from which the layer is constructed.
+    source_ref: "IfcMaterialLayer attribute 1: OPTIONAL IfcMaterial"
+    ref_to: ifc.material
+  - name: layer_thickness
+    type: length
+    meaning: The thickness of the material layer.
+    source_ref: "IfcMaterialLayer attribute 2: IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: is_ventilated
+    type: bool
+    nullable: true
+    meaning: Indication of whether the material layer represents an air layer (or cavity). * set to TRUE if the material layer is an air gap and provides air exchange from the layer to the outside air. * set to UNKNOWN if the material layer is an air gap and does not …
+    source_ref: "IfcMaterialLayer attribute 3: OPTIONAL IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+  - name: name
+    type: text
+    nullable: true
+    meaning: The name by which the material layer is known.
+    source_ref: "IfcMaterialLayer attribute 4: OPTIONAL IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: Definition of the material layer in more descriptive terms than given by attributes Name or Category.
+    source_ref: "IfcMaterialLayer attribute 5: OPTIONAL IfcText"
+  - name: category
+    type: text
+    nullable: true
+    meaning: Category of the material layer, e.g. the role it has in the layer set it belongs to (such as 'load bearing', 'thermal insulation' etc.).
+    source_ref: "IfcMaterialLayer attribute 6: OPTIONAL IfcLabel"
+  - name: priority
+    type: int
+    nullable: true
+    meaning: The relative priority of the layer, expressed as normalised integer range [0..100].
+    source_ref: "IfcMaterialLayer attribute 7: OPTIONAL IfcInteger"
+notes: "Inverse attributes not stored: ToMaterialLayerSet. SUPERTYPE OF ONEOF ( IfcMaterialLayerWithOffsets )."

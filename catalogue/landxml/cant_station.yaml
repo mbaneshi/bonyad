@@ -1,0 +1,115 @@
+code: landxml.cant_station
+name: CantStation
+kind: child
+parent: landxml.cant
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element CantStation
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A cant station. The “station” is a required double that is internal station value.
+fields:
+  - name: station
+    type: float
+    meaning: CantStation station; the XSD gives no description.
+    source_ref: XSD CantStation/@station; type xs:double
+  - name: equilibrium_cant
+    type: float
+    meaning: CantStation equilibriumCant; the XSD gives no description.
+    source_ref: XSD CantStation/@equilibriumCant; type xs:double
+    nullable: true
+  - name: applied_cant
+    type: float
+    meaning: CantStation appliedCant; the XSD gives no description.
+    source_ref: XSD CantStation/@appliedCant; type xs:double
+  - name: cant_deficiency
+    type: float
+    meaning: CantStation cantDeficiency; the XSD gives no description.
+    source_ref: XSD CantStation/@cantDeficiency; type xs:double
+    nullable: true
+  - name: cant_excess
+    type: float
+    meaning: CantStation cantExcess; the XSD gives no description.
+    source_ref: XSD CantStation/@cantExcess; type xs:double
+    nullable: true
+  - name: rate_of_change_of_applied_cant_over_time
+    type: float
+    meaning: CantStation rateOfChangeOfAppliedCantOverTime; the XSD gives no description.
+    source_ref: XSD CantStation/@rateOfChangeOfAppliedCantOverTime; type xs:double
+    nullable: true
+  - name: rate_of_change_of_applied_cant_over_length
+    type: float
+    meaning: CantStation rateOfChangeOfAppliedCantOverLength; the XSD gives no description.
+    source_ref: XSD CantStation/@rateOfChangeOfAppliedCantOverLength; type xs:double
+    nullable: true
+  - name: rate_of_change_of_cant_deficiency_over_time
+    type: float
+    meaning: CantStation rateOfChangeOfCantDeficiencyOverTime; the XSD gives no description.
+    source_ref: XSD CantStation/@rateOfChangeOfCantDeficiencyOverTime; type xs:double
+    nullable: true
+  - name: cant_gradient
+    type: float
+    meaning: CantStation cantGradient; the XSD gives no description.
+    source_ref: XSD CantStation/@cantGradient; type xs:double
+    nullable: true
+  - name: speed
+    type: float
+    meaning: CantStation speed; the XSD gives no description.
+    source_ref: XSD CantStation/@speed; type xs:double
+    nullable: true
+  - name: transition_type
+    type: enum
+    meaning: CantStation transitionType; the XSD gives no description.
+    source_ref: XSD CantStation/@transitionType; type spiralType
+    nullable: true
+    values:
+      - value: biquadratic
+        meaning: Enumeration literal "biquadratic"; the XSD gives no description.
+      - value: bloss
+        meaning: Enumeration literal "bloss"; the XSD gives no description.
+      - value: clothoid
+        meaning: Enumeration literal "clothoid"; the XSD gives no description.
+      - value: cosine
+        meaning: Enumeration literal "cosine"; the XSD gives no description.
+      - value: cubic
+        meaning: Enumeration literal "cubic"; the XSD gives no description.
+      - value: sinusoid
+        meaning: Enumeration literal "sinusoid"; the XSD gives no description.
+      - value: revBiquadratic
+        meaning: Enumeration literal "revBiquadratic"; the XSD gives no description.
+      - value: revBloss
+        meaning: Enumeration literal "revBloss"; the XSD gives no description.
+      - value: revCosine
+        meaning: Enumeration literal "revCosine"; the XSD gives no description.
+      - value: revSinusoid
+        meaning: Enumeration literal "revSinusoid"; the XSD gives no description.
+      - value: sineHalfWave
+        meaning: Enumeration literal "sineHalfWave"; the XSD gives no description.
+      - value: biquadraticParabola
+        meaning: Enumeration literal "biquadraticParabola"; the XSD gives no description.
+      - value: cubicParabola
+        meaning: Enumeration literal "cubicParabola"; the XSD gives no description.
+      - value: japaneseCubic
+        meaning: Enumeration literal "japaneseCubic"; the XSD gives no description.
+      - value: radioid
+        meaning: Enumeration literal "radioid"; the XSD gives no description.
+      - value: weinerBogen
+        meaning: Enumeration literal "weinerBogen"; the XSD gives no description.
+  - name: curvature
+    type: enum
+    meaning: CantStation curvature; the XSD gives no description.
+    source_ref: XSD CantStation/@curvature; type clockwise
+    values:
+      - value: cw
+        meaning: Enumeration literal "cw"; the XSD gives no description.
+      - value: ccw
+        meaning: Enumeration literal "ccw"; the XSD gives no description.
+  - name: adverse
+    type: bool
+    meaning: CantStation adverse; the XSD gives no description.
+    source_ref: XSD CantStation/@adverse; type xs:boolean
+    nullable: true
+notes: Occurs 0..unbounded in landxml.cant.

@@ -1,0 +1,29 @@
+code: ifc.representation
+name: IfcRepresentation
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRepresentation
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcRepresentationResource/Entities/IfcRepresentation.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcRepresentation defines the general concept of representing product properties and in particular the product shape.
+fields:
+  - name: context_of_items
+    type: ref
+    meaning: Definition of the representation context for which the different subtypes of representation are valid.
+    source_ref: "IfcRepresentation attribute 1: IfcRepresentationContext"
+    ref_to: ifc.representation_context
+  - name: representation_identifier
+    type: text
+    nullable: true
+    meaning: The optional identifier of the representation as used within a project.
+    source_ref: "IfcRepresentation attribute 2: OPTIONAL IfcLabel"
+  - name: representation_type
+    type: text
+    nullable: true
+    meaning: The description of the type of a representation context.
+    source_ref: "IfcRepresentation attribute 3: OPTIONAL IfcLabel"
+notes: "Inverse attributes not stored: RepresentationMap, LayerAssignments, OfProductRepresentation. SUPERTYPE OF ONEOF ( IfcShapeModel , IfcStyleModel )."

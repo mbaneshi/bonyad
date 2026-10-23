@@ -1,0 +1,28 @@
+code: ifc.offset_curve3d
+name: IfcOffsetCurve3D
+kind: entity
+base: ifc.offset_curve
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcOffsetCurve3D
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcOffsetCurve3D.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcOffsetCurve3D is a curve defined by an offset in 3D space from its BasisCurve.
+fields:
+  - name: distance
+    type: length
+    meaning: The distance of the offset curve from the basis curve.
+    source_ref: "IfcOffsetCurve3D attribute 1: IfcLengthMeasure"
+  - name: self_intersect
+    type: bool
+    nullable: true
+    meaning: An indication of whether the offset curve self-intersects, this is for information only.
+    source_ref: "IfcOffsetCurve3D attribute 2: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+  - name: ref_direction
+    type: ref
+    meaning: The direction used to define the direction of the offset curve 3d from the basis curve.
+    source_ref: "IfcOffsetCurve3D attribute 3: IfcDirection"
+    ref_to: ifc.direction

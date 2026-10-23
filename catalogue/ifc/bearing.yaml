@@ -1,0 +1,40 @@
+code: ifc.bearing
+name: IfcBearing
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBearing
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcBearing.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Type of building element that is usually used to transmit loads from superstructure to substructure, and usually allowing movement (displacement or rotation) in one or more degrees of freedom. It is typically a mechanical component procured as a whole and installed on site, but in simple cases it may be built on site (composed of other building elements, …
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a bearing that is specified in an enumeration.
+    source_ref: "IfcBearing attribute 1: OPTIONAL IfcBearingTypeEnum; enumeration IfcBearingTypeEnum"
+    values:
+      - value: CYLINDRICAL
+        meaning: The bearing functionality is provided by cylinder in a concave cylinder.
+      - value: SPHERICAL
+        meaning: The bearing functionality is provided by convex dome in a concave basin.
+      - value: ELASTOMERIC
+        meaning: A pad bearing which carries vertical load by contact stresses between a sheet of sliding material and a mating surface that permits movements by sliding and accommodates rotation by deformation of the elastomer.
+      - value: POT
+        meaning: A bearing which carries vertical load by compression of an (elastomeric) disc confined in a (steel) cylinder and which accommodates rotations by deformations of the disc.
+      - value: GUIDE
+        meaning: A bearing that ensures that the structure maintains the correct location or expansion/contraction path and takes no vertical load.
+      - value: ROCKER
+        meaning: The bearing functionality is provided by a rocker construction.
+      - value: ROLLER
+        meaning: The bearing functionality is provided by one or more rollers that are placed between two plates.
+      - value: DISK
+        meaning: A disk bearing consist of an elastomeric disc between two metal plates.
+      - value: USERDEFINED
+        meaning: User-defined bearing element.
+      - value: NOTDEFINED
+        meaning: Undefined bearing element.

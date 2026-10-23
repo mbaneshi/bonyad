@@ -1,0 +1,42 @@
+code: ifc.fill_area_style_hatching
+name: IfcFillAreaStyleHatching
+kind: entity
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFillAreaStyleHatching
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcFillAreaStyleHatching.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcFillAreaStyleHatching is used to define simple, vector-based hatching patterns, based on styled straight lines. The curve font, color and thickness is given by the HatchLineAppearance, the angle by the HatchLineAngle and the distance to the next hatch line by StartOfNextHatchLine, being either an offset distance or a vector.
+fields:
+  - name: hatch_line_appearance
+    type: ref
+    meaning: The curve style of the hatching lines.
+    source_ref: "IfcFillAreaStyleHatching attribute 1: IfcCurveStyle"
+    ref_to: ifc.curve_style
+  - name: start_of_next_hatch_line
+    type: ref
+    meaning: A repetition factor that determines the distance between adjacent hatch lines.
+    source_ref: "IfcFillAreaStyleHatching attribute 2: IfcHatchLineDistanceSelect; via select IfcHatchLineDistanceSelect"
+    ref_to: any
+  - name: point_of_reference_hatch_line
+    type: ref
+    nullable: true
+    meaning: A Cartesian point which defines the offset of the reference hatch line from the origin of the (virtual) hatching coordinate system.
+    source_ref: "IfcFillAreaStyleHatching attribute 3: OPTIONAL IfcCartesianPoint"
+    ref_to: ifc.cartesian_point
+  - name: pattern_start
+    type: ref
+    nullable: true
+    meaning: A distance along the reference hatch line which is the start point for the curve style font pattern of the reference hatch line.
+    source_ref: "IfcFillAreaStyleHatching attribute 4: OPTIONAL IfcCartesianPoint"
+    ref_to: ifc.cartesian_point
+  - name: hatch_line_angle
+    type: angle
+    meaning: A plane angle measure determining the direction of the parallel hatching lines. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcFillAreaStyleHatching attribute 5: IfcPlaneAngleMeasure"
+needs_review: true
+notes: "Review: start_of_next_hatch_line: select IfcHatchLineDistanceSelect mixes entities and value types; stored as ref to any, value members are not representable in one column."

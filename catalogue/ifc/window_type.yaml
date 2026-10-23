@@ -1,0 +1,66 @@
+code: ifc.window_type
+name: IfcWindowType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcWindowType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcWindowType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The element type IfcWindowType defines commonly shared information for occurrences of windows.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a window element from which the type required may be set.
+    source_ref: "IfcWindowType attribute 1: IfcWindowTypeEnum; enumeration IfcWindowTypeEnum"
+    values:
+      - value: WINDOW
+        meaning: A standard window usually within a wall opening, as a window panel in a curtain wall, or as a "free standing" window.
+      - value: SKYLIGHT
+        meaning: A window within a sloped building element, usually a roof slab.
+      - value: LIGHTDOME
+        meaning: A special window that lies horizontally in a roof slab opening.
+      - value: USERDEFINED
+        meaning: User-defined window element.
+      - value: NOTDEFINED
+        meaning: Undefined window element.
+  - name: partitioning_type
+    type: enum
+    meaning: Type defining the general layout of the window type in terms of the partitioning of panels.
+    source_ref: "IfcWindowType attribute 2: IfcWindowTypePartitioningEnum; enumeration IfcWindowTypePartitioningEnum"
+    values:
+      - value: SINGLE_PANEL
+        meaning: Window with one panel.
+      - value: DOUBLE_PANEL_VERTICAL
+        meaning: Window with two panels.
+      - value: DOUBLE_PANEL_HORIZONTAL
+        meaning: Window with two panels.
+      - value: TRIPLE_PANEL_VERTICAL
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_BOTTOM
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_TOP
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_LEFT
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_RIGHT
+        meaning: Window with three panels.
+      - value: TRIPLE_PANEL_HORIZONTAL
+        meaning: Window with three panels.
+      - value: USERDEFINED
+        meaning: User defined operation type.
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: parameter_takes_precedence
+    type: bool
+    nullable: true
+    meaning: The Boolean value reflects, whether the parameter given in the attached lining and panel properties exactly define the geometry (TRUE), or whether the attached style shape take precedence (FALSE).
+    source_ref: "IfcWindowType attribute 3: OPTIONAL IfcBoolean"
+  - name: user_defined_partitioning_type
+    type: text
+    nullable: true
+    meaning: Designator for the user defined partitioning type, shall only be provided, if the value of PartitioningType is set to USERDEFINED.
+    source_ref: "IfcWindowType attribute 4: OPTIONAL IfcLabel"

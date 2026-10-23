@@ -1,0 +1,36 @@
+code: ifc.text_style
+name: IfcTextStyle
+kind: symbol
+base: ifc.presentation_style
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextStyle
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcTextStyle.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcTextStyle is a presentation style for annotations that place a text in model space. The IfcTextStyle provides the text style for presentation information assigned to _IfcTextLiteral_'s.
+fields:
+  - name: text_character_appearance
+    type: ref
+    nullable: true
+    meaning: A character style to be used for presented text.
+    source_ref: "IfcTextStyle attribute 1: OPTIONAL IfcTextStyleForDefinedFont"
+    ref_to: ifc.text_style_for_defined_font
+  - name: text_style
+    type: ref
+    nullable: true
+    meaning: The style applied to the text block for its visual appearance.
+    source_ref: "IfcTextStyle attribute 2: OPTIONAL IfcTextStyleTextModel"
+    ref_to: ifc.text_style_text_model
+  - name: text_font_style
+    type: ref
+    meaning: The style applied to the text font for its visual appearance.
+    source_ref: "IfcTextStyle attribute 3: IfcTextFontSelect; via select IfcTextFontSelect"
+    ref_to: any
+  - name: model_or_draughting
+    type: bool
+    nullable: true
+    meaning: Indication whether the length measures provided for the presentation style are model based, or draughting based.
+    source_ref: "IfcTextStyle attribute 4: OPTIONAL IfcBoolean"

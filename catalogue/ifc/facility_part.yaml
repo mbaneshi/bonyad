@@ -1,0 +1,35 @@
+code: ifc.facility_part
+name: IfcFacilityPart
+kind: entity
+base: ifc.spatial_structure_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFacilityPart
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcFacilityPart.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcFacilityPart provides for spatial breakdown of built facilities. It may be further specialised according to the type of facility being broken down.
+fields:
+  - name: predefined_type
+    type: text
+    meaning: PredefinedType attribute of IfcFacilityPart (not described in the source documentation).
+    source_ref: "IfcFacilityPart attribute 1: IfcFacilityPartTypeSelect; SELECT IfcFacilityPartTypeSelect of value types, stored as text (the member type tag is not kept)"
+  - name: usage_type
+    type: enum
+    meaning: Defines the convention used to subdivide or decompose the facility.
+    source_ref: "IfcFacilityPart attribute 2: IfcFacilityUsageEnum; enumeration IfcFacilityUsageEnum"
+    values:
+      - value: LATERAL
+        meaning: A Lateral usage implies a facility part is a lateral (left, right, centre etc.) subdivision of a longitudinal segment or facility.
+      - value: REGION
+        meaning: A regional usage implies a bounded subdivision in the "X-Y plane" of a parent IfcSpatialStructureElement.
+      - value: VERTICAL
+        meaning: A vertical usage implies a subdivision in the "Z plane" usually signifying a defined elevation level or controlled volume within a segment of the Z plane.
+      - value: LONGITUDINAL
+        meaning: A longitudinal usage implies a subdivision along a linear facility where the part has a defined start and end along the facility alignment(s).
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

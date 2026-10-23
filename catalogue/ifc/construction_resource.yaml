@@ -1,0 +1,27 @@
+code: ifc.construction_resource
+name: IfcConstructionResource
+kind: abstract
+base: ifc.resource
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcConstructionResource
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcConstructionMgmtDomain/Entities/IfcConstructionResource.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcConstructionResource is an abstract generalization of the different resources used in construction projects, mainly labour, material, equipment and product resources, plus subcontracted resources and aggregations such as a crew resource.
+fields:
+  - name: usage
+    type: ref
+    nullable: true
+    meaning: Indicates the work, usage, and times scheduled and completed.
+    source_ref: "IfcConstructionResource attribute 1: OPTIONAL IfcResourceTime"
+    ref_to: ifc.resource_time
+  - name: base_quantity
+    type: ref
+    nullable: true
+    meaning: Identifies the base quantity consumed of the resource relative to assignments.
+    source_ref: "IfcConstructionResource attribute 3: OPTIONAL IfcPhysicalQuantity"
+    ref_to: ifc.physical_quantity
+notes: SUPERTYPE OF ONEOF ( IfcConstructionEquipmentResource , IfcConstructionMaterialResource , IfcConstructionProductResource , IfcCrewResource , IfcLaborResource , IfcSubContractResource ).

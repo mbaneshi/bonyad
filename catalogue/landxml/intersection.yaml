@@ -1,0 +1,54 @@
+code: landxml.intersection
+name: Intersection
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Intersection
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Intersection`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.roadways
+    nullable: true
+    meaning: The landxml.roadways row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: roadway_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Intersection/@roadwayRef; type roadwayNameRef
+    nullable: true
+    ref_to: landxml.roadway
+  - name: roadway_pi
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Intersection/@roadwayPI; type station
+    nullable: true
+  - name: intersecting_roadway_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Intersection/@intersectingRoadwayRef; type roadwayNameRef
+    nullable: true
+    ref_to: landxml.roadway
+  - name: intersect_roadway_pi
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD Intersection/@intersectRoadwayPI; type station
+    nullable: true
+  - name: contruction_type
+    type: enum
+    meaning: Intersection contructionType; the XSD gives no description.
+    source_ref: XSD Intersection/@contructionType; type intersectionConstructionType
+    nullable: true
+    values:
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: improvement
+        meaning: Enumeration literal "improvement"; the XSD gives no description.
+      - value: new
+        meaning: Enumeration literal "new"; the XSD gives no description.
+notes: Occurs 0..unbounded via Intersections in landxml.roadways. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

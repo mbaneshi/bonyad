@@ -1,0 +1,98 @@
+code: ifc.door_type
+name: IfcDoorType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDoorType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcDoorType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The element type IfcDoorType defines commonly shared information for occurrences of doors.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: PredefinedType attribute of IfcDoorType (not described in the source documentation).
+    source_ref: "IfcDoorType attribute 1: IfcDoorTypeEnum; enumeration IfcDoorTypeEnum"
+    values:
+      - value: DOOR
+        meaning: A standard door usually within a wall opening, as a door panel in a curtain wall, or as a "free standing" door.
+      - value: GATE
+        meaning: A gate is a point of entry into a space usually within an opening in a fence.
+      - value: TRAPDOOR
+        meaning: A special door that lies horizontally in a slab opening.
+      - value: BOOM_BARRIER
+        meaning: A boom barrier (also known as a boom gate) is a bar, or pole pivoted to allow the boom to block vehicular or pedestrian access through a controlled point.
+      - value: TURNSTILE
+        meaning: A mechanical gate consisting of revolving arms, allowing only one person at a time to pass through.
+      - value: USERDEFINED
+        meaning: User-defined door element.
+      - value: NOTDEFINED
+        meaning: Undefined door element.
+  - name: operation_type
+    type: enum
+    meaning: Type defining the general layout and operation of the door type in terms of the partitioning of panels and panel operations.
+    source_ref: "IfcDoorType attribute 2: IfcDoorTypeOperationEnum; enumeration IfcDoorTypeOperationEnum"
+    values:
+      - value: SINGLE_SWING_LEFT
+        meaning: Door with one panel that opens (swings) to the left.
+      - value: SINGLE_SWING_RIGHT
+        meaning: Door with one panel that opens (swings) to the right.
+      - value: DOUBLE_PANEL_SINGLE_SWING
+        meaning: DOUBLE_PANEL_SINGLE_SWING (no description for this literal in the source documentation)
+      - value: DOUBLE_PANEL_SINGLE_SWING_OPPOSITE_LEFT
+        meaning: DOUBLE_PANEL_SINGLE_SWING_OPPOSITE_LEFT (no description for this literal in the source documentation)
+      - value: DOUBLE_PANEL_SINGLE_SWING_OPPOSITE_RIGHT
+        meaning: DOUBLE_PANEL_SINGLE_SWING_OPPOSITE_RIGHT (no description for this literal in the source documentation)
+      - value: DOUBLE_SWING_LEFT
+        meaning: Door with one panel that swings in both directions and to the left in the main traffic direction.
+      - value: DOUBLE_SWING_RIGHT
+        meaning: Door with one panel that swings in both directions and to the right in the main traffic direction.
+      - value: DOUBLE_PANEL_DOUBLE_SWING
+        meaning: DOUBLE_PANEL_DOUBLE_SWING (no description for this literal in the source documentation)
+      - value: SLIDING_TO_LEFT
+        meaning: Door with one panel that is sliding to the left.
+      - value: SLIDING_TO_RIGHT
+        meaning: Door with one panel that is sliding to the right.
+      - value: DOUBLE_PANEL_SLIDING
+        meaning: DOUBLE_PANEL_SLIDING (no description for this literal in the source documentation)
+      - value: FOLDING_TO_LEFT
+        meaning: Door with one panel that is folding to the left.
+      - value: FOLDING_TO_RIGHT
+        meaning: Door with one panel that is folding to the right.
+      - value: DOUBLE_PANEL_FOLDING
+        meaning: DOUBLE_PANEL_FOLDING (no description for this literal in the source documentation)
+      - value: REVOLVING_HORIZONTAL
+        meaning: REVOLVING_HORIZONTAL (no description for this literal in the source documentation)
+      - value: ROLLINGUP
+        meaning: Door that opens by rolling up.
+      - value: SWING_FIXED_LEFT
+        meaning: Door with one panel that opens (swings) to the left and one fixed panel.
+      - value: SWING_FIXED_RIGHT
+        meaning: Door with one panel that opens (swings) to the right and one fixed panel.
+      - value: DOUBLE_PANEL_LIFTING_VERTICAL
+        meaning: DOUBLE_PANEL_LIFTING_VERTICAL (no description for this literal in the source documentation)
+      - value: LIFTING_HORIZONTAL
+        meaning: Lifting horizontal.
+      - value: LIFTING_VERTICAL_LEFT
+        meaning: Lifting vertical left.
+      - value: LIFTING_VERTICAL_RIGHT
+        meaning: Lifting vertical right.
+      - value: REVOLVING_VERTICAL
+        meaning: Revolving vertical.
+      - value: USERDEFINED
+        meaning: User defined operation type.
+      - value: NOTDEFINED
+        meaning: A door with a not defined operation type is considered as a door with a lining, but no panels.
+  - name: parameter_takes_precedence
+    type: bool
+    nullable: true
+    meaning: The Boolean value reflects, whether the parameter given in the attached lining and panel properties exactly define the geometry (TRUE), or whether the attached style shape take precedence (FALSE).
+    source_ref: "IfcDoorType attribute 3: OPTIONAL IfcBoolean"
+  - name: user_defined_operation_type
+    type: text
+    nullable: true
+    meaning: Designator for the user defined operation type, shall only be provided, if the value of OperationType is set to USERDEFINED.
+    source_ref: "IfcDoorType attribute 4: OPTIONAL IfcLabel"

@@ -1,0 +1,50 @@
+code: ifc.humidifier
+name: IfcHumidifier
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcHumidifier
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcHumidifier.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A humidifier is a device that adds moisture into the air.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcHumidifier (not described in the source documentation).
+    source_ref: "IfcHumidifier attribute 1: OPTIONAL IfcHumidifierTypeEnum; enumeration IfcHumidifierTypeEnum"
+    values:
+      - value: STEAMINJECTION
+        meaning: Water vapor is added into the airstream through direct steam injection.
+      - value: ADIABATICAIRWASHER
+        meaning: Water vapor is added into the airstream through adiabatic evaporation using an air washing element.
+      - value: ADIABATICPAN
+        meaning: Water vapor is added into the airstream through adiabatic evaporation using a pan.
+      - value: ADIABATICWETTEDELEMENT
+        meaning: Water vapor is added into the airstream through adiabatic evaporation using a wetted element.
+      - value: ADIABATICATOMIZING
+        meaning: Water vapor is added into the airstream through adiabatic evaporation using an atomizing element.
+      - value: ADIABATICULTRASONIC
+        meaning: Water vapor is added into the airstream through adiabatic evaporation using an ultrasonic element.
+      - value: ADIABATICRIGIDMEDIA
+        meaning: Water vapor is added into the airstream through adiabatic evaporation using a rigid media.
+      - value: ADIABATICCOMPRESSEDAIRNOZZLE
+        meaning: Water vapor is added into the airstream through adiabatic evaporation using a compressed air nozzle.
+      - value: ASSISTEDELECTRIC
+        meaning: Water vapor is added into the airstream through water heated evaporation using an electric heater.
+      - value: ASSISTEDNATURALGAS
+        meaning: Water vapor is added into the airstream through water heated evaporation using a natural gas heater.
+      - value: ASSISTEDPROPANE
+        meaning: Water vapor is added into the airstream through water heated evaporation using a propane heater.
+      - value: ASSISTEDBUTANE
+        meaning: Water vapor is added into the airstream through water heated evaporation using a butane heater.
+      - value: ASSISTEDSTEAM
+        meaning: Water vapor is added into the airstream through water heated evaporation using a steam heater.
+      - value: USERDEFINED
+        meaning: User-defined humidifier type.
+      - value: NOTDEFINED
+        meaning: Undefined humidifier type.

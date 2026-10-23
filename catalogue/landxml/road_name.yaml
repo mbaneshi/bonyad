@@ -1,0 +1,41 @@
+code: landxml.road_name
+name: RoadName
+kind: child
+parent: landxml.location_address
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element RoadName
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `RoadName`; the XSD gives no description.
+fields:
+  - name: road_name_type
+    type: text
+    meaning: to define a jurisdictionally specific list of Road name types such a street, road, avenue etc.
+    source_ref: XSD RoadName/@roadNameType; type roadNameTypeType
+    nullable: true
+  - name: road_name
+    type: text
+    meaning: RoadName roadName; the XSD gives no description.
+    source_ref: XSD RoadName/@roadName; type xs:string
+    nullable: true
+  - name: road_name_suffix
+    type: text
+    meaning: to Allow a list of specific road suffixes to be specified, ie east, upper etc (ie Fred Street East).
+    source_ref: XSD RoadName/@roadNameSuffix; type roadNameSuffixType
+    nullable: true
+  - name: road_type
+    type: text
+    meaning: To define if the road is a public or private road.
+    source_ref: XSD RoadName/@roadType; type roadTypeType
+    nullable: true
+  - name: pcl_ref
+    type: array
+    meaning: name attributes. Space-delimited list of element names (name-based references).
+    source_ref: XSD RoadName/@pclRef; type parcelNameRefs
+    nullable: true
+    of: text
+notes: Occurs 0..unbounded in landxml.location_address.

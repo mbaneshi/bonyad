@@ -1,0 +1,47 @@
+code: ifc.person
+name: IfcPerson
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPerson
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcActorResource/Entities/IfcPerson.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: This entity represents an individual human being.
+fields:
+  - name: identification
+    type: text
+    nullable: true
+    meaning: Identification of the person.
+    source_ref: "IfcPerson attribute 1: OPTIONAL IfcIdentifier"
+  - name: family_name
+    type: text
+    nullable: true
+    meaning: The name by which the family identity of the person may be recognized.
+    source_ref: "IfcPerson attribute 2: OPTIONAL IfcLabel"
+  - name: given_name
+    type: text
+    nullable: true
+    meaning: The name by which a person is known within a family and by which he or she may be familiarly recognized.
+    source_ref: "IfcPerson attribute 3: OPTIONAL IfcLabel"
+  - name: middle_names
+    type: array
+    nullable: true
+    meaning: Additional names given to a person that enable their identification apart from others who may have the same or similar family and given names.
+    source_ref: "IfcPerson attribute 4: OPTIONAL LIST [1:?] OF IfcLabel"
+    of: text
+  - name: prefix_titles
+    type: array
+    nullable: true
+    meaning: The word, or group of words, which specify the person's social and/or professional standing and appear before his/her names.
+    source_ref: "IfcPerson attribute 5: OPTIONAL LIST [1:?] OF IfcLabel"
+    of: text
+  - name: suffix_titles
+    type: array
+    nullable: true
+    meaning: The word, or group of words, which specify the person's social and/or professional standing and appear after his/her names.
+    source_ref: "IfcPerson attribute 6: OPTIONAL LIST [1:?] OF IfcLabel"
+    of: text
+notes: "Inverse attributes not stored: EngagedIn."

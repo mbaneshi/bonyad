@@ -1,0 +1,33 @@
+code: ifc.tendon_conduit_type
+name: IfcTendonConduitType
+kind: symbol
+base: ifc.reinforcing_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTendonConduitType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcTendonConduitType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Type of Tendon Conduit.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Subtype of tendon conduit.
+    source_ref: "IfcTendonConduitType attribute 1: IfcTendonConduitTypeEnum; enumeration IfcTendonConduitTypeEnum"
+    values:
+      - value: DUCT
+        meaning: A Sleeve or duct is related to the thickness of the conduit depending on the conduit, either cast into the concrete structure or placed adjacent to it.
+      - value: COUPLER
+        meaning: A part to connect the conduits located in two different deck segments and related to the same tendon.
+      - value: GROUTING_DUCT
+        meaning: An additional small conduit connected to the main conduit to allow grouting in case of bonded post-tensioning, such as Grout inlet, Grout outlet and Grout vent.
+      - value: TRUMPET
+        meaning: A specific part of conduit which has to be widened when reaching the tendon anchor because the strands are connected individually on the anchor.
+      - value: DIABOLO
+        meaning: A part of tendon conduit associated to deviator.
+      - value: USERDEFINED
+        meaning: The type of tendon conduit is user defined.
+      - value: NOTDEFINED
+        meaning: The type of tendon conduit is not defined.

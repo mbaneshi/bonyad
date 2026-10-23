@@ -1,0 +1,30 @@
+code: ifc.directrix_curve_swept_area_solid
+name: IfcDirectrixCurveSweptAreaSolid
+kind: abstract
+base: ifc.swept_area_solid
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDirectrixCurveSweptAreaSolid
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcDirectrixCurveSweptAreaSolid.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An abstract entity defining common information about a type of swept area solid which is the result of sweeping an area along a Directrix. The swept area is provided by a subtype of IfcProfileDef.
+fields:
+  - name: directrix
+    type: ref
+    meaning: The curve used to define the sweeping operation.
+    source_ref: "IfcDirectrixCurveSweptAreaSolid attribute 1: IfcCurve"
+    ref_to: ifc.curve
+  - name: start_param
+    type: text
+    nullable: true
+    meaning: The parameter value on the Directrix at which the sweeping operation commences.
+    source_ref: "IfcDirectrixCurveSweptAreaSolid attribute 2: OPTIONAL IfcCurveMeasureSelect; SELECT IfcCurveMeasureSelect of value types, stored as text (the member type tag is not kept)"
+  - name: end_param
+    type: text
+    nullable: true
+    meaning: The parameter value on the Directrix at which the sweeping operation ends.
+    source_ref: "IfcDirectrixCurveSweptAreaSolid attribute 3: OPTIONAL IfcCurveMeasureSelect; SELECT IfcCurveMeasureSelect of value types, stored as text (the member type tag is not kept)"
+notes: SUPERTYPE OF ONEOF ( IfcFixedReferenceSweptAreaSolid , IfcSurfaceCurveSweptAreaSolid ).

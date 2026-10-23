@@ -1,0 +1,36 @@
+code: ifc.vibration_damper
+name: IfcVibrationDamper
+kind: entity
+base: ifc.element_component
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcVibrationDamper
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcVibrationDamper.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A vibration damper is a device used to minimize the effects of vibration in a structure by dissipating kinetic energy. The damper may be passive (elastic, frictional, inertia) or active (in a system using sensors and actuators).
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcVibrationDamper (not described in the source documentation).
+    source_ref: "IfcVibrationDamper attribute 1: OPTIONAL IfcVibrationDamperTypeEnum; enumeration IfcVibrationDamperTypeEnum"
+    values:
+      - value: BENDING_YIELD
+        meaning: A displacement dependent type damper in which the resistance force generated is determined by the plastic strain amount utilizing the plastic deformation of the steel material.
+      - value: SHEAR_YIELD
+        meaning: A displacement dependent type damper in which the resistance force generated is determined by the plastic strain amount utilizing the plastic deformation of the steel material.
+      - value: AXIAL_YIELD
+        meaning: A displacement dependent type damper in which the resistance force generated is determined by the plastic strain amount utilizing the plastic deformation of the steel material.
+      - value: FRICTION
+        meaning: The friction type is a damper utilizing friction acting on the contact surface of a material.
+      - value: VISCOUS
+        meaning: The viscous type is a damper that absorbs energy by utilizing the resistance of a viscous body.
+      - value: RUBBER
+        meaning: The rubber mold is a damper that absorbs energy by utilizing deformation of laminated rubber.
+      - value: USERDEFINED
+        meaning: User-defined vibration damper type.
+      - value: NOTDEFINED
+        meaning: Undefined vibration damper type.

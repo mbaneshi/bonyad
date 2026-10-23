@@ -1,0 +1,19 @@
+code: ifc.boundary_condition
+name: IfcBoundaryCondition
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBoundaryCondition
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcStructuralLoadResource/Entities/IfcBoundaryCondition.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The abstract entity IfcBoundaryCondition is the supertype of all boundary conditions that can be applied to structural connection definitions, either directly for the connection (e.g. the joint) or for the relation between a structural member and the connection.
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: Optionally defines a name for this boundary condition.
+    source_ref: "IfcBoundaryCondition attribute 1: OPTIONAL IfcLabel"
+notes: SUPERTYPE OF ONEOF ( IfcBoundaryEdgeCondition , IfcBoundaryFaceCondition , IfcBoundaryNodeCondition ).

@@ -1,0 +1,67 @@
+code: landxml.pipe_network
+name: PipeNetwork
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element PipeNetwork
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: This element contains one "Structs" collection element and one "Pipes" collection element. keyRef is a Schema validation mechanism that ensures that the "structRef" and "pipeRef" attribute values have corresponding Pipe and Struct "name" values"
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.pipe_networks
+    nullable: true
+    meaning: The landxml.pipe_networks row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: PipeNetwork name; the XSD gives no description.
+    source_ref: XSD PipeNetwork/@name; type xs:string
+  - name: pipe_net_type
+    type: enum
+    meaning: PipeNetwork pipeNetType; the XSD gives no description.
+    source_ref: XSD PipeNetwork/@pipeNetType; type pipeNetworkType
+    values:
+      - value: sanitary
+        meaning: Enumeration literal "sanitary"; the XSD gives no description.
+      - value: storm
+        meaning: Enumeration literal "storm"; the XSD gives no description.
+      - value: water
+        meaning: Enumeration literal "water"; the XSD gives no description.
+      - value: other
+        meaning: Enumeration literal "other"; the XSD gives no description.
+  - name: alignment_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD PipeNetwork/@alignmentRef; type alignmentNameRef
+    nullable: true
+    ref_to: landxml.alignment
+  - name: desc
+    type: text
+    meaning: PipeNetwork desc; the XSD gives no description.
+    source_ref: XSD PipeNetwork/@desc; type xs:string
+    nullable: true
+  - name: o_id
+    type: text
+    meaning: PipeNetwork oID; the XSD gives no description.
+    source_ref: XSD PipeNetwork/@oID; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: PipeNetwork state; the XSD gives no description.
+    source_ref: XSD PipeNetwork/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+notes: Occurs 1..unbounded in landxml.pipe_networks. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

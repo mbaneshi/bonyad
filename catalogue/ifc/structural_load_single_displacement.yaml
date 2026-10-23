@@ -1,0 +1,45 @@
+code: ifc.structural_load_single_displacement
+name: IfcStructuralLoadSingleDisplacement
+kind: object
+base: ifc.structural_load_static
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralLoadSingleDisplacement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcStructuralLoadResource/Entities/IfcStructuralLoadSingleDisplacement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Instances of the entity IfcStructuralLoadSingleDisplacement shall be used to define displacements.
+fields:
+  - name: displacement_x
+    type: length
+    nullable: true
+    meaning: Displacement in x-direction.
+    source_ref: "IfcStructuralLoadSingleDisplacement attribute 1: OPTIONAL IfcLengthMeasure"
+  - name: displacement_y
+    type: length
+    nullable: true
+    meaning: Displacement in y-direction.
+    source_ref: "IfcStructuralLoadSingleDisplacement attribute 2: OPTIONAL IfcLengthMeasure"
+  - name: displacement_z
+    type: length
+    nullable: true
+    meaning: Displacement in z-direction.
+    source_ref: "IfcStructuralLoadSingleDisplacement attribute 3: OPTIONAL IfcLengthMeasure"
+  - name: rotational_displacement_rx
+    type: angle
+    nullable: true
+    meaning: Rotation about the x-axis. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcStructuralLoadSingleDisplacement attribute 4: OPTIONAL IfcPlaneAngleMeasure"
+  - name: rotational_displacement_ry
+    type: angle
+    nullable: true
+    meaning: Rotation about the y-axis. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcStructuralLoadSingleDisplacement attribute 5: OPTIONAL IfcPlaneAngleMeasure"
+  - name: rotational_displacement_rz
+    type: angle
+    nullable: true
+    meaning: Rotation about the z-axis. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcStructuralLoadSingleDisplacement attribute 6: OPTIONAL IfcPlaneAngleMeasure"
+notes: SUPERTYPE OF ONEOF ( IfcStructuralLoadSingleDisplacementDistortion ).

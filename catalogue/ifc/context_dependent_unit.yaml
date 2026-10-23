@@ -1,0 +1,20 @@
+code: ifc.context_dependent_unit
+name: IfcContextDependentUnit
+kind: object
+base: ifc.named_unit
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcContextDependentUnit
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMeasureResource/Entities/IfcContextDependentUnit.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcContextDependentUnit: no description in the source documentation."
+fields:
+  - name: name
+    type: text
+    meaning: The word, or group of words, by which the context dependent unit is referred to.
+    source_ref: "IfcContextDependentUnit attribute 1: IfcLabel"
+needs_review: true
+notes: "Inverse attributes not stored: HasExternalReference. Review: no description found for IfcContextDependentUnit in the documentation at the pinned commit."

@@ -1,0 +1,76 @@
+code: ifc.owner_history
+name: IfcOwnerHistory
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcOwnerHistory
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcUtilityResource/Entities/IfcOwnerHistory.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcOwnerHistory defines all history and identification related information. In order to provide fast access it is directly attached to all independent objects, relationships and properties.
+fields:
+  - name: owning_user
+    type: ref
+    meaning: Direct reference to the end user who currently "owns" this object.
+    source_ref: "IfcOwnerHistory attribute 1: IfcPersonAndOrganization"
+    ref_to: ifc.person_and_organization
+  - name: owning_application
+    type: ref
+    meaning: Direct reference to the application which currently "owns" this object on behalf of the owning user of the application.
+    source_ref: "IfcOwnerHistory attribute 2: IfcApplication"
+    ref_to: ifc.application
+  - name: state
+    type: enum
+    nullable: true
+    meaning: Enumeration that defines the current access state of the object.
+    source_ref: "IfcOwnerHistory attribute 3: OPTIONAL IfcStateEnum; enumeration IfcStateEnum"
+    values:
+      - value: READWRITE
+        meaning: Object is in a Read-Write state.
+      - value: READONLY
+        meaning: Object is in a Read-Only state.
+      - value: LOCKED
+        meaning: Object is in a Locked state.
+      - value: READWRITELOCKED
+        meaning: Object is in a Read-Write-Locked state.
+      - value: READONLYLOCKED
+        meaning: Object is in a Read-Only-Locked state.
+  - name: change_action
+    type: enum
+    nullable: true
+    meaning: Enumeration that defines the actions associated with changes made to the object.
+    source_ref: "IfcOwnerHistory attribute 4: OPTIONAL IfcChangeActionEnum; enumeration IfcChangeActionEnum"
+    values:
+      - value: NOCHANGE
+        meaning: Object has not been modified.
+      - value: MODIFIED
+        meaning: A modification to the object has been made by the user and application defined by the LastModifyingUser and LastModifyingApplication respectively.
+      - value: ADDED
+        meaning: The object has been created by the user and application defined by the OwningUser and OwningApplication respectively.
+      - value: DELETED
+        meaning: The object has been deleted by the user and application defined by the LastModifyingUser and LastModifyingApplication respectively.
+      - value: NOTDEFINED
+        meaning: The change action is not known or has not been defined.
+  - name: last_modified_date
+    type: timestamp
+    nullable: true
+    meaning: Date and Time expressed in UTC (Universal Time Coordinated, formerly Greenwich Mean Time or GMT) at which the last modification was made by LastModifyingUser and LastModifyingApplication. Source stores seconds since 1970-01-01; converted at the boundary.
+    source_ref: "IfcOwnerHistory attribute 5: OPTIONAL IfcTimeStamp"
+  - name: last_modifying_user
+    type: ref
+    nullable: true
+    meaning: User who carried out the last modification using LastModifyingApplication.
+    source_ref: "IfcOwnerHistory attribute 6: OPTIONAL IfcPersonAndOrganization"
+    ref_to: ifc.person_and_organization
+  - name: last_modifying_application
+    type: ref
+    nullable: true
+    meaning: Application used to make the last modification.
+    source_ref: "IfcOwnerHistory attribute 7: OPTIONAL IfcApplication"
+    ref_to: ifc.application
+  - name: creation_date
+    type: timestamp
+    meaning: The date and time expressed in UTC (Universal Time Coordinated, formerly Greenwich Mean Time or GMT) when first created by the original OwningApplication. Source stores seconds since 1970-01-01; converted at the boundary.
+    source_ref: "IfcOwnerHistory attribute 8: IfcTimeStamp"

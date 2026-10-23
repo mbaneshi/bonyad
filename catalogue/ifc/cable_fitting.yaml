@@ -1,0 +1,36 @@
+code: ifc.cable_fitting
+name: IfcCableFitting
+kind: entity
+base: ifc.flow_fitting
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCableFitting
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcCableFitting.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A cable fitting is a fitting that is placed at a junction, transition or termination in a cable system.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined types of cable fitting from which the type required may be set.
+    source_ref: "IfcCableFitting attribute 1: OPTIONAL IfcCableFittingTypeEnum; enumeration IfcCableFittingTypeEnum"
+    values:
+      - value: CONNECTOR
+        meaning: A fitting that joins two cable segments of the same connector type (though potentially different gender).
+      - value: ENTRY
+        meaning: A fitting that begins a cable segment at a non-electrical element such as a grounding clamp attached to a pipe.
+      - value: EXIT
+        meaning: A fitting that ends a cable segment at a non-electrical element such as a grounding clamp attached to a pipe or to the ground.
+      - value: JUNCTION
+        meaning: A fitting that joins three or more segments of arbitrary connector types for signal splitting or multiplexing.
+      - value: TRANSITION
+        meaning: A fitting that joins two cable segments of different connector types.
+      - value: FANOUT
+        meaning: A fan out is a special cable fitting that provides a safe transition from multi-fiber cable units to individual fibers.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

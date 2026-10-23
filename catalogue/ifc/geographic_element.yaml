@@ -1,0 +1,29 @@
+code: ifc.geographic_element
+name: IfcGeographicElement
+kind: entity
+base: ifc.element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcGeographicElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcGeographicElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcGeographicElement is a generalization of all elements within a geographical landscape. It includes occurrences of typical geographical elements, often referred to as features, such as trees or terrain.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcGeographicElement (not described in the source documentation).
+    source_ref: "IfcGeographicElement attribute 1: OPTIONAL IfcGeographicElementTypeEnum; enumeration IfcGeographicElementTypeEnum"
+    values:
+      - value: TERRAIN
+        meaning: Terrain.
+      - value: SOIL_BORING_POINT
+        meaning: Soil boring point.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Not defined.
+notes: SUPERTYPE OF ONEOF ( IfcPlant ).

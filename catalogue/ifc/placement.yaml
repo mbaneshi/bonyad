@@ -1,0 +1,20 @@
+code: ifc.placement
+name: IfcPlacement
+kind: abstract
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPlacement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcPlacement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcPlacement is an abstract supertype of placement subtypes that define the location of an item, or an entire shape representation, and provide its orientation. All placement subtypes define right-handed Cartesian coordinate systems and do not allow mirroring.
+fields:
+  - name: location
+    type: ref
+    meaning: The geometric position of a reference point, such as the center of a circle, of the item to be located.
+    source_ref: "IfcPlacement attribute 1: IfcPoint"
+    ref_to: ifc.point
+notes: "Derived attributes not stored: Dim. SUPERTYPE OF ONEOF ( IfcAxis1Placement , IfcAxis2Placement2D , IfcAxis2Placement3D , IfcAxis2PlacementLinear )."

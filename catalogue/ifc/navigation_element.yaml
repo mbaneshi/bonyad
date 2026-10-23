@@ -1,0 +1,28 @@
+code: ifc.navigation_element
+name: IfcNavigationElement
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcNavigationElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcPortsAndWaterwaysDomain/Entities/IfcNavigationElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A navigation element is an active or passive built element who's primary function is to provide navigational instructions and warnings to vessels, this could be in the form of a floating buoy, a fixed beacon.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined type of a navigational element.
+    source_ref: "IfcNavigationElement attribute 1: OPTIONAL IfcNavigationElementTypeEnum; enumeration IfcNavigationElementTypeEnum"
+    values:
+      - value: BEACON
+        meaning: a fixed vertical structure serving as a navigation mark, to show reefs or other hazards, or provide navigational directions.
+      - value: BUOY
+        meaning: an anchored floating structure serving as a navigation mark, to show reefs or other hazards, or provide navigational directions.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

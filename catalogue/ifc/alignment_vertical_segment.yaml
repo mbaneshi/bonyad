@@ -1,0 +1,53 @@
+code: ifc.alignment_vertical_segment
+name: IfcAlignmentVerticalSegment
+kind: object
+base: ifc.alignment_parameter_segment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcAlignmentVerticalSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricConstraintResource/Entities/IfcAlignmentVerticalSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Individual segment along the IfcAlignmentVertical, being defined in the distance-along/z coordinate space.
+fields:
+  - name: start_dist_along
+    type: length
+    meaning: Distance along the horizontal alignment as measured along the corresponding IfcAlignmentHorizontal.
+    source_ref: "IfcAlignmentVerticalSegment attribute 1: IfcLengthMeasure"
+  - name: horizontal_length
+    type: length
+    meaning: Length measured as distance along the horizontal alignment of the segment.
+    source_ref: "IfcAlignmentVerticalSegment attribute 2: IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: start_height
+    type: length
+    meaning: Elevation in Z of the start point relative to the IfcAlignment coordinate system.
+    source_ref: "IfcAlignmentVerticalSegment attribute 3: IfcLengthMeasure"
+  - name: start_gradient
+    type: ratio
+    meaning: Start gradient of the segment.
+    source_ref: "IfcAlignmentVerticalSegment attribute 4: IfcRatioMeasure"
+  - name: end_gradient
+    type: ratio
+    meaning: End gradient of the segment.
+    source_ref: "IfcAlignmentVerticalSegment attribute 5: IfcRatioMeasure"
+  - name: radius_of_curvature
+    type: length
+    nullable: true
+    meaning: Radius of parabola or arc.
+    source_ref: "IfcAlignmentVerticalSegment attribute 6: OPTIONAL IfcLengthMeasure"
+  - name: predefined_type
+    type: enum
+    meaning: Predefined type of the vertical alignmnent segment.
+    source_ref: "IfcAlignmentVerticalSegment attribute 7: IfcAlignmentVerticalSegmentTypeEnum; enumeration IfcAlignmentVerticalSegmentTypeEnum"
+    values:
+      - value: CONSTANTGRADIENT
+        meaning: Vertical alignment segment with constant gradient.
+      - value: CIRCULARARC
+        meaning: Vertical alignment segment where the derivative of vertical angle with respect to sloping length along the track (3D length) is constant.
+      - value: PARABOLICARC
+        meaning: Vertical alignment segment where the derivative of gradient with respect to distance along is constant.
+      - value: CLOTHOID
+        meaning: Vertical alignment segment where the derivative of vertical angle with respect to sloping length along the track (3D length) obeys a linear change.

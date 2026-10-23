@@ -1,0 +1,35 @@
+code: ifc.pile_type
+name: IfcPileType
+kind: symbol
+base: ifc.deep_foundation_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPileType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcPileType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The building element type IfcPileType defines commonly shared information for occurrences of piles.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Subtype of pile.
+    source_ref: "IfcPileType attribute 1: IfcPileTypeEnum; enumeration IfcPileTypeEnum"
+    values:
+      - value: BORED
+        meaning: A bore pile.
+      - value: DRIVEN
+        meaning: A rammed, vibrated, or otherwise driven pile.
+      - value: JETGROUTING
+        meaning: An injected pile-like construction.
+      - value: COHESION
+        meaning: A cohesion pile.
+      - value: FRICTION
+        meaning: A friction pile.
+      - value: SUPPORT
+        meaning: A support pile.
+      - value: USERDEFINED
+        meaning: The type of pile function is user defined.
+      - value: NOTDEFINED
+        meaning: The type of pile function is not defined.

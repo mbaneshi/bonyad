@@ -1,0 +1,44 @@
+code: landxml.author
+name: Author
+kind: child
+parent: landxml.application
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Author
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: Optional element to identify the source of the file.
+fields:
+  - name: value
+    type: text
+    meaning: Optional element to identify the source of the file.
+    source_ref: XSD text content; type xs:string
+  - name: created_by
+    type: text
+    meaning: Author createdBy; the XSD gives no description.
+    source_ref: XSD Author/@createdBy; type xs:string
+    nullable: true
+  - name: created_by_email
+    type: text
+    meaning: Author createdByEmail; the XSD gives no description.
+    source_ref: XSD Author/@createdByEmail; type xs:string
+    nullable: true
+  - name: company
+    type: text
+    meaning: Author company; the XSD gives no description.
+    source_ref: XSD Author/@company; type xs:string
+    nullable: true
+  - name: company_url
+    type: text
+    meaning: Author companyURL; the XSD gives no description.
+    source_ref: XSD Author/@companyURL; type xs:string
+    nullable: true
+  - name: time_stamp
+    type: timestamp
+    meaning: Author timeStamp; the XSD gives no description.
+    source_ref: XSD Author/@timeStamp; type xs:dateTime
+    nullable: true
+notes: Occurs 0..unbounded in landxml.application. The XSD allows foreign-namespace content here (xs:any/xs:anyAttribute); not modelled.

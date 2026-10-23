@@ -1,0 +1,20 @@
+code: ifc.structural_analysis_model_has_results
+name: IfcStructuralAnalysisModel.HasResults
+kind: child
+parent: ifc.structural_analysis_model
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralAnalysisModel.HasResults
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralAnalysisDomain/Entities/IfcStructuralAnalysisModel.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the HasResults list of IfcStructuralAnalysisModel. HasResults attribute of IfcStructuralAnalysisModel (not described in the source documentation).
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcStructuralAnalysisModel.HasResults.
+    source_ref: "IfcStructuralAnalysisModel attribute 4: OPTIONAL SET [1:?] OF IfcStructuralResultGroup"
+    ref_to: ifc.structural_result_group
+notes: "Unordered set: row order carries no meaning. EXPRESS: OPTIONAL SET [1:?] OF IfcStructuralResultGroup. The whole list is optional: no rows means not provided."

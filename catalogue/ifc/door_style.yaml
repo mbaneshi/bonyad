@@ -1,0 +1,88 @@
+code: ifc.door_style
+name: IfcDoorStyle
+kind: symbol
+base: ifc.type_product
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDoorStyle
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/reference_schemas/IFC4x3_RC4.exp
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcDoorStyle: no description in the source documentation."
+fields:
+  - name: operation_type
+    type: enum
+    meaning: OperationType attribute of IfcDoorStyle (not described in the source documentation).
+    source_ref: "IfcDoorStyle attribute 1: IfcDoorStyleOperationEnum; enumeration IfcDoorStyleOperationEnum"
+    values:
+      - value: SINGLE_SWING_LEFT
+        meaning: SINGLE_SWING_LEFT (no description for this literal in the source documentation)
+      - value: SINGLE_SWING_RIGHT
+        meaning: SINGLE_SWING_RIGHT (no description for this literal in the source documentation)
+      - value: DOUBLE_DOOR_SINGLE_SWING
+        meaning: DOUBLE_DOOR_SINGLE_SWING (no description for this literal in the source documentation)
+      - value: DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_LEFT
+        meaning: DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_LEFT (no description for this literal in the source documentation)
+      - value: DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_RIGHT
+        meaning: DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_RIGHT (no description for this literal in the source documentation)
+      - value: DOUBLE_SWING_LEFT
+        meaning: DOUBLE_SWING_LEFT (no description for this literal in the source documentation)
+      - value: DOUBLE_SWING_RIGHT
+        meaning: DOUBLE_SWING_RIGHT (no description for this literal in the source documentation)
+      - value: DOUBLE_DOOR_DOUBLE_SWING
+        meaning: DOUBLE_DOOR_DOUBLE_SWING (no description for this literal in the source documentation)
+      - value: SLIDING_TO_LEFT
+        meaning: SLIDING_TO_LEFT (no description for this literal in the source documentation)
+      - value: SLIDING_TO_RIGHT
+        meaning: SLIDING_TO_RIGHT (no description for this literal in the source documentation)
+      - value: DOUBLE_DOOR_SLIDING
+        meaning: DOUBLE_DOOR_SLIDING (no description for this literal in the source documentation)
+      - value: FOLDING_TO_LEFT
+        meaning: FOLDING_TO_LEFT (no description for this literal in the source documentation)
+      - value: FOLDING_TO_RIGHT
+        meaning: FOLDING_TO_RIGHT (no description for this literal in the source documentation)
+      - value: DOUBLE_DOOR_FOLDING
+        meaning: DOUBLE_DOOR_FOLDING (no description for this literal in the source documentation)
+      - value: REVOLVING
+        meaning: REVOLVING (no description for this literal in the source documentation)
+      - value: ROLLINGUP
+        meaning: ROLLINGUP (no description for this literal in the source documentation)
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: construction_type
+    type: enum
+    meaning: ConstructionType attribute of IfcDoorStyle (not described in the source documentation).
+    source_ref: "IfcDoorStyle attribute 2: IfcDoorStyleConstructionEnum; enumeration IfcDoorStyleConstructionEnum"
+    values:
+      - value: ALUMINIUM
+        meaning: ALUMINIUM (no description for this literal in the source documentation)
+      - value: HIGH_GRADE_STEEL
+        meaning: HIGH_GRADE_STEEL (no description for this literal in the source documentation)
+      - value: STEEL
+        meaning: STEEL (no description for this literal in the source documentation)
+      - value: WOOD
+        meaning: WOOD (no description for this literal in the source documentation)
+      - value: ALUMINIUM_WOOD
+        meaning: ALUMINIUM_WOOD (no description for this literal in the source documentation)
+      - value: ALUMINIUM_PLASTIC
+        meaning: ALUMINIUM_PLASTIC (no description for this literal in the source documentation)
+      - value: PLASTIC
+        meaning: PLASTIC (no description for this literal in the source documentation)
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: parameter_takes_precedence
+    type: bool
+    meaning: ParameterTakesPrecedence attribute of IfcDoorStyle (not described in the source documentation).
+    source_ref: "IfcDoorStyle attribute 3: IfcBoolean"
+  - name: sizeable
+    type: bool
+    meaning: Sizeable attribute of IfcDoorStyle (not described in the source documentation).
+    source_ref: "IfcDoorStyle attribute 4: IfcBoolean"
+needs_review: true
+notes: "Review: no description found for IfcDoorStyle in the documentation at the pinned commit."

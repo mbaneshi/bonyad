@@ -1,0 +1,19 @@
+code: landxml.head_of_power
+name: HeadOfPower
+kind: child
+parent: landxml.survey_header
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element HeadOfPower
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `HeadOfPower`; the XSD gives no description.
+fields:
+  - name: name
+    type: text
+    meaning: Details the legislation or regulation under which the survey was conducted, for example the Land Title Act2003 This list will be juridictionnally specific.
+    source_ref: XSD HeadOfPower/@name; type headOfPowerType
+notes: Occurs 0..unbounded in landxml.survey_header.

@@ -1,0 +1,120 @@
+code: landxml.gpsqc_info_level2
+name: GPSQCInfoLevel2
+kind: child
+parent: landxml.gps_position
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element GPSQCInfoLevel2
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `GPSQCInfoLevel2`; the XSD gives no description.
+fields:
+  - name: covariance_xx
+    type: float
+    meaning: GPSQCInfoLevel2 covarianceXX; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@covarianceXX; type xs:double
+    nullable: true
+  - name: covariance_xy
+    type: float
+    meaning: GPSQCInfoLevel2 covarianceXY; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@covarianceXY; type xs:double
+    nullable: true
+  - name: covariance_xz
+    type: float
+    meaning: GPSQCInfoLevel2 covarianceXZ; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@covarianceXZ; type xs:double
+    nullable: true
+  - name: covariance_yy
+    type: float
+    meaning: GPSQCInfoLevel2 covarianceYY; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@covarianceYY; type xs:double
+    nullable: true
+  - name: covariance_yz
+    type: float
+    meaning: GPSQCInfoLevel2 covarianceYZ; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@covarianceYZ; type xs:double
+    nullable: true
+  - name: covariance_zz
+    type: float
+    meaning: GPSQCInfoLevel2 covarianceZZ; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@covarianceZZ; type xs:double
+    nullable: true
+  - name: gps_soln_type
+    type: enum
+    meaning: The GPS solution type indicates the type of computed solution for a GPS vector or position.
+    source_ref: XSD GPSQCInfoLevel2/@GPSSolnType; type GPSSolutionTypeEnum
+    nullable: true
+    values:
+      - value: Unknown
+        meaning: Enumeration literal "Unknown"; the XSD gives no description.
+      - value: Code
+        meaning: Enumeration literal "Code"; the XSD gives no description.
+      - value: Float
+        meaning: Enumeration literal "Float"; the XSD gives no description.
+      - value: Fixed
+        meaning: Enumeration literal "Fixed"; the XSD gives no description.
+      - value: Network Float
+        meaning: Enumeration literal "Network Float"; the XSD gives no description.
+      - value: Network Fixed
+        meaning: Enumeration literal "Network Fixed"; the XSD gives no description.
+      - value: WAAS Float
+        meaning: Enumeration literal "WAAS Float"; the XSD gives no description.
+      - value: WAAS Fixed
+        meaning: Enumeration literal "WAAS Fixed"; the XSD gives no description.
+  - name: gps_soln_freq
+    type: enum
+    meaning: The GPS solution frequency indicates the GPS frequencies used in the computed solution for a GPS vector or position.
+    source_ref: XSD GPSQCInfoLevel2/@GPSSolnFreq; type GPSSolutionFrequencyEnum
+    nullable: true
+    values:
+      - value: Unknown
+        meaning: Enumeration literal "Unknown"; the XSD gives no description.
+      - value: L1
+        meaning: Enumeration literal "L1"; the XSD gives no description.
+      - value: L2
+        meaning: Enumeration literal "L2"; the XSD gives no description.
+      - value: L2 Squared
+        meaning: Enumeration literal "L2 Squared"; the XSD gives no description.
+      - value: Wide Lane
+        meaning: Enumeration literal "Wide Lane"; the XSD gives no description.
+      - value: Narrow Lane
+        meaning: Enumeration literal "Narrow Lane"; the XSD gives no description.
+      - value: Iono Free
+        meaning: Enumeration literal "Iono Free"; the XSD gives no description.
+  - name: rms
+    type: float
+    meaning: GPSQCInfoLevel2 RMS; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@RMS; type xs:double
+    nullable: true
+  - name: ratio
+    type: float
+    meaning: GPSQCInfoLevel2 ratio; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@ratio; type xs:double
+    nullable: true
+  - name: reference_variance
+    type: float
+    meaning: GPSQCInfoLevel2 referenceVariance; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@referenceVariance; type xs:double
+    nullable: true
+  - name: nbr_satellites
+    type: int
+    meaning: GPSQCInfoLevel2 nbrSatellites; the XSD gives no description.
+    source_ref: XSD GPSQCInfoLevel2/@nbrSatellites; type xs:integer
+    nullable: true
+  - name: start_time
+    type: float
+    meaning: GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week. GPS weeks * 604800 + seconds in the GPS week.
+    source_ref: XSD GPSQCInfoLevel2/@startTime; type GPSTime
+    nullable: true
+    unit: second
+  - name: stop_time
+    type: float
+    meaning: GPS Time = Nbr of GPS weeks * 604800 (seconds in a week) + seconds in GPS week. GPS weeks * 604800 + seconds in the GPS week.
+    source_ref: XSD GPSQCInfoLevel2/@stopTime; type GPSTime
+    nullable: true
+    unit: second
+notes: "Occurs 0..1 in landxml.gps_position; 0..1 in landxml.gps_vector. Review: Contained by more than one type in the XSD (also landxml.gps_vector); the catalogue allows one parent, so the first is used."
+needs_review: true

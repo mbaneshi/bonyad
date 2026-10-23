@@ -1,0 +1,43 @@
+code: ifc.unitary_control_element_type
+name: IfcUnitaryControlElementType
+kind: symbol
+base: ifc.distribution_control_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcUnitaryControlElementType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcBuildingControlsDomain/Entities/IfcUnitaryControlElementType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The distribution control element type IfcUnitaryControlElementType defines commonly shared information for occurrences of unitary control elements.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of unitary control element from which the type required may be set.
+    source_ref: "IfcUnitaryControlElementType attribute 1: IfcUnitaryControlElementTypeEnum; enumeration IfcUnitaryControlElementTypeEnum"
+    values:
+      - value: ALARMPANEL
+        meaning: A control element at which alarms are annunciated.
+      - value: CONTROLPANEL
+        meaning: A control element at which devices that control or monitor the operation of a site, building or part of a building are located.
+      - value: GASDETECTIONPANEL
+        meaning: A control element at which the detection of gas is annunciated.
+      - value: INDICATORPANEL
+        meaning: A control element at which equipment operational status, condition, safety state or other required parameters are indicated.
+      - value: MIMICPANEL
+        meaning: A control element at which information that is available elsewhere is repeated or 'mimicked'.
+      - value: HUMIDISTAT
+        meaning: A control element that senses and regulates the humidity of a system or space so that the humidity is maintained near a desired setpoint.
+      - value: THERMOSTAT
+        meaning: A control element that senses and regulates the temperature of an element, system or space so that the temperature is maintained near a desired setpoint.
+      - value: WEATHERSTATION
+        meaning: A control element that senses multiple climate properties such as temperature, humidity, pressure, wind, and rain.
+      - value: COMBINED
+        meaning: Combination of at least two predefined types of unitary control element.
+      - value: BASESTATIONCONTROLLER
+        meaning: A base station controller (BSC) is a network component with the functions for controlling one or more base transceiver stations.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

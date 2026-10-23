@@ -1,0 +1,40 @@
+code: ifc.permit
+name: IfcPermit
+kind: object
+base: ifc.control
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPermit
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedMgmtElements/Entities/IfcPermit.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A permit is a permission to perform work in places and on artifacts where regulatory, security or other access restrictions apply.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined types of permit that can be granted.
+    source_ref: "IfcPermit attribute 1: OPTIONAL IfcPermitTypeEnum; enumeration IfcPermitTypeEnum"
+    values:
+      - value: ACCESS
+        meaning: Enables access to an identified area.
+      - value: BUILDING
+        meaning: Enables work to proceed by getting regulatory permissions.
+      - value: WORK
+        meaning: Enables work to be carried out in an identified area.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.
+  - name: status
+    type: text
+    nullable: true
+    meaning: The status currently assigned to the permit.
+    source_ref: "IfcPermit attribute 2: OPTIONAL IfcLabel"
+  - name: long_description
+    type: text
+    nullable: true
+    meaning: Detailed description of the request.
+    source_ref: "IfcPermit attribute 3: OPTIONAL IfcText"

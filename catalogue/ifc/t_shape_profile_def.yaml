@@ -1,0 +1,62 @@
+code: ifc.t_shape_profile_def
+name: IfcTShapeProfileDef
+kind: symbol
+base: ifc.parameterized_profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTShapeProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcTShapeProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcTShapeProfileDef defines a section profile that provides the defining parameters of a T-shaped section to be used by the swept area solid. Its parameters and orientation relative to the position coordinate system are according to the following illustration.
+fields:
+  - name: depth
+    type: length
+    meaning: Web lengths, see illustration above (= h).
+    source_ref: "IfcTShapeProfileDef attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: flange_width
+    type: length
+    meaning: Flange lengths, see illustration above (= b).
+    source_ref: "IfcTShapeProfileDef attribute 2: IfcPositiveLengthMeasure"
+    check: positive
+  - name: web_thickness
+    type: length
+    meaning: Constant wall thickness of web (= ts).
+    source_ref: "IfcTShapeProfileDef attribute 3: IfcPositiveLengthMeasure"
+    check: positive
+  - name: flange_thickness
+    type: length
+    meaning: Constant wall thickness of flange (= tg).
+    source_ref: "IfcTShapeProfileDef attribute 4: IfcPositiveLengthMeasure"
+    check: positive
+  - name: fillet_radius
+    type: length
+    nullable: true
+    meaning: Fillet radius according the above illustration (= r1).
+    source_ref: "IfcTShapeProfileDef attribute 5: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: flange_edge_radius
+    type: length
+    nullable: true
+    meaning: Edge radius according the above illustration (= r2).
+    source_ref: "IfcTShapeProfileDef attribute 6: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: web_edge_radius
+    type: length
+    nullable: true
+    meaning: Edge radius according the above illustration (= r3).
+    source_ref: "IfcTShapeProfileDef attribute 7: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: web_slope
+    type: angle
+    nullable: true
+    meaning: Slope of flange of the profile. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcTShapeProfileDef attribute 8: OPTIONAL IfcPlaneAngleMeasure"
+  - name: flange_slope
+    type: angle
+    nullable: true
+    meaning: Slope of web of the profile. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcTShapeProfileDef attribute 9: OPTIONAL IfcPlaneAngleMeasure"

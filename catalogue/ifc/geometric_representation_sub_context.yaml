@@ -1,0 +1,54 @@
+code: ifc.geometric_representation_sub_context
+name: IfcGeometricRepresentationSubContext
+kind: object
+base: ifc.geometric_representation_context
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcGeometricRepresentationSubContext
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcRepresentationResource/Entities/IfcGeometricRepresentationSubContext.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcGeometricRepresentationSubContext defines the context that applies to several shape representations of a product being a sub context, sharing the WorldCoordinateSystem, CoordinateSpaceDimension, Precision and TrueNorth attributes with the parent IfcGeometricRepresentationContext.
+fields:
+  - name: parent_context
+    type: ref
+    meaning: Parent context from which the sub context derives its world coordinate system, precision, space coordinate dimension and true north.
+    source_ref: "IfcGeometricRepresentationSubContext attribute 1: IfcGeometricRepresentationContext"
+    ref_to: ifc.geometric_representation_context
+  - name: target_scale
+    type: ratio
+    nullable: true
+    meaning: The target plot scale of the representation to which this representation context applies.
+    source_ref: "IfcGeometricRepresentationSubContext attribute 2: OPTIONAL IfcPositiveRatioMeasure"
+    check: positive
+  - name: target_view
+    type: enum
+    meaning: Target view of the representation to which this representation context applies.
+    source_ref: "IfcGeometricRepresentationSubContext attribute 3: IfcGeometricProjectionEnum; enumeration IfcGeometricProjectionEnum"
+    values:
+      - value: GRAPH_VIEW
+        meaning: Geometric display representation that shows an abstract, often 1D element representation, e.g. representing a wall by its axis line.
+      - value: SKETCH_VIEW
+        meaning: Geometric display representation that shows an abstract, often 2D element representation, e.g. representing a wall by its two foot print edges, suppressing any inner layer representation.
+      - value: MODEL_VIEW
+        meaning: Geometric display representation that shows a full 3D element representation, e.g. representing a wall by its volumetric body.
+      - value: PLAN_VIEW
+        meaning: Geometric display representation that shows a full 2D element representation, the level of detail often depends on the target scale, e.g. representing a wall by its two foot print edges and the edges of all inner layers.
+      - value: REFLECTED_PLAN_VIEW
+        meaning: Geometric display representation that shows a full 2D element representation, the level of detail often depends on the target scale, e.g. representing a wall by its two foot print edges and the edges of all inner layers.
+      - value: SECTION_VIEW
+        meaning: Geometric display representation that shows a full 2D element representation, the level of detail often depends on the target scale, e.g. representing a wall by its two inner/outer edges and the edges of all inner …
+      - value: ELEVATION_VIEW
+        meaning: Geometric display representation that shows a full 2D element representation, the level of detail often depends on the target scale, e.g. representing a wall by its bounding edges if the element is within an elevation …
+      - value: USERDEFINED
+        meaning: A user defined specification is given by the value of the UserDefinedTargetView attribute.
+      - value: NOTDEFINED
+        meaning: No specification given.
+  - name: user_defined_target_view
+    type: text
+    nullable: true
+    meaning: User defined target view, this attribute value shall be given, if the TargetView attribute is set to USERDEFINED.
+    source_ref: "IfcGeometricRepresentationSubContext attribute 4: OPTIONAL IfcLabel"
+notes: "Inherited attributes redeclared as derived here (always computed, never stored for this type): WorldCoordinateSystem, CoordinateSpaceDimension, TrueNorth, Precision."

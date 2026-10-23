@@ -1,0 +1,85 @@
+code: ifc.named_unit
+name: IfcNamedUnit
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcNamedUnit
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMeasureResource/Entities/IfcNamedUnit.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcNamedUnit: no description in the source documentation."
+fields:
+  - name: dimensions
+    type: ref
+    meaning: The dimensional exponents of the SI base units by which the named unit is defined.
+    source_ref: "IfcNamedUnit attribute 1: IfcDimensionalExponents"
+    ref_to: ifc.dimensional_exponents
+  - name: unit_type
+    type: enum
+    meaning: The type of the unit.
+    source_ref: "IfcNamedUnit attribute 2: IfcUnitEnum; enumeration IfcUnitEnum"
+    values:
+      - value: ABSORBEDDOSEUNIT
+        meaning: Absorbed dose unit.
+      - value: AMOUNTOFSUBSTANCEUNIT
+        meaning: Amount of substance unit.
+      - value: AREAUNIT
+        meaning: Area unit.
+      - value: DOSEEQUIVALENTUNIT
+        meaning: Dose equivalent unit.
+      - value: ELECTRICCAPACITANCEUNIT
+        meaning: Electric capacitance unit.
+      - value: ELECTRICCHARGEUNIT
+        meaning: Electric charge unit.
+      - value: ELECTRICCONDUCTANCEUNIT
+        meaning: Electric conductance unit.
+      - value: ELECTRICCURRENTUNIT
+        meaning: Electric current unit.
+      - value: ELECTRICRESISTANCEUNIT
+        meaning: Electric resistance unit.
+      - value: ELECTRICVOLTAGEUNIT
+        meaning: Electric voltage unit.
+      - value: ENERGYUNIT
+        meaning: Energy unit.
+      - value: FORCEUNIT
+        meaning: Force unit.
+      - value: FREQUENCYUNIT
+        meaning: Frequency unit.
+      - value: ILLUMINANCEUNIT
+        meaning: Illuminance unit.
+      - value: INDUCTANCEUNIT
+        meaning: Inductance unit.
+      - value: LENGTHUNIT
+        meaning: Length unit.
+      - value: LUMINOUSFLUXUNIT
+        meaning: Luminous flux unit.
+      - value: LUMINOUSINTENSITYUNIT
+        meaning: Luminous intensity unit.
+      - value: MAGNETICFLUXDENSITYUNIT
+        meaning: Magnetic flux density unit.
+      - value: MAGNETICFLUXUNIT
+        meaning: Magnetic flux unit.
+      - value: MASSUNIT
+        meaning: Mass unit.
+      - value: PLANEANGLEUNIT
+        meaning: Plane angle unit.
+      - value: POWERUNIT
+        meaning: Power unit.
+      - value: PRESSUREUNIT
+        meaning: Pressure unit.
+      - value: RADIOACTIVITYUNIT
+        meaning: Radio activity unit.
+      - value: SOLIDANGLEUNIT
+        meaning: Solid angle unit.
+      - value: THERMODYNAMICTEMPERATUREUNIT
+        meaning: Thermodynamic temperature unit.
+      - value: TIMEUNIT
+        meaning: Time unit.
+      - value: VOLUMEUNIT
+        meaning: Volume unit.
+      - value: USERDEFINED
+        meaning: User defined unit type.
+needs_review: true
+notes: "SUPERTYPE OF ONEOF ( IfcContextDependentUnit , IfcConversionBasedUnit , IfcSIUnit ). Review: no description found for IfcNamedUnit in the documentation at the pinned commit."

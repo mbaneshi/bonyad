@@ -1,0 +1,71 @@
+code: ifc.tendon
+name: IfcTendon
+kind: entity
+base: ifc.reinforcing_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTendon
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcTendon.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A tendon is a steel element, such as a wire, cable, bar, rod, or strand, that is tensioned to produce compressive stress in a concrete or masonry element, typically in prestressed or post-tensioned construction.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic types for a tendon.
+    source_ref: "IfcTendon attribute 1: OPTIONAL IfcTendonTypeEnum; enumeration IfcTendonTypeEnum"
+    values:
+      - value: BAR
+        meaning: The tendon is configured as a bar.
+      - value: COATED
+        meaning: The tendon is coated.
+      - value: STRAND
+        meaning: The tendon is a strand.
+      - value: WIRE
+        meaning: The tendon is a wire.
+      - value: USERDEFINED
+        meaning: The type of tendon is user defined.
+      - value: NOTDEFINED
+        meaning: The type of tendon is not defined.
+  - name: nominal_diameter
+    type: length
+    nullable: true
+    meaning: The nominal diameter defining the cross-section size of the tendon.
+    source_ref: "IfcTendon attribute 2: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: cross_section_area
+    type: area
+    nullable: true
+    meaning: The effective cross-section area of the tendon.
+    source_ref: "IfcTendon attribute 3: OPTIONAL IfcAreaMeasure"
+  - name: tension_force
+    type: float
+    nullable: true
+    meaning: The maximum allowed tension force that can be applied on the tendon.
+    source_ref: "IfcTendon attribute 4: OPTIONAL IfcForceMeasure"
+  - name: pre_stress
+    type: float
+    nullable: true
+    meaning: The prestress to be applied on the tendon.
+    source_ref: "IfcTendon attribute 5: OPTIONAL IfcPressureMeasure"
+  - name: friction_coefficient
+    type: ratio
+    nullable: true
+    meaning: The friction coefficient between tendon and tendon sheet while the tendon is unbonded.
+    source_ref: "IfcTendon attribute 6: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+  - name: anchorage_slip
+    type: length
+    nullable: true
+    meaning: The deformation of an anchor or slippage of tendons when the prestressing device is released.
+    source_ref: "IfcTendon attribute 7: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: min_curvature_radius
+    type: length
+    nullable: true
+    meaning: The smallest curvature radius calculated on the whole effective length of the tendon where the tension properties are still valid.
+    source_ref: "IfcTendon attribute 8: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive

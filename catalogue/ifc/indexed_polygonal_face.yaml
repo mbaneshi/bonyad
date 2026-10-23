@@ -1,0 +1,20 @@
+code: ifc.indexed_polygonal_face
+name: IfcIndexedPolygonalFace
+kind: entity
+base: ifc.tessellated_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcIndexedPolygonalFace
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcIndexedPolygonalFace.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcIndexedPolygonalFace is a compact representation of a planar face being part of a face set. The vertices of the polygonal planar face are provided by 3 or more Cartesian points, defined by indices that point into an IfcCartesianPointList3D, either directly, or via the PnIndex, if provided at IfcPolygonalFaceSet.
+fields:
+  - name: coord_index
+    type: array
+    meaning: One-dimensional list with the indices for the three or more points, that define the vertices of the outer loop.
+    source_ref: "IfcIndexedPolygonalFace attribute 1: LIST [3:?] OF IfcPositiveInteger"
+    of: int
+notes: "Inverse attributes not stored: ToFaceSet. SUPERTYPE OF ONEOF ( IfcIndexedPolygonalFaceWithVoids )."

@@ -1,0 +1,37 @@
+code: ifc.cartesian_transformation_operator
+name: IfcCartesianTransformationOperator
+kind: abstract
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCartesianTransformationOperator
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcCartesianTransformationOperator.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcCartesianTransformationOperator defines an abstract supertype of different kinds of geometric transformations.
+fields:
+  - name: axis1
+    type: ref
+    nullable: true
+    meaning: The direction used to determine U[1], the derived X axis direction.
+    source_ref: "IfcCartesianTransformationOperator attribute 1: OPTIONAL IfcDirection"
+    ref_to: ifc.direction
+  - name: axis2
+    type: ref
+    nullable: true
+    meaning: The direction used to determine U[2], the derived Y axis direction.
+    source_ref: "IfcCartesianTransformationOperator attribute 2: OPTIONAL IfcDirection"
+    ref_to: ifc.direction
+  - name: local_origin
+    type: ref
+    meaning: The required translation, specified as a cartesian point.
+    source_ref: "IfcCartesianTransformationOperator attribute 3: IfcCartesianPoint"
+    ref_to: ifc.cartesian_point
+  - name: scale
+    type: float
+    nullable: true
+    meaning: The scaling value specified for the transformation.
+    source_ref: "IfcCartesianTransformationOperator attribute 4: OPTIONAL IfcReal"
+notes: "Derived attributes not stored: Scl, Dim. SUPERTYPE OF ONEOF ( IfcCartesianTransformationOperator2D , IfcCartesianTransformationOperator3D )."

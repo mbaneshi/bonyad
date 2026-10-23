@@ -1,0 +1,24 @@
+code: ifc.revolved_area_solid
+name: IfcRevolvedAreaSolid
+kind: entity
+base: ifc.swept_area_solid
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRevolvedAreaSolid
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcRevolvedAreaSolid.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcRevolvedAreaSolid is a solid created by revolving a cross section provided by a profile definition about an axis.
+fields:
+  - name: axis
+    type: ref
+    meaning: Axis about which revolution will take place.
+    source_ref: "IfcRevolvedAreaSolid attribute 1: IfcAxis1Placement"
+    ref_to: ifc.axis1_placement
+  - name: angle
+    type: angle
+    meaning: The angle through which the sweep will be made. Radians; converted from the project plane-angle unit at the source boundary.
+    source_ref: "IfcRevolvedAreaSolid attribute 2: IfcPlaneAngleMeasure"
+notes: "Derived attributes not stored: AxisLine. SUPERTYPE OF ONEOF ( IfcRevolvedAreaSolidTapered )."

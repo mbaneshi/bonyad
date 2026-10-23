@@ -1,0 +1,46 @@
+code: ifc.material_profile
+name: IfcMaterialProfile
+kind: symbol
+base: ifc.material_definition
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMaterialProfile
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMaterialResource/Entities/IfcMaterialProfile.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcMaterialProfile is a single and identifiable cross section of an element which is constructed of a number of profiles (one or more).
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: The name by which the material profile is known.
+    source_ref: "IfcMaterialProfile attribute 1: OPTIONAL IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: Definition of the material profile in descriptive terms.
+    source_ref: "IfcMaterialProfile attribute 2: OPTIONAL IfcText"
+  - name: material
+    type: ref
+    nullable: true
+    meaning: Optional reference to the material from which the profile is constructed.
+    source_ref: "IfcMaterialProfile attribute 3: OPTIONAL IfcMaterial"
+    ref_to: ifc.material
+  - name: profile
+    type: ref
+    meaning: Identification of the profile for which this material profile is associating material.
+    source_ref: "IfcMaterialProfile attribute 4: IfcProfileDef"
+    ref_to: ifc.profile_def
+  - name: priority
+    type: int
+    nullable: true
+    meaning: The relative priority of the profile, expressed as normalised integer range [0..100].
+    source_ref: "IfcMaterialProfile attribute 5: OPTIONAL IfcInteger"
+  - name: category
+    type: text
+    nullable: true
+    meaning: Category of the material profile, e.g. the role it has in the profile set it belongs to.
+    source_ref: "IfcMaterialProfile attribute 6: OPTIONAL IfcLabel"
+notes: "Inverse attributes not stored: ToMaterialProfileSet. SUPERTYPE OF ONEOF ( IfcMaterialProfileWithOffsets )."

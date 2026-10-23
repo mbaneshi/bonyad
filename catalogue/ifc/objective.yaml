@@ -1,0 +1,66 @@
+code: ifc.objective
+name: IfcObjective
+kind: object
+base: ifc.constraint
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcObjective
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcConstraintResource/Entities/IfcObjective.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcObjective captures qualitative information for an objective-based constraint.
+fields:
+  - name: logical_aggregator
+    type: enum
+    nullable: true
+    meaning: Enumeration that identifies the logical type of aggregation for the benchmark metrics.
+    source_ref: "IfcObjective attribute 2: OPTIONAL IfcLogicalOperatorEnum; enumeration IfcLogicalOperatorEnum"
+    values:
+      - value: LOGICALAND
+        meaning: Defines a relationship between operands whereby the result is true if all operands are true, and false if at least one operand is false.
+      - value: LOGICALOR
+        meaning: Defines a relationship between operands whereby the result is true if at least one operand is true, and false if all operands are false.
+      - value: LOGICALXOR
+        meaning: Defines a relationship between operands whereby the result is true if exactly one operand is true (exclusive or).
+      - value: LOGICALNOTAND
+        meaning: Defines a relationship between operands whereby the result is true if at least one operand is false, and false if all operands are true.
+      - value: LOGICALNOTOR
+        meaning: Defines a relationship between operands whereby the result is true if all operands are false, and false if at least one operand is true.
+  - name: objective_qualifier
+    type: enum
+    meaning: Enumeration that qualifies the type of objective constraint.
+    source_ref: "IfcObjective attribute 3: IfcObjectiveEnum; enumeration IfcObjectiveEnum"
+    values:
+      - value: CODECOMPLIANCE
+        meaning: A constraint whose objective is to ensure satisfaction of a code compliance provision.
+      - value: CODEWAIVER
+        meaning: A constraint whose objective is to identify an agreement that code compliance requirements (the waiver) will not be enforced.
+      - value: DESIGNINTENT
+        meaning: A constraint whose objective is to ensure satisfaction of a design intent provision.
+      - value: EXTERNAL
+        meaning: A constraint whose objective is to synchronize data with an external source such as a file.
+      - value: HEALTHANDSAFETY
+        meaning: A constraint whose objective is to ensure satisfaction of a health and safety provision.
+      - value: MERGECONFLICT
+        meaning: A constraint whose objective is to resolve a conflict such as merging data from multiple sources.
+      - value: MODELVIEW
+        meaning: A constraint whose objective is to ensure data conforms to a model view definition.
+      - value: PARAMETER
+        meaning: A constraint whose objective is to calculate a value based on other referenced values.
+      - value: REQUIREMENT
+        meaning: A constraint whose objective is to ensure satisfaction of a project requirement provision.
+      - value: SPECIFICATION
+        meaning: A constraint whose objective is to ensure satisfaction of a specification provision.
+      - value: TRIGGERCONDITION
+        meaning: A constraint whose objective is to indicate a limiting value beyond which the condition of an object requires a particular form of attention.
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: user_defined_qualifier
+    type: text
+    nullable: true
+    meaning: A user defined value that qualifies the type of objective constraint when ObjectiveQualifier attribute of type IfcObjectiveEnum has value USERDEFINED.
+    source_ref: "IfcObjective attribute 4: OPTIONAL IfcLabel"

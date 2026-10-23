@@ -1,0 +1,20 @@
+code: ifc.polyline_points
+name: IfcPolyline.Points
+kind: child
+parent: ifc.polyline
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPolyline.Points
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcPolyline.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the Points list of IfcPolyline. The points defining the polyline.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcPolyline.Points.
+    source_ref: "IfcPolyline attribute 1: LIST [2:?] OF IfcCartesianPoint"
+    ref_to: ifc.cartesian_point
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: LIST [2:?] OF IfcCartesianPoint."

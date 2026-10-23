@@ -1,0 +1,211 @@
+code: landxml.survey_header
+name: SurveyHeader
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element SurveyHeader
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: We seemed to have doubled up on the survey purpose here, but the two are quite different - maybe need a different name
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.survey
+    nullable: true
+    meaning: The landxml.survey row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: SurveyHeader name; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@name; type xs:string
+  - name: desc
+    type: text
+    meaning: SurveyHeader desc; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@desc; type xs:string
+    nullable: true
+  - name: purpose
+    type: enum
+    meaning: Used by many of the Survey elements.
+    source_ref: XSD SurveyHeader/@purpose; type purposeType
+    nullable: true
+    values:
+      - value: normal
+        meaning: Enumeration literal "normal"; the XSD gives no description.
+      - value: check
+        meaning: Enumeration literal "check"; the XSD gives no description.
+      - value: backsight
+        meaning: Enumeration literal "backsight"; the XSD gives no description.
+      - value: foresight
+        meaning: Enumeration literal "foresight"; the XSD gives no description.
+      - value: traverse
+        meaning: Enumeration literal "traverse"; the XSD gives no description.
+      - value: sideshot
+        meaning: Enumeration literal "sideshot"; the XSD gives no description.
+      - value: resection
+        meaning: Enumeration literal "resection"; the XSD gives no description.
+      - value: levelLoop
+        meaning: Enumeration literal "levelLoop"; the XSD gives no description.
+      - value: digitalLevel
+        meaning: Enumeration literal "digitalLevel"; the XSD gives no description.
+      - value: remoteElevation
+        meaning: Enumeration literal "remoteElevation"; the XSD gives no description.
+      - value: recipricalObservation
+        meaning: Enumeration literal "recipricalObservation"; the XSD gives no description.
+      - value: topo
+        meaning: Enumeration literal "topo"; the XSD gives no description.
+      - value: cutSheets
+        meaning: Enumeration literal "cutSheets"; the XSD gives no description.
+      - value: asbuilt
+        meaning: Enumeration literal "asbuilt"; the XSD gives no description.
+  - name: start_time
+    type: timestamp
+    meaning: SurveyHeader startTime; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@startTime; type xs:dateTime
+    nullable: true
+  - name: end_time
+    type: timestamp
+    meaning: SurveyHeader endTime; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@endTime; type xs:dateTime
+    nullable: true
+  - name: surveyor
+    type: text
+    meaning: SurveyHeader surveyor; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@surveyor; type xs:string
+    nullable: true
+  - name: surveyor_firm
+    type: text
+    meaning: SurveyHeader surveyorFirm; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@surveyorFirm; type xs:string
+    nullable: true
+  - name: surveyor_reference
+    type: text
+    meaning: SurveyHeader surveyorReference; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@surveyorReference; type xs:string
+    nullable: true
+  - name: surveyor_registration
+    type: text
+    meaning: SurveyHeader surveyorRegistration; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@surveyorRegistration; type xs:string
+    nullable: true
+  - name: survey_purpose
+    type: text
+    meaning: SurveyHeader surveyPurpose; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@surveyPurpose; type xs:string
+    nullable: true
+  - name: type
+    type: enum
+    meaning: This enumeration indicates whether the survey was acutally performed in the field, compiled from a series of existing surveys, or simply computed using known observations and maths.
+    source_ref: XSD SurveyHeader/@type; type surveyType
+    nullable: true
+    values:
+      - value: compiled
+        meaning: Enumeration literal "compiled"; the XSD gives no description.
+      - value: computed
+        meaning: Enumeration literal "computed"; the XSD gives no description.
+      - value: surveyed
+        meaning: Enumeration literal "surveyed"; the XSD gives no description.
+  - name: class
+    type: text
+    meaning: SurveyHeader class; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@class; type xs:string
+    nullable: true
+  - name: county
+    type: text
+    meaning: SurveyHeader county; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@county; type xs:string
+    nullable: true
+  - name: apply_atmospheric_correction
+    type: bool
+    meaning: SurveyHeader applyAtmosphericCorrection; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@applyAtmosphericCorrection; type xs:boolean
+    nullable: true
+  - name: pressure
+    type: float
+    meaning: SurveyHeader pressure; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@pressure; type xs:double
+    nullable: true
+  - name: temperature
+    type: float
+    meaning: SurveyHeader temperature; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@temperature; type xs:double
+    nullable: true
+  - name: apply_sea_level_correction
+    type: bool
+    meaning: SurveyHeader applySeaLevelCorrection; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@applySeaLevelCorrection; type xs:boolean
+    nullable: true
+  - name: scale_factor
+    type: float
+    meaning: SurveyHeader scaleFactor; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@scaleFactor; type xs:double
+    nullable: true
+  - name: sea_level_correction_factor
+    type: float
+    meaning: SurveyHeader seaLevelCorrectionFactor; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@seaLevelCorrectionFactor; type xs:double
+    nullable: true
+  - name: combined_factor
+    type: float
+    meaning: SurveyHeader combinedFactor; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@combinedFactor; type xs:double
+    nullable: true
+  - name: jurisdiction
+    type: text
+    meaning: This is the name of the juridiction in which the Survey Lies (ie which state).
+    source_ref: XSD SurveyHeader/@jurisdiction; type jurisdictionType
+    nullable: true
+  - name: submission_date
+    type: date
+    meaning: SurveyHeader submissionDate; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@submissionDate; type xs:date
+    nullable: true
+  - name: document_status
+    type: text
+    meaning: This field identifes the legal status for this document, for example it is the leagal record of survey, if was data captured from historical data etc. This is used to determine processing of the record.
+    source_ref: XSD SurveyHeader/@documentStatus; type documentStatusType
+    nullable: true
+  - name: survey_format
+    type: text
+    meaning: Describes the format of the survey and is a jurisdictionally specific list for example a stand format survey, Building Format Survey.
+    source_ref: XSD SurveyHeader/@surveyFormat; type surveyFormatType
+    nullable: true
+  - name: survey_status
+    type: text
+    meaning: Defines the status of this version of the file and will be a jurisdictionally specific list, for example "survey Record Only", Suitable for Registration" etc.
+    source_ref: XSD SurveyHeader/@surveyStatus; type surveyStatusType
+    nullable: true
+  - name: community_title_scheme_no
+    type: int
+    meaning: SurveyHeader communityTitleSchemeNo; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@communityTitleSchemeNo; type xs:int
+    nullable: true
+  - name: community_title_scheme_name
+    type: text
+    meaning: SurveyHeader communityTitleSchemeName; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@communityTitleSchemeName; type xs:string
+    nullable: true
+  - name: field_note_flag
+    type: bool
+    meaning: SurveyHeader fieldNoteFlag; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@fieldNoteFlag; type xs:boolean
+    nullable: true
+  - name: field_note_reference
+    type: text
+    meaning: SurveyHeader fieldNoteReference; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@fieldNoteReference; type xs:string
+    nullable: true
+  - name: field_report
+    type: text
+    meaning: SurveyHeader fieldReport; the XSD gives no description.
+    source_ref: XSD SurveyHeader/@fieldReport; type xs:string
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: Occurs 1..1 in landxml.survey. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

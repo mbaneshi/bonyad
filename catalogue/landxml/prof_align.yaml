@@ -1,0 +1,43 @@
+code: landxml.prof_align
+name: ProfAlign
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element ProfAlign
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: The "ProfAlign" element will typically represent a proposed vertical alignment for a profile. It is defined by a sequential series of any combination of the four "PVI" element types.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.profile
+    nullable: true
+    meaning: The landxml.profile row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: name
+    type: text
+    meaning: ProfAlign name; the XSD gives no description.
+    source_ref: XSD ProfAlign/@name; type xs:string
+  - name: desc
+    type: text
+    meaning: ProfAlign desc; the XSD gives no description.
+    source_ref: XSD ProfAlign/@desc; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: ProfAlign state; the XSD gives no description.
+    source_ref: XSD ProfAlign/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+notes: Occurs 0..unbounded in landxml.profile. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

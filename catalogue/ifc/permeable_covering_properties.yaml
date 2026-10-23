@@ -1,0 +1,64 @@
+code: ifc.permeable_covering_properties
+name: IfcPermeableCoveringProperties
+kind: symbol
+base: ifc.pre_defined_property_set
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPermeableCoveringProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcArchitectureDomain/Entities/IfcPermeableCoveringProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: This entity is a description of a panel within a door or window (as fillers for opening) which allows for air flow. It is given by its properties (IfcPermeableCoveringProperties).
+fields:
+  - name: operation_type
+    type: enum
+    meaning: Types of permeable covering operations.
+    source_ref: "IfcPermeableCoveringProperties attribute 1: IfcPermeableCoveringOperationEnum; enumeration IfcPermeableCoveringOperationEnum"
+    values:
+      - value: GRILL
+        meaning: Protective screen of metal bars or wires.
+      - value: LOUVER
+        meaning: Set of fixed or movable strips of wood, metal, etc. arranged to let air in while keeping light or rain out.
+      - value: SCREEN
+        meaning: Upright, fixed or movable, sometimes folding framework used for protection against heat, light, access or similar.
+      - value: USERDEFINED
+        meaning: User defined permeable covering type.
+      - value: NOTDEFINED
+        meaning: No information available.
+  - name: panel_position
+    type: enum
+    meaning: Position of this permeable covering panel within the overall window or door type.
+    source_ref: "IfcPermeableCoveringProperties attribute 2: IfcWindowPanelPositionEnum; enumeration IfcWindowPanelPositionEnum"
+    values:
+      - value: LEFT
+        meaning: Left.
+      - value: MIDDLE
+        meaning: Middle.
+      - value: RIGHT
+        meaning: Right.
+      - value: BOTTOM
+        meaning: Bottom.
+      - value: TOP
+        meaning: Top.
+      - value: NOTDEFINED
+        meaning: Undefined.
+  - name: frame_depth
+    type: length
+    nullable: true
+    meaning: Depth of panel frame (used to include the permeable covering), measured from front face to back face horizontally (i.e. perpendicular to the window or door (elevation) plane.
+    source_ref: "IfcPermeableCoveringProperties attribute 3: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: frame_thickness
+    type: length
+    nullable: true
+    meaning: Width of panel frame (used to include the permeable covering), measured from inside of panel (at permeable covering) to outside of panel (at lining), i.e. parallel to the window or door (elevation) plane.
+    source_ref: "IfcPermeableCoveringProperties attribute 4: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: shape_aspect_style
+    type: ref
+    nullable: true
+    meaning: Optional link to a shape aspect definition, which points to the part of the geometric representation of the window style, which is used to represent the permeable covering.
+    source_ref: "IfcPermeableCoveringProperties attribute 5: OPTIONAL IfcShapeAspect"
+    ref_to: ifc.shape_aspect

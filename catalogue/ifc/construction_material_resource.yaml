@@ -1,0 +1,42 @@
+code: ifc.construction_material_resource
+name: IfcConstructionMaterialResource
+kind: object
+base: ifc.construction_resource
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcConstructionMaterialResource
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcConstructionMgmtDomain/Entities/IfcConstructionMaterialResource.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcConstructionMaterialResource identifies a material resource type in a construction project.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Defines types of construction material resources.
+    source_ref: "IfcConstructionMaterialResource attribute 1: OPTIONAL IfcConstructionMaterialResourceTypeEnum; enumeration IfcConstructionMaterialResourceTypeEnum"
+    values:
+      - value: AGGREGATES
+        meaning: Construction aggregate including sand, gravel, and crushed stone.
+      - value: CONCRETE
+        meaning: Cast-in-place concrete.
+      - value: DRYWALL
+        meaning: Wall board, including gypsum board.
+      - value: FUEL
+        meaning: Fuel for running equipment.
+      - value: GYPSUM
+        meaning: Any gypsum material.
+      - value: MASONRY
+        meaning: Masonry including brick, stone, concrete block, glass block, and tile.
+      - value: METAL
+        meaning: Any metallic material.
+      - value: PLASTIC
+        meaning: Any plastic material.
+      - value: WOOD
+        meaning: Any wood material.
+      - value: NOTDEFINED
+        meaning: Undefined resource.
+      - value: USERDEFINED
+        meaning: User-defined resource.

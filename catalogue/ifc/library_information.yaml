@@ -1,0 +1,45 @@
+code: ifc.library_information
+name: IfcLibraryInformation
+kind: object
+base: ifc.external_information
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcLibraryInformation
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcLibraryInformation.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcLibraryInformation describes an external structured store of information, normally organized in a manner which allows information lookup through an index or reference value. IfcLibraryInformation provides the library Name and optional Description, Version, VersionDate and Publisher attributes.
+fields:
+  - name: name
+    type: text
+    meaning: The name which is used to identify the library.
+    source_ref: "IfcLibraryInformation attribute 1: IfcLabel"
+  - name: version
+    type: text
+    nullable: true
+    meaning: Identifier for the library version used for reference.
+    source_ref: "IfcLibraryInformation attribute 2: OPTIONAL IfcLabel"
+  - name: publisher
+    type: ref
+    nullable: true
+    meaning: Information of the organization that acts as the library publisher.
+    source_ref: "IfcLibraryInformation attribute 3: OPTIONAL IfcActorSelect; via select IfcActorSelect"
+    ref_to: any
+  - name: version_date
+    type: timestamp
+    nullable: true
+    meaning: Date of the referenced version of the library.
+    source_ref: "IfcLibraryInformation attribute 4: OPTIONAL IfcDateTime"
+  - name: location
+    type: text
+    nullable: true
+    meaning: Resource identifier or locator, provided as URI, URN or URL, of the library information for online references.
+    source_ref: "IfcLibraryInformation attribute 5: OPTIONAL IfcURIReference"
+  - name: description
+    type: text
+    nullable: true
+    meaning: Additional description provided for the library revision information.
+    source_ref: "IfcLibraryInformation attribute 6: OPTIONAL IfcText"
+notes: "Inverse attributes not stored: LibraryInfoForObjects, HasLibraryReferences."

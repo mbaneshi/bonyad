@@ -1,0 +1,29 @@
+code: ifc.external_reference
+name: IfcExternalReference
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcExternalReference
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcExternalReference.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcExternalReference is the identification of information that is not explicitly represented in the current model or in the project database (as an implementation of the current model). Such information may be contained in classifications, documents or libraries.
+fields:
+  - name: location
+    type: text
+    nullable: true
+    meaning: Location, where the external source (classification, document or library) can be accessed by electronic means.
+    source_ref: "IfcExternalReference attribute 1: OPTIONAL IfcURIReference"
+  - name: identification
+    type: text
+    nullable: true
+    meaning: The Identification provides a unique identifier of the referenced item within the external source (classification, document or library).
+    source_ref: "IfcExternalReference attribute 2: OPTIONAL IfcIdentifier"
+  - name: name
+    type: text
+    nullable: true
+    meaning: Optional name to further specify the reference.
+    source_ref: "IfcExternalReference attribute 3: OPTIONAL IfcLabel"
+notes: "Inverse attributes not stored: ExternalReferenceForResources. SUPERTYPE OF ONEOF ( IfcClassificationReference , IfcDocumentReference , IfcExternallyDefinedHatchStyle , IfcExternallyDefinedSurfaceStyle , IfcExternallyDefinedTextFont , IfcLibraryReference )."

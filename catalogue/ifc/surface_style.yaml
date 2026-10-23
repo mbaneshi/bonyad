@@ -1,0 +1,25 @@
+code: ifc.surface_style
+name: IfcSurfaceStyle
+kind: symbol
+base: ifc.presentation_style
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSurfaceStyle
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcSurfaceStyle.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcSurfaceStyle is an assignment of one or many surface style elements to a surface, defined by subtypes of IfcSurface, IfcFaceBasedSurfaceModel, IfcShellBasedSurfaceModel, or by subtypes of IfcSolidModel. The positive direction of the surface normal relates to the positive side.
+fields:
+  - name: side
+    type: enum
+    meaning: An indication of which side of the surface to apply the style.
+    source_ref: "IfcSurfaceStyle attribute 1: IfcSurfaceSide; enumeration IfcSurfaceSide"
+    values:
+      - value: POSITIVE
+        meaning: The side of a surface which is in the same direction as the surface normal derived from the mathematical definition.
+      - value: NEGATIVE
+        meaning: The side of a surface which is in the opposite direction than the surface normal derived from the mathematical definition.
+      - value: BOTH
+        meaning: Both, positive and negative side.

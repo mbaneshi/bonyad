@@ -1,0 +1,128 @@
+code: ifc.distribution_system
+name: IfcDistributionSystem
+kind: object
+base: ifc.system
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDistributionSystem
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgServiceElements/Entities/IfcDistributionSystem.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A distribution system is a network designed to receive, store, maintain, distribute, or control the flow of a distribution media. A common example is a heating hot water system that consists of a pump, a tank, and an interconnected piping system for distributing hot water to terminals.
+fields:
+  - name: long_name
+    type: text
+    nullable: true
+    meaning: Long name for a distribution system, used for informal purposes.
+    source_ref: "IfcDistributionSystem attribute 1: OPTIONAL IfcLabel"
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcDistributionSystem (not described in the source documentation).
+    source_ref: "IfcDistributionSystem attribute 2: OPTIONAL IfcDistributionSystemEnum; enumeration IfcDistributionSystemEnum"
+    values:
+      - value: AIRCONDITIONING
+        meaning: Conditioned air distribution system for purposes of maintaining a temperature range within one or more spaces.
+      - value: AUDIOVISUAL
+        meaning: A transport of a single media source, having audio and/or video streams.
+      - value: CHEMICAL
+        meaning: Arbitrary chemical further qualified by property set, such as for medical or industrial use.
+      - value: CHILLEDWATER
+        meaning: Nonpotable chilled water, such as circulated through an evaporator.
+      - value: COMMUNICATION
+        meaning: Communication.
+      - value: COMPRESSEDAIR
+        meaning: Compressed air system.
+      - value: CONDENSERWATER
+        meaning: Nonpotable water, such as circulated through a condenser.
+      - value: CONTROL
+        meaning: A transport or network dedicated to control system usage.
+      - value: CONVEYING
+        meaning: Arbitrary supply of substances.
+      - value: DATA
+        meaning: A network having general-purpose usage.
+      - value: DISPOSAL
+        meaning: Arbitrary disposal of substances.
+      - value: DOMESTICCOLDWATER
+        meaning: Unheated potable water distribution system.
+      - value: DOMESTICHOTWATER
+        meaning: Heated potable water distribution system.
+      - value: DRAINAGE
+        meaning: Drainage collection system.
+      - value: EARTHING
+        meaning: A path for equipotential bonding, conducting current to the ground.
+      - value: ELECTRICAL
+        meaning: A circuit for delivering electrical power.
+      - value: ELECTROACOUSTIC
+        meaning: An amplified audio signal such as for loudspeakers.
+      - value: EXHAUST
+        meaning: Exhaust air collection system for removing stale or noxious air from one or more spaces.
+      - value: FIREPROTECTION
+        meaning: Fire protection sprinkler system.
+      - value: FUEL
+        meaning: Arbitrary supply of fuel.
+      - value: GAS
+        meaning: Gas-phase materials such as methane or natural gas.
+      - value: HAZARDOUS
+        meaning: Hazardous material or fluid collection system.
+      - value: HEATING
+        meaning: Water or steam heated from a boiler and circulated through radiators.
+      - value: LIGHTING
+        meaning: A circuit dedicated for lighting, such as a fixture having sockets for lamps.
+      - value: LIGHTNINGPROTECTION
+        meaning: A path for conducting lightning current to the ground.
+      - value: MUNICIPALSOLIDWASTE
+        meaning: Items consumed and discarded, commonly known as trash or garbage.
+      - value: OIL
+        meaning: Oil distribution system.
+      - value: OPERATIONAL
+        meaning: Operating supplies system.
+      - value: POWERGENERATION
+        meaning: A path for power generation.
+      - value: RAINWATER
+        meaning: Rainwater resulting from precipitation which directly falls on a parcel.
+      - value: REFRIGERATION
+        meaning: Refrigerant distribution system for purposes of fulfilling all or parts of a refrigeration cycle.
+      - value: SECURITY
+        meaning: A transport or network dedicated to security system usage.
+      - value: SEWAGE
+        meaning: Sewage collection system.
+      - value: SIGNAL
+        meaning: A raw analog signal, such as modulated data or measurements from sensors.
+      - value: STORMWATER
+        meaning: Stormwater resulting from precipitation which runs off or travels over the ground surface.
+      - value: TELEPHONE
+        meaning: A transport or network dedicated to telephone system usage.
+      - value: TV
+        meaning: A transport of multiple media sources such as analog cable TV, satellite TV, or over-the-air TV.
+      - value: VACUUM
+        meaning: Vacuum distribution system.
+      - value: VENT
+        meaning: Vent system for wastewater piping systems.
+      - value: VENTILATION
+        meaning: Ventilation air distribution system involved in either the exchange of air to the outside as well as circulation of air within a building.
+      - value: WASTEWATER
+        meaning: Water adversely affected in quality by anthropogenic influence, possibly originating from sewage, drainage, or other source.
+      - value: WATERSUPPLY
+        meaning: Arbitrary water supply.
+      - value: CATENARY_SYSTEM
+        meaning: A longitudinal distribution system that supports contact wires, including catenary wire droppers and stich wires.
+      - value: OVERHEAD_CONTACTLINE_SYSTEM
+        meaning: An overhead contact line system above the upper limit of the train using an overhead contact line and a catenary system to supply current to traction units.
+      - value: RETURN_CIRCUIT
+        meaning: A distribution system which forms the intended path for the traction return current and the current under fault conditions.
+      - value: FIXEDTRANSMISSIONNETWORK
+        meaning: Represents all wired networks that provide a data transmission channel using optical fiber cables, copper cables or both.
+      - value: OPERATIONALTELEPHONYSYSTEM
+        meaning: A system that allows communications between operators (e.g. switchtender, traffic regulator, operational agents, etc.) in operational centers and on the infrastructure site (e.g. railway, tunnel or road).
+      - value: MOBILENETWORK
+        meaning: Mobile network insures wireless communication by providing a secure platform for voice and data communication between infrastructure operators, including drivers, dispatchers, shunting team members and station …
+      - value: MONITORINGSYSTEM
+        meaning: Sensor-based system for building and infrastructure environmental monitoring and control.
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+notes: SUPERTYPE OF ONEOF ( IfcDistributionCircuit ).

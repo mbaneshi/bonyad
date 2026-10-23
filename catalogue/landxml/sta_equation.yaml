@@ -1,0 +1,43 @@
+code: landxml.sta_equation
+name: StaEquation
+kind: child
+parent: landxml.alignment
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element StaEquation
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: The "staInternal" value identifies the location of the station equation. It is the station value with no equations applied (staStart + dist).
+fields:
+  - name: sta_ahead
+    type: float
+    meaning: StaEquation staAhead; the XSD gives no description.
+    source_ref: XSD StaEquation/@staAhead; type xs:double
+  - name: sta_back
+    type: float
+    meaning: StaEquation staBack; the XSD gives no description.
+    source_ref: XSD StaEquation/@staBack; type xs:double
+    nullable: true
+  - name: sta_internal
+    type: float
+    meaning: StaEquation staInternal; the XSD gives no description.
+    source_ref: XSD StaEquation/@staInternal; type xs:double
+  - name: sta_increment
+    type: enum
+    meaning: StaEquation staIncrement; the XSD gives no description.
+    source_ref: XSD StaEquation/@staIncrement; type stationIncrementDirectionType
+    nullable: true
+    values:
+      - value: increasing
+        meaning: Enumeration literal "increasing"; the XSD gives no description.
+      - value: decreasing
+        meaning: Enumeration literal "decreasing"; the XSD gives no description.
+  - name: desc
+    type: text
+    meaning: StaEquation desc; the XSD gives no description.
+    source_ref: XSD StaEquation/@desc; type xs:string
+    nullable: true
+notes: Occurs 0..unbounded in landxml.alignment.

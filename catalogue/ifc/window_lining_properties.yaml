@@ -1,0 +1,83 @@
+code: ifc.window_lining_properties
+name: IfcWindowLiningProperties
+kind: symbol
+base: ifc.pre_defined_property_set
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcWindowLiningProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcArchitectureDomain/Entities/IfcWindowLiningProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The window lining is the outer frame which enables the window to be fixed in position. The window lining is used to hold the window panels or other casements.
+fields:
+  - name: lining_depth
+    type: length
+    nullable: true
+    meaning: Depth of the window lining (dimension measured perpendicular to window elevation plane).
+    source_ref: "IfcWindowLiningProperties attribute 1: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: lining_thickness
+    type: length
+    nullable: true
+    meaning: Thickness of the window lining as explained in the figure above.
+    source_ref: "IfcWindowLiningProperties attribute 2: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: transom_thickness
+    type: length
+    nullable: true
+    meaning: Thickness of the transom (horizontal separator of window panels within a window), measured parallel to the window elevation plane.
+    source_ref: "IfcWindowLiningProperties attribute 3: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: mullion_thickness
+    type: length
+    nullable: true
+    meaning: Thickness of the mullion (vertical separator of window panels within a window), measured parallel to the window elevation plane.
+    source_ref: "IfcWindowLiningProperties attribute 4: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative
+  - name: first_transom_offset
+    type: ratio
+    nullable: true
+    meaning: Offset of the transom centerline, measured along the z-axis of the window placement coordinate system.
+    source_ref: "IfcWindowLiningProperties attribute 5: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+  - name: second_transom_offset
+    type: ratio
+    nullable: true
+    meaning: Offset of the transom centerline for the second transom, measured along the x-axis of the window placement coordinate system.
+    source_ref: "IfcWindowLiningProperties attribute 6: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+  - name: first_mullion_offset
+    type: ratio
+    nullable: true
+    meaning: Offset of the mullion centerline, measured along the x-axis of the window placement coordinate system.
+    source_ref: "IfcWindowLiningProperties attribute 7: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+  - name: second_mullion_offset
+    type: ratio
+    nullable: true
+    meaning: Offset of the mullion centerline for the second mullion, measured along the x-axis of the window placement coordinate system.
+    source_ref: "IfcWindowLiningProperties attribute 8: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+  - name: shape_aspect_style
+    type: ref
+    nullable: true
+    meaning: Optional link to a shape aspect definition, which points to the part of the geometric representation of the window style, which is used to represent the lining.
+    source_ref: "IfcWindowLiningProperties attribute 9: OPTIONAL IfcShapeAspect"
+    ref_to: ifc.shape_aspect
+  - name: lining_offset
+    type: length
+    nullable: true
+    meaning: Offset of the window lining.
+    source_ref: "IfcWindowLiningProperties attribute 10: OPTIONAL IfcLengthMeasure"
+  - name: lining_to_panel_offset_x
+    type: length
+    nullable: true
+    meaning: Offset between the lining and the window panel measured along the x-axis of the local placement.
+    source_ref: "IfcWindowLiningProperties attribute 11: OPTIONAL IfcLengthMeasure"
+  - name: lining_to_panel_offset_y
+    type: length
+    nullable: true
+    meaning: Offset between the lining and the window panel measured along the y-axis of the local placement.
+    source_ref: "IfcWindowLiningProperties attribute 12: OPTIONAL IfcLengthMeasure"

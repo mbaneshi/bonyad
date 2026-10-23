@@ -1,0 +1,25 @@
+code: ifc.segmented_reference_curve
+name: IfcSegmentedReferenceCurve
+kind: entity
+base: ifc.composite_curve
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSegmentedReferenceCurve
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcSegmentedReferenceCurve.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcSegmentedReferenceCurve is a curve defined in the linear parameter space of its base curve that is set in the attribute BaseCurve. The base curve provides a basis for the positioning of the collection of IfcCurveSegment occurrences.
+fields:
+  - name: base_curve
+    type: ref
+    meaning: The basis curve providing a linear reference system for the segmented curve definition.
+    source_ref: "IfcSegmentedReferenceCurve attribute 1: IfcBoundedCurve"
+    ref_to: ifc.bounded_curve
+  - name: end_point
+    type: ref
+    nullable: true
+    meaning: An explicit end placement providing a location and orientation of the segmented reference curve termination point.
+    source_ref: "IfcSegmentedReferenceCurve attribute 2: OPTIONAL IfcPlacement"
+    ref_to: ifc.placement

@@ -1,0 +1,23 @@
+code: landxml.exclusions
+name: Exclusions
+kind: child
+parent: landxml.parcel
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Exclusions
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: An Exclusion is an area which has been reserved from a tenure for a specific purpose but may have no defined spatial extent for example 10ha for road. A single parcel could have more than one eclusion for different purposes.
+fields:
+  - name: exclusion_type
+    type: text
+    meaning: This is a jurisdictionally based list of exclusions for a Title example would be exclusions for Road, Track, Esplanade etc.
+    source_ref: XSD Exclusions/@exclusionType; type exclusType
+  - name: area
+    type: float
+    meaning: Exclusions area; the XSD gives no description.
+    source_ref: XSD Exclusions/@area; type xs:double
+notes: Occurs 0..unbounded in landxml.parcel.

@@ -1,0 +1,29 @@
+code: ifc.structural_load_temperature
+name: IfcStructuralLoadTemperature
+kind: object
+base: ifc.structural_load_static
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcStructuralLoadTemperature
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcStructuralLoadResource/Entities/IfcStructuralLoadTemperature.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An instance of the entity IfcStructuralLoadTemperature shall be used to define actions which are caused by a temperature change. As shown in Figure 1, the change of temperature is given with a constant value which is applied to the complete section and values for temperature differences between outer fibres of the section.
+fields:
+  - name: delta_t_constant
+    type: float
+    nullable: true
+    meaning: Temperature change which affects the complete section of the structural member, or the uniform portion of a non-uniform temperature change.
+    source_ref: "IfcStructuralLoadTemperature attribute 1: OPTIONAL IfcThermodynamicTemperatureMeasure"
+  - name: delta_ty
+    type: float
+    nullable: true
+    meaning: Non-uniform temperature change, specified as the difference of the temperature change at the outer fibre of the positive y direction minus the temperature change at the outer fibre of the negative y direction of the analysis member.
+    source_ref: "IfcStructuralLoadTemperature attribute 2: OPTIONAL IfcThermodynamicTemperatureMeasure"
+  - name: delta_tz
+    type: float
+    nullable: true
+    meaning: Non-uniform temperature change, specified as the difference of the temperature change at the outer fibre of the positive z direction minus the temperature change at the outer fibre of the negative z direction of the analysis member.
+    source_ref: "IfcStructuralLoadTemperature attribute 3: OPTIONAL IfcThermodynamicTemperatureMeasure"

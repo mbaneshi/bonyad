@@ -1,0 +1,35 @@
+code: ifc.property_bounded_value
+name: IfcPropertyBoundedValue
+kind: object
+base: ifc.simple_property
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPropertyBoundedValue
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPropertyResource/Entities/IfcPropertyBoundedValue.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A property with a bounded value, IfcPropertyBoundedValue, defines a property object which has a maximum of two (numeric or descriptive) values assigned, the first value specifying the upper bound and the second value specifying the lower bound. It defines a property - value bound (min-max) combination for which the property Name, an optional Description, …
+fields:
+  - name: upper_bound_value
+    type: text
+    nullable: true
+    meaning: Upper bound value for the interval defining the property value.
+    source_ref: "IfcPropertyBoundedValue attribute 1: OPTIONAL IfcValue; SELECT IfcValue of value types, stored as text (the member type tag is not kept)"
+  - name: lower_bound_value
+    type: text
+    nullable: true
+    meaning: Lower bound value for the interval defining the property value.
+    source_ref: "IfcPropertyBoundedValue attribute 2: OPTIONAL IfcValue; SELECT IfcValue of value types, stored as text (the member type tag is not kept)"
+  - name: unit
+    type: ref
+    nullable: true
+    meaning: Unit for the upper and lower bound values, if not given, the default value for the measure type is used as defined by the global unit assignment at _IfcProject.UnitInContext_. The applicable unit is then selected by the underlying TYPE of the UpperBoundValue, …
+    source_ref: "IfcPropertyBoundedValue attribute 3: OPTIONAL IfcUnit; via select IfcUnit"
+    ref_to: any
+  - name: set_point_value
+    type: text
+    nullable: true
+    meaning: Set point value as typically used for operational value setting.
+    source_ref: "IfcPropertyBoundedValue attribute 4: OPTIONAL IfcValue; SELECT IfcValue of value types, stored as text (the member type tag is not kept)"

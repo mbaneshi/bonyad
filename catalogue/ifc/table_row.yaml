@@ -1,0 +1,24 @@
+code: ifc.table_row
+name: IfcTableRow
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTableRow
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcUtilityResource/Entities/IfcTableRow.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcTableRow contains data for a single row within an IfcTable.
+fields:
+  - name: row_cells
+    type: array
+    nullable: true
+    meaning: The data value of the table cell..
+    source_ref: "IfcTableRow attribute 1: OPTIONAL LIST [1:?] OF IfcValue; elements are SELECT IfcValue of value types, stored as text (the member type tag is not kept)"
+    of: text
+  - name: is_heading
+    type: bool
+    nullable: true
+    meaning: Flag which identifies if the row is a heading row or a row which contains row values.
+    source_ref: "IfcTableRow attribute 2: OPTIONAL IfcBoolean"

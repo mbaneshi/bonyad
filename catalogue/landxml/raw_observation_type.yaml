@@ -1,0 +1,167 @@
+code: landxml.raw_observation_type
+name: RawObservationType
+kind: abstract
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: complexType RawObservationType
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `RawObservationType`; the XSD gives no description.
+fields:
+  - name: setup_id
+    type: ref
+    meaning: "RawObservationType setupID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD RawObservationType/@setupID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: target_setup_id
+    type: ref
+    meaning: "RawObservationType targetSetupID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD RawObservationType/@targetSetupID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: set_id
+    type: text
+    meaning: RawObservationType setID; the XSD gives no description.
+    source_ref: XSD RawObservationType/@setID; type xs:anySimpleType
+    nullable: true
+  - name: purpose
+    type: enum
+    meaning: Used by many of the Survey elements.
+    source_ref: XSD RawObservationType/@purpose; type purposeType
+    nullable: true
+    values:
+      - value: normal
+        meaning: Enumeration literal "normal"; the XSD gives no description.
+      - value: check
+        meaning: Enumeration literal "check"; the XSD gives no description.
+      - value: backsight
+        meaning: Enumeration literal "backsight"; the XSD gives no description.
+      - value: foresight
+        meaning: Enumeration literal "foresight"; the XSD gives no description.
+      - value: traverse
+        meaning: Enumeration literal "traverse"; the XSD gives no description.
+      - value: sideshot
+        meaning: Enumeration literal "sideshot"; the XSD gives no description.
+      - value: resection
+        meaning: Enumeration literal "resection"; the XSD gives no description.
+      - value: levelLoop
+        meaning: Enumeration literal "levelLoop"; the XSD gives no description.
+      - value: digitalLevel
+        meaning: Enumeration literal "digitalLevel"; the XSD gives no description.
+      - value: remoteElevation
+        meaning: Enumeration literal "remoteElevation"; the XSD gives no description.
+      - value: recipricalObservation
+        meaning: Enumeration literal "recipricalObservation"; the XSD gives no description.
+      - value: topo
+        meaning: Enumeration literal "topo"; the XSD gives no description.
+      - value: cutSheets
+        meaning: Enumeration literal "cutSheets"; the XSD gives no description.
+      - value: asbuilt
+        meaning: Enumeration literal "asbuilt"; the XSD gives no description.
+  - name: target_height
+    type: float
+    meaning: RawObservationType targetHeight; the XSD gives no description.
+    source_ref: XSD RawObservationType/@targetHeight; type xs:double
+    nullable: true
+  - name: horiz_angle
+    type: angle
+    meaning: Represents a normalized angular value in the specified Angular units. Assume 0 degrees = east. Stored in radians. The file value is expressed in Units angularUnit (default radians) and is converted at the import boundary. The XSD defines it as measured counter-clockwise from east (0 = east).
+    source_ref: XSD RawObservationType/@horizAngle; type angle
+    nullable: true
+  - name: slope_distance
+    type: float
+    meaning: RawObservationType slopeDistance; the XSD gives no description.
+    source_ref: XSD RawObservationType/@slopeDistance; type xs:double
+    nullable: true
+  - name: zenith_angle
+    type: angle
+    meaning: Represents zenith angles with the 0 origin as straight up and measured in a clockwise direction in the specified Angular units. Stored in radians. The file value is expressed in the Units angular unit and is converted at the import boundary. The XSD defines it with 0 = straight up, measured clockwise.
+    source_ref: XSD RawObservationType/@zenithAngle; type zenithAngle
+    nullable: true
+  - name: horiz_distance
+    type: float
+    meaning: RawObservationType horizDistance; the XSD gives no description.
+    source_ref: XSD RawObservationType/@horizDistance; type xs:double
+    nullable: true
+  - name: vert_distance
+    type: float
+    meaning: RawObservationType vertDistance; the XSD gives no description.
+    source_ref: XSD RawObservationType/@vertDistance; type xs:double
+    nullable: true
+  - name: azimuth
+    type: angle
+    meaning: Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them.
+    source_ref: XSD RawObservationType/@azimuth; type direction
+    nullable: true
+  - name: unused
+    type: bool
+    meaning: RawObservationType unused; the XSD gives no description.
+    source_ref: XSD RawObservationType/@unused; type xs:boolean
+    nullable: true
+  - name: direct_face
+    type: bool
+    meaning: RawObservationType directFace; the XSD gives no description.
+    source_ref: XSD RawObservationType/@directFace; type xs:boolean
+    nullable: true
+  - name: coord_geom_refs
+    type: array
+    meaning: name attributes. Space-delimited list of element names (name-based references).
+    source_ref: XSD RawObservationType/@coordGeomRefs; type coordGeomNameRefs
+    nullable: true
+    of: text
+  - name: time_stamp
+    type: timestamp
+    meaning: RawObservationType timeStamp; the XSD gives no description.
+    source_ref: XSD RawObservationType/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: align_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD RawObservationType/@alignRef; type alignmentNameRef
+    nullable: true
+    ref_to: landxml.alignment
+  - name: align_station_name
+    type: text
+    meaning: RawObservationType alignStationName; the XSD gives no description.
+    source_ref: XSD RawObservationType/@alignStationName; type xs:string
+    nullable: true
+  - name: align_offset
+    type: length
+    meaning: Represents a linear offset distance. When associated with horizontal (planametric) road or coordinate geometry, the offset is a 2D distance measured perpendicular to the road centerline or coordinate geometry used as... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD RawObservationType/@alignOffset; type offsetDistance
+    nullable: true
+  - name: upper_stadia
+    type: float
+    meaning: RawObservationType upperStadia; the XSD gives no description.
+    source_ref: XSD RawObservationType/@upperStadia; type xs:double
+    nullable: true
+  - name: rod
+    type: float
+    meaning: RawObservationType rod; the XSD gives no description.
+    source_ref: XSD RawObservationType/@rod; type xs:double
+    nullable: true
+  - name: lower_stadia
+    type: float
+    meaning: RawObservationType lowerStadia; the XSD gives no description.
+    source_ref: XSD RawObservationType/@lowerStadia; type xs:double
+    nullable: true
+  - name: circle_position_set
+    type: float
+    meaning: RawObservationType circlePositionSet; the XSD gives no description.
+    source_ref: XSD RawObservationType/@circlePositionSet; type xs:double
+    nullable: true
+  - name: status
+    type: enum
+    meaning: RawObservationType status; the XSD gives no description.
+    source_ref: XSD RawObservationType/@status; type observationStatusType
+    nullable: true
+    values:
+      - value: modified
+        meaning: Enumeration literal "modified"; the XSD gives no description.
+      - value: deleted
+        meaning: Enumeration literal "deleted"; the XSD gives no description.
+notes: Named complexType used as the xs:extension base of stored elements; never stored itself.

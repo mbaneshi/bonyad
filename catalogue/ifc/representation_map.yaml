@@ -1,0 +1,24 @@
+code: ifc.representation_map
+name: IfcRepresentationMap
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRepresentationMap
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcRepresentationMap.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcRepresentationMap defines the base definition (also referred to as block, cell or macro) called MappedRepresentation within the MappingOrigin. The MappingOrigin defines the coordinate system in which the MappedRepresentation is defined.
+fields:
+  - name: mapping_origin
+    type: ref
+    meaning: An axis2 placement that defines the position about which the mapped representation is mapped.
+    source_ref: "IfcRepresentationMap attribute 1: IfcAxis2Placement; via select IfcAxis2Placement"
+    ref_to: ifc.placement
+  - name: mapped_representation
+    type: ref
+    meaning: A representation that is mapped to at least one mapped item.
+    source_ref: "IfcRepresentationMap attribute 2: IfcRepresentation"
+    ref_to: ifc.representation
+notes: "Inverse attributes not stored: HasShapeAspects, MapUsage."

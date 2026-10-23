@@ -1,0 +1,30 @@
+code: ifc.work_time
+name: IfcWorkTime
+kind: object
+base: ifc.scheduling_time
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcWorkTime
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcDateTimeResource/Entities/IfcWorkTime.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcWorkTime defines time periods that are used by IfcWorkCalendar for either describing working times or non-working exception times. Besides start and finish dates, a set of time periods can be given by various types of recurrence patterns.
+fields:
+  - name: recurrence_pattern
+    type: ref
+    nullable: true
+    meaning: Recurrence pattern that defines a time period, which, if given, is valid within the time period defined by _IfcWorkTime.Start_ and _IfcWorkTime.Finish_.
+    source_ref: "IfcWorkTime attribute 1: OPTIONAL IfcRecurrencePattern"
+    ref_to: ifc.recurrence_pattern
+  - name: start
+    type: date
+    nullable: true
+    meaning: Start date of the work time (0:00), that might be further restricted by a recurrence pattern.
+    source_ref: "IfcWorkTime attribute 2: OPTIONAL IfcDate"
+  - name: finish
+    type: date
+    nullable: true
+    meaning: End date of the work time (24:00), that might be further restricted by a recurrence pattern.
+    source_ref: "IfcWorkTime attribute 3: OPTIONAL IfcDate"

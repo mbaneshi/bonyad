@@ -1,0 +1,52 @@
+code: landxml.channel
+name: Channel
+kind: child
+parent: landxml.pipe
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Channel
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Channel`; the XSD gives no description.
+fields:
+  - name: height
+    type: float
+    meaning: Channel height; the XSD gives no description.
+    source_ref: XSD Channel/@height; type xs:double
+  - name: width_top
+    type: float
+    meaning: Channel widthTop; the XSD gives no description.
+    source_ref: XSD Channel/@widthTop; type xs:double
+  - name: width_bottom
+    type: float
+    meaning: Channel widthBottom; the XSD gives no description.
+    source_ref: XSD Channel/@widthBottom; type xs:double
+  - name: desc
+    type: text
+    meaning: Channel desc; the XSD gives no description.
+    source_ref: XSD Channel/@desc; type xs:string
+    nullable: true
+  - name: hazen_williams
+    type: float
+    meaning: Channel hazenWilliams; the XSD gives no description.
+    source_ref: XSD Channel/@hazenWilliams; type xs:double
+    nullable: true
+  - name: mannings
+    type: float
+    meaning: Channel mannings; the XSD gives no description.
+    source_ref: XSD Channel/@mannings; type xs:double
+    nullable: true
+  - name: material
+    type: text
+    meaning: Channel material; the XSD gives no description.
+    source_ref: XSD Channel/@material; type xs:anySimpleType
+    nullable: true
+  - name: thickness
+    type: float
+    meaning: Channel thickness; the XSD gives no description.
+    source_ref: XSD Channel/@thickness; type xs:double
+    nullable: true
+notes: Occurs 1..1 in landxml.pipe.

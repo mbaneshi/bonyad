@@ -1,0 +1,54 @@
+code: ifc.compressor
+name: IfcCompressor
+kind: entity
+base: ifc.flow_moving_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCompressor
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcCompressor.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A compressor is a device that compresses a fluid typically used in a refrigeration circuit.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcCompressor (not described in the source documentation).
+    source_ref: "IfcCompressor attribute 1: OPTIONAL IfcCompressorTypeEnum; enumeration IfcCompressorTypeEnum"
+    values:
+      - value: DYNAMIC
+        meaning: The pressure of refrigerant vapor is increased by a continuous transfer of angular momentum from a rotating member to the vapor followed by conversion of this momentum into static pressure.
+      - value: RECIPROCATING
+        meaning: Positive-displacement compressor using a piston driven by a connecting rod from a crankshaft.
+      - value: ROTARY
+        meaning: Positive-displacement compressor using a roller or rotor device.
+      - value: SCROLL
+        meaning: Positive-displacement compressor using two inter-fitting, spiral-shaped scroll members.
+      - value: TROCHOIDAL
+        meaning: Positive-displacement compressor using a rolling motion of one circle outside or inside the circumference of a basic circle and produce either epitrochoids or hypotrochoids.
+      - value: SINGLESTAGE
+        meaning: Positive-displacement reciprocating compressor where vapor is compressed in a single stage.
+      - value: BOOSTER
+        meaning: Positive-displacement reciprocating compressor where pressure is increased by a booster.
+      - value: OPENTYPE
+        meaning: Positive-displacement reciprocating compressor where the shaft extends through a seal in the crankcase for an external drive.
+      - value: HERMETIC
+        meaning: Positive-displacement reciprocating compressor where the motor and compressor are contained within the same housing, with the motor shaft integral with the compressor crankshaft and the motor in contact with refrigerant.
+      - value: SEMIHERMETIC
+        meaning: Positive-displacement reciprocating compressor where the hermetic compressors use bolted construction amenable to field repair.
+      - value: WELDEDSHELLHERMETIC
+        meaning: Positive-displacement reciprocating compressor where the motor compressor is mounted inside a steel shell, which, in turn is sealed by welding.
+      - value: ROLLINGPISTON
+        meaning: Positive-displacement rotary compressor using a roller mounted on the eccentric of a shaft with a single vane in the nonrotating cylindrical housing.
+      - value: ROTARYVANE
+        meaning: Positive-displacement rotary compressor using a roller mounted on the eccentric of a shaft with multiple vanes in the nontotating cylindrical housing.
+      - value: SINGLESCREW
+        meaning: Positive-displacement rotary compressor using a single cylindrical main rotor that works with a pair of gate rotors.
+      - value: TWINSCREW
+        meaning: Positive-displacement rotary compressor using two mating helically grooved rotors, male (lobes) and female (flutes) in a stationary housing with inlet and outlet gas ports.
+      - value: USERDEFINED
+        meaning: User-defined compressor type.
+      - value: NOTDEFINED
+        meaning: Undefined compressor type.

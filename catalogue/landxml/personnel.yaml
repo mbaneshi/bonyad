@@ -1,0 +1,35 @@
+code: landxml.personnel
+name: Personnel
+kind: child
+parent: landxml.survey_header
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Personnel
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Personnel`; the XSD gives no description.
+fields:
+  - name: name
+    type: text
+    meaning: Personnel name; the XSD gives no description.
+    source_ref: XSD Personnel/@name; type xs:string
+    nullable: true
+  - name: role
+    type: text
+    meaning: This is a jurisdictionally based list of roles that a surveyor can undertake within a survey for example field hand, authorising surveyor, technician.
+    source_ref: XSD Personnel/@role; type surveyorRoleType
+    nullable: true
+  - name: reg_type
+    type: text
+    meaning: This is a jurisdictionally based list of classes of registration for a surveyor. This allows validation of the surveyors role in the survey for legal traceablity.
+    source_ref: XSD Personnel/@regType; type registrationType
+    nullable: true
+  - name: reg_number
+    type: text
+    meaning: Personnel regNumber; the XSD gives no description.
+    source_ref: XSD Personnel/@regNumber; type xs:string
+    nullable: true
+notes: Occurs 0..unbounded in landxml.survey_header.

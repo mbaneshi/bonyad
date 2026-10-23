@@ -1,0 +1,20 @@
+code: ifc.material_layer_set_material_layers
+name: IfcMaterialLayerSet.MaterialLayers
+kind: child
+parent: ifc.material_layer_set
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMaterialLayerSet.MaterialLayers
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMaterialResource/Entities/IfcMaterialLayerSet.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the MaterialLayers list of IfcMaterialLayerSet. Identification of the _IfcMaterialLayer_’s from which the IfcMaterialLayerSet is composed.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcMaterialLayerSet.MaterialLayers.
+    source_ref: "IfcMaterialLayerSet attribute 1: LIST [1:?] OF IfcMaterialLayer"
+    ref_to: ifc.material_layer
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: LIST [1:?] OF IfcMaterialLayer."

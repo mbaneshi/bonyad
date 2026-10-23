@@ -1,0 +1,24 @@
+code: ifc.rel_voids_element
+name: IfcRelVoidsElement
+kind: object
+base: ifc.rel_decomposes
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelVoidsElement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcRelVoidsElement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcRelVoidsElement is an objectified relationship between a building element and one opening element that creates a void in the element. It is a one-to-one relationship.
+fields:
+  - name: relating_building_element
+    type: ref
+    meaning: Reference to the element in which a void is created by the associated feature subtraction element.
+    source_ref: "IfcRelVoidsElement attribute 1: IfcElement"
+    ref_to: ifc.element
+  - name: related_opening_element
+    type: ref
+    meaning: Reference to the feature subtraction element which defines a void in the associated element.
+    source_ref: "IfcRelVoidsElement attribute 2: IfcFeatureElementSubtraction"
+    ref_to: ifc.feature_element_subtraction

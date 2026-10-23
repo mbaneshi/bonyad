@@ -1,0 +1,37 @@
+code: ifc.coil_type
+name: IfcCoilType
+kind: symbol
+base: ifc.energy_conversion_device_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCoilType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcCoilType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The energy conversion device type IfcCoilType defines commonly shared information for occurrences of coils.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Defines typical types of coils (e.g., Cooling, Heating, etc.).
+    source_ref: "IfcCoilType attribute 1: IfcCoilTypeEnum; enumeration IfcCoilTypeEnum"
+    values:
+      - value: DXCOOLINGCOIL
+        meaning: Cooling coil using a refrigerant to cool the air stream directly.
+      - value: ELECTRICHEATINGCOIL
+        meaning: Heating coil using electricity as a heating source.
+      - value: GASHEATINGCOIL
+        meaning: Heating coil using gas as a heating source.
+      - value: HYDRONICCOIL
+        meaning: Cooling or Heating coil that uses a hydronic fluid as a cooling or heating source.
+      - value: STEAMHEATINGCOIL
+        meaning: Heating coil using steam as heating source.
+      - value: WATERCOOLINGCOIL
+        meaning: Cooling coil using chilled water.
+      - value: WATERHEATINGCOIL
+        meaning: Heating coil using hot water as a heating source.
+      - value: USERDEFINED
+        meaning: User-defined coil type.
+      - value: NOTDEFINED
+        meaning: Undefined coil type.

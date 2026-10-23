@@ -1,0 +1,22 @@
+code: landxml.raw_observation
+name: RawObservation
+kind: object
+base: landxml.raw_observation_type
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element RawObservation
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `RawObservation`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.instrument_setup
+    nullable: true
+    meaning: The landxml.instrument_setup row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it derives from a base type)"
+notes: "Occurs 0..unbounded in landxml.instrument_setup; 1..unbounded in landxml.observation_group; at most once (XSD: unbounded choice) in landxml.laser_setup. Review: Contained by more than one type in the XSD (also landxml.observation_group, landxml.laser_setup); the catalogue allows one parent, so the first is used. Stored as an object rather than an ordered child because it derives from a base type; the XSD container is the container reference."
+needs_review: true

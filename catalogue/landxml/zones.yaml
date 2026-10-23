@@ -1,0 +1,55 @@
+code: landxml.zones
+name: Zones
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Zones
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Zones`; the XSD gives no description.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.grade_surface
+    nullable: true
+    meaning: The landxml.grade_surface row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: side
+    type: enum
+    meaning: Zones side; the XSD gives no description.
+    source_ref: XSD Zones/@side; type sideofRoadType
+    values:
+      - value: right
+        meaning: Enumeration literal "right"; the XSD gives no description.
+      - value: left
+        meaning: Enumeration literal "left"; the XSD gives no description.
+      - value: both
+        meaning: Enumeration literal "both"; the XSD gives no description.
+  - name: desc
+    type: text
+    meaning: Zones desc; the XSD gives no description.
+    source_ref: XSD Zones/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: Zones name; the XSD gives no description.
+    source_ref: XSD Zones/@name; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: Zones state; the XSD gives no description.
+    source_ref: XSD Zones/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+notes: Occurs 1..2 in landxml.grade_surface. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

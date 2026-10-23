@@ -1,0 +1,53 @@
+code: landxml.rect_struct
+name: RectStruct
+kind: child
+parent: landxml.struct
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element RectStruct
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `RectStruct`; the XSD gives no description.
+fields:
+  - name: length
+    type: float
+    meaning: RectStruct length; the XSD gives no description.
+    source_ref: XSD RectStruct/@length; type xs:double
+  - name: length_dir
+    type: angle
+    meaning: Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them.
+    source_ref: XSD RectStruct/@lengthDir; type direction
+    nullable: true
+  - name: width
+    type: float
+    meaning: RectStruct width; the XSD gives no description.
+    source_ref: XSD RectStruct/@width; type xs:double
+  - name: desc
+    type: text
+    meaning: RectStruct desc; the XSD gives no description.
+    source_ref: XSD RectStruct/@desc; type xs:string
+    nullable: true
+  - name: inlet_case
+    type: text
+    meaning: RectStruct inletCase; the XSD gives no description.
+    source_ref: XSD RectStruct/@inletCase; type xs:anySimpleType
+    nullable: true
+  - name: loss_coeff
+    type: float
+    meaning: RectStruct lossCoeff; the XSD gives no description.
+    source_ref: XSD RectStruct/@lossCoeff; type xs:double
+    nullable: true
+  - name: material
+    type: text
+    meaning: RectStruct material; the XSD gives no description.
+    source_ref: XSD RectStruct/@material; type xs:anySimpleType
+    nullable: true
+  - name: thickness
+    type: float
+    meaning: RectStruct thickness; the XSD gives no description.
+    source_ref: XSD RectStruct/@thickness; type xs:double
+    nullable: true
+notes: Occurs 1..1 in landxml.struct.

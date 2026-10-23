@@ -1,0 +1,76 @@
+code: ifc.time_series
+name: IfcTimeSeries
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTimeSeries
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcDateTimeResource/Entities/IfcTimeSeries.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A time series is a set of a time-stamped data entries. It allows a natural association of data collected over intervals of time.
+fields:
+  - name: name
+    type: text
+    meaning: An unique name for the time series.
+    source_ref: "IfcTimeSeries attribute 1: IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: A text description of the data that the series represents.
+    source_ref: "IfcTimeSeries attribute 2: OPTIONAL IfcText"
+  - name: start_time
+    type: timestamp
+    meaning: The start time of a time series.
+    source_ref: "IfcTimeSeries attribute 3: IfcDateTime"
+  - name: end_time
+    type: timestamp
+    meaning: The end time of a time series.
+    source_ref: "IfcTimeSeries attribute 4: IfcDateTime"
+  - name: time_series_data_type
+    type: enum
+    meaning: The time series data type.
+    source_ref: "IfcTimeSeries attribute 5: IfcTimeSeriesDataTypeEnum; enumeration IfcTimeSeriesDataTypeEnum"
+    values:
+      - value: CONTINUOUS
+        meaning: The time series data is continuous.
+      - value: DISCRETE
+        meaning: The time series data is discrete.
+      - value: DISCRETEBINARY
+        meaning: The time series data is discrete binary.
+      - value: PIECEWISEBINARY
+        meaning: The time series data is piecewise binary.
+      - value: PIECEWISECONSTANT
+        meaning: The time series data is piecewise constant.
+      - value: PIECEWISECONTINUOUS
+        meaning: The time series data is piecewise continuous.
+      - value: NOTDEFINED
+        meaning: The time series data is not defined.
+  - name: data_origin
+    type: enum
+    meaning: The origin of a time series data.
+    source_ref: "IfcTimeSeries attribute 6: IfcDataOriginEnum; enumeration IfcDataOriginEnum"
+    values:
+      - value: MEASURED
+        meaning: The origin of the time data is a measurement device.
+      - value: PREDICTED
+        meaning: The time data are a prediction.
+      - value: SIMULATED
+        meaning: The origin of the time data is a simulation.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: The origin of the time data is undefined.
+  - name: user_defined_data_origin
+    type: text
+    nullable: true
+    meaning: Value of the data origin if DataOrigin attribute is USERDEFINED.
+    source_ref: "IfcTimeSeries attribute 7: OPTIONAL IfcLabel"
+  - name: unit
+    type: ref
+    nullable: true
+    meaning: The unit to be assigned to all values within the time series.
+    source_ref: "IfcTimeSeries attribute 8: OPTIONAL IfcUnit; via select IfcUnit"
+    ref_to: any
+notes: "Inverse attributes not stored: HasExternalReference. SUPERTYPE OF ONEOF ( IfcIrregularTimeSeries , IfcRegularTimeSeries )."

@@ -1,0 +1,14 @@
+code: ifc.external_information
+name: IfcExternalInformation
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcExternalInformation
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcExternalInformation.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcExternalInformation is the identification of an information source that is not explicitly represented in the current model or in the project database (as an implementation of the current model). The IfcExternalInformation identifies the external source (classification, document, or library), but not the particular items such as a dictionary entry, a …
+fields: []
+notes: SUPERTYPE OF ONEOF ( IfcClassification , IfcDocumentInformation , IfcLibraryInformation ).

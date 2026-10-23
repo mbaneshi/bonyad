@@ -1,0 +1,40 @@
+code: landxml.invert
+name: Invert
+kind: child
+parent: landxml.struct
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Invert
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Invert`; the XSD gives no description.
+fields:
+  - name: desc
+    type: text
+    meaning: Invert desc; the XSD gives no description.
+    source_ref: XSD Invert/@desc; type xs:string
+    nullable: true
+  - name: elev
+    type: float
+    meaning: Invert elev; the XSD gives no description.
+    source_ref: XSD Invert/@elev; type xs:double
+  - name: flow_dir
+    type: enum
+    meaning: Invert flowDir; the XSD gives no description.
+    source_ref: XSD Invert/@flowDir; type inOut
+    values:
+      - value: in
+        meaning: Enumeration literal "in"; the XSD gives no description.
+      - value: out
+        meaning: Enumeration literal "out"; the XSD gives no description.
+      - value: both
+        meaning: Enumeration literal "both"; the XSD gives no description.
+  - name: ref_pipe
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Invert/@refPipe; type pipeNameRef
+    ref_to: landxml.pipe
+notes: Occurs 1..unbounded in landxml.struct.

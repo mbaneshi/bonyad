@@ -1,0 +1,29 @@
+code: ifc.presentation_layer_with_style
+name: IfcPresentationLayerWithStyle
+kind: object
+base: ifc.presentation_layer_assignment
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPresentationLayerWithStyle
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationOrganizationResource/Entities/IfcPresentationLayerWithStyle.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcPresentationLayerWithStyle extends the presentation layer assignment with capabilities to define visibility control, access control and common style information.
+fields:
+  - name: layer_on
+    type: bool
+    nullable: true
+    meaning: A logical setting, TRUE indicates that the layer is set to 'On', FALSE that the layer is set to 'Off', UNKNOWN that such information is not available.
+    source_ref: "IfcPresentationLayerWithStyle attribute 1: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+  - name: layer_frozen
+    type: bool
+    nullable: true
+    meaning: A logical setting, TRUE indicates that the layer is set to 'Frozen', FALSE that the layer is set to 'Not frozen', UNKNOWN that such information is not available.
+    source_ref: "IfcPresentationLayerWithStyle attribute 2: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"
+  - name: layer_blocked
+    type: bool
+    nullable: true
+    meaning: A logical setting, TRUE indicates that the layer is set to 'Blocked', FALSE that the layer is set to 'Not blocked', UNKNOWN that such information is not available.
+    source_ref: "IfcPresentationLayerWithStyle attribute 3: IfcLogical; LOGICAL (TRUE, FALSE, UNKNOWN): UNKNOWN is stored as NULL"

@@ -1,0 +1,43 @@
+code: ifc.rectangular_trimmed_surface
+name: IfcRectangularTrimmedSurface
+kind: entity
+base: ifc.bounded_surface
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRectangularTrimmedSurface
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcRectangularTrimmedSurface.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcRectangularTrimmedSurface is a surface created by bounding its BasisSurface along two pairs of parallel curves defined within the parametric space of the referenced surface.
+fields:
+  - name: basis_surface
+    type: ref
+    meaning: Surface being trimmed.
+    source_ref: "IfcRectangularTrimmedSurface attribute 1: IfcSurface"
+    ref_to: ifc.surface
+  - name: u1
+    type: float
+    meaning: First u parametric value.
+    source_ref: "IfcRectangularTrimmedSurface attribute 2: IfcParameterValue"
+  - name: v1
+    type: float
+    meaning: First v parametric value.
+    source_ref: "IfcRectangularTrimmedSurface attribute 3: IfcParameterValue"
+  - name: u2
+    type: float
+    meaning: Second u parametric value.
+    source_ref: "IfcRectangularTrimmedSurface attribute 4: IfcParameterValue"
+  - name: v2
+    type: float
+    meaning: Second v parametric value.
+    source_ref: "IfcRectangularTrimmedSurface attribute 5: IfcParameterValue"
+  - name: usense
+    type: bool
+    meaning: Flag to indicate whether the direction of the first parameter of the trimmed surface agrees with or opposes the sense of u in the basis surface.
+    source_ref: "IfcRectangularTrimmedSurface attribute 6: IfcBoolean"
+  - name: vsense
+    type: bool
+    meaning: Flag to indicate whether the direction of the second parameter of the trimmed surface agrees with or opposes the sense of v in the basis surface.
+    source_ref: "IfcRectangularTrimmedSurface attribute 7: IfcBoolean"

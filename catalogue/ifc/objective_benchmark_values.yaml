@@ -1,0 +1,20 @@
+code: ifc.objective_benchmark_values
+name: IfcObjective.BenchmarkValues
+kind: child
+parent: ifc.objective
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcObjective.BenchmarkValues
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcConstraintResource/Entities/IfcObjective.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the BenchmarkValues list of IfcObjective. A list of nested constraints.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcObjective.BenchmarkValues.
+    source_ref: "IfcObjective attribute 1: OPTIONAL LIST [1:?] OF IfcConstraint"
+    ref_to: ifc.constraint
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: OPTIONAL LIST [1:?] OF IfcConstraint. The whole list is optional: no rows means not provided."

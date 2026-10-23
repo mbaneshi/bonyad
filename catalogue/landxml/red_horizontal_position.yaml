@@ -1,0 +1,140 @@
+code: landxml.red_horizontal_position
+name: RedHorizontalPosition
+kind: child
+parent: landxml.observation_group
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element RedHorizontalPosition
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: This element is used to define the Reduced Horizontal Position. The coordinates given in Geographical Coordinates may come in variety of means.
+fields:
+  - name: desc
+    type: text
+    meaning: RedHorizontalPosition desc; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: RedHorizontalPosition name; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@name; type xs:string
+  - name: state
+    type: text
+    meaning: RedHorizontalPosition state; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@state; type xs:string
+    nullable: true
+  - name: o_id
+    type: text
+    meaning: RedHorizontalPosition oID; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@oID; type xs:string
+    nullable: true
+  - name: purpose
+    type: enum
+    meaning: Used by many of the Survey elements.
+    source_ref: XSD RedHorizontalPosition/@purpose; type purposeType
+    nullable: true
+    values:
+      - value: normal
+        meaning: Enumeration literal "normal"; the XSD gives no description.
+      - value: check
+        meaning: Enumeration literal "check"; the XSD gives no description.
+      - value: backsight
+        meaning: Enumeration literal "backsight"; the XSD gives no description.
+      - value: foresight
+        meaning: Enumeration literal "foresight"; the XSD gives no description.
+      - value: traverse
+        meaning: Enumeration literal "traverse"; the XSD gives no description.
+      - value: sideshot
+        meaning: Enumeration literal "sideshot"; the XSD gives no description.
+      - value: resection
+        meaning: Enumeration literal "resection"; the XSD gives no description.
+      - value: levelLoop
+        meaning: Enumeration literal "levelLoop"; the XSD gives no description.
+      - value: digitalLevel
+        meaning: Enumeration literal "digitalLevel"; the XSD gives no description.
+      - value: remoteElevation
+        meaning: Enumeration literal "remoteElevation"; the XSD gives no description.
+      - value: recipricalObservation
+        meaning: Enumeration literal "recipricalObservation"; the XSD gives no description.
+      - value: topo
+        meaning: Enumeration literal "topo"; the XSD gives no description.
+      - value: cutSheets
+        meaning: Enumeration literal "cutSheets"; the XSD gives no description.
+      - value: asbuilt
+        meaning: Enumeration literal "asbuilt"; the XSD gives no description.
+  - name: setup_id
+    type: ref
+    meaning: "RedHorizontalPosition setupID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD RedHorizontalPosition/@setupID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: date
+    type: date
+    meaning: RedHorizontalPosition date; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@date; type xs:date
+    nullable: true
+  - name: equipment_used
+    type: text
+    meaning: This gives a list of equipment used for the observation this list of equipment is used to estimate the accuracy of the observation..
+    source_ref: XSD RedHorizontalPosition/@equipmentUsed; type equipmentType
+    nullable: true
+  - name: horizontal_datum
+    type: text
+    meaning: RedHorizontalPosition horizontalDatum; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@horizontalDatum; type xs:string
+    nullable: true
+  - name: horizontal_adjustment
+    type: text
+    meaning: RedHorizontalPosition horizontalAdjustment; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@horizontalAdjustment; type xs:string
+    nullable: true
+  - name: latitude
+    type: text
+    meaning: RedHorizontalPosition latitude; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@latitude; type xs:string
+    nullable: true
+  - name: longitude
+    type: text
+    meaning: RedHorizontalPosition longitude; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@longitude; type xs:string
+    nullable: true
+  - name: horizontal_fix
+    type: text
+    meaning: RedHorizontalPosition horizontalFix; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@horizontalFix; type xs:string
+    nullable: true
+  - name: currency_date
+    type: text
+    meaning: RedHorizontalPosition currencyDate; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@currencyDate; type xs:string
+    nullable: true
+  - name: local_uncertainity
+    type: float
+    meaning: RedHorizontalPosition localUncertainity; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@localUncertainity; type xs:double
+    nullable: true
+  - name: class
+    type: text
+    meaning: RedHorizontalPosition class; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@class; type xs:string
+    nullable: true
+  - name: order
+    type: text
+    meaning: RedHorizontalPosition order; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@order; type xs:string
+    nullable: true
+  - name: positional_uncertainity
+    type: float
+    meaning: RedHorizontalPosition positionalUncertainity; the XSD gives no description.
+    source_ref: XSD RedHorizontalPosition/@positionalUncertainity; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs at most once (XSD: unbounded choice) in landxml.observation_group."

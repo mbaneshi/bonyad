@@ -1,0 +1,20 @@
+code: ifc.elementary_surface
+name: IfcElementarySurface
+kind: abstract
+base: ifc.surface
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcElementarySurface
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcElementarySurface.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcElementarySurface in the common supertype of analytical surfaces.
+fields:
+  - name: position
+    type: ref
+    meaning: The position and orientation of the surface.
+    source_ref: "IfcElementarySurface attribute 1: IfcAxis2Placement3D"
+    ref_to: ifc.axis2_placement3d
+notes: SUPERTYPE OF ONEOF ( IfcCylindricalSurface , IfcPlane , IfcSphericalSurface , IfcToroidalSurface ).

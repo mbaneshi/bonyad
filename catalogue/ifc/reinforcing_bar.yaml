@@ -1,0 +1,69 @@
+code: ifc.reinforcing_bar
+name: IfcReinforcingBar
+kind: entity
+base: ifc.reinforcing_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReinforcingBar
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcReinforcingBar.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A reinforcing bar is usually made of steel with manufactured deformations in the surface, and used in concrete and masonry construction to provide additional strength. A single instance of this class may represent one or many of actual rebars, for example a row of rebars.
+fields:
+  - name: nominal_diameter
+    type: length
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingBar attribute 1: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: cross_section_area
+    type: area
+    nullable: true
+    meaning: The effective cross-section area of the reinforcing bar or group of bars.
+    source_ref: "IfcReinforcingBar attribute 2: OPTIONAL IfcAreaMeasure"
+  - name: bar_length
+    type: length
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingBar attribute 3: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: The role, purpose or usage of the bar, i.e. the kind of loads and stresses it is intended to carry.
+    source_ref: "IfcReinforcingBar attribute 4: OPTIONAL IfcReinforcingBarTypeEnum; enumeration IfcReinforcingBarTypeEnum"
+    values:
+      - value: ANCHORING
+        meaning: Anchoring reinforcement.
+      - value: EDGE
+        meaning: Edge reinforcement.
+      - value: LIGATURE
+        meaning: The reinforcing bar is a ligature (link, stirrup).
+      - value: MAIN
+        meaning: The reinforcing bar is a main bar.
+      - value: PUNCHING
+        meaning: Punching reinforcement.
+      - value: RING
+        meaning: Ring reinforcement.
+      - value: SHEAR
+        meaning: The reinforcing bar is a shear bar.
+      - value: STUD
+        meaning: The reinforcing bar is a stud.
+      - value: SPACEBAR
+        meaning: A stirrup in pre-stressing system to position TendonConduit.
+      - value: USERDEFINED
+        meaning: The type of reinforcement is user defined.
+      - value: NOTDEFINED
+        meaning: The type of reinforcement is not defined.
+  - name: bar_surface
+    type: enum
+    nullable: true
+    meaning: Deprecated.
+    source_ref: "IfcReinforcingBar attribute 5: OPTIONAL IfcReinforcingBarSurfaceEnum; enumeration IfcReinforcingBarSurfaceEnum"
+    values:
+      - value: PLAIN
+        meaning: The reinforcing bar surface is plain.
+      - value: TEXTURED
+        meaning: The reinforcing bar surface is textured (ribbed).

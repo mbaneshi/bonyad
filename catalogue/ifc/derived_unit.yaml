@@ -1,0 +1,130 @@
+code: ifc.derived_unit
+name: IfcDerivedUnit
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDerivedUnit
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMeasureResource/Entities/IfcDerivedUnit.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A derived unit is a unit that is formed from an expression of other units.
+fields:
+  - name: unit_type
+    type: enum
+    meaning: Type of the derived unit chosen from an enumeration of derived unit types for use in IFC models.
+    source_ref: "IfcDerivedUnit attribute 2: IfcDerivedUnitEnum; enumeration IfcDerivedUnitEnum"
+    values:
+      - value: ANGULARVELOCITYUNIT
+        meaning: Angularvelocity unit.
+      - value: AREADENSITYUNIT
+        meaning: Area density unit.
+      - value: COMPOUNDPLANEANGLEUNIT
+        meaning: Compound plane angle unit.
+      - value: DYNAMICVISCOSITYUNIT
+        meaning: Dynamic viscosity unit.
+      - value: HEATFLUXDENSITYUNIT
+        meaning: Heat flux density unit.
+      - value: INTEGERCOUNTRATEUNIT
+        meaning: Integer count rate unit.
+      - value: ISOTHERMALMOISTURECAPACITYUNIT
+        meaning: Isothermal moisture capacity unit.
+      - value: KINEMATICVISCOSITYUNIT
+        meaning: Kenematic viscosity unit.
+      - value: LINEARVELOCITYUNIT
+        meaning: Linear velocity unit.
+      - value: MASSDENSITYUNIT
+        meaning: Mass denisity unit.
+      - value: MASSFLOWRATEUNIT
+        meaning: Mass flowrate unit.
+      - value: MOISTUREDIFFUSIVITYUNIT
+        meaning: Moistere diffusivity unit.
+      - value: MOLECULARWEIGHTUNIT
+        meaning: Molecular weight unit.
+      - value: SPECIFICHEATCAPACITYUNIT
+        meaning: Specific heat capacity unit.
+      - value: THERMALADMITTANCEUNIT
+        meaning: Thermal admittance unit.
+      - value: THERMALCONDUCTANCEUNIT
+        meaning: Thermal Conductance unit.
+      - value: THERMALRESISTANCEUNIT
+        meaning: Thermal resistance unit.
+      - value: THERMALTRANSMITTANCEUNIT
+        meaning: Thermal transmittance unit.
+      - value: VAPORPERMEABILITYUNIT
+        meaning: Vapor permeability unit.
+      - value: VOLUMETRICFLOWRATEUNIT
+        meaning: Valumetric flowrate unit.
+      - value: ROTATIONALFREQUENCYUNIT
+        meaning: Rotational frequency unit.
+      - value: TORQUEUNIT
+        meaning: Torque unit.
+      - value: MOMENTOFINERTIAUNIT
+        meaning: Moment of inertia unit.
+      - value: LINEARMOMENTUNIT
+        meaning: Linear moment unit.
+      - value: LINEARFORCEUNIT
+        meaning: Linear force unit.
+      - value: PLANARFORCEUNIT
+        meaning: planar force unit.
+      - value: MODULUSOFELASTICITYUNIT
+        meaning: Modulus of elasticity unit.
+      - value: SHEARMODULUSUNIT
+        meaning: Shear modulus unit.
+      - value: LINEARSTIFFNESSUNIT
+        meaning: Linear stiffness unit.
+      - value: ROTATIONALSTIFFNESSUNIT
+        meaning: Rotational stuffness unit.
+      - value: MODULUSOFSUBGRADEREACTIONUNIT
+        meaning: Modulus of subgrade reaction unit.
+      - value: ACCELERATIONUNIT
+        meaning: Acceleration unit.
+      - value: CURVATUREUNIT
+        meaning: Curvature unit.
+      - value: HEATINGVALUEUNIT
+        meaning: Heating value unit.
+      - value: IONCONCENTRATIONUNIT
+        meaning: Ion concentration unit.
+      - value: LUMINOUSINTENSITYDISTRIBUTIONUNIT
+        meaning: Luminous intensity distribution unit.
+      - value: MASSPERLENGTHUNIT
+        meaning: Mass per length unit.
+      - value: MODULUSOFLINEARSUBGRADEREACTIONUNIT
+        meaning: Modulus of linear subgrade reaction unit.
+      - value: MODULUSOFROTATIONALSUBGRADEREACTIONUNIT
+        meaning: Modulus of rotational subgrade reaction unit.
+      - value: PHUNIT
+        meaning: PH Unit.
+      - value: ROTATIONALMASSUNIT
+        meaning: Rotational mass unit.
+      - value: SECTIONAREAINTEGRALUNIT
+        meaning: Section area integral unit.
+      - value: SECTIONMODULUSUNIT
+        meaning: Section modulus unit.
+      - value: SOUNDPOWERLEVELUNIT
+        meaning: Sound power level unit.
+      - value: SOUNDPOWERUNIT
+        meaning: Sound power unit.
+      - value: SOUNDPRESSURELEVELUNIT
+        meaning: Sound pressure level unit.
+      - value: SOUNDPRESSUREUNIT
+        meaning: Sound pressure unit.
+      - value: TEMPERATUREGRADIENTUNIT
+        meaning: Temperature gradient unit.
+      - value: TEMPERATURERATEOFCHANGEUNIT
+        meaning: Temperature of change unit.
+      - value: THERMALEXPANSIONCOEFFICIENTUNIT
+        meaning: Thermal expansion coefficient unit.
+      - value: WARPINGCONSTANTUNIT
+        meaning: Warping constraint unit.
+      - value: WARPINGMOMENTUNIT
+        meaning: Warping moment unit.
+      - value: USERDEFINED
+        meaning: User defined derived unit.
+  - name: user_defined_type
+    type: text
+    nullable: true
+    meaning: Type of the derived unit if the UnitType attribute is set to USERDEFINED.
+    source_ref: "IfcDerivedUnit attribute 3: OPTIONAL IfcLabel"
+notes: "Derived attributes not stored: Dimensions."

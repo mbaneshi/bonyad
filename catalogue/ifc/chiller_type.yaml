@@ -1,0 +1,29 @@
+code: ifc.chiller_type
+name: IfcChillerType
+kind: symbol
+base: ifc.energy_conversion_device_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcChillerType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcChillerType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The energy conversion device type IfcChillerType defines commonly shared information for occurrences of chillers.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Defines the typical types of chillers (e.g., air-cooled, water-cooled, etc.).
+    source_ref: "IfcChillerType attribute 1: IfcChillerTypeEnum; enumeration IfcChillerTypeEnum"
+    values:
+      - value: AIRCOOLED
+        meaning: Air cooled chiller.
+      - value: WATERCOOLED
+        meaning: Water cooled chiller.
+      - value: HEATRECOVERY
+        meaning: Heat recovery chiller.
+      - value: USERDEFINED
+        meaning: User-defined chiller type.
+      - value: NOTDEFINED
+        meaning: Undefined chiller type.

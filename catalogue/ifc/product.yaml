@@ -1,0 +1,27 @@
+code: ifc.product
+name: IfcProduct
+kind: abstract
+base: ifc.object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcProduct
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcProduct.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcProduct is an abstract representation of any object that relates to a geometric or spatial context. An IfcProduct occurs at a specific location in space if it has a geometric representation assigned.
+fields:
+  - name: object_placement
+    type: ref
+    nullable: true
+    meaning: This establishes the object coordinate system and placement of the product in space.
+    source_ref: "IfcProduct attribute 1: OPTIONAL IfcObjectPlacement"
+    ref_to: ifc.object_placement
+  - name: representation
+    type: ref
+    nullable: true
+    meaning: Reference to the representations of the product, being either a representation (IfcProductRepresentation) or as a special case of a shape representation (IfcProductDefinitionShape).
+    source_ref: "IfcProduct attribute 2: OPTIONAL IfcProductRepresentation"
+    ref_to: ifc.product_representation
+notes: "Inverse attributes not stored: ReferencedBy, PositionedRelativeTo, ReferencedInStructures. SUPERTYPE OF ONEOF ( IfcAnnotation , IfcElement , IfcLinearElement , IfcPort , IfcPositioningElement , IfcProxy , IfcSpatialElement , IfcStructuralActivity , IfcStructuralItem )."

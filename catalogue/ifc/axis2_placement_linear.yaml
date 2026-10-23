@@ -1,0 +1,26 @@
+code: ifc.axis2_placement_linear
+name: IfcAxis2PlacementLinear
+kind: entity
+base: ifc.placement
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcAxis2PlacementLinear
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcAxis2PlacementLinear.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcAxis2PlacementLinear provides location and orientation to place items in a three-dimensional space confined to the context of a curve. Relative placement axes (Axis and RefDirection) are relative to the curve used for linear referencing provided in IfcPlacement Location (IfcPointByDistanceExpression BasisCurve), maintaining the relationship to the …
+fields:
+  - name: axis
+    type: ref
+    nullable: true
+    meaning: The exact direction of the local Z Axis.
+    source_ref: "IfcAxis2PlacementLinear attribute 1: OPTIONAL IfcDirection"
+    ref_to: ifc.direction
+  - name: ref_direction
+    type: ref
+    nullable: true
+    meaning: The direction used to determine the direction of the local X Axis.
+    source_ref: "IfcAxis2PlacementLinear attribute 2: OPTIONAL IfcDirection"
+    ref_to: ifc.direction

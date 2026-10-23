@@ -1,0 +1,25 @@
+code: ifc.process
+name: IfcProcess
+kind: abstract
+base: ifc.object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcProcess
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcProcess.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcProcess is defined as one individual activity or event, that is ordered in time, that has sequence relationships with other processes, which transforms input in output, and may connect to other processes through input output relationships. An IfcProcess can be an activity (or task), or an event.
+fields:
+  - name: identification
+    type: text
+    nullable: true
+    meaning: An identifying designation given to a process or activity.
+    source_ref: "IfcProcess attribute 1: OPTIONAL IfcIdentifier"
+  - name: long_description
+    type: text
+    nullable: true
+    meaning: An extended description or narrative that may be provided.
+    source_ref: "IfcProcess attribute 2: OPTIONAL IfcText"
+notes: "Inverse attributes not stored: IsPredecessorTo, IsSuccessorFrom, OperatesOn. SUPERTYPE OF ONEOF ( IfcEvent , IfcProcedure , IfcTask )."

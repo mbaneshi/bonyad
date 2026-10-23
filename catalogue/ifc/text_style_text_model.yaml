@@ -1,0 +1,49 @@
+code: ifc.text_style_text_model
+name: IfcTextStyleTextModel
+kind: object
+base: ifc.presentation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextStyleTextModel
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcTextStyleTextModel.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcTextStyleTextModel combines all text style properties, that affect the presentation of a text literal within a given extent. It includes the spacing between characters and words, the horizontal and vertical alignment of the text within the planar box of the extent, decorations (like underline), transformations of the literal (like uppercase), and the …
+fields:
+  - name: text_indent
+    type: text
+    nullable: true
+    meaning: The property specifies the indentation that appears before the first formatted line.
+    source_ref: "IfcTextStyleTextModel attribute 1: OPTIONAL IfcSizeSelect; SELECT IfcSizeSelect of value types, stored as text (the member type tag is not kept)"
+  - name: text_align
+    type: text
+    nullable: true
+    meaning: This property describes how text is aligned horizontally within the element.
+    source_ref: "IfcTextStyleTextModel attribute 2: OPTIONAL IfcTextAlignment"
+  - name: text_decoration
+    type: text
+    nullable: true
+    meaning: This property describes decorations that are added to the text of an element.
+    source_ref: "IfcTextStyleTextModel attribute 3: OPTIONAL IfcTextDecoration"
+  - name: letter_spacing
+    type: text
+    nullable: true
+    meaning: The length unit indicates an addition to the default space between characters.
+    source_ref: "IfcTextStyleTextModel attribute 4: OPTIONAL IfcSizeSelect; SELECT IfcSizeSelect of value types, stored as text (the member type tag is not kept)"
+  - name: word_spacing
+    type: text
+    nullable: true
+    meaning: The length unit indicates an addition to the default space between words.
+    source_ref: "IfcTextStyleTextModel attribute 5: OPTIONAL IfcSizeSelect; SELECT IfcSizeSelect of value types, stored as text (the member type tag is not kept)"
+  - name: text_transform
+    type: text
+    nullable: true
+    meaning: This property describes how text characters may transform to upper case, lower case, or capitalized case, independent of the character case used in the text literal.
+    source_ref: "IfcTextStyleTextModel attribute 6: OPTIONAL IfcTextTransformation"
+  - name: line_height
+    type: text
+    nullable: true
+    meaning: The property sets the distance between two adjacent lines' baselines.
+    source_ref: "IfcTextStyleTextModel attribute 7: OPTIONAL IfcSizeSelect; SELECT IfcSizeSelect of value types, stored as text (the member type tag is not kept)"

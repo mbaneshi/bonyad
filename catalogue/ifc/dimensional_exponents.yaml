@@ -1,0 +1,43 @@
+code: ifc.dimensional_exponents
+name: IfcDimensionalExponents
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDimensionalExponents
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMeasureResource/Entities/IfcDimensionalExponents.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: "IfcDimensionalExponents: no description in the source documentation."
+fields:
+  - name: length_exponent
+    type: int
+    meaning: The power of the length base quantity.
+    source_ref: "IfcDimensionalExponents attribute 1: INTEGER"
+  - name: mass_exponent
+    type: int
+    meaning: The power of the mass base quantity.
+    source_ref: "IfcDimensionalExponents attribute 2: INTEGER"
+  - name: time_exponent
+    type: int
+    meaning: The power of the time base quantity.
+    source_ref: "IfcDimensionalExponents attribute 3: INTEGER"
+  - name: electric_current_exponent
+    type: int
+    meaning: The power of the electric current base quantity.
+    source_ref: "IfcDimensionalExponents attribute 4: INTEGER"
+  - name: thermodynamic_temperature_exponent
+    type: int
+    meaning: The power of the thermodynamic temperature base quantity.
+    source_ref: "IfcDimensionalExponents attribute 5: INTEGER"
+  - name: amount_of_substance_exponent
+    type: int
+    meaning: The power of the amount of substance base quantity.
+    source_ref: "IfcDimensionalExponents attribute 6: INTEGER"
+  - name: luminous_intensity_exponent
+    type: int
+    meaning: The power of the luminous intensity base quantity.
+    source_ref: "IfcDimensionalExponents attribute 7: INTEGER"
+needs_review: true
+notes: "Review: no description found for IfcDimensionalExponents in the documentation at the pinned commit."

@@ -1,0 +1,37 @@
+code: landxml.f
+name: F
+kind: child
+parent: landxml.faces
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element F
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A surface face. It contains a space delimited list of "id" references for 3 (TIN) or 4 (grid) surface "P" points.
+fields:
+  - name: value
+    type: array
+    meaning: A surface face. It contains a space delimited list of "id" references for 3 (TIN) or 4 (grid) surface "P" points. Space-delimited list in the source text.
+    source_ref: XSD text content; type FaceType
+    of: int
+  - name: i
+    type: int
+    meaning: F i; the XSD gives no description.
+    source_ref: XSD F/@i; type xs:integer
+    nullable: true
+  - name: n
+    type: array
+    meaning: F n; the XSD gives no description. Space-delimited list in the source text.
+    source_ref: XSD F/@n; type FaceType
+    nullable: true
+    of: int
+  - name: b
+    type: int
+    meaning: F b; the XSD gives no description.
+    source_ref: XSD F/@b; type xs:positiveInteger
+    nullable: true
+    check: positive
+notes: Occurs 1..unbounded in landxml.faces.

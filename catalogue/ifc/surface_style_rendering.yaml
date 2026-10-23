@@ -1,0 +1,76 @@
+code: ifc.surface_style_rendering
+name: IfcSurfaceStyleRendering
+kind: object
+base: ifc.surface_style_shading
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSurfaceStyleRendering
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcSurfaceStyleRendering.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcSurfaceStyleRendering holds the properties for visualization related to a particular surface style.
+fields:
+  - name: diffuse_colour
+    type: ref
+    nullable: true
+    meaning: In a PHONG ReflectanceMethod, the DiffuseColour correlates to the diffuseColor attribute in the X3D Phong lighting model.
+    source_ref: "IfcSurfaceStyleRendering attribute 1: OPTIONAL IfcColourOrFactor; via select IfcColourOrFactor"
+    ref_to: any
+  - name: transmission_colour
+    type: ref
+    nullable: true
+    meaning: The transmissive part of the reflectance equation can be given as either a colour or a scalar factor.
+    source_ref: "IfcSurfaceStyleRendering attribute 2: OPTIONAL IfcColourOrFactor; via select IfcColourOrFactor"
+    ref_to: any
+  - name: diffuse_transmission_colour
+    type: ref
+    nullable: true
+    meaning: The diffuse transmission part of the reflectance equation can be given as either a colour or a scalar factor.
+    source_ref: "IfcSurfaceStyleRendering attribute 3: OPTIONAL IfcColourOrFactor; via select IfcColourOrFactor"
+    ref_to: any
+  - name: reflection_colour
+    type: ref
+    nullable: true
+    meaning: The reflection (or mirror) part of the reflectance equation can be given as either a colour or a scalar factor.
+    source_ref: "IfcSurfaceStyleRendering attribute 4: OPTIONAL IfcColourOrFactor; via select IfcColourOrFactor"
+    ref_to: any
+  - name: specular_colour
+    type: ref
+    nullable: true
+    meaning: In a PHONG ReflectanceMethod, the SpecularColour correlates to the specularColor attribute in the X3D Phong lighting model.
+    source_ref: "IfcSurfaceStyleRendering attribute 5: OPTIONAL IfcColourOrFactor; via select IfcColourOrFactor"
+    ref_to: any
+  - name: specular_highlight
+    type: text
+    nullable: true
+    meaning: In a PHONG ReflectanceMethod, the SpecularHighlight is specified as a IfcSpecularRoughness and correlates to the inverse of the shininess attribute in the X3D Phong lighting model.
+    source_ref: "IfcSurfaceStyleRendering attribute 6: OPTIONAL IfcSpecularHighlightSelect; SELECT IfcSpecularHighlightSelect of value types, stored as text (the member type tag is not kept)"
+  - name: reflectance_method
+    type: enum
+    meaning: Identifies the predefined types of reflectance method from which the method required may be set.
+    source_ref: "IfcSurfaceStyleRendering attribute 7: IfcReflectanceMethodEnum; enumeration IfcReflectanceMethodEnum"
+    values:
+      - value: BLINN
+        meaning: A reflectance model providing a smooth, slightly shiny appearance.
+      - value: FLAT
+        meaning: A reflectance model conforming with the Unlit lighting model defined in X3D.
+      - value: GLASS
+        meaning: A reflectance model that supports an approximation of glass-like materials that have both reflective and transmissive properties.
+      - value: MATT
+        meaning: A reflectance model providing a dull matte appearance.
+      - value: METAL
+        meaning: A reflectance model providing a specular metallic appearance.
+      - value: MIRROR
+        meaning: A reflectance model that supports secondary mirrored views through ray tracing.
+      - value: PHONG
+        meaning: A reflectance model conforming with the Phong lighting model defined in X3D.
+      - value: PLASTIC
+        meaning: A reflectance model providing a specular effect which is similar to the Phong model.
+      - value: STRAUSS
+        meaning: A reflectance model for metallic and non-metallic appearance based on a limited set of control parameter.
+      - value: NOTDEFINED
+        meaning: Undefined.
+needs_review: true
+notes: "Review: diffuse_colour: select IfcColourOrFactor mixes entities and value types; stored as ref to any, value members are not representable in one column; transmission_colour: select IfcColourOrFactor mixes entities and value types; stored as ref to any, value members are not representable in one column; diffuse_transmission_colour: select IfcColourOrFactor mixes entities and value types; stored as ref to any, value members are not representable in one column; reflection_colour: select IfcColourOrFactor mixes entities and value types; stored as ref to any, value members are not representable in one column; specular_colour: select IfcColourOrFactor mixes entities and value types; stored as ref to any, value members are not representable in one column."

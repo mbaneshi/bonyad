@@ -1,0 +1,25 @@
+code: ifc.rel_assigns_to_process
+name: IfcRelAssignsToProcess
+kind: object
+base: ifc.rel_assigns
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelAssignsToProcess
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcRelAssignsToProcess.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The objectified relationship IfcRelAssignsToProcess handles the assignment of one or many objects to a process or activity. An object can be a product on which the process operates.
+fields:
+  - name: relating_process
+    type: ref
+    meaning: Reference to the process to which the objects are assigned.
+    source_ref: "IfcRelAssignsToProcess attribute 1: IfcProcessSelect; via select IfcProcessSelect"
+    ref_to: ifc.object_definition
+  - name: quantity_in_process
+    type: ref
+    nullable: true
+    meaning: Quantity of the object specific for the operation by this process.
+    source_ref: "IfcRelAssignsToProcess attribute 2: OPTIONAL IfcMeasureWithUnit"
+    ref_to: ifc.measure_with_unit

@@ -1,0 +1,45 @@
+code: ifc.boundary_node_condition
+name: IfcBoundaryNodeCondition
+kind: object
+base: ifc.boundary_condition
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBoundaryNodeCondition
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcStructuralLoadResource/Entities/IfcBoundaryNodeCondition.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Describes linearly elastic support conditions or connection conditions.
+fields:
+  - name: translational_stiffness_x
+    type: text
+    nullable: true
+    meaning: Translational stiffness value in x-direction of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryNodeCondition attribute 1: OPTIONAL IfcTranslationalStiffnessSelect; SELECT IfcTranslationalStiffnessSelect of value types, stored as text (the member type tag is not kept)"
+  - name: translational_stiffness_y
+    type: text
+    nullable: true
+    meaning: Translational stiffness value in y-direction of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryNodeCondition attribute 2: OPTIONAL IfcTranslationalStiffnessSelect; SELECT IfcTranslationalStiffnessSelect of value types, stored as text (the member type tag is not kept)"
+  - name: translational_stiffness_z
+    type: text
+    nullable: true
+    meaning: Translational stiffness value in z-direction of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryNodeCondition attribute 3: OPTIONAL IfcTranslationalStiffnessSelect; SELECT IfcTranslationalStiffnessSelect of value types, stored as text (the member type tag is not kept)"
+  - name: rotational_stiffness_x
+    type: text
+    nullable: true
+    meaning: Rotational stiffness value about the x-axis of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryNodeCondition attribute 4: OPTIONAL IfcRotationalStiffnessSelect; SELECT IfcRotationalStiffnessSelect of value types, stored as text (the member type tag is not kept)"
+  - name: rotational_stiffness_y
+    type: text
+    nullable: true
+    meaning: Rotational stiffness value about the y-axis of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryNodeCondition attribute 5: OPTIONAL IfcRotationalStiffnessSelect; SELECT IfcRotationalStiffnessSelect of value types, stored as text (the member type tag is not kept)"
+  - name: rotational_stiffness_z
+    type: text
+    nullable: true
+    meaning: Rotational stiffness value about the z-axis of the coordinate system defined by the instance which uses this resource object.
+    source_ref: "IfcBoundaryNodeCondition attribute 6: OPTIONAL IfcRotationalStiffnessSelect; SELECT IfcRotationalStiffnessSelect of value types, stored as text (the member type tag is not kept)"
+notes: SUPERTYPE OF ONEOF ( IfcBoundaryNodeConditionWarping ).

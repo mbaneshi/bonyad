@@ -1,0 +1,42 @@
+code: ifc.earthworks_cut
+name: IfcEarthworksCut
+kind: entity
+base: ifc.feature_element_subtraction
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcEarthworksCut
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedInfrastructureElements/Entities/IfcEarthworksCut.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The resulting void from modification of existing terrain or road structure by excavation or by other means of removing material.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined type of a earthworks cut elements.
+    source_ref: "IfcEarthworksCut attribute 1: OPTIONAL IfcEarthworksCutTypeEnum; enumeration IfcEarthworksCutTypeEnum"
+    values:
+      - value: TRENCH
+        meaning: Excavation whose length greatly exceeds the depth and width.
+      - value: DREDGING
+        meaning: Underwater excavation to recover material or to create a greater depth of water.
+      - value: EXCAVATION
+        meaning: General type of excavation when more accurate type is not specified.
+      - value: OVEREXCAVATION
+        meaning: Excavation that goes beyond the depth required for construction, in order to replace unsuitable material.
+      - value: TOPSOILREMOVAL
+        meaning: Excavation where the topmost layer of soil containing organic material is cut or stripped.
+      - value: STEPEXCAVATION
+        meaning: Removal of the soft part of the existing road slope, where it is dug into steps, when widening a road.
+      - value: PAVEMENTMILLING
+        meaning: Removal of expired material from top of pavement to be replaced by new material.
+      - value: CUT
+        meaning: Excavation where soil or rock below topsoil is cut to the depth required for the construction of facilities such as roads and railways.
+      - value: BASE_EXCAVATION
+        meaning: Excavation for basements of buildings, abutments of bridges or similar structures either partially or completely below ground level.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

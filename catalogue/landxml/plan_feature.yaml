@@ -1,0 +1,51 @@
+code: landxml.plan_feature
+name: PlanFeature
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element PlanFeature
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A planimetric feature not otherwise defined by the schema, such as building footprints, guard rails, tree lines, lightpoles or signage.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.plan_features
+    nullable: true
+    meaning: The landxml.plan_features row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: desc
+    type: text
+    meaning: PlanFeature desc; the XSD gives no description.
+    source_ref: XSD PlanFeature/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: PlanFeature name; the XSD gives no description.
+    source_ref: XSD PlanFeature/@name; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: PlanFeature state; the XSD gives no description.
+    source_ref: XSD PlanFeature/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs 1..unbounded in landxml.plan_features; 0..unbounded in landxml.roadway. Review: Contained by more than one type in the XSD (also landxml.roadway); the catalogue allows one parent, so the first is used. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."
+needs_review: true

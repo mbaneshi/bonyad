@@ -1,0 +1,20 @@
+code: ifc.texture_map_vertices
+name: IfcTextureMap.Vertices
+kind: child
+parent: ifc.texture_map
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextureMap.Vertices
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcTextureMap.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the Vertices list of IfcTextureMap. List of texture coordinate vertices that are applied to the corresponding points of the polyloop defining a face bound.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcTextureMap.Vertices.
+    source_ref: "IfcTextureMap attribute 1: LIST [3:?] OF IfcTextureVertex"
+    ref_to: ifc.texture_vertex
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: LIST [3:?] OF IfcTextureVertex."

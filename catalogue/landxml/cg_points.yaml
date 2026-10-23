@@ -1,0 +1,90 @@
+code: landxml.cg_points
+name: CgPoints
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element CgPoints
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A collection of COGO points. (Cg = COGO = Cordinate Geometry)
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.landxml
+    nullable: true
+    meaning: The landxml.landxml row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: desc
+    type: text
+    meaning: CgPoints desc; the XSD gives no description.
+    source_ref: XSD CgPoints/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: CgPoints name; the XSD gives no description.
+    source_ref: XSD CgPoints/@name; type xs:string
+    nullable: true
+  - name: state
+    type: enum
+    meaning: CgPoints state; the XSD gives no description.
+    source_ref: XSD CgPoints/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: code
+    type: text
+    meaning: CgPoints code; the XSD gives no description.
+    source_ref: XSD CgPoints/@code; type xs:string
+    nullable: true
+  - name: zone_number
+    type: int
+    meaning: CgPoints zoneNumber; the XSD gives no description.
+    source_ref: XSD CgPoints/@zoneNumber; type zoneNumberType
+    nullable: true
+    check: positive
+  - name: dtm_attribute
+    type: enum
+    meaning: CgPoints DTMAttribute; the XSD gives no description.
+    source_ref: XSD CgPoints/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+notes: "Occurs 0..unbounded in landxml.landxml; 0..unbounded in landxml.cg_points; at most once (XSD: unbounded choice) in landxml.survey. May nest inside itself. Review: Contained by more than one type in the XSD (also landxml.survey); the catalogue allows one parent, so the first is used. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."
+needs_review: true

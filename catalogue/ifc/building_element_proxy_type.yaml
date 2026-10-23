@@ -1,0 +1,33 @@
+code: ifc.building_element_proxy_type
+name: IfcBuildingElementProxyType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBuildingElementProxyType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcBuildingElementProxyType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcBuildingElementProxyType defines a list of commonly shared property set definitions of a building element proxy and an optional set of product representations. It is used to define an element specification (i.e. the specific product information, that is common to all occurrences of that product type).
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Predefined types to define the particular type of an building element proxy.
+    source_ref: "IfcBuildingElementProxyType attribute 1: IfcBuildingElementProxyTypeEnum; enumeration IfcBuildingElementProxyTypeEnum"
+    values:
+      - value: COMPLEX
+        meaning: Not used - kept for upward compatibility.
+      - value: ELEMENT
+        meaning: Not used - kept for upward compatibility.
+      - value: PARTIAL
+        meaning: Not used - kept for upward compatibility.
+      - value: PROVISIONFORVOID
+        meaning: The proxy denotes a provision for voids (a proposed opening not applied as void yet).
+      - value: PROVISIONFORSPACE
+        meaning: The proxy denotes a provision for space (e.g. the space allocated as a provision for mechanical equipment or furniture).
+      - value: USERDEFINED
+        meaning: User-defined building element proxy.
+      - value: NOTDEFINED
+        meaning: Undefined building element proxy.

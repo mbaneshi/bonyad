@@ -1,0 +1,27 @@
+code: ifc.space_heater_type
+name: IfcSpaceHeaterType
+kind: symbol
+base: ifc.flow_terminal_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSpaceHeaterType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcSpaceHeaterType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow terminal type IfcSpaceHeaterType defines commonly shared information for occurrences of space heaters.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Enumeration of possible types of space heater (e.g., baseboard heater, convector, radiator, etc.).
+    source_ref: "IfcSpaceHeaterType attribute 1: IfcSpaceHeaterTypeEnum; enumeration IfcSpaceHeaterTypeEnum"
+    values:
+      - value: CONVECTOR
+        meaning: A heat-distributing unit that operates with gravity-circulated air.
+      - value: RADIATOR
+        meaning: A heat-distributing unit that operates with thermal radiation.
+      - value: USERDEFINED
+        meaning: User-defined space heater type.
+      - value: NOTDEFINED
+        meaning: Undefined space heater type.

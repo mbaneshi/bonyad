@@ -1,0 +1,59 @@
+code: ifc.constraint
+name: IfcConstraint
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcConstraint
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcConstraintResource/Entities/IfcConstraint.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcConstraint is used to define a constraint or limiting value or boundary condition that may be applied to an object or to the value of a property.
+fields:
+  - name: name
+    type: text
+    meaning: A human-readable name to be used for the constraint.
+    source_ref: "IfcConstraint attribute 1: IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: A human-readable description that may apply additional information about a constraint.
+    source_ref: "IfcConstraint attribute 2: OPTIONAL IfcText"
+  - name: constraint_grade
+    type: enum
+    meaning: Enumeration that qualifies the type of constraint.
+    source_ref: "IfcConstraint attribute 3: IfcConstraintEnum; enumeration IfcConstraintEnum"
+    values:
+      - value: HARD
+        meaning: Qualifies a constraint such that it must be followed rigidly within or at the values set.
+      - value: SOFT
+        meaning: Qualifies a constraint such that it should be followed within or at the values set.
+      - value: ADVISORY
+        meaning: Qualifies a constraint such that it is advised that it is followed within or at the values set.
+      - value: USERDEFINED
+        meaning: A user-defined grade indicated by a separate attribute at the referencing entity.
+      - value: NOTDEFINED
+        meaning: Grade has not been specified.
+  - name: constraint_source
+    type: text
+    nullable: true
+    meaning: Any source material, such as a code or standard, from which the constraint originated.
+    source_ref: "IfcConstraint attribute 4: OPTIONAL IfcLabel"
+  - name: creating_actor
+    type: ref
+    nullable: true
+    meaning: Person and/or organization that has created the constraint.
+    source_ref: "IfcConstraint attribute 5: OPTIONAL IfcActorSelect; via select IfcActorSelect"
+    ref_to: any
+  - name: creation_time
+    type: timestamp
+    nullable: true
+    meaning: Time when information specifying the constraint instance was created.
+    source_ref: "IfcConstraint attribute 6: OPTIONAL IfcDateTime"
+  - name: user_defined_grade
+    type: text
+    nullable: true
+    meaning: Allows for specification of user defined grade of the constraint beyond the enumeration values (hard, soft, advisory) provided by ConstraintGrade attribute of type IfcConstraintEnum.
+    source_ref: "IfcConstraint attribute 7: OPTIONAL IfcLabel"
+notes: "Inverse attributes not stored: HasExternalReferences, PropertiesForConstraint. SUPERTYPE OF ONEOF ( IfcMetric , IfcObjective )."

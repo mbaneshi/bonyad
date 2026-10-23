@@ -1,0 +1,14 @@
+code: ifc.geoslice
+name: IfcGeoslice
+kind: entity
+base: ifc.geotechnical_assembly
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcGeoslice
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedInfrastructureElements/Entities/IfcGeoslice.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Representation of the concept of a sectional planar geological and geotechnical model, usually an interpretation but sometimes created direct from ground penetrating measurement. The assembly may contain one of more strata and anthropic elements.
+fields: []

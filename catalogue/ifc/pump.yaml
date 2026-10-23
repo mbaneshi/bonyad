@@ -1,0 +1,38 @@
+code: ifc.pump
+name: IfcPump
+kind: entity
+base: ifc.flow_moving_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPump
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcPump.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A pump is a device which imparts mechanical work on fluids or slurries to move them through a channel or pipeline. A typical use of a pump is to circulate chilled water or heating hot water in a building services distribution system.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcPump (not described in the source documentation).
+    source_ref: "IfcPump attribute 1: OPTIONAL IfcPumpTypeEnum; enumeration IfcPumpTypeEnum"
+    values:
+      - value: CIRCULATOR
+        meaning: A Circulator pump is a generic low-pressure, low-capacity pump.
+      - value: ENDSUCTION
+        meaning: An End Suction pump, when mounted horizontally, has a single horizontal inlet on the impeller suction side and a vertical discharge.
+      - value: SPLITCASE
+        meaning: A Split Case pump, when mounted horizontally, has an inlet and outlet on each side of the impeller.
+      - value: SUBMERSIBLEPUMP
+        meaning: A pump designed to be immersed in a fluid, typically a collection tank.
+      - value: SUMPPUMP
+        meaning: A pump designed to sit above a collection tank with a suction inlet extending into the tank.
+      - value: VERTICALINLINE
+        meaning: A Vertical Inline pump has the pump and motor close-coupled on the pump casing.
+      - value: VERTICALTURBINE
+        meaning: A Vertical Turbine pump has a motor mounted vertically on the pump casing for either wet-pit sump mounting or dry-well mounting.
+      - value: USERDEFINED
+        meaning: User-defined pump type.
+      - value: NOTDEFINED
+        meaning: Pump type has not been defined.

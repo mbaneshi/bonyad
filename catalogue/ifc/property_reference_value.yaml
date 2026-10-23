@@ -1,0 +1,25 @@
+code: ifc.property_reference_value
+name: IfcPropertyReferenceValue
+kind: object
+base: ifc.simple_property
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPropertyReferenceValue
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPropertyResource/Entities/IfcPropertyReferenceValue.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcPropertyReferenceValue allows a property value to be of type of an resource level entity. The applicable entities that can be used as value references are given by the IfcObjectReferenceSelect.
+fields:
+  - name: usage_name
+    type: text
+    nullable: true
+    meaning: Description of the use of the referenced value within the property.
+    source_ref: "IfcPropertyReferenceValue attribute 1: OPTIONAL IfcText"
+  - name: property_reference
+    type: ref
+    nullable: true
+    meaning: Reference to another property entity through one of the select types in the IfcObjectReferenceSelect.
+    source_ref: "IfcPropertyReferenceValue attribute 2: OPTIONAL IfcObjectReferenceSelect; via select IfcObjectReferenceSelect"
+    ref_to: any

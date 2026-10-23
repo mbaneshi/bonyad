@@ -1,0 +1,77 @@
+code: landxml.road_sign
+name: RoadSign
+kind: child
+parent: landxml.roadway
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element RoadSign
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `RoadSign`; the XSD gives no description.
+fields:
+  - name: mutcd_code
+    type: text
+    meaning: RoadSign MUTCDCode; the XSD gives no description.
+    source_ref: XSD RoadSign/@MUTCDCode; type xs:string
+    nullable: true
+  - name: station
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD RoadSign/@station; type station
+    nullable: true
+  - name: offset
+    type: length
+    meaning: Represents a linear offset distance. When associated with horizontal (planametric) road or coordinate geometry, the offset is a 2D distance measured perpendicular to the road centerline or coordinate geometry used as... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD RoadSign/@offset; type offsetDistance
+    nullable: true
+  - name: sideof_road
+    type: enum
+    meaning: RoadSign sideofRoad; the XSD gives no description.
+    source_ref: XSD RoadSign/@sideofRoad; type sideofRoadType
+    nullable: true
+    values:
+      - value: right
+        meaning: Enumeration literal "right"; the XSD gives no description.
+      - value: left
+        meaning: Enumeration literal "left"; the XSD gives no description.
+      - value: both
+        meaning: Enumeration literal "both"; the XSD gives no description.
+  - name: type
+    type: enum
+    meaning: RoadSign type; the XSD gives no description.
+    source_ref: XSD RoadSign/@type; type roadSignType
+    nullable: true
+    values:
+      - value: regulatory
+        meaning: Enumeration literal "regulatory"; the XSD gives no description.
+      - value: guide
+        meaning: Enumeration literal "guide"; the XSD gives no description.
+      - value: warning
+        meaning: Enumeration literal "warning"; the XSD gives no description.
+      - value: specificService
+        meaning: Enumeration literal "specificService"; the XSD gives no description.
+      - value: tourist
+        meaning: Enumeration literal "tourist"; the XSD gives no description.
+      - value: recreation-cultural
+        meaning: Enumeration literal "recreation-cultural"; the XSD gives no description.
+      - value: emergencyManagement
+        meaning: Enumeration literal "emergencyManagement"; the XSD gives no description.
+  - name: mount_height
+    type: float
+    meaning: RoadSign mountHeight; the XSD gives no description.
+    source_ref: XSD RoadSign/@mountHeight; type xs:double
+    nullable: true
+  - name: width
+    type: float
+    meaning: RoadSign width; the XSD gives no description.
+    source_ref: XSD RoadSign/@width; type xs:double
+    nullable: true
+  - name: height
+    type: float
+    meaning: RoadSign height; the XSD gives no description.
+    source_ref: XSD RoadSign/@height; type xs:double
+    nullable: true
+notes: Occurs 0..unbounded via Roadside in landxml.roadway.

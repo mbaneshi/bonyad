@@ -1,0 +1,29 @@
+code: ifc.complex_property_template
+name: IfcComplexPropertyTemplate
+kind: symbol
+base: ifc.property_template
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcComplexPropertyTemplate
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcComplexPropertyTemplate.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcComplexPropertyTemplate defines the template for all complex properties, either the _IfcComplexProperty_'s, or the _IfcPhysicalComplexQuantity_'s. The individual complex property templates are interpreted according to their Name attribute and and optional UsageName attribute.
+fields:
+  - name: usage_name
+    type: text
+    nullable: true
+    meaning: Usage description of the IfcComplexPropertyTemplate.
+    source_ref: "IfcComplexPropertyTemplate attribute 1: OPTIONAL IfcLabel"
+  - name: template_type
+    type: enum
+    nullable: true
+    meaning: Property type defining whether the property template defines a property as a IfcComplexProperty or IfcPhysicalComplexQuantity.
+    source_ref: "IfcComplexPropertyTemplate attribute 2: OPTIONAL IfcComplexPropertyTemplateTypeEnum; enumeration IfcComplexPropertyTemplateTypeEnum"
+    values:
+      - value: P_COMPLEX
+        meaning: The properties defined by this IfcComplexPropertyTemplate are of type IfcComplexProperty.
+      - value: Q_COMPLEX
+        meaning: The quantities defined by this IfcComplexPropertyTemplate are of type IfcPhysicalComplexQuantity.

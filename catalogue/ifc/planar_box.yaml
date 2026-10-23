@@ -1,0 +1,19 @@
+code: ifc.planar_box
+name: IfcPlanarBox
+kind: entity
+base: ifc.planar_extent
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPlanarBox
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationDefinitionResource/Entities/IfcPlanarBox.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A planar box specifies an arbitrary rectangular box and its location in a two dimensional Cartesian coordinate system. If the planar box is used within a three-dimensional coordinate system, it defines the rectangular box within the XY plane.
+fields:
+  - name: placement
+    type: ref
+    meaning: The IfcAxis2Placement positions a local coordinate system for the definition of the rectangle.
+    source_ref: "IfcPlanarBox attribute 1: IfcAxis2Placement; via select IfcAxis2Placement"
+    ref_to: ifc.placement

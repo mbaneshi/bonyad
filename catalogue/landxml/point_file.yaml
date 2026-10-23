@@ -1,0 +1,27 @@
+code: landxml.point_file
+name: PointFile
+kind: child
+parent: landxml.surface
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element PointFile
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A reference to an external file containing point information. The format of the information is defined by the order and delimeter attributes.
+fields:
+  - name: file_name
+    type: text
+    meaning: PointFile fileName; the XSD gives no description.
+    source_ref: XSD PointFile/@fileName; type xs:anySimpleType
+  - name: file_type
+    type: text
+    meaning: PointFile fileType; the XSD gives no description.
+    source_ref: XSD PointFile/@fileType; type xs:anySimpleType
+  - name: file_format
+    type: text
+    meaning: PointFile fileFormat; the XSD gives no description.
+    source_ref: XSD PointFile/@fileFormat; type xs:anySimpleType
+notes: Occurs 1..unbounded via SourceData/PointFiles in landxml.surface.

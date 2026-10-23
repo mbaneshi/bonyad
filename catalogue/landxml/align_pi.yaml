@@ -1,0 +1,181 @@
+code: landxml.align_pi
+name: AlignPI
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element AlignPI
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A Single Alignment PI Definition
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.alignment
+    nullable: true
+    meaning: The landxml.alignment row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: station
+    type: float
+    meaning: Station Name.
+    source_ref: XSD Station (element); type xs:double
+    nullable: true
+  - name: pi
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D Point of Intersection. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only pi_pnt_ref is given).
+    source_ref: AlignPI/PI text content (Point3dOpt)
+  - name: pi_name
+    type: text
+    meaning: PI name; the XSD gives no description.
+    source_ref: XSD PI/@name; type xs:string
+    nullable: true
+  - name: pi_desc
+    type: text
+    meaning: PI desc; the XSD gives no description.
+    source_ref: XSD PI/@desc; type xs:string
+    nullable: true
+  - name: pi_code
+    type: text
+    meaning: PI code; the XSD gives no description.
+    source_ref: XSD PI/@code; type xs:string
+    nullable: true
+  - name: pi_state
+    type: enum
+    meaning: PI state; the XSD gives no description.
+    source_ref: XSD PI/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: pi_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD PI/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: pi_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD PI/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: pi_point_geometry
+    type: enum
+    meaning: PI pointGeometry; the XSD gives no description.
+    source_ref: XSD PI/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: pi_dtm_attribute
+    type: enum
+    meaning: PI DTMAttribute; the XSD gives no description.
+    source_ref: XSD PI/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: pi_time_stamp
+    type: timestamp
+    meaning: PI timeStamp; the XSD gives no description.
+    source_ref: XSD PI/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: pi_role
+    type: enum
+    meaning: PI role; the XSD gives no description.
+    source_ref: XSD PI/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: pi_determined_time_stamp
+    type: timestamp
+    meaning: PI determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD PI/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: pi_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD PI/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: pi_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD PI/@latitude; type latLongAngle
+    nullable: true
+  - name: pi_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD PI/@longitude; type latLongAngle
+    nullable: true
+  - name: pi_zone
+    type: text
+    meaning: PI zone; the XSD gives no description.
+    source_ref: XSD PI/@zone; type xs:string
+    nullable: true
+  - name: pi_northing_std_error
+    type: float
+    meaning: PI northingStdError; the XSD gives no description.
+    source_ref: XSD PI/@northingStdError; type xs:double
+    nullable: true
+  - name: pi_easting_std_error
+    type: float
+    meaning: PI eastingStdError; the XSD gives no description.
+    source_ref: XSD PI/@eastingStdError; type xs:double
+    nullable: true
+  - name: pi_elevation_std_error
+    type: float
+    meaning: PI elevationStdError; the XSD gives no description.
+    source_ref: XSD PI/@elevationStdError; type xs:double
+    nullable: true
+notes: "Occurs 1..unbounded via AlignPIs in landxml.alignment. Inlined elements PI sit inside an unbounded xs:choice/xs:sequence in the XSD; modelled as at most once each. Review: Occurrence of inlined elements is a modelling judgement (XSD choice is unbounded). Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference."
+needs_review: true

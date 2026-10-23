@@ -1,0 +1,26 @@
+code: ifc.surface_style_shading
+name: IfcSurfaceStyleShading
+kind: object
+base: ifc.presentation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSurfaceStyleShading
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcSurfaceStyleShading.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcSurfaceStyleShading allows for colour information and transparency used for shading and simple rendering. The surface colour is used for colouring or simple shading of the assigned surfaces and the transparency for identifying translucency, where 0.0 is completely opaque, and 1.0 is completely transparent.
+fields:
+  - name: surface_colour
+    type: ref
+    meaning: The colour used to render the surface.
+    source_ref: "IfcSurfaceStyleShading attribute 1: IfcColourRgb"
+    ref_to: ifc.colour_rgb
+  - name: transparency
+    type: ratio
+    nullable: true
+    meaning: The transparency field specifies how "clear" an object is, with 1.0 being completely transparent, and 0.0 completely opaque.
+    source_ref: "IfcSurfaceStyleShading attribute 2: OPTIONAL IfcNormalisedRatioMeasure"
+    check: unit_interval
+notes: SUPERTYPE OF ONEOF ( IfcSurfaceStyleRendering ).

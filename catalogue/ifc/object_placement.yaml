@@ -1,0 +1,20 @@
+code: ifc.object_placement
+name: IfcObjectPlacement
+kind: abstract
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcObjectPlacement
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricConstraintResource/Entities/IfcObjectPlacement.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcObjectPlacement is an abstract supertype for the special types defining the object coordinate system. The IfcObjectPlacement has to be provided for each product that has a shape representation.
+fields:
+  - name: placement_rel_to
+    type: ref
+    nullable: true
+    meaning: Reference to object placement that provides the relative placement with its placement in a grid, local coordinate system or linear referenced placement.
+    source_ref: "IfcObjectPlacement attribute 1: OPTIONAL IfcObjectPlacement"
+    ref_to: ifc.object_placement
+notes: "Inverse attributes not stored: PlacesObject. SUPERTYPE OF ONEOF ( IfcGridPlacement , IfcLinearPlacement , IfcLocalPlacement )."

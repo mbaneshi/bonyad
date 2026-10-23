@@ -1,0 +1,30 @@
+code: ifc.shading_device
+name: IfcShadingDevice
+kind: entity
+base: ifc.built_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcShadingDevice
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcShadingDevice.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Shading devices are purpose built devices to protect from the sunlight, from natural light, or screening them from view. Shading devices can form part of the facade or can be mounted inside the building, they can be fixed or operable.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined generic type for a shading device that is specified in an enumeration.
+    source_ref: "IfcShadingDevice attribute 1: OPTIONAL IfcShadingDeviceTypeEnum; enumeration IfcShadingDeviceTypeEnum"
+    values:
+      - value: JALOUSIE
+        meaning: A blind with adjustable horizontal slats for admitting light and air while excluding direct sun and rain.
+      - value: SHUTTER
+        meaning: A mechanical device that limits the passage of light.
+      - value: AWNING
+        meaning: A rooflike shelter of canvas or other material extending over a doorway, from the top of a window, over a deck, or similar, in order to provide protection, as from the sun.
+      - value: USERDEFINED
+        meaning: USERDEFINED (no description for this literal in the source documentation)
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)

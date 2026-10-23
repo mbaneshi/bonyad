@@ -1,0 +1,24 @@
+code: landxml.contour
+name: Contour
+kind: child
+parent: landxml.surface
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Contour
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: The contour is defined by an elevation attribute and a 2D north/east list of points that define the geometry. is identified by the "name" attribute.
+fields:
+  - name: elev
+    type: float
+    meaning: Contour elev; the XSD gives no description.
+    source_ref: XSD Contour/@elev; type xs:double
+  - name: pnt_list2d
+    type: array
+    meaning: A sequential space delimited list of 2D coordinates with a minimum of 2 points (4 values). Space-delimited list of doubles; consecutive values are the coordinates of successive points in the order the schema states.
+    source_ref: XSD PntList2D (element); type Point
+    of: float
+notes: Occurs 1..unbounded via SourceData/Contours in landxml.surface.

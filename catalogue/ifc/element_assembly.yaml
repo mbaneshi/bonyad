@@ -1,0 +1,92 @@
+code: ifc.element_assembly
+name: IfcElementAssembly
+kind: entity
+base: ifc.element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcElementAssembly
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcElementAssembly.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcElementAssembly represents complex element assemblies aggregated from several elements, such as discrete elements, building elements, or other elements.
+fields:
+  - name: assembly_place
+    type: enum
+    nullable: true
+    meaning: A designation of where the assembly is intended to take place defined by an Enum.
+    source_ref: "IfcElementAssembly attribute 1: OPTIONAL IfcAssemblyPlaceEnum; enumeration IfcAssemblyPlaceEnum"
+    values:
+      - value: SITE
+        meaning: This assembly is assembled at site.
+      - value: FACTORY
+        meaning: This assembly is assembled in a factory.
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcElementAssembly (not described in the source documentation).
+    source_ref: "IfcElementAssembly attribute 2: OPTIONAL IfcElementAssemblyTypeEnum; enumeration IfcElementAssemblyTypeEnum"
+    values:
+      - value: ACCESSORY_ASSEMBLY
+        meaning: Assembled accessories or components.
+      - value: ARCH
+        meaning: A curved structure.
+      - value: BEAM_GRID
+        meaning: Interconnected beams, located in one (typically horizontal) plane.
+      - value: BRACED_FRAME
+        meaning: A rigid frame with additional bracing members.
+      - value: GIRDER
+        meaning: A beam-like superstructure, such as bridge main girder extending between abutments and piers built up of beams, braces (as Members) etc. - may also be an aggregation of girder segments.
+      - value: REINFORCEMENT_UNIT
+        meaning: Assembled reinforcement elements.
+      - value: RIGID_FRAME
+        meaning: A structure built up of beams, columns, etc. with moment-resisting joints, such as gantry.
+      - value: SLAB_FIELD
+        meaning: Slabs, laid out in one plane.
+      - value: TRUSS
+        meaning: A structure built up of members with (quasi) pinned joint.
+      - value: ABUTMENT
+        meaning: A bridge abutment built up of walls, beams, slabs etc.
+      - value: PIER
+        meaning: An intermediate support e.g. in a bridge, built up of walls, columns, beams etc.
+      - value: PYLON
+        meaning: A vertical structure supporting cables in suspended or stayed structure.
+      - value: CROSS_BRACING
+        meaning: A Structural linear member or assembly of members inside a box girder or between girders, typically on a pier, to resist lateral forces and transfer them to the support.
+      - value: DECK
+        meaning: A platform (such as floor or bridge deck) built up of beams, slabs.
+      - value: MAST
+        meaning: An assembly of plates, members, cables or fasteners that form a vertical structure for the support or mounting of other equipment such as lights, sonar or wireless transmitters.
+      - value: SIGNALASSEMBLY
+        meaning: An assembly to physically aggregate together one or more signal instances (and also sign instances) including any supporting structural elements such as a simple pole or a rigid frame gantry.
+      - value: GRID
+        meaning: A framework of spaced cables or bars that are parallel to or cross each other.
+      - value: SHELTER
+        meaning: A structure, fairly quick to setup, move or dismantle, used to give protection, especially from the weather or intrusion.
+      - value: SUPPORTINGASSEMBLY
+        meaning: An assembly intends to support Overhead Contact Line System.
+      - value: SUSPENSIONASSEMBLY
+        meaning: A complex assembly of components used to suspend elements or cable segments.
+      - value: TRACTION_SWITCHING_ASSEMBLY
+        meaning: A common assembly used to insure the switching function.
+      - value: TRACKPANEL
+        meaning: Trackwork ensuring the support and guidance of a vehicle along a route.
+      - value: TURNOUTPANEL
+        meaning: Trackwork ensuring the support and guidance of a vehicle along any given route among various diverging or intersecting tracks.
+      - value: DILATATIONPANEL
+        meaning: Device which permits longitudinal relative rail movement of two adjacent rails, while maintaining correct guidance and support.
+      - value: RAIL_MECHANICAL_EQUIPMENT_ASSEMBLY
+        meaning: A complex assembly made up of several components like blocking device, speed regulator, bias loaded inspector, track scale or controllable retarder.
+      - value: ENTRANCEWORKS
+        meaning: An assembly forming the support structure of a chamber (lock, dock) gate and associated elements, plus the containment of operational equipment.
+      - value: SUMPBUSTER
+        meaning: An obstacle (with oil catchment basin) installed typically in a bus lane to prevent other traffic with lower ground clearance from using it.
+      - value: TRAFFIC_CALMING_DEVICE
+        meaning: A structure on the carriageway to control the speed of vehicles.
+      - value: USERDEFINED
+        meaning: User-defined element assembly.
+      - value: NOTDEFINED
+        meaning: Undefined element assembly.

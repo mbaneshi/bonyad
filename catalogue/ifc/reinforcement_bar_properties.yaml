@@ -1,0 +1,48 @@
+code: ifc.reinforcement_bar_properties
+name: IfcReinforcementBarProperties
+kind: object
+base: ifc.pre_defined_properties
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReinforcementBarProperties
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcReinforcementBarProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcReinforcementBarProperties defines the set of properties for a specific combination of reinforcement bar steel grade, bar type and effective depth.
+fields:
+  - name: total_cross_section_area
+    type: area
+    meaning: The total effective cross-section area of the reinforcement of a specific steel grade.
+    source_ref: "IfcReinforcementBarProperties attribute 1: IfcAreaMeasure"
+  - name: steel_grade
+    type: text
+    meaning: The nominal steel grade defined according to local standards.
+    source_ref: "IfcReinforcementBarProperties attribute 2: IfcLabel"
+  - name: bar_surface
+    type: enum
+    nullable: true
+    meaning: Indicator for whether the bar surface is plain or textured.
+    source_ref: "IfcReinforcementBarProperties attribute 3: OPTIONAL IfcReinforcingBarSurfaceEnum; enumeration IfcReinforcingBarSurfaceEnum"
+    values:
+      - value: PLAIN
+        meaning: The reinforcing bar surface is plain.
+      - value: TEXTURED
+        meaning: The reinforcing bar surface is textured (ribbed).
+  - name: effective_depth
+    type: length
+    nullable: true
+    meaning: The effective depth, i.e. the distance of the specific reinforcement cross section area or reinforcement configuration in a row, counted from a common specific reference point.
+    source_ref: "IfcReinforcementBarProperties attribute 4: OPTIONAL IfcLengthMeasure"
+  - name: nominal_bar_diameter
+    type: length
+    nullable: true
+    meaning: The nominal diameter defining the cross-section size of the reinforcing bar.
+    source_ref: "IfcReinforcementBarProperties attribute 5: OPTIONAL IfcPositiveLengthMeasure"
+    check: positive
+  - name: bar_count
+    type: float
+    nullable: true
+    meaning: The number of bars with identical nominal diameter and steel grade included in the specific reinforcement configuration.
+    source_ref: "IfcReinforcementBarProperties attribute 6: OPTIONAL IfcCountMeasure"

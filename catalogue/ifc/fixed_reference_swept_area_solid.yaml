@@ -1,0 +1,20 @@
+code: ifc.fixed_reference_swept_area_solid
+name: IfcFixedReferenceSweptAreaSolid
+kind: entity
+base: ifc.directrix_curve_swept_area_solid
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFixedReferenceSweptAreaSolid
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcFixedReferenceSweptAreaSolid.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcFixedReferenceSweptAreaSolid is a type of swept area solid which is the result of sweeping an area along a Directrix. The swept area is provided by a subtype of IfcProfileDef.
+fields:
+  - name: fixed_reference
+    type: ref
+    meaning: FixedReference attribute of IfcFixedReferenceSweptAreaSolid (not described in the source documentation).
+    source_ref: "IfcFixedReferenceSweptAreaSolid attribute 1: IfcDirection"
+    ref_to: ifc.direction
+notes: SUPERTYPE OF ONEOF ( IfcDirectrixDerivedReferenceSweptAreaSolid ).

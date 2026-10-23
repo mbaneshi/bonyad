@@ -1,0 +1,22 @@
+code: ifc.blob_texture
+name: IfcBlobTexture
+kind: object
+base: ifc.surface_texture
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBlobTexture
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcBlobTexture.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcBlobTexture provides a 2-dimensional distribution of the lighting parameters of a surface onto which it is mapped. The texture itself is given as a single binary blob, representing the content of a pixel format file.
+fields:
+  - name: raster_format
+    type: text
+    meaning: The format of the RasterCode often using a compression.
+    source_ref: "IfcBlobTexture attribute 1: IfcIdentifier"
+  - name: raster_code
+    type: blob
+    meaning: Blob, given as a single binary, to capture the texture within one popular file (compression) format.
+    source_ref: "IfcBlobTexture attribute 2: IfcBinary"

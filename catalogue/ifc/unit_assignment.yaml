@@ -1,0 +1,20 @@
+code: ifc.unit_assignment
+name: IfcUnitAssignment
+kind: object
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcUnitAssignment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMeasureResource/Entities/IfcUnitAssignment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcUnitAssignment indicates a set of units which may be assigned. Within an IfcUnitAssignment each unit definition shall be unique; that is, there shall be no redundant unit definitions for the same unit type such as length unit or area unit.
+fields:
+  - name: synthetic_label
+    type: text
+    nullable: true
+    meaning: "Synthetic column, not in IFC: free label for this container row. IFC identifies it only by instance identity."
+    source_ref: synthetic; added by the harvester so the type has a table to own its child list
+needs_review: true
+notes: "Review: the type has no EXPRESS attribute that maps to a column (only a child list), so a synthetic nullable synthetic_label column was added."

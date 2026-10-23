@@ -1,0 +1,35 @@
+code: ifc.ramp_type
+name: IfcRampType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRampType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcRampType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The building element type IfcRampType defines commonly shared information for occurrences of ramps.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a ramp element from which the type required may be set.
+    source_ref: "IfcRampType attribute 1: IfcRampTypeEnum; enumeration IfcRampTypeEnum"
+    values:
+      - value: STRAIGHT_RUN_RAMP
+        meaning: A ramp - which is a sloping floor, walk, or roadway - connecting two levels.
+      - value: TWO_STRAIGHT_RUN_RAMP
+        meaning: A straight ramp consisting of two straight flights without turns but with one landing.
+      - value: QUARTER_TURN_RAMP
+        meaning: A ramp making a 90° turn, consisting of two straight flights connected by a quarterspace landing.
+      - value: TWO_QUARTER_TURN_RAMP
+        meaning: A ramp making a 180° turn, consisting of three straight flights connected by two quarterspace landings.
+      - value: HALF_TURN_RAMP
+        meaning: A ramp making a 180° turn, consisting of two straight flights connected by a halfspace landing.
+      - value: SPIRAL_RAMP
+        meaning: A ramp constructed around a circular or elliptical well without newels and landings.
+      - value: USERDEFINED
+        meaning: Free form ramp (user defined operation type).
+      - value: NOTDEFINED
+        meaning: NOTDEFINED (no description for this literal in the source documentation)

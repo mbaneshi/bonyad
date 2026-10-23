@@ -1,0 +1,19 @@
+code: ifc.offset_curve_by_distances
+name: IfcOffsetCurveByDistances
+kind: entity
+base: ifc.offset_curve
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcOffsetCurveByDistances
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcOffsetCurveByDistances.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcOffsetCurveByDistances is a curve defined by a list of offsets along its BasisCurve. If only one offset is provided, it indicates a constant offset along the extents of the basis curve.
+fields:
+  - name: tag
+    type: text
+    nullable: true
+    meaning: Optional identifier of the curve, which may be used to correlate points from a variable cross-section.
+    source_ref: "IfcOffsetCurveByDistances attribute 2: OPTIONAL IfcLabel"

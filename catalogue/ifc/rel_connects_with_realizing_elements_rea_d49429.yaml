@@ -1,0 +1,20 @@
+code: ifc.rel_connects_with_realizing_elements_rea_d49429
+name: IfcRelConnectsWithRealizingElements.RealizingElements
+kind: child
+parent: ifc.rel_connects_with_realizing_elements
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelConnectsWithRealizingElements.RealizingElements
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcRelConnectsWithRealizingElements.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the RealizingElements list of IfcRelConnectsWithRealizingElements. Defines the elements that realize a connection relationship.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcRelConnectsWithRealizingElements.RealizingElements.
+    source_ref: "IfcRelConnectsWithRealizingElements attribute 1: SET [1:?] OF IfcElement"
+    ref_to: ifc.element
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [1:?] OF IfcElement. Table name abbreviated to fit the 63-byte Postgres identifier limit; full name would be ifc.rel_connects_with_realizing_elements_realizing_elements."

@@ -1,0 +1,59 @@
+code: landxml.crash_history
+name: CrashHistory
+kind: child
+parent: landxml.roadway
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element CrashHistory
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `CrashHistory`; the XSD gives no description.
+fields:
+  - name: year
+    type: date
+    meaning: CrashHistory year; the XSD gives no description.
+    source_ref: XSD CrashHistory/@year; type xs:date
+    nullable: true
+  - name: location_1
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD CrashHistory/@location-1; type station
+    nullable: true
+  - name: location_2
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD CrashHistory/@location-2; type station
+    nullable: true
+  - name: severity
+    type: enum
+    meaning: CrashHistory severity; the XSD gives no description.
+    source_ref: XSD CrashHistory/@severity; type crashSeverityType
+    nullable: true
+    values:
+      - value: fatal
+        meaning: Enumeration literal "fatal"; the XSD gives no description.
+      - value: "nonfatal "
+        meaning: Enumeration literal "nonfatal "; the XSD gives no description.
+      - value: propery-damage-only
+        meaning: Enumeration literal "propery-damage-only"; the XSD gives no description.
+  - name: intersection_relation
+    type: enum
+    meaning: CrashHistory intersectionRelation; the XSD gives no description.
+    source_ref: XSD CrashHistory/@intersectionRelation; type crashIntersectionRelation
+    nullable: true
+    values:
+      - value: unknown
+        meaning: Enumeration literal "unknown"; the XSD gives no description.
+      - value: non-intersection-related
+        meaning: Enumeration literal "non-intersection-related"; the XSD gives no description.
+      - value: intersection-related
+        meaning: Enumeration literal "intersection-related"; the XSD gives no description.
+  - name: intersection_location
+    type: length
+    meaning: Represents the actual measured distance along the geometry in numeric decimal form expressed in linear units. Also known as the internal station value where no station equations are applied. Distance along the geometry in the file's declared linear unit; kept unconverted. Not corrected for station equations.
+    source_ref: XSD CrashHistory/@intersectionLocation; type station
+    nullable: true
+notes: Occurs 1..unbounded via CrashData in landxml.roadway.

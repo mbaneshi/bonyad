@@ -1,0 +1,33 @@
+code: ifc.controller_type
+name: IfcControllerType
+kind: symbol
+base: ifc.distribution_control_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcControllerType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcBuildingControlsDomain/Entities/IfcControllerType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The distribution control element type IfcControllerType defines commonly shared information for occurrences of controllers.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of controller from which the type required may be set.
+    source_ref: "IfcControllerType attribute 1: IfcControllerTypeEnum; enumeration IfcControllerTypeEnum"
+    values:
+      - value: FLOATING
+        meaning: Output increases or decreases at a constant or accelerating rate.
+      - value: PROGRAMMABLE
+        meaning: Output is programmable such as Discrete Digital Control (DDC).
+      - value: PROPORTIONAL
+        meaning: Output is proportional to the control error and optionally time integral and derivative.
+      - value: MULTIPOSITION
+        meaning: Output is discrete value, can be one of three or more values.
+      - value: TWOPOSITION
+        meaning: Output can be either on or off.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

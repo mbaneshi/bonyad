@@ -1,0 +1,20 @@
+code: ifc.presentation_layer_with_style_layer_styles
+name: IfcPresentationLayerWithStyle.LayerStyles
+kind: child
+parent: ifc.presentation_layer_with_style
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPresentationLayerWithStyle.LayerStyles
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationOrganizationResource/Entities/IfcPresentationLayerWithStyle.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the LayerStyles list of IfcPresentationLayerWithStyle. Assignment of presentation styles to the layer to provide a default style for representation items.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcPresentationLayerWithStyle.LayerStyles.
+    source_ref: "IfcPresentationLayerWithStyle attribute 4: SET [0:?] OF IfcPresentationStyle"
+    ref_to: ifc.presentation_style
+notes: "Unordered set: row order carries no meaning. EXPRESS: SET [0:?] OF IfcPresentationStyle."

@@ -1,0 +1,19 @@
+code: ifc.impact_protection_device
+name: IfcImpactProtectionDevice
+kind: entity
+base: ifc.element_component
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcImpactProtectionDevice
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcImpactProtectionDevice.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An impact protection device is a component used to protect other built elements from kinetic damage.
+fields:
+  - name: predefined_type
+    type: text
+    nullable: true
+    meaning: Identifies the predefined type of an impact device.
+    source_ref: "IfcImpactProtectionDevice attribute 1: OPTIONAL IfcImpactProtectionDeviceTypeSelect; SELECT IfcImpactProtectionDeviceTypeSelect of value types, stored as text (the member type tag is not kept)"

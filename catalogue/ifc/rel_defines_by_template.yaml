@@ -1,0 +1,19 @@
+code: ifc.rel_defines_by_template
+name: IfcRelDefinesByTemplate
+kind: object
+base: ifc.rel_defines
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRelDefinesByTemplate
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcKernel/Entities/IfcRelDefinesByTemplate.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The objectified relationship IfcRelDefinesByTemplate defines the relationship between a property set template and property sets. Common information about property sets (e.g., the applicable name, description and contained properties) is defined by a property set template and assigned to all relevant property sets.
+fields:
+  - name: relating_template
+    type: ref
+    meaning: Property set template that provides the common definition of related property sets.
+    source_ref: "IfcRelDefinesByTemplate attribute 2: IfcPropertySetTemplate"
+    ref_to: ifc.property_set_template

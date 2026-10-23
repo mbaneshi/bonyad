@@ -1,0 +1,31 @@
+code: ifc.railing_type
+name: IfcRailingType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRailingType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedBldgElements/Entities/IfcRailingType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The building element type IfcRailingType defines commonly shared information for occurrences of railings.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of a railing element from which the type required may be set.
+    source_ref: "IfcRailingType attribute 1: IfcRailingTypeEnum; enumeration IfcRailingTypeEnum"
+    values:
+      - value: HANDRAIL
+        meaning: A type of railing designed to serve as an optional structural support for loads applied by human occupants (at hand height).
+      - value: GUARDRAIL
+        meaning: A type of railing designed to guard human or vehicle occupants from falling off a stair, ramp or landing where there is a vertical drop at the edge of such floors/landings, or to provide restraint to an errant road …
+      - value: BALUSTRADE
+        meaning: Guardrail located at the edge of a floor, rather then a stair or ramp.
+      - value: FENCE
+        meaning: "NOTE Definition from ISO6707-1: non-load bearing vertical construction, usually lightweight, which bounds or subdivides an external area."
+      - value: USERDEFINED
+        meaning: User-defined railing element, a term to identify the user type is given by the attribute _IfcRailing.ObjectType._.
+      - value: NOTDEFINED
+        meaning: Undefined railing element, no type information available.

@@ -1,0 +1,39 @@
+code: ifc.point_by_distance_expression
+name: IfcPointByDistanceExpression
+kind: entity
+base: ifc.point
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcPointByDistanceExpression
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcPointByDistanceExpression.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcPointByDistanceExpression describes a point relative to a basis curve according to distance along the basis curve. The offsets default to the initial context of the curve relative to it's tangent either specified in _IfcProduct.Placement_ or in the case of a segmented curve to the IfcCurveSegment StartPlacement where the values correspond to the …
+fields:
+  - name: distance_along
+    type: text
+    meaning: The distance along the basis curve measured as either a IfcLengthMeasure or IfcParameterValue.
+    source_ref: "IfcPointByDistanceExpression attribute 1: IfcCurveMeasureSelect; SELECT IfcCurveMeasureSelect of value types, stored as text (the member type tag is not kept)"
+  - name: offset_lateral
+    type: length
+    nullable: true
+    meaning: Default offset horizontally is measured perpendicular to the basis curve, where positive values indicate to the left of the basis curve as facing in the positive parametrization direction of the basis curve, and negative values indicate to the right.
+    source_ref: "IfcPointByDistanceExpression attribute 2: OPTIONAL IfcLengthMeasure"
+  - name: offset_vertical
+    type: length
+    nullable: true
+    meaning: Default offset vertical to the basis curve where positive values indicate perpendicular to the tangent at DistanceAlong in the plane of the tangent perpendicular to the global XY plane.
+    source_ref: "IfcPointByDistanceExpression attribute 3: OPTIONAL IfcLengthMeasure"
+  - name: offset_longitudinal
+    type: length
+    nullable: true
+    meaning: Offset parallel to the basis curve after applying DistanceAlong, OffsetLateral, and OffsetVertical to reach locations for the case of a tangentially discontinuous basis curve.
+    source_ref: "IfcPointByDistanceExpression attribute 4: OPTIONAL IfcLengthMeasure"
+  - name: basis_curve
+    type: ref
+    meaning: BasisCurve attribute of IfcPointByDistanceExpression (not described in the source documentation).
+    source_ref: "IfcPointByDistanceExpression attribute 5: IfcCurve"
+    ref_to: ifc.curve
+notes: "Derived attributes not stored: Dim."

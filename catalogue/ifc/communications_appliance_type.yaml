@@ -1,0 +1,71 @@
+code: ifc.communications_appliance_type
+name: IfcCommunicationsApplianceType
+kind: symbol
+base: ifc.flow_terminal_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCommunicationsApplianceType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcElectricalDomain/Entities/IfcCommunicationsApplianceType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow terminal type IfcCommunicationsApplianceType defines commonly shared information for occurrences of communications appliances.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of communications appliance from which the type required may be set.
+    source_ref: "IfcCommunicationsApplianceType attribute 1: IfcCommunicationsApplianceTypeEnum; enumeration IfcCommunicationsApplianceTypeEnum"
+    values:
+      - value: ANTENNA
+        meaning: A transducer designed to transmit or receive electromagnetic waves.
+      - value: COMPUTER
+        meaning: A desktop, laptop, tablet, or other type of computer that can be moved from one place to another and connected to an electrical supply via a plugged outlet.
+      - value: FAX
+        meaning: A machine that has the primary function of transmitting a facsimile copy of printed matter using a telephone line.
+      - value: GATEWAY
+        meaning: A gateway connects multiple network segments with different protocols at all layers (layers 1-7) of the Open Systems Interconnection (OSI) model.
+      - value: MODEM
+        meaning: A modem (from modulator-demodulator) is a device that modulates an analog carrier signal to encode digital information, and also demodulates such a carrier signal to decode the transmitted information.
+      - value: NETWORKAPPLIANCE
+        meaning: A network appliance performs a dedicated function such as firewall protection, content filtering, load balancing, or equipment management.
+      - value: NETWORKBRIDGE
+        meaning: A network bridge connects multiple network segments at the data link layer (layer 2) of the OSI model, and the term layer 2 switch is very often used interchangeably with bridge.
+      - value: NETWORKHUB
+        meaning: A network hub connects multiple network segments at the physical layer (layer 1) of the OSI model.
+      - value: PRINTER
+        meaning: A machine that has the primary function of printing text and/or graphics onto paper or other media.
+      - value: REPEATER
+        meaning: A repeater is an electronic device that receives a signal and retransmits it at a higher level and/or higher power, or onto the other side of an obstruction, so that the signal can cover longer distances without …
+      - value: ROUTER
+        meaning: A router is a networking device whose software and hardware are usually tailored to the tasks of routing and forwarding information.
+      - value: SCANNER
+        meaning: A machine that has the primary function of scanning the content of printed matter and converting it to digital format that can be stored in a computer.
+      - value: AUTOMATON
+        meaning: A self-acting artificial device, the behaviour of which is governed either in a stepwise manner by given decision rules or continuously in time by defined relationships, while the output variables of which are created …
+      - value: INTELLIGENTPERIPHERAL
+        meaning: An intelligent peripheral is a device that offers a variety of specialized resources according to the corresponding service logical program under the control of SCP. These resources contain the receiver of DTMF …
+      - value: IPNETWORKEQUIPMENT
+        meaning: An IP network equipment is a device that provides IP data transmission channel for telecom subsystems or other subsystems e.g., routers, network switches or firewalls.
+      - value: OPTICALNETWORKUNIT
+        meaning: An optical network unit is a kind of optical transmission network connection equipment which is installed at user side.
+      - value: TELECOMMAND
+        meaning: A system sending command to control and monitor the switches and circuit breakers or systems directly or not connected (e.g. via wires) within the traction power system remotely.
+      - value: TELEPHONYEXCHANGE
+        meaning: A telephony exchange is a device that ensures the routing of telephone calls and communications.
+      - value: TRANSITIONCOMPONENT
+        meaning: A transition component is a minor active device that converts electric signals to optical signals at the sender, and converts optical signals to electric signals at the receiver.
+      - value: TRANSPONDER
+        meaning: A transponder is a communication, monitoring, or control device that, upon receiving a signal, emits a different signal in response.
+      - value: TRANSPORTEQUIPMENT
+        meaning: A transport equipment is a network element responsible for providing functionality of transport, multiplexing, switching, management and supervision of transmission channels between different hosts.
+      - value: OPTICALLINETERMINAL
+        meaning: An optical line terminal is a service provider endpoint of a passive or active optical network.
+      - value: LINESIDEELECTRONICUNIT
+        meaning: The lineside electronic unit (LEU) is the interface between the balise and interlocking in railway.
+      - value: RADIOBLOCKCENTER
+        meaning: A radio block center is a specialised computing device in railway with specification for generating Movement Authorities (MA) and transmitting it to trains.
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

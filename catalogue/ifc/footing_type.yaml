@@ -1,0 +1,33 @@
+code: ifc.footing_type
+name: IfcFootingType
+kind: symbol
+base: ifc.built_element_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFootingType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcFootingType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The building element type IfcFootingType defines commonly shared information for occurrences of footings.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Subtype of footing.
+    source_ref: "IfcFootingType attribute 1: IfcFootingTypeEnum; enumeration IfcFootingTypeEnum"
+    values:
+      - value: CAISSON_FOUNDATION
+        meaning: A foundation construction type used in underwater construction.
+      - value: FOOTING_BEAM
+        meaning: Footing elements that are in bending and are supported clear of the ground.
+      - value: PAD_FOOTING
+        meaning: An element that transfers the load of a single column (possibly two) to the ground.
+      - value: PILE_CAP
+        meaning: An element that transfers the load from a column or group of columns to a pier or pile or group of piers or piles.
+      - value: STRIP_FOOTING
+        meaning: A linear element that transfers loads into the ground from either a continuous element, such as a wall, or from a series of elements, such as columns.
+      - value: USERDEFINED
+        meaning: Special types of footings which meet specific local requirements.
+      - value: NOTDEFINED
+        meaning: The type of footing is not defined.

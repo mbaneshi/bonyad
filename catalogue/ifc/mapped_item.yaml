@@ -1,0 +1,24 @@
+code: ifc.mapped_item
+name: IfcMappedItem
+kind: entity
+base: ifc.representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMappedItem
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcMappedItem.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcMappedItem is the inserted instance of a source definition (to be compared with a block / shared cell / macro definition). The instance is inserted by applying a Cartesian transformation operator as the MappingTarget.
+fields:
+  - name: mapping_source
+    type: ref
+    meaning: A representation map that is the source of the mapped item.
+    source_ref: "IfcMappedItem attribute 1: IfcRepresentationMap"
+    ref_to: ifc.representation_map
+  - name: mapping_target
+    type: ref
+    meaning: A representation item that is the target onto which the mapping source is mapped.
+    source_ref: "IfcMappedItem attribute 2: IfcCartesianTransformationOperator"
+    ref_to: ifc.cartesian_transformation_operator

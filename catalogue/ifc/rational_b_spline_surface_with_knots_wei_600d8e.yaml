@@ -1,0 +1,20 @@
+code: ifc.rational_b_spline_surface_with_knots_wei_600d8e
+name: IfcRationalBSplineSurfaceWithKnots.WeightsData
+kind: child
+parent: ifc.rational_b_spline_surface_with_knots
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRationalBSplineSurfaceWithKnots.WeightsData
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcRationalBSplineSurfaceWithKnots.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the WeightsData list of IfcRationalBSplineSurfaceWithKnots. The weights associated with the control points in the rational case.
+fields:
+  - name: item
+    type: array
+    meaning: Inner list (LIST [2:?]) of IfcRationalBSplineSurfaceWithKnots.WeightsData.
+    source_ref: "IfcRationalBSplineSurfaceWithKnots attribute 1: LIST [2:?] OF LIST [2:?] OF IfcReal"
+    of: float
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: LIST [2:?] OF LIST [2:?] OF IfcReal. Table name abbreviated to fit the 63-byte Postgres identifier limit; full name would be ifc.rational_b_spline_surface_with_knots_weights_data."

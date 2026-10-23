@@ -1,0 +1,26 @@
+code: ifc.swept_surface
+name: IfcSweptSurface
+kind: abstract
+base: ifc.surface
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSweptSurface
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcSweptSurface.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcSweptSurface is a surface defined by sweeping a curve. The swept surface is defined by a open or closed curve, represented by a subtype if IfcProfileDef, that is provided as a two-dimensional curve on an implicit plane, and by the sweeping operation.
+fields:
+  - name: swept_curve
+    type: ref
+    meaning: The curve to be swept in defining the surface.
+    source_ref: "IfcSweptSurface attribute 1: IfcProfileDef"
+    ref_to: ifc.profile_def
+  - name: position
+    type: ref
+    nullable: true
+    meaning: Position coordinate system for the swept surface, provided by a profile definition within the XY plane of the Position coordinates.
+    source_ref: "IfcSweptSurface attribute 2: OPTIONAL IfcAxis2Placement3D"
+    ref_to: ifc.axis2_placement3d
+notes: SUPERTYPE OF ONEOF ( IfcSurfaceOfLinearExtrusion , IfcSurfaceOfRevolution ).

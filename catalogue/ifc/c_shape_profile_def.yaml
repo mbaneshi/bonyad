@@ -1,0 +1,40 @@
+code: ifc.c_shape_profile_def
+name: IfcCShapeProfileDef
+kind: symbol
+base: ifc.parameterized_profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCShapeProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcCShapeProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcCShapeProfileDef defines a section profile that provides the defining parameters of a C-shaped section to be used by the swept area solid. This section is typically produced by cold forming steel.
+fields:
+  - name: depth
+    type: length
+    meaning: Profile depth, see illustration above (= h).
+    source_ref: "IfcCShapeProfileDef attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: width
+    type: length
+    meaning: Profile width, see illustration above (= b).
+    source_ref: "IfcCShapeProfileDef attribute 2: IfcPositiveLengthMeasure"
+    check: positive
+  - name: wall_thickness
+    type: length
+    meaning: Constant wall thickness of profile (= ts).
+    source_ref: "IfcCShapeProfileDef attribute 3: IfcPositiveLengthMeasure"
+    check: positive
+  - name: girth
+    type: length
+    meaning: Lengths of girth, see illustration above (= c).
+    source_ref: "IfcCShapeProfileDef attribute 4: IfcPositiveLengthMeasure"
+    check: positive
+  - name: internal_fillet_radius
+    type: length
+    nullable: true
+    meaning: Internal fillet radius according the above illustration (= r1).
+    source_ref: "IfcCShapeProfileDef attribute 5: OPTIONAL IfcNonNegativeLengthMeasure"
+    check: non_negative

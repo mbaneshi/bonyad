@@ -1,0 +1,29 @@
+code: ifc.rectangular_pyramid
+name: IfcRectangularPyramid
+kind: entity
+base: ifc.csg_primitive3d
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcRectangularPyramid
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcRectangularPyramid.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcRectangularPyramid is a Construction Solid Geometry (CSG) 3D primitive. It is a solid with a rectangular base and a point called apex as the top.
+fields:
+  - name: x_length
+    type: length
+    meaning: The length of the base measured along the placement X axis.
+    source_ref: "IfcRectangularPyramid attribute 1: IfcPositiveLengthMeasure"
+    check: positive
+  - name: y_length
+    type: length
+    meaning: The length of the base measured along the placement Y axis.
+    source_ref: "IfcRectangularPyramid attribute 2: IfcPositiveLengthMeasure"
+    check: positive
+  - name: height
+    type: length
+    meaning: The height of the apex above the plane of the base, measured in the direction of the placement Z axis, the _SELF\IfcCsgPrimitive3D.Position.P[2]_.
+    source_ref: "IfcRectangularPyramid attribute 3: IfcPositiveLengthMeasure"
+    check: positive

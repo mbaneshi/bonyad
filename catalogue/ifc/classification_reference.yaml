@@ -1,0 +1,31 @@
+code: ifc.classification_reference
+name: IfcClassificationReference
+kind: object
+base: ifc.external_reference
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcClassificationReference
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcClassificationReference.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcClassificationReference is a reference into a classification system or source (see IfcClassification) for a specific classification key (or notation).
+fields:
+  - name: referenced_source
+    type: ref
+    nullable: true
+    meaning: The classification system or source that is referenced.
+    source_ref: "IfcClassificationReference attribute 1: OPTIONAL IfcClassificationReferenceSelect; via select IfcClassificationReferenceSelect"
+    ref_to: any
+  - name: description
+    type: text
+    nullable: true
+    meaning: Description of the classification reference for informational purposes.
+    source_ref: "IfcClassificationReference attribute 2: OPTIONAL IfcText"
+  - name: sort
+    type: text
+    nullable: true
+    meaning: Optional identifier to sort the set of classification references within the referenced source (either a classification facet of higher level, or the classification system itself).
+    source_ref: "IfcClassificationReference attribute 3: OPTIONAL IfcIdentifier"
+notes: "Inverse attributes not stored: ClassificationRefForObjects, HasReferences."

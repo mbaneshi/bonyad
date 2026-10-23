@@ -1,0 +1,44 @@
+code: ifc.spatial_zone
+name: IfcSpatialZone
+kind: entity
+base: ifc.spatial_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSpatialZone
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcSpatialZone.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A spatial zone is a non-hierarchical and potentially overlapping decomposition of the project under some functional consideration. A spatial zone might be used to represent a thermal zone, a construction zone, a lighting zone, a usable area zone.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Predefined types to define the particular type of the spatial zone.
+    source_ref: "IfcSpatialZone attribute 1: OPTIONAL IfcSpatialZoneTypeEnum; enumeration IfcSpatialZoneTypeEnum"
+    values:
+      - value: CONSTRUCTION
+        meaning: The spatial zone is used to represent a construction zone for the production process.
+      - value: FIRESAFETY
+        meaning: The spatial zone is used to represent a fire safety zone, or fire compartment.
+      - value: LIGHTING
+        meaning: The spatial zone is used to represent a lighting zone; a daylight zone, or an artificial lighting zone.
+      - value: OCCUPANCY
+        meaning: The spatial zone is used to represent a zone of particular occupancy.
+      - value: SECURITY
+        meaning: The spatial zone is used to represent a zone for security planning and maintenance work.
+      - value: THERMAL
+        meaning: The spatial zone is used to represent a thermal zone.
+      - value: TRANSPORT
+        meaning: The spatial zone is used to represent an area primarily dedicated to the movement of people or goods.
+      - value: VENTILATION
+        meaning: The spatial zone is used to represent a ventilation zone.
+      - value: RESERVATION
+        meaning: A spatial zone that marks some sort of reservation within the project extent.
+      - value: INTERFERENCE
+        meaning: The spatial zone is used to define an interference between IfcSpatialElement occurrences.
+      - value: USERDEFINED
+        meaning: User defined type spatial zone.
+      - value: NOTDEFINED
+        meaning: Undefined type spatial zone.

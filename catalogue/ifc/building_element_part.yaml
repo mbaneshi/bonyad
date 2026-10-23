@@ -1,0 +1,34 @@
+code: ifc.building_element_part
+name: IfcBuildingElementPart
+kind: entity
+base: ifc.element_component
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBuildingElementPart
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/shared/IfcSharedComponentElements/Entities/IfcBuildingElementPart.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcBuildingElementPart represents major components as subordinate parts of a building element. Typical usage examples include precast concrete sandwich walls, where the layers may have different geometry representations.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Subtype of building element part.
+    source_ref: "IfcBuildingElementPart attribute 1: OPTIONAL IfcBuildingElementPartTypeEnum; enumeration IfcBuildingElementPartTypeEnum"
+    values:
+      - value: INSULATION
+        meaning: The part provides thermal insulation, for example as insulation layer between wall panels in sandwich walls or as infill in stud walls.
+      - value: PRECASTPANEL
+        meaning: The part is a precast panel, usually as an internal or external layer in a sandwich wall panel.
+      - value: APRON
+        meaning: A form of scour protection consisting of timber, concrete, riprap, paving, or other construction placed adjacent to abutments and piers to prevent undermining.
+      - value: ARMOURUNIT
+        meaning: A large quarry stone or concrete shaped unit used as erosion prevention on slopes such as revetments and breakwaters.
+      - value: SAFETYCAGE
+        meaning: Safety cages are an assembly of circular and vertical bars that are fastened to the stiles of fixed ladders and are arranged to enclose the path of a worker when climbing the ladder.
+      - value: USERDEFINED
+        meaning: User-defined accessory.
+      - value: NOTDEFINED
+        meaning: Undefined accessory.

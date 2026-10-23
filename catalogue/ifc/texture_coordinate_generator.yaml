@@ -1,0 +1,24 @@
+code: ifc.texture_coordinate_generator
+name: IfcTextureCoordinateGenerator
+kind: object
+base: ifc.texture_coordinate
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTextureCoordinateGenerator
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcPresentationAppearanceResource/Entities/IfcTextureCoordinateGenerator.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcTextureCoordinateGenerator describes a procedurally defined mapping function with input parameter to map 2D texture coordinates to 3D geometry vertices.
+fields:
+  - name: mode
+    type: text
+    meaning: The Mode attribute describes the algorithm used to compute texture coordinates.
+    source_ref: "IfcTextureCoordinateGenerator attribute 1: IfcLabel"
+  - name: parameter
+    type: array
+    nullable: true
+    meaning: The parameters used as arguments by the function as specified by Mode.
+    source_ref: "IfcTextureCoordinateGenerator attribute 2: OPTIONAL LIST [1:?] OF IfcReal"
+    of: float

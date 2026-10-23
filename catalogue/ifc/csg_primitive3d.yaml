@@ -1,0 +1,20 @@
+code: ifc.csg_primitive3d
+name: IfcCsgPrimitive3D
+kind: abstract
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCsgPrimitive3D
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricModelResource/Entities/IfcCsgPrimitive3D.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcCsgPrimitive3D is an abstract supertype of all three dimensional primitives used as either tree root item, or as Boolean results within a CSG solid model. All 3D CSG primitives are defined within a three-dimensional placement coordinate system.
+fields:
+  - name: position
+    type: ref
+    meaning: The placement coordinate system to which the parameters of each individual CSG primitive apply.
+    source_ref: "IfcCsgPrimitive3D attribute 1: IfcAxis2Placement3D"
+    ref_to: ifc.axis2_placement3d
+notes: "Derived attributes not stored: Dim. SUPERTYPE OF ONEOF ( IfcBlock , IfcRectangularPyramid , IfcRightCircularCone , IfcRightCircularCylinder , IfcSphere )."

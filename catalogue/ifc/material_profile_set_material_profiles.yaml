@@ -1,0 +1,20 @@
+code: ifc.material_profile_set_material_profiles
+name: IfcMaterialProfileSet.MaterialProfiles
+kind: child
+parent: ifc.material_profile_set
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcMaterialProfileSet.MaterialProfiles
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcMaterialResource/Entities/IfcMaterialProfileSet.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the MaterialProfiles list of IfcMaterialProfileSet. Identification of the profiles from which the material profile set is composed.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcMaterialProfileSet.MaterialProfiles.
+    source_ref: "IfcMaterialProfileSet attribute 3: LIST [1:?] OF IfcMaterialProfile"
+    ref_to: ifc.material_profile
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: LIST [1:?] OF IfcMaterialProfile."

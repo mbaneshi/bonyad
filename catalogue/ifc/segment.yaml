@@ -1,0 +1,28 @@
+code: ifc.segment
+name: IfcSegment
+kind: abstract
+base: ifc.geometric_representation_item
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSegment
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcSegment.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Definition of a curve segment with a trimming mechanism built in with a StartPlacement (first point) and SegmentLength (second point).
+fields:
+  - name: transition
+    type: enum
+    meaning: The state of transition (i.e., geometric continuity from the last point of this segment to the first point of the next segment) in IfcCompositeCurve and subtypes.
+    source_ref: "IfcSegment attribute 1: IfcTransitionCode; enumeration IfcTransitionCode"
+    values:
+      - value: DISCONTINUOUS
+        meaning: The segments do not join.
+      - value: CONTINUOUS
+        meaning: The segments join but no condition on their tangents is implied.
+      - value: CONTSAMEGRADIENT
+        meaning: "The segments join and their tangent vectors or tangent planes are parallel and have the same direction at the joint: equality of derivatives is not required."
+      - value: CONTSAMEGRADIENTSAMECURVATURE
+        meaning: "For a curve, the segments join, their tangent vectors are parallel and in the same direction and their curvatures are equal at the joint: equality of derivatives is not required."
+notes: "Inverse attributes not stored: UsingCurves. SUPERTYPE OF ONEOF ( IfcCompositeCurveSegment , IfcCurveSegment )."

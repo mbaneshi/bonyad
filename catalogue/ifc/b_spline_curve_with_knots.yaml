@@ -1,0 +1,38 @@
+code: ifc.b_spline_curve_with_knots
+name: IfcBSplineCurveWithKnots
+kind: entity
+base: ifc.b_spline_curve
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBSplineCurveWithKnots
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometryResource/Entities/IfcBSplineCurveWithKnots.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The IfcBSplineCurveWithKnots is a spline curve parameterized by spline functions for which the knot values are explicitly given.
+fields:
+  - name: knot_multiplicities
+    type: array
+    meaning: The multiplicities of the knots.
+    source_ref: "IfcBSplineCurveWithKnots attribute 1: LIST [2:?] OF IfcInteger"
+    of: int
+  - name: knots
+    type: array
+    meaning: The list of distinct knots used to define the B-spline basis functions.
+    source_ref: "IfcBSplineCurveWithKnots attribute 2: LIST [2:?] OF IfcParameterValue"
+    of: float
+  - name: knot_spec
+    type: enum
+    meaning: The description of the knot type.
+    source_ref: "IfcBSplineCurveWithKnots attribute 3: IfcKnotType; enumeration IfcKnotType"
+    values:
+      - value: UNIFORM_KNOTS
+        meaning: The form of knots appropriate for a uniform B-spline curve.
+      - value: QUASI_UNIFORM_KNOTS
+        meaning: The form of knots appropriate for a quasi-uniform B-spline curve.
+      - value: PIECEWISE_BEZIER_KNOTS
+        meaning: The form of knots appropriate for a piecewise Bezier curve.
+      - value: UNSPECIFIED
+        meaning: The type of knots is not specified.
+notes: "Derived attributes not stored: UpperIndexOnKnots. SUPERTYPE OF ONEOF ( IfcRationalBSplineCurveWithKnots )."

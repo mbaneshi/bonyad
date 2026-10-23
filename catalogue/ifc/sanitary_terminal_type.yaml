@@ -1,0 +1,43 @@
+code: ifc.sanitary_terminal_type
+name: IfcSanitaryTerminalType
+kind: symbol
+base: ifc.flow_terminal_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcSanitaryTerminalType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcPlumbingFireProtectionDomain/Entities/IfcSanitaryTerminalType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow terminal type IfcSanitaryTerminalType defines commonly shared information for occurrences of sanitary terminals.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: Identifies the predefined types of sanitary terminal from which the type required may be set.
+    source_ref: "IfcSanitaryTerminalType attribute 1: IfcSanitaryTerminalTypeEnum; enumeration IfcSanitaryTerminalTypeEnum"
+    values:
+      - value: BATH
+        meaning: Sanitary appliance for immersion of the human body or parts of it.
+      - value: BIDET
+        meaning: Waste water appliance for washing the excretory organs while sitting astride the bowl.
+      - value: CISTERN
+        meaning: A water storage unit attached to a sanitary terminal that is fitted with a device, operated automatically or by the user, that discharges water to cleanse a water closet (toilet) pan, urinal or slop hopper.
+      - value: SHOWER
+        meaning: Installation or waste water appliance that emits a spray of water to wash the human body.
+      - value: SINK
+        meaning: Waste water appliance for receiving, retaining or disposing of domestic, culinary, laboratory or industrial process liquids.
+      - value: SANITARYFOUNTAIN
+        meaning: A sanitary terminal that provides a low pressure jet of water for a specific purpose.
+      - value: TOILETPAN
+        meaning: Soil appliance for the disposal of excrement.
+      - value: URINAL
+        meaning: Soil appliance that receives urine and directs it to a waste outlet.
+      - value: WASHHANDBASIN
+        meaning: Waste water appliance for washing the upper parts of the body.
+      - value: WCSEAT
+        meaning: "[Deprecated] Hinged seat that fits on the top of a water closet (WC) pan."
+      - value: USERDEFINED
+        meaning: User-defined type.
+      - value: NOTDEFINED
+        meaning: Undefined type.

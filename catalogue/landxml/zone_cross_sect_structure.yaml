@@ -1,0 +1,97 @@
+code: landxml.zone_cross_sect_structure
+name: ZoneCrossSectStructure
+kind: child
+parent: landxml.zone
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element ZoneCrossSectStructure
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `ZoneCrossSectStructure`; the XSD gives no description.
+fields:
+  - name: name
+    type: text
+    meaning: ZoneCrossSectStructure name; the XSD gives no description.
+    source_ref: XSD ZoneCrossSectStructure/@name; type xs:string
+    nullable: true
+  - name: inner_connect_pnt
+    type: array
+    meaning: Attribute that represents a space delimited, cross section offset/elevation pair. 3456" Space-delimited list of doubles.
+    source_ref: XSD ZoneCrossSectStructure/@innerConnectPnt; type crossSectionPnt
+    of: float
+  - name: outer_connect_pnt
+    type: array
+    meaning: Attribute that represents a space delimited, cross section offset/elevation pair. 3456" Space-delimited list of doubles.
+    source_ref: XSD ZoneCrossSectStructure/@outerConnectPnt; type crossSectionPnt
+    of: float
+  - name: offset_mode
+    type: enum
+    meaning: ZoneCrossSectStructure offsetMode; the XSD gives no description.
+    source_ref: XSD ZoneCrossSectStructure/@offsetMode; type zoneOffsetType
+    nullable: true
+    values:
+      - value: centerline
+        meaning: Enumeration literal "centerline"; the XSD gives no description.
+      - value: zone
+        meaning: Enumeration literal "zone"; the XSD gives no description.
+    default: zone
+  - name: start_offset
+    type: length
+    meaning: Represents a linear offset distance. When associated with horizontal (planametric) road or coordinate geometry, the offset is a 2D distance measured perpendicular to the road centerline or coordinate geometry used as... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD ZoneCrossSectStructure/@startOffset; type offsetDistance
+    nullable: true
+    default: 0
+  - name: start_offset_elev
+    type: length
+    meaning: Represents a vertical offset distance or elevational shift. In all cases a positive value indicates a vertical elevational shift above the origin and negative values indicate a vertical elevational shift below the... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD ZoneCrossSectStructure/@startOffsetElev; type offsetElevation
+    nullable: true
+    default: 0
+  - name: end_offset
+    type: length
+    meaning: Represents a linear offset distance. When associated with horizontal (planametric) road or coordinate geometry, the offset is a 2D distance measured perpendicular to the road centerline or coordinate geometry used as... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD ZoneCrossSectStructure/@endOffset; type offsetDistance
+    nullable: true
+    default: 0
+  - name: end_offset_elev
+    type: length
+    meaning: Represents a vertical offset distance or elevational shift. In all cases a positive value indicates a vertical elevational shift above the origin and negative values indicate a vertical elevational shift below the... In the file's declared linear unit; kept unconverted.
+    source_ref: XSD ZoneCrossSectStructure/@endOffsetElev; type offsetElevation
+    nullable: true
+    default: 0
+  - name: transition
+    type: enum
+    meaning: ZoneCrossSectStructure transition; the XSD gives no description.
+    source_ref: XSD ZoneCrossSectStructure/@transition; type zoneTransitionType
+    nullable: true
+    values:
+      - value: parallel
+        meaning: Enumeration literal "parallel"; the XSD gives no description.
+      - value: linear
+        meaning: Enumeration literal "linear"; the XSD gives no description.
+    default: parallel
+  - name: placement
+    type: enum
+    meaning: ZoneCrossSectStructure placement; the XSD gives no description.
+    source_ref: XSD ZoneCrossSectStructure/@placement; type zonePlacementType
+    nullable: true
+    values:
+      - value: dependent
+        meaning: Enumeration literal "dependent"; the XSD gives no description.
+      - value: independent
+        meaning: Enumeration literal "independent"; the XSD gives no description.
+    default: dependent
+  - name: catalog_reference
+    type: text
+    meaning: ZoneCrossSectStructure catalogReference; the XSD gives no description.
+    source_ref: XSD ZoneCrossSectStructure/@catalogReference; type xs:anyURI
+    nullable: true
+  - name: pnt_list2d
+    type: array
+    meaning: A sequential space delimited list of 2D coordinates with a minimum of 2 points (4 values). Space-delimited list of doubles; consecutive values are the coordinates of successive points in the order the schema states.
+    source_ref: XSD PntList2D (element); type Point
+    of: float
+notes: Occurs 0..unbounded in landxml.zone.

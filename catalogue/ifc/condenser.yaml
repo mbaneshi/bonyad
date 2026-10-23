@@ -1,0 +1,38 @@
+code: ifc.condenser
+name: IfcCondenser
+kind: entity
+base: ifc.energy_conversion_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcCondenser
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcCondenser.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A condenser is a device that is used to dissipate heat, typically by condensing a substance such as a refrigerant from its gaseous to its liquid state.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcCondenser (not described in the source documentation).
+    source_ref: "IfcCondenser attribute 1: OPTIONAL IfcCondenserTypeEnum; enumeration IfcCondenserTypeEnum"
+    values:
+      - value: AIRCOOLED
+        meaning: A condenser in which heat is transferred to an air-stream.
+      - value: EVAPORATIVECOOLED
+        meaning: A condenser that is cooled evaporatively.
+      - value: WATERCOOLED
+        meaning: Water-cooled condenser with unspecified operation.
+      - value: WATERCOOLEDBRAZEDPLATE
+        meaning: Water-cooled condenser with plates brazed together to form an assembly of separate channels.
+      - value: WATERCOOLEDSHELLCOIL
+        meaning: Water-cooled condenser with cooling water circulated through one or more continuous or assembled coils contained within the shell.
+      - value: WATERCOOLEDSHELLTUBE
+        meaning: Water-cooled condenser with cooling water circulated through one or more tubes contained within the shell.
+      - value: WATERCOOLEDTUBEINTUBE
+        meaning: Water-cooled condenser consisting of one or more assemblies of two tubes, one within the other.
+      - value: USERDEFINED
+        meaning: User-defined condenser type.
+      - value: NOTDEFINED
+        meaning: Undefined condenser type.

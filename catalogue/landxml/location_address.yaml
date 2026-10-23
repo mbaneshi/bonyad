@@ -1,0 +1,65 @@
+code: landxml.location_address
+name: LocationAddress
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element LocationAddress
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: This element is used to define the location or positional address of a parcel. The address record is not designed to be a postal address (ie it has not postcode or zipcode etc) The element also needs to be able to handle both primary addresses and aliases if required.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.parcel
+    nullable: true
+    meaning: The landxml.parcel row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: address_type
+    type: text
+    meaning: This Type is to define a ljurisdictional specific list of address types such a primary addres, alias, secondary, historical etc.
+    source_ref: XSD LocationAddress/@addressType; type addressTypeType
+    nullable: true
+  - name: flat_type
+    type: text
+    meaning: To define a Jurisdictional specific list of address living unit types for addressing.
+    source_ref: XSD LocationAddress/@flatType; type flatTypeType
+    nullable: true
+  - name: flat_number
+    type: text
+    meaning: LocationAddress flatNumber; the XSD gives no description.
+    source_ref: XSD LocationAddress/@flatNumber; type xs:string
+    nullable: true
+  - name: floor_level_type
+    type: text
+    meaning: To define a jurisdictionally specific list of floo level types for example, Lower Ground Floor.
+    source_ref: XSD LocationAddress/@floorLevelType; type floorLevelTypeType
+    nullable: true
+  - name: floor_level_number
+    type: text
+    meaning: LocationAddress floorLevelNumber; the XSD gives no description.
+    source_ref: XSD LocationAddress/@floorLevelNumber; type xs:string
+    nullable: true
+  - name: number_first
+    type: int
+    meaning: LocationAddress numberFirst; the XSD gives no description.
+    source_ref: XSD LocationAddress/@numberFirst; type xs:int
+    nullable: true
+  - name: number_suffix_first
+    type: text
+    meaning: LocationAddress numberSuffixFirst; the XSD gives no description.
+    source_ref: XSD LocationAddress/@numberSuffixFirst; type xs:string
+    nullable: true
+  - name: number_last
+    type: int
+    meaning: LocationAddress numberLast; the XSD gives no description.
+    source_ref: XSD LocationAddress/@numberLast; type xs:int
+    nullable: true
+  - name: number_suffix_last
+    type: text
+    meaning: LocationAddress numberSuffixLast; the XSD gives no description.
+    source_ref: XSD LocationAddress/@numberSuffixLast; type xs:string
+    nullable: true
+notes: Occurs 0..unbounded in landxml.parcel. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

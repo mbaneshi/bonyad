@@ -1,0 +1,39 @@
+code: landxml.surf_volumes
+name: SurfVolumes
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element SurfVolumes
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A collection of surface volume data
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.surfaces
+    nullable: true
+    meaning: The landxml.surfaces row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it contains other types)"
+  - name: desc
+    type: text
+    meaning: SurfVolumes desc; the XSD gives no description.
+    source_ref: XSD SurfVolumes/@desc; type xs:string
+    nullable: true
+  - name: name
+    type: text
+    meaning: SurfVolumes name; the XSD gives no description.
+    source_ref: XSD SurfVolumes/@name; type xs:string
+    nullable: true
+  - name: surf_vol_calc_method
+    type: enum
+    meaning: SurfVolumes surfVolCalcMethod; the XSD gives no description.
+    source_ref: XSD SurfVolumes/@surfVolCalcMethod; type surfVolCMethodType
+    values:
+      - value: grid
+        meaning: Enumeration literal "grid"; the XSD gives no description.
+      - value: composite
+        meaning: Enumeration literal "composite"; the XSD gives no description.
+notes: Occurs 0..unbounded in landxml.surfaces. Stored as an object rather than an ordered child because it contains other types; the XSD container is the container reference.

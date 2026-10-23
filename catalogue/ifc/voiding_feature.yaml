@@ -1,0 +1,36 @@
+code: ifc.voiding_feature
+name: IfcVoidingFeature
+kind: entity
+base: ifc.feature_element_subtraction
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcVoidingFeature
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcVoidingFeature.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A voiding feature is a modification of an element which reduces its volume. Such a feature may be manufactured in different ways, for example by cutting, drilling, or milling of members made of various materials, or by inlays into the formwork of cast members made of materials such as concrete.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Qualifies the feature regarding its shape and configuration relative to the voided element.
+    source_ref: "IfcVoidingFeature attribute 1: OPTIONAL IfcVoidingFeatureTypeEnum; enumeration IfcVoidingFeatureTypeEnum"
+    values:
+      - value: CUTOUT
+        meaning: An internal cutout (creating an opening) or external cutout (creating a recess) of arbitrary shape.
+      - value: NOTCH
+        meaning: An external cutout of with a mostly rectangular cutting profile.
+      - value: HOLE
+        meaning: A circular or slotted or threaded hole, typically but not necessarily of smaller dimension than what would be considered a cutout.
+      - value: MITER
+        meaning: A skewed plane end cut, removing material across the entire profile of the voided element.
+      - value: CHAMFER
+        meaning: A skewed plane end cut, removing material only across a part of the profile of the voided element.
+      - value: EDGE
+        meaning: A shape modification along an edge of the element with the edge length as the predominant dimension of the feature, and feature profile dimensions which are typically much smaller than the edge length.
+      - value: USERDEFINED
+        meaning: A user-defined type of voiding feature.
+      - value: NOTDEFINED
+        meaning: An undefined type of voiding feature.

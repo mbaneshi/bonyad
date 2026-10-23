@@ -1,0 +1,33 @@
+code: landxml.unsym_para_curve
+name: UnsymParaCurve
+kind: child
+parent: landxml.prof_align
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element UnsymParaCurve
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: A Point of Vertical Intersection with a space delimited "station elevation" text value. with an unsymetrical parabolic vertical curve defined by "lengthIn and "lengthOut" attributes.
+fields:
+  - name: coordinates
+    type: point3
+    nullable: true
+    meaning: The element's coordinate text "northing easting [elevation]" stored as point3 with x = easting (second value), y = northing (first value), z = elevation (null when absent); null when only a pntRef is given. Lengths stay in the file's declared unit.
+    source_ref: text content (Point2dReq)
+  - name: length_in
+    type: float
+    meaning: UnsymParaCurve lengthIn; the XSD gives no description.
+    source_ref: XSD UnsymParaCurve/@lengthIn; type xs:double
+  - name: length_out
+    type: float
+    meaning: UnsymParaCurve lengthOut; the XSD gives no description.
+    source_ref: XSD UnsymParaCurve/@lengthOut; type xs:double
+  - name: desc
+    type: text
+    meaning: UnsymParaCurve desc; the XSD gives no description.
+    source_ref: XSD UnsymParaCurve/@desc; type xs:string
+    nullable: true
+notes: Occurs 0..unbounded in landxml.prof_align.

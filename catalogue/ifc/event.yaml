@@ -1,0 +1,59 @@
+code: ifc.event
+name: IfcEvent
+kind: object
+base: ifc.process
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcEvent
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProcessExtension/Entities/IfcEvent.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: An IfcEvent is something that happens that triggers an action or response.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined types of an event from which the type required may be set.
+    source_ref: "IfcEvent attribute 1: OPTIONAL IfcEventTypeEnum; enumeration IfcEventTypeEnum"
+    values:
+      - value: STARTEVENT
+        meaning: An initiating event of a process.
+      - value: ENDEVENT
+        meaning: A terminating event of a process.
+      - value: INTERMEDIATEEVENT
+        meaning: An event that occurs at an intermediate stage of a process.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Not defined.
+  - name: event_trigger_type
+    type: enum
+    nullable: true
+    meaning: Identifies the predefined types of event trigger from which the type required may be set.
+    source_ref: "IfcEvent attribute 2: OPTIONAL IfcEventTriggerTypeEnum; enumeration IfcEventTriggerTypeEnum"
+    values:
+      - value: EVENTRULE
+        meaning: An event trigger that is a rule or constraint.
+      - value: EVENTMESSAGE
+        meaning: An event trigger that is a message or set of information.
+      - value: EVENTTIME
+        meaning: An event trigger that is at, or occurs after, a particular point in or period of time.
+      - value: EVENTCOMPLEX
+        meaning: An event trigger that is a complex combination of things.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Not defined.
+  - name: user_defined_event_trigger_type
+    type: text
+    nullable: true
+    meaning: A user defined event trigger type, the value of which is asserted when the value of an event trigger type is declared as USERDEFINED.
+    source_ref: "IfcEvent attribute 3: OPTIONAL IfcLabel"
+  - name: event_occurence_time
+    type: ref
+    nullable: true
+    meaning: The date and/or time at which an event occurs.
+    source_ref: "IfcEvent attribute 4: OPTIONAL IfcEventTime"
+    ref_to: ifc.event_time

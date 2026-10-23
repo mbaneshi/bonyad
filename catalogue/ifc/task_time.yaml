@@ -1,0 +1,108 @@
+code: ifc.task_time
+name: IfcTaskTime
+kind: object
+base: ifc.scheduling_time
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcTaskTime
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcDateTimeResource/Entities/IfcTaskTime.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcTaskTime captures the time-related information about a task including the different types (actual or scheduled) of starting and ending times.
+fields:
+  - name: duration_type
+    type: enum
+    nullable: true
+    meaning: Enables to specify the type of duration values for ScheduleDuration, ActualDuration and RemainingTime.
+    source_ref: "IfcTaskTime attribute 1: OPTIONAL IfcTaskDurationEnum; enumeration IfcTaskDurationEnum"
+    values:
+      - value: ELAPSEDTIME
+        meaning: The time duration is based on elapsed time (24 hours per day, independent of calendar).
+      - value: WORKTIME
+        meaning: The time duration is based on work time (calendar-dependent).
+      - value: NOTDEFINED
+        meaning: The time duration is undefined.
+  - name: schedule_duration
+    type: text
+    nullable: true
+    meaning: The amount of time which is scheduled for completion of a task.
+    source_ref: "IfcTaskTime attribute 2: OPTIONAL IfcDuration"
+  - name: schedule_start
+    type: timestamp
+    nullable: true
+    meaning: The date on which a task is scheduled to be started.
+    source_ref: "IfcTaskTime attribute 3: OPTIONAL IfcDateTime"
+  - name: schedule_finish
+    type: timestamp
+    nullable: true
+    meaning: The date on which a task is scheduled to be finished.
+    source_ref: "IfcTaskTime attribute 4: OPTIONAL IfcDateTime"
+  - name: early_start
+    type: timestamp
+    nullable: true
+    meaning: The earliest date on which a task can be started.
+    source_ref: "IfcTaskTime attribute 5: OPTIONAL IfcDateTime"
+  - name: early_finish
+    type: timestamp
+    nullable: true
+    meaning: The earliest date on which a task can be finished.
+    source_ref: "IfcTaskTime attribute 6: OPTIONAL IfcDateTime"
+  - name: late_start
+    type: timestamp
+    nullable: true
+    meaning: The latest date on which a task can be started.
+    source_ref: "IfcTaskTime attribute 7: OPTIONAL IfcDateTime"
+  - name: late_finish
+    type: timestamp
+    nullable: true
+    meaning: The latest date on which a task can be finished.
+    source_ref: "IfcTaskTime attribute 8: OPTIONAL IfcDateTime"
+  - name: free_float
+    type: text
+    nullable: true
+    meaning: The amount of time during which the start or finish of a task may be varied without any effect on the overall programme of work.
+    source_ref: "IfcTaskTime attribute 9: OPTIONAL IfcDuration"
+  - name: total_float
+    type: text
+    nullable: true
+    meaning: The difference between the duration available to carry out a task and the scheduled duration of the task.
+    source_ref: "IfcTaskTime attribute 10: OPTIONAL IfcDuration"
+  - name: is_critical
+    type: bool
+    nullable: true
+    meaning: A flag which identifies whether a scheduled task is a critical item within the programme.
+    source_ref: "IfcTaskTime attribute 11: OPTIONAL IfcBoolean"
+  - name: status_time
+    type: timestamp
+    nullable: true
+    meaning: The date or time at which the status of the tasks within the schedule is analyzed.
+    source_ref: "IfcTaskTime attribute 12: OPTIONAL IfcDateTime"
+  - name: actual_duration
+    type: text
+    nullable: true
+    meaning: The actual duration of the task.
+    source_ref: "IfcTaskTime attribute 13: OPTIONAL IfcDuration"
+  - name: actual_start
+    type: timestamp
+    nullable: true
+    meaning: The date on which a task is actually started.
+    source_ref: "IfcTaskTime attribute 14: OPTIONAL IfcDateTime"
+  - name: actual_finish
+    type: timestamp
+    nullable: true
+    meaning: The date on which a task is actually finished.
+    source_ref: "IfcTaskTime attribute 15: OPTIONAL IfcDateTime"
+  - name: remaining_time
+    type: text
+    nullable: true
+    meaning: The amount of time remaining to complete a task.
+    source_ref: "IfcTaskTime attribute 16: OPTIONAL IfcDuration"
+  - name: completion
+    type: ratio
+    nullable: true
+    meaning: The extent of completion expressed as a ratio or percentage.
+    source_ref: "IfcTaskTime attribute 17: OPTIONAL IfcPositiveRatioMeasure"
+    check: positive
+notes: SUPERTYPE OF ONEOF ( IfcTaskTimeRecurring ).

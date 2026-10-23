@@ -1,0 +1,20 @@
+code: ifc.arbitrary_closed_profile_def
+name: IfcArbitraryClosedProfileDef
+kind: symbol
+base: ifc.profile_def
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcArbitraryClosedProfileDef
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcProfileResource/Entities/IfcArbitraryClosedProfileDef.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The closed profile IfcArbitraryClosedProfileDef defines an arbitrary two-dimensional profile for the use within the swept surface geometry, the swept area solid or a sectioned spine. It is given by an outer boundary from which the surface or solid can be constructed.
+fields:
+  - name: outer_curve
+    type: ref
+    meaning: Bounded curve, defining the outer boundaries of the arbitrary profile.
+    source_ref: "IfcArbitraryClosedProfileDef attribute 1: IfcCurve"
+    ref_to: ifc.curve
+notes: SUPERTYPE OF ONEOF ( IfcArbitraryProfileDefWithVoids ).

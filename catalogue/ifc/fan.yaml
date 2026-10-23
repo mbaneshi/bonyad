@@ -1,0 +1,38 @@
+code: ifc.fan
+name: IfcFan
+kind: entity
+base: ifc.flow_moving_device
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcFan
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcFan.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: A fan is a device which imparts mechanical work on a gas. A typical usage of a fan is to induce airflow in a building services air distribution system.
+fields:
+  - name: predefined_type
+    type: enum
+    nullable: true
+    meaning: PredefinedType attribute of IfcFan (not described in the source documentation).
+    source_ref: "IfcFan attribute 1: OPTIONAL IfcFanTypeEnum; enumeration IfcFanTypeEnum"
+    values:
+      - value: CENTRIFUGALFORWARDCURVED
+        meaning: Air flows through the impeller radially using blades that are forward curved.
+      - value: CENTRIFUGALRADIAL
+        meaning: Air flows through the impeller radially using blades that are uncurved or slightly forward curved.
+      - value: CENTRIFUGALBACKWARDINCLINEDCURVED
+        meaning: Air flows through the impeller radially using blades that are backward curved.
+      - value: CENTRIFUGALAIRFOIL
+        meaning: Air flows through the impeller radially using blades that are airfoil shaped.
+      - value: TUBEAXIAL
+        meaning: Air flows through the impeller axially with reduced tip clearance and operating at higher tip speeds.
+      - value: VANEAXIAL
+        meaning: Air flows through the impeller axially with guide vanes and reduced running blade tip clearance.
+      - value: PROPELLORAXIAL
+        meaning: Air flows through the impeller axially and small hub-to-tip ratio impeller mounted in an orifice plate or inlet ring.
+      - value: USERDEFINED
+        meaning: User-defined fan type.
+      - value: NOTDEFINED
+        meaning: Undefined fan type.

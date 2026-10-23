@@ -1,0 +1,19 @@
+code: ifc.building_storey
+name: IfcBuildingStorey
+kind: entity
+base: ifc.spatial_structure_element
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcBuildingStorey
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/core/IfcProductExtension/Entities/IfcBuildingStorey.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The building storey has an elevation and typically represents a (nearly) horizontal aggregation of spaces that are vertically bound.
+fields:
+  - name: elevation
+    type: length
+    nullable: true
+    meaning: Elevation of the base of this storey, relative to the 0,00 internal reference height of the building.
+    source_ref: "IfcBuildingStorey attribute 1: OPTIONAL IfcLengthMeasure"

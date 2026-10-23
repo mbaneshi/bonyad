@@ -1,0 +1,118 @@
+code: ifc.document_information
+name: IfcDocumentInformation
+kind: object
+base: ifc.external_information
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcDocumentInformation
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcExternalReferenceResource/Entities/IfcDocumentInformation.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcDocumentInformation captures "metadata" of an external document. The actual content of the document is not defined in this specification; instead, it can be found following the Location attribute.
+fields:
+  - name: identification
+    type: text
+    meaning: Identifier that uniquely identifies a document.
+    source_ref: "IfcDocumentInformation attribute 1: IfcIdentifier"
+  - name: name
+    type: text
+    meaning: File name or document name assigned by owner.
+    source_ref: "IfcDocumentInformation attribute 2: IfcLabel"
+  - name: description
+    type: text
+    nullable: true
+    meaning: Description of document and its content.
+    source_ref: "IfcDocumentInformation attribute 3: OPTIONAL IfcText"
+  - name: location
+    type: text
+    nullable: true
+    meaning: Resource identifier or locator, provided as URI, URN or URL, of the document information for online references.
+    source_ref: "IfcDocumentInformation attribute 4: OPTIONAL IfcURIReference"
+  - name: purpose
+    type: text
+    nullable: true
+    meaning: Purpose for this document.
+    source_ref: "IfcDocumentInformation attribute 5: OPTIONAL IfcText"
+  - name: intended_use
+    type: text
+    nullable: true
+    meaning: Intended use for this document.
+    source_ref: "IfcDocumentInformation attribute 6: OPTIONAL IfcText"
+  - name: scope
+    type: text
+    nullable: true
+    meaning: Scope for this document.
+    source_ref: "IfcDocumentInformation attribute 7: OPTIONAL IfcText"
+  - name: revision
+    type: text
+    nullable: true
+    meaning: Document revision designation.
+    source_ref: "IfcDocumentInformation attribute 8: OPTIONAL IfcLabel"
+  - name: document_owner
+    type: ref
+    nullable: true
+    meaning: Information about the person and/or organization acknowledged as the 'owner' of this document.
+    source_ref: "IfcDocumentInformation attribute 9: OPTIONAL IfcActorSelect; via select IfcActorSelect"
+    ref_to: any
+  - name: creation_time
+    type: timestamp
+    nullable: true
+    meaning: Date and time stamp when the document was originally created.
+    source_ref: "IfcDocumentInformation attribute 11: OPTIONAL IfcDateTime"
+  - name: last_revision_time
+    type: timestamp
+    nullable: true
+    meaning: Date and time stamp when this document version was created.
+    source_ref: "IfcDocumentInformation attribute 12: OPTIONAL IfcDateTime"
+  - name: electronic_format
+    type: text
+    nullable: true
+    meaning: Describes the media type used in various internet protocols, also referred to as "Content-type", or "MIME-type (Multipurpose Internet Mail Extension), of the document being referenced.
+    source_ref: "IfcDocumentInformation attribute 13: OPTIONAL IfcIdentifier"
+  - name: valid_from
+    type: date
+    nullable: true
+    meaning: Date when the document becomes valid.
+    source_ref: "IfcDocumentInformation attribute 14: OPTIONAL IfcDate"
+  - name: valid_until
+    type: date
+    nullable: true
+    meaning: Date until which the document remains valid.
+    source_ref: "IfcDocumentInformation attribute 15: OPTIONAL IfcDate"
+  - name: confidentiality
+    type: enum
+    nullable: true
+    meaning: The level of confidentiality of the document.
+    source_ref: "IfcDocumentInformation attribute 16: OPTIONAL IfcDocumentConfidentialityEnum; enumeration IfcDocumentConfidentialityEnum"
+    values:
+      - value: PUBLIC
+        meaning: Document is publicly available.
+      - value: RESTRICTED
+        meaning: Document availability is restricted.
+      - value: CONFIDENTIAL
+        meaning: Document is confidential and its contents should not be revealed without permission.
+      - value: PERSONAL
+        meaning: Document is personal to the author.
+      - value: USERDEFINED
+        meaning: User defined.
+      - value: NOTDEFINED
+        meaning: Not defined.
+  - name: status
+    type: enum
+    nullable: true
+    meaning: The current status of the document.
+    source_ref: "IfcDocumentInformation attribute 17: OPTIONAL IfcDocumentStatusEnum; enumeration IfcDocumentStatusEnum"
+    values:
+      - value: DRAFT
+        meaning: Document is a draft.
+      - value: FINALDRAFT
+        meaning: Document is a final draft.
+      - value: FINAL
+        meaning: Document is final.
+      - value: REVISION
+        meaning: Document has undergone revision.
+      - value: NOTDEFINED
+        meaning: Not defined.
+notes: "Inverse attributes not stored: DocumentInfoForObjects, HasDocumentReferences, IsPointedTo, IsPointer."

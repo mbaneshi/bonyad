@@ -1,0 +1,25 @@
+code: ifc.connection_volume_geometry
+name: IfcConnectionVolumeGeometry
+kind: object
+base: ifc.connection_geometry
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcConnectionVolumeGeometry
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/resource/IfcGeometricConstraintResource/Entities/IfcConnectionVolumeGeometry.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcConnectionVolumeGeometry is used to describe the geometric constraints that facilitate the physical connection (or overlap) of two objects at a volume defined by a solid or closed shell. It is envisioned as a control that applies to the element connection or interference relationships.
+fields:
+  - name: volume_on_relating_element
+    type: ref
+    meaning: Volume at which related object overlaps with the relating element, given in the LCS of the relating element.
+    source_ref: "IfcConnectionVolumeGeometry attribute 1: IfcSolidOrShell; via select IfcSolidOrShell"
+    ref_to: ifc.representation_item
+  - name: volume_on_related_element
+    type: ref
+    nullable: true
+    meaning: Volume at which related object overlaps with the relating element, given in the LCS of the related element.
+    source_ref: "IfcConnectionVolumeGeometry attribute 2: OPTIONAL IfcSolidOrShell; via select IfcSolidOrShell"
+    ref_to: ifc.representation_item

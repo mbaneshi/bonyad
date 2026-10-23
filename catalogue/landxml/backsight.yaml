@@ -1,0 +1,202 @@
+code: landxml.backsight
+name: Backsight
+kind: child
+parent: landxml.instrument_setup
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Backsight
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Backsight`; the XSD gives no description.
+fields:
+  - name: id
+    type: text
+    meaning: Backsight id; the XSD gives no description.
+    source_ref: XSD Backsight/@id; type xs:ID
+    nullable: true
+  - name: azimuth
+    type: angle
+    meaning: Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them.
+    source_ref: XSD Backsight/@azimuth; type direction
+    nullable: true
+  - name: target_height
+    type: float
+    meaning: Backsight targetHeight; the XSD gives no description.
+    source_ref: XSD Backsight/@targetHeight; type xs:double
+    nullable: true
+  - name: circle
+    type: angle
+    meaning: Represents a normalized angular value in the specified Angular units. Assume 0 degrees = east. Stored in radians. The file value is expressed in Units angularUnit (default radians) and is converted at the import boundary. The XSD defines it as measured counter-clockwise from east (0 = east).
+    source_ref: XSD Backsight/@circle; type angle
+  - name: setup_id
+    type: ref
+    meaning: "Backsight setupID; the XSD gives no description. xs:IDREF: names the xs:ID `id` of another element in the same file."
+    source_ref: XSD Backsight/@setupID; type xs:IDREF
+    nullable: true
+    ref_to: any
+  - name: backsight_point
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D location for the backsight. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only backsight_point_pnt_ref is given).
+    source_ref: Backsight/BacksightPoint text content (Point3dOpt)
+  - name: backsight_point_name
+    type: text
+    meaning: BacksightPoint name; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@name; type xs:string
+    nullable: true
+  - name: backsight_point_desc
+    type: text
+    meaning: BacksightPoint desc; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@desc; type xs:string
+    nullable: true
+  - name: backsight_point_code
+    type: text
+    meaning: BacksightPoint code; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@code; type xs:string
+    nullable: true
+  - name: backsight_point_state
+    type: enum
+    meaning: BacksightPoint state; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: backsight_point_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD BacksightPoint/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: backsight_point_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD BacksightPoint/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: backsight_point_point_geometry
+    type: enum
+    meaning: BacksightPoint pointGeometry; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: backsight_point_dtm_attribute
+    type: enum
+    meaning: BacksightPoint DTMAttribute; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: backsight_point_time_stamp
+    type: timestamp
+    meaning: BacksightPoint timeStamp; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: backsight_point_role
+    type: enum
+    meaning: BacksightPoint role; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: backsight_point_determined_time_stamp
+    type: timestamp
+    meaning: BacksightPoint determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: backsight_point_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD BacksightPoint/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: backsight_point_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD BacksightPoint/@latitude; type latLongAngle
+    nullable: true
+  - name: backsight_point_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD BacksightPoint/@longitude; type latLongAngle
+    nullable: true
+  - name: backsight_point_zone
+    type: text
+    meaning: BacksightPoint zone; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@zone; type xs:string
+    nullable: true
+  - name: backsight_point_northing_std_error
+    type: float
+    meaning: BacksightPoint northingStdError; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@northingStdError; type xs:double
+    nullable: true
+  - name: backsight_point_easting_std_error
+    type: float
+    meaning: BacksightPoint eastingStdError; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@eastingStdError; type xs:double
+    nullable: true
+  - name: backsight_point_elevation_std_error
+    type: float
+    meaning: BacksightPoint elevationStdError; the XSD gives no description.
+    source_ref: XSD BacksightPoint/@elevationStdError; type xs:double
+    nullable: true
+  - name: field_note
+    type: array
+    meaning: Place the note as a text value between the FieldNote element tags. You may also place any valid XML structure inside this tag. Repeated element, stored as an ordered array.
+    source_ref: XSD FieldNote (element); type xs:string
+    nullable: true
+    of: text
+notes: "Occurs 0..unbounded in landxml.instrument_setup; at most once (XSD: unbounded choice) in landxml.observation_group; at most once (XSD: unbounded choice) in landxml.laser_setup. Review: Contained by more than one type in the XSD (also landxml.observation_group, landxml.laser_setup); the catalogue allows one parent, so the first is used."
+needs_review: true

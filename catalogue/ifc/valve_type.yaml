@@ -1,0 +1,65 @@
+code: ifc.valve_type
+name: IfcValveType
+kind: symbol
+base: ifc.flow_controller_type
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcValveType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcHvacDomain/Entities/IfcValveType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: The flow controller type IfcValveType defines commonly shared information for occurrences of valves.
+fields:
+  - name: predefined_type
+    type: enum
+    meaning: The type of valve.
+    source_ref: "IfcValveType attribute 1: IfcValveTypeEnum; enumeration IfcValveTypeEnum"
+    values:
+      - value: AIRRELEASE
+        meaning: Valve used to release air from a pipe or fitting.
+      - value: ANTIVACUUM
+        meaning: Valve that opens to admit air if the pressure falls below atmospheric pressure.
+      - value: CHANGEOVER
+        meaning: Valve that enables flow to be switched between pipelines (3 or 4 port).
+      - value: CHECK
+        meaning: Valve that permits water to flow in one direction only and is enclosed when there is no flow (2 port).
+      - value: COMMISSIONING
+        meaning: Valve used to facilitate commissioning of a system (2 port).
+      - value: DIVERTING
+        meaning: Valve that enables flow to be diverted from one branch of a pipeline to another (3 port).
+      - value: DRAWOFFCOCK
+        meaning: A valve used to remove fluid from a piping system.
+      - value: DOUBLECHECK
+        meaning: An assembly that incorporates two valves used to prevent backflow.
+      - value: DOUBLEREGULATING
+        meaning: Valve used to facilitate regulation of fluid flow in a system.
+      - value: FAUCET
+        meaning: Faucet valve typically used as a flow discharge.
+      - value: FLUSHING
+        meaning: Valve that flushes a predetermined quantity of water to cleanse a toilet, urinal, etc.
+      - value: GASCOCK
+        meaning: Valve that is used for controlling the flow of gas.
+      - value: GASTAP
+        meaning: Gas tap typically used for venting or discharging gas from a system.
+      - value: ISOLATING
+        meaning: Valve that closes off flow in a pipeline.
+      - value: MIXING
+        meaning: Valve that enables flow from two branches of a pipeline to be mixed together (3 port).
+      - value: PRESSUREREDUCING
+        meaning: Valve that reduces the pressure of a fluid immediately downstream of its position in a pipeline to a preselected value or by a predetermined ratio.
+      - value: PRESSURERELIEF
+        meaning: Spring or weight loaded valve that automatically discharges to a safe place fluid that has built up to excessive pressure in pipes or fittings.
+      - value: REGULATING
+        meaning: Valve used to facilitate regulation of fluid flow in a system.
+      - value: SAFETYCUTOFF
+        meaning: Valve that closes under the action of a safety mechanism such as a drop weight, solenoid etc.
+      - value: STEAMTRAP
+        meaning: Valve that restricts flow of steam while allowing condensate to pass through.
+      - value: STOPCOCK
+        meaning: An isolating valve used on a domestic water service.
+      - value: USERDEFINED
+        meaning: User-defined valve type.
+      - value: NOTDEFINED
+        meaning: Undefined valve type.

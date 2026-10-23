@@ -1,0 +1,20 @@
+code: ifc.reinforcement_definition_properties_rein_60069e
+name: IfcReinforcementDefinitionProperties.ReinforcementSectionDefinitions
+kind: child
+parent: ifc.reinforcement_definition_properties
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcReinforcementDefinitionProperties.ReinforcementSectionDefinitions
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcStructuralElementsDomain/Entities/IfcReinforcementDefinitionProperties.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: Rows of the ReinforcementSectionDefinitions list of IfcReinforcementDefinitionProperties. The list of section reinforcement properties attached to the reinforcement definition properties.
+fields:
+  - name: item
+    type: ref
+    meaning: Element of IfcReinforcementDefinitionProperties.ReinforcementSectionDefinitions.
+    source_ref: "IfcReinforcementDefinitionProperties attribute 2: LIST [1:?] OF IfcSectionReinforcementProperties"
+    ref_to: ifc.section_reinforcement_properties
+notes: "Rows are ordered by list position; the generator must add an ordinal column. EXPRESS: LIST [1:?] OF IfcSectionReinforcementProperties. Table name abbreviated to fit the 63-byte Postgres identifier limit; full name would be ifc.reinforcement_definition_properties_reinforcement_section_definitions."

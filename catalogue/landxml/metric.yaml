@@ -1,0 +1,199 @@
+code: landxml.metric
+name: Metric
+kind: child
+parent: landxml.landxml
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Metric
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: LandXML 1.2 `Metric`; the XSD gives no description.
+fields:
+  - name: area_unit
+    type: enum
+    meaning: Metric areaUnit; the XSD gives no description.
+    source_ref: XSD Metric/@areaUnit; type metArea
+    values:
+      - value: hectare
+        meaning: Enumeration literal "hectare"; the XSD gives no description.
+      - value: squareMeter
+        meaning: Enumeration literal "squareMeter"; the XSD gives no description.
+      - value: squareMillimeter
+        meaning: Enumeration literal "squareMillimeter"; the XSD gives no description.
+      - value: squareCentimeter
+        meaning: Enumeration literal "squareCentimeter"; the XSD gives no description.
+  - name: linear_unit
+    type: enum
+    meaning: Metric linearUnit; the XSD gives no description.
+    source_ref: XSD Metric/@linearUnit; type metLinear
+    values:
+      - value: millimeter
+        meaning: Enumeration literal "millimeter"; the XSD gives no description.
+      - value: centimeter
+        meaning: Enumeration literal "centimeter"; the XSD gives no description.
+      - value: meter
+        meaning: Enumeration literal "meter"; the XSD gives no description.
+      - value: kilometer
+        meaning: Enumeration literal "kilometer"; the XSD gives no description.
+  - name: volume_unit
+    type: enum
+    meaning: Metric volumeUnit; the XSD gives no description.
+    source_ref: XSD Metric/@volumeUnit; type metVolume
+    values:
+      - value: cubicMeter
+        meaning: Enumeration literal "cubicMeter"; the XSD gives no description.
+      - value: liter
+        meaning: Enumeration literal "liter"; the XSD gives no description.
+      - value: hectareMeter
+        meaning: Enumeration literal "hectareMeter"; the XSD gives no description.
+  - name: temperature_unit
+    type: enum
+    meaning: Metric temperatureUnit; the XSD gives no description.
+    source_ref: XSD Metric/@temperatureUnit; type metTemperature
+    values:
+      - value: celsius
+        meaning: Enumeration literal "celsius"; the XSD gives no description.
+      - value: kelvin
+        meaning: Enumeration literal "kelvin"; the XSD gives no description.
+  - name: pressure_unit
+    type: enum
+    meaning: Metric pressureUnit; the XSD gives no description.
+    source_ref: XSD Metric/@pressureUnit; type metPressure
+    values:
+      - value: HPA
+        meaning: Enumeration literal "HPA"; the XSD gives no description.
+      - value: milliBars
+        meaning: Enumeration literal "milliBars"; the XSD gives no description.
+      - value: mmHG
+        meaning: Enumeration literal "mmHG"; the XSD gives no description.
+      - value: millimeterHG
+        meaning: Enumeration literal "millimeterHG"; the XSD gives no description.
+  - name: diameter_unit
+    type: enum
+    meaning: Metric diameterUnit; the XSD gives no description.
+    source_ref: XSD Metric/@diameterUnit; type metDiameter
+    nullable: true
+    values:
+      - value: millimeter
+        meaning: Enumeration literal "millimeter"; the XSD gives no description.
+      - value: centimeter
+        meaning: Enumeration literal "centimeter"; the XSD gives no description.
+      - value: meter
+        meaning: Enumeration literal "meter"; the XSD gives no description.
+      - value: kilometer
+        meaning: Enumeration literal "kilometer"; the XSD gives no description.
+  - name: width_unit
+    type: enum
+    meaning: Metric widthUnit; the XSD gives no description.
+    source_ref: XSD Metric/@widthUnit; type metWidth
+    nullable: true
+    values:
+      - value: millimeter
+        meaning: Enumeration literal "millimeter"; the XSD gives no description.
+      - value: centimeter
+        meaning: Enumeration literal "centimeter"; the XSD gives no description.
+      - value: meter
+        meaning: Enumeration literal "meter"; the XSD gives no description.
+      - value: kilometer
+        meaning: Enumeration literal "kilometer"; the XSD gives no description.
+  - name: height_unit
+    type: enum
+    meaning: Metric heightUnit; the XSD gives no description.
+    source_ref: XSD Metric/@heightUnit; type metHeight
+    nullable: true
+    values:
+      - value: millimeter
+        meaning: Enumeration literal "millimeter"; the XSD gives no description.
+      - value: centimeter
+        meaning: Enumeration literal "centimeter"; the XSD gives no description.
+      - value: meter
+        meaning: Enumeration literal "meter"; the XSD gives no description.
+      - value: kilometer
+        meaning: Enumeration literal "kilometer"; the XSD gives no description.
+  - name: velocity_unit
+    type: enum
+    meaning: Metric velocityUnit; the XSD gives no description.
+    source_ref: XSD Metric/@velocityUnit; type metVelocity
+    nullable: true
+    values:
+      - value: metersPerSecond
+        meaning: Enumeration literal "metersPerSecond"; the XSD gives no description.
+      - value: kilometersPerHour
+        meaning: Enumeration literal "kilometersPerHour"; the XSD gives no description.
+  - name: flow_unit
+    type: enum
+    meaning: Metric flowUnit; the XSD gives no description.
+    source_ref: XSD Metric/@flowUnit; type metFlow
+    nullable: true
+    values:
+      - value: cubicMeterSecond
+        meaning: Enumeration literal "cubicMeterSecond"; the XSD gives no description.
+      - value: literPerSecond
+        meaning: Enumeration literal "literPerSecond"; the XSD gives no description.
+      - value: literPerMinute
+        meaning: Enumeration literal "literPerMinute"; the XSD gives no description.
+  - name: angular_unit
+    type: enum
+    meaning: 3025" representing 45 degrees 30 minutes and 25 seconds. Both the minutes and seconds must be two characters with a numeric range between 00 to 60.
+    source_ref: XSD Metric/@angularUnit; type angularType
+    nullable: true
+    values:
+      - value: radians
+        meaning: Enumeration literal "radians"; the XSD gives no description.
+      - value: grads
+        meaning: Enumeration literal "grads"; the XSD gives no description.
+      - value: decimal degrees
+        meaning: Enumeration literal "decimal degrees"; the XSD gives no description.
+      - value: decimal dd.mm.ss
+        meaning: Enumeration literal "decimal dd.mm.ss"; the XSD gives no description.
+    default: radians
+  - name: direction_unit
+    type: enum
+    meaning: 3025" representing 45 degrees 30 minutes and 25 seconds. Both the minutes and seconds must be two characters with a numeric range between 00 to 60.
+    source_ref: XSD Metric/@directionUnit; type angularType
+    nullable: true
+    values:
+      - value: radians
+        meaning: Enumeration literal "radians"; the XSD gives no description.
+      - value: grads
+        meaning: Enumeration literal "grads"; the XSD gives no description.
+      - value: decimal degrees
+        meaning: Enumeration literal "decimal degrees"; the XSD gives no description.
+      - value: decimal dd.mm.ss
+        meaning: Enumeration literal "decimal dd.mm.ss"; the XSD gives no description.
+    default: radians
+  - name: lat_long_angular_unit
+    type: enum
+    meaning: Latitude/Longitude coordinate angular values. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern.
+    source_ref: XSD Metric/@latLongAngularUnit; type latLongAngularType
+    nullable: true
+    values:
+      - value: radians
+        meaning: Enumeration literal "radians"; the XSD gives no description.
+      - value: grads
+        meaning: Enumeration literal "grads"; the XSD gives no description.
+      - value: decimal degrees
+        meaning: Enumeration literal "decimal degrees"; the XSD gives no description.
+      - value: decimal dd.mm.ss
+        meaning: Enumeration literal "decimal dd.mm.ss"; the XSD gives no description.
+    default: decimal degrees
+  - name: elevation_unit
+    type: enum
+    meaning: Represents the elevation unit for elevation attribute values, such as ellipsoidHeight.
+    source_ref: XSD Metric/@elevationUnit; type elevationType
+    nullable: true
+    values:
+      - value: meter
+        meaning: Enumeration literal "meter"; the XSD gives no description.
+      - value: kilometer
+        meaning: Enumeration literal "kilometer"; the XSD gives no description.
+      - value: feet
+        meaning: Enumeration literal "feet"; the XSD gives no description.
+      - value: miles
+        meaning: Enumeration literal "miles"; the XSD gives no description.
+    default: meter
+notes: "Occurs at most once (XSD: unbounded choice) via Units in landxml.landxml; 1..1 via Structs/Units in landxml.pipe_network; at most once (XSD: unbounded choice) via Units in landxml.survey_header. Review: Contained by more than one type in the XSD (also landxml.pipe_network, landxml.survey_header); the catalogue allows one parent, so the first is used."
+needs_review: true

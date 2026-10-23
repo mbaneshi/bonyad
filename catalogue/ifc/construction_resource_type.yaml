@@ -1,0 +1,21 @@
+code: ifc.construction_resource_type
+name: IfcConstructionResourceType
+kind: abstract
+base: ifc.type_resource
+fidelity: proxy
+source:
+  document: buildingSMART IFC4.3 EXPRESS schema (IFC4X3_RC4) with IFC4.3.x-development documentation
+  section: IfcConstructionResourceType
+  url: https://github.com/buildingSMART/IFC4.3.x-development/blob/2b8baa0a14d5ed1a9f99ef9443bdcb63a0cb0ab1/docs/schemas/domain/IfcConstructionMgmtDomain/Entities/IfcConstructionResourceType.md
+  version: IFC4X3_RC4 (EXPRESS issue date 2021-07-22); repo commit 2b8baa0a14d5; exp sha256 9b7d0c3e187f
+  accessed_on: 2026-10-23
+  licence: "buildingSMART: CC BY-ND 4.0 (repo LICENSE.md); EXPRESS header allows translation with full attribution, consent needed for changes. See SOURCES.md"
+meaning: IfcConstructionResourceType is an abstract generalization of the different resource types used in construction projects, mainly labor, material, equipment and product resource types, plus subcontracted resource types and aggregations such as a crew resource type.
+fields:
+  - name: base_quantity
+    type: ref
+    nullable: true
+    meaning: Identifies the quantity for which the BaseQuantityProduced applies.
+    source_ref: "IfcConstructionResourceType attribute 2: OPTIONAL IfcPhysicalQuantity"
+    ref_to: ifc.physical_quantity
+notes: SUPERTYPE OF ONEOF ( IfcConstructionEquipmentResourceType , IfcConstructionMaterialResourceType , IfcConstructionProductResourceType , IfcCrewResourceType , IfcLaborResourceType , IfcSubContractResourceType ).

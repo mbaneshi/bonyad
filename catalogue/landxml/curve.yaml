@@ -1,0 +1,744 @@
+code: landxml.curve
+name: Curve
+kind: object
+fidelity: proxy
+source:
+  document: LandXML 1.2 XML Schema (LandXML-1.2.xsd)
+  section: element Curve
+  url: http://www.landxml.org/schema/LandXML-1.2/LandXML-1.2.xsd
+  version: 1.2 (posted 2008-07-29)
+  accessed_on: 2026-10-23
+  licence: Not stated in the XSD. LandXML.org Open Software License v1.0 (BSD-style) covers the 1.2 SDK only; see SOURCES.md
+meaning: The distance from the Start to the Center provides the radius value. The rotation attribute "rot" defines whether the arc travels clockwise or counter-clockwise from the Start to End point.
+fields:
+  - name: container
+    type: ref
+    ref_to: landxml.coord_geom
+    nullable: true
+    meaning: The landxml.coord_geom row that contains this one in the XSD (null for a stand-alone fragment).
+    source_ref: "not in the XSD: linkage added because this type is stored as an object (it is the base of other types)"
+  - name: rot
+    type: enum
+    meaning: Curve rot; the XSD gives no description.
+    source_ref: XSD Curve/@rot; type clockwise
+    values:
+      - value: cw
+        meaning: Enumeration literal "cw"; the XSD gives no description.
+      - value: ccw
+        meaning: Enumeration literal "ccw"; the XSD gives no description.
+  - name: chord
+    type: float
+    meaning: "Curve chord; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@chord; type xs:double
+    nullable: true
+  - name: crv_type
+    type: enum
+    meaning: Curve crvType; the XSD gives no description.
+    source_ref: XSD Curve/@crvType; type curveType
+    nullable: true
+    values:
+      - value: arc
+        meaning: Enumeration literal "arc"; the XSD gives no description.
+      - value: chord
+        meaning: Enumeration literal "chord"; the XSD gives no description.
+  - name: delta
+    type: angle
+    meaning: "Represents a normalized angular value in the specified Angular units. Assume 0 degrees = east. Stored in radians. The file value is expressed in Units angularUnit (default radians) and is converted at the import boundary. The XSD defines it as measured counter-clockwise from east (0 = east). Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@delta; type angle
+    nullable: true
+  - name: desc
+    type: text
+    meaning: Curve desc; the XSD gives no description.
+    source_ref: XSD Curve/@desc; type xs:string
+    nullable: true
+  - name: dir_end
+    type: angle
+    meaning: "Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@dirEnd; type direction
+    nullable: true
+  - name: dir_start
+    type: angle
+    meaning: "Represents a normalized angular value that indicates a horizontal direction, expressed in the specified Direction units. Assume 0 degrees = north. Stored in radians. The file value is expressed in Units directionUnit (default radians) and is converted at the import boundary. The XSD defines a horizontal direction as measured counter-clockwise from north (0 = north); only the unit is converted, the reference axis and sense are kept as the source defines them. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@dirStart; type direction
+    nullable: true
+  - name: external
+    type: float
+    meaning: "Curve external; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@external; type xs:double
+    nullable: true
+  - name: length
+    type: float
+    meaning: "Curve length; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@length; type xs:double
+    nullable: true
+  - name: mid_ord
+    type: float
+    meaning: "Curve midOrd; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@midOrd; type xs:double
+    nullable: true
+  - name: name
+    type: text
+    meaning: Curve name; the XSD gives no description.
+    source_ref: XSD Curve/@name; type xs:string
+    nullable: true
+  - name: radius
+    type: float
+    meaning: "Curve radius; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@radius; type xs:double
+    nullable: true
+  - name: sta_start
+    type: float
+    meaning: Curve staStart; the XSD gives no description.
+    source_ref: XSD Curve/@staStart; type xs:double
+    nullable: true
+  - name: state
+    type: enum
+    meaning: Curve state; the XSD gives no description.
+    source_ref: XSD Curve/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: tangent
+    type: float
+    meaning: "Curve tangent; the XSD gives no description. Redundant in the source: derivable from the geometry, so a claim to verify rather than authority."
+    source_ref: XSD Curve/@tangent; type xs:double
+    nullable: true
+  - name: o_id
+    type: text
+    meaning: Curve oID; the XSD gives no description.
+    source_ref: XSD Curve/@oID; type xs:string
+    nullable: true
+  - name: note
+    type: text
+    meaning: Curve note; the XSD gives no description.
+    source_ref: XSD Curve/@note; type xs:string
+    nullable: true
+  - name: start
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D Starting or beginning Point. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only start_pnt_ref is given).
+    source_ref: Curve/Start text content (Point3dOpt)
+  - name: start_name
+    type: text
+    meaning: Start name; the XSD gives no description.
+    source_ref: XSD Start/@name; type xs:string
+    nullable: true
+  - name: start_desc
+    type: text
+    meaning: Start desc; the XSD gives no description.
+    source_ref: XSD Start/@desc; type xs:string
+    nullable: true
+  - name: start_code
+    type: text
+    meaning: Start code; the XSD gives no description.
+    source_ref: XSD Start/@code; type xs:string
+    nullable: true
+  - name: start_state
+    type: enum
+    meaning: Start state; the XSD gives no description.
+    source_ref: XSD Start/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: start_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Start/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: start_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Start/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: start_point_geometry
+    type: enum
+    meaning: Start pointGeometry; the XSD gives no description.
+    source_ref: XSD Start/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: start_dtm_attribute
+    type: enum
+    meaning: Start DTMAttribute; the XSD gives no description.
+    source_ref: XSD Start/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: start_time_stamp
+    type: timestamp
+    meaning: Start timeStamp; the XSD gives no description.
+    source_ref: XSD Start/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: start_role
+    type: enum
+    meaning: Start role; the XSD gives no description.
+    source_ref: XSD Start/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: start_determined_time_stamp
+    type: timestamp
+    meaning: Start determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD Start/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: start_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD Start/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: start_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD Start/@latitude; type latLongAngle
+    nullable: true
+  - name: start_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD Start/@longitude; type latLongAngle
+    nullable: true
+  - name: start_zone
+    type: text
+    meaning: Start zone; the XSD gives no description.
+    source_ref: XSD Start/@zone; type xs:string
+    nullable: true
+  - name: start_northing_std_error
+    type: float
+    meaning: Start northingStdError; the XSD gives no description.
+    source_ref: XSD Start/@northingStdError; type xs:double
+    nullable: true
+  - name: start_easting_std_error
+    type: float
+    meaning: Start eastingStdError; the XSD gives no description.
+    source_ref: XSD Start/@eastingStdError; type xs:double
+    nullable: true
+  - name: start_elevation_std_error
+    type: float
+    meaning: Start elevationStdError; the XSD gives no description.
+    source_ref: XSD Start/@elevationStdError; type xs:double
+    nullable: true
+  - name: center
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D Center Point. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only center_pnt_ref is given).
+    source_ref: Curve/Center text content (Point3dOpt)
+  - name: center_name
+    type: text
+    meaning: Center name; the XSD gives no description.
+    source_ref: XSD Center/@name; type xs:string
+    nullable: true
+  - name: center_desc
+    type: text
+    meaning: Center desc; the XSD gives no description.
+    source_ref: XSD Center/@desc; type xs:string
+    nullable: true
+  - name: center_code
+    type: text
+    meaning: Center code; the XSD gives no description.
+    source_ref: XSD Center/@code; type xs:string
+    nullable: true
+  - name: center_state
+    type: enum
+    meaning: Center state; the XSD gives no description.
+    source_ref: XSD Center/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: center_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Center/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: center_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD Center/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: center_point_geometry
+    type: enum
+    meaning: Center pointGeometry; the XSD gives no description.
+    source_ref: XSD Center/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: center_dtm_attribute
+    type: enum
+    meaning: Center DTMAttribute; the XSD gives no description.
+    source_ref: XSD Center/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: center_time_stamp
+    type: timestamp
+    meaning: Center timeStamp; the XSD gives no description.
+    source_ref: XSD Center/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: center_role
+    type: enum
+    meaning: Center role; the XSD gives no description.
+    source_ref: XSD Center/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: center_determined_time_stamp
+    type: timestamp
+    meaning: Center determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD Center/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: center_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD Center/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: center_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD Center/@latitude; type latLongAngle
+    nullable: true
+  - name: center_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD Center/@longitude; type latLongAngle
+    nullable: true
+  - name: center_zone
+    type: text
+    meaning: Center zone; the XSD gives no description.
+    source_ref: XSD Center/@zone; type xs:string
+    nullable: true
+  - name: center_northing_std_error
+    type: float
+    meaning: Center northingStdError; the XSD gives no description.
+    source_ref: XSD Center/@northingStdError; type xs:double
+    nullable: true
+  - name: center_easting_std_error
+    type: float
+    meaning: Center eastingStdError; the XSD gives no description.
+    source_ref: XSD Center/@eastingStdError; type xs:double
+    nullable: true
+  - name: center_elevation_std_error
+    type: float
+    meaning: Center elevationStdError; the XSD gives no description.
+    source_ref: XSD Center/@elevationStdError; type xs:double
+    nullable: true
+  - name: end
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D Ending Point. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only end_pnt_ref is given).
+    source_ref: Curve/End text content (Point3dOpt)
+  - name: end_name
+    type: text
+    meaning: End name; the XSD gives no description.
+    source_ref: XSD End/@name; type xs:string
+    nullable: true
+  - name: end_desc
+    type: text
+    meaning: End desc; the XSD gives no description.
+    source_ref: XSD End/@desc; type xs:string
+    nullable: true
+  - name: end_code
+    type: text
+    meaning: End code; the XSD gives no description.
+    source_ref: XSD End/@code; type xs:string
+    nullable: true
+  - name: end_state
+    type: enum
+    meaning: End state; the XSD gives no description.
+    source_ref: XSD End/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: end_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD End/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: end_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD End/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: end_point_geometry
+    type: enum
+    meaning: End pointGeometry; the XSD gives no description.
+    source_ref: XSD End/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: end_dtm_attribute
+    type: enum
+    meaning: End DTMAttribute; the XSD gives no description.
+    source_ref: XSD End/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: end_time_stamp
+    type: timestamp
+    meaning: End timeStamp; the XSD gives no description.
+    source_ref: XSD End/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: end_role
+    type: enum
+    meaning: End role; the XSD gives no description.
+    source_ref: XSD End/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: end_determined_time_stamp
+    type: timestamp
+    meaning: End determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD End/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: end_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD End/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: end_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD End/@latitude; type latLongAngle
+    nullable: true
+  - name: end_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD End/@longitude; type latLongAngle
+    nullable: true
+  - name: end_zone
+    type: text
+    meaning: End zone; the XSD gives no description.
+    source_ref: XSD End/@zone; type xs:string
+    nullable: true
+  - name: end_northing_std_error
+    type: float
+    meaning: End northingStdError; the XSD gives no description.
+    source_ref: XSD End/@northingStdError; type xs:double
+    nullable: true
+  - name: end_easting_std_error
+    type: float
+    meaning: End eastingStdError; the XSD gives no description.
+    source_ref: XSD End/@eastingStdError; type xs:double
+    nullable: true
+  - name: end_elevation_std_error
+    type: float
+    meaning: End elevationStdError; the XSD gives no description.
+    source_ref: XSD End/@elevationStdError; type xs:double
+    nullable: true
+  - name: pi
+    type: point3
+    nullable: true
+    meaning: Represents a 2D or 3D Point of Intersection. Coordinate text "northing easting [elevation]" stored with x = easting, y = northing, z = elevation (null when absent or when only pi_pnt_ref is given).
+    source_ref: Curve/PI text content (Point3dOpt)
+  - name: pi_name
+    type: text
+    meaning: PI name; the XSD gives no description.
+    source_ref: XSD PI/@name; type xs:string
+    nullable: true
+  - name: pi_desc
+    type: text
+    meaning: PI desc; the XSD gives no description.
+    source_ref: XSD PI/@desc; type xs:string
+    nullable: true
+  - name: pi_code
+    type: text
+    meaning: PI code; the XSD gives no description.
+    source_ref: XSD PI/@code; type xs:string
+    nullable: true
+  - name: pi_state
+    type: enum
+    meaning: PI state; the XSD gives no description.
+    source_ref: XSD PI/@state; type stateType
+    nullable: true
+    values:
+      - value: abandoned
+        meaning: Enumeration literal "abandoned"; the XSD gives no description.
+      - value: destroyed
+        meaning: Enumeration literal "destroyed"; the XSD gives no description.
+      - value: existing
+        meaning: Enumeration literal "existing"; the XSD gives no description.
+      - value: proposed
+        meaning: Enumeration literal "proposed"; the XSD gives no description.
+  - name: pi_pnt_ref
+    type: ref
+    meaning: A reference name value referring to a PointType derived name attribute. An attribute if this type contains the value of a PointType derived element "name" attribute that exists elsewhere the instance data. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD PI/@pntRef; type pointNameRef
+    nullable: true
+    ref_to: landxml.cg_point
+  - name: pi_feature_ref
+    type: ref
+    meaning: name attribute. Holds the `name` attribute of the referenced element (a name-based reference, resolved when the file is imported).
+    source_ref: XSD PI/@featureRef; type featureNameRef
+    nullable: true
+    ref_to: landxml.feature
+  - name: pi_point_geometry
+    type: enum
+    meaning: PI pointGeometry; the XSD gives no description.
+    source_ref: XSD PI/@pointGeometry; type pointGeometryType
+    nullable: true
+    values:
+      - value: point
+        meaning: Enumeration literal "point"; the XSD gives no description.
+      - value: curve
+        meaning: Enumeration literal "curve"; the XSD gives no description.
+  - name: pi_dtm_attribute
+    type: enum
+    meaning: PI DTMAttribute; the XSD gives no description.
+    source_ref: XSD PI/@DTMAttribute; type DTMAttributeType
+    nullable: true
+    values:
+      - value: determinebyfeature
+        meaning: Enumeration literal "determinebyfeature"; the XSD gives no description.
+      - value: donotinclude
+        meaning: Enumeration literal "donotinclude"; the XSD gives no description.
+      - value: spot
+        meaning: Enumeration literal "spot"; the XSD gives no description.
+      - value: spotandbreak
+        meaning: Enumeration literal "spotandbreak"; the XSD gives no description.
+      - value: void
+        meaning: Enumeration literal "void"; the XSD gives no description.
+      - value: drapevoid
+        meaning: Enumeration literal "drapevoid"; the XSD gives no description.
+      - value: breakvoid
+        meaning: Enumeration literal "breakvoid"; the XSD gives no description.
+      - value: island
+        meaning: Enumeration literal "island"; the XSD gives no description.
+      - value: boundary
+        meaning: Enumeration literal "boundary"; the XSD gives no description.
+      - value: contour
+        meaning: Enumeration literal "contour"; the XSD gives no description.
+      - value: feature
+        meaning: Enumeration literal "feature"; the XSD gives no description.
+      - value: ground
+        meaning: Enumeration literal "ground"; the XSD gives no description.
+      - value: xsection
+        meaning: Enumeration literal "xsection"; the XSD gives no description.
+      - value: user
+        meaning: Enumeration literal "user"; the XSD gives no description.
+  - name: pi_time_stamp
+    type: timestamp
+    meaning: PI timeStamp; the XSD gives no description.
+    source_ref: XSD PI/@timeStamp; type xs:dateTime
+    nullable: true
+  - name: pi_role
+    type: enum
+    meaning: PI role; the XSD gives no description.
+    source_ref: XSD PI/@role; type surveyRoleType
+    nullable: true
+    values:
+      - value: measured
+        meaning: Enumeration literal "measured"; the XSD gives no description.
+      - value: to stake out
+        meaning: Enumeration literal "to stake out"; the XSD gives no description.
+      - value: staked out
+        meaning: Enumeration literal "staked out"; the XSD gives no description.
+      - value: calculated
+        meaning: Enumeration literal "calculated"; the XSD gives no description.
+      - value: assistance point
+        meaning: Enumeration literal "assistance point"; the XSD gives no description.
+      - value: user entered point
+        meaning: Enumeration literal "user entered point"; the XSD gives no description.
+      - value: control point
+        meaning: Enumeration literal "control point"; the XSD gives no description.
+  - name: pi_determined_time_stamp
+    type: timestamp
+    meaning: PI determinedTimeStamp; the XSD gives no description.
+    source_ref: XSD PI/@determinedTimeStamp; type xs:dateTime
+    nullable: true
+  - name: pi_ellipsoid_height
+    type: length
+    meaning: Represents the National Geodedic Survey ellipsiod height expressed in the unit height attribute value. Ellipsoid height in the unit given by Units elevationUnit; kept unconverted.
+    source_ref: XSD PI/@ellipsoidHeight; type ellipsoidHeightType
+    nullable: true
+  - name: pi_latitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD PI/@latitude; type latLongAngle
+    nullable: true
+  - name: pi_longitude
+    type: angle
+    meaning: Latitude/Longitude coordinate angular values expressed in latLongAngularUnit. Latitude (range -90 to +90) positive values for the northern hemispher, negative indicate the southern. Stored in radians. The file value is expressed in Units latLongAngularUnit (default decimal degrees) and is converted at the import boundary.
+    source_ref: XSD PI/@longitude; type latLongAngle
+    nullable: true
+  - name: pi_zone
+    type: text
+    meaning: PI zone; the XSD gives no description.
+    source_ref: XSD PI/@zone; type xs:string
+    nullable: true
+  - name: pi_northing_std_error
+    type: float
+    meaning: PI northingStdError; the XSD gives no description.
+    source_ref: XSD PI/@northingStdError; type xs:double
+    nullable: true
+  - name: pi_easting_std_error
+    type: float
+    meaning: PI eastingStdError; the XSD gives no description.
+    source_ref: XSD PI/@eastingStdError; type xs:double
+    nullable: true
+  - name: pi_elevation_std_error
+    type: float
+    meaning: PI elevationStdError; the XSD gives no description.
+    source_ref: XSD PI/@elevationStdError; type xs:double
+    nullable: true
+notes: "Occurs 0..unbounded in landxml.coord_geom. Inlined elements Start, Center, End, PI sit inside an unbounded xs:choice/xs:sequence in the XSD; modelled as at most once each. Review: Occurrence of inlined elements is a modelling judgement (XSD choice is unbounded). Stored as an object rather than an ordered child because it is the base of other types; the XSD container is the container reference."
+needs_review: true
