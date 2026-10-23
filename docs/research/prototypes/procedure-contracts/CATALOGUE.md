@@ -3,7 +3,7 @@
 | `drawing.create_entity` | 1 | Command | ProducesNew | geometry, id, expected_head | entity, new_head | revision_conflict, non_finite_coordinate, zero_length_line, too_few_vertices, degenerate_surface, self_intersecting_surface |
 | `drawing.update_geometry` | 1 | Command | MutatesInPlace | entity, geometry, expected | new_revision, new_head | entity_missing, revision_conflict, kind_mismatch, non_finite_coordinate, zero_length_line, too_few_vertices, degenerate_surface, self_intersecting_surface |
 | `drawing.delete_entity` | 1 | Command | MutatesInPlace | entity, expected | new_head | entity_missing, revision_conflict, entity_in_use |
-| `drawing.measure_entity` | 1 | Calculation | Pure | entity | measure, input_revision | entity_missing, not_measurable |
+| `drawing.measure_entity` | 1 | Calculation | Pure | entity, geometry | measure, input_revision | entity_missing, not_measurable |
 | `drawing.validate_geometry` | 1 | Validator | Pure | geometry | valid | non_finite_coordinate, zero_length_line, too_few_vertices, degenerate_surface, self_intersecting_surface |
 | `solid.extrude` | 1 | Derivation | ProducesNew | profile, extent, operation, targets, thin | change | profile_not_closed, profile_self_intersecting, extent_degenerate, direction_parallel_to_profile, taper_collapses_shape, target_missing, kernel_failed |
 | `solid.revolve` | 1 | Derivation | ProducesNew | profile, axis, angle, symmetric, operation, targets | change | profile_not_closed, axis_invalid, angle_invalid, axis_crosses_profile, target_missing, kernel_failed |

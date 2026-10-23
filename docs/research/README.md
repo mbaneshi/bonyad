@@ -73,7 +73,7 @@ Decisions needed from the founder: none for this batch. Section 6 of
 | [`procedures/fieldcraft.md`](procedures/fieldcraft.md) | FieldCraft CAE pipeline, oracle verification suite, and the missing runtime verifier (C) |
 | [`procedures/smlib.md`](procedures/smlib.md) | smlib, the C++ SMLib / SM_API reference kernel: ownership contracts, unreliable status codes, global state (C) |
 | [`prior-art/tangency-models.md`](prior-art/tangency-models.md) | Tangency Labs `models`: a hash-enforced, CC0-only fixture repository with no models yet |
-| [`prototypes/procedure-contracts/`](prototypes/procedure-contracts/README.md) | Research prototype: 135 procedures as compiling Rust contracts (input, output, stable error codes, kind, effect), 18 tests |
+| [`prototypes/procedure-contracts/`](prototypes/procedure-contracts/README.md) | Research prototype: 135 procedures as compiling Rust contracts (input, output, stable error codes, kind, effect), 3 implemented against real code, 26 tests |
 | [`code-inventory/tangency-labs-code-inventory.md`](code-inventory/tangency-labs-code-inventory.md) | Pinned inventory of the three Tangency Labs repositories |
 | [`prior-art/inventory.md`](prior-art/inventory.md) | Cross-discipline inventory of formats and implementations |
 | [`mappings/point-line-surface.md`](mappings/point-line-surface.md) | Mapping to the current slice |

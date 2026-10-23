@@ -3,6 +3,13 @@
 version = 4
 
 [[package]]
+name = "bonyad-geometry"
+version = "0.0.0"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "bumpalo"
 version = "3.20.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -86,6 +93,7 @@ dependencies = [
 name = "procedure-contracts"
 version = "0.0.0"
 dependencies = [
+ "bonyad-geometry",
  "serde",
  "serde_json",
  "uuid",

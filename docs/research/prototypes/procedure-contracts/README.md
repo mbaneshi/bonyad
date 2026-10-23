@@ -37,7 +37,7 @@ verifier, never by the procedure that produced the result.
 ## Run it
 
 ```sh
-cargo test                       # 18 tests: registry invariants, behaviour, one implementation
+cargo test                       # 26 tests: registry invariants, behaviour, three implementations
 cargo clippy --all-targets       # clean
 cargo run --example catalogue    # prints the catalogue as a Markdown table
 ```
@@ -65,9 +65,14 @@ By kind: 49 commands, 37 derivations, 24 calculations, 13 validators, 8 queries,
 By effect: 47 produce new entities, 45 are pure, 37 mutate in place, 2 consume inputs,
 2 read and 2 write outside.
 
-One procedure also has an implementation: `civil.earthwork_shared_triangulation`
-(`impl Run`), checked against the hand-computed cases 100 / 0 and 125 / 125. The other 134 are
-contracts only.
+Three procedures also have an implementation (`impl Run`):
+- `civil.earthwork_shared_triangulation`, checked against the hand-computed cases 100 / 0 and 125 / 125.
+- `drawing.measure_entity` and `drawing.validate_geometry`, which call the **real**
+  `bonyad-geometry` functions (`measure`, `validate`) through a path dependency, and are tested
+  against them on twelve geometries: same wire JSON, same values, same violation codes, paths and
+  messages (`tests/drawing_real.rs`).
+
+The other 132 are contracts only.
 
 ## Where each design choice comes from
 
@@ -92,7 +97,7 @@ contracts only.
 | 2D codes | `non_finite_coordinate`, `zero_length_line`, `too_few_vertices`, `degenerate_surface`, `self_intersecting_surface`, `kind_mismatch` | Reused verbatim in `drawing.*` (a test pins them) |
 | Surface ring | Open ring, closing edge implied | Same (`Ring2`, `Geometry2::Surface`) |
 | Shared abstractions | None by design (ADR 0002 decision 5) | This is exactly the thing the ADR defers; keep it a prototype until an implemented case needs it |
-| Existing functions | `length`, `area`, `perimeter`, `validate` | Not yet wired to `drawing.measure_entity` and `drawing.validate_geometry`; that is the natural first implementation |
+| Existing functions | `measure` (`length`, `area`, `perimeter`), `validate` | Wired: `drawing.measure_entity` and `drawing.validate_geometry` run them. Violation paths are the real ones (`vertices[2].y`), not JSON pointers |
 
 ## Deliberately not covered, or merged
 
@@ -109,7 +114,7 @@ contracts only.
 
 ## Limits and open questions
 
-- **Declarations, not implementations.** 134 of 135 contracts have no code behind them. The
+- **Declarations, not implementations.** 132 of 135 contracts have no code behind them. The
   field lists are my synthesis of the studies, not validated against an implementation, and
   they will change when an implementation meets them.
 - **Procedures that replay procedures** (`timeline.add_feature`, `project.commit_changeset`)
@@ -127,3 +132,20 @@ contracts only.
   merely copies. Here it is copied into `Ctx` so provenance records it.
 - Types such as `Primitive`, `PatternKind` and `TinOperation` are first drafts; several
   procedures take `Expr` strings, which are parsed by the procedure and not type-checked here.
+
+## What wiring the two real functions showed
+
+- **A calculation takes the resolved value, not a reference.** `drawing.measure_entity` first took
+  only an `EntityRef`, which a pure function cannot dereference. Its input is now
+  `{entity, geometry}`: the harness resolves the entity at `ctx.input_revision` and passes the
+  stored geometry; `entity` is what goes into the read set. This applies to every `Pure`
+  procedure that "takes an entity" in the other 132 contracts.
+- **`measure` does not validate.** On a non-finite coordinate the real function returns a
+  non-finite number inside `Ok`. A test pins this. The harness must only pass stored geometry,
+  which has already passed `validate`.
+- **`validate` never returns `kind_mismatch`**; only `validate_replacement` does. The contract
+  therefore does not list it for `drawing.validate_geometry`, and the mapping panics if it ever
+  appears.
+- **The wire shape matched without adapters.** `Geometry2` and `bonyad_geometry::Geometry`
+  serialise to the same JSON (`{"kind":"surface","vertices":[...]}`), so the contract can sit in
+  front of the existing API.

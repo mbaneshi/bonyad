@@ -68,9 +68,13 @@ procedures! {
         }
     }
     /// Length, or area and perimeter. A point has nothing to measure.
+    ///
+    /// The harness resolves `entity` at `ctx.input_revision` and passes the stored
+    /// `geometry`; the calculation itself is a pure function of that geometry. `entity` is
+    /// what goes into the read set, so staleness still works.
     measure_entity {
         key: "drawing.measure_entity", version: 1, kind: Calculation, effect: Pure,
-        input { entity: EntityRef }
+        input { entity: EntityRef, geometry: Geometry2 }
         output { measure: Measure2, input_revision: Revision }
         errors { EntityMissing = "entity_missing", NotMeasurable = "not_measurable" }
     }
@@ -85,6 +89,71 @@ procedures! {
             TooFewVertices = "too_few_vertices",
             DegenerateSurface = "degenerate_surface",
             SelfIntersectingSurface = "self_intersecting_surface",
+        }
+    }
+}
+
+// ------------------------------------------------------------ the real implementations
+
+use bonyad_geometry as real;
+
+impl From<&Geometry2> for real::Geometry {
+    fn from(g: &Geometry2) -> Self {
+        let p = |q: &Point2| real::Point2::new(q.x, q.y);
+        match g {
+            Geometry2::Point { x, y } => real::Geometry::Point(real::Point2::new(*x, *y)),
+            Geometry2::Line { a, b } => real::Geometry::Line(real::LineGeometry { a: p(a), b: p(b) }),
+            Geometry2::Surface { vertices } => real::Geometry::Surface(real::SurfaceGeometry {
+                vertices: vertices.iter().map(p).collect(),
+            }),
+        }
+    }
+}
+
+impl Run for measure_entity::Spec {
+    fn run(ctx: &Ctx, input: &Self::Input) -> Outcome<Self::Output, Self::Error> {
+        match real::measure(&(&input.geometry).into()) {
+            None => Outcome::reject(
+                measure_entity::Error::NotMeasurable,
+                "",
+                "a point has nothing to measure",
+            ),
+            Some(real::Measure::Line { length }) => Outcome::ok(measure_entity::Output {
+                measure: Measure2::Line { length },
+                input_revision: ctx.input_revision,
+            }),
+            Some(real::Measure::Surface { area, perimeter }) => Outcome::ok(measure_entity::Output {
+                measure: Measure2::Surface { area, perimeter },
+                input_revision: ctx.input_revision,
+            }),
+        }
+    }
+}
+
+fn to_validate_error(code: real::ViolationCode) -> validate_geometry::Error {
+    use real::ViolationCode as V;
+    use validate_geometry::Error as E;
+    match code {
+        V::NonFiniteCoordinate => E::NonFiniteCoordinate,
+        V::ZeroLengthLine => E::ZeroLengthLine,
+        V::TooFewVertices => E::TooFewVertices,
+        V::DegenerateSurface => E::DegenerateSurface,
+        V::SelfIntersectingSurface => E::SelfIntersectingSurface,
+        // Only `validate_replacement` can produce this one; `validate` never does.
+        V::KindMismatch => unreachable!("validate() does not return kind_mismatch"),
+    }
+}
+
+impl Run for validate_geometry::Spec {
+    fn run(_ctx: &Ctx, input: &Self::Input) -> Outcome<Self::Output, Self::Error> {
+        match real::validate(&(&input.geometry).into()) {
+            Ok(()) => Outcome::ok(validate_geometry::Output { valid: true }),
+            Err(violations) => Outcome::Rejected {
+                violations: violations
+                    .into_iter()
+                    .map(|v| Rejection { error: to_validate_error(v.code), path: v.path, message: v.message })
+                    .collect(),
+            },
         }
     }
 }
