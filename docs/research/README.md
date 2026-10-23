@@ -62,6 +62,7 @@ Decisions needed from the founder: none for this batch. Section 6 of
 |---|---|
 | [`coverage.md`](coverage.md) | Discipline x body-of-knowledge matrix; gaps |
 | [`formats/landxml-1.2.md`](formats/landxml-1.2.md) | LandXML 1.2 schema study (A) |
+| [`formats/exchange-format-landscape.md`](formats/exchange-format-landscape.md) | 24 exchange formats: standing, latest stable versions, overlap, calls (A) |
 | [`standards/crs-iso19111-ogc.md`](standards/crs-iso19111-ogc.md) | Coordinate reference systems, ISO 19111 / OGC 18-005r5 (B) |
 | [`procedures/polygon-area.md`](procedures/polygon-area.md) | Planar vs geodesic polygon area, with a reference case (C) |
 | [`procedures/autocad-3d.md`](procedures/autocad-3d.md) | AutoCAD 3D solid and surface procedures vs FreeCAD and OpenSCAD (C) |
