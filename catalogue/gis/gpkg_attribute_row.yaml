@@ -1,0 +1,18 @@
+code: gis.gpkg_attribute_row
+name: attributes user data table
+kind: entity
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: "HAND-AUTHORED: Attributes > Attributes User Data Tables, Requirement 119"
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/2f_attributes.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: "One row of a user-named non-spatial attribute table: an integer primary key plus any number of user-defined attribute columns."
+fields:
+  - name: attribute_id
+    type: bigint
+    meaning: The INTEGER primary key column acting as a rowid alias (the table's own name for it is user-defined).
+    source_ref: Requirement 119
+notes: "HAND-AUTHORED: convention entity. Only the integer primary key is required by Requirement 119; the sample table's other columns are informative examples and are not modelled."

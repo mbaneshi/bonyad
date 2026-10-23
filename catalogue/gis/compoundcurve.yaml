@@ -1,0 +1,15 @@
+code: gis.compoundcurve
+name: CompoundCurve
+kind: entity
+base: gis.curve
+fidelity: proxy
+source:
+  document: GDAL/OGR source and documentation
+  section: OGRCompoundCurve (class comment); geometry types annex code 9
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_geometry.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: A Curve made of an ordered sequence of contiguous curves (LineStrings and CircularStrings), each starting where the previous ends.
+fields: []
+notes: "Geometry model is HAND-AUTHORED: its hierarchy, parts-as-child decomposition and field set were authored from the cited clauses, not generated. Child rows carry no position field: the generated position column is the order (rules 5 and 9 of FORMAT.md). Member curves are in the child gis.compoundcurve_member."

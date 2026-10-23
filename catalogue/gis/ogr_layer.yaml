@@ -1,0 +1,24 @@
+code: gis.ogr_layer
+name: OGRLayer
+kind: entity
+fidelity: proxy
+source:
+  document: GDAL/OGR vector data model
+  section: Layer
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/doc/source/user/vector_data_model.rst
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: A layer of features inside a dataset; all its features share one OGRFeatureDefn.
+fields:
+  - name: dataset
+    type: ref
+    ref_to: gis.gdal_dataset
+    meaning: The dataset that owns the layer.
+    source_ref: "vector_data_model.rst: layers are owned by their GDALDataset"
+  - name: definition
+    type: ref
+    ref_to: gis.ogr_feature_defn
+    meaning: The feature definition (schema) of the layer; the relationship is one-to-one.
+    source_ref: "vector_data_model.rst: 'always has a one-to-one relationship to an OGRFeatureDefn'"
+notes: Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled.

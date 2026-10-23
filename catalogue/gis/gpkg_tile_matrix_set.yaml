@@ -1,0 +1,40 @@
+code: gis.gpkg_tile_matrix_set
+name: gpkg_tile_matrix_set
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: Tiles > Tile Matrix Set (table 'Tile Matrix Set Table Definition') + Annex C DDL
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/2b_tiles.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: Defines the spatial reference system and overall bounding box of a tile pyramid user data table.
+fields:
+  - name: table_name
+    type: ref
+    meaning: Tile Pyramid User Data Table Name.
+    source_ref: gpkg_tile_matrix_set.table_name TEXT (primary key) -> gpkg_contents.table_name
+    ref_to: gis.gpkg_contents
+  - name: srs_id
+    type: ref
+    meaning: "Spatial Reference System ID: gpkg_spatial_ref_sys.srs_id."
+    source_ref: gpkg_tile_matrix_set.srs_id INTEGER -> gpkg_spatial_ref_sys.srs_id
+    ref_to: gis.gpkg_spatial_ref_sys
+  - name: min_x
+    type: float
+    meaning: Bounding box minimum easting or longitude for the tile matrix set.
+    source_ref: gpkg_tile_matrix_set.min_x DOUBLE
+  - name: min_y
+    type: float
+    meaning: Bounding box minimum northing or latitude for the tile matrix set.
+    source_ref: gpkg_tile_matrix_set.min_y DOUBLE
+  - name: max_x
+    type: float
+    meaning: Bounding box maximum easting or longitude for the tile matrix set.
+    source_ref: gpkg_tile_matrix_set.max_x DOUBLE
+  - name: max_y
+    type: float
+    meaning: Bounding box maximum northing or latitude for the tile matrix set.
+    source_ref: gpkg_tile_matrix_set.max_y DOUBLE
+notes: Columns, SQL types, nullability and foreign keys DERIVED by tools/harvest/gis/src/derive/gpkg.ts from the spec DDL; field meanings are the spec's own column descriptions (lightly cleaned). Entity meaning are HAND-AUTHORED (reviewed).

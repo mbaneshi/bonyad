@@ -1,0 +1,82 @@
+code: gis.datum
+name: Datum
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)
+  section: Clause 8 (geodetic CRS datum), 10 (vertical), 12 (engineering), 7.6 datum ensemble, 7.7 dynamic; PROJ tables geodetic_datum, vertical_datum, engineering_datum
+  url: https://docs.ogc.org/is/18-010r7/18-010r7.html
+  version: "2019"
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: "A reference frame that ties a coordinate system to the Earth (or another body): a geodetic datum with its ellipsoid and prime meridian, a vertical datum, an engineering datum, or an ensemble of such frames."
+fields:
+  - name: name
+    type: text
+    meaning: Datum name, for example World Geodetic System 1984.
+    source_ref: WKT2 <datum name>
+  - name: datum_kind
+    type: enum
+    meaning: Which kind of datum this is; decides which other attributes apply.
+    values:
+      - value: geodetic
+        meaning: Geodetic reference frame (DATUM / TRF / GEODETICDATUM); has an ellipsoid and a prime meridian
+      - value: vertical
+        meaning: Vertical reference frame (VDATUM / VRF); heights or depths
+      - value: engineering
+        meaning: "Engineering datum (EDATUM): a local, non-geodetic frame"
+      - value: ensemble
+        meaning: "Datum ensemble: a collection of reference frames treated as one at a stated accuracy"
+    source_ref: WKT2 clauses 8, 10, 12, 7.6
+  - name: ellipsoid
+    type: ref
+    ref_to: gis.ellipsoid
+    nullable: true
+    meaning: Ellipsoid of a geodetic datum; absent for other kinds.
+    source_ref: WKT2 8.2.1; PROJ geodetic_datum.ellipsoid_*
+  - name: prime_meridian
+    type: ref
+    ref_to: gis.prime_meridian
+    nullable: true
+    meaning: Prime meridian of a geodetic datum; Greenwich when WKT omits it.
+    source_ref: WKT2 8.2.2; PROJ geodetic_datum.prime_meridian_*
+  - name: anchor
+    type: text
+    nullable: true
+    meaning: Description of how the datum is anchored to the Earth (a point or a realisation).
+    source_ref: WKT2 ANCHOR (8, 10, 11, 12); PROJ geodetic_datum.anchor
+  - name: anchor_epoch
+    type: float
+    nullable: true
+    unit: decimal year
+    meaning: Epoch of the anchor, as a decimal year.
+    source_ref: PROJ geodetic_datum.anchor_epoch
+  - name: frame_reference_epoch
+    type: float
+    nullable: true
+    unit: decimal year
+    meaning: Epoch of the coordinates that define a dynamic reference frame; present only for dynamic datums.
+    source_ref: WKT2 7.7 DYNAMIC[FRAMEEPOCH[..]]; PROJ geodetic_datum.frame_reference_epoch
+  - name: ensemble_accuracy
+    type: length
+    nullable: true
+    check: positive
+    meaning: "Accuracy of a datum ensemble in metres: the largest difference expected between members."
+    source_ref: WKT2 7.6 ENSEMBLEACCURACY; PROJ geodetic_datum.ensemble_accuracy
+  - name: publication_date
+    type: date
+    nullable: true
+    meaning: Publication date of the datum definition.
+    source_ref: PROJ geodetic_datum.publication_date
+  - name: authority_name
+    type: text
+    nullable: true
+    meaning: Authority that defines this datum, for example EPSG.
+    source_ref: WKT2 <identifier> ID[authority, code] (7.3.4)
+  - name: authority_code
+    type: text
+    nullable: true
+    meaning: Code of this datum within the authority; text because authorities use both numbers and strings.
+    source_ref: WKT2 <identifier> ID[authority, code]; PROJ code INTEGER_OR_TEXT
+needs_review: true
+notes: "CRS model is HAND-AUTHORED: the attribute set follows the cited WKT2 clauses and the PROJ table columns, not generated. Measures are stored in SI base units (metres, radians); the source unit and its conversion factor are kept where they cannot be recovered, so a value in feet or degrees is converted once at import. Review: the four kinds fold WKT2's separate datum types into one table so a CRS can point at one row; parametric and temporal datums are omitted (no use in the vector model) and listed in GAPS.md. Ensemble members (WKT2 MEMBER) are not modelled."

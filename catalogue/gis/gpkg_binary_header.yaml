@@ -1,0 +1,71 @@
+code: gis.gpkg_binary_header
+name: GeoPackageBinaryHeader
+kind: object
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: "HAND-AUTHORED: Features > Geometry Encoding > BLOB Format (GeoPackageBinaryHeader and flags byte layout)"
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/2a_features.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: "The fixed header that precedes the WKB in every geometry BLOB of a GeoPackage: magic, version, flags (decoded here into separate fields), SRS id and optional envelope."
+fields:
+  - name: magic
+    type: text
+    default: GP
+    meaning: Two bytes 0x4750, 'GP' in ASCII.
+    source_ref: GeoPackageBinaryHeader.magic
+  - name: version
+    type: int
+    default: 0
+    meaning: 8-bit unsigned integer; 0 means version 1.
+    source_ref: GeoPackageBinaryHeader.version
+  - name: binary_type
+    type: enum
+    meaning: "Flag bit X: whether the geometry uses the standard or an extended (user-defined) encoding."
+    values:
+      - value: standard
+        meaning: StandardGeoPackageBinary, for all core and extended geometry types
+      - value: extended
+        meaning: ExtendedGeoPackageBinary, for user-defined geometry types
+    source_ref: flags bit 5
+  - name: is_empty
+    type: bool
+    meaning: "Flag bit Y: true when the geometry is empty (then no envelope is present)."
+    source_ref: flags bit 4
+  - name: envelope_indicator
+    type: enum
+    meaning: "Flag bits E: which envelope, if any, follows the header."
+    values:
+      - value: "0"
+        meaning: No envelope (0 bytes)
+      - value: "1"
+        meaning: Envelope is [minx, maxx, miny, maxy], 32 bytes
+      - value: "2"
+        meaning: Envelope is [minx, maxx, miny, maxy, minz, maxz], 48 bytes
+      - value: "3"
+        meaning: Envelope is [minx, maxx, miny, maxy, minm, maxm], 48 bytes
+      - value: "4"
+        meaning: Envelope is [minx, maxx, miny, maxy, minz, maxz, minm, maxm], 64 bytes
+    source_ref: flags bits 3-1 (values 5-7 are invalid)
+  - name: byte_order
+    type: enum
+    meaning: "Flag bit B: byte order of the srs_id and envelope values in the header (not of the WKB itself)."
+    values:
+      - value: big_endian
+        meaning: "0: most significant byte first"
+      - value: little_endian
+        meaning: "1: least significant byte first"
+    source_ref: flags bit 0
+  - name: srs_id
+    type: int
+    meaning: The SRS id of the geometry; refers to gpkg_spatial_ref_sys.srs_id.
+    source_ref: GeoPackageBinaryHeader.srs_id
+  - name: envelope
+    type: array
+    of: float
+    nullable: true
+    meaning: Envelope values in the order given by envelope_indicator, in CRS units; absent when the indicator is 0.
+    source_ref: GeoPackageBinaryHeader.envelope
+notes: "HAND-AUTHORED: this is a binary layout inside a BLOB, not a table in the file; kind object (the validator rejects an abstract type with fields and no subtype) so a decoded header can be stored if a later phase needs it. The flag bits R (6-7) are reserved and set to 0. Axis order in the WKB is always x,y,{z},{m} regardless of the SRS axis order (spec WARNING)."

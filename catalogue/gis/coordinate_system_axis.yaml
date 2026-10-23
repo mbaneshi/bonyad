@@ -1,0 +1,130 @@
+code: gis.coordinate_system_axis
+name: Axis
+kind: child
+parent: gis.coordinate_system
+fidelity: proxy
+source:
+  document: OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)
+  section: 7.5.3 Axis (AXIS), 7.5.4 axis direction; PROJ table axis
+  url: https://docs.ogc.org/is/18-010r7/18-010r7.html
+  version: "2019"
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: One axis of a coordinate system. Its position in the parent is the axis order (ORDER), which is what makes 'axis order' (latitude first or longitude first) explicit.
+fields:
+  - name: name
+    type: text
+    meaning: Axis name, for example latitude or easting.
+    source_ref: WKT2 <axis name and abbreviation>
+  - name: abbreviation
+    type: text
+    nullable: true
+    meaning: Axis abbreviation, for example Lat or E.
+    source_ref: WKT2 axis abbreviation; PROJ axis.abbrev
+  - name: direction
+    type: enum
+    meaning: Direction in which the axis values increase.
+    values:
+      - value: north
+        meaning: WKT2 axis direction 'north'
+      - value: northNorthEast
+        meaning: WKT2 axis direction 'northNorthEast'
+      - value: northEast
+        meaning: WKT2 axis direction 'northEast'
+      - value: eastNorthEast
+        meaning: WKT2 axis direction 'eastNorthEast'
+      - value: east
+        meaning: WKT2 axis direction 'east'
+      - value: eastSouthEast
+        meaning: WKT2 axis direction 'eastSouthEast'
+      - value: southEast
+        meaning: WKT2 axis direction 'southEast'
+      - value: southSouthEast
+        meaning: WKT2 axis direction 'southSouthEast'
+      - value: south
+        meaning: WKT2 axis direction 'south'
+      - value: southSouthWest
+        meaning: WKT2 axis direction 'southSouthWest'
+      - value: southWest
+        meaning: WKT2 axis direction 'southWest'
+      - value: westSouthWest
+        meaning: WKT2 axis direction 'westSouthWest'
+      - value: west
+        meaning: WKT2 axis direction 'west'
+      - value: westNorthWest
+        meaning: WKT2 axis direction 'westNorthWest'
+      - value: northWest
+        meaning: WKT2 axis direction 'northWest'
+      - value: northNorthWest
+        meaning: WKT2 axis direction 'northNorthWest'
+      - value: geocentricX
+        meaning: WKT2 axis direction 'geocentricX'
+      - value: geocentricY
+        meaning: WKT2 axis direction 'geocentricY'
+      - value: geocentricZ
+        meaning: WKT2 axis direction 'geocentricZ'
+      - value: up
+        meaning: WKT2 axis direction 'up'
+      - value: down
+        meaning: WKT2 axis direction 'down'
+      - value: forward
+        meaning: WKT2 axis direction 'forward'
+      - value: aft
+        meaning: WKT2 axis direction 'aft'
+      - value: port
+        meaning: WKT2 axis direction 'port'
+      - value: starboard
+        meaning: WKT2 axis direction 'starboard'
+      - value: clockwise
+        meaning: WKT2 axis direction 'clockwise'
+      - value: counterClockwise
+        meaning: WKT2 axis direction 'counterClockwise'
+      - value: columnPositive
+        meaning: WKT2 axis direction 'columnPositive'
+      - value: columnNegative
+        meaning: WKT2 axis direction 'columnNegative'
+      - value: rowPositive
+        meaning: WKT2 axis direction 'rowPositive'
+      - value: rowNegative
+        meaning: WKT2 axis direction 'rowNegative'
+      - value: displayRight
+        meaning: WKT2 axis direction 'displayRight'
+      - value: displayLeft
+        meaning: WKT2 axis direction 'displayLeft'
+      - value: displayUp
+        meaning: WKT2 axis direction 'displayUp'
+      - value: displayDown
+        meaning: WKT2 axis direction 'displayDown'
+      - value: future
+        meaning: WKT2 axis direction 'future'
+      - value: past
+        meaning: WKT2 axis direction 'past'
+      - value: towards
+        meaning: WKT2 axis direction 'towards'
+      - value: awayFrom
+        meaning: WKT2 axis direction 'awayFrom'
+      - value: unspecified
+        meaning: WKT2 axis direction 'unspecified'
+    source_ref: WKT2 7.5.4 <axis direction>; PROJ axis.orientation
+  - name: meridian
+    type: angle
+    nullable: true
+    meaning: "For north/south directions in polar projections: the meridian along which the axis points, in radians."
+    source_ref: WKT2 7.5.4 MERIDIAN
+  - name: bearing
+    type: angle
+    nullable: true
+    meaning: "For clockwise/counterClockwise directions: the reference bearing, in radians."
+    source_ref: WKT2 7.5.4 BEARING
+  - name: unit_name
+    type: text
+    nullable: true
+    meaning: Name of the axis unit, for example metre or degree.
+    source_ref: WKT2 7.4 <axis unit>; PROJ unit_of_measure.name
+  - name: unit_to_si
+    type: float
+    nullable: true
+    check: positive
+    meaning: Conversion factor from the axis unit to the SI base unit (metre, or radian for angles); for degrees 0.0174532925199433.
+    source_ref: WKT2 7.4.1 unit conversion factor; PROJ unit_of_measure.conv_factor
+notes: "CRS model is HAND-AUTHORED: the attribute set follows the cited WKT2 clauses and the PROJ table columns, not generated. Measures are stored in SI base units (metres, radians); the source unit and its conversion factor are kept where they cannot be recovered, so a value in feet or degrees is converted once at import. Axis position (ORDER) is the child's generated position column. The direction values are copied from the BNF in 7.5.4."

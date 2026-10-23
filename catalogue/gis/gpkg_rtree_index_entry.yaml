@@ -1,0 +1,35 @@
+code: gis.gpkg_rtree_index_entry
+name: rtree_<t>_<c>
+kind: child
+parent: gis.gpkg_geometry_columns
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: Spatial Indexes extension (gpkg_rtree_index), 'Create Virtual Table'
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/annexes/extension_spatialindex.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: One bounding-box entry of the SQLite R-tree spatial index kept for a feature table geometry column; the table is named rtree_<t>_<c> for feature table <t> and geometry column <c>.
+fields:
+  - name: id
+    type: bigint
+    meaning: Feature table integer primary key value (the R-tree id parameter, a 64-bit signed integer).
+    source_ref: rtree(id, ...)
+  - name: minx
+    type: float
+    meaning: Minimum x of the feature's bounding box, stored by SQLite R-tree as a 32-bit float.
+    source_ref: rtree(..., minx, ...)
+  - name: maxx
+    type: float
+    meaning: Maximum x of the feature's bounding box, stored by SQLite R-tree as a 32-bit float.
+    source_ref: rtree(..., maxx, ...)
+  - name: miny
+    type: float
+    meaning: Minimum y of the feature's bounding box, stored by SQLite R-tree as a 32-bit float.
+    source_ref: rtree(..., miny, ...)
+  - name: maxy
+    type: float
+    meaning: Maximum y of the feature's bounding box, stored by SQLite R-tree as a 32-bit float.
+    source_ref: rtree(..., maxy, ...)
+notes: "Columns DERIVED from the spec's CREATE VIRTUAL TABLE template by tools/harvest/gis/src/hand/gpkg_extra.ts (asserted by test). HAND-AUTHORED: entity meaning, field meanings (paraphrasing the spec sentence 'min- and max-value pairs (stored as 32-bit floating point numbers) for each dimension'), and the choice of gpkg_geometry_columns as parent (one index per geometry column). The index is derived data in the source; it is kept here only because the source specifies it, and a generator may choose to skip derived index tables. Insert/update/delete triggers are not modelled."

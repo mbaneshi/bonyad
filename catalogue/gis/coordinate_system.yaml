@@ -1,0 +1,62 @@
+code: gis.coordinate_system
+name: CoordinateSystem
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)
+  section: 7.5 Coordinate system (CS); PROJ table coordinate_system
+  url: https://docs.ogc.org/is/18-010r7/18-010r7.html
+  version: "2019"
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: The set of axes, with their order, direction and unit, that gives meaning to coordinate tuples of a CRS.
+fields:
+  - name: cs_type
+    type: enum
+    meaning: Type of coordinate system.
+    values:
+      - value: Cartesian
+        meaning: Straight perpendicular axes, all in one unit (2 or 3 axes)
+      - value: ellipsoidal
+        meaning: Geodetic latitude, longitude and optional ellipsoidal height
+      - value: spherical
+        meaning: Spherical coordinates (distance, longitude, latitude)
+      - value: vertical
+        meaning: One axis, height or depth
+      - value: ordinal
+        meaning: Ordinal coordinate system, as used for image grids
+      - value: affine
+        meaning: Affine (possibly skewed or unequally scaled) axes
+      - value: cylindrical
+        meaning: Cylindrical coordinates
+      - value: polar
+        meaning: Polar coordinates
+      - value: linear
+        meaning: One-dimensional linear coordinate system along a path (for example linear referencing)
+      - value: parametric
+        meaning: Parametric values
+      - value: temporalCount
+        meaning: Temporal coordinates as a count of intervals
+      - value: temporalMeasure
+        meaning: Temporal coordinates as a measure
+      - value: temporalDateTime
+        meaning: Temporal coordinates as a date and time
+    source_ref: WKT2 7.5.2 <cs type>; PROJ coordinate_system.type (subset)
+  - name: dimension
+    type: int
+    min: 1
+    max: 4
+    meaning: Number of axes (the order of the coordinate tuple).
+    source_ref: WKT2 7.5.2 <dimension>; PROJ coordinate_system.dimension BETWEEN 1 AND 3
+  - name: authority_name
+    type: text
+    nullable: true
+    meaning: Authority that defines this coordinate system, for example EPSG.
+    source_ref: WKT2 <identifier> ID[authority, code] (7.3.4)
+  - name: authority_code
+    type: text
+    nullable: true
+    meaning: Code of this coordinate system within the authority; text because authorities use both numbers and strings.
+    source_ref: WKT2 <identifier> ID[authority, code]; PROJ code INTEGER_OR_TEXT
+needs_review: true
+notes: "CRS model is HAND-AUTHORED: the attribute set follows the cited WKT2 clauses and the PROJ table columns, not generated. Measures are stored in SI base units (metres, radians); the source unit and its conversion factor are kept where they cannot be recovered, so a value in feet or degrees is converted once at import. PROJ limits the dimension to 3; WKT2 allows more for some types, so the bound here is the WKT2-based 4 (review)."

@@ -1,0 +1,45 @@
+code: gis.ellipsoid
+name: Ellipsoid
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)
+  section: 8.2.1 Ellipsoid (ELLIPSOID / SPHEROID); PROJ table ellipsoid
+  url: https://docs.ogc.org/is/18-010r7/18-010r7.html
+  version: "2019"
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: A reference ellipsoid (an oblate spheroid approximating the shape of a body), defined by its semi-major axis and either its inverse flattening or its semi-minor axis.
+fields:
+  - name: name
+    type: text
+    meaning: Ellipsoid name.
+    source_ref: WKT2 <ellipsoid name>
+  - name: semi_major_axis
+    type: length
+    check: positive
+    meaning: Semi-major axis a, in metres (converted from the WKT length unit).
+    source_ref: WKT2 <semi-major axis>; PROJ ellipsoid.semi_major_axis
+  - name: inverse_flattening
+    type: float
+    nullable: true
+    meaning: Inverse flattening 1/f = a/(a-b); 0 for a sphere, otherwise at least 1. Exactly one of inverse_flattening and semi_minor_axis is given.
+    source_ref: WKT2 <inverse flattening>; PROJ ellipsoid.inv_flattening CHECK (= 0 OR >= 1.0)
+  - name: semi_minor_axis
+    type: length
+    nullable: true
+    check: positive
+    meaning: Semi-minor axis b, in metres, when the ellipsoid is defined by it instead of the inverse flattening.
+    source_ref: PROJ ellipsoid.semi_minor_axis (mutually exclusive with inv_flattening)
+  - name: authority_name
+    type: text
+    nullable: true
+    meaning: Authority that defines this ellipsoid, for example EPSG.
+    source_ref: WKT2 <identifier> ID[authority, code] (7.3.4)
+  - name: authority_code
+    type: text
+    nullable: true
+    meaning: Code of this ellipsoid within the authority; text because authorities use both numbers and strings.
+    source_ref: WKT2 <identifier> ID[authority, code]; PROJ code INTEGER_OR_TEXT
+needs_review: true
+notes: "CRS model is HAND-AUTHORED: the attribute set follows the cited WKT2 clauses and the PROJ table columns, not generated. Measures are stored in SI base units (metres, radians); the source unit and its conversion factor are kept where they cannot be recovered, so a value in feet or degrees is converted once at import. Review: the 'exactly one of inverse_flattening / semi_minor_axis' rule is a PROJ CHECK constraint, not a WKT2 rule (WKT2 always writes inverse flattening); not enforceable in the field model."

@@ -1,0 +1,23 @@
+code: gis.gdal_dataset
+name: GDALDataset
+kind: entity
+fidelity: proxy
+source:
+  document: GDAL/OGR vector data model
+  section: Dataset
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/doc/source/user/vector_data_model.rst
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: A file, set of files, database or gateway holding a set of layers; the root container of the OGR vector model.
+fields:
+  - name: name
+    type: text
+    meaning: Dataset name, usually a file name or a database connection string, used to reopen it with a driver.
+    source_ref: "vector_data_model.rst: 'A GDALDataset has a name'"
+  - name: driver_name
+    type: text
+    nullable: true
+    meaning: Short name of the GDALDriver (format translator) that opened or created the dataset, for example GPKG.
+    source_ref: GDALDriver, vector_data_model.rst 'Drivers'
+notes: Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled.

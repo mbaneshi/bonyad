@@ -1,0 +1,103 @@
+code: gis.ogr_field_domain
+name: OGRFieldDomain
+kind: abstract
+fidelity: proxy
+source:
+  document: GDAL/OGR source (ogr_feature.h) and documentation
+  section: class OGRFieldDomain; vector_data_model.rst 'Field Domains'
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_feature.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: Describes the values an attribute field may hold (coded list, range or glob pattern). GDAL stores it but does not validate against it.
+fields:
+  - name: dataset
+    type: ref
+    ref_to: gis.gdal_dataset
+    meaning: The dataset the domain is associated with.
+    source_ref: vector_data_model.rst 'Field Domains'
+  - name: name
+    type: text
+    meaning: Domain name, unique within the dataset.
+    source_ref: OGRFieldDomain::m_osName
+  - name: description
+    type: text
+    nullable: true
+    meaning: Domain description.
+    source_ref: OGRFieldDomain::m_osDescription
+  - name: field_type
+    type: enum
+    values:
+      - value: OFTInteger
+        meaning: Single signed 32bit integer (code 0)
+      - value: OFTIntegerList
+        meaning: List of signed 32bit integers (code 1)
+      - value: OFTReal
+        meaning: Double Precision floating point (code 2)
+      - value: OFTRealList
+        meaning: List of doubles (code 3)
+      - value: OFTString
+        meaning: String of ASCII chars (code 4)
+      - value: OFTStringList
+        meaning: Array of strings (code 5)
+      - value: OFTWideString
+        meaning: deprecated (code 6)
+      - value: OFTWideStringList
+        meaning: deprecated (code 7)
+      - value: OFTBinary
+        meaning: Raw Binary data (code 8)
+      - value: OFTDate
+        meaning: Date (code 9)
+      - value: OFTTime
+        meaning: Time (code 10)
+      - value: OFTDateTime
+        meaning: Date and Time (code 11)
+      - value: OFTInteger64
+        meaning: Single signed 64bit integer (code 12)
+      - value: OFTInteger64List
+        meaning: List of signed 64bit integers (code 13)
+    meaning: Field type of the values the domain constrains.
+    source_ref: OGRFieldDomain::m_eFieldType
+  - name: field_subtype
+    type: enum
+    values:
+      - value: OFSTNone
+        meaning: No subtype. This is the default value (code 0)
+      - value: OFSTBoolean
+        meaning: Boolean integer. Only valid for OFTInteger and OFTIntegerList (code 1)
+      - value: OFSTInt16
+        meaning: Signed 16-bit integer. Only valid for OFTInteger and OFTIntegerList (code 2)
+      - value: OFSTFloat32
+        meaning: Single precision (32 bit) floating point. Only valid for OFTReal and OFTRealList (code 3)
+      - value: OFSTJSON
+        meaning: JSON content. Only valid for OFTString (code 4)
+      - value: OFSTUUID
+        meaning: UUID string representation. Only valid for OFTString (code 5)
+    meaning: Field subtype of the constrained values.
+    source_ref: OGRFieldDomain::m_eFieldSubType
+    default: OFSTNone
+  - name: split_policy
+    type: enum
+    values:
+      - value: OFDSP_DEFAULT_VALUE
+        meaning: Default value
+      - value: OFDSP_DUPLICATE
+        meaning: Duplicate
+      - value: OFDSP_GEOMETRY_RATIO
+        meaning: New values are computed by the ratio of their area/length compared to the area/length of the original feature
+    meaning: How the attribute value is computed when a feature is split in two.
+    source_ref: OGRFieldDomain::m_eSplitPolicy
+    default: OFDSP_DEFAULT_VALUE
+  - name: merge_policy
+    type: enum
+    values:
+      - value: OFDMP_DEFAULT_VALUE
+        meaning: Default value
+      - value: OFDMP_SUM
+        meaning: Sum
+      - value: OFDMP_GEOMETRY_WEIGHTED
+        meaning: New values are computed as the weighted average of the source values
+    meaning: How the attribute value is computed when two features are merged.
+    source_ref: OGRFieldDomain::m_eMergePolicy
+    default: OFDMP_DEFAULT_VALUE
+notes: "Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled. The domain type is the concrete subtype (coded, range, glob), recorded by the generated type_code column, so no separate domain_type column exists (OGRFieldDomainType: OFDT_CODED, OFDT_RANGE, OFDT_GLOB)."

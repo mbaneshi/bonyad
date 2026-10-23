@@ -1,0 +1,20 @@
+code: gis.polyhedralsurface_patch
+name: PolyhedralSurface patch
+kind: child
+parent: gis.polyhedralsurface
+fidelity: proxy
+source:
+  document: "OpenGIS Implementation Standard for Geographic information - Simple feature access - Part 1: Common architecture, OGC 06-103r4"
+  section: 6.1.12 PolyhedralSurface
+  url: https://docs.ogc.org/is/06-103r4/06-103r4.pdf
+  version: 1.2.1 (Corrigendum, 2011-05-28)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: One Polygon patch of a PolyhedralSurface or TIN, in order.
+fields:
+  - name: patch
+    type: ref
+    ref_to: gis.polygon
+    meaning: The polygon forming this patch; a Triangle when the parent is a TIN.
+    source_ref: SFA 6.1.12.1
+notes: "Geometry model is HAND-AUTHORED: its hierarchy, parts-as-child decomposition and field set were authored from the cited clauses, not generated. Child rows carry no position field: the generated position column is the order (rules 5 and 9 of FORMAT.md)."

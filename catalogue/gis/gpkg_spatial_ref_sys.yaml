@@ -1,0 +1,49 @@
+code: gis.gpkg_spatial_ref_sys
+name: gpkg_spatial_ref_sys
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: Spatial Reference Systems (table 'Spatial Ref Sys Table Definition') + Annex C DDL; CRS WKT extension (gpkg_crs_wkt_1_1) table for definition_12_063/epoch
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/1_base.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: One spatial reference system (CRS) definition available inside a GeoPackage file; features, tiles and contents point to it by srs_id.
+fields:
+  - name: srs_name
+    type: text
+    meaning: Human readable name of this SRS.
+    source_ref: gpkg_spatial_ref_sys.srs_name TEXT
+  - name: srs_id
+    type: int
+    meaning: "Unique identifier of the SRS within this GeoPackage; the key used by gpkg_contents, gpkg_geometry_columns, gpkg_tile_matrix_set and the GeoPackageBinary header. Reserved: 4326 (WGS-84), -1 (undefined Cartesian), 0 (undefined geographic)."
+    source_ref: gpkg_spatial_ref_sys.srs_id INTEGER (primary key)
+  - name: organization
+    type: text
+    meaning: Case-insensitive name of the defining organization e.g. EPSG or epsg.
+    source_ref: gpkg_spatial_ref_sys.organization TEXT
+  - name: organization_coordsys_id
+    type: int
+    meaning: Numeric ID of the Spatial Reference System assigned by the organization.
+    source_ref: gpkg_spatial_ref_sys.organization_coordsys_id INTEGER
+  - name: definition
+    type: text
+    meaning: Well-known Text Representation of the Spatial Reference System.
+    source_ref: gpkg_spatial_ref_sys.definition TEXT
+  - name: description
+    type: text
+    meaning: Human readable description of this SRS.
+    source_ref: gpkg_spatial_ref_sys.description TEXT
+    nullable: true
+  - name: definition_12_063
+    type: text
+    nullable: true
+    meaning: Well-known Text or Representation of the Spatial Reference System.
+    source_ref: gpkg_spatial_ref_sys_cols_crs_wkt (CRS WKT extension) TEXT
+  - name: epoch
+    type: float
+    nullable: true
+    meaning: Coordinate epoch as per https://docs.opengeospatial.org/as/18-005r4/18-005r4.html#68.
+    source_ref: gpkg_spatial_ref_sys_cols_crs_wkt (CRS WKT extension) DOUBLE
+notes: Columns, SQL types, nullability and foreign keys DERIVED by tools/harvest/gis/src/derive/gpkg.ts from the spec DDL; field meanings are the spec's own column descriptions (lightly cleaned). Entity meaning, enum values and checks are HAND-AUTHORED (reviewed). Columns definition_12_063 and epoch exist only when the gpkg_crs_wkt_1_1 extension is in use (nullable here because plain core files lack them; the extension marks definition_12_063 NOT NULL).

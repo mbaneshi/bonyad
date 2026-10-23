@@ -1,0 +1,41 @@
+code: gis.gpkg_extensions
+name: gpkg_extensions
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: Extension Mechanism > Extensions (table 'GeoPackage Extensions Table Definition') + Annex C DDL gpkg_extensions
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/2e_extensions-mechanism.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: "Registry of extensions in use: which extension applies to the whole file, a table or a single column, and whether it affects readers and writers or only writers."
+fields:
+  - name: table_name
+    type: text
+    meaning: Name of the table that requires the extension. When NULL, the extension is required for the entire GeoPackage. SHALL NOT be NULL when the column_name is not NULL.
+    source_ref: gpkg_extensions.table_name TEXT
+    nullable: true
+  - name: column_name
+    type: text
+    meaning: Name of the column that requires the extension. When NULL, the extension is required for the entire table.
+    source_ref: gpkg_extensions.column_name TEXT
+    nullable: true
+  - name: extension_name
+    type: text
+    meaning: The case sensitive name of the extension that is required, in the form <author>_<extension_name>.
+    source_ref: gpkg_extensions.extension_name TEXT
+  - name: definition
+    type: text
+    meaning: Permalink, URI, or reference to a document that defines the extension.
+    source_ref: gpkg_extensions.definition TEXT
+  - name: scope
+    type: enum
+    meaning: Scope of the extension's effects on readers and writers.
+    source_ref: gpkg_extensions.scope TEXT
+    values:
+      - value: read-write
+        meaning: Affects both readers and writers
+      - value: write-only
+        meaning: Affects writers only; readers may ignore it
+notes: Columns, SQL types, nullability and foreign keys DERIVED by tools/harvest/gis/src/derive/gpkg.ts from the spec DDL; field meanings are the spec's own column descriptions (lightly cleaned). Entity meaning, enum values and checks are HAND-AUTHORED (reviewed). No primary key in the DDL; uniqueness is (table_name, column_name, extension_name).

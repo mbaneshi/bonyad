@@ -1,0 +1,22 @@
+code: gis.gpkg_feature_row
+name: vector feature user data table
+kind: entity
+fidelity: proxy
+source:
+  document: OGC GeoPackage Encoding Standard, OGC 12-128r19
+  section: "HAND-AUTHORED: Features > Vector Feature User Data Tables, Requirements 29-31 (+ Geometry Encoding, Requirement 19)"
+  url: https://github.com/opengeospatial/geopackage/blob/fe83fdd5949a3faba09117e6e1dcc003fdb5a900/spec/core/2a_features.adoc
+  version: 1.4.0 (repository commit fe83fdd)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (opengeospatial/geopackage LICENSE.md)
+meaning: "One feature (row) of a user-named vector feature table: an integer primary key and exactly one geometry column, plus any number of user-defined attribute columns."
+fields:
+  - name: feature_id
+    type: bigint
+    meaning: The INTEGER primary key column acting as a rowid alias (the table's own name for it is user-defined).
+    source_ref: Requirement 29
+  - name: geometry
+    type: blob
+    meaning: The single geometry column, stored as a StandardGeoPackageBinary BLOB (header plus WKB); its declared SQL type comes from gpkg_geometry_columns.
+    source_ref: Requirements 19, 30, 31
+notes: "HAND-AUTHORED: convention entity. The spec requires only the primary key and one geometry column; the other columns of the informative sample table (text_attribute, real_attribute, boolean_attribute, raster_or_photo) are examples and are NOT modelled. User-defined attribute columns are open-ended and are covered by the layer / field definition entities (gis.ogr_feature_defn, gis.ogr_field_defn), not here. Views are allowed instead of tables (Requirement 150)."

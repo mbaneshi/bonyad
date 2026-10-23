@@ -1,0 +1,16 @@
+code: gis.multicurve
+name: MultiCurve
+kind: abstract
+base: gis.geometrycollection
+fidelity: proxy
+source:
+  document: "OpenGIS Implementation Standard for Geographic information - Simple feature access - Part 1: Common architecture, OGC 06-103r4"
+  section: 6.1.8 MultiCurve
+  url: https://docs.ogc.org/is/06-103r4/06-103r4.pdf
+  version: 1.2.1 (Corrigendum, 2011-05-28)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: A 1-dimensional GeometryCollection whose elements are Curves.
+fields: []
+needs_review: true
+notes: "Geometry model is HAND-AUTHORED: its hierarchy, parts-as-child decomposition and field set were authored from the cited clauses, not generated. Child rows carry no position field: the generated position column is the order (rules 5 and 9 of FORMAT.md). SFA calls MultiCurve a 'non-instantiable class' included for extensibility, so it is abstract here; GeoPackage still lists MULTICURVE (code 11) as a declarable geometry type and GDAL has a concrete OGRMultiCurve (SQL/MM), so a concrete use is possible. Left abstract per SFA; confirm against SQL/MM."

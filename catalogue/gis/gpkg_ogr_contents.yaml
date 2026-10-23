@@ -1,0 +1,25 @@
+code: gis.gpkg_ogr_contents
+name: gpkg_ogr_contents
+kind: symbol
+fidelity: proxy
+source:
+  document: GDAL GeoPackage driver source and documentation
+  section: "GDALGeoPackageDataset: CREATE TABLE gpkg_ogr_contents (ADD_GPKG_OGR_CONTENTS option); doc/source/drivers/vector/gpkg.rst"
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogrsf_frmts/gpkg/ogrgeopackagedatasource.cpp
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: GDAL-specific side table that keeps a cached feature count per content table, maintained by triggers.
+fields:
+  - name: table_name
+    type: ref
+    ref_to: gis.gpkg_contents
+    meaning: Name of the content table the count belongs to; primary key of this table.
+    source_ref: gpkg_ogr_contents.table_name TEXT (primary key)
+  - name: feature_count
+    type: bigint
+    nullable: true
+    meaning: Cached number of features in the table; NULL when not known.
+    source_ref: gpkg_ogr_contents.feature_count INTEGER DEFAULT NULL
+needs_review: true
+notes: "Columns DERIVED from the CREATE statement in GDAL's source. HAND-AUTHORED: the foreign-key-like ref on table_name (GDAL's DDL declares none; inferred from the name and the trigger name pattern trigger_%_feature_count_%), the type bigint, and the 'NULL when not known' wording are inferred from the column names and the driver docs ('add a gpkg_ogr_contents table to keep feature count, and associated triggers'); the exact trigger semantics were not read."

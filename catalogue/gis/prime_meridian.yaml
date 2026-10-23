@@ -1,0 +1,32 @@
+code: gis.prime_meridian
+name: PrimeMeridian
+kind: symbol
+fidelity: proxy
+source:
+  document: OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)
+  section: 8.2.2 Prime meridian (PRIMEM); PROJ table prime_meridian
+  url: https://docs.ogc.org/is/18-010r7/18-010r7.html
+  version: "2019"
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: The meridian from which longitudes are counted, given as a longitude relative to Greenwich.
+fields:
+  - name: name
+    type: text
+    meaning: Prime meridian name, for example Greenwich.
+    source_ref: WKT2 <prime meridian name>
+  - name: longitude
+    type: angle
+    meaning: Longitude of the meridian relative to Greenwich, in radians (converted from the WKT angle unit, degrees by default).
+    source_ref: WKT2 <irm longitude>; PROJ prime_meridian.longitude
+  - name: authority_name
+    type: text
+    nullable: true
+    meaning: Authority that defines this prime meridian, for example EPSG.
+    source_ref: WKT2 <identifier> ID[authority, code] (7.3.4)
+  - name: authority_code
+    type: text
+    nullable: true
+    meaning: Code of this prime meridian within the authority; text because authorities use both numbers and strings.
+    source_ref: WKT2 <identifier> ID[authority, code]; PROJ code INTEGER_OR_TEXT
+notes: "CRS model is HAND-AUTHORED: the attribute set follows the cited WKT2 clauses and the PROJ table columns, not generated. Measures are stored in SI base units (metres, radians); the source unit and its conversion factor are kept where they cannot be recovered, so a value in feet or degrees is converted once at import."

@@ -1,0 +1,91 @@
+code: gis.ogr_geom_field_defn
+name: OGRGeomFieldDefn
+kind: child
+parent: gis.ogr_feature_defn
+fidelity: proxy
+source:
+  document: GDAL/OGR source (ogr_feature.h) and documentation
+  section: class OGRGeomFieldDefn; ogr_geomcoordinateprecision.h
+  url: https://github.com/OSGeo/gdal/blob/c8b4c45fca87d3e6fbf80e7a7898b8a661ad0edc/ogr/ogr_feature.h
+  version: GDAL 3.13.3 (commit c8b4c45)
+  accessed_on: 2026-10-23
+  licence: MIT (GDAL/OGR)
+meaning: "Definition of one geometry field of a feature class: allowed geometry type, spatial reference system, nullability and coordinate precision."
+fields:
+  - name: name
+    type: text
+    meaning: Geometry field name (may be empty for formats with a single anonymous geometry).
+    source_ref: OGRGeomFieldDefn::pszName
+  - name: geometry_type
+    type: enum
+    values:
+      - value: wkbUnknown
+        meaning: unknown type, non-standard (code 0)
+      - value: wkbPoint
+        meaning: 0-dimensional geometric object, standard WKB (code 1)
+      - value: wkbLineString
+        meaning: 1-dimensional geometric object with linear interpolation between Points, standard WKB (code 2)
+      - value: wkbPolygon
+        meaning: planar 2-dimensional geometric object defined by 1 exterior boundary and 0 or more interior boundaries, standard WKB (code 3)
+      - value: wkbMultiPoint
+        meaning: GeometryCollection of Points, standard WKB (code 4)
+      - value: wkbMultiLineString
+        meaning: GeometryCollection of LineStrings, standard WKB (code 5)
+      - value: wkbMultiPolygon
+        meaning: GeometryCollection of Polygons, standard WKB (code 6)
+      - value: wkbGeometryCollection
+        meaning: geometric object that is a collection of 1 or more geometric objects, standard WKB (code 7)
+      - value: wkbCircularString
+        meaning: one or more circular arc segments connected end to end, ISO SQL/MM Part 3 (code 8)
+      - value: wkbCompoundCurve
+        meaning: sequence of contiguous curves, ISO SQL/MM Part 3 (code 9)
+      - value: wkbCurvePolygon
+        meaning: planar surface, defined by 1 exterior boundary and zero or more interior boundaries, that are curves. ISO SQL/MM Part 3 (code 10)
+      - value: wkbMultiCurve
+        meaning: GeometryCollection of Curves, ISO SQL/MM Part 3 (code 11)
+      - value: wkbMultiSurface
+        meaning: GeometryCollection of Surfaces, ISO SQL/MM Part 3 (code 12)
+      - value: wkbCurve
+        meaning: Curve (abstract type). ISO SQL/MM Part 3 (code 13)
+      - value: wkbSurface
+        meaning: Surface (abstract type). ISO SQL/MM Part 3 (code 14)
+      - value: wkbPolyhedralSurface
+        meaning: a contiguous collection of polygons, which share common boundary segments, ISO SQL/MM Part 3 (code 15)
+      - value: wkbTIN
+        meaning: a PolyhedralSurface consisting only of Triangle patches ISO SQL/MM Part 3 (code 16)
+      - value: wkbTriangle
+        meaning: a Triangle. ISO SQL/MM Part 3 (code 17)
+      - value: wkbNone
+        meaning: non-standard, for pure attribute records (code 100)
+      - value: wkbLinearRing
+        meaning: non-standard, just for createGeometry() (code 101)
+    meaning: Geometry type allowed in this field; all values possible except wkbNone. Z/M variants are carried by the code offsets 1000/2000/3000.
+    source_ref: OGRGeomFieldDefn::eGeomType
+    default: wkbUnknown
+  - name: spatial_reference
+    type: ref
+    ref_to: gis.spatial_reference
+    nullable: true
+    meaning: Spatial reference system of the field; null when unknown.
+    source_ref: OGRGeomFieldDefn::poSRS
+  - name: nullable
+    type: bool
+    default: true
+    meaning: Whether the geometry may be null.
+    source_ref: OGRGeomFieldDefn::bNullable
+  - name: xy_resolution
+    type: float
+    nullable: true
+    meaning: Resolution of the X and Y coordinates in the units of the SRS X/Y axes (1e-3 on a metre CRS is 1 mm); null when unknown (the header uses 0 for unknown).
+    source_ref: OGRGeomCoordinatePrecision::dfXYResolution
+  - name: z_resolution
+    type: float
+    nullable: true
+    meaning: Resolution of the Z coordinate in the units of the SRS Z axis; null when unknown.
+    source_ref: OGRGeomCoordinatePrecision::dfZResolution
+  - name: m_resolution
+    type: float
+    nullable: true
+    meaning: Resolution of the M coordinate; null when unknown.
+    source_ref: OGRGeomCoordinatePrecision::dfMResolution
+notes: "Structure follows the members of the cited GDAL class; enumeration values are DERIVED from the header by tools/harvest/gis/src/derive/gdal.ts. Entity and field prose is HAND-AUTHORED. Runtime-only state (reference counts, sealed/ignored flags, caches) is not data and is not modelled. Per-format coordinate precision options (oFormatSpecificOptions, a string map) are not modelled: no JSON or map column exists in the format; listed in GAPS.md."

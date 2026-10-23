@@ -1,0 +1,30 @@
+code: gis.geometry
+name: Geometry
+kind: abstract
+fidelity: proxy
+source:
+  document: "OpenGIS Implementation Standard for Geographic information - Simple feature access - Part 1: Common architecture, OGC 06-103r4"
+  section: 6.1.2 Geometry (6.1.2.1 Description, 6.1.2.2 Basic methods); 8.2.3 Table 7 integer codes
+  url: https://docs.ogc.org/is/06-103r4/06-103r4.pdf
+  version: 1.2.1 (Corrigendum, 2011-05-28)
+  accessed_on: 2026-10-23
+  licence: OGC License Agreement (embedded in the document)
+meaning: "Root of the geometry hierarchy: a 0, 1 or 2-dimensional object in 2D, 3D or 4D coordinate space (x,y plus optional z and m) tied to one spatial reference system."
+fields:
+  - name: spatial_reference
+    type: ref
+    ref_to: gis.spatial_reference
+    nullable: true
+    meaning: The spatial reference system all coordinates of this geometry are in (SFA SRID()); NULL when unknown.
+    source_ref: SFA 6.1.2.1 spatialRS / SRID()
+  - name: has_z
+    type: bool
+    default: false
+    meaning: True when the points of this geometry carry a z coordinate (SFA is3D()).
+    source_ref: SFA 6.1.2.2 is3D()
+  - name: has_m
+    type: bool
+    default: false
+    meaning: True when the points of this geometry carry an m coordinate (SFA isMeasured()).
+    source_ref: SFA 6.1.2.2 isMeasured()
+notes: "Geometry model is HAND-AUTHORED: its hierarchy, parts-as-child decomposition and field set were authored from the cited clauses, not generated. Child rows carry no position field: the generated position column is the order (rules 5 and 9 of FORMAT.md). Dimension rule: coordinate dimension is 2 (x,y), 3 (x,y,z or x,y,m) or 4 (x,y,z,m), selected by has_z/has_m (SFA 6.1.2.1); in ISO WKB the type code is the base code plus 1000 for Z, 2000 for M and 3000 for ZM (SFA Table 7); all points of one geometry share the same dimension. Whether a geometry is empty, and its coordinate_dimension / dimension, are derived and not stored. Axis order in stored coordinates is always x,y,z,m regardless of the CRS axis order (GeoPackage binary encoding warning)."
