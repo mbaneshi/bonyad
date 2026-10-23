@@ -1,0 +1,3 @@
+# Generated YAML is kept local: see SOURCES.md (licence decision).
+*.yaml
+_stats.json
