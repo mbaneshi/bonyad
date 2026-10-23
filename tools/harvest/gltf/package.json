@@ -1,0 +1,17 @@
+{
+  "name": "bonyad-harvest-gltf",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "harvest": "bun run src/harvest.ts",
+    "check": "bun run src/check.ts"
+  },
+  "dependencies": {
+    "yaml": "2.8.1",
+    "zod": "4.1.5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
