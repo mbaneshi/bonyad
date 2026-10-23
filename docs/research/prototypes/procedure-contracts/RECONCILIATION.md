@@ -8,8 +8,8 @@ load-bearing ways:
 
 | Short name | Where | State |
 |---|---|---|
-| **ADR 0003** | `docs/decisions/0003-procedure-registry.md` (branch `docs/adr-0003-procedure-registry`) | Proposed |
-| **`proc.*` migration** | `db/migrations/20261023000005_phase1_entity_spine.sql` (branch `feat/29-phase1-entity-spine`) | Written |
+| **ADR 0003** | `docs/decisions/0003-procedure-registry.md` (on `dev`) | Proposed |
+| **`proc.*` migration** | `db/migrations/20261023000005_phase1_entity_spine.sql` (on `dev`) | Merged |
 | **Contracts prototype** | this folder | 135 contracts, 1 implementation, 18 tests |
 
 Evidence labels: *Verified* = read in the file named; *Interpretation* = my reading.

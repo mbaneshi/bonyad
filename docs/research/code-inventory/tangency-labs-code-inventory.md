@@ -85,9 +85,9 @@ Cross-repository additions (Interpretation):
 | Verifier | analytic tests embedded in code; `KNOWN_ISSUES.md` advises external checks | hash-enforced fixtures, no expected values |
 | Identity | raw C++ pointers; `.smb` uses indices | n/a |
 
-## Lines to add to `scripts/fetch-refs` when the inventory branch lands
+## Lines to add to `scripts/fetch-refs`
 
-`scripts/fetch-refs` is on the branch `docs/research-code-inventory`, not on `dev`. Add these
+`scripts/fetch-refs` is on `dev` and does not list these repositories yet. Add these
 five lines to its list (same format):
 
 ```
