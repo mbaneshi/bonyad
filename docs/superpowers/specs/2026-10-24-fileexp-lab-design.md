@@ -73,9 +73,9 @@ Pins are the 2026-10-23 baseline from ADR 0004 (parked draft) and are re-confirm
 | Scene | OpenUSD | Core Specification 1.0; release 26.11.1 | repo research |
 | Tabular | CSV | no standard version; each use needs a declared profile (columns, units, coordinate order, delimiter, encoding) | n/a |
 | Structural | SAF | documentation 2.2.0 (C# SDK 1.7.3, Apache-2.0) | Verified 2026-10-24: Excel-based `.xlsx`; examples for 2.2.0 to 1.0.5; the specification text's licence is **unverified** |
-| Structural | IFC structural analysis domain | IFC4 structural analysis view | Verified in CSI's note that the entities exist; the buildingSMART schema page returned 403, so its own exclusion list is **unverified** |
+| Structural | IFC structural analysis domain | IFC4 ADD2 TC1 (tag `IFC4.0.2.1`) | Verified 2026-10-24 from buildingSMART's GitHub source: in scope are curve and surface members, connections and supports, loads with groups, cases and combinations, and force and displacement results; out of scope are dynamic analysis, prestressed loads, finite-element topology, and detailed mesh results, stresses and strains. This applies to that release only |
 | Structural | CIS/2 (STEP) | no version stated by CSI | Verified: ETABS documents import and export; version and field coverage unverified |
-| Structural | STEP AP209 | not pinned | Reported (NIST example); not checked by us, and CSI support is unestablished |
+| Structural | STEP AP209 | not pinned | Reported: NIST's example shows finite elements, boundary conditions, loads and displacement results; not fetched by us, and CSI support is unestablished |
 | Structural | CSI `.s2k`, `.e2k`, `.f2k` | none | Verified that the commands exist; a complete public format specification **has not been located**, so no independent parser is written (see section 8) |
 | Conditional | STEP AP242, E57, GeoJSON, CityGML, 3MF | see ADR 0004 | open questions in the parked ADR |
 | Geometry (not structural) | SAB (ACIS binary) | none | Verified as Spatial's solid-geometry format; low priority, grouped with STEP |
@@ -130,7 +130,8 @@ separate route to investigate later and is outside this spec.
 - Separate database or schema (recommended: separate database).
 - Whether the first format is LandXML (fits the surveying path) or DXF (fits the AutoCAD pilot).
 - The licence of the SAF specification text and examples.
-- Native IFC support in SAFE, and the exclusion list of IFC4's structural analysis domain.
+- Native IFC support in SAFE.
+- What each application and version actually preserves, established only by exchange tests.
 - Where the version watcher runs and who reviews its reports.
 - Whether the lab survives once the core model exists, or is deleted (a README states the deletion condition).
 
