@@ -1,0 +1,29 @@
+code: gltf.khr_lights_punctual_light_spot
+name: KHR_lights_punctual.light.spot
+kind: child
+parent: gltf.khr_lights_punctual_light
+fidelity: proxy
+source:
+  document: glTF extension KHR_lights_punctual JSON Schema
+  section: light.spot
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_lights_punctual/schema/light.spot.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_lights_punctual Light Spot Properties; extension object attached to gltf.khr_lights_punctual_light.
+fields:
+  - name: inner_cone_angle
+    type: angle
+    nullable: true
+    default: 0
+    meaning: "Property innerConeAngle of KHR_lights_punctual.light.spot. Stored in radians (as in the source). Range: minimum 0, less than 1.5707963267948966."
+    source_ref: light.spot.schema.json#properties/innerConeAngle
+    check: non_negative
+  - name: outer_cone_angle
+    type: angle
+    nullable: true
+    default: 0.7853981633974483
+    meaning: "Property outerConeAngle of KHR_lights_punctual.light.spot. Stored in radians (as in the source). Range: greater than 0, maximum 1.5707963267948966."
+    source_ref: light.spot.schema.json#properties/outerConeAngle
+    check: positive
+notes: "Nested single object: at most one row per parent."

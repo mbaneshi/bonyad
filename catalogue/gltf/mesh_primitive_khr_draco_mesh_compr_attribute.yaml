@@ -1,0 +1,25 @@
+code: gltf.mesh_primitive_khr_draco_mesh_compr_attribute
+name: mesh.primitive.KHR_draco_mesh_compression.attribute
+kind: child
+parent: gltf.mesh_primitive_khr_draco_mesh_compression
+fidelity: proxy
+source:
+  document: glTF extension KHR_draco_mesh_compression JSON Schema
+  section: mesh.primitive.KHR_draco_mesh_compression, inline object
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_draco_mesh_compression/schema/mesh.primitive.KHR_draco_mesh_compression.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: mesh.primitive.KHR_draco_mesh_compression.attribute; extension object attached to gltf.mesh_primitive_khr_draco_mesh_compression.
+fields:
+  - name: key
+    type: text
+    meaning: Name of this entry in the parent's JSON object (the property name under which it is stored).
+    source_ref: JSON object key
+  - name: value
+    type: ref
+    meaning: Index of the referenced element. (index into the document's array of the referenced type)
+    source_ref: mesh.primitive.KHR_draco_mesh_compression.schema.json#additionalProperties
+    ref_to: any
+needs_review: true
+notes: "Keyed rows: one row per entry of the parent's JSON object. Review: could not tell which type value refers to; ref_to is any. Table name shortened from mesh_primitive_khr_draco_mesh_compression_attribute to fit Postgres' 63-byte identifier limit."

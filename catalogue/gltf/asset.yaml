@@ -1,0 +1,34 @@
+code: gltf.asset
+name: asset
+kind: child
+parent: gltf.gltf
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: asset
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/asset.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Metadata about the glTF asset.
+fields:
+  - name: copyright
+    type: text
+    nullable: true
+    meaning: A copyright message suitable for display to credit the content creator.
+    source_ref: asset.schema.json#properties/copyright
+  - name: generator
+    type: text
+    nullable: true
+    meaning: Tool that generated this glTF model.
+    source_ref: asset.schema.json#properties/generator
+  - name: min_version
+    type: text
+    nullable: true
+    meaning: <minor> that this asset targets.
+    source_ref: asset.schema.json#properties/minVersion
+  - name: version
+    type: text
+    meaning: <minor> that this asset targets.
+    source_ref: asset.schema.json#properties/version
+notes: "Nested single object: at most one row per parent."

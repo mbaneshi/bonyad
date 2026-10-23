@@ -1,0 +1,36 @@
+code: gltf.image
+name: image
+kind: symbol
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: image
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/image.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Image data used to create a texture. Image MAY be referenced by an URI (or IRI) or a buffer view index.
+fields:
+  - name: buffer_view
+    type: ref
+    nullable: true
+    meaning: The index of the bufferView that contains the image. (index into the document's array of the referenced type)
+    source_ref: image.schema.json#properties/bufferView
+    ref_to: gltf.buffer_view
+  - name: mime_type
+    type: enum
+    nullable: true
+    meaning: The image's media type. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: image.schema.json#properties/mimeType
+    values:
+      - value: image/jpeg
+        meaning: Value "image/jpeg" listed in the schema.
+      - value: image/png
+        meaning: Value "image/png" listed in the schema.
+  - name: uri
+    type: text
+    nullable: true
+    meaning: The URI (or IRI) of the image.
+    source_ref: image.schema.json#properties/uri
+notes: "Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array. Constraint: if bufferView is defined then mimeType must be defined (not enforced by the catalogue). Constraint: exactly one of bufferView or uri must be defined (not enforced by the catalogue)."

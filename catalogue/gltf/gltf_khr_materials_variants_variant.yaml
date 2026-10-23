@@ -1,0 +1,21 @@
+code: gltf.gltf_khr_materials_variants_variant
+name: glTF.KHR_materials_variants.variant
+kind: child
+parent: gltf.gltf_khr_materials_variants
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_variants JSON Schema
+  section: glTF.KHR_materials_variants, inline object
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_variants/schema/glTF.KHR_materials_variants.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: glTF.KHR_materials_variants.variant; extension object attached to gltf.gltf_khr_materials_variants.
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: The user-defined name of this object.
+    source_ref: glTFChildOfRootProperty.schema.json#properties/name
+needs_review: true
+notes: "Ordered rows: element order is the array order (the index is the position). Review: field name (from name) collides with an inherited or generated field and was dropped. Fields of the source base type gltf_child_of_root_property are copied here because a child type cannot have a base."

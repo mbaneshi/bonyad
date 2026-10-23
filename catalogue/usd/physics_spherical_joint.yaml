@@ -1,0 +1,37 @@
+code: usd.physics_spherical_joint
+name: PhysicsSphericalJoint
+kind: entity
+base: usd.physics_joint
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsSphericalJoint
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: ) It allows two limit values, which when equal create a circular, else an elliptic cone limit around the limit axis.
+fields:
+  - name: physics_axis
+    type: enum
+    default: X
+    meaning: "Cone limit axis. Uniform: one value, not time-sampled."
+    source_ref: uniform token physics:axis
+    values:
+      - value: X
+        meaning: The token "X" (the schema gives no per-value description).
+      - value: Y
+        meaning: The token "Y" (the schema gives no per-value description).
+      - value: Z
+        meaning: The token "Z" (the schema gives no per-value description).
+  - name: physics_cone_angle0limit
+    type: float
+    default: -1
+    meaning: "Cone limit from the primary joint axis in the local0 frame toward the next axis. Varying: may carry time samples (animatable)."
+    source_ref: float physics:coneAngle0Limit
+  - name: physics_cone_angle1limit
+    type: float
+    default: -1
+    meaning: "Cone limit from the primary joint axis in the local0 frame toward the second to next axis. Varying: may carry time samples (animatable)."
+    source_ref: float physics:coneAngle1Limit
+notes: Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics).

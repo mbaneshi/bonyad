@@ -1,0 +1,47 @@
+code: gltf.material_pbr_metallic_roughness
+name: material.pbrMetallicRoughness
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: material.pbrMetallicRoughness
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/material.pbrMetallicRoughness.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology.
+fields:
+  - name: base_color_factor
+    type: array
+    nullable: true
+    meaning: "The factors for the base color of the material. Exactly 4 numbers. Default in the schema: [1,1,1,1]."
+    source_ref: material.pbrMetallicRoughness.schema.json#properties/baseColorFactor
+    of: float
+  - name: base_color_texture
+    type: ref
+    nullable: true
+    meaning: The base color texture. Refers to a textureInfo row.
+    source_ref: material.pbrMetallicRoughness.schema.json#properties/baseColorTexture
+    ref_to: gltf.texture_info
+  - name: metallic_factor
+    type: float
+    nullable: true
+    default: 1
+    meaning: "The factor for the metalness of the material. Range: minimum 0, maximum 1."
+    source_ref: material.pbrMetallicRoughness.schema.json#properties/metallicFactor
+    check: unit_interval
+  - name: metallic_roughness_texture
+    type: ref
+    nullable: true
+    meaning: The metallic-roughness texture. Refers to a textureInfo row.
+    source_ref: material.pbrMetallicRoughness.schema.json#properties/metallicRoughnessTexture
+    ref_to: gltf.texture_info
+  - name: roughness_factor
+    type: float
+    nullable: true
+    default: 1
+    meaning: "The factor for the roughness of the material. Range: minimum 0, maximum 1."
+    source_ref: material.pbrMetallicRoughness.schema.json#properties/roughnessFactor
+    check: unit_interval
+notes: "Nested single object: at most one row per parent."

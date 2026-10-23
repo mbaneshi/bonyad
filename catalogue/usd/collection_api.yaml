@@ -1,0 +1,61 @@
+code: usd.collection_api
+name: CollectionAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usd/schema.usda
+  section: class CollectionAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usd/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A general purpose API schema used to describe a collection of prims and properties within a scene. This API schema can be applied to a prim multiple times with different instance names to define several collections on a single prim.
+fields:
+  - name: expansion_rule
+    type: enum
+    default: expandPrims
+    meaning: "Specifies how the paths that are included in the collection must be expanded to determine its members. Uniform: one value, not time-sampled."
+    source_ref: uniform token collection:<instanceName>:expansionRule
+    values:
+      - value: explicitOnly
+        meaning: The token "explicitOnly" (the schema gives no per-value description).
+      - value: expandPrims
+        meaning: The token "expandPrims" (the schema gives no per-value description).
+      - value: expandPrimsAndProperties
+        meaning: The token "expandPrimsAndProperties" (the schema gives no per-value description).
+  - name: include_root
+    type: bool
+    nullable: true
+    meaning: "Boolean attribute indicating whether the pseudo-root path </> should be counted as one of the included target paths. Uniform: one value, not time-sampled."
+    source_ref: uniform bool collection:<instanceName>:includeRoot
+  - name: includes
+    type: ref
+    nullable: true
+    meaning: "Specifies a list of targets that are included in the collection. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel collection:<instanceName>:includes
+    ref_to: any
+  - name: excludes
+    type: ref
+    nullable: true
+    meaning: "Specifies a list of targets that are excluded below the included paths in this collection. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel collection:<instanceName>:excludes
+    ref_to: any
+  - name: membership_expression
+    type: text
+    nullable: true
+    meaning: "Specifies a path expression that determines membership in this collection. Uniform: one value, not time-sampled."
+    source_ref: uniform pathExpression collection:<instanceName>:membershipExpression
+  - name: mode
+    type: enum
+    default: automatic
+    meaning: "Specifies which mode the collection uses to determine membership: automatic, relationship, or expression. Uniform: one value, not time-sampled."
+    source_ref: uniform token collection:<instanceName>:mode
+    values:
+      - value: automatic
+        meaning: The token "automatic" (the schema gives no per-value description).
+      - value: relationship
+        meaning: The token "relationship" (the schema gives no per-value description).
+      - value: expression
+        meaning: The token "expression" (the schema gives no per-value description).
+notes: 'Defined in pxr/usd/usd/schema.usda (module usd). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "collection:" namespace, followed by an instance name.'

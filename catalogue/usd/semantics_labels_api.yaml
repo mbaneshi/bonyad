@@ -1,0 +1,21 @@
+code: usd.semantics_labels_api
+name: SemanticsLabelsAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdSemantics/schema.usda
+  section: class SemanticsLabelsAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdSemantics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Application of labels for a prim for a taxonomy specified by the schema's instance name. See UsdSemanticsLabelsQuery for more information about computations and inheritance of semantics.
+fields:
+  - name: semantics_labels
+    type: array
+    nullable: true
+    meaning: "Array of labels specified directly at this prim. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
+    source_ref: token[] semantics:labels:<instanceName>:__INSTANCE_NAME__
+    of: text
+notes: 'Defined in pxr/usd/usdSemantics/schema.usda (module usdSemantics). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "semantics:labels:" namespace, followed by an instance name.'

@@ -1,0 +1,25 @@
+code: gltf.khr_interactivity_graph_declaration
+name: KHR_interactivity.graph.declaration
+kind: child
+parent: gltf.khr_interactivity_graph
+fidelity: proxy
+source:
+  document: glTF extension KHR_interactivity JSON Schema
+  section: graph.declaration
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/schema/graph.declaration.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: Behavior graph declaration; extension object attached to gltf.khr_interactivity_graph.
+fields:
+  - name: extension
+    type: text
+    nullable: true
+    meaning: Property extension of KHR_interactivity.graph.declaration.
+    source_ref: graph.declaration.schema.json#properties/extension
+  - name: op
+    type: text
+    meaning: Property op of KHR_interactivity.graph.declaration.
+    source_ref: graph.declaration.schema.json#properties/op
+needs_review: true
+notes: "Ordered rows: element order is the array order (the index is the position). Constraint: if inputValueSockets is defined then extension must be defined (not enforced by the catalogue). Constraint: if outputValueSockets is defined then extension must be defined (not enforced by the catalogue). Review: property inputValueSockets is an map of gltf.khr_interactivity_graph_declaration_value_socket that is not owned by this type; not modelled; property outputValueSockets is an map of gltf.khr_interactivity_graph_declaration_value_socket that is not owned by this type; not modelled."

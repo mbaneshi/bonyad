@@ -1,0 +1,33 @@
+code: gltf.camera_orthographic
+name: camera.orthographic
+kind: child
+parent: gltf.camera
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: camera.orthographic
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/camera.orthographic.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: An orthographic camera containing properties to create an orthographic projection matrix.
+fields:
+  - name: xmag
+    type: float
+    meaning: The floating-point horizontal magnification of the view.
+    source_ref: camera.orthographic.schema.json#properties/xmag
+  - name: ymag
+    type: float
+    meaning: The floating-point vertical magnification of the view.
+    source_ref: camera.orthographic.schema.json#properties/ymag
+  - name: zfar
+    type: float
+    meaning: "The floating-point distance to the far clipping plane. Range: greater than 0."
+    source_ref: camera.orthographic.schema.json#properties/zfar
+    check: positive
+  - name: znear
+    type: float
+    meaning: "The floating-point distance to the near clipping plane. Range: minimum 0."
+    source_ref: camera.orthographic.schema.json#properties/znear
+    check: non_negative
+notes: "Nested single object: at most one row per parent."

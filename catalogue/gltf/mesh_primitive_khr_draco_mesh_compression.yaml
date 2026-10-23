@@ -1,0 +1,29 @@
+code: gltf.mesh_primitive_khr_draco_mesh_compression
+name: mesh.primitive.KHR_draco_mesh_compression
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF extension KHR_draco_mesh_compression JSON Schema
+  section: mesh.primitive.KHR_draco_mesh_compression
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_draco_mesh_compression/schema/mesh.primitive.KHR_draco_mesh_compression.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_draco_mesh_compression glTF Mesh Primitive Extension; extension object attached to gltf.mesh_primitive.
+fields:
+  - name: owner
+    type: ref
+    meaning: The mesh_primitive row this object belongs to.
+    source_ref: JSON nesting
+    ref_to: gltf.mesh_primitive
+  - name: index
+    type: int
+    meaning: Position of this object in its owner's array (0 for a single nested object).
+    source_ref: array position in the source JSON
+  - name: buffer_view
+    type: ref
+    meaning: Property bufferView of mesh.primitive.KHR_draco_mesh_compression. (index into the document's array of the referenced type)
+    source_ref: mesh.primitive.KHR_draco_mesh_compression.schema.json#properties/bufferView
+    ref_to: gltf.buffer_view
+notes: "Attached as the extensions.KHR_draco_mesh_compression object of a mesh.primitive (at most one per parent). Promoted from a child row to an object row because it owns child rows itself (format rule 5: no nested children); owner and index keep the nesting."

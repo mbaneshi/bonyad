@@ -1,0 +1,72 @@
+code: usd.skel_binding_api
+name: SkelBindingAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdSkel/schema.usda
+  section: class SkelBindingAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdSkel/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Provides API for authoring and extracting all the skinning-related data that lives in the "geometry hierarchy" of prims and models that want to be skeletally deformed. See the extended UsdSkelBindingAPI schema documentation for more about bindings and how they apply in a scene graph.
+fields:
+  - name: skel_animation_source
+    type: ref
+    nullable: true
+    meaning: "Animation source to be bound to Skeleton primitives at or beneath the location at which this property is defined. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel skel:animationSource
+    ref_to: any
+  - name: skel_skeleton
+    type: ref
+    nullable: true
+    meaning: "Skeleton to be bound to this prim and its descendents that possess a mapping and weighting to the joints of the identified Skeleton. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel skel:skeleton
+    ref_to: any
+  - name: primvars_skel_skinning_method
+    type: enum
+    default: classicLinear
+    meaning: "The skinningMethod specifies the skinning method for the prim. Uniform: one value, not time-sampled."
+    source_ref: uniform token primvars:skel:skinningMethod
+    values:
+      - value: classicLinear
+        meaning: The token "classicLinear" (the schema gives no per-value description).
+      - value: dualQuaternion
+        meaning: The token "dualQuaternion" (the schema gives no per-value description).
+  - name: primvars_skel_geom_bind_transform
+    type: matrix4
+    nullable: true
+    meaning: "Encodes the bind-time world space transforms of the prim. Varying: may carry time samples (animatable)."
+    source_ref: matrix4d primvars:skel:geomBindTransform
+  - name: skel_joints
+    type: array
+    nullable: true
+    meaning: "An (optional) array of tokens defining the list of joints to which jointIndices apply. Uniform: one value, not time-sampled."
+    source_ref: uniform token[] skel:joints
+    of: text
+  - name: primvars_skel_joint_indices
+    type: array
+    nullable: true
+    meaning: "Indices into the *joints* attribute of the closest (in namespace) bound Skeleton that affect each point of a PointBased gprim. Varying: may carry time samples (animatable)."
+    source_ref: int[] primvars:skel:jointIndices
+    of: int
+  - name: primvars_skel_joint_weights
+    type: array
+    nullable: true
+    meaning: "Weights for the joints that affect each point of a PointBased gprim. Varying: may carry time samples (animatable)."
+    source_ref: float[] primvars:skel:jointWeights
+    of: float
+  - name: skel_blend_shapes
+    type: array
+    nullable: true
+    meaning: "An array of tokens defining the order onto which blend shape weights from an animation source map onto the *skel:blendShapeTargets* rel of a binding site. Uniform: one value, not time-sampled."
+    source_ref: uniform token[] skel:blendShapes
+    of: text
+  - name: skel_blend_shape_targets
+    type: ref
+    nullable: true
+    meaning: "Ordered list of all target blend shapes. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel skel:blendShapeTargets
+    ref_to: any
+notes: "Defined in pxr/usd/usdSkel/schema.usda (module usdSkel). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

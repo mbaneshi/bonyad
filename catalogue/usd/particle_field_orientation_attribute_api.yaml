@@ -1,0 +1,15 @@
+code: usd.particle_field_orientation_attribute_api
+name: ParticleFieldOrientationAttributeAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdVol/schema.usda
+  section: class ParticleFieldOrientationAttributeAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdVol/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A ParticleField related applied schema that provides an orientations attribute to define the orientation of the particles. Attributes are provided in both float and half types for some easy data footprint affordance, data consumers should prefer float version if available.
+fields: []
+notes: "Defined in pxr/usd/usdVol/schema.usda (module usdVol). API schema (singleApply): it adds properties to an existing prim and is not a prim type of its own. Can only be applied to: ParticleField."

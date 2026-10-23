@@ -1,0 +1,15 @@
+code: usd.volume
+name: Volume
+kind: entity
+base: usd.gprim
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdVol/schema.usda
+  section: class Volume
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdVol/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A renderable volume primitive. A volume is made up of any number of FieldBase primitives bound together in this volume.
+fields: []
+notes: Defined in pxr/usd/usdVol/schema.usda (module usdVol).

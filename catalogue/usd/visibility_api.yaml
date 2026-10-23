@@ -1,0 +1,51 @@
+code: usd.visibility_api
+name: VisibilityAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class VisibilityAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: UsdGeomVisibilityAPI introduces properties that can be used to author visibility opinions. Currently, this schema only introduces the attributes that are used to control purpose visibility.
+fields:
+  - name: guide_visibility
+    type: enum
+    default: invisible
+    meaning: 'This attribute controls visibility for geometry with purpose "guide". Uniform: one value, not time-sampled.'
+    source_ref: uniform token guideVisibility
+    values:
+      - value: inherited
+        meaning: The token "inherited" (the schema gives no per-value description).
+      - value: invisible
+        meaning: The token "invisible" (the schema gives no per-value description).
+      - value: visible
+        meaning: The token "visible" (the schema gives no per-value description).
+  - name: proxy_visibility
+    type: enum
+    default: inherited
+    meaning: 'This attribute controls visibility for geometry with purpose "proxy". Uniform: one value, not time-sampled.'
+    source_ref: uniform token proxyVisibility
+    values:
+      - value: inherited
+        meaning: The token "inherited" (the schema gives no per-value description).
+      - value: invisible
+        meaning: The token "invisible" (the schema gives no per-value description).
+      - value: visible
+        meaning: The token "visible" (the schema gives no per-value description).
+  - name: render_visibility
+    type: enum
+    default: inherited
+    meaning: 'This attribute controls visibility for geometry with purpose "render". Uniform: one value, not time-sampled.'
+    source_ref: uniform token renderVisibility
+    values:
+      - value: inherited
+        meaning: The token "inherited" (the schema gives no per-value description).
+      - value: invisible
+        meaning: The token "invisible" (the schema gives no per-value description).
+      - value: visible
+        meaning: The token "visible" (the schema gives no per-value description).
+notes: "Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own. Can only be applied to: Imageable."

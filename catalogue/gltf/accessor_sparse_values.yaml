@@ -1,0 +1,27 @@
+code: gltf.accessor_sparse_values
+name: accessor.sparse.values
+kind: child
+parent: gltf.accessor_sparse
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: accessor.sparse.values
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/accessor.sparse.values.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: An object pointing to a buffer view containing the deviating accessor values. count times number of components.
+fields:
+  - name: buffer_view
+    type: ref
+    meaning: The index of the bufferView with sparse values. (index into the document's array of the referenced type)
+    source_ref: accessor.sparse.values.schema.json#properties/bufferView
+    ref_to: gltf.buffer_view
+  - name: byte_offset
+    type: bigint
+    nullable: true
+    default: 0
+    meaning: "The offset relative to the start of the bufferView in bytes. Range: minimum 0."
+    source_ref: accessor.sparse.values.schema.json#properties/byteOffset
+    check: non_negative
+notes: "Nested single object: at most one row per parent."

@@ -1,0 +1,30 @@
+code: usd.material
+name: Material
+kind: symbol
+base: usd.node_graph
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdShade/schema.usda
+  section: class Material
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdShade/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A Material provides a container into which multiple "render contexts" can add data that defines a "shading material" for a renderer. Typically this consists of one or more UsdShadeOutput properties connected to outputs of nested Shader prims - though a context/client is free to add any data that is suitable.
+fields:
+  - name: outputs_surface
+    type: text
+    nullable: true
+    meaning: 'Represents the universal "surface" output terminal of a material. Varying: may carry time samples (animatable).'
+    source_ref: token outputs:surface
+  - name: outputs_displacement
+    type: text
+    nullable: true
+    meaning: 'Represents the universal "displacement" output terminal of a material. Varying: may carry time samples (animatable).'
+    source_ref: token outputs:displacement
+  - name: outputs_volume
+    type: text
+    nullable: true
+    meaning: 'Represents the universal "volume" output terminal of a material. Varying: may carry time samples (animatable).'
+    source_ref: token outputs:volume
+notes: Defined in pxr/usd/usdShade/schema.usda (module usdShade).

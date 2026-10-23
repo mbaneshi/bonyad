@@ -1,0 +1,15 @@
+code: usd.shader
+name: Shader
+kind: entity
+base: usd.typed
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdShade/schema.usda
+  section: class Shader
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdShade/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Base class for all USD shaders. Shaders are the building blocks of shading networks.
+fields: []
+notes: "Defined in pxr/usd/usdShade/schema.usda (module usdShade). Applies built-in API schemas: NodeDefAPI."

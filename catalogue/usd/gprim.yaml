@@ -1,0 +1,36 @@
+code: usd.gprim
+name: Gprim
+kind: abstract
+base: usd.boundable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Gprim
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Base class for all geometric primitives. Gprim encodes basic graphical properties such as doubleSided and orientation, and provides primvars for "display color" and "display opacity" that travel with geometry to be used as shader overrides.
+fields:
+  - name: primvars_display_opacity
+    type: array
+    nullable: true
+    meaning: "Companion to displayColor that specifies opacity, broken out as an independent attribute rather than an rgba color, both so that each can be independently overridden, and because shaders rarely consume rgba parameters. Varying: may carry time samples (animatable)."
+    source_ref: float[] primvars:displayOpacity
+    of: float
+  - name: double_sided
+    type: bool
+    default: false
+    meaning: "Although some renderers treat all parametric or polygonal surfaces as if they were effectively laminae with outward-facing normals on both sides, some renderers derive significant optimizations by considering these surfaces to ... Uniform: one value, not time-sampled."
+    source_ref: uniform bool doubleSided
+  - name: orientation
+    type: enum
+    default: rightHanded
+    meaning: "Orientation specifies whether the gprim's surface normal should be computed using the right hand rule, or the left hand rule. Uniform: one value, not time-sampled."
+    source_ref: uniform token orientation
+    values:
+      - value: rightHanded
+        meaning: The token "rightHanded" (the schema gives no per-value description).
+      - value: leftHanded
+        meaning: The token "leftHanded" (the schema gives no per-value description).
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

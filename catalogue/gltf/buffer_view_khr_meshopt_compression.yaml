@@ -1,0 +1,69 @@
+code: gltf.buffer_view_khr_meshopt_compression
+name: bufferView.KHR_meshopt_compression
+kind: child
+parent: gltf.buffer_view
+fidelity: proxy
+source:
+  document: glTF extension KHR_meshopt_compression JSON Schema
+  section: bufferView.KHR_meshopt_compression
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_meshopt_compression/schema/bufferView.KHR_meshopt_compression.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_meshopt_compression bufferView extension; extension object attached to gltf.buffer_view.
+fields:
+  - name: buffer
+    type: ref
+    meaning: Property buffer of bufferView.KHR_meshopt_compression. (index into the document's array of the referenced type)
+    source_ref: bufferView.KHR_meshopt_compression.schema.json#properties/buffer
+    ref_to: gltf.buffer
+  - name: byte_offset
+    type: bigint
+    nullable: true
+    default: 0
+    meaning: "Property byteOffset of bufferView.KHR_meshopt_compression. Range: minimum 0."
+    source_ref: bufferView.KHR_meshopt_compression.schema.json#properties/byteOffset
+    check: non_negative
+  - name: byte_length
+    type: bigint
+    meaning: "Property byteLength of bufferView.KHR_meshopt_compression. Range: minimum 1."
+    source_ref: bufferView.KHR_meshopt_compression.schema.json#properties/byteLength
+    check: positive
+  - name: byte_stride
+    type: bigint
+    meaning: "Property byteStride of bufferView.KHR_meshopt_compression. Range: minimum 2, maximum 256."
+    source_ref: bufferView.KHR_meshopt_compression.schema.json#properties/byteStride
+  - name: count
+    type: int
+    meaning: "Property count of bufferView.KHR_meshopt_compression. Range: minimum 1."
+    source_ref: bufferView.KHR_meshopt_compression.schema.json#properties/count
+    check: positive
+  - name: mode
+    type: enum
+    meaning: Property mode of bufferView.KHR_meshopt_compression.
+    source_ref: bufferView.KHR_meshopt_compression.schema.json#properties/mode
+    values:
+      - value: ATTRIBUTES
+        meaning: Value "ATTRIBUTES" listed in the schema.
+      - value: TRIANGLES
+        meaning: Value "TRIANGLES" listed in the schema.
+      - value: INDICES
+        meaning: Value "INDICES" listed in the schema.
+  - name: filter
+    type: enum
+    nullable: true
+    default: NONE
+    meaning: Property filter of bufferView.KHR_meshopt_compression.
+    source_ref: bufferView.KHR_meshopt_compression.schema.json#properties/filter
+    values:
+      - value: NONE
+        meaning: Value "NONE" listed in the schema.
+      - value: OCTAHEDRAL
+        meaning: Value "OCTAHEDRAL" listed in the schema.
+      - value: QUATERNION
+        meaning: Value "QUATERNION" listed in the schema.
+      - value: EXPONENTIAL
+        meaning: Value "EXPONENTIAL" listed in the schema.
+      - value: COLOR
+        meaning: Value "COLOR" listed in the schema.
+notes: Attached as the extensions.KHR_meshopt_compression object of a bufferView (at most one per parent).

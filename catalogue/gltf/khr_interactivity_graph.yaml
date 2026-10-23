@@ -1,0 +1,24 @@
+code: gltf.khr_interactivity_graph
+name: KHR_interactivity.graph
+kind: object
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF extension KHR_interactivity JSON Schema
+  section: graph
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/schema/graph.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: Behavior graph; extension object attached to gltf.gltf_khr_interactivity.
+fields:
+  - name: owner
+    type: ref
+    meaning: The gltf_khr_interactivity row this object belongs to.
+    source_ref: JSON nesting
+    ref_to: gltf.gltf_khr_interactivity
+  - name: index
+    type: int
+    meaning: Position of this object in its owner's array (0 for a single nested object).
+    source_ref: array position in the source JSON
+notes: "Ordered rows: element order is the array order (the index is the position). Constraint: if nodes is defined then declarations must be defined (not enforced by the catalogue). Constraint: if variables is defined then types must be defined (not enforced by the catalogue). Promoted from a child row to an object row because it owns child rows itself (format rule 5: no nested children); owner and index keep the nesting."

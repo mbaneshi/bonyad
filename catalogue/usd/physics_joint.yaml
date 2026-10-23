@@ -1,0 +1,81 @@
+code: usd.physics_joint
+name: PhysicsJoint
+kind: entity
+base: usd.imageable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsJoint
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A joint constrains the movement of rigid bodies. Joint can be created between two rigid bodies or between one rigid body and world.
+fields:
+  - name: physics_body0
+    type: ref
+    nullable: true
+    meaning: "Relationship to any UsdGeomXformable. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel physics:body0
+    ref_to: any
+  - name: physics_body1
+    type: ref
+    nullable: true
+    meaning: "Relationship to any UsdGeomXformable. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel physics:body1
+    ref_to: any
+  - name: physics_local_pos0
+    type: point3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "Relative position of the joint frame to body0's frame. Varying: may carry time samples (animatable)."
+    source_ref: point3f physics:localPos0
+  - name: physics_local_rot0
+    type: array
+    nullable: true
+    meaning: "Relative orientation of the joint frame to body0's frame. (quaternion, four floats) Varying: may carry time samples (animatable). Fallback value in schema.usda: [1,0,0,0]."
+    source_ref: quatf physics:localRot0
+    of: float
+  - name: physics_local_pos1
+    type: point3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "Relative position of the joint frame to body1's frame. Varying: may carry time samples (animatable)."
+    source_ref: point3f physics:localPos1
+  - name: physics_local_rot1
+    type: array
+    nullable: true
+    meaning: "Relative orientation of the joint frame to body1's frame. (quaternion, four floats) Varying: may carry time samples (animatable). Fallback value in schema.usda: [1,0,0,0]."
+    source_ref: quatf physics:localRot1
+    of: float
+  - name: physics_joint_enabled
+    type: bool
+    default: true
+    meaning: "Determines if the joint is enabled. Varying: may carry time samples (animatable)."
+    source_ref: bool physics:jointEnabled
+  - name: physics_collision_enabled
+    type: bool
+    default: false
+    meaning: "Determines if the jointed subtrees should collide or not. Varying: may carry time samples (animatable)."
+    source_ref: bool physics:collisionEnabled
+  - name: physics_exclude_from_articulation
+    type: bool
+    default: false
+    meaning: "Determines if the joint can be included in an Articulation. Uniform: one value, not time-sampled."
+    source_ref: uniform bool physics:excludeFromArticulation
+  - name: physics_break_force
+    type: float
+    nullable: true
+    meaning: "Joint break force. Varying: may carry time samples (animatable). Fallback value is inf."
+    source_ref: float physics:breakForce
+  - name: physics_break_torque
+    type: float
+    nullable: true
+    meaning: "Joint break torque. Varying: may carry time samples (animatable). Fallback value is inf."
+    source_ref: float physics:breakTorque
+needs_review: true
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). Review: physics:localRot0: component order of the quaternion is not stated in schema.usda; physics:localRot1: component order of the quaternion is not stated in schema.usda."

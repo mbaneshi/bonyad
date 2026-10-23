@@ -1,0 +1,14 @@
+code: usd.typed
+name: Typed
+kind: abstract
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usd/schema.usda
+  section: class Typed
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usd/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: The base class for all typed schemas (those that can impart a typeName to a UsdPrim), and therefore the base class for all concrete, instantiable "IsA" schemas. UsdTyped implements a typeName-based query for its override of UsdSchemaBase::_IsCompatible().
+fields: []
+notes: Defined in pxr/usd/usd/schema.usda (module usd).

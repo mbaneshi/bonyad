@@ -1,0 +1,21 @@
+code: gltf.node_khr_node_hoverability
+name: node.KHR_node_hoverability
+kind: child
+parent: gltf.node
+fidelity: proxy
+source:
+  document: glTF extension KHR_node_hoverability JSON Schema
+  section: node.KHR_node_hoverability
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_node_hoverability/schema/node.KHR_node_hoverability.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_node_hoverability glTF Node Extension; extension object attached to gltf.node.
+fields:
+  - name: hoverable
+    type: bool
+    nullable: true
+    default: true
+    meaning: Property hoverable of node.KHR_node_hoverability.
+    source_ref: node.KHR_node_hoverability.schema.json#properties/hoverable
+notes: Attached as the extensions.KHR_node_hoverability object of a node (at most one per parent).

@@ -1,0 +1,43 @@
+code: gltf.material_khr_materials_specular
+name: material.KHR_materials_specular
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_specular JSON Schema
+  section: material.KHR_materials_specular
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_specular/schema/material.KHR_materials_specular.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_materials_specular glTF Material Extension; extension object attached to gltf.material.
+fields:
+  - name: specular_factor
+    type: float
+    nullable: true
+    default: 1
+    meaning: "Property specularFactor of material.KHR_materials_specular. Range: minimum 0, maximum 1."
+    source_ref: material.KHR_materials_specular.schema.json#properties/specularFactor
+    check: unit_interval
+  - name: specular_texture
+    type: ref
+    nullable: true
+    meaning: Property specularTexture of material.KHR_materials_specular. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_specular.schema.json#properties/specularTexture
+    ref_to: gltf.texture_info
+  - name: specular_color_factor
+    type: vector3
+    nullable: true
+    default:
+      - 1
+      - 1
+      - 1
+    meaning: Property specularColorFactor of material.KHR_materials_specular. Components are R, G, B.
+    source_ref: material.KHR_materials_specular.schema.json#properties/specularColorFactor
+  - name: specular_color_texture
+    type: ref
+    nullable: true
+    meaning: Property specularColorTexture of material.KHR_materials_specular. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_specular.schema.json#properties/specularColorTexture
+    ref_to: gltf.texture_info
+notes: Attached as the extensions.KHR_materials_specular object of a material (at most one per parent).

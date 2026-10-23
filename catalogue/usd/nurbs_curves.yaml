@@ -1,0 +1,33 @@
+code: usd.nurbs_curves
+name: NurbsCurves
+kind: entity
+base: usd.curves
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class NurbsCurves
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: This schema is analagous to NURBS Curves in packages like Maya and Houdini, often used for interchange of rigging and modeling curves. Unlike Maya, this curve spec supports batching of multiple curves into a single prim, widths, and normals in the schema.
+fields:
+  - name: order
+    type: array
+    nullable: true
+    meaning: "Order of the curve. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
+    source_ref: int[] order
+    of: int
+  - name: knots
+    type: array
+    nullable: true
+    meaning: "Knot vector providing curve parameterization. Varying: may carry time samples (animatable)."
+    source_ref: double[] knots
+    of: float
+  - name: point_weights
+    type: array
+    nullable: true
+    meaning: 'Optionally provides "w" components for each control point, thus must be the same length as the points attribute. Varying: may carry time samples (animatable).'
+    source_ref: double[] pointWeights
+    of: float
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

@@ -1,0 +1,27 @@
+code: gltf.texture_info
+name: textureInfo
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: textureInfo
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/textureInfo.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Reference to a texture.
+fields:
+  - name: index
+    type: ref
+    meaning: The index of the texture. (index into the document's array of the referenced type)
+    source_ref: textureInfo.schema.json#properties/index
+    ref_to: gltf.texture
+  - name: tex_coord
+    type: int
+    nullable: true
+    default: 0
+    meaning: "The set index of texture's TEXCOORD attribute used for texture coordinate mapping. Range: minimum 0."
+    source_ref: textureInfo.schema.json#properties/texCoord
+    check: non_negative
+notes: Embedded value object shared by 17 properties (gltf.material_pbr_metallic_roughness.baseColorTexture, gltf.material_pbr_metallic_roughness.metallicRoughnessTexture, gltf.material.emissiveTexture, gltf.material_khr_materials_anisotropy.anisotropyTexture, gltf.material_khr_materials_clearcoat.clearcoatTexture, gltf.material_khr_materials_clearcoat.clearcoatRoughnessTexture, gltf.material_khr_materials_diffuse_transmission.diffuseTransmissionTexture, gltf.material_khr_materials_diffuse_transmission.diffuseTransmissionColorTexture, gltf.material_khr_materials_iridescence.iridescenceTexture, gltf.material_khr_materials_iridescence.iridescenceThicknessTexture, gltf.material_khr_materials_retroreflection.retroreflectionTexture, gltf.material_khr_materials_sheen.sheenColorTexture, gltf.material_khr_materials_sheen.sheenRoughnessTexture, gltf.material_khr_materials_specular.specularTexture, gltf.material_khr_materials_specular.specularColorTexture, gltf.material_khr_materials_transmission.transmissionTexture, gltf.material_khr_materials_volume.thicknessTexture); owners hold a ref to a row of this type.

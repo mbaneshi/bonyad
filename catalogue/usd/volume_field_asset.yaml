@@ -1,0 +1,51 @@
+code: usd.volume_field_asset
+name: VolumeFieldAsset
+kind: abstract
+base: usd.field_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdVol/schema.usda
+  section: class VolumeFieldAsset
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdVol/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Base class for volume field primitives defined by an external file.
+fields:
+  - name: file_path
+    type: text
+    nullable: true
+    meaning: "An asset path attribute that points to a file on disk. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset filePath
+  - name: field_name
+    type: text
+    nullable: true
+    meaning: "Name of an individual field within the file specified by the filePath attribute. Varying: may carry time samples (animatable)."
+    source_ref: token fieldName
+  - name: field_index
+    type: int
+    nullable: true
+    meaning: "A file can contain multiple fields with the same name. Varying: may carry time samples (animatable)."
+    source_ref: int fieldIndex
+  - name: field_data_type
+    type: text
+    nullable: true
+    meaning: "Token which is used to indicate the data type of an individual field. Varying: may carry time samples (animatable)."
+    source_ref: token fieldDataType
+  - name: vector_data_role_hint
+    type: enum
+    default: None
+    meaning: "Optional token which is used to indicate the role of a vector valued field. Varying: may carry time samples (animatable)."
+    source_ref: token vectorDataRoleHint
+    values:
+      - value: None
+        meaning: The token "None" (the schema gives no per-value description).
+      - value: Point
+        meaning: The token "Point" (the schema gives no per-value description).
+      - value: Normal
+        meaning: The token "Normal" (the schema gives no per-value description).
+      - value: Vector
+        meaning: The token "Vector" (the schema gives no per-value description).
+      - value: Color
+        meaning: The token "Color" (the schema gives no per-value description).
+notes: Defined in pxr/usd/usdVol/schema.usda (module usdVol).

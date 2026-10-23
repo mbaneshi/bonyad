@@ -1,0 +1,25 @@
+code: gltf.camera
+name: camera
+kind: entity
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: camera
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/camera.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: A camera's projection. A node MAY reference a camera to apply a transform to place the camera in the scene.
+fields:
+  - name: type
+    type: enum
+    meaning: Specifies if the camera uses a perspective or orthographic projection. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: camera.schema.json#properties/type
+    values:
+      - value: orthographic
+        meaning: Value "orthographic" listed in the schema.
+      - value: perspective
+        meaning: Value "perspective" listed in the schema.
+needs_review: true
+notes: "Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array. Review: type-level oneOf/anyOf/not not modelled."

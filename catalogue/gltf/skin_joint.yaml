@@ -1,0 +1,20 @@
+code: gltf.skin_joint
+name: skin.joint
+kind: child
+parent: gltf.skin
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: skin, property joints
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/skin.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: One ordered row of the joint index list of gltf.skin.
+fields:
+  - name: joint
+    type: ref
+    meaning: Indices of skeleton nodes, used as joints in this skin. Each row holds one index.
+    source_ref: skin.schema.json#properties/joints
+    ref_to: gltf.node
+notes: "Ordered rows: element order is the array order (the index is the position)."

@@ -1,0 +1,21 @@
+code: usd.physics_filtered_pairs_api
+name: PhysicsFilteredPairsAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsFilteredPairsAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: API to describe fine-grained filtering. If a collision between two objects occurs, this pair might be filtered if the pair is defined through this API.
+fields:
+  - name: physics_filtered_pairs
+    type: ref
+    nullable: true
+    meaning: "Relationship to objects that should be filtered. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel physics:filteredPairs
+    ref_to: any
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

@@ -1,0 +1,22 @@
+code: gltf.material_khr_materials_dispersion
+name: material.KHR_materials_dispersion
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_dispersion JSON Schema
+  section: material.KHR_materials_dispersion
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_dispersion/schema/material.KHR_materials_dispersion.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_materials_dispersion glTF Material Extension; extension object attached to gltf.material.
+fields:
+  - name: dispersion
+    type: float
+    nullable: true
+    default: 0
+    meaning: "Property dispersion of material.KHR_materials_dispersion. Range: minimum 0."
+    source_ref: material.KHR_materials_dispersion.schema.json#properties/dispersion
+    check: non_negative
+notes: Attached as the extensions.KHR_materials_dispersion object of a material (at most one per parent).

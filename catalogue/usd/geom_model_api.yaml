@@ -1,0 +1,98 @@
+code: usd.geom_model_api
+name: GeomModelAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class GeomModelAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: UsdGeomModelAPI extends the generic UsdModelAPI schema with geometry specific concepts such as cached extents for the entire model, constraint targets, and geometry-inspired extensions to the payload lofting process. As described in GetExtentsHint() below, it is useful to cache extents at the model level.
+fields:
+  - name: model_draw_mode
+    type: enum
+    default: inherited
+    meaning: "Alternate imaging mode; applied to this prim or child prims where model:applyDrawMode is true, or where the prim has kind component and model:applyDrawMode is not authored. Uniform: one value, not time-sampled."
+    source_ref: uniform token model:drawMode
+    values:
+      - value: origin
+        meaning: The token "origin" (the schema gives no per-value description).
+      - value: bounds
+        meaning: The token "bounds" (the schema gives no per-value description).
+      - value: cards
+        meaning: The token "cards" (the schema gives no per-value description).
+      - value: default
+        meaning: The token "default" (the schema gives no per-value description).
+      - value: inherited
+        meaning: The token "inherited" (the schema gives no per-value description).
+  - name: model_apply_draw_mode
+    type: bool
+    default: false
+    meaning: "If true, and the resolved value of model:drawMode is non-default, apply an alternate imaging mode to this prim. Uniform: one value, not time-sampled."
+    source_ref: uniform bool model:applyDrawMode
+  - name: model_draw_mode_color
+    type: vector3
+    default:
+      - 0.18
+      - 0.18
+      - 0.18
+    meaning: "The base color of imaging prims inserted for alternate imaging modes. Uniform: one value, not time-sampled."
+    source_ref: uniform float3 model:drawModeColor
+  - name: model_card_geometry
+    type: enum
+    default: cross
+    meaning: "The geometry to generate for imaging prims inserted for cards imaging mode. Uniform: one value, not time-sampled."
+    source_ref: uniform token model:cardGeometry
+    values:
+      - value: cross
+        meaning: The token "cross" (the schema gives no per-value description).
+      - value: box
+        meaning: The token "box" (the schema gives no per-value description).
+      - value: fromTexture
+        meaning: The token "fromTexture" (the schema gives no per-value description).
+  - name: model_card_visibility
+    type: enum
+    default: inherited
+    meaning: "When using the cards imaging mode, determines if cards in the upAxis direction should be visible. Uniform: one value, not time-sampled."
+    source_ref: uniform token model:cardVisibility
+    values:
+      - value: full
+        meaning: The token "full" (the schema gives no per-value description).
+      - value: simple
+        meaning: The token "simple" (the schema gives no per-value description).
+      - value: inherited
+        meaning: The token "inherited" (the schema gives no per-value description).
+  - name: model_card_texture_x_pos
+    type: text
+    nullable: true
+    meaning: "In cards imaging mode, the texture applied to the X+ quad. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset model:cardTextureXPos
+  - name: model_card_texture_y_pos
+    type: text
+    nullable: true
+    meaning: "In cards imaging mode, the texture applied to the Y+ quad. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset model:cardTextureYPos
+  - name: model_card_texture_z_pos
+    type: text
+    nullable: true
+    meaning: "In cards imaging mode, the texture applied to the Z+ quad. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset model:cardTextureZPos
+  - name: model_card_texture_x_neg
+    type: text
+    nullable: true
+    meaning: "In cards imaging mode, the texture applied to the X- quad. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset model:cardTextureXNeg
+  - name: model_card_texture_y_neg
+    type: text
+    nullable: true
+    meaning: "In cards imaging mode, the texture applied to the Y- quad. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset model:cardTextureYNeg
+  - name: model_card_texture_z_neg
+    type: text
+    nullable: true
+    meaning: "In cards imaging mode, the texture applied to the Z- quad. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset model:cardTextureZNeg
+notes: "Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

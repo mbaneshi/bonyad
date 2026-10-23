@@ -1,0 +1,20 @@
+code: usd.material_x_config_api
+name: MaterialXConfigAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdMtlx/schema.usda
+  section: class MaterialXConfigAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdMtlx/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: MaterialXConfigAPI is an API schema that provides an interface for storing information about the MaterialX environment. Initially, it only exposes an interface to record the MaterialX library version that data was authored against.
+fields:
+  - name: config_mtlx_version
+    type: text
+    default: "1.38"
+    meaning: "MaterialX library version that the data has been authored against. Varying: may carry time samples (animatable)."
+    source_ref: string config:mtlx:version
+notes: "Defined in pxr/usd/usdMtlx/schema.usda (module usdMtlx). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own. Can only be applied to: Material."

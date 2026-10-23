@@ -1,0 +1,39 @@
+code: usd.point_instancer
+name: PointInstancer
+kind: entity
+base: usd.boundable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class PointInstancer
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Encodes vectorized instancing of multiple, potentially animated, prototypes (object/instance masters), which can be arbitrary prims/subtrees on a UsdStage. PointInstancer is a "multi instancer", as it allows multiple prototypes to be scattered among its "points".
+fields:
+  - name: prototypes
+    type: ref
+    nullable: true
+    meaning: "Required property . Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel prototypes
+    ref_to: any
+  - name: proto_indices
+    type: array
+    nullable: true
+    meaning: "Required property . Varying: may carry time samples (animatable)."
+    source_ref: int[] protoIndices
+    of: int
+  - name: ids
+    type: array
+    nullable: true
+    meaning: "Ids are optional; if authored, the ids array should be the same length as the protoIndices array, specifying (at each timeSample if instance identities are changing) the id of each instance. Varying: may carry time samples (animatable)."
+    source_ref: int64[] ids
+    of: bigint
+  - name: invisible_ids
+    type: array
+    nullable: true
+    meaning: "A list of id's to make invisible at the evaluation time. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
+    source_ref: int64[] invisibleIds
+    of: bigint
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

@@ -1,0 +1,33 @@
+code: usd.list_api
+name: ListAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLux/schema.usda
+  section: class ListAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLux/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Use LightListAPI instead
+fields:
+  - name: light_list
+    type: ref
+    nullable: true
+    meaning: "Relationship to lights in the scene. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel lightList
+    ref_to: any
+  - name: light_list_cache_behavior
+    type: enum
+    nullable: true
+    meaning: "Controls how the lightList should be interpreted. Varying: may carry time samples (animatable)."
+    source_ref: token lightList:cacheBehavior
+    values:
+      - value: consumeAndHalt
+        meaning: The lightList should be consulted, and if it exists, treated as a final authoritative statement of any lights that exist at or below this prim, halting recursive discovery of lights.
+      - value: consumeAndContinue
+        meaning: The lightList should be consulted, but recursive traversal over nameChildren should continue in case additional lights are added by descendants.
+      - value: ignore
+        meaning: The lightList should be entirely ignored.
+notes: "Defined in pxr/usd/usdLux/schema.usda (module usdLux). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

@@ -1,0 +1,21 @@
+code: gltf.node_khr_node_selectability
+name: node.KHR_node_selectability
+kind: child
+parent: gltf.node
+fidelity: proxy
+source:
+  document: glTF extension KHR_node_selectability JSON Schema
+  section: node.KHR_node_selectability
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_node_selectability/schema/node.KHR_node_selectability.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_node_selectability glTF Node Extension; extension object attached to gltf.node.
+fields:
+  - name: selectable
+    type: bool
+    nullable: true
+    default: true
+    meaning: Property selectable of node.KHR_node_selectability.
+    source_ref: node.KHR_node_selectability.schema.json#properties/selectable
+notes: Attached as the extensions.KHR_node_selectability object of a node (at most one per parent).

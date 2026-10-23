@@ -1,0 +1,36 @@
+code: usd.render_product
+name: RenderProduct
+kind: entity
+base: usd.render_settings_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdRender/schema.usda
+  section: class RenderProduct
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdRender/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: A UsdRenderProduct describes an image or other file-like artifact produced by a render. A RenderProduct combines one or more RenderVars into a file or interactive buffer.
+fields:
+  - name: product_type
+    type: enum
+    default: raster
+    meaning: "The type of output to produce. Uniform: one value, not time-sampled."
+    source_ref: uniform token productType
+    values:
+      - value: raster
+        meaning: The token "raster" (the schema gives no per-value description).
+      - value: deepRaster
+        meaning: The token "deepRaster" (the schema gives no per-value description).
+  - name: product_name
+    type: text
+    default: ""
+    meaning: "Specifies the name that the output/display driver should give the product. Varying: may carry time samples (animatable)."
+    source_ref: token productName
+  - name: ordered_vars
+    type: ref
+    nullable: true
+    meaning: "Specifies the RenderVars that should be consumed and combined into the final product. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel orderedVars
+    ref_to: any
+notes: Defined in pxr/usd/usdRender/schema.usda (module usdRender).

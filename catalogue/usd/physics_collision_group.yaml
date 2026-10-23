@@ -1,0 +1,31 @@
+code: usd.physics_collision_group
+name: PhysicsCollisionGroup
+kind: entity
+base: usd.typed
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsCollisionGroup
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Defines a collision group for coarse filtering. When a collision occurs between two objects that have a PhysicsCollisionGroup assigned, they will collide with each other unless this PhysicsCollisionGroup pair is filtered.
+fields:
+  - name: physics_filtered_groups
+    type: ref
+    nullable: true
+    meaning: "References a list of PhysicsCollisionGroups with which collisions should be ignored. Relationship: targets are prim or property paths and USD allows several."
+    source_ref: rel physics:filteredGroups
+    ref_to: any
+  - name: physics_merge_group
+    type: text
+    nullable: true
+    meaning: "If non-empty, any collision groups in a stage with a matching mergeGroup should be considered to refer to the same collection. Varying: may carry time samples (animatable)."
+    source_ref: string physics:mergeGroup
+  - name: physics_invert_filtered_groups
+    type: bool
+    nullable: true
+    meaning: "Normally, the filter will disable collisions against the selected filter groups. Varying: may carry time samples (animatable)."
+    source_ref: bool physics:invertFilteredGroups
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). Applies built-in API schemas: CollectionAPI:colliders."

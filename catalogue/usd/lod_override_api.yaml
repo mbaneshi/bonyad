@@ -1,0 +1,36 @@
+code: usd.lod_override_api
+name: LODOverrideAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLod/schema.usda
+  section: class LODOverrideAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLod/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: API for overriding Level of Detail (LOD) choices. This API schema defines an LOD override for namespace descendents.
+fields:
+  - name: lod_override_mode
+    type: enum
+    default: inherited
+    meaning: "How to apply override to LOD decisions. Varying: may carry time samples (animatable)."
+    source_ref: token lod:override:mode
+    values:
+      - value: inherited
+        meaning: The default.
+      - value: noOverride
+        meaning: There is explicitly no override.
+      - value: indexedLOD
+        meaning: The lod:override:index property provides the value.
+      - value: noLOD
+        meaning: No LOD items should be displayed.
+      - value: allLOD
+        meaning: All LOD items should be displayed.
+  - name: lod_override_index
+    type: float
+    default: 0
+    meaning: 'The index value to use when lod:override:mode is "indexedLOD". Varying: may carry time samples (animatable).'
+    source_ref: float lod:override:index
+notes: "Defined in pxr/usd/usdLod/schema.usda (module usdLod). API schema (singleApply): it adds properties to an existing prim and is not a prim type of its own."

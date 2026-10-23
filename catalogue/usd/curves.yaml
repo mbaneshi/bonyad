@@ -1,0 +1,27 @@
+code: usd.curves
+name: Curves
+kind: abstract
+base: usd.point_based
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Curves
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Base class for UsdGeomBasisCurves, UsdGeomNurbsCurves, and UsdGeomHermiteCurves. The BasisCurves schema is designed to be analagous to offline renderers' notion of batched curves (such as the classical RIB definition via Basis and Curves statements), while the NurbsCurve schema is designed to be analgous to the NURBS curves found in packages like Maya and Houdini while ...
+fields:
+  - name: curve_vertex_counts
+    type: array
+    nullable: true
+    meaning: "Curves-derived primitives can represent multiple distinct, potentially disconnected curves. Varying: may carry time samples (animatable)."
+    source_ref: int[] curveVertexCounts
+    of: int
+  - name: widths
+    type: array
+    nullable: true
+    meaning: 'Provides width specification for the curves, whose application will depend on whether the curve is oriented (normals are defined for it), in which case widths are "ribbon width", or unoriented, in which case widths are cylinder ... Varying: may carry time samples (animatable).'
+    source_ref: float[] widths
+    of: float
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

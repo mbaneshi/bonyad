@@ -1,0 +1,22 @@
+code: gltf.material_khr_materials_emissive_strength
+name: material.KHR_materials_emissive_strength
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_emissive_strength JSON Schema
+  section: material.KHR_materials_emissive_strength
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_emissive_strength/schema/material.KHR_materials_emissive_strength.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_materials_emissive_strength glTF Material Extension; extension object attached to gltf.material.
+fields:
+  - name: emissive_strength
+    type: float
+    nullable: true
+    default: 1
+    meaning: "Property emissiveStrength of material.KHR_materials_emissive_strength. Range: minimum 0."
+    source_ref: material.KHR_materials_emissive_strength.schema.json#properties/emissiveStrength
+    check: non_negative
+notes: Attached as the extensions.KHR_materials_emissive_strength object of a material (at most one per parent).

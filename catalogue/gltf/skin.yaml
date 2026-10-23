@@ -1,0 +1,27 @@
+code: gltf.skin
+name: skin
+kind: entity
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: skin
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/skin.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Joints and matrices defining a skin.
+fields:
+  - name: inverse_bind_matrices
+    type: ref
+    nullable: true
+    meaning: The index of the accessor containing the floating-point 4x4 inverse-bind matrices. (index into the document's array of the referenced type)
+    source_ref: skin.schema.json#properties/inverseBindMatrices
+    ref_to: gltf.accessor
+  - name: skeleton
+    type: ref
+    nullable: true
+    meaning: The index of the node used as a skeleton root. (index into the document's array of the referenced type)
+    source_ref: skin.schema.json#properties/skeleton
+    ref_to: gltf.node
+notes: Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array.

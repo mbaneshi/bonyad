@@ -1,0 +1,29 @@
+code: gltf.accessor_sparse
+name: accessor.sparse
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: accessor.sparse
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/accessor.sparse.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Sparse storage of accessor values that deviate from their initialization value.
+fields:
+  - name: owner
+    type: ref
+    meaning: The accessor row this object belongs to.
+    source_ref: JSON nesting
+    ref_to: gltf.accessor
+  - name: index
+    type: int
+    meaning: Position of this object in its owner's array (0 for a single nested object).
+    source_ref: array position in the source JSON
+  - name: count
+    type: int
+    meaning: "Number of deviating accessor values stored in the sparse array. Range: minimum 1."
+    source_ref: accessor.sparse.schema.json#properties/count
+    check: positive
+notes: "Nested single object: at most one row per parent. Promoted from a child row to an object row because it owns child rows itself (format rule 5: no nested children); owner and index keep the nesting."

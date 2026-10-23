@@ -1,0 +1,20 @@
+code: usd.field3d_asset
+name: Field3DAsset
+kind: entity
+base: usd.field_asset
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdVol/schema.usda
+  section: class Field3DAsset
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdVol/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Field3D field primitive. The FieldAsset filePath attribute must specify a file in the Field3D format on disk.
+fields:
+  - name: field_purpose
+    type: text
+    nullable: true
+    meaning: "Optional token which can be used to indicate the purpose or grouping of an individual field. Varying: may carry time samples (animatable)."
+    source_ref: token fieldPurpose
+notes: Defined in pxr/usd/usdVol/schema.usda (module usdVol). Redeclares inherited property fieldDataType (no fallback value); no new column.

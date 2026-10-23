@@ -1,0 +1,30 @@
+code: usd.motion_api
+name: MotionAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class MotionAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: "UsdGeomMotionAPI encodes data that can live on any prim that may affect computations involving: - computed motion for motion blur - sampling for motion blur The motion:blurScale attribute allows artists to scale the amount of motion blur to be rendered for parts of the scene without changing the recorded animation. See UsdGeomMotionAPI_blurScale for use and implementation ..."
+fields:
+  - name: motion_blur_scale
+    type: float
+    default: 1
+    meaning: "BlurScale is an inherited float attribute that stipulates the rendered motion blur (as typically specified via UsdGeomCamera's shutter:open and shutter:close properties) should be scaled for all objects at and beneath the prim in ... Varying: may carry time samples (animatable)."
+    source_ref: float motion:blurScale
+  - name: motion_velocity_scale
+    type: float
+    default: 1
+    meaning: "VelocityScale is an inherited float attribute that velocity-based schemas (e.g. PointBased, PointInstancer) can consume to compute interpolated positions and orientations by applying velocity and angularVelocity, which is ... Varying: may carry time samples (animatable)."
+    source_ref: float motion:velocityScale
+  - name: motion_nonlinear_sample_count
+    type: int
+    default: 3
+    meaning: "Determines the number of position or transformation samples created when motion is described by attributes contributing non-linear terms. Varying: may carry time samples (animatable)."
+    source_ref: int motion:nonlinearSampleCount
+notes: "Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

@@ -1,0 +1,15 @@
+code: usd.scope
+name: Scope
+kind: entity
+base: usd.imageable
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class Scope
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Scope is the simplest grouping primitive, and does not carry the baggage of transformability. Note that transforms should inherit down through a Scope successfully - it is just a guaranteed no-op from a transformability perspective.
+fields: []
+notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

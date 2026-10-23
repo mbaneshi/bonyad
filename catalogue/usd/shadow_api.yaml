@@ -1,0 +1,43 @@
+code: usd.shadow_api
+name: ShadowAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdLux/schema.usda
+  section: class ShadowAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdLux/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Controls to refine a light's shadow behavior. These are non-physical controls that are valuable for visual lighting work.
+fields:
+  - name: inputs_shadow_enable
+    type: bool
+    default: true
+    meaning: "Enables shadows to be cast by this light. Varying: may carry time samples (animatable)."
+    source_ref: bool inputs:shadow:enable
+  - name: inputs_shadow_color
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "The color of shadows cast by the light. (RGB colour stored as x=r, y=g, z=b) Varying: may carry time samples (animatable)."
+    source_ref: color3f inputs:shadow:color
+  - name: inputs_shadow_distance
+    type: float
+    default: -1
+    meaning: "The maximum distance shadows are cast. Varying: may carry time samples (animatable)."
+    source_ref: float inputs:shadow:distance
+  - name: inputs_shadow_falloff
+    type: float
+    default: -1
+    meaning: "The size of the shadow falloff zone within the shadow max distance, which can be used to hide the hard cut-off for shadows seen stretching past the max distance. Varying: may carry time samples (animatable)."
+    source_ref: float inputs:shadow:falloff
+  - name: inputs_shadow_falloff_gamma
+    type: float
+    default: 1
+    meaning: "A gamma (i.e., exponential) control over shadow strength with linear distance within the falloff zone. Varying: may carry time samples (animatable)."
+    source_ref: float inputs:shadow:falloffGamma
+notes: "Defined in pxr/usd/usdLux/schema.usda (module usdLux). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

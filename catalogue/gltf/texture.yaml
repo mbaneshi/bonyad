@@ -1,0 +1,27 @@
+code: gltf.texture
+name: texture
+kind: symbol
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: texture
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/texture.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: A texture and its sampler.
+fields:
+  - name: sampler
+    type: ref
+    nullable: true
+    meaning: The index of the sampler used by this texture. (index into the document's array of the referenced type)
+    source_ref: texture.schema.json#properties/sampler
+    ref_to: gltf.sampler
+  - name: source
+    type: ref
+    nullable: true
+    meaning: The index of the image used by this texture. (index into the document's array of the referenced type)
+    source_ref: texture.schema.json#properties/source
+    ref_to: gltf.image
+notes: Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array.

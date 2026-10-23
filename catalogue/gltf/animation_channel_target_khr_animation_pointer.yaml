@@ -1,0 +1,19 @@
+code: gltf.animation_channel_target_khr_animation_pointer
+name: animation.channel.target.KHR_animation_pointer
+kind: child
+parent: gltf.animation_channel_target
+fidelity: proxy
+source:
+  document: glTF extension KHR_animation_pointer JSON Schema
+  section: animation.channel.target.KHR_animation_pointer
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_animation_pointer/schema/animation.channel.target.KHR_animation_pointer.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_animation_pointer glTF Animation Channel Target Extension; extension object attached to gltf.animation_channel_target.
+fields:
+  - name: pointer
+    type: text
+    meaning: Property pointer of animation.channel.target.KHR_animation_pointer.
+    source_ref: animation.channel.target.KHR_animation_pointer.schema.json#properties/pointer
+notes: Attached as the extensions.KHR_animation_pointer object of a animation.channel.target (at most one per parent).

@@ -1,0 +1,33 @@
+code: usd.physics_mesh_collision_api
+name: PhysicsMeshCollisionAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsMeshCollisionAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Attributes to control how a Mesh is made into a collider. Can be applied to only a USDGeomMesh in addition to its PhysicsCollisionAPI.
+fields:
+  - name: physics_approximation
+    type: enum
+    default: none
+    meaning: "Determines the mesh's collision approximation: \"none\" - The mesh geometry is used directly as a collider without any approximation. Uniform: one value, not time-sampled."
+    source_ref: uniform token physics:approximation
+    values:
+      - value: none
+        meaning: The token "none" (the schema gives no per-value description).
+      - value: convexDecomposition
+        meaning: The token "convexDecomposition" (the schema gives no per-value description).
+      - value: convexHull
+        meaning: The token "convexHull" (the schema gives no per-value description).
+      - value: boundingSphere
+        meaning: The token "boundingSphere" (the schema gives no per-value description).
+      - value: boundingCube
+        meaning: The token "boundingCube" (the schema gives no per-value description).
+      - value: meshSimplification
+        meaning: The token "meshSimplification" (the schema gives no per-value description).
+notes: "Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

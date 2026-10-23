@@ -1,0 +1,104 @@
+code: usd.back_plate_api
+name: BackPlateAPI
+kind: object
+base: usd.api_schema_base
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdGeom/schema.usda
+  section: class BackPlateAPI
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdGeom/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: This schema specifies a back plate i.e. a camera-constrained but not always camera-facing texture card, that exists in scene space. Multiple back plates can be applied to a single camera and each plate can independently specify its own overall visibility, as well as its own opacity and depth varying over the plate.
+fields:
+  - name: scale_tweak
+    type: point2
+    default:
+      - 1
+      - 1
+    meaning: "The (X,Y) scale of the plate about its center. Varying: may carry time samples (animatable)."
+    source_ref: float2 backPlate:<instanceName>:scale:tweak
+  - name: rotate_xyz_tweak
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "The (X,Y,Z) rotation of the plate about its center in degrees. Varying: may carry time samples (animatable)."
+    source_ref: float3 backPlate:<instanceName>:rotateXYZ:tweak
+  - name: translate_tweak
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "The (X,Y,Z) translation of the plate about its center after it has been translated by the focus distance and scaled accordingly. Varying: may carry time samples (animatable)."
+    source_ref: float3 backPlate:<instanceName>:translate:tweak
+  - name: image
+    type: text
+    default: ""
+    meaning: "Asset path to the file containing a texture or sequence of textures. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset backPlate:<instanceName>:image
+  - name: alpha_image
+    type: text
+    default: ""
+    meaning: "Asset path to channel representing the opacity of the back plate. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset backPlate:<instanceName>:alpha:image
+  - name: depth_image
+    type: text
+    default: ""
+    meaning: "File path to a single-channel texture that describes the depth associated with the image if one exists. Varying: may carry time samples (animatable). Holds an asset path."
+    source_ref: asset backPlate:<instanceName>:depth:image
+  - name: depth_min_offset
+    type: float
+    default: 0
+    meaning: "Offset to shift the depth values if minimum value of current range is not set at 0 if needed. Varying: may carry time samples (animatable)."
+    source_ref: float backPlate:<instanceName>:depth:minOffset
+  - name: depth_normalizing_factor
+    type: float
+    default: 1
+    meaning: "Value to scale the texture depth value if needed. Varying: may carry time samples (animatable)."
+    source_ref: float backPlate:<instanceName>:depth:normalizingFactor
+  - name: depth_camera_space_offset
+    type: float
+    default: 0
+    meaning: "Offset to shift the depth into camera space if needed. Varying: may carry time samples (animatable)."
+    source_ref: float backPlate:<instanceName>:depth:cameraSpaceOffset
+  - name: luma_slope
+    type: vector3
+    default:
+      - 1
+      - 1
+      - 1
+    meaning: "Scales the per-channel upper bound of the normalized signal , analogous to per-channel exposure or slope. Varying: may carry time samples (animatable)."
+    source_ref: float3 backPlate:<instanceName>:luma:slope
+  - name: luma_offset
+    type: vector3
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: "Raises or lowers the signal floor (black level) of the normalized value. Varying: may carry time samples (animatable)."
+    source_ref: float3 backPlate:<instanceName>:luma:offset
+  - name: luma_power
+    type: vector3
+    default:
+      - 1
+      - 1
+      - 1
+    meaning: "Per-channel power applied to the normalized RGB signal. Varying: may carry time samples (animatable)."
+    source_ref: float3 backPlate:<instanceName>:luma:power
+  - name: plate_visibility
+    type: enum
+    default: solo
+    meaning: "Toggles the visibility of the back plate to all cameras, only the owning camera, or no cameras. Varying: may carry time samples (animatable)."
+    source_ref: token backPlate:<instanceName>:plateVisibility
+    values:
+      - value: all
+        meaning: The token "all" (the schema gives no per-value description).
+      - value: solo
+        meaning: The token "solo" (the schema gives no per-value description).
+      - value: mute
+        meaning: The token "mute" (the schema gives no per-value description).
+notes: 'Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "backPlate:" namespace, followed by an instance name.'

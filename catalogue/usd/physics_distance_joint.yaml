@@ -1,0 +1,25 @@
+code: usd.physics_distance_joint
+name: PhysicsDistanceJoint
+kind: entity
+base: usd.physics_joint
+fidelity: proxy
+source:
+  document: OpenUSD pxr/usd/usdPhysics/schema.usda
+  section: class PhysicsDistanceJoint
+  url: https://github.com/PixarAnimationStudios/OpenUSD/blob/bc32a655a41770f8ded78ef43789b044be1ba5ea/pxr/usd/usdPhysics/schema.usda
+  version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
+  accessed_on: 2026-10-23
+  licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
+meaning: Predefined distance joint type (Distance between rigid bodies may be limited to given minimum or maximum distance.)
+fields:
+  - name: physics_min_distance
+    type: float
+    default: -1
+    meaning: "Minimum distance. Varying: may carry time samples (animatable)."
+    source_ref: float physics:minDistance
+  - name: physics_max_distance
+    type: float
+    default: -1
+    meaning: "Maximum distance. Varying: may carry time samples (animatable)."
+    source_ref: float physics:maxDistance
+notes: Defined in pxr/usd/usdPhysics/schema.usda (module usdPhysics).

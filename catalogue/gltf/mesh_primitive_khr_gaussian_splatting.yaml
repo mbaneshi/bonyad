@@ -1,0 +1,49 @@
+code: gltf.mesh_primitive_khr_gaussian_splatting
+name: mesh.primitive.KHR_gaussian_splatting
+kind: child
+parent: gltf.mesh_primitive
+fidelity: proxy
+source:
+  document: glTF extension KHR_gaussian_splatting JSON Schema
+  section: mesh.primitive.KHR_gaussian_splatting
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_gaussian_splatting/schema/mesh.primitive.KHR_gaussian_splatting.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_gaussian_splatting glTF Mesh Primitive Extension; extension object attached to gltf.mesh_primitive.
+fields:
+  - name: kernel
+    type: enum
+    meaning: Property kernel of mesh.primitive.KHR_gaussian_splatting. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: mesh.primitive.KHR_gaussian_splatting.schema.json#properties/kernel
+    values:
+      - value: ellipse
+        meaning: Value "ellipse" listed in the schema.
+  - name: color_space
+    type: enum
+    meaning: Property colorSpace of mesh.primitive.KHR_gaussian_splatting. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: mesh.primitive.KHR_gaussian_splatting.schema.json#properties/colorSpace
+    values:
+      - value: srgb_rec709_display
+        meaning: Value "srgb_rec709_display" listed in the schema.
+      - value: lin_rec709_display
+        meaning: Value "lin_rec709_display" listed in the schema.
+  - name: projection
+    type: enum
+    nullable: true
+    default: perspective
+    meaning: Property projection of mesh.primitive.KHR_gaussian_splatting. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: mesh.primitive.KHR_gaussian_splatting.schema.json#properties/projection
+    values:
+      - value: perspective
+        meaning: Value "perspective" listed in the schema.
+  - name: sorting_method
+    type: enum
+    nullable: true
+    default: cameraDistance
+    meaning: Property sortingMethod of mesh.primitive.KHR_gaussian_splatting. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: mesh.primitive.KHR_gaussian_splatting.schema.json#properties/sortingMethod
+    values:
+      - value: cameraDistance
+        meaning: Value "cameraDistance" listed in the schema.
+notes: Attached as the extensions.KHR_gaussian_splatting object of a mesh.primitive (at most one per parent).

@@ -1,0 +1,21 @@
+code: gltf.mesh
+name: mesh
+kind: entity
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: mesh
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/mesh.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: A set of primitives to be rendered. Its global transform is defined by a node that references it.
+fields:
+  - name: weights
+    type: array
+    nullable: true
+    meaning: Array of weights to be applied to the morph targets.
+    source_ref: mesh.schema.json#properties/weights
+    of: float
+notes: Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array.
