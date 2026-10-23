@@ -64,6 +64,17 @@ Decisions needed from the founder: none for this batch. Section 6 of
 | [`formats/landxml-1.2.md`](formats/landxml-1.2.md) | LandXML 1.2 schema study (A) |
 | [`standards/crs-iso19111-ogc.md`](standards/crs-iso19111-ogc.md) | Coordinate reference systems, ISO 19111 / OGC 18-005r5 (B) |
 | [`procedures/polygon-area.md`](procedures/polygon-area.md) | Planar vs geodesic polygon area, with a reference case (C) |
+| [`procedures/autocad-3d.md`](procedures/autocad-3d.md) | AutoCAD 3D solid and surface procedures vs FreeCAD and OpenSCAD (C) |
+| [`procedures/civil-3d.md`](procedures/civil-3d.md) | Civil 3D alignment, profile, surface, earthwork, corridor, parcel and survey procedures vs QGIS (C) |
+| [`procedures/revit.md`](procedures/revit.md) | Revit identity, instance, room, phase and workset procedures vs IfcOpenShell (C) |
+| [`procedures/3ds-max.md`](procedures/3ds-max.md) | 3ds Max modifier stack, poly editing, controllers and identity vs Blender (C) |
+| [`procedures/solidcraft.md`](procedures/solidcraft.md) | SolidCraft command registry, MCP tools, feature timeline, sketch solver, face naming (C) |
+| [`procedures/solidcore.md`](procedures/solidcore.md) | solidcore Rust B-rep kernel operations, real port status, and the difftest verifier (C) |
+| [`procedures/fieldcraft.md`](procedures/fieldcraft.md) | FieldCraft CAE pipeline, oracle verification suite, and the missing runtime verifier (C) |
+| [`procedures/smlib.md`](procedures/smlib.md) | smlib, the C++ SMLib / SM_API reference kernel: ownership contracts, unreliable status codes, global state (C) |
+| [`prior-art/tangency-models.md`](prior-art/tangency-models.md) | Tangency Labs `models`: a hash-enforced, CC0-only fixture repository with no models yet |
+| [`prototypes/procedure-contracts/`](prototypes/procedure-contracts/README.md) | Research prototype: 135 procedures as compiling Rust contracts (input, output, stable error codes, kind, effect), 3 implemented against real code, 26 tests |
+| [`code-inventory/tangency-labs-code-inventory.md`](code-inventory/tangency-labs-code-inventory.md) | Pinned inventory of the three Tangency Labs repositories |
 | [`prior-art/inventory.md`](prior-art/inventory.md) | Cross-discipline inventory of formats and implementations |
 | [`mappings/point-line-surface.md`](mappings/point-line-surface.md) | Mapping to the current slice |
 | [`proposals/next-batch.md`](proposals/next-batch.md) | Adoption recommendations, experiments, next batch |

@@ -1,0 +1,23 @@
+[package]
+name = "procedure-contracts"
+version = "0.0.0"
+edition = "2024"
+license = "LicenseRef-Undecided"
+publish = false
+description = "Research prototype: every engineering procedure as a typed Rust contract (input, output, error codes, kind, effect). Not part of the product workspace."
+
+# Detach from any parent workspace: this is a research prototype, not a product crate.
+[workspace]
+
+[lints.rust]
+unsafe_code = "forbid"
+
+# Same exact pins as logic/Cargo.toml.
+[dependencies]
+serde = { version = "=1.0.229", features = ["derive"] }
+uuid = { version = "=1.28.0", features = ["serde"] }
+# The real 2D geometry of the product workspace, used only to prove two contracts against it.
+bonyad-geometry = { path = "../../../../logic/crates/geometry" }
+
+[dev-dependencies]
+serde_json = "=1.0.154"
