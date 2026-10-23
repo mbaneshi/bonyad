@@ -1,7 +1,8 @@
 # RFC draft: procedures typed against ports, entities owned by domains
 
-**Status:** draft for a GitHub Discussion in the RFC category (`CONTRIBUTING.md`). Not posted,
-not a decision. Nothing here changes ADR 0003, the `proc.*` migration or any product code.
+**Status:** posted for discussion as
+[Discussion #60](https://github.com/mbaneshi/bonyad/discussions/60) (category Ideas, because the
+repo has no RFC category yet; `CONTRIBUTING.md` asks for one). Not a decision. Nothing here changes ADR 0003, the `proc.*` migration or any product code.
 
 ## Problem
 

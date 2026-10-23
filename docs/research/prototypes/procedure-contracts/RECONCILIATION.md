@@ -76,5 +76,5 @@ The comparison above treats procedures as rows. A further design, **ports and do
 entities**, changes how the contracts should be typed: procedures against small interfaces
 (`Region2D`, `Surface3D`, `HasQuantity`), not against one domain's entity. It also separates a
 procedure's contract from its implementations. This is written up as a draft RFC in
-[`RFC-DRAFT-ports-and-implementations.md`](RFC-DRAFT-ports-and-implementations.md). It is not
-posted and not decided.
+[`RFC-DRAFT-ports-and-implementations.md`](RFC-DRAFT-ports-and-implementations.md). It is
+posted as [Discussion #60](https://github.com/mbaneshi/bonyad/discussions/60) and not decided.
