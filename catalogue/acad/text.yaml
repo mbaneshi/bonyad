@@ -1,0 +1,18 @@
+code: acad.text
+name: TEXT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: TextEntity, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/TextEntity.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A single-line text string with height, rotation, style and justification (DXF TEXT).
+notes: Hand-curated to equal the pilot table. Angles are radians; DXF stores degrees. DXF TEXT also carries a second alignment point (11), generation flags (71), thickness (39) and a normal (210); the pilot table does not (GAPS.md).
+fields:
+  - { name: insert, type: point3, meaning: First alignment point (OCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: height, type: length, check: positive, meaning: Text height., source_ref: group code 40 }
+  - { name: value, type: text, meaning: The text string., source_ref: group code 1 }
+  - { name: rotation, type: angle, default: 0, meaning: Rotation in radians (DXF group 50 stores degrees)., source_ref: group code 50 }
+  - { name: width_factor, type: ratio, default: 1, check: positive, meaning: Relative X scale factor (width)., source_ref: group code 41 }
+  - { name: oblique_angle, type: angle, default: 0, meaning: Oblique angle in radians (DXF group 51 stores degrees)., source_ref: group code 51 }
+  - { name: style_name, type: text, nullable: true, meaning: Name of the text style; null means the default style., source_ref: group code 7 }
+  - { name: horizontal_alignment, type: int, default: 0, meaning: "Horizontal justification code: 0 left, 1 center, 2 right, 3 aligned, 4 middle, 5 fit.", source_ref: group code 72 }
+  - { name: vertical_alignment, type: int, default: 0, meaning: "Vertical justification code: 0 baseline, 1 bottom, 2 middle, 3 top.", source_ref: group code 73 }

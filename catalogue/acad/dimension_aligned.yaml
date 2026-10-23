@@ -1,0 +1,12 @@
+code: acad.dimension_aligned
+name: DIMENSION (DimensionAligned)
+kind: entity
+base: acad.dimension
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DimensionAligned, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/DimensionAligned.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Dimension aligned: a variant of the DXF DIMENSION entity, marked by subclass AcDbAlignedDimension."
+notes: DXF subclass marker AcDbAlignedDimension.
+fields:
+  - { name: ext_line_rotation, type: angle, nullable: true, meaning: "Linear dimension types with an oblique angle have an optional group code 52. When added to the rotation angle of the linear dimension(group code 50), it gives the angle of the extension lines. Radians here; DXF stores degrees.", source_ref: group code 52; group codes 50-58 are angles in degrees per the DXF group-code table (ACadSharp does not flag this property) }
+  - { name: first_point, type: point3, meaning: Insertion point for clones of a dimension—Baseline and Continue (in OCS)., source_ref: "group codes 13, 23, 33" }
+  - { name: second_point, type: point3, meaning: Definition point for linear and angular dimensions(in WCS)., source_ref: "group codes 14, 24, 34" }

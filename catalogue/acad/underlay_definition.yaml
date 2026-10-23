@@ -1,0 +1,8 @@
+code: acad.underlay_definition
+name: UnderlayDefinition
+kind: abstract
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: UnderlayDefinition, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/UnderlayDefinition.cs#L9, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Common base class for all underlay definitions, like PdfUnderlayDefinition.
+fields:
+  - { name: file, type: text, nullable: true, meaning: Gets or sets the underlay file., source_ref: group code 1 }

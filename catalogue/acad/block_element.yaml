@@ -1,0 +1,12 @@
+code: acad.block_element
+name: BlockElement
+kind: abstract
+base: acad.evaluation_expression
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockElement, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockElement.cs#L6, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Block element (no DXF name).
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbBlockElement.
+fields:
+  - { name: element_name, type: text, nullable: true, meaning: Block element name., source_ref: group code 300 }
+  - { name: value1071, type: int, meaning: Value1071., source_ref: group code 1071; no description in the sources }

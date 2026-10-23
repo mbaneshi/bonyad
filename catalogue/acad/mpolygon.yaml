@@ -1,0 +1,25 @@
+code: acad.mpolygon
+name: MPOLYGON
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: ezdxf attribute tables (DXFAttr) and reference docs, section: MPolygon (DXF MPOLYGON), url: https://github.com/mozman/ezdxf/blob/7b202613e0d689955b8932a22bcbcf68bdd684f0/src/ezdxf/entities/mpolygon.py, version: DXF R2018 (AC1032); required DXF version R2000, accessed_on: 2026-10-23, licence: MIT (ezdxf) }
+meaning: The MPOLYGON entity is not a core DXF entity and is not supported by all CAD applications and DXF libraries.
+notes: "Harvested from ezdxf only: ACadSharp does not model this DXF type."
+fields:
+  - { name: version, type: int, default: 1, meaning: "MPolygon: version.", source_ref: group code 70; ezdxf attribute dxf.version }
+  - { name: elevation, type: point3, default: [ 0, 0, 0 ], meaning: Z value represents the elevation height of the OCS. (float)., source_ref: "group codes 10, 20, 30; ezdxf attribute dxf.elevation" }
+  - { name: extrusion, type: vector3, default: [ 0, 0, 1 ], meaning: Extrusion., source_ref: "group codes 210, 220, 230; ezdxf attribute dxf.extrusion; no description in the sources" }
+  - { name: pattern_name, type: text, default: "", meaning: Pattern name as string., source_ref: group code 2; ezdxf attribute dxf.pattern_name }
+  - { name: fill_color, type: int, nullable: true, meaning: Solid fill color as ACI., source_ref: group code 63; ezdxf attribute dxf.fill_color }
+  - { name: solid_fill, type: int, default: 0, meaning: "=== ========================================================== 1 solid fill, better use: MPolygon.set_solid_fill 0 pattern fill, better use: MPolygon.set_pattern_fill === ==========================================================.", source_ref: group code 71; ezdxf attribute dxf.solid_fill }
+  - { name: hatch_style, type: int, nullable: true, meaning: Hatch style tag is not supported for MPOLYGON!? I don't know in which order this tag has to be exported. TrueView does not accept this tag in any place! BricsCAD supports this tag!., source_ref: group code 75; ezdxf attribute dxf.hatch_style }
+  - { name: pattern_type, type: int, meaning: === =================== 0 user 1 predefined 2 custom === ===================., source_ref: group code 76; ezdxf attribute dxf.pattern_type }
+  - { name: pattern_angle, type: angle, default: 0, meaning: "Actual pattern angle in degrees (float). Changing this value does not rotate the pattern, use MPolygon.set_pattern_angle for this task. Radians here; DXF stores degrees.", source_ref: group code 52; ezdxf attribute dxf.pattern_angle }
+  - { name: pattern_scale, type: float, default: 1, meaning: Actual pattern scaling factor (float). Changing this value does not scale the pattern use MPolygon.set_pattern_scale for this task., source_ref: group code 41; ezdxf attribute dxf.pattern_scale }
+  - { name: annotated_boundary, type: int, default: 0, meaning: "MPolygon: Boundary annotation flag: 0 = boundary is not an annotated boundary 1 = boundary is an annotated boundary.", source_ref: group code 73; ezdxf attribute dxf.annotated_boundary }
+  - { name: pattern_double, type: int, default: 0, meaning: 1 = double pattern size else 0. (int)., source_ref: group code 77; ezdxf attribute dxf.pattern_double }
+  - { name: pixel_size, type: float, nullable: true, meaning: See ... HATCH., source_ref: group code 47; ezdxf attribute dxf.pixel_size }
+  - { name: n_seed_points, type: int, default: 0, meaning: N seed points., source_ref: group code 98; ezdxf attribute dxf.n_seed_points; no description in the sources }
+  - { name: offset_vector, type: point2, meaning: "MPolygon: offset vector in OCS ???.", source_ref: "group codes 11, 21; ezdxf attribute dxf.offset_vector" }
+  - { name: degenerated_loops, type: int, default: 0, meaning: "MPolygon: number of degenerate boundary paths (loops), where a degenerate boundary path is a border that is ignored by the hatch:.", source_ref: group code 99; ezdxf attribute dxf.degenerated_loops }

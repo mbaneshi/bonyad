@@ -1,0 +1,13 @@
+code: acad.dimension_angular2line
+name: DIMENSION (DimensionAngular2Line)
+kind: entity
+base: acad.dimension
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DimensionAngular2Line, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/DimensionAngular2Line.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Dimension angular2line: a variant of the DXF DIMENSION entity, marked by subclass AcDb2LineAngularDimension."
+notes: DXF subclass marker AcDb2LineAngularDimension.
+fields:
+  - { name: angle_vertex, type: point3, meaning: "Definition point for diameter, radius, and angular dimensions (in WCS).", source_ref: "group codes 15, 25, 35" }
+  - { name: dimension_arc, type: point3, meaning: Point defining dimension arc for angular dimensions (in OCS)., source_ref: "group codes 16, 26, 36" }
+  - { name: first_point, type: point3, meaning: Definition point for linear and angular dimensions (in WCS)., source_ref: "group codes 13, 23, 33" }
+  - { name: second_point, type: point3, meaning: Definition point for linear and angular dimensions (in WCS)., source_ref: "group codes 14, 24, 34" }

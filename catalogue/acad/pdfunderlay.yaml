@@ -1,0 +1,9 @@
+code: acad.pdfunderlay
+name: PDFUNDERLAY
+kind: entity
+base: acad.underlay_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: PdfUnderlay, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/PdfUnderlay.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The UNDERLAY entity links an underlay file to the DXF file, the file itself is not embedded into the DXF file, it is always a separated file.
+notes: DXF subclass marker AcDbUnderlayReference.
+fields: []

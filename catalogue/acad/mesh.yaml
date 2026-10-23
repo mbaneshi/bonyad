@@ -1,0 +1,10 @@
+code: acad.mesh
+name: MESH
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Mesh, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Mesh.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A subdivision mesh header (DXF MESH); its vertices and faces are child rows.
+notes: Hand-curated to equal the pilot table. DXF MESH (SubD mesh) also carries blend-crease (72), edges with crease values and the property-override section; vertices and faces are the child tables below (GAPS.md).
+fields:
+  - { name: subdivision_level, type: int, default: 0, check: non_negative, meaning: Number of subdivision levels., source_ref: group code 91 }

@@ -1,0 +1,11 @@
+code: acad.dbcolor
+name: DBCOLOR
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BookColor, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/BookColor.cs#L18, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A BookColor object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbColor.
+fields:
+  - { name: color, type: int, nullable: true, meaning: "Color as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 62; no description in the sources }
+  - { name: color_true, type: int, nullable: true, meaning: Color as a 24-bit true colour (0x00RRGGBB); null when an index colour is used., source_ref: group code 420; no description in the sources }

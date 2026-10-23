@@ -1,0 +1,20 @@
+code: acad.sun
+name: SUN
+kind: object
+fidelity: faithful
+source: { document: ezdxf attribute tables (DXFAttr) and reference docs, section: Sun (DXF SUN), url: https://github.com/mozman/ezdxf/blob/7b202613e0d689955b8932a22bcbcf68bdd684f0/src/ezdxf/entities/sun.py, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: MIT (ezdxf) }
+meaning: The SUN entity defines properties of the sun.
+notes: "Harvested from ezdxf only: ACadSharp does not model this DXF type."
+fields:
+  - { name: version, type: int, default: 1, meaning: Current version is 1., source_ref: group code 90; ezdxf attribute dxf.version }
+  - { name: status, type: bool, default: true, meaning: On = 1 or off = 0., source_ref: group code 290; ezdxf attribute dxf.status }
+  - { name: color, type: int, default: 7, meaning: ACI value of the sun., source_ref: group code 63; ezdxf attribute dxf.color }
+  - { name: true_color, type: int, default: 16777215, meaning: True-color value of the sun., source_ref: group code 421; ezdxf attribute dxf.true_color }
+  - { name: intensity, type: float, default: 1, meaning: "Intensity value in the range of [0, 1]. (float).", source_ref: group code 40; ezdxf attribute dxf.intensity }
+  - { name: shadows, type: bool, default: true, meaning: === ======================= 0 Sun do not cast shadows 1 Sun do cast shadows === =======================., source_ref: group code 291; ezdxf attribute dxf.shadows }
+  - { name: julian_day, type: int, default: 2456922, meaning: Use calendardate to convert julian_day to datetime.datetime object., source_ref: group code 91; ezdxf attribute dxf.julian_day }
+  - { name: time, type: int, default: 43200, meaning: Day time in seconds past midnight. (int)., source_ref: group code 92; ezdxf attribute dxf.time }
+  - { name: daylight_savings_time, type: bool, default: false, meaning: Daylight savings time., source_ref: group code 292; ezdxf attribute dxf.daylight_savings_time; no description in the sources }
+  - { name: shadow_type, type: int, default: 0, meaning: "Shadow type: 0 = Ray traced shadows 1 = Shadow maps.", source_ref: group code 70; ezdxf attribute dxf.shadow_type }
+  - { name: shadow_map_size, type: int, default: 256, meaning: Shadow map size., source_ref: group code 71; ezdxf attribute dxf.shadow_map_size; no description in the sources }
+  - { name: shadow_softness, type: int, default: 1, meaning: Shadow softness., source_ref: group code 280; ezdxf attribute dxf.shadow_softness; no description in the sources }

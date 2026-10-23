@@ -1,0 +1,13 @@
+code: acad.point
+name: POINT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Point, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Point.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A single point in 3D space (DXF POINT).
+notes: Hand-curated to equal the pilot table (x, y, z columns). Angle of the X axis (group 50) and normal (210) are listed in GAPS.md.
+fields:
+  - { name: x, type: length, meaning: X coordinate of the point., source_ref: group code 10 }
+  - { name: y, type: length, meaning: Y coordinate of the point., source_ref: group code 20 }
+  - { name: z, type: length, meaning: Z coordinate of the point., source_ref: group code 30 }
+  - { name: thickness, type: length, default: 0, meaning: Specifies the distance a 2D object is extruded above or below its elevation., source_ref: group code 39 }

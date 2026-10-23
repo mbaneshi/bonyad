@@ -1,0 +1,10 @@
+code: acad.evaluation_graph
+name: ACAD_EVALUATION_GRAPH
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: EvaluationGraph, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/EvaluationGraph.cs#L14, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents an evaluation graph containing a list of Node. objects.
+notes: DXF subclass marker AcDbEvalGraph.
+fields:
+  - { name: value96, type: int, meaning: Value96., source_ref: group code 96; no description in the sources }
+  - { name: value97, type: int, meaning: Value97., source_ref: group code 97; no description in the sources }

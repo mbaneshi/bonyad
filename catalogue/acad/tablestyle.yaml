@@ -1,0 +1,16 @@
+code: acad.tablestyle
+name: TABLESTYLE
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: TableStyle, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/TableStyle.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A TableStyle object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbTableStyle.
+fields:
+  - { name: description, type: text, nullable: true, meaning: Table style description., source_ref: group code 3 }
+  - { name: flags, type: int, meaning: Meaning unknown., source_ref: group code 71 }
+  - { name: flow_direction, type: enum, default: Down, values: [ { value: Down, meaning: DXF value 0 }, { value: Up, meaning: DXF value 1 } ], meaning: Gets or sets the direction in which table rows and columns are arranged., source_ref: group code 70 }
+  - { name: horizontal_cell_margin, type: float, default: 0.06, meaning: "Gets or sets the horizontal margin, in drawing units, applied to the content within each cell.", source_ref: group code 40 }
+  - { name: suppress_header_row, type: bool, meaning: "Flag for whether the column heading is suppressed: 0/1 = not suppressed/suppressed.", source_ref: group code 281; wording from ezdxf }
+  - { name: suppress_title, type: bool, meaning: Gets or sets a value indicating whether the title should be suppressed., source_ref: group code 280 }
+  - { name: vertical_cell_margin, type: float, default: 0.06, meaning: "Gets or sets the vertical margin, in drawing units, applied to the content within a cell.", source_ref: group code 41 }

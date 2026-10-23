@@ -1,0 +1,14 @@
+code: acad.proxy_entity
+name: ACAD_PROXY_ENTITY
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: ProxyEntity, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/ProxyEntity.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: An ACAD_PROXY_ENTITY is a proxy entity that represents an entity created by an Autodesk or 3rd party application.
+notes: DXF subclass marker AcDbProxyEntity.
+fields:
+  - { name: class_number, type: int, meaning: Gets the DXF class number., source_ref: group code 91 }
+  - { name: maintenance_version, type: int, meaning: Gets or sets the maintenance version number., source_ref: group code 97 }
+  - { name: original_data_format_dxf, type: bool, default: false, meaning: Original data format dxf., source_ref: group code 70; no description in the sources }
+  - { name: proxy_class_id, type: int, default: 498, meaning: Proxy class id., source_ref: group code 90; no description in the sources }
+  - { name: version, type: enum, values: [ { value: Unknown, meaning: "DXF value -1: Version not identified." }, { value: MC0_0, meaning: "DXF value 0: Release 1.1" }, { value: AC1_2, meaning: "DXF value 1: Release 1.2" }, { value: AC1_4, meaning: "DXF value 2: Release 1.4" }, { value: AC1_50, meaning: "DXF value 3: Release 2.0" }, { value: AC2_10, meaning: "DXF value 4: Release 2.10" }, { value: AC1002, meaning: "DXF value 5: Release 2.5" }, { value: AC1003, meaning: "DXF value 6: Release 2.6" }, { value: AC1004, meaning: "DXF value 7: Release 9" }, { value: AC1006, meaning: "DXF value 8: Release 10" }, { value: AC1009, meaning: "DXF value 9: Release 11/12 (LT R1/R2)" }, { value: AC1012, meaning: "DXF value 19: Release 13 (LT95)" }, { value: AC1014, meaning: "DXF value 21: Release 14, 14.01 (LT97/LT98)" }, { value: AC1015, meaning: "DXF value 23: Release 2000/2000i/2002" }, { value: AC1018, meaning: "DXF value 25: Release 2004/2005/2006" }, { value: AC1021, meaning: "DXF value 27: Release 2007/2008/2009" }, { value: AC1024, meaning: "DXF value 29: Release 2010/2011/2012" }, { value: AC1027, meaning: "DXF value 31: Release 2013/2014/2015/2016/2017" }, { value: AC1032, meaning: "DXF value 33: Release 2018/2019/2020" } ], meaning: Version., source_ref: group code 71; no description in the sources }

@@ -1,0 +1,12 @@
+code: acad.body
+name: BODY
+kind: entity
+base: acad.modeler_geometry
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf; fields from ezdxf entities/acis.py", section: CadBody, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/CadBody.cs#L12, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: BODY entity created by an ACIS geometry kernel provided by the Spatial Corp.
+needs_review: true
+notes: ACadSharp has no group codes for this class; the fields come from ezdxf's attribute table.
+fields:
+  - { name: flags, type: bool, meaning: Require DXF R2013., source_ref: group code 290; first in const; ezdxf attribute dxf.flags }
+  - { name: uid, type: text, meaning: Require DXF R2013., source_ref: group code 2; first in const; ezdxf attribute dxf.uid }

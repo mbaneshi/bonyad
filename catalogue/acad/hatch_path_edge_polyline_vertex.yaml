@@ -1,0 +1,13 @@
+code: acad.hatch_path_edge_polyline_vertex
+name: Polyline.Vertices
+kind: child
+parent: acad.hatch
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BoundaryPath.Polyline, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Hatch.BoundaryPath.Polyline.cs#L48, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Vertices of a polyline boundary path of a hatch (one row per vertex, ordered), each with an optional bulge.
+notes: "In the source this is nested inside acad.hatch_path_edge_polyline; nested children are not supported (FORMAT.md rule 5), so it is a child of acad.hatch and the *_index field(s) identify the owning row(s). Split into position (point2) and bulge: ACadSharp stores both in one XYZ."
+fields:
+  - { name: path_index, type: int, meaning: Position of the owning path row within its parent (0-based)., source_ref: structural key added by the harvest (not a DXF group code); keeps the original nesting recoverable }
+  - { name: edge_index, type: int, meaning: Position of the owning edge row within its parent (0-based)., source_ref: structural key added by the harvest (not a DXF group code); keeps the original nesting recoverable }
+  - { name: point, type: point2, meaning: Vertex position (X and Y only)., source_ref: "count in group code 93; position in group codes 10, 20 (ACadSharp doc: 'Position values are only X and Y')" }
+  - { name: bulge, type: float, default: 0, meaning: "Bulge of the segment starting at this vertex (0 = straight); ACadSharp keeps it in the Z of the vertex, DXF stores it in an optional group 42.", source_ref: group code 42 (optional; ACadSharp Polyline.Bulges = Vertices.Select(v => v.Z)) }

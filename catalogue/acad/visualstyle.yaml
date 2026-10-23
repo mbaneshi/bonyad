@@ -1,0 +1,44 @@
+code: acad.visualstyle
+name: VISUALSTYLE
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: VisualStyle, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/VisualStyle.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A VisualStyle object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbVisualStyle.
+fields:
+  - { name: brightness, type: float, meaning: Brightness., source_ref: group code 44; no description in the sources }
+  - { name: color, type: int, nullable: true, meaning: "Color as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 62 }
+  - { name: color_true, type: int, nullable: true, meaning: Color as a 24-bit true colour (0x00RRGGBB); null when an index colour is used., source_ref: group code 63 }
+  - { name: description, type: text, nullable: true, meaning: Description, source_ref: group code 2 }
+  - { name: display_settings, type: int, meaning: Display settings., source_ref: group code 93; no description in the sources }
+  - { name: edge_apply_style_flag, type: int, meaning: Flag., source_ref: group code 174; wording from ezdxf }
+  - { name: edge_color, type: int, meaning: Edge color., source_ref: group code 66; no description in the sources }
+  - { name: edge_crease_angle, type: float, meaning: Edge crease angle., source_ref: group code 42; no description in the sources }
+  - { name: edge_intersection_color, type: int, nullable: true, meaning: "Edge intersection color as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 64; no description in the sources }
+  - { name: edge_intersection_line_type, type: int, meaning: Edge intersection line type., source_ref: group code 175; no description in the sources }
+  - { name: edge_isoline_count, type: int, meaning: Edge isoline count., source_ref: group code 171; no description in the sources }
+  - { name: edge_jitter, type: int, meaning: Edge jitter., source_ref: group code 78; no description in the sources }
+  - { name: edge_modifiers, type: int, meaning: Edge modifiers., source_ref: group code 92; no description in the sources }
+  - { name: edge_obscured_color, type: int, nullable: true, meaning: "Edge obscured color as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 65; no description in the sources }
+  - { name: edge_obscured_line_type, type: int, meaning: Edge obscured line type., source_ref: group code 75; no description in the sources }
+  - { name: edge_overhang, type: int, meaning: Edge overhang., source_ref: group code 77; no description in the sources }
+  - { name: edge_silhouette_color, type: int, nullable: true, meaning: "Edge silhouette color as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 67; no description in the sources }
+  - { name: edge_silhouette_width, type: int, meaning: Edge silhouette width., source_ref: group code 79; no description in the sources }
+  - { name: edge_style, type: int, meaning: Edge style., source_ref: group code 91; no description in the sources }
+  - { name: edge_style_model, type: enum, values: [ { value: NoEdges, meaning: DXF value 0 }, { value: Isolines, meaning: DXF value 1 }, { value: FacetEdges, meaning: DXF value 2 } ], meaning: Edge style model., source_ref: group code 74; wording from ezdxf }
+  - { name: edge_width, type: int, meaning: Edge width., source_ref: group code 76; no description in the sources }
+  - { name: face_color_mode, type: enum, values: [ { value: NoColor, meaning: DXF value 0 }, { value: ObjectColor, meaning: DXF value 1 }, { value: BackgroundColor, meaning: DXF value 2 }, { value: CustomColor, meaning: DXF value 3 }, { value: Monochrome, meaning: DXF value 4 }, { value: Tinted, meaning: DXF value 5 }, { value: Desaturated, meaning: DXF value 6 } ], meaning: Face color mode., source_ref: group code 73; wording from ezdxf }
+  - { name: face_lighting_model, type: enum, values: [ { value: Invisible, meaning: DXF value 0 }, { value: Visible, meaning: DXF value 1 }, { value: Phong, meaning: DXF value 2 }, { value: Gooch, meaning: DXF value 3 } ], meaning: Gets or sets the lighting model used to render the face., source_ref: group code 71 }
+  - { name: face_lighting_quality, type: enum, values: [ { value: NoLighting, meaning: DXF value 0 }, { value: PerFaceLighting, meaning: DXF value 1 }, { value: PerVertexLighting, meaning: DXF value 2 } ], meaning: Face lighting quality., source_ref: group code 72; wording from ezdxf }
+  - { name: face_modifiers, type: enum, values: [ { value: None, meaning: DXF value 0 }, { value: Opacity, meaning: DXF value 1 }, { value: Specular, meaning: DXF value 2 } ], meaning: Face modifiers., source_ref: group code 90; wording from ezdxf }
+  - { name: face_opacity_level, type: float, meaning: Face opacity level, source_ref: group code 40 }
+  - { name: face_specular_level, type: float, meaning: Face specular level, source_ref: group code 41 }
+  - { name: face_style_mono_color, type: int, nullable: true, meaning: "Face style mono color as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 421 }
+  - { name: halo_gap, type: int, meaning: Halo gap., source_ref: group code 170; no description in the sources }
+  - { name: internal_flag, type: bool, meaning: Internal use only flag, source_ref: group code 291 }
+  - { name: opacity_level, type: float, meaning: Opacity level., source_ref: group code 43; no description in the sources }
+  - { name: precision_flag, type: bool, meaning: Edge hide precision flag, source_ref: group code 290 }
+  - { name: raster_file, type: text, nullable: true, meaning: Raster file name, source_ref: group code 1 }
+  - { name: shadow_type, type: int, meaning: Shadow type., source_ref: group code 173; no description in the sources }
+  - { name: type, type: int, meaning: Type, source_ref: group code 70 }

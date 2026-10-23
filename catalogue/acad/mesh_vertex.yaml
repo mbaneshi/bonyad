@@ -1,0 +1,12 @@
+code: acad.mesh_vertex
+name: MESH
+kind: child
+parent: acad.mesh
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Mesh, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Mesh.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: One vertex of a subdivision mesh (level 0).
+notes: Hand-curated to equal the pilot table; ordered by the implicit position column. In DXF the vertices of level 0 are repeated 10/20/30 triples after the count in group 92.
+fields:
+  - { name: x, type: length, meaning: Vertex X coordinate., source_ref: "group code 10 (repeated, count in 92)" }
+  - { name: y, type: length, meaning: Vertex Y coordinate., source_ref: "group code 20 (repeated, count in 92)" }
+  - { name: z, type: length, meaning: Vertex Z coordinate., source_ref: "group code 30 (repeated, count in 92)" }

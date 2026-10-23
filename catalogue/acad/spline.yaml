@@ -1,0 +1,19 @@
+code: acad.spline
+name: SPLINE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Spline, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Spline.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The SPLINE entity is a 3D curve, all coordinates have to be 3D coordinates even if the spline is just a 2D planar curve.
+notes: DXF subclass marker AcDbSpline.
+fields:
+  - { name: control_point_tolerance, type: float, default: 1e-7, meaning: Control-point tolerance., source_ref: group code 43 }
+  - { name: degree, type: int, default: 3, meaning: Gets or sets the polynomial degree of the resulting spline., source_ref: group code 71 }
+  - { name: end_tangent, type: point3, meaning: End tangent—may be omitted in WCS., source_ref: "group codes 13, 23, 33" }
+  - { name: fit_tolerance, type: float, default: 1e-10, meaning: Fit tolerance., source_ref: group code 44 }
+  - { name: flags, type: int, meaning: "Spline flags. Bit-coded: 1 Closed, 2 Periodic, 4 Rational, 8 Planar, 16 Linear.", source_ref: group code 70 }
+  - { name: knots, type: array, of: float, meaning: Number of knots., source_ref: count in group code 72; repeated group code 40 }
+  - { name: knot_tolerance, type: float, default: 1e-7, meaning: Knot tolerance., source_ref: group code 42 }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Extrusion is the normal vector (omitted if the spline is non-planar)., source_ref: "group codes 210, 220, 230; wording from ezdxf" }
+  - { name: start_tangent, type: point3, meaning: Start tangent—may be omitted in WCS., source_ref: "group codes 12, 22, 32" }
+  - { name: weights, type: array, of: float, meaning: "Weight(if not 1); with multiple group pairs, they are present if all are not 1.", source_ref: count in group code 41 }

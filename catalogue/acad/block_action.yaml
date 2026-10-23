@@ -1,0 +1,12 @@
+code: acad.block_action
+name: BlockAction
+kind: abstract
+base: acad.block_element
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockAction, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockAction.cs#L9, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Block action (no DXF name).
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbBlockAction.
+fields:
+  - { name: label_position, type: point3, meaning: Gets or sets the position of the action label., source_ref: "group codes 1010, 1020, 1030" }
+  - { name: parameters_ids, type: array, of: int, meaning: Parameters ids., source_ref: count in group code 70; repeated group code 91 }

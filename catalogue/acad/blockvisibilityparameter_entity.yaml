@@ -1,0 +1,9 @@
+code: acad.blockvisibilityparameter_entity
+name: BlockVisibilityParameter.Entities
+kind: child
+parent: acad.blockvisibilityparameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockVisibilityParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockVisibilityParameter.cs#L33, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Gets the list of all Entity objects of the dynamic block this BlockVisibilityParameter is associated with (one row per reference, ordered).
+fields:
+  - { name: target_entity_id, type: ref, ref_to: acad.graphic_entity, meaning: Reference to one member of the list (Entity)., source_ref: count in group code 93; repeated group code 331 }

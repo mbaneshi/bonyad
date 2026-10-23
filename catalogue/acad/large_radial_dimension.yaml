@@ -1,0 +1,14 @@
+code: acad.large_radial_dimension
+name: LARGE_RADIAL_DIMENSION
+kind: entity
+base: acad.dimension
+fidelity: faithful
+source: { document: ezdxf attribute tables (DXFAttr) and reference docs, section: RadialDimensionLarge (DXF LARGE_RADIAL_DIMENSION), url: https://github.com/mozman/ezdxf/blob/7b202613e0d689955b8932a22bcbcf68bdd684f0/src/ezdxf/entities/dimension.py, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: MIT (ezdxf) }
+meaning: DXF LARGE_RADIAL_DIMENSION entity.
+needs_review: true
+notes: "Harvested from ezdxf only: ACadSharp does not model this DXF type. Type description taken from the ezdxf class docstring or generated from the name; no reference text was found."
+fields:
+  - { name: chord_point, type: point3, default: [ 0, 0, 0 ], meaning: Center_point = def_point from subclass AcDbDimension., source_ref: "group codes 13, 23, 33; ezdxf attribute dxf.chord_point" }
+  - { name: override_center, type: point3, default: [ 0, 0, 0 ], meaning: Override center., source_ref: "group codes 14, 24, 34; ezdxf attribute dxf.override_center; no description in the sources" }
+  - { name: jog_point, type: point3, default: [ 0, 0, 0 ], meaning: Jog point., source_ref: "group codes 15, 25, 35; ezdxf attribute dxf.jog_point; no description in the sources" }
+  - { name: unknown2, type: float, meaning: Unknown2., source_ref: group code 40; ezdxf attribute dxf.unknown2; no description in the sources }

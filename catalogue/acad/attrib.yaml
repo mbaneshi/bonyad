@@ -1,0 +1,14 @@
+code: acad.attrib
+name: ATTRIB
+kind: entity
+base: acad.attribute_base
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf; fields from ezdxf entities/attrib.py", section: AttributeEntity, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/AttributeEntity.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A AttributeEntity entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbAttribute. ACadSharp has no group codes for this class; the fields come from ezdxf's attribute table.
+fields:
+  - { name: align_point, type: point3, nullable: true, meaning: Second alignment point (in OCS) (optional)., source_ref: "group codes 11, 21, 31; ezdxf attribute dxf.align_point" }
+  - { name: elevation, type: length, default: 0, meaning: "Elevation is a legacy feature from R11 and prior, do not use this attribute, store the entity elevation in the z-axis of the vertices. ezdxf does not export the elevation attribute!.", source_ref: group code 38; ezdxf attribute dxf.elevation }
+  - { name: thickness, type: length, default: 0, meaning: "Thickness in extrusion direction, only supported for SHX font in AutoCAD/BricsCAD (optional), can be negative.", source_ref: group code 39; ezdxf attribute dxf.thickness }
+  - { name: extrusion, type: vector3, default: [ 0, 0, 1 ], meaning: Extrusion direction (optional)., source_ref: "group codes 210, 220, 230; ezdxf attribute dxf.extrusion" }

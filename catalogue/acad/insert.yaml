@@ -1,0 +1,19 @@
+code: acad.insert
+name: INSERT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Insert, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Insert.cs#L23, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: One placement of a block definition at a point with scale, rotation and optional row/column array (DXF INSERT).
+notes: Hand-curated to equal the pilot table. DXF INSERT fields not carried by the pilot table (normal 210, has-attributes 66) are listed in GAPS.md. Angles are radians; DXF stores degrees. Column/row counts are DXF 70/71 (MINSERT arrays).
+fields:
+  - { name: block_id, type: ref, ref_to: acad.block_record, meaning: The block definition this entity places; DXF stores the block name., source_ref: group code 2 }
+  - { name: ins, type: point3, meaning: Insertion point (WCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: scale_x, type: ratio, default: 1, check: non_zero, meaning: X scale factor., source_ref: group code 41 }
+  - { name: scale_y, type: ratio, default: 1, check: non_zero, meaning: Y scale factor., source_ref: group code 42 }
+  - { name: scale_z, type: ratio, default: 1, check: non_zero, meaning: Z scale factor., source_ref: group code 43 }
+  - { name: rotation, type: angle, default: 0, meaning: Rotation angle in radians (DXF group 50 stores degrees)., source_ref: group code 50 }
+  - { name: column_count, type: int, default: 1, meaning: Column count of a multiple insert (MINSERT); 1 for a single placement., source_ref: group code 70 }
+  - { name: row_count, type: int, default: 1, meaning: Row count of a multiple insert (MINSERT); 1 for a single placement., source_ref: group code 71 }
+  - { name: column_spacing, type: length, nullable: true, meaning: Column spacing of a multiple insert., source_ref: group code 44 }
+  - { name: row_spacing, type: length, nullable: true, meaning: Row spacing of a multiple insert., source_ref: group code 45 }

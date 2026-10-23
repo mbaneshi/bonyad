@@ -1,0 +1,11 @@
+code: acad.linetype
+name: LTYPE
+kind: symbol
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: LineType, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Tables/LineType.cs#L21, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "A linetype definition (DXF LTYPE table entry): a named dash/dot pattern."
+notes: Hand-curated to equal the pilot table. The dash/dot/text/shape segments of the DXF LTYPE (group 73 count, 49, 74, ...) are not in the pilot table; see GAPS.md.
+fields:
+  - { name: name, type: text, meaning: Linetype name., source_ref: group code 2 }
+  - { name: description, type: text, nullable: true, meaning: Descriptive text of the linetype., source_ref: group code 3 }
+  - { name: pattern_length, type: length, nullable: true, meaning: Total pattern length., source_ref: group code 40 }

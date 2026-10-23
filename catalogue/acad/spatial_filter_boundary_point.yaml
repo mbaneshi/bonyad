@@ -1,0 +1,9 @@
+code: acad.spatial_filter_boundary_point
+name: SpatialFilter.BoundaryPoints
+kind: child
+parent: acad.spatial_filter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: SpatialFilter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/SpatialFilter.cs#L35, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Clip boundary definition point (in OCS). Always 2 or more based on an xref scale of 1 (one row per point, ordered).
+fields:
+  - { name: point, type: point2, meaning: 2D point of the list., source_ref: "count in group code 70; repeated group codes 10, 20" }

@@ -1,0 +1,29 @@
+code: acad.view
+name: VIEW
+kind: symbol
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: View, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Tables/View.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a View entry.
+notes: DXF subclass marker AcDbViewTableRecord.
+fields:
+  - { name: flags, type: int, meaning: "Standard flags. Bit-coded: 16 XrefDependent, 32 XrefResolved, 64 Referenced.", source_ref: group code 70 }
+  - { name: name, type: text, meaning: Specifies the name of the object, source_ref: group code 2 }
+  - { name: height, type: length, meaning: View height (in DCS)., source_ref: group code 40 }
+  - { name: width, type: length, meaning: View width (in DCS)., source_ref: group code 41 }
+  - { name: lens_length, type: length, meaning: View width (in DCS)., source_ref: group code 42 }
+  - { name: front_clipping, type: float, meaning: Front clipping plane (offset from target point)., source_ref: group code 43 }
+  - { name: back_clipping, type: float, meaning: Back clipping plane (offset from target point)., source_ref: group code 44 }
+  - { name: angle, type: angle, meaning: Twist angle. Radians here; DXF stores degrees., source_ref: group code 50 }
+  - { name: view_mode, type: int, meaning: "View mode (see VIEWMODE system variable). Bit-coded: 1 PerspectiveView, 2 FrontClipping, 4 BackClipping, 8 Follow, 16 FrontClippingZ.", source_ref: group code 71 }
+  - { name: is_ucs_associated, type: bool, default: false, meaning: 1 if there is a UCS associated to this view; 0 otherwise., source_ref: group code 72; first in R2000 (ezdxf) }
+  - { name: is_plottable, type: bool, meaning: 1 if the camera is plottable., source_ref: group code 73; first in R2007 (ezdxf) }
+  - { name: render_mode, type: enum, values: [ { value: Optimized2D, meaning: "DXF value 0: Classic 2D" }, { value: Wireframe, meaning: "DXF value 1: Wire frame" }, { value: HiddenLine, meaning: "DXF value 2: Hidden line" }, { value: FlatShaded, meaning: "DXF value 3: Flat shaded" }, { value: GouraudShaded, meaning: "DXF value 4: Gouraud shaded" }, { value: FlatShadedWithWireframe, meaning: "DXF value 5: Flat shaded with wire frame" }, { value: GouraudShadedWithWireframe, meaning: "DXF value 6: Gouraud shaded with wireframe" } ], meaning: View mode (see VIEWMODE system variable), source_ref: group code 281; first in R2000 (ezdxf) }
+  - { name: center, type: point2, meaning: View center point (in DCS), source_ref: "group codes 10, 20" }
+  - { name: direction, type: vector3, meaning: View direction from target (in WCS), source_ref: "group codes 11, 21, 31" }
+  - { name: target, type: point3, meaning: Target point (in WCS), source_ref: "group codes 12, 22, 32" }
+  - { name: visual_style_id, type: ref, nullable: true, ref_to: acad.visualstyle, meaning: Visual style object (optional). Reference; DXF stores the handle., source_ref: group code 348 (stored as a handle); first in R2007 (ezdxf) }
+  - { name: ucs_origin, type: point3, meaning: UCS origin, source_ref: "group codes 110, 120, 130; first in R2000 (ezdxf)" }
+  - { name: ucs_x_axis, type: vector3, meaning: UCS X-axis, source_ref: "group codes 111, 121, 131; first in R2000 (ezdxf)" }
+  - { name: ucs_y_axis, type: vector3, meaning: UCS Y-axis, source_ref: "group codes 112, 122, 132; first in R2000 (ezdxf)" }
+  - { name: ucs_elevation, type: length, meaning: UCS elevation, source_ref: group code 146; first in R2000 (ezdxf) }
+  - { name: ucs_orthographic_type, type: enum, values: [ { value: None, meaning: "DXF value 0: None" }, { value: Top, meaning: "DXF value 1: Top" }, { value: Bottom, meaning: "DXF value 2: Bottom" }, { value: Front, meaning: "DXF value 3: Front" }, { value: Back, meaning: "DXF value 4: Back" }, { value: Left, meaning: "DXF value 5: Left" }, { value: Right, meaning: "DXF value 6: Right" } ], meaning: Orthographic type of UCS, source_ref: group code 79; first in R2000 (ezdxf) }

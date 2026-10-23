@@ -1,0 +1,14 @@
+code: acad.imagedef
+name: IMAGEDEF
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: ImageDefinition, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/ImageDefinition.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The IMAGEDEF entity defines an image file, which can be placed by the Image entity.
+notes: DXF subclass marker AcDbRasterImageDef.
+fields:
+  - { name: class_version, type: int, meaning: Class version, source_ref: group code 90 }
+  - { name: default_size, type: point2, default: [ 1, 1 ], meaning: Default size of one pixel in AutoCAD units, source_ref: "group codes 11, 21" }
+  - { name: file_name, type: text, nullable: true, meaning: File name of image, source_ref: group code 1 }
+  - { name: is_loaded, type: bool, default: true, meaning: Image-is-loaded flag., source_ref: group code 280 }
+  - { name: size, type: point2, meaning: Image size in pixels, source_ref: "group codes 10, 20" }
+  - { name: units, type: enum, values: [ { value: None, meaning: "DXF value 0: None." }, { value: Centimeters, meaning: "DXF value 2: Centimeters." }, { value: Inches, meaning: "DXF value 5: Inches." } ], meaning: Resolution units., source_ref: group code 281 }

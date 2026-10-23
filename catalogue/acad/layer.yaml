@@ -1,0 +1,16 @@
+code: acad.layer
+name: LAYER
+kind: symbol
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Layer, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Tables/Layer.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "A layer: a named visibility, colour, linetype and plot grouping that entities are assigned to (DXF LAYER table entry)."
+notes: Hand-curated to equal the pilot table. DXF layer fields not carried by the pilot table (flags bits other than frozen/locked, true colour 420, plot style 390, material 347) are listed in GAPS.md.
+fields:
+  - { name: name, type: text, meaning: Layer name., source_ref: group code 2 }
+  - { name: color, type: int, nullable: true, meaning: "AutoCAD Color Index of the layer (group 62); in DXF a negative index means the layer is off, which is carried separately in is_off.", source_ref: group code 62 }
+  - { name: linetype_id, type: ref, nullable: true, ref_to: acad.linetype, meaning: Default linetype of the layer; DXF stores the linetype name., source_ref: group code 6 }
+  - { name: lineweight, type: int, nullable: true, meaning: Default lineweight of the layer in 1/100 mm (group 370)., source_ref: group code 370; first in R2000 (ezdxf) }
+  - { name: is_off, type: bool, default: false, meaning: True when the layer is switched off; DXF encodes this as a negative colour index (group 62)., source_ref: "group code 62 (negative = off), ezdxf acdb_layer_table_record comment; ACadSharp Layer.Color remarks" }
+  - { name: is_frozen, type: bool, default: false, meaning: True when the layer is frozen (flag bit 1 of group 70)., source_ref: "group code 70, bit 1 (LayerFlags.Frozen)" }
+  - { name: is_locked, type: bool, default: false, meaning: True when the layer is locked (flag bit 4 of group 70)., source_ref: "group code 70, bit 4 (LayerFlags.Locked)" }
+  - { name: plot, type: bool, default: true, meaning: True when the layer is plotted., source_ref: group code 290; first in R2000 (ezdxf) }

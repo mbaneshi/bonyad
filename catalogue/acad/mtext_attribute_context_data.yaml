@@ -1,0 +1,14 @@
+code: acad.mtext_attribute_context_data
+name: ACDB_MTEXTATTRIBUTEOBJECTCONTEXTDATA_CLASS
+kind: object
+base: acad.object_context_data
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: MTextAttributeObjectContextData, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/MTextAttributeObjectContextData.cs#L13, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents the context data for the multiline text of an AttributeEntity in a specific annotation scale.
+notes: DXF subclass marker AcDbAnnotScaleObjectContextData.
+fields:
+  - { name: alignment_point, type: point3, default: [ 1, 0, 0 ], meaning: Alignment point of the text., source_ref: "group codes 11, 21, 31" }
+  - { name: attachment_point, type: enum, default: TopLeft, values: [ { value: TopLeft, meaning: "DXF value 1: Top left." }, { value: TopCenter, meaning: "DXF value 2: Top center." }, { value: TopRight, meaning: "DXF value 3: Top right." }, { value: MiddleLeft, meaning: "DXF value 4: Middle left." }, { value: MiddleCenter, meaning: "DXF value 5: Middle center." }, { value: MiddleRight, meaning: "DXF value 6: Middle right." }, { value: BottomLeft, meaning: "DXF value 7: Bottom left." }, { value: BottomCenter, meaning: "DXF value 8: Bottom center." }, { value: BottomRight, meaning: "DXF value 9: Bottom right." } ], meaning: Attachment point that defines how the text is aligned relative to the InsertPoint., source_ref: group code 70 }
+  - { name: insert_point, type: point3, default: [ 0, 0, 0 ], meaning: Insert point of the text., source_ref: "group codes 10, 20, 30" }
+  - { name: rotation, type: angle, meaning: "The rotation angle of the text, in radians. Radians here; DXF stores degrees.", source_ref: group code 50 }
+  - { name: value290, type: bool, meaning: Unknown flag stored in the DXF code 290., source_ref: group code 290 }

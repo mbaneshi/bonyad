@@ -1,0 +1,9 @@
+code: acad.field_cad_object
+name: Field.CadObjects
+kind: child
+parent: acad.field
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Field, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Field.cs#L24, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Gets or sets the collection of CAD objects associated with this entity (one row per reference, ordered).
+fields:
+  - { name: cad_object_id, type: ref, ref_to: any, meaning: Reference to one member of the list (CadObject)., source_ref: count in group code 97; repeated group code 331 }

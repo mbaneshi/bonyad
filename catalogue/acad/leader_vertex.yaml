@@ -1,0 +1,9 @@
+code: acad.leader_vertex
+name: Leader.Vertices
+kind: child
+parent: acad.leader
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Leader, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Leader.cs#L148, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Vertices in leader (one row per point, ordered).
+fields:
+  - { name: point, type: point3, meaning: 3D point of the list., source_ref: "count in group code 76; repeated group codes 10, 20, 30" }

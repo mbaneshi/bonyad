@@ -1,0 +1,11 @@
+code: acad.dimension_radius
+name: DIMENSION (DimensionRadius)
+kind: entity
+base: acad.dimension
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DimensionRadius, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/DimensionRadius.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Dimension radius: a variant of the DXF DIMENSION entity, marked by subclass AcDbRadialDimension."
+notes: DXF subclass marker AcDbRadialDimension.
+fields:
+  - { name: angle_vertex, type: point3, meaning: "Definition point for diameter, radius, and angular dimensions(in WCS).", source_ref: "group codes 15, 25, 35" }
+  - { name: leader_length, type: length, meaning: Leader length for radius and diameter dimensions., source_ref: group code 40 }

@@ -1,0 +1,18 @@
+code: acad.underlay_entity
+name: UnderlayEntity
+kind: abstract
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: UnderlayEntity, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/UnderlayEntity.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Common base class for all underlay entities, like PdfUnderlay.
+fields:
+  - { name: contrast, type: int, meaning: Contrast., source_ref: group code 281 }
+  - { name: definition_id, type: ref, nullable: true, ref_to: any, meaning: The AcDbUnderlayDefinition object. Reference; DXF stores the handle., source_ref: group code 340 (stored as a handle) }
+  - { name: fade, type: int, meaning: Fade., source_ref: group code 282 }
+  - { name: flags, type: int, default: 11, meaning: "Underlay display options. Bit-coded: 1 ClippingOn, 2 ShowUnderlay, 4 Monochrome, 8 AdjustForBackground, 16 ClipInsideMode, 11 Default.", source_ref: group code 280 }
+  - { name: insert_point, type: point3, meaning: Insertion point(in WCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230; no description in the sources" }
+  - { name: rotation, type: angle, default: 0, meaning: Specifies the rotation angle for the object. Radians here; DXF stores degrees., source_ref: group code 50 }
+  - { name: x_scale, type: ratio, meaning: X scale factor., source_ref: group code 41 }
+  - { name: y_scale, type: ratio, meaning: Y scale factor., source_ref: group code 42 }
+  - { name: z_scale, type: ratio, meaning: Z scale factor., source_ref: group code 43 }

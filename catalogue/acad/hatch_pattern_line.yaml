@@ -1,0 +1,13 @@
+code: acad.hatch_pattern_line
+name: HatchPattern.Lines
+kind: child
+parent: acad.hatch
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: HatchPattern.Line, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/HatchPattern.Line.cs#L11, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Gets or sets the collection of Line objects (one row per entry, ordered).
+notes: "Source: count in group code 79."
+fields:
+  - { name: angle, type: angle, meaning: Pattern line angle. Radians here; DXF stores degrees., source_ref: group code 53 }
+  - { name: base_point, type: point2, meaning: Pattern line base point., source_ref: "group codes 43, 44" }
+  - { name: dash_lengths, type: array, of: float, meaning: "Gets or sets the dash lengths of the pattern line. A negative value represents a space, zero a dot, and a positive value a line segment.", source_ref: count in group code 79; repeated group code 49 }
+  - { name: offset, type: point2, meaning: Gets or sets the local displacements between lines of the same family., source_ref: "group codes 45, 46" }

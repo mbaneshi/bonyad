@@ -1,0 +1,9 @@
+code: acad.wipeout
+name: WIPEOUT
+kind: entity
+base: acad.cad_wipeout_base
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Wipeout, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Wipeout.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The WIPEOUT entity is a polygonal area that masks underlying objects with the current background color.
+notes: DXF subclass marker AcDbWipeout.
+fields: []

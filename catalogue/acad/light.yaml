@@ -1,0 +1,28 @@
+code: acad.light
+name: LIGHT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: ezdxf attribute tables (DXFAttr) and reference docs, section: Light (DXF LIGHT), url: https://github.com/mozman/ezdxf/blob/7b202613e0d689955b8932a22bcbcf68bdd684f0/src/ezdxf/entities/light.py, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: MIT (ezdxf) }
+meaning: DXF LIGHT entity.
+needs_review: true
+notes: "Harvested from ezdxf only: ACadSharp does not model this DXF type. Type description taken from the ezdxf class docstring or generated from the name; no reference text was found."
+fields:
+  - { name: version, type: int, default: 0, meaning: Version., source_ref: group code 90; ezdxf attribute dxf.version; no description in the sources }
+  - { name: name, type: text, default: "", meaning: Light name., source_ref: group code 1; ezdxf attribute dxf.name }
+  - { name: type, type: int, default: 1, meaning: "Light type: 1 = distant 2 = point 3 = spot.", source_ref: group code 70; ezdxf attribute dxf.type }
+  - { name: status, type: bool, default: true, meaning: Status., source_ref: group code 290; ezdxf attribute dxf.status; no description in the sources }
+  - { name: plot_glyph, type: bool, default: false, meaning: Plot glyph., source_ref: group code 291; ezdxf attribute dxf.plot_glyph; no description in the sources }
+  - { name: intensity, type: float, default: 1, meaning: Intensity., source_ref: group code 40; ezdxf attribute dxf.intensity; no description in the sources }
+  - { name: location, type: point3, meaning: Light position., source_ref: "group codes 10, 20, 30; ezdxf attribute dxf.location" }
+  - { name: target, type: point3, meaning: Target location., source_ref: "group codes 11, 21, 31; ezdxf attribute dxf.target" }
+  - { name: attenuation_type, type: int, default: 2, meaning: "Attenuation type: 0 = None 1 = Inverse Linear 2 = Inverse Square.", source_ref: group code 72; ezdxf attribute dxf.attenuation_type }
+  - { name: use_attenuation_limits, type: bool, default: false, meaning: Use attenuation limits., source_ref: group code 292; ezdxf attribute dxf.use_attenuation_limits; no description in the sources }
+  - { name: attenuation_start_limits, type: float, meaning: Attenuation start limits., source_ref: group code 41; ezdxf attribute dxf.attenuation_start_limits; no description in the sources }
+  - { name: attenuation_end_limits, type: float, meaning: Attenuation end limits., source_ref: group code 42; ezdxf attribute dxf.attenuation_end_limits; no description in the sources }
+  - { name: hotspot_angle, type: angle, meaning: Hotspot angle. Radians here; DXF stores degrees., source_ref: group code 50; ezdxf attribute dxf.hotspot_angle; no description in the sources }
+  - { name: falloff_angle, type: angle, meaning: Falloff angle. Radians here; DXF stores degrees., source_ref: group code 51; ezdxf attribute dxf.falloff_angle; no description in the sources }
+  - { name: cast_shadows, type: bool, default: true, meaning: Cast shadows., source_ref: group code 293; ezdxf attribute dxf.cast_shadows; no description in the sources }
+  - { name: shadow_type, type: int, default: 0, meaning: "Shadow Type: 0 = Ray traced shadows 1 = Shadow maps.", source_ref: group code 73; ezdxf attribute dxf.shadow_type }
+  - { name: shadow_map_size, type: int, meaning: Shadow map size., source_ref: group code 91; ezdxf attribute dxf.shadow_map_size; no description in the sources }
+  - { name: shadow_map_softness, type: int, meaning: Shadow map softness., source_ref: group code 280; ezdxf attribute dxf.shadow_map_softness; no description in the sources }

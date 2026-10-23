@@ -1,0 +1,19 @@
+code: acad.vertex_face_record
+name: VERTEX
+kind: child
+parent: acad.polyface_mesh
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: VertexFaceRecord, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/VertexFaceRecord.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Vertex face record: a variant of the DXF VERTEX entity, marked by subclass AcDbFaceRecord."
+notes: "DXF subclass marker AcDbFaceRecord. Fields of acad.vertex are copied in because a child type cannot have a base (FORMAT.md rule 5); base: acad.vertex."
+fields:
+  - { name: bulge, type: float, default: 0, meaning: Bulge., source_ref: group code 42; no description in the sources }
+  - { name: curve_tangent, type: angle, meaning: Curve fit tangent direction. Radians here; DXF stores degrees., source_ref: group code 50 }
+  - { name: end_width, type: length, default: 0, meaning: Ending width., source_ref: group code 41 }
+  - { name: flags, type: int, meaning: "Vertex flags. Bit-coded: 1 CurveFittingExtraVertex, 2 CurveFitTangent, 4 NotUsed, 8 SplineVertexFromSplineFitting, 16 SplineFrameControlPoint, 32 PolylineVertex3D, 64 PolygonMesh3D, 128 PolyFaceMeshVertex.", source_ref: group code 70 }
+  - { name: location, type: point3, default: [ 0, 0, 0 ], meaning: "Location point (in OCS when 2D, and WCS when 3D).", source_ref: "group codes 10, 20, 30" }
+  - { name: start_width, type: length, default: 0, meaning: Starting width, source_ref: group code 40 }
+  - { name: index1, type: int, meaning: Index 1 of the face., source_ref: group code 71 }
+  - { name: index2, type: int, meaning: Index 2 of the face., source_ref: group code 72 }
+  - { name: index3, type: int, meaning: Index 3 of the face., source_ref: group code 73 }
+  - { name: index4, type: int, meaning: Index 4 of the face., source_ref: group code 74 }

@@ -1,0 +1,10 @@
+code: acad.imagedef_reactor
+name: IMAGEDEF_REACTOR
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: ImageDefinitionReactor, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/ImageDefinitionReactor.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a ImageDefinitionReactor object. This object is for internal use only.
+notes: DXF subclass marker AcDbRasterImageDefReactor.
+fields:
+  - { name: class_version, type: int, default: 2, meaning: Class version 2., source_ref: group code 90 }
+  - { name: image_id, type: ref, nullable: true, ref_to: acad.image, meaning: Object ID for associated image object. Reference; DXF stores the handle., source_ref: group code 330 (stored as a handle) }

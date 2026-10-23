@@ -1,0 +1,11 @@
+code: acad.xline
+name: XLINE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: XLine, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/XLine.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The XLINE entity is a construction line that extents to infinity in both directions.
+notes: DXF subclass marker AcDbXline.
+fields:
+  - { name: direction, type: vector3, meaning: Unit direction vector(in WCS)., source_ref: "group codes 11, 21, 31" }
+  - { name: first_point, type: point3, meaning: First point(in WCS)., source_ref: "group codes 10, 20, 30" }

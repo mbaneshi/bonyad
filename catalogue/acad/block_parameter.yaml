@@ -1,0 +1,12 @@
+code: acad.block_parameter
+name: BlockParameter
+kind: abstract
+base: acad.block_element
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockParameter.cs#L6, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Block parameter (no DXF name).
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbBlockParameter.
+fields:
+  - { name: show_properties, type: bool, default: true, meaning: Show properties., source_ref: group code 280; no description in the sources }
+  - { name: chain_actions, type: bool, default: false, meaning: Chain actions., source_ref: group code 281; no description in the sources }

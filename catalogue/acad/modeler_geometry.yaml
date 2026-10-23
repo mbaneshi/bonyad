@@ -1,0 +1,12 @@
+code: acad.modeler_geometry
+name: ModelerGeometry
+kind: abstract
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: ModelerGeometry, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/ModelerGeometry.cs#L13, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A ModelerGeometry entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbModelerGeometry.
+fields:
+  - { name: modeler_format_version, type: int, meaning: Gets or sets the modeler format version used in the drawing., source_ref: group code 70 }
+  - { name: proprietary_data, type: blob, meaning: Proprietary data. ACIS payload (SAT text in DXF; SAB binary from R2013)., source_ref: group code 1; no description in the sources }

@@ -1,0 +1,11 @@
+code: acad.object_context_data
+name: ObjectContextData
+kind: abstract
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: ObjectContextData, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/ObjectContextData.cs#L7, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Object context data (no DXF name).
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbObjectContextData.
+fields:
+  - { name: version, type: int, default: 3, meaning: Gets or sets the version number of the entity definition., source_ref: group code 70 }
+  - { name: default, type: bool, default: false, meaning: Gets or sets a value indicating whether this instance uses the default setting., source_ref: group code 290 }

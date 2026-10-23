@@ -1,0 +1,12 @@
+code: acad.block_record
+name: BLOCK_RECORD
+kind: symbol
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockRecord, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Tables/BlockRecord.cs#L25, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "A block definition (DXF BLOCK_RECORD): a named container of entities; model space and each paper space are blocks too."
+notes: Hand-curated to equal the pilot table. DXF BLOCK_RECORD fields not carried by the pilot table (explodability 280, scalability 281, preview 310, layout handle 340) are listed in GAPS.md. The base point belongs to the BLOCK entity in DXF (group 10/20/30); the pilot stores it here.
+fields:
+  - { name: name, type: text, meaning: Block name; model and paper space are blocks named *Model_Space and *Paper_Space*., source_ref: group code 2 }
+  - { name: is_layout, type: bool, default: false, meaning: True for the blocks that back a layout (model space or a paper space)., source_ref: group code 340 (layout handle present) of BLOCK_RECORD; ACadSharp BlockRecord.Layout }
+  - { name: insertion_units, type: int, nullable: true, meaning: Block insertion units code (INSUNITS value); null when unset., source_ref: "BLOCK_RECORD group code 70 in ezdxf BlockRecord.units (ACadSharp BlockRecord.Units, UnitsType)" }
+  - { name: base, type: point3, default: [ 0, 0, 0 ], meaning: Base point of the block definition., source_ref: "BLOCK entity group codes 10, 20, 30" }

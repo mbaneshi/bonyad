@@ -1,0 +1,11 @@
+code: acad.solid3d
+name: 3DSOLID
+kind: entity
+base: acad.modeler_geometry
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf; fields from ezdxf entities/acis.py", section: Solid3D, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Solid3D.cs#L14, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: 3DSOLID entity created by an ACIS geometry kernel provided by the Spatial Corp.
+needs_review: true
+notes: DXF subclass marker AcDb3dSolid. ACadSharp has no group codes for this class; the fields come from ezdxf's attribute table.
+fields:
+  - { name: history_id, type: ref, nullable: true, ref_to: any, meaning: Handle to history object., source_ref: group code 350; ezdxf attribute dxf.history_handle }

@@ -1,0 +1,10 @@
+code: acad.dwfunderlay
+name: DWFUNDERLAY
+kind: entity
+base: acad.underlay_entity
+fidelity: faithful
+source: { document: ezdxf attribute tables (DXFAttr) and reference docs, section: DWFUNDERLAY (a PDFUNDERLAY-derived class in ezdxf), url: https://github.com/mozman/ezdxf/blob/7b202613e0d689955b8932a22bcbcf68bdd684f0/src/ezdxf/entities/underlay.py, version: DXF R2018 (AC1032); required DXF version R2000, accessed_on: 2026-10-23, licence: MIT (ezdxf) }
+meaning: "Dwfunderlay: a variant of the DXF PDFUNDERLAY type with the same group codes."
+needs_review: true
+notes: "Same group codes as PDFUNDERLAY; ezdxf defines DWFUNDERLAY as a subclass of the PDFUNDERLAY class with no attribute table of its own. Harvested from ezdxf only: ACadSharp does not model this DXF type."
+fields: []

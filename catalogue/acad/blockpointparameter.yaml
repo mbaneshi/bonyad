@@ -1,0 +1,12 @@
+code: acad.blockpointparameter
+name: BLOCKPOINTPARAMETER
+kind: object
+base: acad.block1pt_parameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockPointParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockPointParameter.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a BLOCKPOINTPARAMETER object, used in AutoCAD to control a position of a point in a dynamic block.
+notes: DXF subclass marker AcDbBlockPointParameter.
+fields:
+  - { name: description, type: text, nullable: true, meaning: Gets or sets the description., source_ref: group code 304 }
+  - { name: label, type: text, nullable: true, meaning: Gets or sets the label text., source_ref: group code 303 }
+  - { name: label_position, type: point3, meaning: Gets or sets the position of label text., source_ref: "group codes 1011, 1021, 1031" }

@@ -1,0 +1,13 @@
+code: acad.rastervariables
+name: RASTERVARIABLES
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: RasterVariables, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/RasterVariables.cs#L16, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A RasterVariables object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbRasterVariables.
+fields:
+  - { name: class_version, type: int, meaning: Class version 0., source_ref: group code 90 }
+  - { name: display_quality, type: enum, default: High, values: [ { value: Draft, meaning: "DXF value 0: Draft quality." }, { value: High, meaning: "DXF value 1: High quality." } ], meaning: Gets or sets the image display quality (screen only)., source_ref: group code 71 }
+  - { name: is_display_frame_shown, type: bool, meaning: Gets or sets if the image frame is shown., source_ref: group code 70 }
+  - { name: units, type: enum, values: [ { value: Unitless, meaning: "DXF value 0: No units." }, { value: Millimeters, meaning: "DXF value 1: Millimeters." }, { value: Centimeters, meaning: "DXF value 2: Centimeters." }, { value: Meters, meaning: "DXF value 3: Meters." }, { value: Kilometers, meaning: "DXF value 4: Kilometers." }, { value: Inches, meaning: "DXF value 5: Inches." }, { value: Feet, meaning: "DXF value 6: Feet." }, { value: Yards, meaning: "DXF value 7: Yards." }, { value: Miles, meaning: "DXF value 8: Miles." } ], meaning: AutoCAD units for inserting images. This is what one AutoCAD unit is equal to for the purpose of inserting and scaling images with an associated resolution., source_ref: group code 72 }

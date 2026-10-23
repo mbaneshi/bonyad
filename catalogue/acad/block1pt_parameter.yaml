@@ -1,0 +1,11 @@
+code: acad.block1pt_parameter
+name: Block1PtParameter
+kind: abstract
+base: acad.block_parameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Block1PtParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/Block1PtParameter.cs#L10, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a dynamic block parameter that is defined by a single point in 3D space.
+notes: DXF subclass marker AcDbBlock1PtParameter.
+fields:
+  - { name: grip_id, type: bigint, meaning: Gets or sets the grip id., source_ref: group code 93 }
+  - { name: location, type: point3, meaning: Location for parameter to be placed in the block., source_ref: "group codes 1010, 1020, 1030" }

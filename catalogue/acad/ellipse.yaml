@@ -1,0 +1,16 @@
+code: acad.ellipse
+name: ELLIPSE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Ellipse, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Ellipse.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The ELLIPSE entity is an elliptic 3D curve defined by the DXF attributes center, the major_axis vector and the extrusion vector.
+notes: DXF subclass marker AcDbEllipse.
+fields:
+  - { name: center, type: point3, default: [ 0, 0, 0 ], meaning: Center point (in WCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: end_parameter, type: float, meaning: End parameter., source_ref: group code 42 }
+  - { name: major_axis_end_point, type: vector3, default: [ 1, 0, 0 ], meaning: "Endpoint of major axis, relative to the center (in WCS).", source_ref: "group codes 11, 21, 31" }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: "The extrusion vector does not establish an OCS, it is just the normal vector of the ellipse plane:.", source_ref: "group codes 210, 220, 230; wording from ezdxf" }
+  - { name: radius_ratio, type: length, meaning: Ratio of minor axis to major axis., source_ref: group code 40 }
+  - { name: start_parameter, type: float, default: 0, meaning: Start parameter., source_ref: group code 41 }
+  - { name: thickness, type: length, default: 0, meaning: Specifies the distance a 2D object is extruded above or below its elevation., source_ref: group code 39 }

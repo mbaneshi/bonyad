@@ -1,0 +1,11 @@
+code: acad.blockbasepointparameter
+name: BLOCKBASEPOINTPARAMETER
+kind: object
+base: acad.block1pt_parameter
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockBasePointParameter, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockBasePointParameter.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Represents a BLOCKBASEPOINTPARAMETER object, used in AutoCAD to control a position of a point in a dynamic block.
+notes: DXF subclass marker AcDbBlockBasepointParameter.
+fields:
+  - { name: point1011, type: point3, meaning: Point1011., source_ref: "group codes 1011, 1021, 1031; no description in the sources" }
+  - { name: point1012, type: point3, meaning: Point1012., source_ref: "group codes 1012, 1022, 1032; no description in the sources" }

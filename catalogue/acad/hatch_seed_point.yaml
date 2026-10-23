@@ -1,0 +1,9 @@
+code: acad.hatch_seed_point
+name: Hatch.SeedPoints
+kind: child
+parent: acad.hatch
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Hatch, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Hatch.cs#L129, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Seed points codes (in OCS) (one row per point, ordered).
+fields:
+  - { name: point, type: point2, meaning: 2D point of the list., source_ref: "count in group code 98; repeated group codes 10, 20" }

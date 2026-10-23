@@ -1,0 +1,22 @@
+code: acad.loftedsurface
+name: LOFTEDSURFACE
+kind: entity
+base: acad.surface
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf; fields from ezdxf entities/acis.py", section: LoftedSurface, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/LoftedSurface.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A LoftedSurface entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbLoftedSurface. ACadSharp has no group codes for this class; the fields come from ezdxf's attribute table.
+fields:
+  - { name: start_draft_angle, type: float, default: 0, meaning: Start draft angle., source_ref: group code 41; ezdxf attribute dxf.start_draft_angle; no description in the sources }
+  - { name: end_draft_angle, type: float, default: 0, meaning: End draft angle., source_ref: group code 42; ezdxf attribute dxf.end_draft_angle; no description in the sources }
+  - { name: start_draft_magnitude, type: float, default: 0, meaning: Start draft magnitude., source_ref: group code 43; ezdxf attribute dxf.start_draft_magnitude; no description in the sources }
+  - { name: end_draft_magnitude, type: float, default: 0, meaning: End draft magnitude., source_ref: group code 44; ezdxf attribute dxf.end_draft_magnitude; no description in the sources }
+  - { name: arc_length_parameterization, type: bool, default: false, meaning: Bool., source_ref: group code 290; ezdxf attribute dxf.arc_length_parameterization }
+  - { name: no_twist, type: bool, default: true, meaning: True/false., source_ref: group code 291; ezdxf attribute dxf.no_twist }
+  - { name: align_direction, type: bool, default: true, meaning: Bool., source_ref: group code 292; ezdxf attribute dxf.align_direction }
+  - { name: simple_surfaces, type: bool, default: true, meaning: Bool., source_ref: group code 293; ezdxf attribute dxf.simple_surfaces }
+  - { name: closed_surfaces, type: bool, default: false, meaning: Bool., source_ref: group code 294; ezdxf attribute dxf.closed_surfaces }
+  - { name: solid, type: bool, default: false, meaning: True/false., source_ref: group code 295; ezdxf attribute dxf.solid }
+  - { name: ruled_surface, type: bool, default: false, meaning: Bool., source_ref: group code 296; ezdxf attribute dxf.ruled_surface }
+  - { name: virtual_guide, type: bool, default: false, meaning: Bool., source_ref: group code 297; ezdxf attribute dxf.virtual_guide }

@@ -1,0 +1,48 @@
+code: acad.viewport
+name: VIEWPORT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Viewport, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Viewport.cs#L21, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The VIEWPORT entity is a window from a paperspace layout to the modelspace.
+notes: DXF subclass marker AcDbViewport.
+fields:
+  - { name: active_status, type: int, default: 1, meaning: Gets or sets the active status code., source_ref: group code 68 }
+  - { name: ambient_light_color, type: int, nullable: true, meaning: "Ambient light color.Write only if not black color. as an AutoCAD Color Index (0 ByBlock, 256 ByLayer, 1 to 255 index, negative = off).", source_ref: group code 63 }
+  - { name: ambient_light_color_true, type: int, nullable: true, meaning: Ambient light color.Write only if not black color. as a 24-bit true colour (0x00RRGGBB); null when an index colour is used., source_ref: group code 421 }
+  - { name: ambient_light_color_book, type: text, nullable: true, meaning: "Ambient light color.Write only if not black color.: name of the colour-book colour, when one is used.", source_ref: group code 431 }
+  - { name: back_clip_plane, type: float, meaning: Back clip plane Z value., source_ref: group code 44 }
+  - { name: boundary_id, type: ref, nullable: true, ref_to: any, meaning: Hard-pointer ID/handle to entity that serves as the viewport's clipping boundary (only present if viewport is non-rectangular). Reference; DXF stores the handle., source_ref: group code 340 (stored as a handle) }
+  - { name: brightness, type: float, meaning: View brightness, source_ref: group code 141 }
+  - { name: center, type: point3, meaning: Center point(in WCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: circle_zoom_percent, type: int, meaning: Circle zoom percent, source_ref: group code 72 }
+  - { name: contrast, type: float, meaning: View contrast, source_ref: group code 142 }
+  - { name: default_lighting_type, type: enum, values: [ { value: OneDistantLight, meaning: "DXF value 0: One distant light." }, { value: TwoDistantLights, meaning: "DXF value 1: Two distant lights." } ], meaning: Default lighting type., source_ref: group code 282 }
+  - { name: display_ucs_icon, type: bool, meaning: Display UCS icon at UCS origin flag, source_ref: group code 74 }
+  - { name: elevation, type: length, meaning: Viewport elevation, source_ref: group code 146 }
+  - { name: front_clip_plane, type: float, meaning: Front clip plane Z value., source_ref: group code 43 }
+  - { name: grid_spacing, type: point2, meaning: Grid spacing, source_ref: "group codes 15, 25" }
+  - { name: height, type: length, meaning: Height in paper space units., source_ref: group code 41 }
+  - { name: id, type: int, meaning: Viewport ID., source_ref: group code 69 }
+  - { name: lens_length, type: length, meaning: Perspective lens length, source_ref: group code 42 }
+  - { name: major_grid_line_frequency, type: int, meaning: Frequency of major grid lines compared to minor grid lines, source_ref: group code 61 }
+  - { name: render_mode, type: enum, values: [ { value: Optimized2D, meaning: "DXF value 0: Classic 2D" }, { value: Wireframe, meaning: "DXF value 1: Wire frame" }, { value: HiddenLine, meaning: "DXF value 2: Hidden line" }, { value: FlatShaded, meaning: "DXF value 3: Flat shaded" }, { value: GouraudShaded, meaning: "DXF value 4: Gouraud shaded" }, { value: FlatShadedWithWireframe, meaning: "DXF value 5: Flat shaded with wire frame" }, { value: GouraudShadedWithWireframe, meaning: "DXF value 6: Gouraud shaded with wireframe" } ], meaning: Render mode, source_ref: group code 281 }
+  - { name: shade_plot_mode, type: enum, values: [ { value: AsDisplayed, meaning: "DXF value 0: As displayed." }, { value: Wireframe, meaning: "DXF value 1: Wireframe." }, { value: Hidden, meaning: "DXF value 2: Hidden." }, { value: Rendered, meaning: "DXF value 3: Rendered." } ], meaning: Orthographic type of UCS, source_ref: group code 170 }
+  - { name: snap_angle, type: angle, meaning: Snap angle. Radians here; DXF stores degrees., source_ref: group code 50 }
+  - { name: snap_base, type: point2, meaning: Snap base point, source_ref: "group codes 13, 23" }
+  - { name: snap_spacing, type: point2, meaning: Snap spacing, source_ref: "group codes 14, 24" }
+  - { name: status, type: int, meaning: "Viewport status. Bit-coded: 1 PerspectiveMode, 2 FrontClipping, 4 BackClipping, 8 UcsFollow, 16 FrontClipNotAtEye, 32 UcsIconVisibility, 64 UcsIconAtOrigin, 128 FastZoom, 256 SnapMode, 512 GridMode, 1024 IsometricSnapStyle, 2048 HidePlotMode, 4096 IsoPairTop, 8192 IsoPairRight, 16384 ViewportZoomLocking, 32768 CurrentlyAlwaysEnabled, 65536 NonRectangularClipping, 131072 ViewportOff, 262144 DisplayGridBeyondDrawingLimits, 524288 AdaptiveGridDisplay, 1048576 SubdivisionGridBelowSpacing.", source_ref: group code 90 }
+  - { name: style_sheet_name, type: text, nullable: true, meaning: Plot style sheet name assigned to this viewport, source_ref: group code 1 }
+  - { name: twist_angle, type: angle, meaning: View twist angle. Radians here; DXF stores degrees., source_ref: group code 51 }
+  - { name: ucs_origin, type: point3, meaning: UCS origin, source_ref: "group codes 110, 120, 130" }
+  - { name: ucs_orthographic_type, type: enum, values: [ { value: None, meaning: "DXF value 0: None" }, { value: Top, meaning: "DXF value 1: Top" }, { value: Bottom, meaning: "DXF value 2: Bottom" }, { value: Front, meaning: "DXF value 3: Front" }, { value: Back, meaning: "DXF value 4: Back" }, { value: Left, meaning: "DXF value 5: Left" }, { value: Right, meaning: "DXF value 6: Right" } ], meaning: Orthographic type of UCS, source_ref: group code 79 }
+  - { name: ucs_per_viewport, type: bool, meaning: UCS per viewport flag, source_ref: group code 71 }
+  - { name: ucs_x_axis, type: vector3, default: [ 1, 0, 0 ], meaning: UCS X-axis, source_ref: "group codes 111, 121, 131" }
+  - { name: ucs_y_axis, type: vector3, default: [ 0, 1, 0 ], meaning: UCS Y-axis, source_ref: "group codes 112, 122, 132" }
+  - { name: use_default_lighting, type: bool, meaning: Default lighting flag.On when no user lights are specified., source_ref: group code 292 }
+  - { name: view_center, type: point2, meaning: View center point(in DCS)., source_ref: "group codes 12, 22" }
+  - { name: view_direction, type: vector3, default: [ 0, 0, 1 ], meaning: View direction vector(in WCS), source_ref: "group codes 16, 26, 36" }
+  - { name: view_height, type: length, meaning: View height(in model space units)., source_ref: group code 45 }
+  - { name: view_target, type: point3, meaning: View target point(in WCS), source_ref: "group codes 17, 27, 37" }
+  - { name: visual_style_id, type: ref, nullable: true, ref_to: acad.visualstyle, meaning: Visual style. Reference; DXF stores the handle., source_ref: group code 348 (stored as a handle) }
+  - { name: width, type: length, meaning: Width in paper space units., source_ref: group code 40 }

@@ -1,0 +1,26 @@
+code: acad.hatch
+name: HATCH
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Hatch, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Hatch.cs#L19, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The HATCH entity fills a closed area defined by one or more boundary paths by a hatch pattern, a solid fill, or a gradient fill.
+notes: DXF subclass marker AcDbHatch.
+fields:
+  - { name: elevation, type: length, meaning: The current elevation of the object., source_ref: group code 30 }
+  - { name: gradient_color_enabled, type: bool, default: false, meaning: Indicates solid hatch or gradient, source_ref: group code 450 }
+  - { name: gradient_color_angle, type: float, meaning: "Rotation angle in radians for gradients (default = 0, 0)", source_ref: group code 460 }
+  - { name: gradient_color_shift, type: float, meaning: "Gradient definition; corresponds to the Centered option on the Gradient Tab of the Boundary Hatch and Fill dialog box. Each gradient has two definitions, shifted and non-shifted. A Shift value describes the blend of the two definitions that should be used. A value of 0.0 means only the non-shifted version should be used, and a value of 1.0 means that only the shifted version should be used.", source_ref: group code 461 }
+  - { name: gradient_color_is_single_color_gradient, type: bool, meaning: Records how colors were defined and is used only by dialog code, source_ref: group code 452 }
+  - { name: gradient_color_color_tint, type: float, meaning: "Color tint value used by dialog code (default = 0, 0; range is 0.0 to 1.0). The color tint value is a gradient color and controls the degree of tint in the dialog when the Hatch group code 452 is set to 1.", source_ref: group code 462 }
+  - { name: gradient_color_name, type: text, meaning: Name of the gradient, source_ref: group code 470 }
+  - { name: is_associative, type: bool, meaning: Associativity flag., source_ref: group code 71 }
+  - { name: is_double, type: bool, meaning: Hatch pattern double flag (pattern fill only), source_ref: group code 77 }
+  - { name: is_solid, type: bool, meaning: Solid fill flag, source_ref: group code 70 }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: Normal., source_ref: "group codes 210, 220, 230; no description in the sources" }
+  - { name: pattern_name, type: text, meaning: Name for this pattern., source_ref: group code 2 }
+  - { name: pattern_angle, type: angle, meaning: Hatch pattern angle (pattern fill only). Radians here; DXF stores degrees., source_ref: group code 52 }
+  - { name: pattern_scale, type: ratio, meaning: Hatch pattern scale or spacing(pattern fill only)., source_ref: group code 41 }
+  - { name: pattern_type, type: enum, values: [ { value: PatternFill, meaning: "DXF value 0: Pattern fill." }, { value: SolidFill, meaning: "DXF value 1: Solid fill." }, { value: Custom, meaning: "DXF value 2: Custom hatch pattern from a pattern file." } ], meaning: Hatch pattern type, source_ref: group code 76 }
+  - { name: pixel_size, type: float, meaning: Pixel size used to determine the density to perform various intersection and ray casting operations in hatch pattern computation for associative hatches and hatches created with the Flood method of hatching, source_ref: group code 47 }
+  - { name: style, type: enum, default: Normal, values: [ { value: Normal, meaning: 'DXF value 0: Hatch "odd parity" area.' }, { value: Outer, meaning: "DXF value 1: Hatch outermost area only." }, { value: Ignore, meaning: "DXF value 2: Hatch through entire area." } ], meaning: Hatch style., source_ref: group code 75 }

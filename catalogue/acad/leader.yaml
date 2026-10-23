@@ -1,0 +1,22 @@
+code: acad.leader
+name: LEADER
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: Leader, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/Leader.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The LEADER entity represents a pointer line, made up of one or more vertices (or spline fit points) and an arrowhead.
+notes: DXF subclass marker AcDbLeader.
+fields:
+  - { name: annotation_offset, type: point3, default: [ 0, 0, 0 ], meaning: Offset of last leader vertex from annotation placement point., source_ref: "group codes 213, 223, 233" }
+  - { name: arrow_head_enabled, type: bool, meaning: Arrowhead flag., source_ref: group code 71 }
+  - { name: associated_annotation_id, type: ref, nullable: true, ref_to: any, meaning: "Hard reference to associated annotation (mtext, tolerance, or insert entity). Reference; DXF stores the handle.", source_ref: group code 340 (stored as a handle) }
+  - { name: block_offset, type: point3, default: [ 0, 0, 0 ], meaning: Offset of last leader vertex from block reference insertion point., source_ref: "group codes 212, 222, 232" }
+  - { name: creation_type, type: enum, default: CreatedWithoutAnnotation, values: [ { value: CreatedWithTextAnnotation, meaning: "DXF value 0: Created with text annotation" }, { value: CreatedWithToleranceAnnotation, meaning: "DXF value 1: Created with tolerance annotation" }, { value: CreatedWithBlockReferenceAnnotation, meaning: "DXF value 2: Created with block reference annotation" }, { value: CreatedWithoutAnnotation, meaning: "DXF value 3: Created without any annotation" } ], meaning: "Leader creation flag, AssociatedAnnotation type.", source_ref: group code 73 }
+  - { name: has_hookline, type: bool, meaning: Hook line flag., source_ref: group code 75 }
+  - { name: hook_line_direction, type: enum, values: [ { value: Opposite, meaning: "DXF value 0: Hook line (or end of tangent for a splined leader) is the opposite direction from the horizontal vector." }, { value: Same, meaning: "DXF value 1: Hook line (or end of tangent for a splined leader) is the same direction as horizontal vector." } ], meaning: Hook line direction., source_ref: group code 74 }
+  - { name: horizontal_direction, type: vector3, default: [ 1, 0, 0 ], meaning: Horizontal direction for leader., source_ref: "group codes 211, 221, 231" }
+  - { name: normal, type: vector3, default: [ 0, 0, 1 ], meaning: "Extrusion vector? default is (0, 0, 1).", source_ref: "group codes 210, 220, 230; wording from ezdxf" }
+  - { name: path_type, type: enum, values: [ { value: StraightLineSegments, meaning: "DXF value 0: Draws the leader line as a set of straight line segments." }, { value: Spline, meaning: "DXF value 1: Draws the leader line as a spline." } ], meaning: Leader Path Type., source_ref: group code 72 }
+  - { name: style_id, type: ref, nullable: true, ref_to: acad.dimstyle, meaning: Dimension Style. Reference; DXF stores the name., source_ref: group code 3 (stored as a name) }
+  - { name: text_height, type: length, meaning: Text annotation height., source_ref: group code 40 }
+  - { name: text_width, type: length, meaning: Text annotation width., source_ref: group code 41 }

@@ -1,0 +1,9 @@
+code: acad.blockpolarstretchaction_boundary
+name: BlockPolarStretchAction.Boundary
+kind: child
+parent: acad.blockpolarstretchaction
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: BlockPolarStretchAction, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/Evaluations/BlockPolarStretchAction.cs#L34, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Boundary (one row per point, ordered).
+fields:
+  - { name: point, type: point2, meaning: 2D point of the list., source_ref: "count in group code 73; repeated group codes 1011, 1021" }

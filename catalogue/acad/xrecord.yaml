@@ -1,0 +1,9 @@
+code: acad.xrecord
+name: XRECORD
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: XRecord, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/XRecrod.cs#L18, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: Important class for storing application defined data in DXF files.
+notes: DXF subclass marker AcDbXrecord.
+fields:
+  - { name: cloning_flags, type: int, meaning: "Duplicate record cloning flag (determines how to merge duplicate entries). Bit-coded: 1 KeepExisting, 2 UseClone, 3 XrefName, 4 Name, 5 UnmangleName.", source_ref: group code 280 }

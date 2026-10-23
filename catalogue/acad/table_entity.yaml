@@ -1,0 +1,28 @@
+code: acad.table_entity
+name: ACAD_TABLE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: TableEntity, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/TableEntity.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A TableEntity entity.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbTable. Fields of acad.insert are copied in (the DXF entity repeats those group codes) instead of deriving from it, so the migrated table acad.insert keeps exactly its fields.
+fields:
+  - { name: block_id, type: ref, ref_to: acad.block_record, meaning: The block definition this entity places; DXF stores the block name., source_ref: group code 2 }
+  - { name: ins, type: point3, meaning: Insertion point (WCS)., source_ref: "group codes 10, 20, 30" }
+  - { name: scale_x, type: ratio, default: 1, check: non_zero, meaning: X scale factor., source_ref: group code 41 }
+  - { name: scale_y, type: ratio, default: 1, check: non_zero, meaning: Y scale factor., source_ref: group code 42 }
+  - { name: scale_z, type: ratio, default: 1, check: non_zero, meaning: Z scale factor., source_ref: group code 43 }
+  - { name: rotation, type: angle, default: 0, meaning: Rotation angle in radians (DXF group 50 stores degrees)., source_ref: group code 50 }
+  - { name: column_count, type: int, default: 1, meaning: Column count of a multiple insert (MINSERT); 1 for a single placement., source_ref: group code 70 }
+  - { name: row_count, type: int, default: 1, meaning: Row count of a multiple insert (MINSERT); 1 for a single placement., source_ref: group code 71 }
+  - { name: column_spacing, type: length, nullable: true, meaning: Column spacing of a multiple insert., source_ref: group code 44 }
+  - { name: row_spacing, type: length, nullable: true, meaning: Row spacing of a multiple insert., source_ref: group code 45 }
+  - { name: horizontal_direction, type: vector3, meaning: Horizontal direction vector, source_ref: "group codes 11, 21, 31" }
+  - { name: override_border_color, type: bool, meaning: Flag for an override of border color., source_ref: group code 94 }
+  - { name: override_border_line_weight, type: bool, meaning: Flag for an override of border line weight., source_ref: group code 95 }
+  - { name: override_border_visibility, type: bool, meaning: Flag for an override of border visibility., source_ref: group code 96 }
+  - { name: override_flag, type: bool, meaning: Flag for an override., source_ref: group code 93 }
+  - { name: style_id, type: ref, nullable: true, ref_to: acad.tablestyle, meaning: Gets or sets the table style associated with this object. Reference; DXF stores the handle., source_ref: group code 342 (stored as a handle) }
+  - { name: value_flag, type: int, meaning: Flag for table value., source_ref: group code 90 }
+  - { name: version, type: int, meaning: Table data version, source_ref: group code 280 }

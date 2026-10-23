@@ -1,0 +1,10 @@
+code: acad.dictionary
+name: DICTIONARY
+kind: object
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: CadDictionary, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/CadDictionary.cs#L20, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: The DICTIONARY entity is a general storage entity.
+notes: DXF subclass marker AcDbDictionary.
+fields:
+  - { name: clonning_flags, type: int, meaning: "Duplicate record cloning flag (determines how to merge duplicate entries). Bit-coded: 1 KeepExisting, 2 UseClone, 3 XrefName, 4 Name, 5 UnmangleName.", source_ref: group code 281 }
+  - { name: hard_owner_flag, type: bool, default: false, meaning: Indicates that elements of the dictionary are to be treated as hard-owned., source_ref: group code 280 }

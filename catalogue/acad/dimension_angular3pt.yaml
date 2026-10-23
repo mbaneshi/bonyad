@@ -1,0 +1,12 @@
+code: acad.dimension_angular3pt
+name: DIMENSION (DimensionAngular3Pt)
+kind: entity
+base: acad.dimension
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: DimensionAngular3Pt, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Entities/DimensionAngular3Pt.cs#L17, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: "Dimension angular3pt: a variant of the DXF DIMENSION entity, marked by subclass AcDb3PointAngularDimension."
+notes: DXF subclass marker AcDb3PointAngularDimension.
+fields:
+  - { name: angle_vertex, type: point3, meaning: "Definition point for diameter, radius, and angular dimensions (in WCS).", source_ref: "group codes 15, 25, 35" }
+  - { name: first_point, type: point3, meaning: Definition point for linear and angular dimensions (in WCS)., source_ref: "group codes 13, 23, 33" }
+  - { name: second_point, type: point3, meaning: Definition point for linear and angular dimensions (in WCS), source_ref: "group codes 14, 24, 34" }

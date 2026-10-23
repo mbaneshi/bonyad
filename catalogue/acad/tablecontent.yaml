@@ -1,0 +1,11 @@
+code: acad.tablecontent
+name: TABLECONTENT
+kind: object
+base: acad.linked_data
+fidelity: faithful
+source: { document: "ACadSharp (DxfCodeValue attributes), cross-checked with ezdxf", section: TableContent, url: https://github.com/DomCR/ACadSharp/blob/29137f3adaf75ddebd532179eda1e811525ca574/src/ACadSharp/Objects/TableContent.cs#L15, version: DXF R2018 (AC1032), accessed_on: 2026-10-23, licence: "MIT (ACadSharp, ezdxf)" }
+meaning: A TableContent object.
+needs_review: true
+notes: No source gives a description of this type; the meaning is a placeholder derived from the class name. DXF subclass marker AcDbTableContent.
+fields:
+  - { name: style_id, type: ref, nullable: true, ref_to: acad.tablestyle, meaning: Style. Reference; DXF stores the handle., source_ref: group code 340 (stored as a handle); no description in the sources }
