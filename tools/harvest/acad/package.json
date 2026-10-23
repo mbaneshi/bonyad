@@ -1,0 +1,16 @@
+{
+  "name": "bonyad-harvest-acad",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "harvest": "bun run src/build.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "yaml": "2.8.1",
+    "zod": "4.1.5"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.3"
+  }
+}
