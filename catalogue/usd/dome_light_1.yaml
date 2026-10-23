@@ -29,15 +29,15 @@ fields:
     source_ref: token inputs:texture:format
     values:
       - value: automatic
-        meaning: The token "automatic" (the schema gives no per-value description).
+        meaning: Tries to determine the layout from the file itself.
       - value: latlong
-        meaning: The token "latlong" (the schema gives no per-value description).
+        meaning: Latitude as X, longitude as Y.
       - value: mirroredBall
-        meaning: The token "mirroredBall" (the schema gives no per-value description).
+        meaning: An image of the environment reflected in a sphere, using an implicitly orthogonal projection.
       - value: angular
-        meaning: The token "angular" (the schema gives no per-value description).
+        meaning: Similar to mirroredBall but the radial dimension is mapped linearly to the angle, providing better sampling at the edges.
       - value: cubeMapVerticalCross
-        meaning: The token "cubeMapVerticalCross" (the schema gives no per-value description).
+        meaning: A cube map with faces laid out as a vertical cross.
   - name: portals
     type: ref
     nullable: true
@@ -56,10 +56,10 @@ fields:
     source_ref: uniform token poleAxis
     values:
       - value: scene
-        meaning: The token "scene" (the schema gives no per-value description).
+        meaning: The dome light's top pole is aligned with the stage's up axis.
       - value: Y
-        meaning: The token "Y" (the schema gives no per-value description).
+        meaning: The dome light's top pole is aligned with the +Y axis.
       - value: Z
-        meaning: The token "Z" (the schema gives no per-value description).
+        meaning: The dome light's top pole is aligned with the +Z axis.
 needs_review: true
 notes: "Defined in pxr/usd/usdLux/schema.usda (module usdLux). Review: class name ends in _N; it looks like a versioned variant of another schema but the file does not say so; property light:shaderId has no doc."

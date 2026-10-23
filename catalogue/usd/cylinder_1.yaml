@@ -20,12 +20,12 @@ fields:
   - name: radius_top
     type: float
     default: 1
-    meaning: "e. Varying: may carry time samples (animatable)."
+    meaning: "The radius of the top of the cylinder - i.e. the face located along the positive axis. Varying: may carry time samples (animatable)."
     source_ref: double radiusTop
   - name: radius_bottom
     type: float
     default: 1
-    meaning: "e. Varying: may carry time samples (animatable)."
+    meaning: "The radius of the bottom of the cylinder - i.e. the face point located along the negative axis. Varying: may carry time samples (animatable)."
     source_ref: double radiusBottom
   - name: axis
     type: enum

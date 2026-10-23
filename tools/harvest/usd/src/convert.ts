@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { asString, asStringList, dictGet, findMeta, type Layer, type Prim, type Property, type Value } from "./usda.ts";
 import { EntrySchema, type Entry, type Field } from "./model.ts";
-import { cleanDoc, sentences, snake } from "./text.ts";
+import { cleanDoc, maxTable, sentences, shortTable, snake } from "./text.ts";
 
 export const Provenance = z.object({
   repo: z.string(),
@@ -131,7 +131,8 @@ function defaultFrom(v: Value | undefined, type: string): Field["default"] | und
 export function valueMeanings(doc: string | undefined, tokens: string[]): { value: string; meaning: string }[] {
   const meanings = new Map<string, string>();
   if (doc) {
-    const bullet = /^\s*(?:[-*]\s+)?[_`]{1,2}([A-Za-z0-9]+(?:_[A-Za-z0-9]+)*)[_`]{1,2}\s*:\s*(.*)$/;
+    // "- name: text" (list bullet, no markup) or "_name_: text" / "`name`: text" (markup, bullet optional)
+    const bullet = /^\s*(?:[-*]\s+(?:[_`]{0,2})|[_`]{1,2})([A-Za-z0-9]+(?:_[A-Za-z0-9]+)*)[_`]{0,2}\s*:\s*(.*)$/;
     let cur: string | undefined;
     let buf = "";
     const flush = () => {
@@ -181,7 +182,7 @@ export function convertModules(modules: ModuleInput[], prov: Provenance): { entr
         continue;
       }
       if (classes.has(prim.name)) throw new Error(`duplicate class name ${prim.name} (${mod.path})`);
-      classes.set(prim.name, { prim, module: mod, code: `usd.${snake(prim.name)}`, inherits: inheritsOf(prim), isApi: false });
+      classes.set(prim.name, { prim, module: mod, code: `usd.${shortTable(snake(prim.name), maxTable("usd"))}`, inherits: inheritsOf(prim), isApi: false });
     }
   }
   const codes = new Set<string>();
@@ -313,7 +314,7 @@ export function convertModules(modules: ModuleInput[], prov: Provenance): { entr
       }
       const sref = `${prop.variability === "varying" ? "" : prop.variability + " "}${prop.type} ${srcName}`;
       if (m.shape === "child") {
-        const ccode = `usd.${snake(name)}_${snake(prop.name)}`;
+        const ccode = `usd.${shortTable(`${c.code.slice(4)}_${snake(prop.name)}`, maxTable("usd"))}`;
         if (codes.has(ccode)) throw new Error(`child code collision ${ccode}`);
         codes.add(ccode);
         const cNotes = ["Array attribute modelled as ordered child rows (format rule 5); element order is the array order."];
@@ -362,7 +363,11 @@ export function convertModules(modules: ModuleInput[], prov: Provenance): { entr
       }
       if (prop.type.startsWith("asset")) f.meaning += " Holds an asset path.";
       if (prop.type === "timecode") f.meaning += " Holds a time code.";
-      if (dflt !== undefined) f.default = dflt;
+      if (dflt !== undefined && f.type === "array") {
+        // format v0: arrays take no default; keep the stated fallback in the text and make the column nullable
+        f.meaning += ` Fallback value in schema.usda: ${JSON.stringify(dflt)}.`;
+        f.nullable = true;
+      } else if (dflt !== undefined) f.default = dflt;
       else f.nullable = true;
       if (prop.value?.t === "id" && /inf|nan/.test(prop.value.v)) {
         f.meaning += ` Fallback value is ${prop.value.v}.`;
@@ -388,5 +393,35 @@ export function convertModules(modules: ModuleInput[], prov: Provenance): { entr
     entries.push(EntrySchema.parse(entry));
     for (const ch of children) entries.push(EntrySchema.parse(ch));
   }
+  flattenOrphanChildren(entries, gaps);
   return { entries, gaps };
+}
+
+/**
+ * A child type needs a parent with a table, but an abstract class without fields has none (format rule 8). The array
+ * attributes such a class declares are therefore folded into it as plain flat arrays of floats, which turns it into a
+ * shared table for its subclasses. The flattening is lossy in structure (x,y,z triples are consecutive), so it is
+ * recorded in the field text, the notes and the gap log.
+ */
+export function flattenOrphanChildren(entries: Entry[], gaps: Gap[]): void {
+  const byCode = new Map(entries.map((e) => [e.code, e]));
+  const orphans = (e: Entry) => e.kind === "child" && e.parent && (() => { const p = byCode.get(e.parent!); return p && p.kind === "abstract" && p.fields.length === 0; })();
+  for (const ch of entries.filter(orphans)) {
+    const parent = byCode.get(ch.parent!)!;
+    const v = ch.fields[0]!;
+    const prop = ch.name.split(".").slice(1).join(".");
+    const per = v.type === "point3" || v.type === "vector3" ? 3 : v.type === "point2" ? 2 : 1;
+    parent.fields.push({
+      name: snake(prop),
+      type: "array",
+      of: v.of ?? (per === 1 && v.type !== "array" ? (v.type as Field["of"]) : "float"),
+      nullable: true,
+      meaning: `${ch.meaning.replace(/^One element of the ordered /, "The ordered ")}${per > 1 ? ` Stored flat: ${per} consecutive floats per element.` : ""}`,
+      ...(v.source_ref ? { source_ref: v.source_ref } : {}),
+    });
+    parent.needs_review = true;
+    parent.notes = `${parent.notes ?? ""} Review: array attribute ${prop} is stored as a flat float array because an abstract class without fields has no table to own child rows.`.trim();
+    gaps.push({ where: `${ch.code}`, what: `array of ${v.type} folded into ${parent.code}.${snake(prop)} as a flat float array (child rows need a tabled parent)` });
+    entries.splice(entries.indexOf(ch), 1);
+  }
 }

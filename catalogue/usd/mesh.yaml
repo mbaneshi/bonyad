@@ -37,7 +37,7 @@ fields:
       - value: bilinear
         meaning: Subdivision reduces all faces to quads (topologically similar to "catmullClark"); interpolation of point data is bilinear
       - value: none
-        meaning: e.
+        meaning: No subdivision, i.e. a simple polygonal mesh; interpolation of point data is linear
   - name: interpolate_boundary
     type: enum
     default: edgeAndCorner
@@ -80,38 +80,38 @@ fields:
         meaning: The token "smooth" (the schema gives no per-value description).
   - name: hole_indices
     type: array
-    default: []
-    meaning: "e. Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "The indices of all faces that should be treated as holes, i.e. made invisible. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: int[] holeIndices
     of: int
   - name: corner_indices
     type: array
-    default: []
-    meaning: "The indices of points for which a corresponding sharpness value is specified in cornerSharpnesses (so the size of this array must match that of cornerSharpnesses). Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "The indices of points for which a corresponding sharpness value is specified in cornerSharpnesses (so the size of this array must match that of cornerSharpnesses). Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: int[] cornerIndices
     of: int
   - name: corner_sharpnesses
     type: array
-    default: []
-    meaning: "The sharpness values associated with a corresponding set of points specified in cornerIndices (so the size of this array must match that of cornerIndices). Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "The sharpness values associated with a corresponding set of points specified in cornerIndices (so the size of this array must match that of cornerIndices). Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: float[] cornerSharpnesses
     of: float
   - name: crease_indices
     type: array
-    default: []
-    meaning: "The indices of points grouped into sets of successive pairs that identify edges to be creased. Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "The indices of points grouped into sets of successive pairs that identify edges to be creased. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: int[] creaseIndices
     of: int
   - name: crease_lengths
     type: array
-    default: []
-    meaning: "The length of this array specifies the number of creases (sets of adjacent sharpened edges) on the mesh. Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "The length of this array specifies the number of creases (sets of adjacent sharpened edges) on the mesh. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: int[] creaseLengths
     of: int
   - name: crease_sharpnesses
     type: array
-    default: []
-    meaning: "The per-crease or per-edge sharpness values for all creases. Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "The per-crease or per-edge sharpness values for all creases. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: float[] creaseSharpnesses
     of: float
 notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

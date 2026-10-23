@@ -28,14 +28,14 @@ fields:
     ref_to: any
   - name: thresholds
     type: array
-    default: []
-    meaning: "This defines the distance thresholds for LOD transitions in ascending order. Uniform: one value, not time-sampled."
+    nullable: true
+    meaning: "This defines the distance thresholds for LOD transitions in ascending order. Uniform: one value, not time-sampled. Fallback value in schema.usda: []."
     source_ref: uniform float[] thresholds
     of: float
   - name: blend_thresholds
     type: array
-    default: []
-    meaning: "This defines distance thresholds for LOD transitions in ascending order. Uniform: one value, not time-sampled."
+    nullable: true
+    meaning: "This defines distance thresholds for LOD transitions in ascending order. Uniform: one value, not time-sampled. Fallback value in schema.usda: []."
     source_ref: uniform float[] blendThresholds
     of: float
 notes: Defined in pxr/usd/usdLod/schema.usda (module usdLod).

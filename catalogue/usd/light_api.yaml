@@ -34,11 +34,11 @@ fields:
     source_ref: uniform token light:materialSyncMode
     values:
       - value: materialGlowTintsLight
-        meaning: The token "materialGlowTintsLight" (the schema gives no per-value description).
+        meaning: All primary and secondary rays see the emissive/glow response as dictated by the bound Material while the base color seen by light rays (which is then modulated by all of the other LightAPI controls) is the ...
       - value: independent
-        meaning: The token "independent" (the schema gives no per-value description).
+        meaning: All primary and secondary rays see the emissive/glow response as dictated by the bound Material, while the base color seen by light rays is determined solely by *inputs:color*.
       - value: noMaterialResponse
-        meaning: The token "noMaterialResponse" (the schema gives no per-value description).
+        meaning: The geometry behaves as if there is no Material bound at all, i.e. there is no diffuse, specular, or transmissive response.
   - name: inputs_intensity
     type: float
     default: 1

@@ -62,3 +62,45 @@ test("variability, defaults, relationships, children and skips", () => {
 test("every entry validates and round-trips through YAML", () => {
   for (const e of entries) expect(EntrySchema.parse(parse(entryToYaml(e)))).toEqual(e);
 });
+
+test("long table names are shortened to fit the append-only limit", async () => {
+  const { shortTable, maxTable } = await import("../src/text.ts");
+  expect(maxTable("usd")).toBe(47);
+  const t = "particle_field_orientation_attribute_api_orientationsh";
+  expect(shortTable(t, 47).length).toBeLessThanOrEqual(47);
+  expect(shortTable("mesh", 47)).toBe("mesh");
+});
+
+test("array attributes of a field-less abstract class are folded in as flat arrays", async () => {
+  const { flattenOrphanChildren } = await import("../src/convert.ts");
+  const source = { document: "d", accessed_on: "2026-10-23", licence: "L" };
+  const abs = { code: "usd.pb", name: "PB", kind: "abstract" as const, fidelity: "proxy" as const, source, meaning: "m", fields: [] };
+  const child = {
+    code: "usd.pb_points",
+    name: "PB.points",
+    kind: "child" as const,
+    parent: "usd.pb",
+    fidelity: "proxy" as const,
+    source,
+    meaning: "One element of the ordered point3f array points of PB.",
+    fields: [{ name: "value", type: "point3" as const, meaning: "v" }],
+  };
+  const list = [abs, child];
+  const gaps: { where: string; what: string }[] = [];
+  flattenOrphanChildren(list as never, gaps);
+  expect(list.length).toBe(1);
+  expect(list[0]!.fields[0]).toMatchObject({ name: "points", type: "array", of: "float" });
+  expect(gaps.length).toBe(1);
+});
+
+test("sentence splitting leaves i.e. and e.g. alone", () => {
+  expect(sentences("A capsule, i.e. a cylinder with caps. Second one.", 1, 200)).toBe("A capsule, i.e. a cylinder with caps.");
+  expect(sentences("Use e.g. this. Then that.", 1, 200)).toBe("Use e.g. this.");
+});
+
+test("unmarked list bullets give per-value meanings", () => {
+  const v = valueMeanings("Modes:\n- alpha: First thing.\n- beta: Second thing.", ["alpha", "beta", "gamma"]);
+  expect(v[0]!.meaning).toBe("First thing.");
+  expect(v[1]!.meaning).toBe("Second thing.");
+  expect(v[2]!.meaning).toContain("no per-value");
+});

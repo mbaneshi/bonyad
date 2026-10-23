@@ -14,8 +14,8 @@ meaning: Application of labels for a prim for a taxonomy specified by the schema
 fields:
   - name: semantics_labels
     type: array
-    default: []
-    meaning: "Array of labels specified directly at this prim. Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "Array of labels specified directly at this prim. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: token[] semantics:labels:<instanceName>:__INSTANCE_NAME__
     of: text
 notes: 'Defined in pxr/usd/usdSemantics/schema.usda (module usdSemantics). API schema (multipleApply): it adds properties to an existing prim and is not a prim type of its own. Properties live under the "semantics:labels:" namespace, followed by an instance name.'

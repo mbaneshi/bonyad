@@ -10,12 +10,12 @@ source:
   version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
   accessed_on: 2026-10-23
   licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
-meaning: e. a cylinder capped by two half spheres, centered at the origin, whose spine is along the specified axis.
+meaning: Defines a primitive capsule, i.e. a cylinder capped by two half spheres, centered at the origin, whose spine is along the specified axis. The spherical cap heights (sagitta) of the two endcaps are a function of the relative radii of the endcaps, such that cylinder tangent and sphere tangent are coincident and maintain C1 continuity.
 fields:
   - name: height
     type: float
     default: 1
-    meaning: "e. Varying: may carry time samples (animatable)."
+    meaning: "The length of the capsule's spine along the specified axis excluding the size of the two half spheres, i.e. the length of the cylinder portion of the capsule. Varying: may carry time samples (animatable)."
     source_ref: double height
   - name: radius
     type: float

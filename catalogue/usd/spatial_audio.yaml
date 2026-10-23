@@ -24,9 +24,9 @@ fields:
     source_ref: uniform token auralMode
     values:
       - value: spatial
-        meaning: The token "spatial" (the schema gives no per-value description).
+        meaning: Play the audio in 3D space if the device can support spatial audio.
       - value: nonSpatial
-        meaning: The token "nonSpatial" (the schema gives no per-value description).
+        meaning: Play the audio without regard to the SpatialAudio prim's position.
   - name: playback_mode
     type: enum
     default: onceFromStart
@@ -34,15 +34,15 @@ fields:
     source_ref: uniform token playbackMode
     values:
       - value: onceFromStart
-        meaning: The token "onceFromStart" (the schema gives no per-value description).
+        meaning: Play the audio once, starting at startTime, continuing until the audio completes.
       - value: onceFromStartToEnd
-        meaning: The token "onceFromStartToEnd" (the schema gives no per-value description).
+        meaning: Play the audio once beginning at startTime, continuing until endTime or until the audio completes, whichever comes first.
       - value: loopFromStart
-        meaning: The token "loopFromStart" (the schema gives no per-value description).
+        meaning: Start playing the audio at startTime and continue looping through to the stage's authored endTimeCode.
       - value: loopFromStartToEnd
-        meaning: The token "loopFromStartToEnd" (the schema gives no per-value description).
+        meaning: Start playing the audio at startTime and continue looping through, stopping the audio at endTime.
       - value: loopFromStage
-        meaning: The token "loopFromStage" (the schema gives no per-value description).
+        meaning: Start playing the audio at the stage's authored startTimeCode and continue looping through to the stage's authored endTimeCode.
   - name: start_time
     type: float
     default: 0

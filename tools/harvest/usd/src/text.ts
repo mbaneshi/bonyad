@@ -17,7 +17,8 @@ export function cleanDoc(raw: string): string {
 /** First `n` sentences of cleaned text, capped at `max` characters (cut on a word boundary). */
 export function sentences(raw: string | undefined, n: number, max: number): string | undefined {
   if (!raw) return undefined;
-  const s = cleanDoc(raw);
+  const guarded = cleanDoc(raw).replace(/\b(i\.e\.|e\.g\.|etc\.|vs\.|cf\.)/gi, (m) => m.replace(/\./g, "\u0001"));
+  const s = guarded;
   if (!s) return undefined;
   const parts: string[] = [];
   const re = /[^.!?]*[.!?](?=\s|$)/g;
@@ -35,7 +36,7 @@ export function sentences(raw: string | undefined, n: number, max: number): stri
     const cut = out.lastIndexOf(" ");
     out = (cut > max * 0.6 ? out.slice(0, cut) : out).replace(/[,;:\s]+$/, "") + " ...";
   }
-  return out;
+  return out.replace(/\u0001/g, ".");
 }
 
 export function snake(name: string): string {
@@ -52,4 +53,31 @@ export function snake(name: string): string {
 export function pascal(name: string): string {
   const parts = name.split(/[:._\-]+/).filter(Boolean);
   return parts.map((p) => p[0]!.toUpperCase() + p.slice(1)).join("");
+}
+
+/** Longest table name the validator accepts: Postgres limit 63 minus "<schema>_" and "_append_only". */
+export const maxTable = (schema: string): number => 63 - schema.length - 1 - "_append_only".length;
+
+const ABBREV: [RegExp, string][] = [
+  [/attribute/g, "attr"],
+  [/spherical_harmonics/g, "sh"],
+  [/orientation/g, "orient"],
+  [/position/g, "pos"],
+  [/particle_field/g, "pfield"],
+  [/compression/g, "compr"],
+  [/interactivity/g, "interact"],
+  [/declaration/g, "decl"],
+];
+
+/** Shortens a snake_case table name to fit `max` by abbreviating long words; falls back to truncation plus a hash. */
+export function shortTable(t: string, max: number): string {
+  if (t.length <= max) return t;
+  let s = t;
+  for (const [re, to] of ABBREV) {
+    s = s.replace(re, to);
+    if (s.length <= max) return s;
+  }
+  let h = 0;
+  for (const ch of t) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return `${s.slice(0, max - 5)}_${(h % 0xfff).toString(16).padStart(3, "0")}`.replace(/__+/g, "_");
 }

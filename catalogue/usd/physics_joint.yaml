@@ -34,12 +34,8 @@ fields:
     source_ref: point3f physics:localPos0
   - name: physics_local_rot0
     type: array
-    default:
-      - 1
-      - 0
-      - 0
-      - 0
-    meaning: "Relative orientation of the joint frame to body0's frame. (quaternion, four floats) Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "Relative orientation of the joint frame to body0's frame. (quaternion, four floats) Varying: may carry time samples (animatable). Fallback value in schema.usda: [1,0,0,0]."
     source_ref: quatf physics:localRot0
     of: float
   - name: physics_local_pos1
@@ -52,12 +48,8 @@ fields:
     source_ref: point3f physics:localPos1
   - name: physics_local_rot1
     type: array
-    default:
-      - 1
-      - 0
-      - 0
-      - 0
-    meaning: "Relative orientation of the joint frame to body1's frame. (quaternion, four floats) Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "Relative orientation of the joint frame to body1's frame. (quaternion, four floats) Varying: may carry time samples (animatable). Fallback value in schema.usda: [1,0,0,0]."
     source_ref: quatf physics:localRot1
     of: float
   - name: physics_joint_enabled

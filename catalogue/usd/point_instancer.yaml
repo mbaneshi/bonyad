@@ -32,8 +32,8 @@ fields:
     of: bigint
   - name: invisible_ids
     type: array
-    default: []
-    meaning: "A list of id's to make invisible at the evaluation time. Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "A list of id's to make invisible at the evaluation time. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: int64[] invisibleIds
     of: bigint
 notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).

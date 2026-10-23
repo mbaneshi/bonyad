@@ -20,10 +20,8 @@ fields:
     ref_to: any
   - name: resolution
     type: array
-    default:
-      - 2048
-      - 1080
-    meaning: "The image pixel resolution, corresponding to the camera's screen window. (fixed length 2) Uniform: one value, not time-sampled."
+    nullable: true
+    meaning: "The image pixel resolution, corresponding to the camera's screen window. (fixed length 2) Uniform: one value, not time-sampled. Fallback value in schema.usda: [2048,1080]."
     source_ref: uniform int2 resolution
     of: int
   - name: pixel_aspect_ratio
@@ -49,12 +47,8 @@ fields:
         meaning: The token "adjustPixelAspectRatio" (the schema gives no per-value description).
   - name: data_window_ndc
     type: array
-    default:
-      - 0
-      - 0
-      - 1
-      - 1
-    meaning: "dataWindowNDC specifies the axis-aligned rectangular region in the adjusted aperture window within which the renderer should produce data. (fixed length 4) Uniform: one value, not time-sampled."
+    nullable: true
+    meaning: "dataWindowNDC specifies the axis-aligned rectangular region in the adjusted aperture window within which the renderer should produce data. (fixed length 4) Uniform: one value, not time-sampled. Fallback value in schema.usda: [0,0,1,1]."
     source_ref: uniform float4 dataWindowNDC
     of: float
   - name: instantaneous_shutter

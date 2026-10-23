@@ -10,7 +10,7 @@ source:
   version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
   accessed_on: 2026-10-23
   licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
-meaning: e. a UsdGeomImageable) as a set of indices.
+meaning: Encodes a subset of a piece of geometry (i.e. a UsdGeomImageable) as a set of indices. Currently supports encoding subsets of faces, points, edges, segments, and tetrahedrons.
 fields:
   - name: element_type
     type: enum
@@ -30,8 +30,8 @@ fields:
         meaning: The token "tetrahedron" (the schema gives no per-value description).
   - name: indices
     type: array
-    default: []
-    meaning: "The set of indices identifying elements included in this subset. Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "The set of indices identifying elements included in this subset. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: int[] indices
     of: int
   - name: family_name

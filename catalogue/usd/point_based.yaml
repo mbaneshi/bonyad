@@ -11,5 +11,30 @@ source:
   accessed_on: 2026-10-23
   licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
 meaning: Base class for all UsdGeomGprims that possess points, providing common attributes such as normals and velocities.
-fields: []
-notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).
+fields:
+  - name: points
+    type: array
+    of: float
+    nullable: true
+    meaning: "The ordered point3f[] array points of PointBased. The primary geometry attribute for all PointBased primitives, describes points in (local) space. Stored flat: 3 consecutive floats per element."
+    source_ref: point3f[] points
+  - name: velocities
+    type: array
+    of: float
+    nullable: true
+    meaning: "The ordered vector3f[] array velocities of PointBased. If provided, 'velocities' should be used by renderers to compute positions between samples for the 'points' attribute, rather than interpolating between neighboring 'points' samples. Stored flat: 3 consecutive floats per element."
+    source_ref: vector3f[] velocities
+  - name: accelerations
+    type: array
+    of: float
+    nullable: true
+    meaning: "The ordered vector3f[] array accelerations of PointBased. If provided, 'accelerations' should be used with velocities to compute positions between samples for the 'points' attribute rather than interpolating between neighboring 'points' samples. Stored flat: 3 consecutive floats per element."
+    source_ref: vector3f[] accelerations
+  - name: normals
+    type: array
+    of: float
+    nullable: true
+    meaning: "The ordered normal3f[] array normals of PointBased. Provide an object-space orientation for individual points, which, depending on subclass, may define a surface, curve, or free points. Stored flat: 3 consecutive floats per element."
+    source_ref: normal3f[] normals
+notes: "Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). Review: array attribute points is stored as a flat float array because an abstract class without fields has no table to own child rows. Review: array attribute velocities is stored as a flat float array because an abstract class without fields has no table to own child rows. Review: array attribute accelerations is stored as a flat float array because an abstract class without fields has no table to own child rows. Review: array attribute normals is stored as a flat float array because an abstract class without fields has no table to own child rows."
+needs_review: true

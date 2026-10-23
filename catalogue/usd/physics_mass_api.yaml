@@ -10,7 +10,7 @@ source:
   version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
   accessed_on: 2026-10-23
   licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
-meaning: ). MassAPI can be applied to any object that has a PhysicsCollisionAPI or a PhysicsRigidBodyAPI, and takes effect only while that collider or rigid body is enabled.
+meaning: Defines explicit mass properties (mass, density, inertia etc.). MassAPI can be applied to any object that has a PhysicsCollisionAPI or a PhysicsRigidBodyAPI, and takes effect only while that collider or rigid body is enabled.
 fields:
   - name: physics_mass
     type: float
@@ -37,12 +37,8 @@ fields:
     source_ref: float3 physics:diagonalInertia
   - name: physics_principal_axes
     type: array
-    default:
-      - 0
-      - 0
-      - 0
-      - 0
-    meaning: "Orientation of the inertia tensor's principal axes in the prim's local space. (quaternion, four floats) Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "Orientation of the inertia tensor's principal axes in the prim's local space. (quaternion, four floats) Varying: may carry time samples (animatable). Fallback value in schema.usda: [0,0,0,0]."
     source_ref: quatf physics:principalAxes
     of: float
 needs_review: true

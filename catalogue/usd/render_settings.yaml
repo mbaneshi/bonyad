@@ -20,18 +20,14 @@ fields:
     ref_to: any
   - name: included_purposes
     type: array
-    default:
-      - default
-      - render
-    meaning: "The list of UsdGeomImageable purpose values that should be included in the render. Uniform: one value, not time-sampled."
+    nullable: true
+    meaning: 'The list of UsdGeomImageable purpose values that should be included in the render. Uniform: one value, not time-sampled. Fallback value in schema.usda: ["default","render"].'
     source_ref: uniform token[] includedPurposes
     of: text
   - name: material_binding_purposes
     type: array
-    default:
-      - full
-      - ""
-    meaning: "Ordered list of material purposes to consider when resolving material bindings in the scene. Uniform: one value, not time-sampled."
+    nullable: true
+    meaning: 'Ordered list of material purposes to consider when resolving material bindings in the scene. Uniform: one value, not time-sampled. Fallback value in schema.usda: ["full",""].'
     source_ref: uniform token[] materialBindingPurposes
     of: text
   - name: rendering_color_space

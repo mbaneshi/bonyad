@@ -1,4 +1,4 @@
-code: usd.particle_field_spherical_harmonics_attribute_api
+code: usd.particle_field_spherical_harmonics_attr_api
 name: ParticleFieldSphericalHarmonicsAttributeAPI
 kind: object
 base: usd.api_schema_base

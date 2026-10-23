@@ -1,7 +1,7 @@
-code: usd.particle_field_spherical_harmonics_attribute_api_radiance_spherical_harmonics_coefficientsh
+code: usd.pfield_sh_attr_api_radiance_sh_coefficientsh
 name: ParticleFieldSphericalHarmonicsAttributeAPI.radiance:sphericalHarmonicsCoefficientsh
 kind: child
-parent: usd.particle_field_spherical_harmonics_attribute_api
+parent: usd.particle_field_spherical_harmonics_attr_api
 fidelity: proxy
 source:
   document: OpenUSD pxr/usd/usdVol/schema.usda

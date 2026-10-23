@@ -11,5 +11,12 @@ source:
   accessed_on: 2026-10-23
   licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
 meaning: Boundable introduces the ability for a prim to persistently cache a rectilinear, local-space, extent. Why Extent and not Bounds ?
-fields: []
-notes: Defined in pxr/usd/usdGeom/schema.usda (module usdGeom).
+fields:
+  - name: extent
+    type: array
+    of: float
+    nullable: true
+    meaning: "The ordered float3[] array extent of Boundable. Extent is a three dimensional range measuring the geometric extent of the authored gprim in its own local space (i.e. its own transform not applied), without accounting for any shader-induced displacement. Stored flat: 3 consecutive floats per element."
+    source_ref: float3[] extent
+notes: "Defined in pxr/usd/usdGeom/schema.usda (module usdGeom). Review: array attribute extent is stored as a flat float array because an abstract class without fields has no table to own child rows."
+needs_review: true

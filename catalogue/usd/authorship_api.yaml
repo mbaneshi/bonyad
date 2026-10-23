@@ -47,7 +47,7 @@ fields:
   - name: created
     type: text
     nullable: true
-    meaning: ", 2025-02-16T12:03:17+01:00), which may differ from the original creation time of the asset. Uniform: one value, not time-sampled."
+    meaning: "An ISO 8601 timestamp indicating when this authoring step occurred (e.g., 2025-02-16T12:03:17+01:00), which may differ from the original creation time of the asset. Uniform: one value, not time-sampled."
     source_ref: uniform string authorship:<instanceName>:created
   - name: instance_id
     type: text
@@ -62,7 +62,7 @@ fields:
   - name: copyright_owner
     type: array
     nullable: true
-    meaning: ", a studio owning an artist's work). Uniform: one value, not time-sampled."
+    meaning: "Entities holding copyright in this content, which may differ from creator (e.g., a studio owning an artist's work). Uniform: one value, not time-sampled."
     source_ref: uniform string[] authorship:<instanceName>:copyrightOwner
     of: text
   - name: contact

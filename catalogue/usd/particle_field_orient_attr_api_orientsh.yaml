@@ -1,4 +1,4 @@
-code: usd.particle_field_orientation_attribute_api_orientationsh
+code: usd.particle_field_orient_attr_api_orientsh
 name: ParticleFieldOrientationAttributeAPI.orientationsh
 kind: child
 parent: usd.particle_field_orientation_attribute_api

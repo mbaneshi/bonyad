@@ -10,6 +10,6 @@ source:
   version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
   accessed_on: 2026-10-23
   licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
-meaning: Defines the gaussian surflet kernel for a given ParticleField. e.
+meaning: Defines the gaussian surflet kernel for a given ParticleField. length()), with opacity off the XY-plane defined as 0.
 fields: []
 notes: "Defined in pxr/usd/usdVol/schema.usda (module usdVol). API schema (singleApply): it adds properties to an existing prim and is not a prim type of its own. Can only be applied to: ParticleField. Applies built-in API schemas: ParticleFieldKernelBaseAPI."

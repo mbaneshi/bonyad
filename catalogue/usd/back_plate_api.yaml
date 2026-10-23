@@ -10,7 +10,7 @@ source:
   version: OpenUSD development tree at commit bc32a65 (cmake/defaults/Version.cmake reads 0.27.2)
   accessed_on: 2026-10-23
   licence: Tomorrow Open Source Technology License 1.0 (Apache License 2.0 with a different Section 6, Trademarks); see LICENSE.txt at the pinned commit
-meaning: e. a camera-constrained but not always camera-facing texture card, that exists in scene space.
+meaning: This schema specifies a back plate i.e. a camera-constrained but not always camera-facing texture card, that exists in scene space. Multiple back plates can be applied to a single camera and each plate can independently specify its own overall visibility, as well as its own opacity and depth varying over the plate.
 fields:
   - name: scale_tweak
     type: point2

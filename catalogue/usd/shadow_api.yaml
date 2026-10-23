@@ -38,6 +38,6 @@ fields:
   - name: inputs_shadow_falloff_gamma
     type: float
     default: 1
-    meaning: ", exponential) control over shadow strength with linear distance within the falloff zone. Varying: may carry time samples (animatable)."
+    meaning: "A gamma (i.e., exponential) control over shadow strength with linear distance within the falloff zone. Varying: may carry time samples (animatable)."
     source_ref: float inputs:shadow:falloffGamma
 notes: "Defined in pxr/usd/usdLux/schema.usda (module usdLux). API schema (apiSchemaType not stated): it adds properties to an existing prim and is not a prim type of its own."

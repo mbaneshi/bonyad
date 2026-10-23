@@ -25,19 +25,19 @@ fields:
     source_ref: uniform token projectionMethod
     values:
       - value: projectedExtent
-        meaning: The token "projectedExtent" (the schema gives no per-value description).
+        meaning: Project the extent to the view plane
       - value: projectedSphere
-        meaning: The token "projectedSphere" (the schema gives no per-value description).
+        meaning: Project the extent bounding sphere to the view plane
   - name: thresholds
     type: array
-    default: []
-    meaning: "The screen size thresholds for LOD transitions in descending order as a fraction of the viewport size. Uniform: one value, not time-sampled."
+    nullable: true
+    meaning: "The screen size thresholds for LOD transitions in descending order as a fraction of the viewport size. Uniform: one value, not time-sampled. Fallback value in schema.usda: []."
     source_ref: uniform float[] thresholds
     of: float
   - name: blend_thresholds
     type: array
-    default: []
-    meaning: "This defines screen size thresholds for LOD transitions in descending order. Uniform: one value, not time-sampled."
+    nullable: true
+    meaning: "This defines screen size thresholds for LOD transitions in descending order. Uniform: one value, not time-sampled. Fallback value in schema.usda: []."
     source_ref: uniform float[] blendThresholds
     of: float
 notes: Defined in pxr/usd/usdLod/schema.usda (module usdLod).

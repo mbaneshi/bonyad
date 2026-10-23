@@ -112,3 +112,8 @@ Not read: `codegenTemplates/` and `testenv/` copies of schema.usda (test fixture
 - `usd.hydra_generative_procedural_api`: API schema: which prim it applies to is recorded in notes only; catalogue format v0 has no applied-API relation
 - `usd.hydra_render_pass_api`: API schema: which prim it applies to is recorded in notes only; catalogue format v0 has no applied-API relation
 - `usd.hydra_prim_api`: API schema: which prim it applies to is recorded in notes only; catalogue format v0 has no applied-API relation
+- `usd.boundable_extent`: array of vector3 folded into usd.boundable.extent as a flat float array (child rows need a tabled parent)
+- `usd.point_based_points`: array of point3 folded into usd.point_based.points as a flat float array (child rows need a tabled parent)
+- `usd.point_based_velocities`: array of vector3 folded into usd.point_based.velocities as a flat float array (child rows need a tabled parent)
+- `usd.point_based_accelerations`: array of vector3 folded into usd.point_based.accelerations as a flat float array (child rows need a tabled parent)
+- `usd.point_based_normals`: array of vector3 folded into usd.point_based.normals as a flat float array (child rows need a tabled parent)

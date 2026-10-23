@@ -14,8 +14,8 @@ meaning: This schema is analagous to NURBS Curves in packages like Maya and Houd
 fields:
   - name: order
     type: array
-    default: []
-    meaning: "Order of the curve. Varying: may carry time samples (animatable)."
+    nullable: true
+    meaning: "Order of the curve. Varying: may carry time samples (animatable). Fallback value in schema.usda: []."
     source_ref: int[] order
     of: int
   - name: knots

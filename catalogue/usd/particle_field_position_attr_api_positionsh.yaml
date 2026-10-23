@@ -1,4 +1,4 @@
-code: usd.particle_field_position_attribute_api_positionsh
+code: usd.particle_field_position_attr_api_positionsh
 name: ParticleFieldPositionAttributeAPI.positionsh
 kind: child
 parent: usd.particle_field_position_attribute_api
