@@ -1,0 +1,9 @@
+code: acad.mesh
+name: MESH
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "MESH", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A subdivision mesh; vertices and faces are child rows.
+fields:
+  - {name: subdivision_level, type: int, default: 0, check: non_negative, meaning: Subdivision level, source_ref: "group code 91"}

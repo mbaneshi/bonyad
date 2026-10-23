@@ -1,0 +1,10 @@
+code: acad.linetype
+name: LTYPE
+kind: symbol
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "LTYPE", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A linetype definition (dash pattern) that layers and entities refer to.
+fields:
+  - {name: name, type: text, meaning: Linetype name, source_ref: "group code 2"}
+  - {name: description, type: text, nullable: true, meaning: Descriptive text of the pattern, source_ref: "group code 3"}
+  - {name: pattern_length, type: length, nullable: true, meaning: Total length of one pattern repeat, source_ref: "group code 40"}

@@ -1,0 +1,13 @@
+code: acad.lwpolyline
+name: LWPOLYLINE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "LWPOLYLINE", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A 2D polyline; its vertices carry a bulge for arc segments.
+fields:
+  - {name: elevation, type: length, default: 0, meaning: Z level of the polyline plane, source_ref: "group code 38"}
+  - {name: closed, type: bool, default: false, meaning: True when the last vertex connects back to the first, source_ref: "group code 70, bit 1"}
+  - {name: constant_width, type: length, nullable: true, meaning: Width used for every segment when set, source_ref: "group code 43"}
+  - {name: thickness, type: length, default: 0, meaning: Extrusion thickness along the normal, source_ref: "group code 39"}
+  - {name: normal, type: vector3, default: [0, 0, 1], meaning: Extrusion direction, source_ref: "group codes 210, 220, 230"}

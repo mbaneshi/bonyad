@@ -1,0 +1,9 @@
+code: acad.mesh_face
+name: MESH face
+kind: child
+parent: acad.mesh
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "MESH", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: One ordered face of a MESH, as indices into the vertices.
+fields:
+  - {name: vertex_indices, type: array, of: int, min_items: 3, meaning: Zero-based positions of the face's vertices in mesh_vertex}

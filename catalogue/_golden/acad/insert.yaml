@@ -1,0 +1,16 @@
+code: acad.insert
+name: INSERT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "INSERT", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: One placement of a block definition, optionally as a rectangular array.
+fields:
+  - {name: block_id, type: ref, ref_to: acad.block_record, meaning: The block definition being placed, source_ref: "group code 2"}
+  - {name: ins, type: point3, meaning: Insertion point, source_ref: "group codes 10, 20, 30"}
+  - {name: scale, type: vector3, default: [1, 1, 1], check: non_zero, meaning: "Scale factors along x, y and z", source_ref: "group codes 41, 42, 43"}
+  - {name: rotation, type: angle, default: 0, meaning: Rotation about the insertion point (radians; DXF stores degrees), source_ref: "group code 50"}
+  - {name: column_count, type: int, default: 1, min: 1, meaning: Number of columns of the array, source_ref: "group code 70"}
+  - {name: row_count, type: int, default: 1, min: 1, meaning: Number of rows of the array, source_ref: "group code 71"}
+  - {name: column_spacing, type: length, nullable: true, meaning: Distance between columns, source_ref: "group code 44"}
+  - {name: row_spacing, type: length, nullable: true, meaning: Distance between rows, source_ref: "group code 45"}

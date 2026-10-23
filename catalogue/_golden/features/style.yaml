@@ -1,0 +1,10 @@
+code: features.style
+name: Style
+kind: symbol
+fidelity: proxy
+source: {document: "Synthetic fixture, not a real source format", accessed_on: 2026-10-23, licence: "n/a: test fixture"}
+meaning: A standalone symbol type with no base.
+fields:
+  - {name: name, type: text, meaning: Style name}
+  - {name: end, type: point3, nullable: true, meaning: A SQL reserved word as a column name prefix}
+  - {name: order, type: int, nullable: true, meaning: A SQL reserved word as a column name}

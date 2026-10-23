@@ -106,3 +106,17 @@ e2e: needs-db
     cd ui && pnpm install --frozen-lockfile
     cd agent && bun install --frozen-lockfile
     cd tests/e2e && pnpm install --frozen-lockfile && pnpm test
+
+# Catalogue: validate every YAML, check the generated files are current (nothing to diff), run the tool's tests.
+# The generated Rust crates (logic/generated/*) are linted by `just logic-check`.
+catalogue-check:
+    cd tools/catalogue && bun install --frozen-lockfile && bun run validate ../../catalogue && bun src/cli.ts generate-all --check && bun test
+
+# Regenerate SQL, Rust, DBML, seed rows and catalogue/COVERAGE.md from catalogue/, then commit the result.
+catalogue-generate:
+    cd tools/catalogue && bun install --frozen-lockfile && bun run generate-all
+
+# Golden test: the generator reproduces the hand-written acad tables of migration 20261023000005.
+# Uses scratch databases in the local container (bonyad-db) and drops them; never touches `postgres`.
+catalogue-golden:
+    tools/catalogue/scripts/golden-equivalence.sh

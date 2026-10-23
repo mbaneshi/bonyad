@@ -1,0 +1,17 @@
+code: acad.graphic_entity
+name: Common entity fields
+kind: abstract
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "Common entity group codes", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: Fields every AutoCAD graphic entity shares (the DXF common group codes), stored once.
+fields:
+  - {name: owner_block_id, type: ref, ref_to: acad.block_record, meaning: The block (or layout) that contains this entity}
+  - {name: layer_id, type: ref, ref_to: acad.layer, meaning: The layer the entity is on, source_ref: "group code 8"}
+  - {name: linetype_id, type: ref, ref_to: acad.linetype, nullable: true, meaning: Explicit linetype; null means BYLAYER, source_ref: "group code 6"}
+  - {name: color, type: int, nullable: true, meaning: AutoCAD colour index; null means BYLAYER, source_ref: "group code 62"}
+  - {name: true_color, type: int, nullable: true, meaning: 24-bit RGB colour, source_ref: "group code 420"}
+  - {name: lineweight, type: int, nullable: true, meaning: Lineweight in hundredths of a millimetre, source_ref: "group code 370"}
+  - {name: linetype_scale, type: float, default: 1, check: positive, meaning: Linetype scale factor of this entity, source_ref: "group code 48"}
+  - {name: visible, type: bool, default: true, meaning: Whether the entity is shown, source_ref: "group code 60"}
+  - {name: transparency, type: int, nullable: true, min: 0, max: 90, meaning: Transparency in percent, source_ref: "group code 440"}
+  - {name: dxf_handle, type: text, nullable: true, meaning: "The DXF handle; file-scoped, kept as a mapping column only", source_ref: "group code 5"}

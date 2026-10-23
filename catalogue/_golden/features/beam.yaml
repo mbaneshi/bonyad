@@ -1,0 +1,14 @@
+code: features.beam
+name: Beam
+kind: entity
+base: features.building_element
+fidelity: proxy
+source: {document: "Synthetic fixture, not a real source format", accessed_on: 2026-10-23, licence: "n/a: test fixture"}
+meaning: A leaf type that attaches to the nearest tabled ancestor (element) across an untabled abstract type.
+fields:
+  - {name: span, type: length, check: positive, meaning: Span}
+  - {name: section_area, type: area, check: non_negative, meaning: Cross-section area}
+  - {name: volume, type: volume, nullable: true, meaning: Volume}
+  - {name: share, type: ratio, check: unit_interval, default: 0.5, meaning: A ratio between 0 and 1}
+  - {name: count, type: bigint, min: 0, meaning: A bigint counter}
+  - {name: profile, type: enum, nullable: true, values: [{value: i, meaning: I profile}, {value: box, meaning: Box profile}], meaning: Optional profile}

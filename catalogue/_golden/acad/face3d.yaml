@@ -1,0 +1,13 @@
+code: acad.face3d
+name: 3DFACE
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "3DFACE", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A planar or non-planar face of three or four corners.
+fields:
+  - {name: c1, type: point3, meaning: First corner, source_ref: "group codes 10, 20, 30"}
+  - {name: c2, type: point3, meaning: Second corner, source_ref: "group codes 11, 21, 31"}
+  - {name: c3, type: point3, meaning: Third corner, source_ref: "group codes 12, 22, 32"}
+  - {name: c4, type: point3, meaning: Fourth corner (equal to the third for a triangle), source_ref: "group codes 13, 23, 33"}
+  - {name: edge_flags, type: int, default: 0, min: 0, max: 15, meaning: Bit flags that make an edge invisible, source_ref: "group code 70"}

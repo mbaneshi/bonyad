@@ -1,0 +1,8 @@
+code: features.building_element
+name: BuildingElement
+kind: abstract
+base: features.element
+fidelity: proxy
+source: {document: "Synthetic fixture, not a real source format", accessed_on: 2026-10-23, licence: "n/a: test fixture"}
+meaning: A grouping type without fields of its own; it never gets a table, its children attach to the nearest tabled ancestor.
+fields: []

@@ -1,0 +1,17 @@
+code: acad.text
+name: TEXT
+kind: entity
+base: acad.graphic_entity
+fidelity: faithful
+source: {document: "DXF reference (entities and group codes)", section: "TEXT", accessed_on: 2026-10-23, licence: "n/a: test fixture that restates the hand-written pilot tables of migration 20261023000005"}
+meaning: A single line of text.
+fields:
+  - {name: insert, type: point3, meaning: Insertion point, source_ref: "group codes 10, 20, 30"}
+  - {name: height, type: length, check: positive, meaning: Text height, source_ref: "group code 40"}
+  - {name: value, type: text, meaning: The text, source_ref: "group code 1"}
+  - {name: rotation, type: angle, default: 0, meaning: Rotation (radians; DXF stores degrees), source_ref: "group code 50"}
+  - {name: width_factor, type: float, default: 1, check: positive, meaning: Relative x scale, source_ref: "group code 41"}
+  - {name: oblique_angle, type: angle, default: 0, meaning: Oblique angle (radians; DXF stores degrees), source_ref: "group code 51"}
+  - {name: style_name, type: text, nullable: true, meaning: Name of the text style, source_ref: "group code 7"}
+  - {name: horizontal_alignment, type: int, default: 0, meaning: Horizontal justification code, source_ref: "group code 72"}
+  - {name: vertical_alignment, type: int, default: 0, meaning: Vertical justification code, source_ref: "group code 73"}
