@@ -28,3 +28,7 @@ refs/
 
 # catalogue tooling
 tools/catalogue/node_modules/
+
+# local-only: reference clones (rebuilt by the refs fetch script) and per-machine MCP config
+refs/
+.mcp.json
