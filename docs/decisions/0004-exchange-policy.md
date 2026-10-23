@@ -21,19 +21,25 @@ and IFC4, not IFC 4.3).
 
 1. **Bonyad has no proprietary exchange file.** Authoritative state is the PostgreSQL database and the domain model (manifesto
    section 4). Both may differ from any exchange standard. All exchange happens in adapters at the boundary. A portable
-   backup or project package is a separate future decision.
+   backup or project package is a separate future decision; if one is ever made, it is a versioned transfer, archive or
+   snapshot of the project, never a second source of truth for its state.
 2. **Cross-software exchange uses open, publicly specified, versioned standards.** That means formal standards, or openly
    documented specifications. A proprietary or undocumented format is never the canonical contract.
 3. **The unit of support is an exchange profile, not a file extension.** Every supported format has a published profile
    that declares: the standard and its exact revision; accepted and produced encodings and packaging; the exchange purpose;
    the supported subset (entities, geometry representations, attributes, relationships); how extensions are handled
    (accepted, required, preserved or rejected); units, axes, handedness, coordinate reference and origin; the precision and
-   tolerance policy; the identity policy for ids and references; the policy for older, newer and unknown versions; the
-   validation rules and test fixtures; and the known losses.
+   tolerance policy; the identity policy for ids and references; how dependent files (textures, buffers, references, linked
+   files) are found, packaged and checked, and what happens when one is missing; the policy for older, newer and unknown
+   versions; the validation rules and test fixtures; the file extension per version (BCF, for example, uses `.bcfzip` up
+   to 2.0 and `.bcf` from 2.1); and the known losses.
 4. **Import and export are separate claims.** A reader that accepts a file does not show that the writer reproduces its
    information. Each direction has its own profile entry.
 5. **Results are reported honestly, in three separate outputs:** the run status (`succeeded`, `failed` or `unknown`), a loss
    report (preserved, converted, not transferred), and a validation result. A run can succeed and still lose information.
+   Conformance validation (does the file follow the standard, as a schema validator checks, for example Khronos's glTF
+   validator) and preservation testing (did the information survive, judged against a reference) are separate tests;
+   passing a validator does not show that information was preserved.
    "Lossless" is never claimed without a reference test. An exact solid exported as a mesh is a visualisation export, not a
    CAD round trip. A report about an imported file can only describe what that file lacked, not what the source project had.
 6. **Formats are organised in tiers, and promotion needs a real scenario.** A format moves into the build set when a real
@@ -53,7 +59,10 @@ and IFC4, not IFC 4.3).
    Geodatabase (vector layers only) arrive through GDAL when needed. The preferred submission routes are IFC for Revit,
    glTF or USD for 3ds Max, DXF and LandXML for AutoCAD and Civil 3D, and GeoPackage for ArcGIS.
 8. **Each profile pins the latest stable published definition at adoption and lists older versions it reads where real
-   exporters still produce them.** Baselines found on 2026-10-23, each to be re-confirmed when its profile is written:
+   exporters still produce them.** Three versions are recorded separately: the standard's, the profile's and the adapter's
+   (a change in how geometry is converted changes the adapter version even when the standard and the profile's promises
+   stand), and a run report also records the validator and fixture-suite versions. Baselines found on 2026-10-23, each to
+   be re-confirmed when its profile is written:
 
 | Format | Target | Older versions to read |
 |---|---|---|
@@ -112,3 +121,7 @@ and IFC4, not IFC 4.3).
 | ⚑1 | STEP AP242 core or conditional? | Conditional: exact B-rep is out of scope (O3) |
 | ⚑2 | E57 core or conditional? | Conditional: add when a terrestrial-scan workflow exists; it is not redundant with LAS |
 | ⚑3 | GeoJSON core or conditional? | Conditional, through GDAL; no own parser |
+
+An independent review would put GeoJSON and E57 in core and OpenUSD in conditional for a product centred on GIS and
+scanning, and would reverse that for scene production. That is a product choice, so the answer follows the real project
+(O8).
