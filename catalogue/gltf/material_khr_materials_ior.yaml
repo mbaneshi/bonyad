@@ -1,0 +1,21 @@
+code: gltf.material_khr_materials_ior
+name: material.KHR_materials_ior
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_ior JSON Schema
+  section: material.KHR_materials_ior
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_ior/schema/material.KHR_materials_ior.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_materials_ior glTF Material Extension; extension object attached to gltf.material.
+fields:
+  - name: ior
+    type: float
+    nullable: true
+    default: 1.5
+    meaning: "Property ior of material.KHR_materials_ior. Range: one of (minimum 0 and maximum 0 or minimum 1), not enforced."
+    source_ref: material.KHR_materials_ior.schema.json#properties/ior
+notes: Attached as the extensions.KHR_materials_ior object of a material (at most one per parent).

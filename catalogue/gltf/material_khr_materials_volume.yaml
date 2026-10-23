@@ -1,0 +1,43 @@
+code: gltf.material_khr_materials_volume
+name: material.KHR_materials_volume
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_volume JSON Schema
+  section: material.KHR_materials_volume
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_volume/schema/material.KHR_materials_volume.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_materials_volume glTF Material Extension; extension object attached to gltf.material.
+fields:
+  - name: thickness_factor
+    type: float
+    nullable: true
+    default: 0
+    meaning: "Property thicknessFactor of material.KHR_materials_volume. Range: minimum 0."
+    source_ref: material.KHR_materials_volume.schema.json#properties/thicknessFactor
+    check: non_negative
+  - name: thickness_texture
+    type: ref
+    nullable: true
+    meaning: Property thicknessTexture of material.KHR_materials_volume. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_volume.schema.json#properties/thicknessTexture
+    ref_to: gltf.texture_info
+  - name: attenuation_distance
+    type: float
+    nullable: true
+    meaning: "Property attenuationDistance of material.KHR_materials_volume. Range: greater than 0."
+    source_ref: material.KHR_materials_volume.schema.json#properties/attenuationDistance
+    check: positive
+  - name: attenuation_color
+    type: vector3
+    nullable: true
+    default:
+      - 1
+      - 1
+      - 1
+    meaning: Property attenuationColor of material.KHR_materials_volume. Components are R, G, B.
+    source_ref: material.KHR_materials_volume.schema.json#properties/attenuationColor
+notes: Attached as the extensions.KHR_materials_volume object of a material (at most one per parent).

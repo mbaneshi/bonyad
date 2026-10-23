@@ -1,0 +1,43 @@
+code: gltf.animation_channel_target
+name: animation.channel.target
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: animation.channel.target
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/animation.channel.target.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: The descriptor of the animated property.
+fields:
+  - name: owner
+    type: ref
+    meaning: The animation_channel row this object belongs to.
+    source_ref: JSON nesting
+    ref_to: gltf.animation_channel
+  - name: index
+    type: int
+    meaning: Position of this object in its owner's array (0 for a single nested object).
+    source_ref: array position in the source JSON
+  - name: node
+    type: ref
+    nullable: true
+    meaning: The index of the node to animate. (index into the document's array of the referenced type)
+    source_ref: animation.channel.target.schema.json#properties/node
+    ref_to: gltf.node
+  - name: path
+    type: enum
+    meaning: The name of the node's TRS property to animate, or the "weights" of the Morph Targets it instantiates. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: animation.channel.target.schema.json#properties/path
+    values:
+      - value: rotation
+        meaning: Value "rotation" listed in the schema.
+      - value: scale
+        meaning: Value "scale" listed in the schema.
+      - value: translation
+        meaning: Value "translation" listed in the schema.
+      - value: weights
+        meaning: Value "weights" listed in the schema.
+notes: "Nested single object: at most one row per parent. Promoted from a child row to an object row because it owns child rows itself (format rule 5: no nested children); owner and index keep the nesting."

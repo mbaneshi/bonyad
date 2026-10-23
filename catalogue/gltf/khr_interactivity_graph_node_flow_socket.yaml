@@ -1,0 +1,30 @@
+code: gltf.khr_interactivity_graph_node_flow_socket
+name: KHR_interactivity.graph.node.flowSocket
+kind: child
+parent: gltf.khr_interactivity_graph_node
+fidelity: proxy
+source:
+  document: glTF extension KHR_interactivity JSON Schema
+  section: graph.node.flowSocket
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/schema/graph.node.flowSocket.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: Behavior graph interactivity node flow socket; extension object attached to gltf.khr_interactivity_graph_node.
+fields:
+  - name: key
+    type: text
+    meaning: Name of this entry in the parent's JSON object (the property name under which it is stored).
+    source_ref: JSON object key
+  - name: node
+    type: ref
+    meaning: Property node of KHR_interactivity.graph.node.flowSocket. (index into the document's array of the referenced type)
+    source_ref: graph.node.flowSocket.schema.json#properties/node
+    ref_to: gltf.khr_interactivity_graph_node
+  - name: socket
+    type: text
+    nullable: true
+    default: in
+    meaning: Property socket of KHR_interactivity.graph.node.flowSocket.
+    source_ref: graph.node.flowSocket.schema.json#properties/socket
+notes: "Keyed rows: one row per entry of the parent's JSON object."

@@ -1,0 +1,62 @@
+code: gltf.material
+name: material
+kind: symbol
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: material
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/material.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: The material appearance of a primitive.
+fields:
+  - name: alpha_cutoff
+    type: float
+    nullable: true
+    default: 0.5
+    meaning: "The alpha cutoff value of the material. Range: minimum 0."
+    source_ref: material.schema.json#properties/alphaCutoff
+    check: non_negative
+  - name: alpha_mode
+    type: enum
+    nullable: true
+    default: OPAQUE
+    meaning: The alpha rendering mode of the material. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: material.schema.json#properties/alphaMode
+    values:
+      - value: BLEND
+        meaning: The alpha value is used to composite the source and destination areas.
+      - value: MASK
+        meaning: The rendered output is either fully opaque or fully transparent depending on the alpha value and the specified alphaCutoff value; the exact appearance of the edges MAY be subject to ...
+      - value: OPAQUE
+        meaning: The alpha value is ignored, and the rendered output is fully opaque.
+  - name: double_sided
+    type: bool
+    nullable: true
+    default: false
+    meaning: Specifies whether the material is double sided.
+    source_ref: material.schema.json#properties/doubleSided
+  - name: emissive_factor
+    type: vector3
+    nullable: true
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: The factors for the emissive color of the material.
+    source_ref: material.schema.json#properties/emissiveFactor
+  - name: emissive_texture
+    type: ref
+    nullable: true
+    meaning: The emissive texture. Refers to a textureInfo row.
+    source_ref: material.schema.json#properties/emissiveTexture
+    ref_to: gltf.texture_info
+  - name: normal_texture
+    type: ref
+    nullable: true
+    meaning: The tangent space normal texture. Refers to a material.normalTextureInfo row.
+    source_ref: material.schema.json#properties/normalTexture
+    ref_to: gltf.material_normal_texture_info
+notes: Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array.

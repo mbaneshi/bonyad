@@ -1,0 +1,69 @@
+code: gltf.sampler
+name: sampler
+kind: symbol
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: sampler
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/sampler.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Texture sampler properties for filtering and wrapping modes.
+fields:
+  - name: mag_filter
+    type: enum
+    nullable: true
+    meaning: Magnification filter. The stored value is the integer code shown as the enum value. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: sampler.schema.json#properties/magFilter
+    values:
+      - value: "9728"
+        meaning: NEAREST
+      - value: "9729"
+        meaning: LINEAR
+  - name: min_filter
+    type: enum
+    nullable: true
+    meaning: Minification filter. The stored value is the integer code shown as the enum value. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: sampler.schema.json#properties/minFilter
+    values:
+      - value: "9728"
+        meaning: NEAREST
+      - value: "9729"
+        meaning: LINEAR
+      - value: "9984"
+        meaning: NEAREST_MIPMAP_NEAREST
+      - value: "9985"
+        meaning: LINEAR_MIPMAP_NEAREST
+      - value: "9986"
+        meaning: NEAREST_MIPMAP_LINEAR
+      - value: "9987"
+        meaning: LINEAR_MIPMAP_LINEAR
+  - name: wrap_s
+    type: enum
+    nullable: true
+    default: "10497"
+    meaning: S (U) wrapping mode. The stored value is the integer code shown as the enum value. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: sampler.schema.json#properties/wrapS
+    values:
+      - value: "10497"
+        meaning: REPEAT
+      - value: "33071"
+        meaning: CLAMP_TO_EDGE
+      - value: "33648"
+        meaning: MIRRORED_REPEAT
+  - name: wrap_t
+    type: enum
+    nullable: true
+    default: "10497"
+    meaning: T (V) wrapping mode. The stored value is the integer code shown as the enum value. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: sampler.schema.json#properties/wrapT
+    values:
+      - value: "10497"
+        meaning: REPEAT
+      - value: "33071"
+        meaning: CLAMP_TO_EDGE
+      - value: "33648"
+        meaning: MIRRORED_REPEAT
+notes: Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array.

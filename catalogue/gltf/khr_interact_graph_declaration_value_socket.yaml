@@ -1,0 +1,20 @@
+code: gltf.khr_interact_graph_declaration_value_socket
+name: KHR_interactivity.graph.declaration.valueSocket
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF extension KHR_interactivity JSON Schema
+  section: graph.declaration.valueSocket
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/schema/graph.declaration.valueSocket.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: Behavior graph declaration value socket.
+fields:
+  - name: type
+    type: ref
+    meaning: Property type of KHR_interactivity.graph.declaration.valueSocket. (index into the document's array of the referenced type)
+    source_ref: graph.declaration.valueSocket.schema.json#properties/type
+    ref_to: gltf.khr_interactivity_graph_type
+notes: Embedded value object shared by 2 properties (gltf.khr_interactivity_graph_declaration.inputValueSockets, gltf.khr_interactivity_graph_declaration.outputValueSockets); owners hold a ref to a row of this type. Table name shortened from khr_interactivity_graph_declaration_value_socket to fit Postgres' 63-byte identifier limit.

@@ -1,0 +1,26 @@
+code: gltf.khr_interactivity_graph_variable
+name: KHR_interactivity.graph.variable
+kind: child
+parent: gltf.khr_interactivity_graph
+fidelity: proxy
+source:
+  document: glTF extension KHR_interactivity JSON Schema
+  section: graph.variable
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/schema/graph.variable.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: Behavior graph variable; extension object attached to gltf.khr_interactivity_graph.
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: Property name of KHR_interactivity.graph.nameableProperty.
+    source_ref: graph.nameableProperty.schema.json#properties/name
+  - name: type
+    type: ref
+    meaning: Property type of KHR_interactivity.graph.variable. (index into the document's array of the referenced type)
+    source_ref: graph.variable.schema.json#properties/type
+    ref_to: gltf.khr_interactivity_graph_type
+needs_review: true
+notes: "Ordered rows: element order is the array order (the index is the position). Review: property value not modelled (array without items). Fields of the source base type khr_interactivity_graph_nameable_property are copied here because a child type cannot have a base."

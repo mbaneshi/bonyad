@@ -1,0 +1,20 @@
+code: gltf.mesh_primitive_khr_materials_variants_mapp_09b
+name: mesh.primitive.KHR_materials_variants.mapping.variant
+kind: child
+parent: gltf.mesh_primitive_khr_materials_variants_mapping
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_variants JSON Schema
+  section: mesh.primitive.KHR_materials_variants, property variants
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_variants/schema/mesh.primitive.KHR_materials_variants.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: One ordered row of the variant index list of gltf.mesh_primitive_khr_materials_variants_mapping.
+fields:
+  - name: variant
+    type: ref
+    meaning: Property variants of mesh.primitive.KHR_materials_variants.mapping. Each row holds one index.
+    source_ref: mesh.primitive.KHR_materials_variants.schema.json#properties/variants
+    ref_to: gltf.gltf_khr_materials_variants_variant
+notes: "Ordered rows: element order is the array order (the index is the position). Table name shortened from mesh_primitive_khr_materials_variants_mapping_variant to fit Postgres' 63-byte identifier limit."

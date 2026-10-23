@@ -1,0 +1,29 @@
+code: gltf.animation_channel
+name: animation.channel
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: animation.channel
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/animation.channel.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: An animation channel combines an animation sampler with a target property being animated.
+fields:
+  - name: owner
+    type: ref
+    meaning: The animation row this object belongs to.
+    source_ref: JSON nesting
+    ref_to: gltf.animation
+  - name: index
+    type: int
+    meaning: Position of this object in its owner's array (0 for a single nested object).
+    source_ref: array position in the source JSON
+  - name: sampler
+    type: ref
+    meaning: The index of a sampler in this animation used to compute the value for the target. (index into the document's array of the referenced type)
+    source_ref: animation.channel.schema.json#properties/sampler
+    ref_to: gltf.animation_sampler
+notes: "Ordered rows: element order is the array order (the index is the position). Promoted from a child row to an object row because it owns child rows itself (format rule 5: no nested children); owner and index keep the nesting."

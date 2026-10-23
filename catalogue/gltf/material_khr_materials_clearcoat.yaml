@@ -1,0 +1,47 @@
+code: gltf.material_khr_materials_clearcoat
+name: material.KHR_materials_clearcoat
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_clearcoat JSON Schema
+  section: material.KHR_materials_clearcoat
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_clearcoat/schema/material.KHR_materials_clearcoat.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_materials_clearcoat glTF Material Extension; extension object attached to gltf.material.
+fields:
+  - name: clearcoat_factor
+    type: float
+    nullable: true
+    default: 0
+    meaning: "Property clearcoatFactor of material.KHR_materials_clearcoat. Range: minimum 0, maximum 1."
+    source_ref: material.KHR_materials_clearcoat.schema.json#properties/clearcoatFactor
+    check: unit_interval
+  - name: clearcoat_texture
+    type: ref
+    nullable: true
+    meaning: Property clearcoatTexture of material.KHR_materials_clearcoat. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_clearcoat.schema.json#properties/clearcoatTexture
+    ref_to: gltf.texture_info
+  - name: clearcoat_roughness_factor
+    type: float
+    nullable: true
+    default: 0
+    meaning: "Property clearcoatRoughnessFactor of material.KHR_materials_clearcoat. Range: minimum 0, maximum 1."
+    source_ref: material.KHR_materials_clearcoat.schema.json#properties/clearcoatRoughnessFactor
+    check: unit_interval
+  - name: clearcoat_roughness_texture
+    type: ref
+    nullable: true
+    meaning: Property clearcoatRoughnessTexture of material.KHR_materials_clearcoat. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_clearcoat.schema.json#properties/clearcoatRoughnessTexture
+    ref_to: gltf.texture_info
+  - name: clearcoat_normal_texture
+    type: ref
+    nullable: true
+    meaning: Property clearcoatNormalTexture of material.KHR_materials_clearcoat. Refers to a material.normalTextureInfo row.
+    source_ref: material.KHR_materials_clearcoat.schema.json#properties/clearcoatNormalTexture
+    ref_to: gltf.material_normal_texture_info
+notes: Attached as the extensions.KHR_materials_clearcoat object of a material (at most one per parent).

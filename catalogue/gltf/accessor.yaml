@@ -1,0 +1,87 @@
+code: gltf.accessor
+name: accessor
+kind: symbol
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: accessor
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/accessor.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: A typed view into a buffer view that contains raw binary data.
+fields:
+  - name: buffer_view
+    type: ref
+    nullable: true
+    meaning: The index of the bufferView. (index into the document's array of the referenced type)
+    source_ref: accessor.schema.json#properties/bufferView
+    ref_to: gltf.buffer_view
+  - name: byte_offset
+    type: bigint
+    nullable: true
+    default: 0
+    meaning: "The offset relative to the start of the buffer view in bytes. Range: minimum 0."
+    source_ref: accessor.schema.json#properties/byteOffset
+    check: non_negative
+  - name: component_type
+    type: enum
+    meaning: The datatype of the accessor's components. The stored value is the integer code shown as the enum value. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: accessor.schema.json#properties/componentType
+    values:
+      - value: "5120"
+        meaning: BYTE
+      - value: "5121"
+        meaning: UNSIGNED_BYTE
+      - value: "5122"
+        meaning: SHORT
+      - value: "5123"
+        meaning: UNSIGNED_SHORT
+      - value: "5125"
+        meaning: UNSIGNED_INT
+      - value: "5126"
+        meaning: FLOAT
+  - name: count
+    type: int
+    meaning: "The number of elements referenced by this accessor. Range: minimum 1."
+    source_ref: accessor.schema.json#properties/count
+    check: positive
+  - name: max
+    type: array
+    nullable: true
+    meaning: Maximum value of each component in this accessor.
+    source_ref: accessor.schema.json#properties/max
+    of: float
+  - name: min
+    type: array
+    nullable: true
+    meaning: Minimum value of each component in this accessor.
+    source_ref: accessor.schema.json#properties/min
+    of: float
+  - name: normalized
+    type: bool
+    nullable: true
+    default: false
+    meaning: Specifies whether integer data values are normalized before usage.
+    source_ref: accessor.schema.json#properties/normalized
+  - name: type
+    type: enum
+    meaning: Specifies if the accessor's elements are scalars, vectors, or matrices. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: accessor.schema.json#properties/type
+    values:
+      - value: SCALAR
+        meaning: Value "SCALAR" listed in the schema.
+      - value: VEC2
+        meaning: Value "VEC2" listed in the schema.
+      - value: VEC3
+        meaning: Value "VEC3" listed in the schema.
+      - value: VEC4
+        meaning: Value "VEC4" listed in the schema.
+      - value: MAT2
+        meaning: Value "MAT2" listed in the schema.
+      - value: MAT3
+        meaning: Value "MAT3" listed in the schema.
+      - value: MAT4
+        meaning: Value "MAT4" listed in the schema.
+notes: "Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array. Constraint: if byteOffset is defined then bufferView must be defined (not enforced by the catalogue)."

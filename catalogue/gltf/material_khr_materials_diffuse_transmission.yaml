@@ -1,0 +1,43 @@
+code: gltf.material_khr_materials_diffuse_transmission
+name: material.KHR_materials_diffuse_transmission
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_diffuse_transmission JSON Schema
+  section: material.KHR_materials_diffuse_transmission
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_diffuse_transmission/schema/material.KHR_materials_diffuse_transmission.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_materials_diffuse_transmission glTF Material Extension; extension object attached to gltf.material.
+fields:
+  - name: diffuse_transmission_factor
+    type: float
+    nullable: true
+    default: 0
+    meaning: "Property diffuseTransmissionFactor of material.KHR_materials_diffuse_transmission. Range: minimum 0, maximum 1."
+    source_ref: material.KHR_materials_diffuse_transmission.schema.json#properties/diffuseTransmissionFactor
+    check: unit_interval
+  - name: diffuse_transmission_texture
+    type: ref
+    nullable: true
+    meaning: Property diffuseTransmissionTexture of material.KHR_materials_diffuse_transmission. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_diffuse_transmission.schema.json#properties/diffuseTransmissionTexture
+    ref_to: gltf.texture_info
+  - name: diffuse_transmission_color_factor
+    type: vector3
+    nullable: true
+    default:
+      - 1
+      - 1
+      - 1
+    meaning: Property diffuseTransmissionColorFactor of material.KHR_materials_diffuse_transmission. Components are R, G, B.
+    source_ref: material.KHR_materials_diffuse_transmission.schema.json#properties/diffuseTransmissionColorFactor
+  - name: diffuse_transmission_color_texture
+    type: ref
+    nullable: true
+    meaning: Property diffuseTransmissionColorTexture of material.KHR_materials_diffuse_transmission. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_diffuse_transmission.schema.json#properties/diffuseTransmissionColorTexture
+    ref_to: gltf.texture_info
+notes: Attached as the extensions.KHR_materials_diffuse_transmission object of a material (at most one per parent).

@@ -1,0 +1,20 @@
+code: gltf.node_khr_lights_punctual
+name: node.KHR_lights_punctual
+kind: child
+parent: gltf.node
+fidelity: proxy
+source:
+  document: glTF extension KHR_lights_punctual JSON Schema
+  section: node.KHR_lights_punctual
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_lights_punctual/schema/node.KHR_lights_punctual.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_lights_punctual glTF Node Extension; extension object attached to gltf.node.
+fields:
+  - name: light
+    type: ref
+    meaning: Property light of node.KHR_lights_punctual. (index into the document's array of the referenced type)
+    source_ref: node.KHR_lights_punctual.schema.json#properties/light
+    ref_to: gltf.khr_lights_punctual_light
+notes: Attached as the extensions.KHR_lights_punctual object of a node (at most one per parent).

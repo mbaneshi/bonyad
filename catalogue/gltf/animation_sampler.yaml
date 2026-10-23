@@ -1,0 +1,38 @@
+code: gltf.animation_sampler
+name: animation.sampler
+kind: child
+parent: gltf.animation
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: animation.sampler
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/animation.sampler.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: An animation sampler combines timestamps with a sequence of output values and defines an interpolation algorithm.
+fields:
+  - name: input
+    type: ref
+    meaning: The index of an accessor containing keyframe timestamps. (index into the document's array of the referenced type)
+    source_ref: animation.sampler.schema.json#properties/input
+    ref_to: gltf.accessor
+  - name: interpolation
+    type: enum
+    nullable: true
+    default: LINEAR
+    meaning: Interpolation algorithm. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: animation.sampler.schema.json#properties/interpolation
+    values:
+      - value: CUBICSPLINE
+        meaning: The animation's interpolation is computed using a cubic spline with specified tangents.
+      - value: LINEAR
+        meaning: The animated values are linearly interpolated between keyframes.
+      - value: STEP
+        meaning: The animated values remain constant to the output of the first keyframe, until the next keyframe.
+  - name: output
+    type: ref
+    meaning: The index of an accessor, containing keyframe output values. (index into the document's array of the referenced type)
+    source_ref: animation.sampler.schema.json#properties/output
+    ref_to: gltf.accessor
+notes: "Ordered rows: element order is the array order (the index is the position)."

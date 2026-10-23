@@ -1,0 +1,34 @@
+code: gltf.mesh_primitive_khr_materials_variants_mapping
+name: mesh.primitive.KHR_materials_variants.mapping
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_variants JSON Schema
+  section: mesh.primitive.KHR_materials_variants, inline object
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_variants/schema/mesh.primitive.KHR_materials_variants.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: mesh.primitive.KHR_materials_variants.mapping; extension object attached to gltf.mesh_primitive_khr_materials_variants.
+fields:
+  - name: owner
+    type: ref
+    meaning: The mesh_primitive_khr_materials_variants row this object belongs to.
+    source_ref: JSON nesting
+    ref_to: gltf.mesh_primitive_khr_materials_variants
+  - name: index
+    type: int
+    meaning: Position of this object in its owner's array (0 for a single nested object).
+    source_ref: array position in the source JSON
+  - name: material
+    type: ref
+    meaning: Property material of mesh.primitive.KHR_materials_variants.mapping. (index into the document's array of the referenced type)
+    source_ref: mesh.primitive.KHR_materials_variants.schema.json#properties/material
+    ref_to: gltf.material
+  - name: name
+    type: text
+    nullable: true
+    meaning: Property name of mesh.primitive.KHR_materials_variants.mapping.
+    source_ref: mesh.primitive.KHR_materials_variants.schema.json#properties/name
+notes: "Ordered rows: element order is the array order (the index is the position). Promoted from a child row to an object row because it owns child rows itself (format rule 5: no nested children); owner and index keep the nesting."

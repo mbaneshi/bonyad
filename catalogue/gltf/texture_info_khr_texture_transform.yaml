@@ -1,0 +1,43 @@
+code: gltf.texture_info_khr_texture_transform
+name: textureInfo.KHR_texture_transform
+kind: child
+parent: gltf.texture_info
+fidelity: proxy
+source:
+  document: glTF extension KHR_texture_transform JSON Schema
+  section: textureInfo.KHR_texture_transform
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_texture_transform/schema/textureInfo.KHR_texture_transform.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_texture_transform glTF TextureInfo Extension; extension object attached to gltf.texture_info.
+fields:
+  - name: offset
+    type: point2
+    nullable: true
+    default:
+      - 0
+      - 0
+    meaning: Property offset of textureInfo.KHR_texture_transform. Two components (x, y).
+    source_ref: textureInfo.KHR_texture_transform.schema.json#properties/offset
+  - name: rotation
+    type: angle
+    nullable: true
+    default: 0
+    meaning: Property rotation of textureInfo.KHR_texture_transform. Stored in radians (as in the source).
+    source_ref: textureInfo.KHR_texture_transform.schema.json#properties/rotation
+  - name: scale
+    type: point2
+    nullable: true
+    default:
+      - 1
+      - 1
+    meaning: Property scale of textureInfo.KHR_texture_transform. Two components (x, y).
+    source_ref: textureInfo.KHR_texture_transform.schema.json#properties/scale
+  - name: tex_coord
+    type: int
+    nullable: true
+    meaning: "Property texCoord of textureInfo.KHR_texture_transform. Range: minimum 0."
+    source_ref: textureInfo.KHR_texture_transform.schema.json#properties/texCoord
+    check: non_negative
+notes: Attached as the extensions.KHR_texture_transform object of a textureInfo (at most one per parent).

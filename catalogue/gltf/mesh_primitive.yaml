@@ -1,0 +1,57 @@
+code: gltf.mesh_primitive
+name: mesh.primitive
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: mesh.primitive
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/mesh.primitive.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Geometry to be rendered with the given material.
+fields:
+  - name: owner
+    type: ref
+    meaning: The mesh row this object belongs to.
+    source_ref: JSON nesting
+    ref_to: gltf.mesh
+  - name: index
+    type: int
+    meaning: Position of this object in its owner's array (0 for a single nested object).
+    source_ref: array position in the source JSON
+  - name: indices
+    type: ref
+    nullable: true
+    meaning: The index of the accessor that provides the vertex indices. (index into the document's array of the referenced type)
+    source_ref: mesh.primitive.schema.json#properties/indices
+    ref_to: gltf.accessor
+  - name: material
+    type: ref
+    nullable: true
+    meaning: The index of the material to apply to this primitive when rendering. (index into the document's array of the referenced type)
+    source_ref: mesh.primitive.schema.json#properties/material
+    ref_to: gltf.material
+  - name: mode
+    type: enum
+    nullable: true
+    default: "4"
+    meaning: The topology type of primitives to render. The stored value is the integer code shown as the enum value. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: mesh.primitive.schema.json#properties/mode
+    values:
+      - value: "0"
+        meaning: POINTS
+      - value: "1"
+        meaning: LINES
+      - value: "2"
+        meaning: LINE_LOOP
+      - value: "3"
+        meaning: LINE_STRIP
+      - value: "4"
+        meaning: TRIANGLES
+      - value: "5"
+        meaning: TRIANGLE_STRIP
+      - value: "6"
+        meaning: TRIANGLE_FAN
+notes: "Ordered rows: element order is the array order (the index is the position). Promoted from a child row to an object row because it owns child rows itself (format rule 5: no nested children); owner and index keep the nesting."

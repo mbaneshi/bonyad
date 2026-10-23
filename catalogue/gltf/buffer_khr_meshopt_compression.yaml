@@ -1,0 +1,21 @@
+code: gltf.buffer_khr_meshopt_compression
+name: buffer.KHR_meshopt_compression
+kind: child
+parent: gltf.buffer
+fidelity: proxy
+source:
+  document: glTF extension KHR_meshopt_compression JSON Schema
+  section: buffer.KHR_meshopt_compression
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_meshopt_compression/schema/buffer.KHR_meshopt_compression.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_meshopt_compression buffer extension; extension object attached to gltf.buffer.
+fields:
+  - name: fallback
+    type: bool
+    nullable: true
+    default: false
+    meaning: Property fallback of buffer.KHR_meshopt_compression.
+    source_ref: buffer.KHR_meshopt_compression.schema.json#properties/fallback
+notes: Attached as the extensions.KHR_meshopt_compression object of a buffer (at most one per parent).

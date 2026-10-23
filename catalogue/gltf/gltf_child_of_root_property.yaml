@@ -1,0 +1,19 @@
+code: gltf.gltf_child_of_root_property
+name: glTFChildOfRootProperty
+kind: abstract
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: glTFChildOfRootProperty
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/glTFChildOfRootProperty.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: glTF Child of Root Property.
+fields:
+  - name: name
+    type: text
+    nullable: true
+    meaning: The user-defined name of this object.
+    source_ref: glTFChildOfRootProperty.schema.json#properties/name

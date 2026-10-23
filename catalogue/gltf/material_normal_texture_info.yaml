@@ -1,0 +1,21 @@
+code: gltf.material_normal_texture_info
+name: material.normalTextureInfo
+kind: object
+base: gltf.texture_info
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: material.normalTextureInfo
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/material.normalTextureInfo.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Material Normal Texture Info.
+fields:
+  - name: scale
+    type: float
+    nullable: true
+    default: 1
+    meaning: The scalar parameter applied to each normal vector of the normal texture.
+    source_ref: material.normalTextureInfo.schema.json#properties/scale
+notes: Embedded value object shared by 2 properties (gltf.material.normalTexture, gltf.material_khr_materials_clearcoat.clearcoatNormalTexture); owners hold a ref to a row of this type.

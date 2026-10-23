@@ -1,0 +1,47 @@
+code: gltf.buffer_view
+name: bufferView
+kind: symbol
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: bufferView
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/bufferView.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: A view into a buffer generally representing a subset of the buffer.
+fields:
+  - name: buffer
+    type: ref
+    meaning: The index of the buffer. (index into the document's array of the referenced type)
+    source_ref: bufferView.schema.json#properties/buffer
+    ref_to: gltf.buffer
+  - name: byte_length
+    type: bigint
+    meaning: "The length of the bufferView in bytes. Range: minimum 1."
+    source_ref: bufferView.schema.json#properties/byteLength
+    check: positive
+  - name: byte_offset
+    type: bigint
+    nullable: true
+    default: 0
+    meaning: "The offset into the buffer in bytes. Range: minimum 0."
+    source_ref: bufferView.schema.json#properties/byteOffset
+    check: non_negative
+  - name: byte_stride
+    type: bigint
+    nullable: true
+    meaning: "The stride, in bytes. Range: minimum 4, maximum 252."
+    source_ref: bufferView.schema.json#properties/byteStride
+  - name: target
+    type: enum
+    nullable: true
+    meaning: The hint representing the intended GPU buffer type to use with this buffer view. The stored value is the integer code shown as the enum value. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: bufferView.schema.json#properties/target
+    values:
+      - value: "34962"
+        meaning: ARRAY_BUFFER
+      - value: "34963"
+        meaning: ELEMENT_ARRAY_BUFFER
+notes: Element of a root-level array of the glTF document; other types refer to it by its position (index) in that array.

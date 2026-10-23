@@ -1,0 +1,38 @@
+code: gltf.accessor_sparse_indices
+name: accessor.sparse.indices
+kind: child
+parent: gltf.accessor_sparse
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: accessor.sparse.indices
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/accessor.sparse.indices.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: An object pointing to a buffer view containing the indices of deviating accessor values. count.
+fields:
+  - name: buffer_view
+    type: ref
+    meaning: The index of the buffer view with sparse indices. (index into the document's array of the referenced type)
+    source_ref: accessor.sparse.indices.schema.json#properties/bufferView
+    ref_to: gltf.buffer_view
+  - name: byte_offset
+    type: bigint
+    nullable: true
+    default: 0
+    meaning: "The offset relative to the start of the buffer view in bytes. Range: minimum 0."
+    source_ref: accessor.sparse.indices.schema.json#properties/byteOffset
+    check: non_negative
+  - name: component_type
+    type: enum
+    meaning: The indices data type. The stored value is the integer code shown as the enum value. The schema also accepts other values of the same type (for example from extensions).
+    source_ref: accessor.sparse.indices.schema.json#properties/componentType
+    values:
+      - value: "5121"
+        meaning: UNSIGNED_BYTE
+      - value: "5123"
+        meaning: UNSIGNED_SHORT
+      - value: "5125"
+        meaning: UNSIGNED_INT
+notes: "Nested single object: at most one row per parent."

@@ -1,0 +1,37 @@
+code: gltf.camera_perspective
+name: camera.perspective
+kind: child
+parent: gltf.camera
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: camera.perspective
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/camera.perspective.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: A perspective camera containing properties to create a perspective projection matrix.
+fields:
+  - name: aspect_ratio
+    type: float
+    nullable: true
+    meaning: "The floating-point aspect ratio of the field of view. Range: greater than 0."
+    source_ref: camera.perspective.schema.json#properties/aspectRatio
+    check: positive
+  - name: yfov
+    type: angle
+    meaning: "The floating-point vertical field of view in radians. Stored in radians (as in the source). Range: greater than 0."
+    source_ref: camera.perspective.schema.json#properties/yfov
+    check: positive
+  - name: zfar
+    type: float
+    nullable: true
+    meaning: "The floating-point distance to the far clipping plane. Range: greater than 0."
+    source_ref: camera.perspective.schema.json#properties/zfar
+    check: positive
+  - name: znear
+    type: float
+    meaning: "The floating-point distance to the near clipping plane. Range: greater than 0."
+    source_ref: camera.perspective.schema.json#properties/znear
+    check: positive
+notes: "Nested single object: at most one row per parent."

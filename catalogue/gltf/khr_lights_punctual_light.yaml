@@ -1,0 +1,50 @@
+code: gltf.khr_lights_punctual_light
+name: KHR_lights_punctual.light
+kind: object
+base: gltf.gltf_child_of_root_property
+fidelity: proxy
+source:
+  document: glTF extension KHR_lights_punctual JSON Schema
+  section: light
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_lights_punctual/schema/light.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_lights_punctual Light Properties; extension object attached to gltf.gltf_khr_lights_punctual.
+fields:
+  - name: owner
+    type: ref
+    meaning: The gltf_khr_lights_punctual row this object belongs to.
+    source_ref: JSON nesting
+    ref_to: gltf.gltf_khr_lights_punctual
+  - name: index
+    type: int
+    meaning: Position of this object in its owner's array (0 for a single nested object).
+    source_ref: array position in the source JSON
+  - name: color
+    type: vector3
+    nullable: true
+    default:
+      - 1
+      - 1
+      - 1
+    meaning: Property color of KHR_lights_punctual.light. Components are R, G, B.
+    source_ref: light.schema.json#properties/color
+  - name: intensity
+    type: float
+    nullable: true
+    default: 1
+    meaning: "Property intensity of KHR_lights_punctual.light. Range: minimum 0."
+    source_ref: light.schema.json#properties/intensity
+    check: non_negative
+  - name: type
+    type: text
+    meaning: Property type of KHR_lights_punctual.light.
+    source_ref: light.schema.json#properties/type
+  - name: range
+    type: float
+    nullable: true
+    meaning: "Property range of KHR_lights_punctual.light. Range: greater than 0."
+    source_ref: light.schema.json#properties/range
+    check: positive
+notes: "Ordered rows: element order is the array order (the index is the position). Promoted from a child row to an object row because it owns child rows itself (format rule 5: no nested children); owner and index keep the nesting."

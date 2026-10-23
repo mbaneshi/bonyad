@@ -1,0 +1,24 @@
+code: gltf.mesh_primitive_target_entry
+name: mesh.primitive.target.entry
+kind: child
+parent: gltf.mesh_primitive_target
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: mesh.primitive, inline object
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/mesh.primitive.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: A JSON object that maps attribute semantic names to the indices of accessors providing the corresponding morph target difference values.
+fields:
+  - name: key
+    type: text
+    meaning: Name of this entry in the parent's JSON object (the property name under which it is stored).
+    source_ref: JSON object key
+  - name: value
+    type: ref
+    meaning: A JSON object that maps attribute semantic names to the indices of accessors providing the corresponding morph target difference values. (index into the document's array of the referenced type)
+    source_ref: mesh.primitive.schema.json#additionalProperties
+    ref_to: gltf.accessor
+notes: "Keyed rows: one row per entry of the parent's JSON object."

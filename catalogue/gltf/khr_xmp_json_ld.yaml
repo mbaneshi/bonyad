@@ -1,0 +1,16 @@
+code: gltf.khr_xmp_json_ld
+name: KHR_xmp_json_ld
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF extension KHR_xmp_json_ld JSON Schema
+  section: KHR_xmp_json_ld
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_xmp_json_ld/schema/KHR_xmp_json_ld.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_xmp_json_ld glTF Extension.
+fields: []
+needs_review: true
+notes: "Review: extension schema KHR_xmp_json_ld is not attached to a known type by file-name prefix; where it applies needs checking against the extension README. Review: member packet points to a free-form JSON object that is not modelled (see GAPS.md)."

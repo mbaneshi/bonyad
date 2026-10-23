@@ -1,0 +1,34 @@
+code: gltf.material_occlusion_texture_info
+name: material.occlusionTextureInfo
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: material.occlusionTextureInfo
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/material.occlusionTextureInfo.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: Material Occlusion Texture Info.
+fields:
+  - name: index
+    type: ref
+    meaning: The index of the texture. (index into the document's array of the referenced type)
+    source_ref: textureInfo.schema.json#properties/index
+    ref_to: gltf.texture
+  - name: tex_coord
+    type: int
+    nullable: true
+    default: 0
+    meaning: "The set index of texture's TEXCOORD attribute used for texture coordinate mapping. Range: minimum 0."
+    source_ref: textureInfo.schema.json#properties/texCoord
+    check: non_negative
+  - name: strength
+    type: float
+    nullable: true
+    default: 1
+    meaning: "A scalar multiplier controlling the amount of occlusion applied. Range: minimum 0, maximum 1."
+    source_ref: material.occlusionTextureInfo.schema.json#properties/strength
+    check: unit_interval
+notes: "Nested single object: at most one row per parent. Fields of the source base type texture_info are copied here because a child type cannot have a base."

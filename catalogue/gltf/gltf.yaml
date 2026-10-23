@@ -1,0 +1,34 @@
+code: gltf.gltf
+name: glTF
+kind: object
+base: gltf.gltf_property
+fidelity: proxy
+source:
+  document: glTF 2.0 JSON Schema
+  section: glTF
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/specification/2.0/schema/glTF.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: CC-BY-4.0 (specification schemas, per COPYING.adoc and LICENSE.adoc)
+meaning: The root object for a glTF asset.
+fields:
+  - name: extensions_required
+    type: array
+    nullable: true
+    meaning: Names of glTF extensions required to properly load this asset.
+    source_ref: glTF.schema.json#properties/extensionsRequired
+    of: text
+  - name: extensions_used
+    type: array
+    nullable: true
+    meaning: Names of glTF extensions used in this asset.
+    source_ref: glTF.schema.json#properties/extensionsUsed
+    of: text
+  - name: scene
+    type: ref
+    nullable: true
+    meaning: The index of the default scene. (index into the document's array of the referenced type)
+    source_ref: glTF.schema.json#properties/scene
+    ref_to: gltf.scene
+needs_review: true
+notes: "Constraint: if scene is defined then scenes must be defined (not enforced by the catalogue). Review: property accessors is an array of gltf.accessor that is not owned by this type; not modelled; property animations is an array of gltf.animation that is not owned by this type; not modelled; property bufferViews is an array of gltf.buffer_view that is not owned by this type; not modelled; property buffers is an array of gltf.buffer that is not owned by this type; not modelled; property cameras is an array of gltf.camera that is not owned by this type; not modelled; property images is an array of gltf.image that is not owned by this type; not modelled; property materials is an array of gltf.material that is not owned by this type; not modelled; property meshes is an array of gltf.mesh that is not owned by this type; not modelled; property nodes is an array of gltf.node that is not owned by this type; not modelled; property samplers is an array of gltf.sampler that is not owned by this type; not modelled; property scenes is an array of gltf.scene that is not owned by this type; not modelled; property skins is an array of gltf.skin that is not owned by this type; not modelled; property textures is an array of gltf.texture that is not owned by this type; not modelled."

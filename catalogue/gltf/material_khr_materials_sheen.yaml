@@ -1,0 +1,43 @@
+code: gltf.material_khr_materials_sheen
+name: material.KHR_materials_sheen
+kind: child
+parent: gltf.material
+fidelity: proxy
+source:
+  document: glTF extension KHR_materials_sheen JSON Schema
+  section: material.KHR_materials_sheen
+  url: https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_sheen/schema/material.KHR_materials_sheen.schema.json
+  version: glTF 2.0 (KhronosGroup/glTF at commit 7cee0fc)
+  accessed_on: 2026-10-23
+  licence: LicenseRef-KhronosSpecCopyright (Khronos Specification Copyright; KHR extensions, per COPYING.adoc)
+meaning: KHR_materials_sheen glTF Material Extension; extension object attached to gltf.material.
+fields:
+  - name: sheen_color_factor
+    type: vector3
+    nullable: true
+    default:
+      - 0
+      - 0
+      - 0
+    meaning: Property sheenColorFactor of material.KHR_materials_sheen. Components are R, G, B.
+    source_ref: material.KHR_materials_sheen.schema.json#properties/sheenColorFactor
+  - name: sheen_color_texture
+    type: ref
+    nullable: true
+    meaning: Property sheenColorTexture of material.KHR_materials_sheen. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_sheen.schema.json#properties/sheenColorTexture
+    ref_to: gltf.texture_info
+  - name: sheen_roughness_factor
+    type: float
+    nullable: true
+    default: 0
+    meaning: "Property sheenRoughnessFactor of material.KHR_materials_sheen. Range: minimum 0, maximum 1."
+    source_ref: material.KHR_materials_sheen.schema.json#properties/sheenRoughnessFactor
+    check: unit_interval
+  - name: sheen_roughness_texture
+    type: ref
+    nullable: true
+    meaning: Property sheenRoughnessTexture of material.KHR_materials_sheen. Refers to a textureInfo row.
+    source_ref: material.KHR_materials_sheen.schema.json#properties/sheenRoughnessTexture
+    ref_to: gltf.texture_info
+notes: Attached as the extensions.KHR_materials_sheen object of a material (at most one per parent).
