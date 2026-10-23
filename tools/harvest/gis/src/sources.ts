@@ -51,6 +51,7 @@ export const PINS: Pin[] = [
       "LICENSE.TXT",
       "ogr/ogr_core.h",
       "ogr/ogr_feature.h",
+      "ogr/ogr_geometry.h",
       "ogr/ogr_geomcoordinateprecision.h",
       "ogr/ogr_srs_api.h",
       "gcore/gdal.h",

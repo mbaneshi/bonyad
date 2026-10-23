@@ -24,9 +24,12 @@ export const FieldSchema = z
     meaning: nonEmpty,
     source_ref: nonEmpty.optional(),
     ref_to: nonEmpty.optional(),
-    values: z.array(z.object({ value: z.union([z.string(), z.number()]), meaning: nonEmpty }).strict()).optional(),
+    values: z.array(z.object({ value: z.string().min(1), meaning: nonEmpty }).strict()).optional(),
     of: z.enum(ARRAY_OF).optional(),
     check: z.enum(CHECKS).optional(),
+    min: z.number().optional(),
+    max: z.number().optional(),
+    min_items: z.number().int().optional(),
     maps: z.never().optional(),
   })
   .strict()
@@ -38,6 +41,7 @@ export const FieldSchema = z
     need(f.type === "enum" || !f.values, "values only on enum");
     need(f.type !== "array" || !!f.of, "array needs of");
     need(f.type === "array" || !f.of, "of only on array");
+    need(!(f.check && (f.min !== undefined || f.max !== undefined)), "check cannot be combined with min/max");
     if (f.ref_to) need(f.ref_to === "any" || typeCode.test(f.ref_to), "ref_to must be a type code or any");
   });
 

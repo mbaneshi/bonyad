@@ -43,9 +43,9 @@ const SQLTYPE: Record<string, Field["type"]> = {
 };
 
 const range012 = (what: string) => [
-  { value: 0, meaning: `${what} values prohibited` },
-  { value: 1, meaning: `${what} values mandatory` },
-  { value: 2, meaning: `${what} values optional` },
+  { value: "0", meaning: `${what} values prohibited` },
+  { value: "1", meaning: `${what} values mandatory` },
+  { value: "2", meaning: `${what} values optional` },
 ];
 
 export const SPECS: GpkgSpec[] = [
@@ -323,6 +323,25 @@ export const SPECS: GpkgSpec[] = [
     notes: "tpudt_id is the id of a row in the tile pyramid user data table named by tpudt_name, so it cannot be a typed ref; (tpudt_name, tpudt_id) are jointly unique.",
     section: "OGC GeoPackage Extension for Tiled Gridded Coverage Data, table 'Tile Ancillary Table Definition' + Annex C SQL",
     docPath: "spec/2d-gridded-coverage/clause_7_normative_text.adoc",
+  },
+  {
+    code: "gis.gpkg_tile_row",
+    name: "tile pyramid user data table",
+    kind: "entity",
+    meaning:
+      "One tile image of a tile pyramid user data table, addressed by zoom level, column and row within the tile matrix of that zoom level.",
+    notes:
+      "Convention entity: the real table has a user-chosen name (the gpkg_contents.table_name of a 'tiles' row). The five columns are normative (Requirement 54); the id column is renamed from id. Referential link to the pyramid is by that table name, so no ref column is possible here.",
+    ddl: { file: CORE, table: "sample_tile_pyramid" },
+    desc: { file: "spec/core/2b_tiles.adoc", id: "example_tiles_table_cols" },
+    overrides: {
+      id: { rename: "tile_id", meaning: "Autoincrement primary key. (Source column name is id; renamed to avoid clashing with a generated surrogate key.)" },
+      zoom_level: { check: "non_negative" },
+      tile_column: { check: "non_negative" },
+      tile_row: { check: "non_negative" },
+    },
+    section: "Tiles > Tile Pyramid User Data Tables (table 'Sample Tiles Table Definition') + Annex C DDL sample_tile_pyramid (informative)",
+    docPath: "spec/core/2b_tiles.adoc",
   },
 ];
 

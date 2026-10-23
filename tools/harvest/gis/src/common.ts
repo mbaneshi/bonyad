@@ -46,3 +46,25 @@ export const snake = (s: string) =>
     .replace(/[^A-Za-z0-9]+/g, "_")
     .toLowerCase()
     .replace(/^_+|_+$/g, "");
+
+export function sfaSource(section: string): Source {
+  return {
+    document: "OpenGIS Implementation Standard for Geographic information - Simple feature access - Part 1: Common architecture, OGC 06-103r4",
+    section,
+    url: "https://docs.ogc.org/is/06-103r4/06-103r4.pdf",
+    version: "1.2.1 (Corrigendum, 2011-05-28)",
+    accessed_on: ACCESSED_ON,
+    licence: "OGC License Agreement (embedded in the document)",
+  };
+}
+
+export function wkt2Source(section: string): Source {
+  return {
+    document: "OGC Well-known text representation of coordinate reference systems, OGC 18-010r7 (ISO 19162:2019)",
+    section,
+    url: "https://docs.ogc.org/is/18-010r7/18-010r7.html",
+    version: "2019",
+    accessed_on: ACCESSED_ON,
+    licence: "OGC License Agreement (embedded in the document)",
+  };
+}

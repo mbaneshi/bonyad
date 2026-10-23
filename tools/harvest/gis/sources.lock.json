@@ -7,6 +7,7 @@
   "gdal:ogr/ogr_core.h": "fdb9c62b52991d3dda42b6aec5a238593426d1ae38c6e720705002c14e582676",
   "gdal:ogr/ogr_feature.h": "7dba635cdf24a855df92b8959841ec2f9345bfeb6b1200632cd84486e3984025",
   "gdal:ogr/ogr_geomcoordinateprecision.h": "cc0b4e7807ead2d6bc3a5ee65607e4fb82bec14ea95a4d44edf54a96014cc46e",
+  "gdal:ogr/ogr_geometry.h": "01a2fe876a4cd123ec980b33bae7332434217a74adb1931a047a5393552595b3",
   "gdal:ogr/ogr_srs_api.h": "e403a38cb83312f61671738b40b34c3a8849e53771c95ee7411b988540f42b27",
   "gdal:ogr/ogrsf_frmts/gpkg/ogrgeopackagedatasource.cpp": "28941ca2816708f3d880445693cf3d569b74f80ca94af24539dcb53cb69e5c96",
   "geopackage:LICENSE.md": "e78c92993847aed5d88f401585499eb1d11eb07f2bcbf8cb61e57ba6e05cba32",
