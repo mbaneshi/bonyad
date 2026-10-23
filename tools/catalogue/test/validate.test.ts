@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { loadModels } from "../src/model.ts";
 import { TypeSchema } from "../src/schema.ts";
+import { resolve } from "node:path";
 import { tempCatalogue, typeYaml } from "./helpers.ts";
 
 const reasons = (files: Record<string, string>) => loadModels(tempCatalogue(files)).problems.map((p) => p.reason);
@@ -133,5 +134,17 @@ describe("directory validation", () => {
     // two files cannot share a path, so use a nested directory with the same schema name
     const r = reasons({ "s/a.yaml": typeYaml("s.a"), "x/s/a.yaml": typeYaml("s.a") });
     expect(r.join()).toContain("duplicate code");
+  });
+});
+
+describe("validate on a catalogue root", () => {
+  const run = (root: string) => Bun.spawnSync(["bun", resolve(import.meta.dir, "../src/cli.ts"), "validate", root]);
+  test("a real schema may share codes with its _golden fixture", () => {
+    const root = tempCatalogue({ "acad/a.yaml": typeYaml("acad.a"), "_golden/acad/a.yaml": typeYaml("acad.a") });
+    expect(run(root).exitCode).toBe(0);
+  });
+  test("a duplicate inside the real schemas still fails", () => {
+    const root = tempCatalogue({ "s/a.yaml": typeYaml("s.a"), "x/s/a.yaml": typeYaml("s.a"), "_golden/s/a.yaml": typeYaml("s.a") });
+    expect(run(root).exitCode).toBe(1);
   });
 });

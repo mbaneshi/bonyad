@@ -67,9 +67,15 @@ async function main(): Promise<number> {
     let types = 0;
     const all: FileProblem[] = [];
     for (const dir of positional) {
-      const r = loadModels(resolvePath(dir));
-      all.push(...r.problems);
-      types += r.models.reduce((a, m) => a + m.types.length, 0);
+      // `_golden/<schema>` fixtures restate real schemas (same codes), so each is its own namespace.
+      const abs = resolvePath(dir);
+      const golden = schemaDirs(abs).filter((d) => d.golden);
+      const runs = [{ dir: abs, skip: golden.length > 0 ? ["_golden"] : [] }, ...golden.map((g) => ({ dir: g.dir, skip: [] }))];
+      for (const run of runs) {
+        const r = loadModels(run.dir, run.skip);
+        all.push(...r.problems);
+        types += r.models.reduce((a, m) => a + m.types.length, 0);
+      }
     }
     if (all.length > 0) {
       report(all);
